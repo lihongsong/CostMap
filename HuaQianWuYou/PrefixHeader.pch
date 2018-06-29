@@ -23,6 +23,7 @@
 #import "LoginViewController.h"
 #import "ApiConfigDefine.h"
 #import "LNMBProgressHUD.h"
+#import "ThirdPartKeyDefine.h"
 
 #pragma mark    Category  类别
 #import "UIColor+AddColor.h"
@@ -33,7 +34,6 @@
 #import "HJFoundation.h"
 #import "HJUIKit.h"
 #import "AAGlobalMacro.h"
-//#import <Bugly/Bugly.h>
 //#import <JPUSHService.h>
 #import <Masonry/Masonry.h>
 #endif
