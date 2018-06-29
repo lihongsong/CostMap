@@ -44,15 +44,4 @@ buck-out/
 fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
-ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/AppUpdate
-ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Info.plist
-ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/AppUpdate.bundle/Info.plist
-ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Headers/AppUpdate-umbrella.h
-ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Headers/AUAlertView.h
-ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Headers/XZYAppUpdate.h
-ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Headers/XZYEncodeDecodeUtil.h
-ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Modules/module.modulemap
-ios/Pods/Headers/Public/AppUpdate/AppUpdate/AppUpdate-umbrella.h
-ios/Pods/Headers/Public/AppUpdate/AppUpdate/AUAlertView.h
-ios/Pods/Headers/Public/AppUpdate/AppUpdate/XZYAppUpdate.h
-ios/Pods/Headers/Public/AppUpdate/AppUpdate/XZYEncodeDecodeUtil.h
+Pods/
