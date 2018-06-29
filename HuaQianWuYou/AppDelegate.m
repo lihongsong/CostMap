@@ -58,7 +58,7 @@
     [self.window makeKeyAndVisible];
     launchVC.accomplishBlock = ^(NSString *exampleCreditScore) {
         StrongObj(self);
-        if ([exampleCreditScore isEqualToString:@"88"]) {
+        if (![exampleCreditScore isEqualToString:@"88"]) {
             [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
             [self checkUpdate];
         }else{
