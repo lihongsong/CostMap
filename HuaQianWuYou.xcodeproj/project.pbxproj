@@ -156,6 +156,16 @@
 		59698BFD209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		59698BFE209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		596B0E2320B4360A00B5A06B /* ResetPasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */; };
+		59C4D13D20E5DE4E00BDCA48 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D13C20E5DE4E00BDCA48 /* UserNotifications.framework */; };
+		59C4D13F20E5DE5800BDCA48 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D13E20E5DE5700BDCA48 /* libresolv.tbd */; };
+		59C4D14120E5DE5D00BDCA48 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14020E5DE5D00BDCA48 /* libxml2.tbd */; };
+		59C4D14320E5DE6300BDCA48 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14220E5DE6300BDCA48 /* libz.tbd */; };
+		59C4D14520E5DE6A00BDCA48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14420E5DE6900BDCA48 /* SystemConfiguration.framework */; };
+		59C4D14720E5DE7300BDCA48 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14620E5DE7200BDCA48 /* MobileCoreServices.framework */; };
+		59C4D14920E5DE7A00BDCA48 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14820E5DE7A00BDCA48 /* CFNetwork.framework */; };
+		59C4D14B20E5DE8000BDCA48 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14A20E5DE8000BDCA48 /* CoreTelephony.framework */; };
+		59C4D14F20E5DFFC00BDCA48 /* AppDelegate+APNS.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C4D14E20E5DFFC00BDCA48 /* AppDelegate+APNS.m */; };
+		59C4D15720E5E23000BDCA48 /* libMiPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D15520E5E22F00BDCA48 /* libMiPushSDK.a */; };
 		59C570A720E5F9C100D54260 /* CInvestigationFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5709120E5F9B900D54260 /* CInvestigationFiveViewController.m */; };
 		59C570A820E5F9C100D54260 /* CInvestigationOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5709320E5F9B900D54260 /* CInvestigationOneViewController.m */; };
 		59C570A920E5F9C100D54260 /* CInvestigationTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5709520E5F9BA00D54260 /* CInvestigationTwoViewController.m */; };
@@ -215,40 +225,6 @@
 		59C5714120E600D100D54260 /* ZYZControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713320E600D100D54260 /* ZYZControl.m */; };
 		59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */; };
 		59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5715A20E61DFD00D54260 /* ActiveViewController.m */; };
-		5986249420A5304C0070FDEF /* MonthAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5986249320A5304C0070FDEF /* MonthAxisValueFormatter.m */; };
-		5986249520A5304C0070FDEF /* MonthAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5986249320A5304C0070FDEF /* MonthAxisValueFormatter.m */; };
-		5986249620A5304C0070FDEF /* MonthAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5986249320A5304C0070FDEF /* MonthAxisValueFormatter.m */; };
-		59BB8CCC20A44B79008C90BD /* BarChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BB8CCB20A44B79008C90BD /* BarChartsView.m */; };
-		59BB8CCD20A44B79008C90BD /* BarChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BB8CCB20A44B79008C90BD /* BarChartsView.m */; };
-		59BB8CCE20A44B79008C90BD /* BarChartsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BB8CCB20A44B79008C90BD /* BarChartsView.m */; };
-		59BB8CD220A44F15008C90BD /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BB8CD120A44F15008C90BD /* DayAxisValueFormatter.m */; };
-		59BB8CD320A44F15008C90BD /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BB8CD120A44F15008C90BD /* DayAxisValueFormatter.m */; };
-		59BB8CD420A44F15008C90BD /* DayAxisValueFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BB8CD120A44F15008C90BD /* DayAxisValueFormatter.m */; };
-		59C47B3220AA6B710023A46A /* HomeScoreHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47B3120AA6B710023A46A /* HomeScoreHeaderView.m */; };
-		59C47B3320AA6B710023A46A /* HomeScoreHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47B3120AA6B710023A46A /* HomeScoreHeaderView.m */; };
-		59C47B3420AA6B710023A46A /* HomeScoreHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47B3120AA6B710023A46A /* HomeScoreHeaderView.m */; };
-		59C47B3720AA6B9F0023A46A /* ScoreProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47B3620AA6B9F0023A46A /* ScoreProgressView.m */; };
-		59C47B3820AA6B9F0023A46A /* ScoreProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47B3620AA6B9F0023A46A /* ScoreProgressView.m */; };
-		59C47B3920AA6B9F0023A46A /* ScoreProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47B3620AA6B9F0023A46A /* ScoreProgressView.m */; };
-		59C47B3C20AA6C080023A46A /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47B3B20AA6C080023A46A /* ProgressView.m */; };
-		59C47B3D20AA6C080023A46A /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47B3B20AA6C080023A46A /* ProgressView.m */; };
-		59C47B3E20AA6C080023A46A /* ProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C47B3B20AA6C080023A46A /* ProgressView.m */; };
-		59C4D13D20E5DE4E00BDCA48 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D13C20E5DE4E00BDCA48 /* UserNotifications.framework */; };
-		59C4D13F20E5DE5800BDCA48 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D13E20E5DE5700BDCA48 /* libresolv.tbd */; };
-		59C4D14120E5DE5D00BDCA48 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14020E5DE5D00BDCA48 /* libxml2.tbd */; };
-		59C4D14320E5DE6300BDCA48 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14220E5DE6300BDCA48 /* libz.tbd */; };
-		59C4D14520E5DE6A00BDCA48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14420E5DE6900BDCA48 /* SystemConfiguration.framework */; };
-		59C4D14720E5DE7300BDCA48 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14620E5DE7200BDCA48 /* MobileCoreServices.framework */; };
-		59C4D14920E5DE7A00BDCA48 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14820E5DE7A00BDCA48 /* CFNetwork.framework */; };
-		59C4D14B20E5DE8000BDCA48 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14A20E5DE8000BDCA48 /* CoreTelephony.framework */; };
-		59C4D14F20E5DFFC00BDCA48 /* AppDelegate+APNS.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C4D14E20E5DFFC00BDCA48 /* AppDelegate+APNS.m */; };
-		59C4D15720E5E23000BDCA48 /* libMiPushSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D15520E5E22F00BDCA48 /* libMiPushSDK.a */; };
-		59FFBA8920A2E92D001ED158 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FFBA8820A2E92D001ED158 /* HomeViewController.m */; };
-		59FFBA8A20A2E92D001ED158 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FFBA8820A2E92D001ED158 /* HomeViewController.m */; };
-		59FFBA8B20A2E92D001ED158 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FFBA8820A2E92D001ED158 /* HomeViewController.m */; };
-		59FFBA8E20A2E9AF001ED158 /* CircleIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FFBA8D20A2E9AF001ED158 /* CircleIndicatorView.m */; };
-		59FFBA8F20A2E9AF001ED158 /* CircleIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FFBA8D20A2E9AF001ED158 /* CircleIndicatorView.m */; };
-		59FFBA9020A2E9AF001ED158 /* CircleIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FFBA8D20A2E9AF001ED158 /* CircleIndicatorView.m */; };
 		A0D816F5B38FDA15E8A7FF10 /* Pods_HuaQianWuYouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5117A7B2D5F665AE12DB3FF /* Pods_HuaQianWuYouTests.framework */; };
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
 		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
@@ -410,6 +386,19 @@
 		59698BFB209FE973000E37AA /* TestApi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestApi.plist; sourceTree = "<group>"; };
 		596B0E2120B4360A00B5A06B /* ResetPasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordModel.h; sourceTree = "<group>"; };
 		596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordModel.m; sourceTree = "<group>"; };
+		59C4D13B20E5DDF500BDCA48 /* HuaQianWuYou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuaQianWuYou.entitlements; sourceTree = "<group>"; };
+		59C4D13C20E5DE4E00BDCA48 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		59C4D13E20E5DE5700BDCA48 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		59C4D14020E5DE5D00BDCA48 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		59C4D14220E5DE6300BDCA48 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		59C4D14420E5DE6900BDCA48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		59C4D14620E5DE7200BDCA48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		59C4D14820E5DE7A00BDCA48 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		59C4D14A20E5DE8000BDCA48 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		59C4D14D20E5DFFC00BDCA48 /* AppDelegate+APNS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+APNS.h"; sourceTree = "<group>"; };
+		59C4D14E20E5DFFC00BDCA48 /* AppDelegate+APNS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+APNS.m"; sourceTree = "<group>"; };
+		59C4D15520E5E22F00BDCA48 /* libMiPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMiPushSDK.a; sourceTree = "<group>"; };
+		59C4D15620E5E22F00BDCA48 /* MiPushSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiPushSDK.h; sourceTree = "<group>"; };
 		59C5709020E5F9B800D54260 /* CInvestigationFiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInvestigationFiveViewController.h; sourceTree = "<group>"; };
 		59C5709120E5F9B900D54260 /* CInvestigationFiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CInvestigationFiveViewController.m; sourceTree = "<group>"; };
 		59C5709220E5F9B900D54260 /* CInvestigationFourViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInvestigationFourViewController.h; sourceTree = "<group>"; };
@@ -528,35 +517,6 @@
 		59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+SDKRegister.m"; sourceTree = "<group>"; };
 		59C5715920E61DFD00D54260 /* ActiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActiveViewController.h; sourceTree = "<group>"; };
 		59C5715A20E61DFD00D54260 /* ActiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActiveViewController.m; sourceTree = "<group>"; };
-		5986249220A5304C0070FDEF /* MonthAxisValueFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonthAxisValueFormatter.h; sourceTree = "<group>"; };
-		5986249320A5304C0070FDEF /* MonthAxisValueFormatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthAxisValueFormatter.m; sourceTree = "<group>"; };
-		59BB8CCA20A44B79008C90BD /* BarChartsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BarChartsView.h; sourceTree = "<group>"; };
-		59BB8CCB20A44B79008C90BD /* BarChartsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BarChartsView.m; sourceTree = "<group>"; };
-		59BB8CD020A44F14008C90BD /* DayAxisValueFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DayAxisValueFormatter.h; sourceTree = "<group>"; };
-		59BB8CD120A44F15008C90BD /* DayAxisValueFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DayAxisValueFormatter.m; sourceTree = "<group>"; };
-		59C47B3020AA6B710023A46A /* HomeScoreHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeScoreHeaderView.h; sourceTree = "<group>"; };
-		59C47B3120AA6B710023A46A /* HomeScoreHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeScoreHeaderView.m; sourceTree = "<group>"; };
-		59C47B3520AA6B9F0023A46A /* ScoreProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScoreProgressView.h; sourceTree = "<group>"; };
-		59C47B3620AA6B9F0023A46A /* ScoreProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScoreProgressView.m; sourceTree = "<group>"; };
-		59C47B3A20AA6C080023A46A /* ProgressView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProgressView.h; sourceTree = "<group>"; };
-		59C47B3B20AA6C080023A46A /* ProgressView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProgressView.m; sourceTree = "<group>"; };
-		59C4D13B20E5DDF500BDCA48 /* HuaQianWuYou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuaQianWuYou.entitlements; sourceTree = "<group>"; };
-		59C4D13C20E5DE4E00BDCA48 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
-		59C4D13E20E5DE5700BDCA48 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
-		59C4D14020E5DE5D00BDCA48 /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
-		59C4D14220E5DE6300BDCA48 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		59C4D14420E5DE6900BDCA48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		59C4D14620E5DE7200BDCA48 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		59C4D14820E5DE7A00BDCA48 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		59C4D14A20E5DE8000BDCA48 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		59C4D14D20E5DFFC00BDCA48 /* AppDelegate+APNS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+APNS.h"; sourceTree = "<group>"; };
-		59C4D14E20E5DFFC00BDCA48 /* AppDelegate+APNS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+APNS.m"; sourceTree = "<group>"; };
-		59C4D15520E5E22F00BDCA48 /* libMiPushSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMiPushSDK.a; sourceTree = "<group>"; };
-		59C4D15620E5E22F00BDCA48 /* MiPushSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiPushSDK.h; sourceTree = "<group>"; };
-		59FFBA8720A2E92D001ED158 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
-		59FFBA8820A2E92D001ED158 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		59FFBA8C20A2E9AF001ED158 /* CircleIndicatorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CircleIndicatorView.h; sourceTree = "<group>"; };
-		59FFBA8D20A2E9AF001ED158 /* CircleIndicatorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CircleIndicatorView.m; sourceTree = "<group>"; };
 		6C4C910B5B222225D22E9E93 /* Pods-HuaQianWuYouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYouTests/Pods-HuaQianWuYouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C820524E8455524D0D33F53 /* Pods-HuaQianWuYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.debug.xcconfig"; sourceTree = "<group>"; };
 		A1D83DBD51E6C20692A84026 /* Pods_HuaQianWuYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuaQianWuYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -687,10 +647,8 @@
 		59023BE6209A9B33004B9134 /* HuaQianWuYou */ = {
 			isa = PBXGroup;
 			children = (
-				59C4D15420E5E22F00BDCA48 /* MiPushSDK */,
 				59023BE7209A9B33004B9134 /* AppDelegate.h */,
 				59023BE8209A9B33004B9134 /* AppDelegate.m */,
-				59C4D14C20E5DFEB00BDCA48 /* AppDelegateCategory */,
 				59023BED209A9B33004B9134 /* Main.storyboard */,
 				595752FC209AA15100F602EB /* Basic */,
 				59FFBA8320A2E87D001ED158 /* Home */,
@@ -777,6 +735,7 @@
 		591D958B20ABDE2D00193B09 /* ThirdFrameWork */ = {
 			isa = PBXGroup;
 			children = (
+				59C4D15420E5E22F00BDCA48 /* MiPushSDK */,
 				A858A81320B2D7B600657C09 /* DES3Util */,
 				A8118BD820B2968C0046099D /* MBProgressHUD */,
 				A8118BD420B295620046099D /* LNMBProgressHUD */,
@@ -911,6 +870,8 @@
 		5957530F209AD8EF00F602EB /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				59C4D14D20E5DFFC00BDCA48 /* AppDelegate+APNS.h */,
+				59C4D14E20E5DFFC00BDCA48 /* AppDelegate+APNS.m */,
 				59C5712C20E600CD00D54260 /* AppDelegate+SDKRegister.h */,
 				59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */,
 				59C5713020E600CF00D54260 /* CALayer+LayerColor.h */,
@@ -972,6 +933,15 @@
 				A8F8DFC320B3AB5300DB9A6A /* View */,
 			);
 			path = Discover;
+			sourceTree = "<group>";
+		};
+		59C4D15420E5E22F00BDCA48 /* MiPushSDK */ = {
+			isa = PBXGroup;
+			children = (
+				59C4D15520E5E22F00BDCA48 /* libMiPushSDK.a */,
+				59C4D15620E5E22F00BDCA48 /* MiPushSDK.h */,
+			);
+			path = MiPushSDK;
 			sourceTree = "<group>";
 		};
 		59C5709B20E5F9BD00D54260 /* Launch */ = {
@@ -1054,33 +1024,6 @@
 			sourceTree = "<group>";
 		};
 		59FFBA8320A2E87D001ED158 /* Home */ = {
-			children = (
-				59FFBA8420A2E8CD001ED158 /* Controller */,
-				59FFBA8620A2E8E7001ED158 /* Model */,
-				59FFBA8520A2E8D2001ED158 /* View */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
-		59C4D14C20E5DFEB00BDCA48 /* AppDelegateCategory */ = {
-			isa = PBXGroup;
-			children = (
-				59C4D14D20E5DFFC00BDCA48 /* AppDelegate+APNS.h */,
-				59C4D14E20E5DFFC00BDCA48 /* AppDelegate+APNS.m */,
-			);
-			path = AppDelegateCategory;
-			sourceTree = "<group>";
-		};
-		59C4D15420E5E22F00BDCA48 /* MiPushSDK */ = {
-			isa = PBXGroup;
-			children = (
-				59C4D15520E5E22F00BDCA48 /* libMiPushSDK.a */,
-				59C4D15620E5E22F00BDCA48 /* MiPushSDK.h */,
-			);
-			path = MiPushSDK;
-			sourceTree = "<group>";
-		};
-		59FFBA8320A2E87D001ED158 /* Home(首页) */ = {
 			isa = PBXGroup;
 			children = (
 				59FFBA8420A2E8CD001ED158 /* Controller */,
@@ -1398,7 +1341,7 @@
 					59023BE3209A9B33004B9134 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 0930;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1644,9 +1587,6 @@
 				A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */,
 				59C5713720E600D100D54260 /* NSString+NSData.m in Sources */,
 				59C570FD20E5FB8200D54260 /* ScoreProgressView.m in Sources */,
-				59037735209C0D97004CEBD8 /* CALayer+LayerColor.m in Sources */,
-				A8F8DFEB20B420F700DB9A6A /* CInvestigationModel+Service.m in Sources */,
-				591D964820AC6ABC00193B09 /* waveAnimationView.m in Sources */,
 				59C4D14F20E5DFFC00BDCA48 /* AppDelegate+APNS.m in Sources */,
 				5903772B209C09E6004CEBD8 /* BaseTableView.m in Sources */,
 				591D962B20ABDE6E00193B09 /* AAChartView.m in Sources */,
@@ -1969,7 +1909,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HuaQianWuYou/HuaQianWuYou.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 69C2M2FU4A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1991,7 +1931,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/HuaQianWuYou/MiPushSDK",
+					"$(PROJECT_DIR)/HuaQianWuYou/ThirdFrameWork/MiPushSDK",
 				);
 				MiSDKRun = debug;
 				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "";
@@ -2053,8 +1993,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "831a4d6d-3aea-490c-be65-a18def1d5ff4";
-				PROVISIONING_PROFILE_SPECIFIER = wuyou_dev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRIP_SWIFT_SYMBOLS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2073,8 +2013,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HuaQianWuYou/HuaQianWuYou.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 69C2M2FU4A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
@@ -2095,7 +2035,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/HuaQianWuYou/MiPushSDK",
+					"$(PROJECT_DIR)/HuaQianWuYou/ThirdFrameWork/MiPushSDK",
 				);
 				MiSDKRun = online;
 				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "";

@@ -74,8 +74,8 @@
         }
     }];
     
-    /** 注册第三方KEY  */
-    [self registerThird];
+    /** 注册小米推送,启动APNs */
+    [MiPushSDK registerMiPush:self];
     
     /** APP未启动 通知栏调起APP 处理通知信息 */
     if (remoteNotification) {
@@ -152,13 +152,5 @@
 }
 
 #pragma 三方SDK设置
-
-#pragma mark - 注册第三方KEY
-
-- (void)registerThird {
-    /** 只启动APNs */
-    [MiPushSDK registerMiPush:self];
-}
-
 
 @end
