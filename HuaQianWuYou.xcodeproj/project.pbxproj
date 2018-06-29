@@ -214,6 +214,7 @@
 		59C5714020E600D100D54260 /* NSError+CustomError.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713220E600D000D54260 /* NSError+CustomError.m */; };
 		59C5714120E600D100D54260 /* ZYZControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713320E600D100D54260 /* ZYZControl.m */; };
 		59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */; };
+		59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5715A20E61DFD00D54260 /* ActiveViewController.m */; };
 		A0D816F5B38FDA15E8A7FF10 /* Pods_HuaQianWuYouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5117A7B2D5F665AE12DB3FF /* Pods_HuaQianWuYouTests.framework */; };
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
 		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
@@ -491,6 +492,8 @@
 		59C5713220E600D000D54260 /* NSError+CustomError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+CustomError.m"; sourceTree = "<group>"; };
 		59C5713320E600D100D54260 /* ZYZControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYZControl.m; sourceTree = "<group>"; };
 		59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+SDKRegister.m"; sourceTree = "<group>"; };
+		59C5715920E61DFD00D54260 /* ActiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActiveViewController.h; sourceTree = "<group>"; };
+		59C5715A20E61DFD00D54260 /* ActiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActiveViewController.m; sourceTree = "<group>"; };
 		6C4C910B5B222225D22E9E93 /* Pods-HuaQianWuYouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYouTests/Pods-HuaQianWuYouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C820524E8455524D0D33F53 /* Pods-HuaQianWuYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.debug.xcconfig"; sourceTree = "<group>"; };
 		A1D83DBD51E6C20692A84026 /* Pods_HuaQianWuYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuaQianWuYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -620,7 +623,7 @@
 				596AAB3220A9C99800D0FC35 /* Discover */,
 				59FFBA9220A2ECBA001ED158 /* Mine */,
 				5957530F209AD8EF00F602EB /* Category */,
-				591D958B20ABDE2D00193B09 /* ThirdFrameWork  */,
+				591D958B20ABDE2D00193B09 /* ThirdFrameWork */,
 				5957530D209AD32E00F602EB /* Utilities */,
 				59023BF0209A9B35004B9134 /* Assets.xcassets */,
 				59023BF5209A9B35004B9134 /* Info.plist */,
@@ -696,7 +699,7 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		591D958B20ABDE2D00193B09 /* ThirdFrameWork  */ = {
+		591D958B20ABDE2D00193B09 /* ThirdFrameWork */ = {
 			isa = PBXGroup;
 			children = (
 				A858A81320B2D7B600657C09 /* DES3Util */,
@@ -704,7 +707,7 @@
 				A8118BD420B295620046099D /* LNMBProgressHUD */,
 				591D958C20ABDE6E00193B09 /* AAChartKitLib */,
 			);
-			path = "ThirdFrameWork ";
+			path = ThirdFrameWork;
 			sourceTree = "<group>";
 		};
 		591D958C20ABDE6E00193B09 /* AAChartKitLib */ = {
@@ -1006,6 +1009,8 @@
 				59C570A520E5F9C100D54260 /* CInvestigationViewController.m */,
 				59C5709920E5F9BC00D54260 /* HomeViewController.h */,
 				59C570A620E5F9C100D54260 /* HomeViewController.m */,
+				59C5715920E61DFD00D54260 /* ActiveViewController.h */,
+				59C5715A20E61DFD00D54260 /* ActiveViewController.m */,
 				59C5709B20E5F9BD00D54260 /* Launch */,
 				59C5709A20E5F9BC00D54260 /* TouchIDViewController.h */,
 				59C5709720E5F9BB00D54260 /* TouchIDViewController.m */,
@@ -1488,6 +1493,7 @@
 				A8F8DFB220B3AB3300DB9A6A /* AgreementViewController.m in Sources */,
 				59C570CD20E5FADC00D54260 /* CreditInvestigationSMSModel+Service.m in Sources */,
 				591D962520ABDE6E00193B09 /* AAPie.m in Sources */,
+				59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */,
 				A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */,
 				59C5710820E5FB8200D54260 /* ApplyRecordCell.m in Sources */,
 				591D961620ABDE6E00193B09 /* AAAnimation.m in Sources */,

@@ -17,6 +17,7 @@
 #import "TouchIDViewController.h"
 #import "LaunchViewController.h"
 #import "AppDelegate+SDKRegister.h"
+#import "ActiveViewController.h"
 // iOS10注册APNs所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -57,7 +58,7 @@
     [self.window makeKeyAndVisible];
     launchVC.accomplishBlock = ^(NSString *exampleCreditScore) {
         StrongObj(self);
-        if (![exampleCreditScore isEqualToString:@"88"]) {
+        if ([exampleCreditScore isEqualToString:@"88"]) {
             [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
             [self checkUpdate];
         }else{
@@ -97,21 +98,9 @@
 
 #pragma mark - 启动图设置
 - (void)setupLaunchViewControllerWithRemoteNotification:(NSDictionary *)remoteNotification {
-    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    
-    if (![userDefault boolForKey:@"kCachedTouchIdStatus"]) {
-        MainTabBarViewController *rootViewController = [[MainTabBarViewController alloc]init];
-        [self restoreRootViewController:rootViewController];
-    } else {
-        TouchIDViewController *touchIDVC = [[TouchIDViewController alloc]init];
-        self.window.rootViewController = touchIDVC;
-        touchIDVC.rootStartVC = ^{
-            MainTabBarViewController *rootViewController = [[MainTabBarViewController alloc]init];
-            [self restoreRootViewController:rootViewController];
-        };
-    }
-    //注册下apns
-   
+        ActiveViewController *activeVC = [[ActiveViewController alloc]init];
+        BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
+        self.window.rootViewController = hNC;
 }
 
 #pragma mark - 渐变动画更换RootVC
