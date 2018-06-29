@@ -1,6 +1,0 @@
-framework module HJ_UIKit {
-  umbrella header "HJ_UIKit-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -1,6 +1,0 @@
-framework module AppUpdate {
-  umbrella header "AppUpdate-umbrella.h"
-
-  export *
-  module * { export * }
-}

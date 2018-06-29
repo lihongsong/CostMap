@@ -1,6 +1,0 @@
-framework module HJCategories {
-  umbrella header "HJCategories-umbrella.h"
-
-  export *
-  module * { export * }
-}
