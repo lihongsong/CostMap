@@ -31,6 +31,12 @@
 	<string>15605</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>MiSDKAppID</key>
+	<string>2882303761517792919</string>
+	<key>MiSDKAppKey</key>
+	<string>5391779275919</string>
+	<key>MiSDKRun</key>
+	<string>${MiSDKRun}</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

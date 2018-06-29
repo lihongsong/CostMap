@@ -18,10 +18,8 @@
 #import "LaunchViewController.h"
 #import "AppDelegate+SDKRegister.h"
 #import "ActiveViewController.h"
-// iOS10注册APNs所需头文件
-#ifdef NSFoundationVersionNumber_iOS_9_x_Max
-#import <UserNotifications/UserNotifications.h>
-#endif
+#import "AppDelegate+APNS.h"
+
 @interface AppDelegate ()//<JPUSHRegisterDelegate>
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 
@@ -75,6 +73,15 @@
             //[selfWeak appBasicAPISend:launchOptions WithBlock:YES];
         }
     }];
+    
+    /** 注册第三方KEY  */
+    [self registerThird];
+    
+    /** APP未启动 通知栏调起APP 处理通知信息 */
+    if (remoteNotification) {
+        [self handleRemoteNotificationFromLaunchingWith:remoteNotification];
+    }
+    
     return YES;
 }
 
@@ -142,6 +149,15 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma 三方SDK设置
+
+#pragma mark - 注册第三方KEY
+
+- (void)registerThird {
+    /** 只启动APNs */
+    [MiPushSDK registerMiPush:self];
 }
 
 
