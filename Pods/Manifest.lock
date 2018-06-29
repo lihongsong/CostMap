@@ -1,0 +1,93 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - Bugly (2.5.0)
+  - GTMBase64 (1.0.1)
+  - HJ_UIKit/HJCarousel (2.0.2):
+    - SDWebImage
+  - HJ_UIKit/HJGuidePage (2.0.2):
+    - SDWebImage
+  - HJCategories (1.0.4):
+    - HJCategories/CoreFoundation (= 1.0.4)
+    - HJCategories/Foundation (= 1.0.4)
+    - HJCategories/UIKit (= 1.0.4)
+  - HJCategories/CoreFoundation (1.0.4)
+  - HJCategories/Foundation (1.0.4)
+  - HJCategories/UIKit (1.0.4)
+  - IQKeyboardManager (5.0.6)
+  - JCore (1.2.0)
+  - JPush (3.0.9):
+    - JCore (~> 1.2.0)
+  - LNNetwork (1.0.4):
+    - AFNetworking (~> 3.1.0)
+    - YYModel (~> 1.0.4)
+  - Masonry (1.1.0)
+  - SDWebImage (4.4.0):
+    - SDWebImage/Core (= 4.4.0)
+  - SDWebImage/Core (4.4.0)
+  - YYModel (1.0.4)
+  - YYText (1.0.4)
+
+DEPENDENCIES:
+  - AFNetworking (~> 3.1.0)
+  - Bugly (~> 2.5.0)
+  - GTMBase64 (~> 1.0.1)
+  - HJ_UIKit/HJCarousel
+  - HJ_UIKit/HJGuidePage
+  - HJCategories
+  - IQKeyboardManager (= 5.0.6)
+  - JPush (~> 3.0.9)
+  - LNNetwork
+  - Masonry (= 1.1.0)
+  - SDWebImage
+  - YYModel
+  - YYText (= 1.0.4)
+
+SPEC REPOS:
+  "git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git":
+    - HJ_UIKit
+    - HJCategories
+    - LNNetwork
+  https://github.com/CocoaPods/Specs.git:
+    - AFNetworking
+    - Bugly
+    - GTMBase64
+    - IQKeyboardManager
+    - JCore
+    - JPush
+    - Masonry
+    - SDWebImage
+    - YYModel
+    - YYText
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
+  GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
+  HJ_UIKit: 5cc5d1c3fffe8bb51b54967f6b460e9812f1b45a
+  HJCategories: 0d20ec77031f1f3b60cb3d6d51087a52e23eadb3
+  IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
+  JCore: b52e3dd73625eec70afd1244bb9c41038aa06087
+  JPush: 48041e8c5ad2ef9b48709eb0888af9640b36e9b0
+  LNNetwork: ad1e6c0cba42f957670183e615563be1c0f613fb
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  SDWebImage: b534502786e43dde36dfcaee89356fe6df30e203
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+  YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
+
+PODFILE CHECKSUM: b6d67391bba6ace3d0211e349347231353d83156
+
+COCOAPODS: 1.5.0

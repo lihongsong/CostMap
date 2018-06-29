@@ -1,0 +1,27 @@
+# GitHub源
+source 'https://github.com/CocoaPods/Specs.git'
+# 公司内部源
+source 'git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git'
+
+platform :ios, '8.0'
+use_frameworks!
+
+target 'HuaQianWuYou' do
+pod 'AFNetworking', '~> 3.1.0'
+pod 'SDWebImage'
+pod 'YYModel'
+pod 'Bugly', '~> 2.5.0'
+pod 'JPush', '~> 3.0.9'
+pod 'LNNetwork'
+pod 'HJ_UIKit/HJGuidePage'
+pod 'HJCategories'
+pod 'Masonry','1.1.0'
+pod 'HJ_UIKit/HJCarousel'
+pod 'IQKeyboardManager', '5.0.6'
+pod 'GTMBase64', '~> 1.0.1'
+pod 'YYText', '1.0.4'
+end
+
+target 'HuaQianWuYouTests' do
+
+end
