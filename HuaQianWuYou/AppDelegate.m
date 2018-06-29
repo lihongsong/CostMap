@@ -20,7 +20,7 @@
 #import "ActiveViewController.h"
 #import "AppDelegate+APNS.h"
 
-@interface AppDelegate ()//<JPUSHRegisterDelegate>
+@interface AppDelegate ()
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 
 @end
@@ -86,9 +86,14 @@
 }
 
 - (void)setUpViewControllerWithHighScoreWithRemoteNotificaton:(NSDictionary *)remoteNotification launchOptions:(NSDictionary *)launchOptions {
-    //H5 没有H5，先用原生替代
+    ActiveViewController *activeVC = [[ActiveViewController alloc]init];
+    BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
+    self.window.rootViewController = hNC;
+}
+
+#pragma mark - 启动图设置
+- (void)setupLaunchViewControllerWithRemoteNotification:(NSDictionary *)remoteNotification {
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
-    
     if (![userDefault boolForKey:@"kCachedTouchIdStatus"]) {
         MainTabBarViewController *rootViewController = [[MainTabBarViewController alloc]init];
         [self restoreRootViewController:rootViewController];
@@ -100,14 +105,6 @@
             [self restoreRootViewController:rootViewController];
         };
     }
-    //注册下apns
-}
-
-#pragma mark - 启动图设置
-- (void)setupLaunchViewControllerWithRemoteNotification:(NSDictionary *)remoteNotification {
-        ActiveViewController *activeVC = [[ActiveViewController alloc]init];
-        BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
-        self.window.rootViewController = hNC;
 }
 
 #pragma mark - 渐变动画更换RootVC
