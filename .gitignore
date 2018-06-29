@@ -1,0 +1,58 @@
+# VS_CODE
+.vscode
+jsconfig.json
+
+# OSX
+
+#
+.DS_Store
+
+# Xcode
+#
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+project.xcworkspace
+*ios/symbols
+
+
+# BUCK
+buck-out/
+\.buckd/
+*.keystore
+
+# fastlane
+#
+# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
+# screenshots whenever they are needed.
+# For more information about the recommended setup visit:
+# https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Gitignore.md
+
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/AppUpdate
+ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Info.plist
+ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/AppUpdate.bundle/Info.plist
+ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Headers/AppUpdate-umbrella.h
+ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Headers/AUAlertView.h
+ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Headers/XZYAppUpdate.h
+ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Headers/XZYEncodeDecodeUtil.h
+ios/Pods/AppUpdate/AppUpdate/1.0.9/AppUpdate.framework/Modules/module.modulemap
+ios/Pods/Headers/Public/AppUpdate/AppUpdate/AppUpdate-umbrella.h
+ios/Pods/Headers/Public/AppUpdate/AppUpdate/AUAlertView.h
+ios/Pods/Headers/Public/AppUpdate/AppUpdate/XZYAppUpdate.h
+ios/Pods/Headers/Public/AppUpdate/AppUpdate/XZYEncodeDecodeUtil.h

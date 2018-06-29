@@ -10,12 +10,10 @@
 #import "MainTabBarViewController.h"
 #import "HJGuidePage.h"
 #import "UtilitiesDefine.h"
-#import "DebugChangeHostVC.h"
 #import "ThirdPartKeyDefine.h"
 #import <RCMobClick/RCMobClick.h>
 #import <UMMobClick/MobClick.h>
 #import "DeviceHelp.h"
-#import "IntroduceViewController.h"
 #import "TouchIDViewController.h"
 #import "LaunchViewController.h"
 #import "AppDelegate+SDKRegister.h"

@@ -35,9 +35,6 @@
 		5903772B209C09E6004CEBD8 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5903772A209C09E6004CEBD8 /* BaseTableView.m */; };
 		5903772C209C09E6004CEBD8 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5903772A209C09E6004CEBD8 /* BaseTableView.m */; };
 		5903772D209C09E6004CEBD8 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5903772A209C09E6004CEBD8 /* BaseTableView.m */; };
-		59037745209C57A8004CEBD8 /* DebugChangeHostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59037743209C57A8004CEBD8 /* DebugChangeHostVC.m */; };
-		59037746209C57A8004CEBD8 /* DebugChangeHostVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59037744209C57A8004CEBD8 /* DebugChangeHostVC.xib */; };
-		5903774A209C6877004CEBD8 /* DebugSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 59037749209C6877004CEBD8 /* DebugSegmentedControl.m */; };
 		591D95D120ABDE6E00193B09 /* AAHighchartsLib.js in Resources */ = {isa = PBXBuildFile; fileRef = 591D958E20ABDE6E00193B09 /* AAHighchartsLib.js */; };
 		591D95D220ABDE6E00193B09 /* AAHighchartsLib.js in Resources */ = {isa = PBXBuildFile; fileRef = 591D958E20ABDE6E00193B09 /* AAHighchartsLib.js */; };
 		591D95D320ABDE6E00193B09 /* AAHighchartsLib.js in Resources */ = {isa = PBXBuildFile; fileRef = 591D958E20ABDE6E00193B09 /* AAHighchartsLib.js */; };
@@ -140,16 +137,12 @@
 		591D963420ABDE6E00193B09 /* AASeriesElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 591D95CE20ABDE6E00193B09 /* AASeriesElement.m */; };
 		591D963520ABDE6E00193B09 /* AASeriesElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 591D95CE20ABDE6E00193B09 /* AASeriesElement.m */; };
 		591D963620ABDE6E00193B09 /* AASeriesElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 591D95CE20ABDE6E00193B09 /* AASeriesElement.m */; };
-		5935906B20A12DB10057C0F4 /* DebugChangeHostVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 59037743209C57A8004CEBD8 /* DebugChangeHostVC.m */; };
 		5935906D20A134AD0057C0F4 /* ReleaseTestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935906C20A134AD0057C0F4 /* ReleaseTestApi.plist */; };
 		5935906E20A134AD0057C0F4 /* ReleaseTestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935906C20A134AD0057C0F4 /* ReleaseTestApi.plist */; };
 		5935906F20A134AD0057C0F4 /* ReleaseTestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935906C20A134AD0057C0F4 /* ReleaseTestApi.plist */; };
 		5935907120A154280057C0F4 /* ReleaseApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935907020A154270057C0F4 /* ReleaseApi.plist */; };
 		5935907220A154280057C0F4 /* ReleaseApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935907020A154270057C0F4 /* ReleaseApi.plist */; };
 		5935907320A154280057C0F4 /* ReleaseApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935907020A154270057C0F4 /* ReleaseApi.plist */; };
-		5935907720A186E20057C0F4 /* CollectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935907620A186E20057C0F4 /* CollectionFooterView.m */; };
-		5935907820A186E20057C0F4 /* CollectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935907620A186E20057C0F4 /* CollectionFooterView.m */; };
-		5935907920A186E20057C0F4 /* CollectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5935907620A186E20057C0F4 /* CollectionFooterView.m */; };
 		595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595752FE209AA1CC00F602EB /* MainTabBarViewController.m */; };
 		59575300209AA1CC00F602EB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595752FE209AA1CC00F602EB /* MainTabBarViewController.m */; };
 		59575301209AA1CC00F602EB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595752FE209AA1CC00F602EB /* MainTabBarViewController.m */; };
@@ -162,22 +155,6 @@
 		59698BFC209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		59698BFD209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		59698BFE209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
-		59698C0220A04937000E37AA /* DebugCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59698C0020A04937000E37AA /* DebugCollectionViewCell.m */; };
-		59698C0320A04937000E37AA /* DebugCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59698C0020A04937000E37AA /* DebugCollectionViewCell.m */; };
-		59698C0420A04937000E37AA /* DebugCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 59698C0020A04937000E37AA /* DebugCollectionViewCell.m */; };
-		59698C0520A04937000E37AA /* DebugCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59698C0120A04937000E37AA /* DebugCollectionViewCell.xib */; };
-		59698C0620A04937000E37AA /* DebugCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59698C0120A04937000E37AA /* DebugCollectionViewCell.xib */; };
-		59698C0720A04937000E37AA /* DebugCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59698C0120A04937000E37AA /* DebugCollectionViewCell.xib */; };
-		59698C1020A05B37000E37AA /* PhotoCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59698C0E20A05B36000E37AA /* PhotoCollectionReusableView.xib */; };
-		59698C1120A05B37000E37AA /* PhotoCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59698C0E20A05B36000E37AA /* PhotoCollectionReusableView.xib */; };
-		59698C1220A05B37000E37AA /* PhotoCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59698C0E20A05B36000E37AA /* PhotoCollectionReusableView.xib */; };
-		59698C1320A05B37000E37AA /* PhotoCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59698C0F20A05B37000E37AA /* PhotoCollectionReusableView.m */; };
-		59698C1420A05B37000E37AA /* PhotoCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59698C0F20A05B37000E37AA /* PhotoCollectionReusableView.m */; };
-		59698C1520A05B37000E37AA /* PhotoCollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59698C0F20A05B37000E37AA /* PhotoCollectionReusableView.m */; };
-		596AAAFB20A9751800D0FC35 /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596AAAF920A9751800D0FC35 /* PageViewController.m */; };
-		596AAAFC20A9751800D0FC35 /* PageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 596AAAFA20A9751800D0FC35 /* PageViewController.xib */; };
-		596AAAFF20A9763400D0FC35 /* IntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596AAAFE20A9763400D0FC35 /* IntroduceViewController.m */; };
-		596AAB0220A976AE00D0FC35 /* ScrollDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 596AAB0120A976AE00D0FC35 /* ScrollDisplayViewController.m */; };
 		596B0E2320B4360A00B5A06B /* ResetPasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */; };
 		59C570A720E5F9C100D54260 /* CInvestigationFiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5709120E5F9B900D54260 /* CInvestigationFiveViewController.m */; };
 		59C570A820E5F9C100D54260 /* CInvestigationOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5709320E5F9B900D54260 /* CInvestigationOneViewController.m */; };
@@ -316,11 +293,6 @@
 		59037722209C0985004CEBD8 /* BaseTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTableViewController.xib; sourceTree = "<group>"; };
 		59037729209C09E6004CEBD8 /* BaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
 		5903772A209C09E6004CEBD8 /* BaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
-		59037742209C57A8004CEBD8 /* DebugChangeHostVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugChangeHostVC.h; sourceTree = "<group>"; };
-		59037743209C57A8004CEBD8 /* DebugChangeHostVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DebugChangeHostVC.m; sourceTree = "<group>"; };
-		59037744209C57A8004CEBD8 /* DebugChangeHostVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugChangeHostVC.xib; sourceTree = "<group>"; };
-		59037748209C6877004CEBD8 /* DebugSegmentedControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugSegmentedControl.h; sourceTree = "<group>"; };
-		59037749209C6877004CEBD8 /* DebugSegmentedControl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DebugSegmentedControl.m; sourceTree = "<group>"; };
 		591D958E20ABDE6E00193B09 /* AAHighchartsLib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsLib.js; sourceTree = "<group>"; };
 		591D958F20ABDE6E00193B09 /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
 		591D959020ABDE6E00193B09 /* AAFunnel.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAFunnel.js; sourceTree = "<group>"; };
@@ -389,8 +361,6 @@
 		5935906C20A134AD0057C0F4 /* ReleaseTestApi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReleaseTestApi.plist; sourceTree = "<group>"; };
 		5935907020A154270057C0F4 /* ReleaseApi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReleaseApi.plist; sourceTree = "<group>"; };
 		5935907420A17DC50057C0F4 /* ApiConfigDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiConfigDefine.h; sourceTree = "<group>"; };
-		5935907520A186E20057C0F4 /* CollectionFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionFooterView.h; sourceTree = "<group>"; };
-		5935907620A186E20057C0F4 /* CollectionFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionFooterView.m; sourceTree = "<group>"; };
 		5935907A20A1A9BB0057C0F4 /* ThirdPartKeyDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartKeyDefine.h; sourceTree = "<group>"; };
 		594A2BE220A3EE570041E518 /* HuaQianWuYou-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HuaQianWuYou-Bridging-Header.h"; sourceTree = "<group>"; };
 		594A2C0D20A3F3880041E518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -403,19 +373,6 @@
 		595754C3209B191D00F602EB /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		59575506209B33DE00F602EB /* ColorFont.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorFont.plist; sourceTree = "<group>"; };
 		59698BFB209FE973000E37AA /* TestApi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestApi.plist; sourceTree = "<group>"; };
-		59698BFF20A04937000E37AA /* DebugCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebugCollectionViewCell.h; sourceTree = "<group>"; };
-		59698C0020A04937000E37AA /* DebugCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DebugCollectionViewCell.m; sourceTree = "<group>"; };
-		59698C0120A04937000E37AA /* DebugCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugCollectionViewCell.xib; sourceTree = "<group>"; };
-		59698C0D20A05B36000E37AA /* PhotoCollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCollectionReusableView.h; sourceTree = "<group>"; };
-		59698C0E20A05B36000E37AA /* PhotoCollectionReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCollectionReusableView.xib; sourceTree = "<group>"; };
-		59698C0F20A05B37000E37AA /* PhotoCollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCollectionReusableView.m; sourceTree = "<group>"; };
-		596AAAF820A9751800D0FC35 /* PageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageViewController.h; sourceTree = "<group>"; };
-		596AAAF920A9751800D0FC35 /* PageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageViewController.m; sourceTree = "<group>"; };
-		596AAAFA20A9751800D0FC35 /* PageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageViewController.xib; sourceTree = "<group>"; };
-		596AAAFD20A9763400D0FC35 /* IntroduceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroduceViewController.h; sourceTree = "<group>"; };
-		596AAAFE20A9763400D0FC35 /* IntroduceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroduceViewController.m; sourceTree = "<group>"; };
-		596AAB0020A976AE00D0FC35 /* ScrollDisplayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrollDisplayViewController.h; sourceTree = "<group>"; };
-		596AAB0120A976AE00D0FC35 /* ScrollDisplayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrollDisplayViewController.m; sourceTree = "<group>"; };
 		596B0E2120B4360A00B5A06B /* ResetPasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordModel.h; sourceTree = "<group>"; };
 		596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordModel.m; sourceTree = "<group>"; };
 		59C5709020E5F9B800D54260 /* CInvestigationFiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CInvestigationFiveViewController.h; sourceTree = "<group>"; };
@@ -715,8 +672,6 @@
 				59037720209C0985004CEBD8 /* BaseTableViewController.h */,
 				59037721209C0985004CEBD8 /* BaseTableViewController.m */,
 				59037722209C0985004CEBD8 /* BaseTableViewController.xib */,
-				596AAAF120A9736400D0FC35 /* Introducer(引导页) */,
-				59037747209C57B9004CEBD8 /* DebugController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -737,19 +692,8 @@
 				A8F8E00A20B50A6100DB9A6A /* DefaultView.m */,
 				59037729209C09E6004CEBD8 /* BaseTableView.h */,
 				5903772A209C09E6004CEBD8 /* BaseTableView.m */,
-				59698C1620A05B41000E37AA /* DebugView */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		59037747209C57B9004CEBD8 /* DebugController */ = {
-			isa = PBXGroup;
-			children = (
-				59037742209C57A8004CEBD8 /* DebugChangeHostVC.h */,
-				59037743209C57A8004CEBD8 /* DebugChangeHostVC.m */,
-				59037744209C57A8004CEBD8 /* DebugChangeHostVC.xib */,
-			);
-			path = DebugController;
 			sourceTree = "<group>";
 		};
 		591D958B20ABDE2D00193B09 /* ThirdFrameWork  */ = {
@@ -930,37 +874,6 @@
 				5935907020A154270057C0F4 /* ReleaseApi.plist */,
 			);
 			path = Plist;
-			sourceTree = "<group>";
-		};
-		59698C1620A05B41000E37AA /* DebugView */ = {
-			isa = PBXGroup;
-			children = (
-				59037748209C6877004CEBD8 /* DebugSegmentedControl.h */,
-				59037749209C6877004CEBD8 /* DebugSegmentedControl.m */,
-				59698BFF20A04937000E37AA /* DebugCollectionViewCell.h */,
-				59698C0020A04937000E37AA /* DebugCollectionViewCell.m */,
-				59698C0120A04937000E37AA /* DebugCollectionViewCell.xib */,
-				59698C0D20A05B36000E37AA /* PhotoCollectionReusableView.h */,
-				59698C0F20A05B37000E37AA /* PhotoCollectionReusableView.m */,
-				59698C0E20A05B36000E37AA /* PhotoCollectionReusableView.xib */,
-				5935907520A186E20057C0F4 /* CollectionFooterView.h */,
-				5935907620A186E20057C0F4 /* CollectionFooterView.m */,
-			);
-			path = DebugView;
-			sourceTree = "<group>";
-		};
-		596AAAF120A9736400D0FC35 /* Introducer(引导页) */ = {
-			isa = PBXGroup;
-			children = (
-				596AAAFD20A9763400D0FC35 /* IntroduceViewController.h */,
-				596AAAFE20A9763400D0FC35 /* IntroduceViewController.m */,
-				596AAB0020A976AE00D0FC35 /* ScrollDisplayViewController.h */,
-				596AAB0120A976AE00D0FC35 /* ScrollDisplayViewController.m */,
-				596AAAF820A9751800D0FC35 /* PageViewController.h */,
-				596AAAF920A9751800D0FC35 /* PageViewController.m */,
-				596AAAFA20A9751800D0FC35 /* PageViewController.xib */,
-			);
-			path = "Introducer(引导页)";
 			sourceTree = "<group>";
 		};
 		596AAB0620A97E1600D0FC35 /* Define */ = {
@@ -1411,13 +1324,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				596AAAFC20A9751800D0FC35 /* PageViewController.xib in Resources */,
 				59023BF1209A9B35004B9134 /* Assets.xcassets in Resources */,
 				5935906D20A134AD0057C0F4 /* ReleaseTestApi.plist in Resources */,
 				5935907120A154280057C0F4 /* ReleaseApi.plist in Resources */,
-				59698C1020A05B37000E37AA /* PhotoCollectionReusableView.xib in Resources */,
 				59698BFC209FE973000E37AA /* TestApi.plist in Resources */,
-				59698C0520A04937000E37AA /* DebugCollectionViewCell.xib in Resources */,
 				59037726209C0985004CEBD8 /* BaseTableViewController.xib in Resources */,
 				591D95D720ABDE6E00193B09 /* AAFunnel.js in Resources */,
 				5903771D209C096E004CEBD8 /* BaseViewController.xib in Resources */,
@@ -1427,7 +1337,6 @@
 				59C5710420E5FB8200D54260 /* HomeBaseTableViewCell.xib in Resources */,
 				59023BEF209A9B33004B9134 /* Main.storyboard in Resources */,
 				A8F8DFB320B3AB3300DB9A6A /* AgreementViewController.xib in Resources */,
-				59037746209C57A8004CEBD8 /* DebugChangeHostVC.xib in Resources */,
 				591D95D420ABDE6E00193B09 /* AAHighchartsMore.js in Resources */,
 				59575507209B33DE00F602EB /* ColorFont.plist in Resources */,
 				591D95DD20ABDE6E00193B09 /* AAChartView.html in Resources */,
@@ -1445,8 +1354,6 @@
 				591D95D820ABDE6E00193B09 /* AAFunnel.js in Resources */,
 				591D95D220ABDE6E00193B09 /* AAHighchartsLib.js in Resources */,
 				59698BFD209FE973000E37AA /* TestApi.plist in Resources */,
-				59698C0620A04937000E37AA /* DebugCollectionViewCell.xib in Resources */,
-				59698C1120A05B37000E37AA /* PhotoCollectionReusableView.xib in Resources */,
 				5935907220A154280057C0F4 /* ReleaseApi.plist in Resources */,
 				591D95DB20ABDE6E00193B09 /* AAHighcharts-3d.js in Resources */,
 				5935906E20A134AD0057C0F4 /* ReleaseTestApi.plist in Resources */,
@@ -1465,8 +1372,6 @@
 				591D95D920ABDE6E00193B09 /* AAFunnel.js in Resources */,
 				591D95D320ABDE6E00193B09 /* AAHighchartsLib.js in Resources */,
 				59698BFE209FE973000E37AA /* TestApi.plist in Resources */,
-				59698C0720A04937000E37AA /* DebugCollectionViewCell.xib in Resources */,
-				59698C1220A05B37000E37AA /* PhotoCollectionReusableView.xib in Resources */,
 				5935907320A154280057C0F4 /* ReleaseApi.plist in Resources */,
 				591D95DC20ABDE6E00193B09 /* AAHighcharts-3d.js in Resources */,
 				5935906F20A134AD0057C0F4 /* ReleaseTestApi.plist in Resources */,
@@ -1579,8 +1484,6 @@
 				59C570FC20E5FB8200D54260 /* NameHeaderView.m in Sources */,
 				A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */,
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
-				59698C1320A05B37000E37AA /* PhotoCollectionReusableView.m in Sources */,
-				5903774A209C6877004CEBD8 /* DebugSegmentedControl.m in Sources */,
 				59C5714120E600D100D54260 /* ZYZControl.m in Sources */,
 				A8F8DFB220B3AB3300DB9A6A /* AgreementViewController.m in Sources */,
 				59C570CD20E5FADC00D54260 /* CreditInvestigationSMSModel+Service.m in Sources */,
@@ -1594,12 +1497,10 @@
 				59C570C820E5FADC00D54260 /* CInvestigationModel.m in Sources */,
 				591D95E920ABDE6E00193B09 /* AAXAxis.m in Sources */,
 				591D95FB20ABDE6E00193B09 /* AAYAxis.m in Sources */,
-				59037745209C57A8004CEBD8 /* DebugChangeHostVC.m in Sources */,
 				59C570B020E5F9C100D54260 /* CInvestigationViewController.m in Sources */,
 				59C570C720E5FADC00D54260 /* CreditInvestigationSMSModel.m in Sources */,
 				59C5713E20E600D100D54260 /* UITabBar+badge.m in Sources */,
 				591D95F220ABDE6E00193B09 /* AALine.m in Sources */,
-				596AAAFB20A9751800D0FC35 /* PageViewController.m in Sources */,
 				59C5710B20E5FB8200D54260 /* BaseChartView.m in Sources */,
 				591D961F20ABDE6E00193B09 /* AASpline.m in Sources */,
 				A8F8DFD620B3B90200DB9A6A /* LoginInfoModel.m in Sources */,
@@ -1609,7 +1510,6 @@
 				A8F8DFFA20B4F31200DB9A6A /* FeedbackModel+Service.m in Sources */,
 				A8F8DFD020B3AB5300DB9A6A /* DiscoverTopBannerCell.m in Sources */,
 				59C5713F20E600D100D54260 /* NSObject+RequestConfig.m in Sources */,
-				596AAB0220A976AE00D0FC35 /* ScrollDisplayViewController.m in Sources */,
 				59C570A920E5F9C100D54260 /* CInvestigationTwoViewController.m in Sources */,
 				A8F8DFB520B3AB3300DB9A6A /* RegisterOrForgetPwdVC.m in Sources */,
 				591D962820ABDE6E00193B09 /* AAChart.m in Sources */,
@@ -1620,7 +1520,6 @@
 				A8F8DFD920B3B91700DB9A6A /* LoginInfoModel+Service.m in Sources */,
 				A8F8DFDF20B3F07800DB9A6A /* DiscoverDetailModel+Service.m in Sources */,
 				A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */,
-				596AAAFF20A9763400D0FC35 /* IntroduceViewController.m in Sources */,
 				A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */,
 				59C5713720E600D100D54260 /* NSString+NSData.m in Sources */,
 				59C570FD20E5FB8200D54260 /* ScoreProgressView.m in Sources */,
@@ -1648,7 +1547,6 @@
 				591D960420ABDE6E00193B09 /* AAPlotLinesElement.m in Sources */,
 				59C570B120E5F9C100D54260 /* HomeViewController.m in Sources */,
 				59037711209C0387004CEBD8 /* BaseModel.m in Sources */,
-				59698C0220A04937000E37AA /* DebugCollectionViewCell.m in Sources */,
 				59C5710220E5FB8200D54260 /* CircleIndicatorView.m in Sources */,
 				591D95F520ABDE6E00193B09 /* AATooltip.m in Sources */,
 				59C5710620E5FB8200D54260 /* CredictUsingRateCell.m in Sources */,
@@ -1703,7 +1601,6 @@
 				A8F8DFAC20B3AB3300DB9A6A /* LoginHeaderView.m in Sources */,
 				59C5710720E5FB8200D54260 /* HomeBaseTableViewCell.m in Sources */,
 				591D961020ABDE6E00193B09 /* AATitle.m in Sources */,
-				5935907720A186E20057C0F4 /* CollectionFooterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1718,7 +1615,6 @@
 				591D962320ABDE6E00193B09 /* AAItemStyle.m in Sources */,
 				591D95E720ABDE6E00193B09 /* AASeries.m in Sources */,
 				59037712209C0387004CEBD8 /* BaseModel.m in Sources */,
-				59698C0320A04937000E37AA /* DebugCollectionViewCell.m in Sources */,
 				591D960220ABDE6E00193B09 /* AAColumn.m in Sources */,
 				59023C01209A9B35004B9134 /* HuaQianWuYouTests.m in Sources */,
 				591D95EA20ABDE6E00193B09 /* AAXAxis.m in Sources */,
@@ -1728,8 +1624,6 @@
 				591D963220ABDE6E00193B09 /* AAOptions.m in Sources */,
 				591D962020ABDE6E00193B09 /* AASpline.m in Sources */,
 				591D962C20ABDE6E00193B09 /* AAChartView.m in Sources */,
-				5935907820A186E20057C0F4 /* CollectionFooterView.m in Sources */,
-				5935906B20A12DB10057C0F4 /* DebugChangeHostVC.m in Sources */,
 				591D95F020ABDE6E00193B09 /* AADataLabels.m in Sources */,
 				591D95FC20ABDE6E00193B09 /* AAYAxis.m in Sources */,
 				591D960B20ABDE6E00193B09 /* AAStyle.m in Sources */,
@@ -1746,7 +1640,6 @@
 				59037724209C0985004CEBD8 /* BaseTableViewController.m in Sources */,
 				591D961120ABDE6E00193B09 /* AATitle.m in Sources */,
 				591D960520ABDE6E00193B09 /* AAPlotLinesElement.m in Sources */,
-				59698C1420A05B37000E37AA /* PhotoCollectionReusableView.m in Sources */,
 				591D961A20ABDE6E00193B09 /* AALegend.m in Sources */,
 				591D961720ABDE6E00193B09 /* AAAnimation.m in Sources */,
 				591D962F20ABDE6E00193B09 /* AAChartModel.m in Sources */,
@@ -1774,13 +1667,11 @@
 				591D95EB20ABDE6E00193B09 /* AAXAxis.m in Sources */,
 				591D961B20ABDE6E00193B09 /* AALegend.m in Sources */,
 				591D963320ABDE6E00193B09 /* AAOptions.m in Sources */,
-				59698C0420A04937000E37AA /* DebugCollectionViewCell.m in Sources */,
 				59023C0C209A9B35004B9134 /* HuaQianWuYouUITests.m in Sources */,
 				591D960920ABDE6E00193B09 /* AAOptions3d.m in Sources */,
 				591D960C20ABDE6E00193B09 /* AAStyle.m in Sources */,
 				591D95EE20ABDE6E00193B09 /* AAPlotOptions.m in Sources */,
 				591D95F120ABDE6E00193B09 /* AADataLabels.m in Sources */,
-				5935907920A186E20057C0F4 /* CollectionFooterView.m in Sources */,
 				5903772D209C09E6004CEBD8 /* BaseTableView.m in Sources */,
 				59575301209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
 				591D961E20ABDE6E00193B09 /* AAMarker.m in Sources */,
@@ -1796,7 +1687,6 @@
 				591D962A20ABDE6E00193B09 /* AAChart.m in Sources */,
 				591D95FA20ABDE6E00193B09 /* AASubtitle.m in Sources */,
 				591D960320ABDE6E00193B09 /* AAColumn.m in Sources */,
-				59698C1520A05B37000E37AA /* PhotoCollectionReusableView.m in Sources */,
 				595754C6209B191D00F602EB /* BaseNavigationController.m in Sources */,
 				591D95FD20ABDE6E00193B09 /* AAYAxis.m in Sources */,
 			);
