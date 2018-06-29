@@ -1341,7 +1341,7 @@
 					59023BE3209A9B33004B9134 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 0930;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -1909,7 +1909,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HuaQianWuYou/HuaQianWuYou.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 69C2M2FU4A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1993,8 +1993,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "dd046017-f0d7-40af-9d51-2a512f3a9cd3";
+				PROVISIONING_PROFILE_SPECIFIER = wuyou_dev;
 				STRIP_SWIFT_SYMBOLS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2012,8 +2012,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = HuaQianWuYou/HuaQianWuYou.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 69C2M2FU4A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2095,8 +2095,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "b13eb5b8-cbc0-44b3-a0e3-67ce1045c5ea";
+				PROVISIONING_PROFILE_SPECIFIER = wuyou_dis;
 				STRIP_SWIFT_SYMBOLS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 3.0;
