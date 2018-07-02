@@ -60,6 +60,7 @@
             [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
             [self checkUpdate];
         }else{
+            
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
             [self checkUpdate];
         }
@@ -88,7 +89,36 @@
 - (void)setUpViewControllerWithHighScoreWithRemoteNotificaton:(NSDictionary *)remoteNotification launchOptions:(NSDictionary *)launchOptions {
     ActiveViewController *activeVC = [[ActiveViewController alloc]init];
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
-    self.window.rootViewController = hNC;
+    UIWindow *oldWindow = self.window;
+    
+    __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow sheareGuidePageWindow:GuidePageAPPLaunchStateNormal];
+   WeakObj(self)
+    HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
+        StrongObj(self)
+        // 1秒 网络加载  3秒图片加载
+        make.setTimer(0, 5, nil,YES);
+        make.setAnimateFinishedBlock(^(id info) {
+            
+            self.window = oldWindow;
+            [self loadActiveViewController:hNC];
+            [self.window makeKeyWindow];
+            
+            guideWindow.hidden = YES;
+            [guideWindow removeFromSuperview];
+        });
+        make.setCountdownBtnBlock(^(UIButton *btn) {
+            btn.frame = CGRectMake(SWidth - 66 - 30, SHeight - 30 -28, 66, 28);
+        });
+    }];
+    [HJGuidePageWindow show];
+    
+   BasicDataModel *model = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
+    BasicDataInfo *info = model.acitveList[0];
+    //launchVC.setTimer(info.showTime.integerValue,0, @"s跳过",NO);
+    launchVC.setTimer(5,0, @"s跳过",NO);
+    launchVC.setBackGroundImage(info.imageUrl, YES, NO, ^{
+        //[HJGuidePageWindow dismiss];
+    });
 }
 
 #pragma mark - 启动图设置
@@ -110,6 +140,21 @@
 #pragma mark - 渐变动画更换RootVC
 
 - (void)restoreRootViewController:(UIViewController *)rootViewController {
+    [UIView transitionWithView:self.window
+                      duration:0.25f
+                       options:UIViewAnimationOptionTransitionCrossDissolve
+                    animations:^{
+                        BOOL oldState = [UIView areAnimationsEnabled];
+                        [UIView setAnimationsEnabled:NO];
+                        self.window.rootViewController = rootViewController;
+                        [UIView setAnimationsEnabled:oldState];
+                    }
+                    completion:nil];
+}
+
+#pragma mark - 渐变动画更换RootVC
+
+- (void)loadActiveViewController:(UIViewController *)rootViewController {
     [UIView transitionWithView:self.window
                       duration:0.25f
                        options:UIViewAnimationOptionTransitionCrossDissolve

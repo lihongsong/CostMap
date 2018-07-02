@@ -9,6 +9,8 @@
 #import "LaunchViewController.h"
 #import "BasicConfigModel+Service.h"
 #import "BasicConfigModel.h"
+#import "BasicDataModel.h"
+#import "BasicDataModel+Service.h"
 
 @interface LaunchViewController () {
     UIActivityIndicatorView *activityView;
@@ -70,6 +72,10 @@
         }
         if (result) {
             self.defaultView.hidden = YES;
+            if (![result.exampleCreditScore isEqualToString:@"88"]) {
+                [BasicDataModel requestBasicData:AdvertisingTypeStartPage Completion:^(BasicDataModel * _Nullable dataModel, NSError * _Nullable error) {
+                }];
+            }
         }
         if (self.accomplishBlock) {
             self.accomplishBlock(result.exampleCreditScore);

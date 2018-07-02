@@ -156,6 +156,9 @@
 		59698BFD209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		59698BFE209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		596B0E2320B4360A00B5A06B /* ResetPasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */; };
+		597C73C320E9C3220090960B /* BasicDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73C220E9C3220090960B /* BasicDataModel.m */; };
+		597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */; };
+		597C73D020EA17520090960B /* HQWYUserStatusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73CF20EA17520090960B /* HQWYUserStatusManager.m */; };
 		59C4D13D20E5DE4E00BDCA48 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D13C20E5DE4E00BDCA48 /* UserNotifications.framework */; };
 		59C4D13F20E5DE5800BDCA48 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D13E20E5DE5700BDCA48 /* libresolv.tbd */; };
 		59C4D14120E5DE5D00BDCA48 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C4D14020E5DE5D00BDCA48 /* libxml2.tbd */; };
@@ -225,6 +228,9 @@
 		59C5714120E600D100D54260 /* ZYZControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713320E600D100D54260 /* ZYZControl.m */; };
 		59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */; };
 		59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5715A20E61DFD00D54260 /* ActiveViewController.m */; };
+		59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */; };
+		59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */; };
+		59FD9E8120EA21A7008C98DE /* HQWYJavaScriptResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E8020EA21A7008C98DE /* HQWYJavaScriptResponse.m */; };
 		A0D816F5B38FDA15E8A7FF10 /* Pods_HuaQianWuYouTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5117A7B2D5F665AE12DB3FF /* Pods_HuaQianWuYouTests.framework */; };
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
 		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
@@ -386,6 +392,13 @@
 		59698BFB209FE973000E37AA /* TestApi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestApi.plist; sourceTree = "<group>"; };
 		596B0E2120B4360A00B5A06B /* ResetPasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordModel.h; sourceTree = "<group>"; };
 		596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordModel.m; sourceTree = "<group>"; };
+		597C73C120E9C3220090960B /* BasicDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDataModel.h; sourceTree = "<group>"; };
+		597C73C220E9C3220090960B /* BasicDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicDataModel.m; sourceTree = "<group>"; };
+		597C73CA20E9C8560090960B /* BasicDataProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDataProtocol.h; sourceTree = "<group>"; };
+		597C73CB20E9C8D40090960B /* BasicDataModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BasicDataModel+Service.h"; sourceTree = "<group>"; };
+		597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BasicDataModel+Service.m"; sourceTree = "<group>"; };
+		597C73CE20EA17520090960B /* HQWYUserStatusManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUserStatusManager.h; sourceTree = "<group>"; };
+		597C73CF20EA17520090960B /* HQWYUserStatusManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserStatusManager.m; sourceTree = "<group>"; };
 		59C4D13B20E5DDF500BDCA48 /* HuaQianWuYou.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HuaQianWuYou.entitlements; sourceTree = "<group>"; };
 		59C4D13C20E5DE4E00BDCA48 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		59C4D13E20E5DE5700BDCA48 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
@@ -517,6 +530,13 @@
 		59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+SDKRegister.m"; sourceTree = "<group>"; };
 		59C5715920E61DFD00D54260 /* ActiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActiveViewController.h; sourceTree = "<group>"; };
 		59C5715A20E61DFD00D54260 /* ActiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActiveViewController.m; sourceTree = "<group>"; };
+		59FD9E7620EA1A85008C98DE /* HQWYUserBaseInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUserBaseInfo.h; sourceTree = "<group>"; };
+		59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserBaseInfo.m; sourceTree = "<group>"; };
+		59FD9E7920EA1E0A008C98DE /* HQWYJavaSBridgeHandleMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaSBridgeHandleMacros.h; sourceTree = "<group>"; };
+		59FD9E7C20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptBaseHandler.h; sourceTree = "<group>"; };
+		59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptBaseHandler.m; sourceTree = "<group>"; };
+		59FD9E7F20EA21A7008C98DE /* HQWYJavaScriptResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptResponse.h; sourceTree = "<group>"; };
+		59FD9E8020EA21A7008C98DE /* HQWYJavaScriptResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptResponse.m; sourceTree = "<group>"; };
 		6C4C910B5B222225D22E9E93 /* Pods-HuaQianWuYouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYouTests/Pods-HuaQianWuYouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C820524E8455524D0D33F53 /* Pods-HuaQianWuYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.debug.xcconfig"; sourceTree = "<group>"; };
 		A1D83DBD51E6C20692A84026 /* Pods_HuaQianWuYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuaQianWuYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -657,6 +677,7 @@
 				5957530F209AD8EF00F602EB /* Category */,
 				591D958B20ABDE2D00193B09 /* ThirdFrameWork */,
 				5957530D209AD32E00F602EB /* Utilities */,
+				597C73B620E9AF210090960B /* Active */,
 				59023BF0209A9B35004B9134 /* Assets.xcassets */,
 				59023BF5209A9B35004B9134 /* Info.plist */,
 				59C4D13B20E5DDF500BDCA48 /* HuaQianWuYou.entitlements */,
@@ -935,6 +956,87 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
+		597C73B620E9AF210090960B /* Active */ = {
+			isa = PBXGroup;
+			children = (
+				59FD9E7B20EA1EBF008C98DE /* HQWYJSHandler */,
+				59FD9E7A20EA1E8C008C98DE /* Macros */,
+				597C73BD20E9BD070090960B /* FeedBack */,
+				597C73BB20E9BC180090960B /* ActivePage */,
+			);
+			path = Active;
+			sourceTree = "<group>";
+		};
+		597C73B720E9AF320090960B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				59C5715920E61DFD00D54260 /* ActiveViewController.h */,
+				59C5715A20E61DFD00D54260 /* ActiveViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		597C73B820E9AF470090960B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				597C73CE20EA17520090960B /* HQWYUserStatusManager.h */,
+				597C73CF20EA17520090960B /* HQWYUserStatusManager.m */,
+				59FD9E7620EA1A85008C98DE /* HQWYUserBaseInfo.h */,
+				59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */,
+				59FD9E7F20EA21A7008C98DE /* HQWYJavaScriptResponse.h */,
+				59FD9E8020EA21A7008C98DE /* HQWYJavaScriptResponse.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		597C73B920E9AF4F0090960B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		597C73BB20E9BC180090960B /* ActivePage */ = {
+			isa = PBXGroup;
+			children = (
+				597C73B720E9AF320090960B /* Controller */,
+				597C73B820E9AF470090960B /* Model */,
+				597C73B920E9AF4F0090960B /* View */,
+			);
+			path = ActivePage;
+			sourceTree = "<group>";
+		};
+		597C73BD20E9BD070090960B /* FeedBack */ = {
+			isa = PBXGroup;
+			children = (
+				597C73C020E9BD830090960B /* View */,
+				597C73BF20E9BD7C0090960B /* Model */,
+				597C73BE20E9BD730090960B /* Controller */,
+			);
+			path = FeedBack;
+			sourceTree = "<group>";
+		};
+		597C73BE20E9BD730090960B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		597C73BF20E9BD7C0090960B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		597C73C020E9BD830090960B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		59C4D15420E5E22F00BDCA48 /* MiPushSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -960,6 +1062,11 @@
 				59C570B920E5FAD700D54260 /* BasicConfigModel.h */,
 				59C570BA20E5FAD700D54260 /* BasicConfigModel+Service.h */,
 				59C570BB20E5FAD700D54260 /* BasicConfigModel.m */,
+				597C73C120E9C3220090960B /* BasicDataModel.h */,
+				597C73C220E9C3220090960B /* BasicDataModel.m */,
+				597C73CB20E9C8D40090960B /* BasicDataModel+Service.h */,
+				597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */,
+				597C73CA20E9C8560090960B /* BasicDataProtocol.h */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -1023,6 +1130,23 @@
 			path = AAChartView;
 			sourceTree = "<group>";
 		};
+		59FD9E7A20EA1E8C008C98DE /* Macros */ = {
+			isa = PBXGroup;
+			children = (
+				59FD9E7920EA1E0A008C98DE /* HQWYJavaSBridgeHandleMacros.h */,
+			);
+			path = Macros;
+			sourceTree = "<group>";
+		};
+		59FD9E7B20EA1EBF008C98DE /* HQWYJSHandler */ = {
+			isa = PBXGroup;
+			children = (
+				59FD9E7C20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.h */,
+				59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */,
+			);
+			path = HQWYJSHandler;
+			sourceTree = "<group>";
+		};
 		59FFBA8320A2E87D001ED158 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -1054,8 +1178,6 @@
 				59C570A520E5F9C100D54260 /* CInvestigationViewController.m */,
 				59C5709920E5F9BC00D54260 /* HomeViewController.h */,
 				59C570A620E5F9C100D54260 /* HomeViewController.m */,
-				59C5715920E61DFD00D54260 /* ActiveViewController.h */,
-				59C5715A20E61DFD00D54260 /* ActiveViewController.m */,
 				59C5709B20E5F9BD00D54260 /* Launch */,
 				59C5709A20E5F9BC00D54260 /* TouchIDViewController.h */,
 				59C5709720E5F9BB00D54260 /* TouchIDViewController.m */,
@@ -1473,11 +1595,13 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMBase64/GTMBase64.framework",
 				"${BUILT_PRODUCTS_DIR}/HJCategories/HJCategories.framework",
+				"${BUILT_PRODUCTS_DIR}/HJJavascriptBridge/HJJavascriptBridge.framework",
 				"${BUILT_PRODUCTS_DIR}/HJ_UIKit/HJ_UIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/LNNetwork/LNNetwork.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
 				"${BUILT_PRODUCTS_DIR}/objective-zip/objective_zip.framework",
@@ -1487,11 +1611,13 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMBase64.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HJCategories.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HJJavascriptBridge.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HJ_UIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LNNetwork.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/objective_zip.framework",
@@ -1548,6 +1674,7 @@
 				A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */,
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
 				59C5714120E600D100D54260 /* ZYZControl.m in Sources */,
+				597C73D020EA17520090960B /* HQWYUserStatusManager.m in Sources */,
 				A8F8DFB220B3AB3300DB9A6A /* AgreementViewController.m in Sources */,
 				59C570CD20E5FADC00D54260 /* CreditInvestigationSMSModel+Service.m in Sources */,
 				591D962520ABDE6E00193B09 /* AAPie.m in Sources */,
@@ -1598,6 +1725,7 @@
 				591D961320ABDE6E00193B09 /* AAArea.m in Sources */,
 				591D960720ABDE6E00193B09 /* AAOptions3d.m in Sources */,
 				591D963120ABDE6E00193B09 /* AAOptions.m in Sources */,
+				59FD9E8120EA21A7008C98DE /* HQWYJavaScriptResponse.m in Sources */,
 				591D95E320ABDE6E00193B09 /* AALabels.m in Sources */,
 				A8F8DFB020B3AB3300DB9A6A /* MineFooterView.m in Sources */,
 				591D961920ABDE6E00193B09 /* AALegend.m in Sources */,
@@ -1606,6 +1734,7 @@
 				A8F8DFAD20B3AB3300DB9A6A /* MineTableViewCell.m in Sources */,
 				591D962E20ABDE6E00193B09 /* AAChartModel.m in Sources */,
 				59C570AA20E5F9C100D54260 /* TouchIDViewController.m in Sources */,
+				597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */,
 				59C5713820E600D100D54260 /* CALayer+LayerColor.m in Sources */,
 				A8F8DFEE20B4384D00DB9A6A /* ResetPasswordModel+Service.m in Sources */,
 				591D95E620ABDE6E00193B09 /* AASeries.m in Sources */,
@@ -1616,6 +1745,7 @@
 				591D95F520ABDE6E00193B09 /* AATooltip.m in Sources */,
 				59C5710620E5FB8200D54260 /* CredictUsingRateCell.m in Sources */,
 				59C570C920E5FADC00D54260 /* HQWYSMSModel.m in Sources */,
+				59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */,
 				A8F8DFD220B3AB5300DB9A6A /* TopBannerView.m in Sources */,
 				59C5713520E600D100D54260 /* UIFont+TargetFont.m in Sources */,
 				A8F8DFB620B3AB3300DB9A6A /* AboutUsViewController.m in Sources */,
@@ -1639,6 +1769,7 @@
 				59C5711520E5FF7700D54260 /* PlistManager.m in Sources */,
 				59C570CB20E5FADC00D54260 /* BasicConfigModel+Service.m in Sources */,
 				591D960A20ABDE6E00193B09 /* AAStyle.m in Sources */,
+				59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */,
 				59C5713620E600D100D54260 /* UIViewController+UIAlertControllerKit.m in Sources */,
 				A8F8DFD320B3AB5300DB9A6A /* DiscoverTableViewCell.m in Sources */,
 				A8F8DFCD20B3AB5300DB9A6A /* DiscoverViewController.m in Sources */,
@@ -1659,6 +1790,7 @@
 				59C5713D20E600D100D54260 /* NSObject+HQIQKeyBoardConfig.m in Sources */,
 				59C5713920E600D100D54260 /* UILabel+LabelKit.m in Sources */,
 				59023BE9209A9B33004B9134 /* AppDelegate.m in Sources */,
+				597C73C320E9C3220090960B /* BasicDataModel.m in Sources */,
 				59C5710920E5FB8200D54260 /* AreaSplineCompareView.m in Sources */,
 				59C570FF20E5FB8200D54260 /* Circle.m in Sources */,
 				59C570AE20E5F9C100D54260 /* CInvestigationProgressViewController.m in Sources */,

@@ -26,6 +26,7 @@ target 'HuaQianWuYou' do
     pod 'BMKLocationKit'
     pod 'AppUpdate'
     pod 'objective-zip'
+    pod 'HJJavascriptBridge', '~> 0.3.2'
 end
 
 target 'HuaQianWuYouTests' do
