@@ -152,6 +152,9 @@
 		59575507209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
 		59575508209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
 		59575509209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
+		595E7DDA20EC68CA001D65B6 /* LoginAndRegisterViewController..m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */; };
+		595E7DDD20EC6B77001D65B6 /* SelectTheLoginModeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */; };
+		595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */; };
 		5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960753D20EB21EC00D7AD1D /* LeftItemButton.m */; };
 		5960756D20EB3C8800D7AD1D /* RightItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960756C20EB3C8800D7AD1D /* RightItemButton.m */; };
 		5960758620EB425900D7AD1D /* ZYZButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960758520EB425900D7AD1D /* ZYZButton.m */; };
@@ -399,6 +402,12 @@
 		595754C2209B191D00F602EB /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		595754C3209B191D00F602EB /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		59575506209B33DE00F602EB /* ColorFont.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorFont.plist; sourceTree = "<group>"; };
+		595E7DD820EC68CA001D65B6 /* LoginAndRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginAndRegisterViewController.h; sourceTree = "<group>"; };
+		595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginAndRegisterViewController..m; sourceTree = "<group>"; };
+		595E7DDB20EC6B77001D65B6 /* SelectTheLoginModeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTheLoginModeView.h; sourceTree = "<group>"; };
+		595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTheLoginModeView.m; sourceTree = "<group>"; };
+		595E7DDE20EC90E2001D65B6 /* TwoTextFieldView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwoTextFieldView.h; sourceTree = "<group>"; };
+		595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwoTextFieldView.m; sourceTree = "<group>"; };
 		5960753C20EB21EC00D7AD1D /* LeftItemButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftItemButton.h; sourceTree = "<group>"; };
 		5960753D20EB21EC00D7AD1D /* LeftItemButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftItemButton.m; sourceTree = "<group>"; };
 		5960756B20EB3C8800D7AD1D /* RightItemButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RightItemButton.h; sourceTree = "<group>"; };
@@ -966,6 +975,8 @@
 		595E7DD420EC622E001D65B6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				595E7DD820EC68CA001D65B6 /* LoginAndRegisterViewController.h */,
+				595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -980,6 +991,10 @@
 		595E7DD720EC6242001D65B6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				595E7DDB20EC6B77001D65B6 /* SelectTheLoginModeView.h */,
+				595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */,
+				595E7DDE20EC90E2001D65B6 /* TwoTextFieldView.h */,
+				595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1742,6 +1757,7 @@
 				59C570CC20E5FADC00D54260 /* BasicConfigModel.m in Sources */,
 				591D961C20ABDE6E00193B09 /* AAMarker.m in Sources */,
 				59C570AC20E5F9C100D54260 /* CInvestigationThreeViewController.m in Sources */,
+				595E7DDD20EC6B77001D65B6 /* SelectTheLoginModeView.m in Sources */,
 				59C570FC20E5FB8200D54260 /* NameHeaderView.m in Sources */,
 				A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */,
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
@@ -1775,6 +1791,7 @@
 				A8F8DFFA20B4F31200DB9A6A /* FeedbackModel+Service.m in Sources */,
 				A8F8DFD020B3AB5300DB9A6A /* DiscoverTopBannerCell.m in Sources */,
 				59C5713F20E600D100D54260 /* NSObject+RequestConfig.m in Sources */,
+				595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */,
 				59C570A920E5F9C100D54260 /* CInvestigationTwoViewController.m in Sources */,
 				A8F8DFB520B3AB3300DB9A6A /* RegisterOrForgetPwdVC.m in Sources */,
 				591D962820ABDE6E00193B09 /* AAChart.m in Sources */,
@@ -1853,6 +1870,7 @@
 				59C5711620E5FF7700D54260 /* DeviceTypes.m in Sources */,
 				5903770B209C00E5004CEBD8 /* GetImagePath.m in Sources */,
 				A8F8DFB420B3AB3300DB9A6A /* LoginViewController.m in Sources */,
+				595E7DDA20EC68CA001D65B6 /* LoginAndRegisterViewController..m in Sources */,
 				59C5713A20E600D100D54260 /* UIColor+AddColor.m in Sources */,
 				59C5710A20E5FB8200D54260 /* AreaSplineChartView.m in Sources */,
 				59C570FE20E5FB8200D54260 /* CircleProgressView.m in Sources */,

@@ -63,6 +63,7 @@
 + (UIColor *) stateLittleGrayColor{
     return [UIColor colorFromHexCode:[PlistManager getColor:7]];
 }
+// 999999
 + (UIColor *) stateGrayColor{
     return [UIColor colorFromHexCode:[PlistManager getColor:8]];
 }
@@ -72,5 +73,10 @@
 + (UIColor *) backgroundGrayColor{
     return [UIColor colorFromHexCode:[PlistManager getColor:10]];
 }
+
++ (UIColor *) grayColor{
+    return [UIColor colorFromHexCode:[PlistManager getColor:11]];
+}
+
 
 @end

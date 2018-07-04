@@ -17,7 +17,7 @@
 #import "RightItemButton.h"
 #import "LocationManager.h"
 #import <BMKLocationkit/BMKLocationComponent.h>
-
+#import "LoginAndRegisterViewController.h"
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
@@ -45,6 +45,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self registerHander];
     [self initlocationService];
     [_manager callHandler:kWebViewDidLoad];
+    [self pushTologin];
 }
 
 -(void)initlocationService{
@@ -298,6 +299,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         
           }];
     }
+}
+
+- (void)pushTologin{
+    LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
+    [self.navigationController pushViewController:loginVc animated:true];
 }
 
 @end
