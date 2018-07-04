@@ -19,8 +19,9 @@
 #import "AppDelegate+SDKRegister.h"
 #import "ActiveViewController.h"
 #import "AppDelegate+APNS.h"
+#import <BMKLocationKit/BMKLocationAuth.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<BMKLocationAuthDelegate>
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 
 @end
@@ -44,6 +45,9 @@
     [MobClick setLogEnabled:YES];//调试用，发布需改回默认no
 #endif
     
+    // 百度定位 3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB
+    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:@"3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB" authDelegate:self];
+    
     WeakObj(self);
     [self registerAppUpdate];
     //    /** 通过通知栏调起APP处理通知信息 */
@@ -60,7 +64,6 @@
             [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
             [self checkUpdate];
         }else{
-            
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
             [self checkUpdate];
         }
@@ -96,7 +99,7 @@
     HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)
         // 1秒 网络加载  3秒图片加载
-        make.setTimer(0, 5, nil,YES);
+        make.setTimer(0, 3, nil,YES);
         make.setAnimateFinishedBlock(^(id info) {
             
             self.window = oldWindow;
@@ -115,9 +118,8 @@
    BasicDataModel *model = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
     BasicDataInfo *info = model.acitveList[0];
     //launchVC.setTimer(info.showTime.integerValue,0, @"s跳过",NO);
-    launchVC.setTimer(5,0, @"s跳过",NO);
+    launchVC.setTimer(3,0, @"s跳过",NO);
     launchVC.setBackGroundImage(info.imageUrl, YES, NO, ^{
-        //[HJGuidePageWindow dismiss];
     });
 }
 
@@ -192,7 +194,9 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
 #pragma 三方SDK设置
-
+// 百度地图鉴权
+- (void)onCheckPermissionState:(BMKLocationAuthErrorCode)iError{
+    NSLog(@"____%ld",(long)iError);
+}
 @end

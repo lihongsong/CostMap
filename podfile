@@ -21,12 +21,13 @@ target 'HuaQianWuYou' do
     pod 'GTMBase64', '~> 1.0.1'
     pod 'YYText', '1.0.4'
     pod 'YYModel'
-    pod 'RCMobClick', '~> 2.0.3'
     pod 'UMengAnalytics-NO-IDFA'
     pod 'BMKLocationKit'
     pod 'AppUpdate'
     pod 'objective-zip'
     pod 'HJJavascriptBridge', '~> 0.3.2'
+    #pod 'LNRiskManage'
+    pod 'RCMobClick', '~>2.0.9'
 end
 
 target 'HuaQianWuYouTests' do

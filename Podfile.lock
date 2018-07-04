@@ -62,7 +62,7 @@ DEPENDENCIES:
   - LNNetwork
   - Masonry (= 1.1.0)
   - objective-zip
-  - RCMobClick (~> 2.0.3)
+  - RCMobClick (~> 2.0.9)
   - SDWebImage
   - UMengAnalytics-NO-IDFA
   - YYModel
@@ -77,7 +77,7 @@ SPEC REPOS:
   http://172.16.0.245:2345/Apple_SDK/iOS_Specs.git:
     - AppUpdate
     - RCMobClick
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AFNetworking
     - BMKLocationKit
     - GTMBase64
@@ -109,6 +109,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: b99527e023af4850f04c6ca488f853cd350547d6
+PODFILE CHECKSUM: 83a2ce2ac4f80ef8738e83a1888f0f56d78f99f5
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

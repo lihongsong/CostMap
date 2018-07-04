@@ -21,7 +21,7 @@
                                                parameters:dict
                                                completion:^(id _Nonnull responseObject, NSError *_Nonnull error) {
                                                    completion(responseObject, error);
-                                                   BasicDataModel *_Nullable dataModel = (BasicDataModel *_Nullable)responseObject;
+                                                    BasicDataModel *_Nullable dataModel = (BasicDataModel *_Nullable)responseObject;
                                                    if (ObjIsNilOrNull(dataModel)  || ObjIsNilOrNull(dataModel.versionStamp)|| ArrIsEmpty(dataModel.acitveList)) {
                                                    }else{
                                                        if (type != AdvertisingTypeSuspensionWindow) {

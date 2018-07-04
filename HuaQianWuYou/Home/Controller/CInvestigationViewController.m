@@ -8,7 +8,8 @@
 
 #import "CInvestigationViewController.h"
 //#import <BaiduMapAPI_Search/BMKSearchComponent.h>//引入检索功能所有的头文件
-//#import <BaiduMapAPI_Location/BMKLocationComponent.h>//引入定位功能所有的头文件
+#import <BMKLocationkit/BMKLocationComponent.h>
+//引入定位功能所有的头文件
 
 @interface CInvestigationViewController () {
     UIView *firstTfBg;
@@ -16,7 +17,7 @@
     UIView *thirdTfBg;
     MASConstraint *heightConstraint;
     BOOL isShowThirTF;
-   // BMKLocationService* locService;
+   BMKLocationManager* locService;
    // BMKGeoCodeSearch *searcher;
 }
 
