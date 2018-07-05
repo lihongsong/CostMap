@@ -113,4 +113,9 @@ static NSString * const kWebViewWillDisappear = @"webViewWillDisappear";
  */
 static NSString * const kWebViewDidDisappear = @"webViewDidDisappear";
 
+/*!
+ 获取城市
+ */
+static NSString * const kAppGetCity = @"appGetCity";
+
 #endif /* HQWYJavaSBridgeHandleMacros_h */

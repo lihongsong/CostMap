@@ -144,6 +144,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 //            ResponseCallback([HQWYJavaScriptResponse success]);
 //        }];
     
+    /** 注册获取City事件 */
+        [_manager registerHandler:kAppGetCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+            ResponseCallback([HQWYJavaScriptResponse result:self.leftItemButton.titleLabel.text]);
+        }];
+    
     /** 注册页面返回事件 */
     [_manager registerHandler:kAppExecBack handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         StrongObj(self)
