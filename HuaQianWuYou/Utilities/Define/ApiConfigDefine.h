@@ -31,7 +31,7 @@
 
 
 
-
+#define ChangePassword @"/user/pwdchg"
 
 
 

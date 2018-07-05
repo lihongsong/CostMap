@@ -152,6 +152,16 @@
 		59575507209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
 		59575508209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
 		59575509209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
+		5958081B20EDED0E002A6F0C /* PasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958081920EDED0E002A6F0C /* PasswordViewController.m */; };
+		5958081C20EDED0E002A6F0C /* PasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5958081A20EDED0E002A6F0C /* PasswordViewController.xib */; };
+		5958082520EDF752002A6F0C /* UIButton+CountDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958082320EDF752002A6F0C /* UIButton+CountDown.m */; };
+		5958082820EE0529002A6F0C /* BaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958082720EE0529002A6F0C /* BaseButton.m */; };
+		5958082B20EE0616002A6F0C /* PasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958082A20EE0616002A6F0C /* PasswordModel.m */; };
+		5958082E20EE0649002A6F0C /* PasswordModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958082D20EE0649002A6F0C /* PasswordModel+Service.m */; };
+		5958083220EE0C4D002A6F0C /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958083020EE0C4D002A6F0C /* ChangePasswordViewController.m */; };
+		5958083320EE0C4D002A6F0C /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5958083120EE0C4D002A6F0C /* ChangePasswordViewController.xib */; };
+		5958083620EE1090002A6F0C /* ChangePasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958083520EE1090002A6F0C /* ChangePasswordModel.m */; };
+		5958083920EE10B4002A6F0C /* ChangePasswordModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958083820EE10B4002A6F0C /* ChangePasswordModel+Service.m */; };
 		595E7DDA20EC68CA001D65B6 /* LoginAndRegisterViewController..m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */; };
 		595E7DDD20EC6B77001D65B6 /* SelectTheLoginModeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */; };
 		595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */; };
@@ -402,6 +412,24 @@
 		595754C2209B191D00F602EB /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		595754C3209B191D00F602EB /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		59575506209B33DE00F602EB /* ColorFont.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorFont.plist; sourceTree = "<group>"; };
+		5958081820EDED0E002A6F0C /* PasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordViewController.h; sourceTree = "<group>"; };
+		5958081920EDED0E002A6F0C /* PasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordViewController.m; sourceTree = "<group>"; };
+		5958081A20EDED0E002A6F0C /* PasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordViewController.xib; sourceTree = "<group>"; };
+		5958082320EDF752002A6F0C /* UIButton+CountDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+CountDown.m"; sourceTree = "<group>"; };
+		5958082420EDF752002A6F0C /* UIButton+CountDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+CountDown.h"; sourceTree = "<group>"; };
+		5958082620EE0529002A6F0C /* BaseButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseButton.h; sourceTree = "<group>"; };
+		5958082720EE0529002A6F0C /* BaseButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseButton.m; sourceTree = "<group>"; };
+		5958082920EE0616002A6F0C /* PasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PasswordModel.h; sourceTree = "<group>"; };
+		5958082A20EE0616002A6F0C /* PasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PasswordModel.m; sourceTree = "<group>"; };
+		5958082C20EE0649002A6F0C /* PasswordModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PasswordModel+Service.h"; sourceTree = "<group>"; };
+		5958082D20EE0649002A6F0C /* PasswordModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "PasswordModel+Service.m"; sourceTree = "<group>"; };
+		5958082F20EE0C4D002A6F0C /* ChangePasswordViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		5958083020EE0C4D002A6F0C /* ChangePasswordViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
+		5958083120EE0C4D002A6F0C /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
+		5958083420EE1090002A6F0C /* ChangePasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangePasswordModel.h; sourceTree = "<group>"; };
+		5958083520EE1090002A6F0C /* ChangePasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordModel.m; sourceTree = "<group>"; };
+		5958083720EE10B4002A6F0C /* ChangePasswordModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ChangePasswordModel+Service.h"; sourceTree = "<group>"; };
+		5958083820EE10B4002A6F0C /* ChangePasswordModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ChangePasswordModel+Service.m"; sourceTree = "<group>"; };
 		595E7DD820EC68CA001D65B6 /* LoginAndRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginAndRegisterViewController.h; sourceTree = "<group>"; };
 		595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginAndRegisterViewController..m; sourceTree = "<group>"; };
 		595E7DDB20EC6B77001D65B6 /* SelectTheLoginModeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTheLoginModeView.h; sourceTree = "<group>"; };
@@ -786,6 +814,8 @@
 				A8F8E00A20B50A6100DB9A6A /* DefaultView.m */,
 				59037729209C09E6004CEBD8 /* BaseTableView.h */,
 				5903772A209C09E6004CEBD8 /* BaseTableView.m */,
+				5958082620EE0529002A6F0C /* BaseButton.h */,
+				5958082720EE0529002A6F0C /* BaseButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -928,6 +958,7 @@
 		5957530F209AD8EF00F602EB /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				5958082220EDF752002A6F0C /* UIButton */,
 				59C4D14D20E5DFFC00BDCA48 /* AppDelegate+APNS.h */,
 				59C4D14E20E5DFFC00BDCA48 /* AppDelegate+APNS.m */,
 				59C5712C20E600CD00D54260 /* AppDelegate+SDKRegister.h */,
@@ -962,9 +993,64 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		5958081120EDE2E8002A6F0C /* Password */ = {
+			isa = PBXGroup;
+			children = (
+				5958081420EDE4E6002A6F0C /* Contoller */,
+				5958081320EDE4E6002A6F0C /* Model */,
+				5958081220EDE4E6002A6F0C /* Views */,
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		5958081220EDE4E6002A6F0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5958081320EDE4E6002A6F0C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5958082920EE0616002A6F0C /* PasswordModel.h */,
+				5958082A20EE0616002A6F0C /* PasswordModel.m */,
+				5958082C20EE0649002A6F0C /* PasswordModel+Service.h */,
+				5958082D20EE0649002A6F0C /* PasswordModel+Service.m */,
+				5958083420EE1090002A6F0C /* ChangePasswordModel.h */,
+				5958083520EE1090002A6F0C /* ChangePasswordModel.m */,
+				5958083720EE10B4002A6F0C /* ChangePasswordModel+Service.h */,
+				5958083820EE10B4002A6F0C /* ChangePasswordModel+Service.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5958081420EDE4E6002A6F0C /* Contoller */ = {
+			isa = PBXGroup;
+			children = (
+				5958081820EDED0E002A6F0C /* PasswordViewController.h */,
+				5958081920EDED0E002A6F0C /* PasswordViewController.m */,
+				5958081A20EDED0E002A6F0C /* PasswordViewController.xib */,
+				5958082F20EE0C4D002A6F0C /* ChangePasswordViewController.h */,
+				5958083020EE0C4D002A6F0C /* ChangePasswordViewController.m */,
+				5958083120EE0C4D002A6F0C /* ChangePasswordViewController.xib */,
+			);
+			path = Contoller;
+			sourceTree = "<group>";
+		};
+		5958082220EDF752002A6F0C /* UIButton */ = {
+			isa = PBXGroup;
+			children = (
+				5958082320EDF752002A6F0C /* UIButton+CountDown.m */,
+				5958082420EDF752002A6F0C /* UIButton+CountDown.h */,
+			);
+			path = UIButton;
+			sourceTree = "<group>";
+		};
 		595E7DD320EC6214001D65B6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				5958081120EDE2E8002A6F0C /* Password */,
 				595E7DD720EC6242001D65B6 /* View */,
 				595E7DD620EC623D001D65B6 /* Model */,
 				595E7DD420EC622E001D65B6 /* Controller */,
@@ -1606,11 +1692,13 @@
 				591D95D120ABDE6E00193B09 /* AAHighchartsLib.js in Resources */,
 				59C5711820E5FF7700D54260 /* func.list in Resources */,
 				591D95DA20ABDE6E00193B09 /* AAHighcharts-3d.js in Resources */,
+				5958081C20EDED0E002A6F0C /* PasswordViewController.xib in Resources */,
 				59C5710420E5FB8200D54260 /* HomeBaseTableViewCell.xib in Resources */,
 				59023BEF209A9B33004B9134 /* Main.storyboard in Resources */,
 				A8F8DFB320B3AB3300DB9A6A /* AgreementViewController.xib in Resources */,
 				591D95D420ABDE6E00193B09 /* AAHighchartsMore.js in Resources */,
 				59575507209B33DE00F602EB /* ColorFont.plist in Resources */,
+				5958083320EE0C4D002A6F0C /* ChangePasswordViewController.xib in Resources */,
 				591D95DD20ABDE6E00193B09 /* AAChartView.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1777,6 +1865,7 @@
 				59C570C820E5FADC00D54260 /* CInvestigationModel.m in Sources */,
 				5960756D20EB3C8800D7AD1D /* RightItemButton.m in Sources */,
 				591D95E920ABDE6E00193B09 /* AAXAxis.m in Sources */,
+				5958083220EE0C4D002A6F0C /* ChangePasswordViewController.m in Sources */,
 				591D95FB20ABDE6E00193B09 /* AAYAxis.m in Sources */,
 				59C570B020E5F9C100D54260 /* CInvestigationViewController.m in Sources */,
 				59C570C720E5FADC00D54260 /* CreditInvestigationSMSModel.m in Sources */,
@@ -1801,6 +1890,7 @@
 				59C570AF20E5F9C100D54260 /* CInvestigationResultViewController.m in Sources */,
 				A8F8DFD920B3B91700DB9A6A /* LoginInfoModel+Service.m in Sources */,
 				A8F8DFDF20B3F07800DB9A6A /* DiscoverDetailModel+Service.m in Sources */,
+				5958082820EE0529002A6F0C /* BaseButton.m in Sources */,
 				A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */,
 				A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */,
 				59C5713720E600D100D54260 /* NSString+NSData.m in Sources */,
@@ -1813,6 +1903,7 @@
 				595754C4209B191D00F602EB /* BaseNavigationController.m in Sources */,
 				A8F8E00B20B50A6100DB9A6A /* DefaultView.m in Sources */,
 				591D960D20ABDE6E00193B09 /* AABar.m in Sources */,
+				5958082B20EE0616002A6F0C /* PasswordModel.m in Sources */,
 				591D961320ABDE6E00193B09 /* AAArea.m in Sources */,
 				591D960720ABDE6E00193B09 /* AAOptions3d.m in Sources */,
 				591D963120ABDE6E00193B09 /* AAOptions.m in Sources */,
@@ -1831,11 +1922,14 @@
 				591D95E620ABDE6E00193B09 /* AASeries.m in Sources */,
 				591D960420ABDE6E00193B09 /* AAPlotLinesElement.m in Sources */,
 				59C570B120E5F9C100D54260 /* HomeViewController.m in Sources */,
+				5958082520EDF752002A6F0C /* UIButton+CountDown.m in Sources */,
 				59037711209C0387004CEBD8 /* BaseModel.m in Sources */,
 				59C5710220E5FB8200D54260 /* CircleIndicatorView.m in Sources */,
 				591D95F520ABDE6E00193B09 /* AATooltip.m in Sources */,
+				5958083920EE10B4002A6F0C /* ChangePasswordModel+Service.m in Sources */,
 				59C5710620E5FB8200D54260 /* CredictUsingRateCell.m in Sources */,
 				59C570C920E5FADC00D54260 /* HQWYSMSModel.m in Sources */,
+				5958082E20EE0649002A6F0C /* PasswordModel+Service.m in Sources */,
 				59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */,
 				A8F8DFD220B3AB5300DB9A6A /* TopBannerView.m in Sources */,
 				59C5713520E600D100D54260 /* UIFont+TargetFont.m in Sources */,
@@ -1859,6 +1953,7 @@
 				A8F8DFB720B3AB3300DB9A6A /* MineViewController.m in Sources */,
 				59C5713C20E600D100D54260 /* UIView+ViewKit.m in Sources */,
 				59C5711520E5FF7700D54260 /* PlistManager.m in Sources */,
+				5958081B20EDED0E002A6F0C /* PasswordViewController.m in Sources */,
 				59C570CB20E5FADC00D54260 /* BasicConfigModel+Service.m in Sources */,
 				591D960A20ABDE6E00193B09 /* AAStyle.m in Sources */,
 				59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */,
@@ -1871,6 +1966,7 @@
 				5903770B209C00E5004CEBD8 /* GetImagePath.m in Sources */,
 				A8F8DFB420B3AB3300DB9A6A /* LoginViewController.m in Sources */,
 				595E7DDA20EC68CA001D65B6 /* LoginAndRegisterViewController..m in Sources */,
+				5958083620EE1090002A6F0C /* ChangePasswordModel.m in Sources */,
 				59C5713A20E600D100D54260 /* UIColor+AddColor.m in Sources */,
 				59C5710A20E5FB8200D54260 /* AreaSplineChartView.m in Sources */,
 				59C570FE20E5FB8200D54260 /* CircleProgressView.m in Sources */,

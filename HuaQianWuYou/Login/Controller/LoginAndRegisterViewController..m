@@ -11,7 +11,8 @@
 #import "TwoTextFieldView.h"
 #import "HQWYSMSModel.h"
 #import "HQWYSMSModel+Service.h"
-
+#import "PasswordViewController.h"
+#import "ChangePasswordViewController.h"
 @interface LoginAndRegisterViewController ()<SelectTheLoginModeViewDelegate,UITextFieldDelegate,TwoTextFieldViewDelegate>
 @property(nonatomic,strong)TwoTextFieldView *codeInputView;
 @property(nonatomic,strong)TwoTextFieldView *passwordInputView;
@@ -134,6 +135,9 @@
 
 #pragma mark 忘记密码
 - (void)forgetButtonClick{
+    ChangePasswordViewController *passWordVC = [ChangePasswordViewController instance];
+    passWordVC.type = PasswordTypeCode;
+    [self.navigationController pushViewController:passWordVC animated:YES];
     
 }
 
