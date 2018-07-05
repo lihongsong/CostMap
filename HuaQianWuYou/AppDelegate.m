@@ -11,7 +11,6 @@
 #import "HJGuidePage.h"
 #import "UtilitiesDefine.h"
 #import "ThirdPartKeyDefine.h"
-#import <RCMobClick/RCMobClick.h>
 #import <UMMobClick/MobClick.h>
 #import "DeviceHelp.h"
 #import "TouchIDViewController.h"

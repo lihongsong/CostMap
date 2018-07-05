@@ -37,7 +37,14 @@
 #import "HJUIKit.h"
 #import "AAGlobalMacro.h"
 #import <Masonry/Masonry.h>
+#import <RCMobClick/RCMobClick.h>
+#import <HJCategories/HJUIKit.h>
+
+
+#pragma mark JsBridge
 #import <HJJavascriptBridge/HJJSBridgeManager.h>
+#import "HQWYJavaSBridgeHandleMacros.h"
+#import "HQWYUserStatusManager.h"
 #endif
 
 

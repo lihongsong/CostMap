@@ -143,6 +143,8 @@
 		5935907120A154280057C0F4 /* ReleaseApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935907020A154270057C0F4 /* ReleaseApi.plist */; };
 		5935907220A154280057C0F4 /* ReleaseApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935907020A154270057C0F4 /* ReleaseApi.plist */; };
 		5935907320A154280057C0F4 /* ReleaseApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935907020A154270057C0F4 /* ReleaseApi.plist */; };
+		59435A7E20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59435A7D20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m */; };
+		59435A8120EE0A20007D9A4D /* LeftItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59435A8020EE0A20007D9A4D /* LeftItemView.m */; };
 		595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595752FE209AA1CC00F602EB /* MainTabBarViewController.m */; };
 		59575300209AA1CC00F602EB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595752FE209AA1CC00F602EB /* MainTabBarViewController.m */; };
 		59575301209AA1CC00F602EB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595752FE209AA1CC00F602EB /* MainTabBarViewController.m */; };
@@ -389,6 +391,10 @@
 		5935907020A154270057C0F4 /* ReleaseApi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReleaseApi.plist; sourceTree = "<group>"; };
 		5935907420A17DC50057C0F4 /* ApiConfigDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiConfigDefine.h; sourceTree = "<group>"; };
 		5935907A20A1A9BB0057C0F4 /* ThirdPartKeyDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartKeyDefine.h; sourceTree = "<group>"; };
+		59435A7C20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptGetAjaxHeaderHandler.h; sourceTree = "<group>"; };
+		59435A7D20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptGetAjaxHeaderHandler.m; sourceTree = "<group>"; };
+		59435A7F20EE0A20007D9A4D /* LeftItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftItemView.h; sourceTree = "<group>"; };
+		59435A8020EE0A20007D9A4D /* LeftItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftItemView.m; sourceTree = "<group>"; };
 		594A2BE220A3EE570041E518 /* HuaQianWuYou-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HuaQianWuYou-Bridging-Header.h"; sourceTree = "<group>"; };
 		594A2C0D20A3F3880041E518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5952DEE820B3B6F30058A57D /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
@@ -1051,6 +1057,8 @@
 		597C73B920E9AF4F0090960B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				59435A7F20EE0A20007D9A4D /* LeftItemView.h */,
+				59435A8020EE0A20007D9A4D /* LeftItemView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1202,6 +1210,8 @@
 			children = (
 				59FD9E7C20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.h */,
 				59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */,
+				59435A7C20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.h */,
+				59435A7D20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m */,
 			);
 			path = HQWYJSHandler;
 			sourceTree = "<group>";
@@ -1785,6 +1795,7 @@
 				A8F8DFD920B3B91700DB9A6A /* LoginInfoModel+Service.m in Sources */,
 				A8F8DFDF20B3F07800DB9A6A /* DiscoverDetailModel+Service.m in Sources */,
 				A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */,
+				59435A7E20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m in Sources */,
 				A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */,
 				59C5713720E600D100D54260 /* NSString+NSData.m in Sources */,
 				59C570FD20E5FB8200D54260 /* ScoreProgressView.m in Sources */,
@@ -1828,6 +1839,7 @@
 				59023BF7209A9B35004B9134 /* main.m in Sources */,
 				A8F8DFCE20B3AB5300DB9A6A /* DiscoverPageModel+Service.m in Sources */,
 				59C570CA20E5FADC00D54260 /* HQWYSMSModel+Service.m in Sources */,
+				59435A8120EE0A20007D9A4D /* LeftItemView.m in Sources */,
 				5903771A209C096E004CEBD8 /* BaseViewController.m in Sources */,
 				59C5710320E5FB8200D54260 /* waveAnimationView.m in Sources */,
 				59037723209C0985004CEBD8 /* BaseTableViewController.m in Sources */,

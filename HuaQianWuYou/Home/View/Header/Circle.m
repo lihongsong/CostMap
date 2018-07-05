@@ -109,9 +109,9 @@
         if (iPhone5) {
             _stateLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14.0];
         }
-        if (IPAD) {
-            _stateLabel.font = [UIFont systemFontOfSize:15];
-        }
+//        if (IPAD) {
+//            _stateLabel.font = [UIFont systemFontOfSize:15];
+//        }
         _stateLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _stateLabel;

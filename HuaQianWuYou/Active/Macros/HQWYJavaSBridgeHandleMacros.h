@@ -19,6 +19,11 @@ static NSString * const kAppOpenNative = @"appOpenNative";
 static NSString * const kAppExecStatistic = @"appExecStatistic";
 
 /*!
+ 给用户成长体系发送数据
+ */
+static NSString * const kAppGetAjaxHeader = @"appGetAjaxHeader";
+
+/*!
  app页面返回
  */
 static NSString * const kAppExecBack = @"appExecBack";
@@ -114,8 +119,18 @@ static NSString * const kWebViewWillDisappear = @"webViewWillDisappear";
 static NSString * const kWebViewDidDisappear = @"webViewDidDisappear";
 
 /*!
- 获取城市
+ H5获取城市
  */
 static NSString * const kAppGetCity = @"appGetCity";
+
+/*!
+ 获取导航栏样式
+ */
+static NSString * const kAppGetNavigationBarStatus = @"appGetNavigationBarStatus";
+
+/*!
+ 原生获取城市
+ */
+static NSString * const kAppGetSelectCity = @"appGetSelectCity";
 
 #endif /* HQWYJavaSBridgeHandleMacros_h */

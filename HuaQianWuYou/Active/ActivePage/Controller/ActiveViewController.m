@@ -13,10 +13,11 @@
 #import "HQWYJavaScriptResponse.h"
 #import <RCMobClick/RCBaseCommon.h>
 #import <HJJavascriptBridge/HJJSBridgeManager.h>
-#import "LeftItemButton.h"
+#import "LeftItemView.h"
 #import "RightItemButton.h"
 #import "LocationManager.h"
 #import <BMKLocationkit/BMKLocationComponent.h>
+#import "HQWYJavaScriptGetAjaxHeaderHandler.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -25,13 +26,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 @interface ActiveViewController ()<WKNavigationDelegate,WKUIDelegate,BMKLocationManagerDelegate>
 @property(nonatomic,strong)BMKLocationManager *locationManager;
-@property(nonatomic,strong)WKWebView *activeWebView;
+@property(nonatomic,strong)WKWebView *wkWebView;
 /**
  桥接管理器
  */
 @property (strong, nonatomic) HJJSBridgeManager *manager;
-@property (strong, nonatomic) LeftItemButton *leftItemButton;
+
 @property (strong, nonatomic) RightItemButton *rightItemButton;
+@property(strong,nonatomic)LeftItemView *leftItem;
+
 @end
 
 @implementation ActiveViewController
@@ -40,11 +43,23 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SWidth, SHeight)];
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.106.138:8088/#/citylist"]]];
+    [self.view addSubview:self.wkWebView];
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     [self registerHander];
     [self initlocationService];
+    [HJJSBridgeManager enableLogging];
     [_manager callHandler:kWebViewDidLoad];
+}
+
+- (void)initNavigation{
+    [self.leftItem changeType:LeftItemViewTypeLocationAndRecommendation];
+    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:self.leftItem];
+    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
 }
 
 -(void)initlocationService{
@@ -67,31 +82,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewWillAppear:animated];
     [_manager callHandler:kWebViewWillAppear];
     self.navigationItem.title = @"首页";
-    [self setNavigationItem:YES];
-}
-
-- (void)setNavigationItem:(BOOL)hidden {
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftItemButton];
-    UIImageView *arrowView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 18.5, 5, 3)];
-    arrowView.image = [UIImage imageNamed:@"navbar_triangle"];
-    UIBarButtonItem *arrowItem =[[UIBarButtonItem alloc] initWithCustomView:arrowView];
-    self.navigationItem.leftBarButtonItems = @[barButtonItem,arrowItem];
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
-}
-
--(UIButton *)leftItemButton
-{
-    if (_leftItemButton == nil) {
-        _leftItemButton = [LeftItemButton buttonWithType:UIButtonTypeCustom];
-        _leftItemButton.frame = CGRectMake(0, 0, 70, 40);
-        [_leftItemButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        [_leftItemButton setImage:[UIImage imageNamed:@"navbar_location_02"] forState:UIControlStateNormal];
-        [_leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
-        [_leftItemButton setTitleColor:[UIColor hj_colorWithHexString:@"#333333"] forState:UIControlStateNormal];
-        _leftItemButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
-    }
-    return _leftItemButton;
+    [self initNavigation];
 }
 
 -(RightItemButton *)rightItemButton
@@ -106,6 +97,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         _rightItemButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
     }
     return _rightItemButton;
+}
+
+-(LeftItemView *)leftItem
+{
+    if (_leftItem == nil) {
+        _leftItem = [[LeftItemView alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+    }
+    return _leftItem;
+}
+
+-(void)backPage {
+   // [self.navigationController popViewControllerAnimated:YES];
 }
     
 - (void)viewDidAppear:(BOOL)animated {
@@ -144,18 +147,25 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 //            ResponseCallback([HQWYJavaScriptResponse success]);
 //        }];
     
-    /** 注册获取City事件 */
+    /** 注册H5获取City事件 */
         [_manager registerHandler:kAppGetCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-            ResponseCallback([HQWYJavaScriptResponse result:self.leftItemButton.titleLabel.text]);
+            ResponseCallback([HQWYJavaScriptResponse result:self.leftItem.leftItemButton.titleLabel.text]);
         }];
     
-    /** 注册页面返回事件 */
-    [_manager registerHandler:kAppExecBack handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        StrongObj(self)
-        if (self.navigationController.viewControllers.count > 1) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }
-        ResponseCallback([HQWYJavaScriptResponse success]);
+    /** 注册Native获取City事件 */
+    [_manager registerHandler:kAppGetSelectCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [self.leftItem.leftItemButton setTitle:[NSString stringWithFormat:@"%@",data] forState:UIControlStateNormal];
+    }];
+    
+    /** 导航栏样式事件 */
+    [_manager registerHandler:kAppGetNavigationBarStatus handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSInteger type = [NSString stringWithFormat:@"%@",data].integerValue;
+        //[self.leftItem changeType:type];
+//        if ((type == LeftItemViewTypeLocationAndRecommendation) || (type == LeftItemViewTypeBackAndRecommendation)) {
+//            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];;
+//        }else{
+//            self.navigationItem.rightBarButtonItem = nil;
+//        }
     }];
     
     /** 注册获取PID事件 */
@@ -219,7 +229,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     //[_manager registerHandler:[JKJavaScriptOpenNativeHandler new]];
     
     /** 注册获取请求头事件 */
-    //[_manager registerHandler:[JKJavaScriptGetAjaxHeaderHandler new]];
+    [_manager registerHandler:[HQWYJavaScriptGetAjaxHeaderHandler new]];
 }
 
 #pragma mark - Public Method
@@ -229,9 +239,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager callHandler:kJSReceiveAppData data:[HQWYJavaScriptResponse result:message]];
 }
 
--(void)leftButtonClick{
-    
-}
+
 
 -(void)rightButtonClick{
     
@@ -251,7 +259,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     {
         NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
         //self.leftItemButton.locationButton.text = @"定位失败";
-        [self.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+        [self.leftItem.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
     } if (location) {//得到定位信息，添加annotation
         if (location.location) {
             NSLog(@"LOC = %@",location.location);
@@ -259,10 +267,37 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         if (location.rgcData) {
             NSLog(@"rgc = %@",[location.rgcData description]);
             //self.leftItemButton.locationButton.text = location.rgcData.city;
-             [self.leftItemButton setTitle:location.rgcData.city forState:UIControlStateNormal];
+             [self.leftItem.leftItemButton setTitle:location.rgcData.city forState:UIControlStateNormal];
         }
     }
 }
+
+/*
+- (void)checkWebViewCanGoBack{
+    if (_wkWebView && [_wkWebView canGoBack]) {
+        [self addSpaceButton];
+    }
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    if(webView == self.wkWebView) {
+        [self checkWebViewCanGoBack];
+        
+        [self updateNavigationBarState];
+        
+        self.progressBar.isLoading = NO;
+        
+        // 如果在首页且无法后退，则隐藏后退item
+        if (![webView canGoBack] && self.navigationController.viewControllers.count == 1) {
+            self.navigationItem.leftBarButtonItems = @[];
+        }
+        
+        if([self.delegate respondsToSelector:@selector(webBrowser:didFinishLoadingURL:)]) {
+            [self.delegate webBrowser:self didFinishLoadingURL:self.wkWebView.URL];
+        }
+    }
+}
+ */
 
 /**
  *  @brief 当定位发生错误时，会调用代理的此方法。
@@ -272,7 +307,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nullable)error{
     NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
     //self.leftItemButton.locationButton.text = @"定位失败";
-    [self.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+    [self.leftItem.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
 }
 
 /**
