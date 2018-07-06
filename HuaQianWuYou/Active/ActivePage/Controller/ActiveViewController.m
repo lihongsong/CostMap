@@ -19,12 +19,19 @@
 #import <BMKLocationkit/BMKLocationComponent.h>
 #import "HQWYJavaScriptGetAjaxHeaderHandler.h"
 
+#import "HQWYJavaScriptOpenNativeHandler.h"
+#import "LeftItemButton.h"
+#import "RightItemButton.h"
+#import "LocationManager.h"
+#import <BMKLocationkit/BMKLocationComponent.h>
+#import "PopViewManager.h"
+#import "DeviceManager.h"
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
-@interface ActiveViewController ()<WKNavigationDelegate,WKUIDelegate,BMKLocationManagerDelegate>
+@interface ActiveViewController ()<WKNavigationDelegate,WKUIDelegate,BMKLocationManagerDelegate,PopViewManagerDelegate>
 @property(nonatomic,strong)BMKLocationManager *locationManager;
 @property(nonatomic,strong)WKWebView *wkWebView;
 /**
@@ -53,6 +60,23 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self initlocationService];
     [HJJSBridgeManager enableLogging];
     [_manager callHandler:kWebViewDidLoad];
+    
+    //发送设备信息采集
+    [DeviceManager sendDeviceinfo];
+}
+
+# pragma mark 弹框和悬浮弹框逻辑
+
+- (void)showPopView{
+    [PopViewManager sharedInstance].delegate = self;
+    [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
+    [PopViewManager showType:AdvertisingTypeSuspensionWindow fromVC:self];
+    
+}
+
+//弹框代理方法
+- (void)didSelectedContentUrl:(NSString *)url popType:(AdvertisingType)type{
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 
 - (void)initNavigation{
@@ -133,7 +157,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 #pragma mark - Private Method
-
 
 - (void)registerHander {
     WeakObj(self)

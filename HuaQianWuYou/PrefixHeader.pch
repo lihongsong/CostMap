@@ -29,6 +29,7 @@
 #pragma mark    Category  类别
 #import "UIColor+AddColor.h"
 #import "UIFont+TargetFont.h"
+#import "NSObject+event.h"
 #import "YYModel.h"
 
 #pragma mark    三方以及自定义库
@@ -45,6 +46,7 @@
 #import <HJJavascriptBridge/HJJSBridgeManager.h>
 #import "HQWYJavaSBridgeHandleMacros.h"
 #import "HQWYUserStatusManager.h"
+
 #endif
 
 

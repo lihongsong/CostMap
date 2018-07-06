@@ -1,0 +1,13 @@
+[
+    {
+        "asyncKeepTime":600,
+        "retryTimes":3,
+        "node":3,
+        "syncKeepTime":600,
+        "asyncModuleList":[
+            1
+        ],
+        "syncModuleList":[
+        ]
+    }
+]

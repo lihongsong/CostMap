@@ -18,9 +18,11 @@
 #import "AppDelegate+SDKRegister.h"
 #import "ActiveViewController.h"
 #import "AppDelegate+APNS.h"
-#import <BMKLocationKit/BMKLocationAuth.h>
+#import "FBManager.h"
+#import "TalkingData.h"
+#import "TalkingDataAppCpa.h"
 
-@interface AppDelegate ()<BMKLocationAuthDelegate>
+@interface AppDelegate ()
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 
 @end
@@ -32,7 +34,10 @@
     // Override point for customization after application launch.
     //移动武林榜
     [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:MobClick_Channel isIntegral:YES];
-    
+    /** TalkingData */
+    [TalkingData sessionStarted:TalkingData_AppId withChannelId:AppChannel];
+    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:AppChannel];
+    [self setUpSDKs];
     //友盟  老的58fec71d677baa3921000b81
     UMConfigInstance.appKey = UMen_AppKey;
     UMConfigInstance.channelId = UMen_channelId;
@@ -44,9 +49,7 @@
     [MobClick setLogEnabled:YES];//调试用，发布需改回默认no
 #endif
     
-    // 百度定位 3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB
-    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:@"3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB" authDelegate:self];
-    
+   
     WeakObj(self);
     [self registerAppUpdate];
     //    /** 通过通知栏调起APP处理通知信息 */
@@ -63,6 +66,7 @@
             [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
             [self checkUpdate];
         }else{
+            
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
             [self checkUpdate];
         }
@@ -98,7 +102,7 @@
     HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)
         // 1秒 网络加载  3秒图片加载
-        make.setTimer(0, 3, nil,YES);
+        make.setTimer(0, 5, nil,YES);
         make.setAnimateFinishedBlock(^(id info) {
             
             self.window = oldWindow;
@@ -115,10 +119,11 @@
     [HJGuidePageWindow show];
     
    BasicDataModel *model = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
-    BasicDataInfo *info = model.acitveList[0];
+    BasicDataInfo *info = model.AdvertisingVO;
     //launchVC.setTimer(info.showTime.integerValue,0, @"s跳过",NO);
-    launchVC.setTimer(3,0, @"s跳过",NO);
-    launchVC.setBackGroundImage(info.imageUrl, YES, NO, ^{
+    launchVC.setTimer(5,0, @"s跳过",NO);
+    launchVC.setBackGroundImage(info.imgUrl, YES, NO, ^{
+        //[HJGuidePageWindow dismiss];
     });
 }
 
@@ -137,6 +142,8 @@
         };
     }
 }
+
+
 
 #pragma mark - 渐变动画更换RootVC
 
@@ -193,9 +200,13 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 #pragma 三方SDK设置
-// 百度地图鉴权
-- (void)onCheckPermissionState:(BMKLocationAuthErrorCode)iError{
-    NSLog(@"____%ld",(long)iError);
+
+- (void)setUpSDKs{
+    
+    //设置意见反馈
+    [FBManager configFB];
 }
+
 @end

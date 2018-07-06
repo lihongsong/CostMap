@@ -50,4 +50,7 @@
 [[NSUserDefaults standardUserDefaults] synchronize]
 #define UserDefaultGetObj(key) [[NSUserDefaults standardUserDefaults] objectForKey:key]
 /****** UserDefault快捷 ******/
+
+#define LNAOPSAFESTRING(str) ((((str) != nil) && ![(str) isKindOfClass:[NSNull class]]) ? [NSString stringWithFormat:@"%@", (str)] : @"")
+
 #endif /* UtilitiesDefine_h */

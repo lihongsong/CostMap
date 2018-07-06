@@ -16,7 +16,6 @@
 
 #define HOST_PATH @"http://172.16.0.140:3022"
 
-
 #endif
 
 /**
@@ -29,12 +28,9 @@
  */
 #define DISCOVER_LIST @"discover/discoverList"
 
+#define Device_info @"/collect/deviceInfo"
 
-
-
-
-
-
-
+//广告信息
+#define AdvertisingInfo @"/product/ad/search"
 
 #endif /* ApiConfigDefine_h */
