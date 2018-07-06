@@ -19,7 +19,7 @@
 
 #define TabBarHeight (SHeight == 812.0 ? 34 + 49 : 49)
 #define NavigationHeight (SHeight == 812.0 ? 88 : 64)
-#define StatusBatHeight (SHeight == 812.0 ? 20 : 0)
+#define StatusBarHeight (SHeight == 812.0 ? 20 : 0)
 #define CellDefaultHeight 40
 #define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 #define HEITI(font) [UIFont fontWithName:@"Heiti SC" size:font]

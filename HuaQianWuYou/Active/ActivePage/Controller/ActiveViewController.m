@@ -24,7 +24,7 @@
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
-@interface ActiveViewController ()<WKNavigationDelegate,WKUIDelegate,BMKLocationManagerDelegate>
+@interface ActiveViewController ()<WKNavigationDelegate,WKUIDelegate,BMKLocationManagerDelegate,LeftItemViewDelegate>
 @property(nonatomic,strong)BMKLocationManager *locationManager;
 @property(nonatomic,strong)WKWebView *wkWebView;
 /**
@@ -45,7 +45,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     // Do any additional setup after loading the view.
     
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SWidth, SHeight)];
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.106.138:8088/#/citylist"]]];
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.16.79:8088/#/home"]]];
+    //http://172.17.16.79:8088/#/home
+    //http://172.17.106.138:8088/#/citylist
+    //http://t1-static.huaqianwy.com/hqwy/dist/#/home
+    //http://www.baidu.com
+    [self.wkWebView setNavigationDelegate:self];
     [self.view addSubview:self.wkWebView];
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
@@ -56,10 +61,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)initNavigation{
-    [self.leftItem changeType:LeftItemViewTypeLocationAndRecommendation];
-    self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:self.leftItem];
-    UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];
-    self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+    self.leftItem.delegate = self; self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:self.leftItem];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];
 }
 
 -(void)initlocationService{
@@ -81,7 +84,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [_manager callHandler:kWebViewWillAppear];
-    self.navigationItem.title = @"首页";
+    self.navigationItem.title = @"花钱无忧";
     [self initNavigation];
 }
 
@@ -103,6 +106,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 {
     if (_leftItem == nil) {
         _leftItem = [[LeftItemView alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
+        [_leftItem changeType:LeftItemViewTypeLocationAndRecommendation];
     }
     return _leftItem;
 }
@@ -160,12 +164,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     /** 导航栏样式事件 */
     [_manager registerHandler:kAppGetNavigationBarStatus handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         NSInteger type = [NSString stringWithFormat:@"%@",data].integerValue;
-        //[self.leftItem changeType:type];
-//        if ((type == LeftItemViewTypeLocationAndRecommendation) || (type == LeftItemViewTypeBackAndRecommendation)) {
-//            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];;
-//        }else{
-//            self.navigationItem.rightBarButtonItem = nil;
-//        }
+        self.wkWebView.frame =CGRectMake(0, 0, SWidth, SHeight); self.navigationController.navigationBar.hidden = false;
+        [self.leftItem changeType:type];
+        if ((type == LeftItemViewTypeLocationAndRecommendation) || (type == LeftItemViewTypeBackAndRecommendation || type == LeftItemViewTypeRecommendation)) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];;
+        }else if (type == LeftItemViewTypeNoneNavigation){
+           self.wkWebView.frame =CGRectMake(0, -StatusBarHeight - 20, SWidth, SHeight + 20 + StatusBarHeight); self.navigationController.navigationBar.hidden = true;
+            
+        }else{
+            self.navigationItem.rightBarButtonItem = nil;
+        }
     }];
     
     /** 注册获取PID事件 */
@@ -242,7 +250,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 
 -(void)rightButtonClick{
-    
+    [_manager callHandler:kTopPreRecommend];
 }
 
 #pragma - mark BMKLocationManagerDelegate
@@ -337,6 +345,66 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
           [self presentViewController:alert animated:true completion:^{
         
           }];
+    }
+}
+
+#pragma leftItemDelegate
+- (void)locationButtonClick{
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.106.138:8088/#/citylist"]]];
+    //http://172.17.106.138:8088/#/citylist
+    //http://t1-static.huaqianwy.com/hqwy/dist/#/home
+    //http://www.baidu.com
+}
+
+#pragma leftItemDelegate
+- (void)webGoBack{
+    if ([self.wkWebView canGoBack]){
+        [self.wkWebView goBack];
+    }
+}
+
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    if (webView == self.wkWebView) {
+        NSURL *URL = navigationAction.request.URL;
+        if (![self externalAppRequiredToOpenURL:URL]) {
+            if (!navigationAction.targetFrame) {
+                [self loadURL:URL];
+                decisionHandler(WKNavigationActionPolicyCancel);
+                return;
+            }
+        } else if ([[UIApplication sharedApplication] canOpenURL:URL]) {
+            if ([self externalAppRequiredToFileURL:URL]) {
+                [self launchExternalAppWithURL:URL];
+                decisionHandler(WKNavigationActionPolicyCancel);
+                return;
+            }
+        }
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
+    return;
+}
+
+- (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL {
+    NSSet *validSchemes = [NSSet setWithArray:@[ @"http", @"https" ]];
+    return ![validSchemes containsObject:URL.scheme];
+}
+
+- (BOOL)externalAppRequiredToFileURL:(NSURL *)URL {
+    NSSet *validSchemes = [NSSet setWithArray:@[ @"file" ]];
+    return ![validSchemes containsObject:URL.scheme];
+}
+
+- (void)launchExternalAppWithURL:(NSURL *)URL {
+    if (@available(iOS 10.0, *)) {
+        [[UIApplication sharedApplication] openURL:URL
+                                           options:@{ UIApplicationOpenURLOptionUniversalLinksOnly : @NO }
+                                 completionHandler:^(BOOL success){
+                                 }];
+    } else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [[UIApplication sharedApplication] openURL:URL];
+#pragma clang diagnostic pop
     }
 }
 

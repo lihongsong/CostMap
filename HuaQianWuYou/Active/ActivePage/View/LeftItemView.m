@@ -104,11 +104,15 @@
 }
 
 - (void)leftButtonClick{
-    
+    if ([self.delegate respondsToSelector:@selector(locationButtonClick)]) {
+        [self.delegate locationButtonClick];
+    }
 }
 
 - (void)backPage{
-    
+    if ([self.delegate respondsToSelector:@selector(webGoBack)]) {
+        [self.delegate webGoBack];
+    }
 }
 
 @end

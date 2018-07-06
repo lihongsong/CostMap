@@ -133,4 +133,9 @@ static NSString * const kAppGetNavigationBarStatus = @"appGetNavigationBarStatus
  */
 static NSString * const kAppGetSelectCity = @"appGetSelectCity";
 
+/*!
+ 调H5精准推荐方法
+ */
+static NSString * const kTopPreRecommend = @"topPreRecommend";
+
 #endif /* HQWYJavaSBridgeHandleMacros_h */

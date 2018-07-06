@@ -17,7 +17,15 @@ typedef NS_ENUM(NSInteger, LeftItemViewType) {
     LeftItemViewTypeNoneNavigation = 400,//无按钮
 };
 
+@protocol LeftItemViewDelegate<NSObject>
+- (void)locationButtonClick;
+- (void)webGoBack;
+@end
+
 @interface LeftItemView : UIView
 @property (strong, nonatomic)LeftItemButton *leftItemButton;
+@property(nonatomic,strong)id<LeftItemViewDelegate>delegate;
+
 - (void)changeType:(NSInteger)type;
+
 @end
