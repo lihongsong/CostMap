@@ -30,11 +30,16 @@
 #define DISCOVER_LIST @"discover/discoverList"
 
 
-
+//修改密码
 #define ChangePassword @"/user/pwdchg"
 
+//发送短信验证码
+#define SMS_SEND @"/sms/verification/send"
 
+//获取图形验证
+#define IMAGE_CODE @"/login/getImageCode"
 
-
+//校验图形验证
+#define ValidateImageCode @"/login/validateImageCode"
 
 #endif /* ApiConfigDefine_h */

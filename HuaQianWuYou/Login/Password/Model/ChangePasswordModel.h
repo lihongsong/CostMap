@@ -10,4 +10,15 @@
 
 @interface ChangePasswordModel : NSObject
 
+/* 手机号 */
+@property (nonatomic, copy) NSString  *mobilePhone;
+
+/* respDateTime */
+@property (nonatomic, copy) NSString  *respDateTime;
+
+/* token */
+@property (nonatomic, copy) NSString  *token;
+
+
+
 @end

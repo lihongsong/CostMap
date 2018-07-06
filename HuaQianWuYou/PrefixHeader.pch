@@ -38,6 +38,8 @@
 #import "HJFoundation.h"
 #import "HJUIKit.h"
 #import "AAGlobalMacro.h"
+#import "LNMBProgressHUD.h"
+
 #import <Masonry/Masonry.h>
 #import <HJJavascriptBridge/HJJSBridgeManager.h>
 #endif
