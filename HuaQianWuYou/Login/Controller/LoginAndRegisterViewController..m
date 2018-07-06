@@ -19,6 +19,7 @@
 @property(nonatomic,strong)UIButton *loginButton;
 @property(nonatomic,strong)NSTimer *timer;
 @property(nonatomic,assign)NSInteger countTime;
+@property(nonatomic,strong)UIButton *closeButton;
 @end
 
 @implementation LoginAndRegisterViewController
@@ -31,7 +32,9 @@
     [self setUpUi];
 }
 - (void)setUpUi{
-    SelectTheLoginModeView *selectHeader = [[SelectTheLoginModeView alloc]initWithFrame:CGRectMake(0, 0,SWidth, 100)];
+    [self.view addSubview:self.closeButton];
+    
+    SelectTheLoginModeView *selectHeader = [[SelectTheLoginModeView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.closeButton.frame),SWidth, 100)];
     selectHeader.delegate = self;
     [self.view addSubview:selectHeader];
     
@@ -100,18 +103,26 @@
     return _loginButton;
 }
 
+- (UIButton *)closeButton{
+    if (!_closeButton) {
+        _closeButton =[UIButton buttonWithType:UIButtonTypeCustom];
+        _closeButton.frame = CGRectMake(0, 20, 50, 40);
+        [_closeButton addTarget:self action:@selector(closeButtonClick) forControlEvents:UIControlEventTouchUpInside];
+        [_closeButton setImage:[UIImage imageNamed:@"navbar_close"] forState:UIControlStateNormal];
+    }
+    return _closeButton;
+}
+
 #pragma mark delegate 验证码登录
 - (void)selectTheLoginModeCode{
     [self.codeInputView.firstTF becomeFirstResponder];
-    self.codeInputView.firstLineView.backgroundColor = [UIColor skinColor];
     self.codeInputView.secondLineView.backgroundColor = [UIColor lightGrayColor];
     self.forgetButton.hidden = true;
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.passwordInputView.eyeButton.hidden = true;
+        [self.codeInputView setType:TextFieldTypeCode];
         self.passwordInputView.transform = CGAffineTransformIdentity;
         self.codeInputView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
-        self.codeInputView.codeButton.hidden = false;
     }];
 }
 
@@ -122,11 +133,10 @@
     self.passwordInputView.firstLineView.backgroundColor = [UIColor skinColor];
     self.passwordInputView.secondLineView.backgroundColor = [UIColor lightGrayColor];
     [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        self.codeInputView.codeButton.hidden = true;
+        [self.passwordInputView setType:TextFieldTypeNoneIsSeePassword];
         self.passwordInputView.transform = CGAffineTransformMakeTranslation(-SWidth, 0);
         self.codeInputView.transform = CGAffineTransformMakeTranslation(-SWidth, 0);
     } completion:^(BOOL finished) {
-        self.passwordInputView.eyeButton.hidden = false;
         self.forgetButton.hidden = false;
     }];
     
@@ -357,19 +367,17 @@
     
 }
 
+#pragma mark 登录取消返回
+- (void)closeButtonClick{
+    [self dismissViewControllerAnimated:true completion:^{
+        
+    }];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 typedef NS_ENUM(NSInteger, TextFieldType) {
     TextFieldTypeCode,//验证码
-    TextFieldTypePassword,//密码
+    TextFieldTypeIsSeePassword,//密码是否可见
     TextFieldTypeForget, //忘记密码
+    TextFieldTypeNoneIsSeePassword,//没有密码是否可见
     TextFieldTypeModify//修改密码
 };
 
