@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <HJJavascriptBridge/HJJSBridgeManager.h>
-
+#import "HQWYJavaScriptResponse.h"
 @interface HQWYJavaScriptBaseHandler : NSObject<HJBridgeProtocol>
 
 @end

@@ -17,24 +17,25 @@ typedef NS_ENUM(NSInteger, AdvertisingType) {
 @interface BasicDataInfo:NSObject<BasicDataProtocol>
 
 NS_ASSUME_NONNULL_BEGIN
-
-/*
- 
- action    支持native的页面标识    string
- imageUrl    图片url    string
- needLogin    是否需要登录    boolean
- openType    打开方式    number
- redirectUrl    重定向url    string
- */
-
 /************************************************************************************
  ************************************************************************************/
-@property(nonatomic,copy)NSString *action;
-@property(nonatomic,copy)NSString *imageUrl;
-@property(nonatomic,assign)BOOL needLogin;
-// 1：app内webview 2：native 3：外部浏览器
-@property(nonatomic,strong)NSNumber *openType;
-@property(nonatomic,copy)NSString *redirectUrl;
+/* type=2 有值 H5跳转页面地址 */
+@property (nonatomic, copy) NSString  *address;
+
+/* 广告图片存储路径 */
+@property (nonatomic, copy) NSString  *imgUrl;
+    
+/* 产品名称 */
+@property (nonatomic, copy) NSString  *description;
+    
+/* 产品id */
+@property (nonatomic, strong) NSNumber  *productId;
+    
+/* 产品分类中的排序 */
+@property (nonatomic, strong) NSNumber   *sort;
+    
+/* 1：请求分类列表 2：请求H5页面 */
+@property (nonatomic, strong) NSNumber   *type;
 
 NS_ASSUME_NONNULL_END
 
@@ -42,7 +43,7 @@ NS_ASSUME_NONNULL_END
 
 NS_ASSUME_NONNULL_BEGIN
 @interface BasicDataModel : NSObject
-@property(nonatomic, strong) NSArray<BasicDataInfo*> *acitveList;
+@property(nonatomic, strong) BasicDataInfo *AdvertisingVO;
 @property(nonatomic,strong)NSNumber *versionStamp;
 
 + (void)cacheToLoacl:(BasicDataModel *)model withType:(AdvertisingType)type;

@@ -10,8 +10,20 @@
 
 @protocol BasicDataProtocol <NSObject>
 @required
-@property(nonatomic,strong)NSNumber *openType;
-@property(nonatomic,copy)NSString *redirectUrl;
-@property(nonatomic,assign)BOOL needLogin;
-@property(nonatomic,copy)NSString *action;
+@property (nonatomic, copy) NSString  *address;
+
+/* 广告图片存储路径 */
+@property (nonatomic, copy) NSString  *imgUrl;
+
+/* 产品名称 */
+@property (nonatomic, copy) NSString  *description;
+
+/* 产品id */
+@property (nonatomic, strong) NSNumber  *productId;
+
+/* 产品分类中的排序 */
+@property (nonatomic, strong) NSNumber   *sort;
+
+/* 1：请求分类列表 2：请求H5页面 */
+@property (nonatomic, strong) NSNumber   *type;
 @end

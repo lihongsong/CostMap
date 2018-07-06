@@ -8,6 +8,16 @@
 
 #import "BasicDataModel.h"
 
+ @implementation BasicDataInfo
+     
+     + (NSDictionary*)modelCustomPropertyMapper {
+         return @{
+                  @"productId": @"id",
+                  };
+     }
+     
+ @end
+
 @implementation BasicDataModel
 
 + (void)cacheToLoacl:(BasicDataModel *)model withType:(AdvertisingType)type{

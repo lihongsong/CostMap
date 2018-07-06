@@ -19,12 +19,19 @@
 #import <BMKLocationkit/BMKLocationComponent.h>
 #import "HQWYJavaScriptGetAjaxHeaderHandler.h"
 
+#import "HQWYJavaScriptOpenNativeHandler.h"
+#import "LeftItemButton.h"
+#import "RightItemButton.h"
+#import "LocationManager.h"
+#import <BMKLocationkit/BMKLocationComponent.h>
+#import "PopViewManager.h"
+#import "DeviceManager.h"
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
-@interface ActiveViewController ()<WKNavigationDelegate,WKUIDelegate,BMKLocationManagerDelegate,LeftItemViewDelegate>
+@interface ActiveViewController ()<WKNavigationDelegate,WKUIDelegate,BMKLocationManagerDelegate,LeftItemViewDelegate,PopViewManagerDelegate>
 @property(nonatomic,strong)BMKLocationManager *locationManager;
 @property(nonatomic,strong)WKWebView *wkWebView;
 /**
@@ -58,6 +65,23 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self initlocationService];
     [HJJSBridgeManager enableLogging];
     [_manager callHandler:kWebViewDidLoad];
+    
+    //发送设备信息采集
+    [DeviceManager sendDeviceinfo];
+}
+
+# pragma mark 弹框和悬浮弹框逻辑
+
+- (void)showPopView{
+    [PopViewManager sharedInstance].delegate = self;
+    [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
+    [PopViewManager showType:AdvertisingTypeSuspensionWindow fromVC:self];
+    
+}
+
+//弹框代理方法
+- (void)didSelectedContentUrl:(NSString *)url popType:(AdvertisingType)type{
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 
 - (void)initNavigation{
@@ -110,10 +134,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
     return _leftItem;
 }
-
--(void)backPage {
-   // [self.navigationController popViewControllerAnimated:YES];
-}
     
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
@@ -138,18 +158,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma mark - Private Method
 
-
 - (void)registerHander {
     WeakObj(self)
     
     /** 注册埋点事件 */
-//        [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//            StrongObj(self)
-//            NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
-//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-//            [self eventId:dic[@"eventId"]];
-//            ResponseCallback([HQWYJavaScriptResponse success]);
-//        }];
+        [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+            StrongObj(self)
+            NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+            [self eventId:dic[@"eventId"]];
+            ResponseCallback([HQWYJavaScriptResponse success]);
+        }];
     
     /** 注册H5获取City事件 */
         [_manager registerHandler:kAppGetCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -164,16 +183,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     /** 导航栏样式事件 */
     [_manager registerHandler:kAppGetNavigationBarStatus handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         NSInteger type = [NSString stringWithFormat:@"%@",data].integerValue;
-        self.wkWebView.frame =CGRectMake(0, 0, SWidth, SHeight); self.navigationController.navigationBar.hidden = false;
-        [self.leftItem changeType:type];
-        if ((type == LeftItemViewTypeLocationAndRecommendation) || (type == LeftItemViewTypeBackAndRecommendation || type == LeftItemViewTypeRecommendation)) {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];;
-        }else if (type == LeftItemViewTypeNoneNavigation){
-           self.wkWebView.frame =CGRectMake(0, -StatusBarHeight - 20, SWidth, SHeight + 20 + StatusBarHeight); self.navigationController.navigationBar.hidden = true;
-            
-        }else{
-            self.navigationItem.rightBarButtonItem = nil;
-        }
+        [self setNavigationStyle:type];
     }];
     
     /** 注册获取PID事件 */
@@ -234,7 +244,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
    // [_manager registerHandler:[JKJavaScriptOpenWebViewHandler new]];
     
     /** 注册打开原生APP页面事件 */
-    //[_manager registerHandler:[JKJavaScriptOpenNativeHandler new]];
+    [_manager registerHandler:[HQWYJavaScriptOpenNativeHandler new]];
     
     /** 注册获取请求头事件 */
     [_manager registerHandler:[HQWYJavaScriptGetAjaxHeaderHandler new]];
@@ -245,6 +255,20 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 /** 给JS发送通用数据 */
 - (void)sendMessageToJS:(id)message {
     [_manager callHandler:kJSReceiveAppData data:[HQWYJavaScriptResponse result:message]];
+}
+
+#pragma mark setNavigationStyle
+- (void)setNavigationStyle:(NSInteger)type{
+    self.wkWebView.frame =CGRectMake(0, 0, SWidth, SHeight); self.navigationController.navigationBar.hidden = false;
+    [self.leftItem changeType:type];
+    if ((type == LeftItemViewTypeLocationAndRecommendation) || (type == LeftItemViewTypeBackAndRecommendation || type == LeftItemViewTypeRecommendation)) {
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];;
+    }else if (type == LeftItemViewTypeNoneNavigation){
+        self.wkWebView.frame =CGRectMake(0, -StatusBarHeight - 20, SWidth, SHeight + 20 + StatusBarHeight); self.navigationController.navigationBar.hidden = true;
+        
+    }else{
+        self.navigationItem.rightBarButtonItem = nil;
+    }
 }
 
 

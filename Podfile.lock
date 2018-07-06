@@ -16,6 +16,10 @@ PODS:
     - AFNetworking/NSURLSession
   - AppUpdate (1.0.9)
   - BMKLocationKit (1.2.0)
+  - Feedback (1.2.1):
+    - Masonry
+    - SDWebImage
+    - UMengUShare/Social/QQ
   - GTMBase64 (1.0.1)
   - HJ_UIKit/HJCarousel (2.1.3):
     - SDWebImage
@@ -45,6 +49,14 @@ PODS:
     - SDWebImage/Core (= 4.4.1)
   - SDWebImage/Core (4.4.1)
   - UMengAnalytics-NO-IDFA (4.2.5)
+  - UMengUShare/Core (6.4.8.2):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.8.2)
+  - UMengUShare/Social/QQ (6.4.8.2):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedQQ (6.4.8.2):
+    - UMengUShare/Core
   - WebViewJavascriptBridge (6.0.3)
   - YYModel (1.0.4)
   - YYText (1.0.4)
@@ -53,6 +65,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AppUpdate
   - BMKLocationKit
+  - Feedback (~> 1.2.1)
   - GTMBase64 (~> 1.0.1)
   - HJ_UIKit/HJCarousel
   - HJ_UIKit/HJGuidePage
@@ -76,6 +89,7 @@ SPEC REPOS:
     - LNNetwork
   http://172.16.0.245:2345/Apple_SDK/iOS_Specs.git:
     - AppUpdate
+    - Feedback
     - RCMobClick
   https://github.com/cocoapods/specs.git:
     - AFNetworking
@@ -86,6 +100,7 @@ SPEC REPOS:
     - objective-zip
     - SDWebImage
     - UMengAnalytics-NO-IDFA
+    - UMengUShare
     - WebViewJavascriptBridge
     - YYModel
     - YYText
@@ -94,6 +109,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppUpdate: 1dca17a2783a99f32d7e184739e8fb16193600e7
   BMKLocationKit: 043a9eaf3767916a692708804324adcfe86e281d
+  Feedback: 2906898da5232308a0ebae3e773505c0784577cd
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
   HJ_UIKit: 1d887bc420ddb1b89fed4f175ac078af0053ea07
   HJCategories: bf9f92ef8ffa78ddf1e3e59a16f50a74a8cec822
@@ -105,10 +121,11 @@ SPEC CHECKSUMS:
   RCMobClick: 05cdb2fc6ebf656ee690eddece9dce3ec75f3c02
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
+  UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: 83a2ce2ac4f80ef8738e83a1888f0f56d78f99f5
+PODFILE CHECKSUM: fec30b6343295f6f5371a3e0b4527f5bf6475fa9
 
 COCOAPODS: 1.5.3

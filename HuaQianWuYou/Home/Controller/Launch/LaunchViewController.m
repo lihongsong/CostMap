@@ -75,7 +75,8 @@
         self.defaultView.hidden = YES;
         if (result) {
             if ([result.exampleCreditScore isEqualToString:@"88"]) {
-                [BasicDataModel requestBasicData:AdvertisingTypeStartPage Completion:^(BasicDataModel * _Nullable dataModel, NSError * _Nullable error) {
+                [BasicDataModel requestBasicData:AdvertisingTypeStartPage productId:nil sort:nil Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
+                    
                 }];
             }
         }

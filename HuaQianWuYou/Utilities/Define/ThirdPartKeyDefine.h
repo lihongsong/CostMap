@@ -30,9 +30,30 @@
 #define MobClick_AppKey   @"8289c4204c5e7cddb30a14a4d2f7c72d"
 #define MobClick_Channel   @"bx-ioshqwy_fr_gyq"
 
+// TalkingData
+#if defined (DEBUG)
+#define TalkingData_AppId       @"4844CC0DF8C842AE9B34EC0EFAC7682D"
+#else
+#define TalkingData_AppId       @"AC95102F0E334875B02D2CDA50822E02"
+#endif
+
+// TalkingDataAppCpa
+#define TalkingDataAppCpa_AppId       @"2FC9A30BE32A429B882B634013718E1B"
+
+
+// 统一渠道号
+#define AppChannel @"jkd-appstorejkj_fr_liuj"
+
+
+
+
 // 友盟
 #define UMen_AppKey  @"5b0688258f4a9d4249000045";
 #define UMen_channelId   @"bx-ioshqwy_fr_gyq";
+
+//意见反馈
+#define MessageBoard_SecretKey @"87b38eba12ff2c9dcd09e8d35ec7b697";
+#define MessageBoard_Id @"30";
 
 //公共强制升级SDK
 #define Update_SDK_AppId @"bd5d7524662dbbaeb0de4621469e18d9"
