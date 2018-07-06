@@ -163,6 +163,8 @@
 		595AE2C720EF37C40031A2F3 /* LNRiskDeviceHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2BF20EF37C30031A2F3 /* LNRiskDeviceHelp.m */; };
 		595AE2C820EF37C40031A2F3 /* LNRiskNetReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2C120EF37C30031A2F3 /* LNRiskNetReachability.m */; };
 		595AE2C920EF37C40031A2F3 /* UIDevice+LNRiksHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2C220EF37C30031A2F3 /* UIDevice+LNRiksHardware.m */; };
+		595AE2CA20EF5D9D0031A2F3 /* HQWYJavaScriptResponse.h in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7F20EA21A7008C98DE /* HQWYJavaScriptResponse.h */; };
+		595AE2CB20EF5D9D0031A2F3 /* HQWYJavaScriptResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E8020EA21A7008C98DE /* HQWYJavaScriptResponse.m */; };
 		595E7DDA20EC68CA001D65B6 /* LoginAndRegisterViewController..m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */; };
 		595E7DDD20EC6B77001D65B6 /* SelectTheLoginModeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */; };
 		595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */; };
@@ -1934,6 +1936,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				595AE2CA20EF5D9D0031A2F3 /* HQWYJavaScriptResponse.h in Sources */,
+				595AE2CB20EF5D9D0031A2F3 /* HQWYJavaScriptResponse.m in Sources */,
 				59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */,
 				A858A81620B2D7B600657C09 /* DES3Util.m in Sources */,
 				59C570CC20E5FADC00D54260 /* BasicConfigModel.m in Sources */,
