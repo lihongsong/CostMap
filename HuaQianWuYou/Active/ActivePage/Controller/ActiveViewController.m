@@ -303,7 +303,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)pushTologin{
     LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
-    [self.navigationController pushViewController:loginVc animated:true];
+    [self presentViewController:loginVc animated:true completion:^{
+        
+    }];
 }
 
 @end

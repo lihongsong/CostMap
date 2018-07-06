@@ -37,6 +37,7 @@
 }
 
 - (void)setType:(TextFieldType)type{
+    self.codeButton.hidden = true;
     switch (type) {
         case TextFieldTypeCode:
             {
@@ -44,14 +45,23 @@
                 self.secondTF.placeholder = @"请填写短信验证码";
                 self.codeButton.hidden = false;
                 self.secondTF.frame = CGRectMake(LeftSpace, 70,CGRectGetMaxX(self.codeButton.frame) - self.codeButton.hj_width - 15 - LeftSpace, 50);
+                self.firstLineView.backgroundColor = [UIColor skinColor];
             }
             break;
-        case TextFieldTypePassword:
+        case TextFieldTypeIsSeePassword:
         {
             self.firstTF.placeholder = @"请填写真实有效手机号";
             self.secondTF.placeholder = @"请填写登录密码";
             self.eyeButton.hidden = false;
             self.secondTF.frame = CGRectMake(LeftSpace, 70,CGRectGetMaxX(self.eyeButton.frame) - self.eyeButton.hj_width - 5 - LeftSpace, 50);
+        }
+            break;
+        case TextFieldTypeNoneIsSeePassword:
+        {
+            self.firstTF.placeholder = @"请填写真实有效手机号";
+            self.secondTF.placeholder = @"请填写登录密码";
+            self.eyeButton.hidden = true;
+            self.firstLineView.backgroundColor = [UIColor skinColor];
         }
             break;
         case TextFieldTypeForget:
