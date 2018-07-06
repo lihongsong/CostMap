@@ -162,13 +162,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     WeakObj(self)
     
     /** 注册埋点事件 */
-//        [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//            StrongObj(self)
-//            NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
-//            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-//            [self eventId:dic[@"eventId"]];
-//            ResponseCallback([HQWYJavaScriptResponse success]);
-//        }];
+        [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+            StrongObj(self)
+            NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+            [self eventId:dic[@"eventId"]];
+            ResponseCallback([HQWYJavaScriptResponse success]);
+        }];
     
     /** 注册H5获取City事件 */
         [_manager registerHandler:kAppGetCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -249,7 +249,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
    // [_manager registerHandler:[JKJavaScriptOpenWebViewHandler new]];
     
     /** 注册打开原生APP页面事件 */
-    //[_manager registerHandler:[JKJavaScriptOpenNativeHandler new]];
+    [_manager registerHandler:[HQWYJavaScriptOpenNativeHandler new]];
     
     /** 注册获取请求头事件 */
     [_manager registerHandler:[HQWYJavaScriptGetAjaxHeaderHandler new]];

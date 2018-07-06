@@ -19,23 +19,19 @@
 
 - (void)didReceiveMessage:(id)message hander:(HJResponseCallback)hander {
     
-//    if (![message isKindOfClass:[NSString class]]) {
-//        !hander?:hander([JKJavaScriptResponse success]);
-//        return ;
-//    }
-//
-//    NSDictionary *dic = [self jsonDicFromString:message];
-//    NSString *pageId = dic[@"pageId"];
-//
-//    if ([pageId integerValue] == 1) {
-//        [self gotoHome];
-//    } else if ([pageId integerValue] == 5) {
-//        [self gotoAuthentication];
-//    } else if ([pageId integerValue] == 2) {
-////        [self gotoLogin];
-//    }
-//
-//    !hander?:hander([JKJavaScriptResponse success]);
+    if (![message isKindOfClass:[NSString class]]) {
+        !hander?:hander([HQWYJavaScriptResponse success]);
+        return ;
+    }
+
+    NSDictionary *dic = [self jsonDicFromString:message];
+    NSString *pageId = dic[@"pageId"];
+
+    if ([pageId integerValue] == 1) {
+        [self feedbackAction];
+    }
+
+    !hander?:hander([HQWYJavaScriptResponse success]);
 }
 
 - (NSDictionary *)jsonDicFromString:(NSString *)string {

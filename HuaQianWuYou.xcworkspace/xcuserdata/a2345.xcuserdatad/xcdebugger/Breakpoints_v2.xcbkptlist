@@ -425,22 +425,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-            timestampString = "552479890.740765"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "-registerHander"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Active/ActivePage/View/LeftItemView.m"
             timestampString = "552479890.7411"
             startingColumnNumber = "9223372036854775807"

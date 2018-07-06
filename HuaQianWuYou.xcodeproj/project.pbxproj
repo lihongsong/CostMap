@@ -164,6 +164,7 @@
 		5958080A20EDC765002A6F0C /* LNRiskNetReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958080820EDC765002A6F0C /* LNRiskNetReachability.m */; };
 		5958080D20EDC84A002A6F0C /* UIDevice+LNRiksHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958080C20EDC84A002A6F0C /* UIDevice+LNRiksHardware.m */; };
 		5958081020EDCA2D002A6F0C /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958080F20EDCA2D002A6F0C /* DeviceManager.m */; };
+		5958083C20EEFCDC002A6F0C /* HQWYJavaScriptResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958083B20EEFCDC002A6F0C /* HQWYJavaScriptResponse.m */; };
 		5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960753D20EB21EC00D7AD1D /* LeftItemButton.m */; };
 		5960756D20EB3C8800D7AD1D /* RightItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960756C20EB3C8800D7AD1D /* RightItemButton.m */; };
 		5960758620EB425900D7AD1D /* ZYZButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960758520EB425900D7AD1D /* ZYZButton.m */; };
@@ -439,6 +440,8 @@
 		5958080C20EDC84A002A6F0C /* UIDevice+LNRiksHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+LNRiksHardware.m"; sourceTree = "<group>"; };
 		5958080E20EDCA2D002A6F0C /* DeviceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
 		5958080F20EDCA2D002A6F0C /* DeviceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
+		5958083A20EEFCDC002A6F0C /* HQWYJavaScriptResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptResponse.h; sourceTree = "<group>"; };
+		5958083B20EEFCDC002A6F0C /* HQWYJavaScriptResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptResponse.m; sourceTree = "<group>"; };
 		5960753C20EB21EC00D7AD1D /* LeftItemButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftItemButton.h; sourceTree = "<group>"; };
 		5960753D20EB21EC00D7AD1D /* LeftItemButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftItemButton.m; sourceTree = "<group>"; };
 		5960756B20EB3C8800D7AD1D /* RightItemButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RightItemButton.h; sourceTree = "<group>"; };
@@ -1136,6 +1139,8 @@
 				59FD9E7A20EA1E8C008C98DE /* Macros */,
 				597C73BD20E9BD070090960B /* FeedBack */,
 				597C73BB20E9BC180090960B /* ActivePage */,
+				5958083A20EEFCDC002A6F0C /* HQWYJavaScriptResponse.h */,
+				5958083B20EEFCDC002A6F0C /* HQWYJavaScriptResponse.m */,
 			);
 			path = Active;
 			sourceTree = "<group>";
@@ -1934,6 +1939,7 @@
 				59BE198320EC9DA300704B2C /* PopView.m in Sources */,
 				A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */,
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
+				5958083C20EEFCDC002A6F0C /* HQWYJavaScriptResponse.m in Sources */,
 				5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */,
 				59C5714120E600D100D54260 /* ZYZControl.m in Sources */,
 				5958080A20EDC765002A6F0C /* LNRiskNetReachability.m in Sources */,
