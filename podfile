@@ -28,6 +28,8 @@ target 'HuaQianWuYou' do
     pod 'HJJavascriptBridge', '~> 0.3.2'
     #pod 'LNRiskManage'
     pod 'RCMobClick', '~>2.0.9'
+    pod 'Feedback', '~> 1.2.1'
+
 end
 
 target 'HuaQianWuYouTests' do

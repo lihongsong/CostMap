@@ -257,7 +257,6 @@
 		59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5715A20E61DFD00D54260 /* ActiveViewController.m */; };
 		59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */; };
 		59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */; };
-		59FD9E8120EA21A7008C98DE /* HQWYJavaScriptResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E8020EA21A7008C98DE /* HQWYJavaScriptResponse.m */; };
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
 		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
 		A858A81620B2D7B600657C09 /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A858A81520B2D7B600657C09 /* DES3Util.m */; };
@@ -1999,7 +1998,6 @@
 				59BE198620EC9DD600704B2C /* SuspendView.m in Sources */,
 				591D960720ABDE6E00193B09 /* AAOptions3d.m in Sources */,
 				591D963120ABDE6E00193B09 /* AAOptions.m in Sources */,
-				59FD9E8120EA21A7008C98DE /* HQWYJavaScriptResponse.m in Sources */,
 				591D95E320ABDE6E00193B09 /* AALabels.m in Sources */,
 				A8F8DFB020B3AB3300DB9A6A /* MineFooterView.m in Sources */,
 				591D961920ABDE6E00193B09 /* AALegend.m in Sources */,
