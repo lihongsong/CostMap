@@ -19,7 +19,7 @@
 + (UIColor *) bigTitleBlackColor;
 + (UIColor *) titleBlackColor;//
 + (UIColor *) stateLittleGrayColor;//
-+ (UIColor *) stateGrayColor;
++ (UIColor *) stateGrayColor;//99999
 + (UIColor *) homeBGColor;//
 + (UIColor *) backgroundGrayColor;//
 

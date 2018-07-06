@@ -18,7 +18,6 @@
 #import "LocationManager.h"
 #import <BMKLocationkit/BMKLocationComponent.h>
 #import "HQWYJavaScriptGetAjaxHeaderHandler.h"
-
 #import "HQWYJavaScriptOpenNativeHandler.h"
 #import "LeftItemButton.h"
 #import "RightItemButton.h"
@@ -26,6 +25,7 @@
 #import <BMKLocationkit/BMKLocationComponent.h>
 #import "PopViewManager.h"
 #import "DeviceManager.h"
+#import "LoginAndRegisterViewController.h"
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
@@ -430,6 +430,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         [[UIApplication sharedApplication] openURL:URL];
 #pragma clang diagnostic pop
     }
+}
+
+    
+- (void)jumpToLogin{
+    LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
+    [self.navigationController pushViewController:loginVc animated:true];
 }
 
 @end

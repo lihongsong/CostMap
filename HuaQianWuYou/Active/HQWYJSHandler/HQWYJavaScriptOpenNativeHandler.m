@@ -8,7 +8,7 @@
 
 #import "HQWYJavaScriptOpenNativeHandler.h"
 #import "HQWYJavaSBridgeHandleMacros.h"
-
+#import "LoginAndRegisterViewController.h"
 #import "FBManager.h"
 
 @implementation HQWYJavaScriptOpenNativeHandler
@@ -28,7 +28,7 @@
     NSString *pageId = dic[@"pageId"];
 
     if ([pageId integerValue] == 2) {
-        
+        [self junpToSignIn];
     }else if([pageId integerValue] == 3){
         
     }else if([pageId integerValue] == 4){
@@ -58,6 +58,19 @@
     [FBManager showFBViewController:rootVC];
 }
 
+#pragma mark 跳登录
+
+- (void)junpToSignIn{
+    
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
+    loginVc.navigationController.navigationBar.hidden = true;
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVc];
+    [rootVC presentViewController:nav animated:true completion:^{
+        
+    }];
+       // [rootVC presentViewController:nav animated:true completion:nil];
+}
 
 
 @end

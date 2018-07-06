@@ -159,11 +159,13 @@
 		59575507209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
 		59575508209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
 		59575509209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
-		5958080320EDA99C002A6F0C /* RiskConfig.json in Resources */ = {isa = PBXBuildFile; fileRef = 5958080220EDA99C002A6F0C /* RiskConfig.json */; };
-		5958080720EDC4CB002A6F0C /* LNRiskDeviceHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958080620EDC4CB002A6F0C /* LNRiskDeviceHelp.m */; };
-		5958080A20EDC765002A6F0C /* LNRiskNetReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958080820EDC765002A6F0C /* LNRiskNetReachability.m */; };
-		5958080D20EDC84A002A6F0C /* UIDevice+LNRiksHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958080C20EDC84A002A6F0C /* UIDevice+LNRiksHardware.m */; };
-		5958081020EDCA2D002A6F0C /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958080F20EDCA2D002A6F0C /* DeviceManager.m */; };
+		595AE2C620EF37C40031A2F3 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2BE20EF37C30031A2F3 /* DeviceManager.m */; };
+		595AE2C720EF37C40031A2F3 /* LNRiskDeviceHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2BF20EF37C30031A2F3 /* LNRiskDeviceHelp.m */; };
+		595AE2C820EF37C40031A2F3 /* LNRiskNetReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2C120EF37C30031A2F3 /* LNRiskNetReachability.m */; };
+		595AE2C920EF37C40031A2F3 /* UIDevice+LNRiksHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2C220EF37C30031A2F3 /* UIDevice+LNRiksHardware.m */; };
+		595E7DDA20EC68CA001D65B6 /* LoginAndRegisterViewController..m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */; };
+		595E7DDD20EC6B77001D65B6 /* SelectTheLoginModeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */; };
+		595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */; };
 		5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960753D20EB21EC00D7AD1D /* LeftItemButton.m */; };
 		5960756D20EB3C8800D7AD1D /* RightItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960756C20EB3C8800D7AD1D /* RightItemButton.m */; };
 		5960758620EB425900D7AD1D /* ZYZButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 5960758520EB425900D7AD1D /* ZYZButton.m */; };
@@ -430,15 +432,20 @@
 		595754C2209B191D00F602EB /* BaseNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		595754C3209B191D00F602EB /* BaseNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		59575506209B33DE00F602EB /* ColorFont.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ColorFont.plist; sourceTree = "<group>"; };
-		5958080220EDA99C002A6F0C /* RiskConfig.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = RiskConfig.json; sourceTree = "<group>"; };
-		5958080520EDC4CB002A6F0C /* LNRiskDeviceHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNRiskDeviceHelp.h; sourceTree = "<group>"; };
-		5958080620EDC4CB002A6F0C /* LNRiskDeviceHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNRiskDeviceHelp.m; sourceTree = "<group>"; };
-		5958080820EDC765002A6F0C /* LNRiskNetReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNRiskNetReachability.m; sourceTree = "<group>"; };
-		5958080920EDC765002A6F0C /* LNRiskNetReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNRiskNetReachability.h; sourceTree = "<group>"; };
-		5958080B20EDC84A002A6F0C /* UIDevice+LNRiksHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+LNRiksHardware.h"; sourceTree = "<group>"; };
-		5958080C20EDC84A002A6F0C /* UIDevice+LNRiksHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+LNRiksHardware.m"; sourceTree = "<group>"; };
-		5958080E20EDCA2D002A6F0C /* DeviceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
-		5958080F20EDCA2D002A6F0C /* DeviceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
+		595AE2BE20EF37C30031A2F3 /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
+		595AE2BF20EF37C30031A2F3 /* LNRiskDeviceHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNRiskDeviceHelp.m; sourceTree = "<group>"; };
+		595AE2C020EF37C30031A2F3 /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
+		595AE2C120EF37C30031A2F3 /* LNRiskNetReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNRiskNetReachability.m; sourceTree = "<group>"; };
+		595AE2C220EF37C30031A2F3 /* UIDevice+LNRiksHardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+LNRiksHardware.m"; sourceTree = "<group>"; };
+		595AE2C320EF37C30031A2F3 /* LNRiskNetReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNRiskNetReachability.h; sourceTree = "<group>"; };
+		595AE2C420EF37C40031A2F3 /* LNRiskDeviceHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNRiskDeviceHelp.h; sourceTree = "<group>"; };
+		595AE2C520EF37C40031A2F3 /* UIDevice+LNRiksHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+LNRiksHardware.h"; sourceTree = "<group>"; };
+		595E7DD820EC68CA001D65B6 /* LoginAndRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginAndRegisterViewController.h; sourceTree = "<group>"; };
+		595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginAndRegisterViewController..m; sourceTree = "<group>"; };
+		595E7DDB20EC6B77001D65B6 /* SelectTheLoginModeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTheLoginModeView.h; sourceTree = "<group>"; };
+		595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectTheLoginModeView.m; sourceTree = "<group>"; };
+		595E7DDE20EC90E2001D65B6 /* TwoTextFieldView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TwoTextFieldView.h; sourceTree = "<group>"; };
+		595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TwoTextFieldView.m; sourceTree = "<group>"; };
 		5960753C20EB21EC00D7AD1D /* LeftItemButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftItemButton.h; sourceTree = "<group>"; };
 		5960753D20EB21EC00D7AD1D /* LeftItemButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftItemButton.m; sourceTree = "<group>"; };
 		5960756B20EB3C8800D7AD1D /* RightItemButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RightItemButton.h; sourceTree = "<group>"; };
@@ -1044,7 +1051,6 @@
 		5958080120EDA988002A6F0C /* RiskDefaultConfig */ = {
 			isa = PBXGroup;
 			children = (
-				5958080220EDA99C002A6F0C /* RiskConfig.json */,
 			);
 			path = RiskDefaultConfig;
 			sourceTree = "<group>";
@@ -1052,16 +1058,16 @@
 		5958080420EDC4A9002A6F0C /* DeviceManager */ = {
 			isa = PBXGroup;
 			children = (
-				5958080B20EDC84A002A6F0C /* UIDevice+LNRiksHardware.h */,
-				5958080C20EDC84A002A6F0C /* UIDevice+LNRiksHardware.m */,
-				5958080920EDC765002A6F0C /* LNRiskNetReachability.h */,
-				5958080820EDC765002A6F0C /* LNRiskNetReachability.m */,
-				5958080520EDC4CB002A6F0C /* LNRiskDeviceHelp.h */,
-				5958080620EDC4CB002A6F0C /* LNRiskDeviceHelp.m */,
+				595AE2C020EF37C30031A2F3 /* DeviceManager.h */,
+				595AE2BE20EF37C30031A2F3 /* DeviceManager.m */,
+				595AE2C420EF37C40031A2F3 /* LNRiskDeviceHelp.h */,
+				595AE2BF20EF37C30031A2F3 /* LNRiskDeviceHelp.m */,
+				595AE2C320EF37C30031A2F3 /* LNRiskNetReachability.h */,
+				595AE2C120EF37C30031A2F3 /* LNRiskNetReachability.m */,
+				595AE2C520EF37C40031A2F3 /* UIDevice+LNRiksHardware.h */,
+				595AE2C220EF37C30031A2F3 /* UIDevice+LNRiksHardware.m */,
 				59C5710D20E5FF7400D54260 /* DeviceHelp.h */,
 				59C5711320E5FF7700D54260 /* DeviceHelp.m */,
-				5958080E20EDCA2D002A6F0C /* DeviceManager.h */,
-				5958080F20EDCA2D002A6F0C /* DeviceManager.m */,
 			);
 			path = DeviceManager;
 			sourceTree = "<group>";
@@ -1079,6 +1085,8 @@
 		595E7DD420EC622E001D65B6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				595E7DD820EC68CA001D65B6 /* LoginAndRegisterViewController.h */,
+				595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1093,6 +1101,10 @@
 		595E7DD720EC6242001D65B6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				595E7DDB20EC6B77001D65B6 /* SelectTheLoginModeView.h */,
+				595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */,
+				595E7DDE20EC90E2001D65B6 /* TwoTextFieldView.h */,
+				595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1760,7 +1772,6 @@
 				A8F8DFB320B3AB3300DB9A6A /* AgreementViewController.xib in Resources */,
 				591D95D420ABDE6E00193B09 /* AAHighchartsMore.js in Resources */,
 				59575507209B33DE00F602EB /* ColorFont.plist in Resources */,
-				5958080320EDA99C002A6F0C /* RiskConfig.json in Resources */,
 				591D95DD20ABDE6E00193B09 /* AAChartView.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1924,19 +1935,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5958080720EDC4CB002A6F0C /* LNRiskDeviceHelp.m in Sources */,
 				59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */,
 				A858A81620B2D7B600657C09 /* DES3Util.m in Sources */,
 				59C570CC20E5FADC00D54260 /* BasicConfigModel.m in Sources */,
 				591D961C20ABDE6E00193B09 /* AAMarker.m in Sources */,
 				59C570AC20E5F9C100D54260 /* CInvestigationThreeViewController.m in Sources */,
+				595E7DDD20EC6B77001D65B6 /* SelectTheLoginModeView.m in Sources */,
 				59C570FC20E5FB8200D54260 /* NameHeaderView.m in Sources */,
 				59BE198320EC9DA300704B2C /* PopView.m in Sources */,
 				A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */,
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
 				5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */,
 				59C5714120E600D100D54260 /* ZYZControl.m in Sources */,
-				5958080A20EDC765002A6F0C /* LNRiskNetReachability.m in Sources */,
 				597C73D020EA17520090960B /* HQWYUserStatusManager.m in Sources */,
 				A8F8DFB220B3AB3300DB9A6A /* AgreementViewController.m in Sources */,
 				59C570CD20E5FADC00D54260 /* CreditInvestigationSMSModel+Service.m in Sources */,
@@ -1963,10 +1973,13 @@
 				592FE23620EA29A80052E60E /* FBManager.m in Sources */,
 				596B0E2320B4360A00B5A06B /* ResetPasswordModel.m in Sources */,
 				A8F8DFDC20B3F06900DB9A6A /* DiscoverDetailModel.m in Sources */,
+				595AE2C920EF37C40031A2F3 /* UIDevice+LNRiksHardware.m in Sources */,
 				A8F8DFFA20B4F31200DB9A6A /* FeedbackModel+Service.m in Sources */,
 				A8F8DFD020B3AB5300DB9A6A /* DiscoverTopBannerCell.m in Sources */,
 				59C5713F20E600D100D54260 /* NSObject+RequestConfig.m in Sources */,
+				595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */,
 				59C570A920E5F9C100D54260 /* CInvestigationTwoViewController.m in Sources */,
+				595AE2C720EF37C40031A2F3 /* LNRiskDeviceHelp.m in Sources */,
 				A8F8DFB520B3AB3300DB9A6A /* RegisterOrForgetPwdVC.m in Sources */,
 				591D962820ABDE6E00193B09 /* AAChart.m in Sources */,
 				591D960120ABDE6E00193B09 /* AAColumn.m in Sources */,
@@ -1985,7 +1998,6 @@
 				591D962B20ABDE6E00193B09 /* AAChartView.m in Sources */,
 				59C570AD20E5F9C100D54260 /* CInvestigationFourViewController.m in Sources */,
 				59C5710520E5FB8200D54260 /* LoamLendRecordCell.m in Sources */,
-				5958080D20EDC84A002A6F0C /* UIDevice+LNRiksHardware.m in Sources */,
 				595754C4209B191D00F602EB /* BaseNavigationController.m in Sources */,
 				A8F8E00B20B50A6100DB9A6A /* DefaultView.m in Sources */,
 				591D960D20ABDE6E00193B09 /* AABar.m in Sources */,
@@ -2008,7 +2020,6 @@
 				A8F8DFEE20B4384D00DB9A6A /* ResetPasswordModel+Service.m in Sources */,
 				591D95E620ABDE6E00193B09 /* AASeries.m in Sources */,
 				591D960420ABDE6E00193B09 /* AAPlotLinesElement.m in Sources */,
-				5958081020EDCA2D002A6F0C /* DeviceManager.m in Sources */,
 				59C570B120E5F9C100D54260 /* HomeViewController.m in Sources */,
 				59037711209C0387004CEBD8 /* BaseModel.m in Sources */,
 				59C5710220E5FB8200D54260 /* CircleIndicatorView.m in Sources */,
@@ -2049,9 +2060,11 @@
 				A8F8DFCD20B3AB5300DB9A6A /* DiscoverViewController.m in Sources */,
 				A8F8DFAF20B3AB3300DB9A6A /* MineTopHeaderView.m in Sources */,
 				59C570D020E5FADC00D54260 /* HomeDataModel+Service.m in Sources */,
+				595AE2C620EF37C40031A2F3 /* DeviceManager.m in Sources */,
 				59C5711620E5FF7700D54260 /* DeviceTypes.m in Sources */,
 				5903770B209C00E5004CEBD8 /* GetImagePath.m in Sources */,
 				A8F8DFB420B3AB3300DB9A6A /* LoginViewController.m in Sources */,
+				595E7DDA20EC68CA001D65B6 /* LoginAndRegisterViewController..m in Sources */,
 				59C5713A20E600D100D54260 /* UIColor+AddColor.m in Sources */,
 				59C5710A20E5FB8200D54260 /* AreaSplineChartView.m in Sources */,
 				59C570FE20E5FB8200D54260 /* CircleProgressView.m in Sources */,
@@ -2068,6 +2081,7 @@
 				59C5710920E5FB8200D54260 /* AreaSplineCompareView.m in Sources */,
 				59C570FF20E5FB8200D54260 /* Circle.m in Sources */,
 				59C570AE20E5F9C100D54260 /* CInvestigationProgressViewController.m in Sources */,
+				595AE2C820EF37C40031A2F3 /* LNRiskNetReachability.m in Sources */,
 				5960759F20EB55D400D7AD1D /* LocationManager.m in Sources */,
 				A8F8DFCC20B3AB5300DB9A6A /* DiscoverDetailViewController.m in Sources */,
 				A8F8DFAC20B3AB3300DB9A6A /* LoginHeaderView.m in Sources */,

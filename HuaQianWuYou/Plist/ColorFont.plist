@@ -70,6 +70,12 @@
 			<key>Color</key>
 			<string>f2f2f2</string>
 		</dict>
+		<dict>
+			<key>主题文字灰色</key>
+			<string>grayColor</string>
+			<key>Color</key>
+			<string>333333</string>
+		</dict>
 	</array>
 	<key>FontName</key>
 	<array>

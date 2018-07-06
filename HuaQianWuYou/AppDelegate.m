@@ -66,7 +66,6 @@
             [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
             [self checkUpdate];
         }else{
-            
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
             [self checkUpdate];
         }
