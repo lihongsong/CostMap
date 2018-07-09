@@ -11,7 +11,7 @@
 #import "RegisterOrForgetPwdVC.h"
 #import "LoginInfoModel.h"
 #import "LoginInfoModel+Service.h"
-
+#import "AuthPhoneNumViewController.h"
 @interface LoginViewController ()<UITextFieldDelegate>
 @property(nonatomic,strong)LoginHeaderView *header;
 @property(nonatomic,strong)UITextField *accountTF;
@@ -167,9 +167,10 @@
 
 #pragma mark 忘记密码
 - (void)forgetButtonClick{
-    RegisterOrForgetPwdVC *forgetVC = [[RegisterOrForgetPwdVC alloc] init];
-    forgetVC.isRegister = false;
-    [self.navigationController pushViewController:forgetVC animated:true];
+//    RegisterOrForgetPwdVC *forgetVC = [[RegisterOrForgetPwdVC alloc] init];
+//    forgetVC.isRegister = false;
+    AuthPhoneNumViewController *authPhoneVC = [AuthPhoneNumViewController new];
+    [self.navigationController pushViewController:authPhoneVC animated:true];
 }
 
 #pragma mark 立即注册
