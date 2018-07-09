@@ -39,8 +39,8 @@
     [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:AppChannel];
     [self setUpSDKs];
     //友盟  老的58fec71d677baa3921000b81
-    UMConfigInstance.appKey = UMen_AppKey;
-    UMConfigInstance.channelId = UMen_channelId;
+   // UMConfigInstance.appKey = UMen_AppKey;
+   // UMConfigInstance.channelId = UMen_channelId;
     NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:appVersion];
     [MobClick startWithConfigure:UMConfigInstance];

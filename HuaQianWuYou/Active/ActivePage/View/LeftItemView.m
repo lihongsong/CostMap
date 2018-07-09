@@ -26,6 +26,7 @@
         case LeftItemViewTypeLocationAndRecommendation:
             {
                 self.leftItemButton.hidden = false;
+                
                 self.arrowImage.hidden = false;
                 self.backButton.hidden = true;
             }
@@ -89,7 +90,7 @@
      
  }
 
--(UIButton *)leftItemButton
+-(LeftItemButton *)leftItemButton
 {
     if (_leftItemButton == nil) {
         _leftItemButton = [LeftItemButton buttonWithType:UIButtonTypeCustom];

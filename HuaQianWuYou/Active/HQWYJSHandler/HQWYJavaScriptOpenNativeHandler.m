@@ -28,7 +28,9 @@
     NSString *pageId = dic[@"pageId"];
 
     if ([pageId integerValue] == 2) {
-        [self junpToSignIn];
+        if ([self.delegate respondsToSelector:@selector(presentNative)]) {
+            [self.delegate presentNative];
+        }
     }else if([pageId integerValue] == 3){
         
     }else if([pageId integerValue] == 4){
@@ -66,7 +68,7 @@
     LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
     loginVc.navigationController.navigationBar.hidden = true;
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVc];
-    [rootVC presentViewController:nav animated:true completion:^{
+    [rootVC presentViewController:loginVc animated:true completion:^{
         
     }];
        // [rootVC presentViewController:nav animated:true completion:nil];

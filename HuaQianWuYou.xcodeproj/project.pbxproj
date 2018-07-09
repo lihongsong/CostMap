@@ -165,6 +165,7 @@
 		595AE2C920EF37C40031A2F3 /* UIDevice+LNRiksHardware.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2C220EF37C30031A2F3 /* UIDevice+LNRiksHardware.m */; };
 		595AE2CA20EF5D9D0031A2F3 /* HQWYJavaScriptResponse.h in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7F20EA21A7008C98DE /* HQWYJavaScriptResponse.h */; };
 		595AE2CB20EF5D9D0031A2F3 /* HQWYJavaScriptResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E8020EA21A7008C98DE /* HQWYJavaScriptResponse.m */; };
+		595AE2CE20EF78610031A2F3 /* NavigationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2CD20EF78610031A2F3 /* NavigationView.m */; };
 		595E7DDA20EC68CA001D65B6 /* LoginAndRegisterViewController..m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */; };
 		595E7DDD20EC6B77001D65B6 /* SelectTheLoginModeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */; };
 		595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */ = {isa = PBXBuildFile; fileRef = 595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */; };
@@ -441,6 +442,8 @@
 		595AE2C320EF37C30031A2F3 /* LNRiskNetReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNRiskNetReachability.h; sourceTree = "<group>"; };
 		595AE2C420EF37C40031A2F3 /* LNRiskDeviceHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNRiskDeviceHelp.h; sourceTree = "<group>"; };
 		595AE2C520EF37C40031A2F3 /* UIDevice+LNRiksHardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+LNRiksHardware.h"; sourceTree = "<group>"; };
+		595AE2CC20EF78610031A2F3 /* NavigationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationView.h; sourceTree = "<group>"; };
+		595AE2CD20EF78610031A2F3 /* NavigationView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationView.m; sourceTree = "<group>"; };
 		595E7DD820EC68CA001D65B6 /* LoginAndRegisterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginAndRegisterViewController.h; sourceTree = "<group>"; };
 		595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginAndRegisterViewController..m; sourceTree = "<group>"; };
 		595E7DDB20EC6B77001D65B6 /* SelectTheLoginModeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectTheLoginModeView.h; sourceTree = "<group>"; };
@@ -1180,6 +1183,8 @@
 			children = (
 				59435A7F20EE0A20007D9A4D /* LeftItemView.h */,
 				59435A8020EE0A20007D9A4D /* LeftItemView.m */,
+				595AE2CC20EF78610031A2F3 /* NavigationView.h */,
+				595AE2CD20EF78610031A2F3 /* NavigationView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1972,6 +1977,7 @@
 				59C5710B20E5FB8200D54260 /* BaseChartView.m in Sources */,
 				591D961F20ABDE6E00193B09 /* AASpline.m in Sources */,
 				A8F8DFD620B3B90200DB9A6A /* LoginInfoModel.m in Sources */,
+				595AE2CE20EF78610031A2F3 /* NavigationView.m in Sources */,
 				59C570CE20E5FADC00D54260 /* CInvestigationModel+Service.m in Sources */,
 				592FE23620EA29A80052E60E /* FBManager.m in Sources */,
 				596B0E2320B4360A00B5A06B /* ResetPasswordModel.m in Sources */,

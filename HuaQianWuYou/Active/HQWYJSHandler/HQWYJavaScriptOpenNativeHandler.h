@@ -8,6 +8,10 @@
 
 #import "HQWYJavaScriptBaseHandler.h"
 
-@interface HQWYJavaScriptOpenNativeHandler : HQWYJavaScriptBaseHandler
+@protocol HQWYJavaScriptOpenNativeHandlerDelegate<NSObject>
+- (void)presentNative;
+@end
 
+@interface HQWYJavaScriptOpenNativeHandler : HQWYJavaScriptBaseHandler
+@property(nonatomic,strong)id<HQWYJavaScriptOpenNativeHandlerDelegate>delegate;
 @end

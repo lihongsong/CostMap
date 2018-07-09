@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "LeftItemButton.h"
+
 typedef NS_ENUM(NSInteger, LeftItemViewType) {
     LeftItemViewTypeLocationAndRecommendation = 100, //定位左 精准推荐右
     LeftItemViewTypeBack = 101,//返回按钮左，右无

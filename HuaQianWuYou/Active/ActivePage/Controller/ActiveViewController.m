@@ -13,14 +13,11 @@
 #import "HQWYJavaScriptResponse.h"
 #import <RCMobClick/RCBaseCommon.h>
 #import <HJJavascriptBridge/HJJSBridgeManager.h>
-#import "LeftItemView.h"
-#import "RightItemButton.h"
+#import "NavigationView.h"
 #import "LocationManager.h"
 #import <BMKLocationkit/BMKLocationComponent.h>
 #import "HQWYJavaScriptGetAjaxHeaderHandler.h"
 #import "HQWYJavaScriptOpenNativeHandler.h"
-#import "LeftItemButton.h"
-#import "RightItemButton.h"
 #import "LocationManager.h"
 #import <BMKLocationkit/BMKLocationComponent.h>
 #import "PopViewManager.h"
@@ -31,16 +28,17 @@
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
-@interface ActiveViewController ()<WKNavigationDelegate,WKUIDelegate,BMKLocationManagerDelegate,LeftItemViewDelegate,PopViewManagerDelegate>
+@interface ActiveViewController ()<WKNavigationDelegate,WKUIDelegate,BMKLocationManagerDelegate,NavigationViewDelegate,PopViewManagerDelegate,HQWYJavaScriptOpenNativeHandlerDelegate>
 @property(nonatomic,strong)BMKLocationManager *locationManager;
-@property(nonatomic,strong)WKWebView *wkWebView;
 /**
  桥接管理器
  */
 @property (strong, nonatomic) HJJSBridgeManager *manager;
 
-@property (strong, nonatomic) RightItemButton *rightItemButton;
-@property(strong,nonatomic)LeftItemView *leftItem;
+
+@property(strong,nonatomic)NavigationView *navigationView;
+
+@property(strong,nonatomic)NSDictionary *getH5Dic;// 获取H5返回导航栏样式，点击回调H5
 
 @end
 
@@ -50,8 +48,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectMake(0, 0, SWidth, SHeight)];
+    self.navigationController.navigationBar.hidden = true;
+    self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.16.79:8088/#/home"]]];
     //http://172.17.16.79:8088/#/home
     //http://172.17.106.138:8088/#/citylist
@@ -85,8 +83,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)initNavigation{
-    self.leftItem.delegate = self; self.navigationItem.leftBarButtonItem =[[UIBarButtonItem alloc] initWithCustomView:self.leftItem];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];
+    self.navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,20, SWidth, NavigationHeight - 20)];
+    [self.view addSubview:self.navigationView];
 }
 
 -(void)initlocationService{
@@ -112,29 +110,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self initNavigation];
 }
 
--(RightItemButton *)rightItemButton
-{
-    if (_rightItemButton == nil) {
-        _rightItemButton = [RightItemButton buttonWithType:UIButtonTypeCustom];
-        _rightItemButton.frame = CGRectMake(0, 0, 70, 40);
-        [_rightItemButton addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        [_rightItemButton setImage:[UIImage imageNamed:@"navbar_accurate"] forState:UIControlStateNormal];
-        [_rightItemButton setTitle:@"精准推荐" forState:UIControlStateNormal];
-        [_rightItemButton setTitleColor:[UIColor hj_colorWithHexString:@"#333333"] forState:UIControlStateNormal];
-        _rightItemButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
-    }
-    return _rightItemButton;
-}
-
--(LeftItemView *)leftItem
-{
-    if (_leftItem == nil) {
-        _leftItem = [[LeftItemView alloc] initWithFrame:CGRectMake(0, 0, 80, 40)];
-        [_leftItem changeType:LeftItemViewTypeLocationAndRecommendation];
-    }
-    return _leftItem;
-}
-    
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [_manager callHandler:kWebViewDidAppear];
@@ -170,20 +145,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             ResponseCallback([HQWYJavaScriptResponse success]);
         }];
     
-    /** 注册H5获取City事件 */
-        [_manager registerHandler:kAppGetCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-            ResponseCallback([HQWYJavaScriptResponse result:self.leftItem.leftItemButton.titleLabel.text]);
-        }];
-    
     /** 注册Native获取City事件 */
     [_manager registerHandler:kAppGetSelectCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        [self.leftItem.leftItemButton setTitle:[NSString stringWithFormat:@"%@",data] forState:UIControlStateNormal];
+        //[self.leftItem.leftItemButton setTitle:[NSString stringWithFormat:@"%@",data] forState:UIControlStateNormal];
     }];
     
     /** 导航栏样式事件 */
     [_manager registerHandler:kAppGetNavigationBarStatus handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        NSInteger type = [NSString stringWithFormat:@"%@",data].integerValue;
-        [self setNavigationStyle:type];
+        self.getH5Dic = [[self jsonDicFromString:data] objectForKey:@"nav"];
+        [self setNavigationStyle:self.getH5Dic];
     }];
     
     /** 注册获取PID事件 */
@@ -244,9 +214,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
    // [_manager registerHandler:[JKJavaScriptOpenWebViewHandler new]];
     
     /** 注册打开原生APP页面事件 */
-    [_manager registerHandler:[HQWYJavaScriptOpenNativeHandler new]];
+    HQWYJavaScriptOpenNativeHandler *handler = [HQWYJavaScriptOpenNativeHandler new];
+    handler.delegate = self;
+    [_manager registerHandler:handler];
     
     /** 注册获取请求头事件 */
+    
     [_manager registerHandler:[HQWYJavaScriptGetAjaxHeaderHandler new]];
 }
 
@@ -258,23 +231,28 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 #pragma mark setNavigationStyle
-- (void)setNavigationStyle:(NSInteger)type{
-    self.wkWebView.frame =CGRectMake(0, 0, SWidth, SHeight); self.navigationController.navigationBar.hidden = false;
-    [self.leftItem changeType:type];
-    if ((type == LeftItemViewTypeLocationAndRecommendation) || (type == LeftItemViewTypeBackAndRecommendation || type == LeftItemViewTypeRecommendation)) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.rightItemButton];;
-    }else if (type == LeftItemViewTypeNoneNavigation){
-        self.wkWebView.frame =CGRectMake(0, -StatusBarHeight - 20, SWidth, SHeight + 20 + StatusBarHeight); self.navigationController.navigationBar.hidden = true;
-        
+- (void)setNavigationStyle:(NSDictionary *)typeDic{
+    if (typeDic != nil && [[typeDic objectForKey:@"hide"] integerValue]) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.navigationView.hidden = true;
+            self.wkWebView.frame = CGRectMake(0,-20, SWidth, SHeight + TabBarHeight - 49 + 20);
+        }];
+        [self.view layoutIfNeeded];
     }else{
-        self.navigationItem.rightBarButtonItem = nil;
+        [UIView animateWithDuration:0.1 animations:^{
+             self.navigationView.hidden = false;
+            self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
+        }];
+        [self.navigationView changeNavigationType:typeDic];
     }
 }
 
 
 
--(void)rightButtonClick{
-    [_manager callHandler:kTopPreRecommend];
+-(void)rightButtonItemClick{
+    if (StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
+        [_manager callHandler:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"]];
+    }
 }
 
 #pragma - mark BMKLocationManagerDelegate
@@ -291,7 +269,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     {
         NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
         //self.leftItemButton.locationButton.text = @"定位失败";
-        [self.leftItem.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+        [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
     } if (location) {//得到定位信息，添加annotation
         if (location.location) {
             NSLog(@"LOC = %@",location.location);
@@ -299,7 +277,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         if (location.rgcData) {
             NSLog(@"rgc = %@",[location.rgcData description]);
             //self.leftItemButton.locationButton.text = location.rgcData.city;
-             [self.leftItem.leftItemButton setTitle:location.rgcData.city forState:UIControlStateNormal];
+             [self.navigationView.leftItemButton setTitle:location.rgcData.city forState:UIControlStateNormal];
         }
     }
 }
@@ -339,7 +317,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nullable)error{
     NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
     //self.leftItemButton.locationButton.text = @"定位失败";
-    [self.leftItem.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+    [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
 }
 
 /**
@@ -374,10 +352,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma leftItemDelegate
 - (void)locationButtonClick{
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.106.138:8088/#/citylist"]]];
-    //http://172.17.106.138:8088/#/citylist
-    //http://t1-static.huaqianwy.com/hqwy/dist/#/home
-    //http://www.baidu.com
+    if (StrIsEmpty([[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"])) {
+        [_manager callHandler:[[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"] data:self.navigationView.leftItemButton.titleLabel.text];
+    }
 }
 
 #pragma leftItemDelegate
@@ -408,6 +385,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     return;
 }
 
+- (NSDictionary *)jsonDicFromString:(NSString *)string {
+    
+    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+    
+    return dic;
+}
+
 - (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL {
     NSSet *validSchemes = [NSSet setWithArray:@[ @"http", @"https" ]];
     return ![validSchemes containsObject:URL.scheme];
@@ -432,8 +418,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
 }
 
-    
-- (void)jumpToLogin{
+#pragma mark 登录
+- (void)presentNative{
     LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
     [self presentViewController:loginVc animated:true completion:^{
         

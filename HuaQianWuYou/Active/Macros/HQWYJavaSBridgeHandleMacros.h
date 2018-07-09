@@ -126,16 +126,12 @@ static NSString * const kAppGetCity = @"appGetCity";
 /*!
  获取导航栏样式
  */
-static NSString * const kAppGetNavigationBarStatus = @"appGetNavigationBarStatus";
+static NSString * const kAppGetNavigationBarStatus = @"appSetNavigationBar";
 
 /*!
  原生获取城市
  */
 static NSString * const kAppGetSelectCity = @"appGetSelectCity";
 
-/*!
- 调H5精准推荐方法
- */
-static NSString * const kTopPreRecommend = @"topPreRecommend";
 
 #endif /* HQWYJavaSBridgeHandleMacros_h */
