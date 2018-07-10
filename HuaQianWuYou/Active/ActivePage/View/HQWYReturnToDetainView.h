@@ -16,5 +16,9 @@
 
 @interface HQWYReturnToDetainView : UIView
 @property(nonatomic,strong)UILabel *countTimeLabel;
-@property(nonatomic,strong)id<HQWYReturnToDetainViewDelegate>delegate;
+@property(nonatomic,weak)id<HQWYReturnToDetainViewDelegate>delegate;
++ (HQWYReturnToDetainView *)sharedView;
++ (void)showController:(UIViewController*)vc;
++ (void)dismiss;
++ (void)countTime:(NSString *)time;
 @end

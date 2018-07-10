@@ -317,28 +317,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
 }
 
-//- (void)openTheAuthorizationOfLocation{
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还未开启定位权限" preferredStyle:UIAlertControllerStyleAlert];
-//    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"去开启" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//        NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-//        if ([[UIApplication sharedApplication] canOpenURL:url]) {
-//            if (@available(iOS 10.0, *)) {
-//                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
-//            } else {
-//                [[UIApplication sharedApplication] openURL:url];
-//            }
-//        }
-//    }];
-//    [alert addAction:ok];
-//    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"不了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-//        
-//    }];
-//    [alert addAction:cancle];
-//    [self presentViewController:alert animated:true completion:^{
-//        
-//    }];
-//}
-
 #pragma leftItemDelegate
 - (void)locationButtonClick{
      if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
@@ -370,61 +348,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }];
     }
 }
-
-//- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-//    if (webView == self.wkWebView) {
-//        NSURL *URL = navigationAction.request.URL;
-//        if (![self externalAppRequiredToOpenURL:URL]) {
-//            if (!navigationAction.targetFrame) {
-//                [self loadURL:URL];
-//                decisionHandler(WKNavigationActionPolicyCancel);
-//                return;
-//            }
-//        } else if ([[UIApplication sharedApplication] canOpenURL:URL]) {
-//            if ([self externalAppRequiredToFileURL:URL]) {
-//                [self launchExternalAppWithURL:URL];
-//                decisionHandler(WKNavigationActionPolicyCancel);
-//                return;
-//            }
-//        }
-//    }
-//    decisionHandler(WKNavigationActionPolicyAllow);
-//    return;
-//}
-//
-//- (NSDictionary *)jsonDicFromString:(NSString *)string {
-//
-//    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
-//
-//    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-//
-//    return dic;
-//}
-//
-//- (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL {
-//    NSSet *validSchemes = [NSSet setWithArray:@[ @"http", @"https" ]];
-//    return ![validSchemes containsObject:URL.scheme];
-//}
-//
-//- (BOOL)externalAppRequiredToFileURL:(NSURL *)URL {
-//    NSSet *validSchemes = [NSSet setWithArray:@[ @"file" ]];
-//    return ![validSchemes containsObject:URL.scheme];
-//}
-//
-//- (void)launchExternalAppWithURL:(NSURL *)URL {
-//    if (@available(iOS 10.0, *)) {
-//        [[UIApplication sharedApplication] openURL:URL
-//                                           options:@{ UIApplicationOpenURLOptionUniversalLinksOnly : @NO }
-//                                 completionHandler:^(BOOL success){
-//                                 }];
-//    } else {
-//#pragma clang diagnostic push
-//#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-//        [[UIApplication sharedApplication] openURL:URL];
-//#pragma clang diagnostic pop
-//    }
-//}
-//
 
 #pragma mark 登录
 - (void)presentNative{

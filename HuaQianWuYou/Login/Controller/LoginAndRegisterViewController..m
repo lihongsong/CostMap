@@ -196,7 +196,9 @@
 
 #pragma mark 请求登录
 - (void)requestLogin{
-    
+    [self dismissViewControllerAnimated:true completion:^{
+        self.loginBlock();
+    }];
 }
 
 #pragma mark 协议点击事件

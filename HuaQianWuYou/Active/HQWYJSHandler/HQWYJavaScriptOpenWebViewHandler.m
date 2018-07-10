@@ -23,18 +23,30 @@
         !hander?:hander([HQWYJavaScriptResponse success]);
         return ;
     }
-    
     NSData *jsonData = [message dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    if (rootVC.navigationController != nil) {
-        [rootVC.navigationController pushViewController:[self WebViewWithDictionary:dic] animated:YES];
+    BOOL needLogin = [dic[@"needLogin"] boolValue];
+   UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    if (needLogin && ![HQWYUserStatusManager hasAlreadyLoggedIn]) {
+        LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
+        loginVc.loginBlock = ^{
+            if (rootVC.navigationController != nil) {
+                [rootVC.navigationController pushViewController:[self WebViewWithDictionary:dic] animated:YES];
+            }else{
+                [rootVC presentViewController:[self WebViewWithDictionary:dic] animated:NO completion:nil];
+            }
+        };
+        [rootVC presentViewController:loginVc animated:true completion:^{
+            
+        }];
+    }else{
+        if (rootVC.navigationController != nil) {
+            [rootVC.navigationController pushViewController:[self WebViewWithDictionary:dic] animated:YES];
+        }
+        else{
+            [rootVC presentViewController:[self WebViewWithDictionary:dic] animated:NO completion:nil];
+        }
     }
-    else{
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[self WebViewWithDictionary:dic]];
-        [rootVC presentViewController:nav animated:NO completion:nil];
-    }
-    
     !hander?:hander([HQWYJavaScriptResponse success]);
 }
 

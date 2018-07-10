@@ -7,7 +7,8 @@
 //
 
 #import "BaseViewController.h"
+typedef void (^loginFinishBlock) (void);
 
 @interface LoginAndRegisterViewController: BaseViewController
-
+@property (nonatomic,copy)loginFinishBlock loginBlock;
 @end

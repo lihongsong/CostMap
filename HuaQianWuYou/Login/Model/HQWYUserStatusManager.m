@@ -355,16 +355,10 @@ static NSString *const KSignedUpKey = @"jk_signed_up";
 //    return nil;
 //}
 //
-//+ (BOOL)hasAlreadyLoggedIn {
-//    if (JKUserStatusSharedManager.inWhiteList) {
-//        if ([[JKUserStatusManager sharedInstance] token]) {
-//            return YES;
-//        }
-//        return NO;
-//    }else {
-//        return [JKUserManager hasAlreadyLoggedIn];
-//    }
-//}
+
++ (BOOL)hasAlreadyLoggedIn {
+    return [HQWYUserManager hasAlreadyLoggedIn];
+}
 //
 //+ (BOOL)hasAlreadySignedUp {
 //    return [[NSUserDefaults standardUserDefaults] boolForKey:KSignedUpKey];

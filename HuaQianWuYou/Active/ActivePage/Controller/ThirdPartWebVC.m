@@ -19,7 +19,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  桥接管理器
  */
 @property (strong, nonatomic) HJJSBridgeManager *manager;
-@property(nonatomic,strong)HQWYReturnToDetainView *detainView;
+@property(nonatomic,strong)NSTimer *timer;
+@property(nonatomic,assign)NSInteger countTime;
 @end
 
 @implementation ThirdPartWebVC
@@ -36,7 +37,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
 }
 
-
 //自定义导航栏
 - (void)initNavigation{
     NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
@@ -46,13 +46,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 -(void)rightButtonItemClick{
-    if (self.navigationController != nil) {
-        [self.navigationController popViewControllerAnimated:true];
-    }else{
-        [self dismissViewControllerAnimated:true completion:^{
-
-        }];
-    }
+    [self toBeforeViewController];
     if (!StrIsEmpty([[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"])) {
         [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
             if (!error) { // 成功
@@ -64,23 +58,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
 }
 
-- (HQWYReturnToDetainView *)detainView{
-    if (_detainView == nil){
-        _detainView = [[HQWYReturnToDetainView alloc] initWithFrame:CGRectMake(15, (SHeight - 250)/2.0, SWidth - 30, 250)];
-    }
-    return _detainView;
-}
-
 #pragma leftItemDelegate
 - (void)webGoBack{
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    UIView *bgView = [[UIView alloc]init];
-    [window addSubview:bgView];
-    bgView.backgroundColor = [UIColor lightGrayColor];
-    [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(0);
-    }];
-    [window addSubview:self.detainView];
     if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
         [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
             if (!error) { // 成功
@@ -90,17 +69,42 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             }
         }];
     }
+    if ([GetUserDefault(@"isShowPromptToday") isEqualToString:[self getToday]]) {
+        self.countTime = 3;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
+        [HQWYReturnToDetainView showController:self];
+        [HQWYReturnToDetainView countTime:@"3"];
+    }else{
+        [self toBeforeViewController];
+    }
+}
+
+- (void)toBeforeViewController{
     if (self.navigationController != nil) {
         [self.navigationController popViewControllerAnimated:true];
     }else{
         [self dismissViewControllerAnimated:true completion:^{
-        
+            
         }];
     }
 }
 
-- (void)dealloc {
+- (void)changeTime{
+    self.countTime--;
+    if (self.countTime <= 0) {
+        [HQWYReturnToDetainView dismiss];
+        self.countTime = 3;
+        [self.timer invalidate];
+        self.timer = nil;
+        [self loadURLString:@"http://www.baidu.com"];
+      
+    }else{
+        [HQWYReturnToDetainView countTime:[NSString stringWithFormat:@"%ld",(long)self.countTime]];
+    }
     
+}
+
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     _manager = nil;
 }
@@ -144,13 +148,20 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark HQWYReturnToDetainViewDelegate
 - (void)cancleAlertClick {
-    [self.detainView removeFromSuperview];
+    [self toBeforeViewController];
+    [HQWYReturnToDetainView  dismiss];
 }
 
+#pragma mark HQWYReturnToDetainViewDelegate
 - (void)nonePromptButtonClick {
-    
+    SetUserDefault([self getToday],@"isShowPromptToday");
+    [self toBeforeViewController];
 }
 
+- (NSString *)getToday{
+    return [NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"];
+}
 
 @end

@@ -43,7 +43,6 @@ PODS:
     - AFNetworking (~> 3.1.0)
     - YYModel (~> 1.0.4)
   - Masonry (1.1.0)
-  - objective-zip (1.0.5)
   - RCMobClick (2.0.9)
   - SDWebImage (4.4.1):
     - SDWebImage/Core (= 4.4.1)
@@ -74,7 +73,6 @@ DEPENDENCIES:
   - IQKeyboardManager (= 5.0.6)
   - LNNetwork
   - Masonry (= 1.1.0)
-  - objective-zip
   - RCMobClick (~> 2.0.9)
   - SDWebImage
   - UMengAnalytics-NO-IDFA
@@ -97,7 +95,6 @@ SPEC REPOS:
     - GTMBase64
     - IQKeyboardManager
     - Masonry
-    - objective-zip
     - SDWebImage
     - UMengAnalytics-NO-IDFA
     - UMengUShare
@@ -117,7 +114,6 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   LNNetwork: ad1e6c0cba42f957670183e615563be1c0f613fb
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  objective-zip: 41b1408cebffceb6b9d15ad691506707e390d359
   RCMobClick: 05cdb2fc6ebf656ee690eddece9dce3ec75f3c02
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
@@ -126,6 +122,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: fec30b6343295f6f5371a3e0b4527f5bf6475fa9
+PODFILE CHECKSUM: 588e12faa5749dc6f4cb2f327f1cc75e7ea37c76
 
 COCOAPODS: 1.5.3

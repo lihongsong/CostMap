@@ -191,6 +191,8 @@
 		596075BB20EB6F2100D7AD1D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 596075BA20EB6F2100D7AD1D /* libsqlite3.0.tbd */; };
 		596075BD20EB6F4800D7AD1D /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 596075BC20EB6F4800D7AD1D /* libstdc++.6.0.9.tbd */; };
 		596075BF20EB6F5600D7AD1D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596075BE20EB6F5600D7AD1D /* AdSupport.framework */; };
+		5965CB9120F485990009DB84 /* HQWYUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9020F485990009DB84 /* HQWYUserManager.m */; };
+		5965CB9420F4863F0009DB84 /* HQWYUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9320F4863F0009DB84 /* HQWYUser.m */; };
 		59698BFC209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		59698BFD209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		59698BFE209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
@@ -263,7 +265,6 @@
 		59C5711820E5FF7700D54260 /* func.list in Resources */ = {isa = PBXBuildFile; fileRef = 59C5711420E5FF7700D54260 /* func.list */; };
 		59C5713520E600D100D54260 /* UIFont+TargetFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5711920E600C400D54260 /* UIFont+TargetFont.m */; };
 		59C5713620E600D100D54260 /* UIViewController+UIAlertControllerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712020E600C700D54260 /* UIViewController+UIAlertControllerKit.m */; };
-		59C5713720E600D100D54260 /* NSString+NSData.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712120E600C800D54260 /* NSString+NSData.m */; };
 		59C5713820E600D100D54260 /* CALayer+LayerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712320E600C900D54260 /* CALayer+LayerColor.m */; };
 		59C5713920E600D100D54260 /* UILabel+LabelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712420E600C900D54260 /* UILabel+LabelKit.m */; };
 		59C5713A20E600D100D54260 /* UIColor+AddColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712620E600CA00D54260 /* UIColor+AddColor.m */; };
@@ -504,6 +505,10 @@
 		596075BA20EB6F2100D7AD1D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		596075BC20EB6F4800D7AD1D /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		596075BE20EB6F5600D7AD1D /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		5965CB8F20F485990009DB84 /* HQWYUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUserManager.h; sourceTree = "<group>"; };
+		5965CB9020F485990009DB84 /* HQWYUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserManager.m; sourceTree = "<group>"; };
+		5965CB9220F4863F0009DB84 /* HQWYUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUser.h; sourceTree = "<group>"; };
+		5965CB9320F4863F0009DB84 /* HQWYUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUser.m; sourceTree = "<group>"; };
 		59698BFB209FE973000E37AA /* TestApi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestApi.plist; sourceTree = "<group>"; };
 		596B0E2120B4360A00B5A06B /* ResetPasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordModel.h; sourceTree = "<group>"; };
 		596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordModel.m; sourceTree = "<group>"; };
@@ -639,11 +644,9 @@
 		59C5711E20E600C600D54260 /* NSObject+HQIQKeyBoardConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQIQKeyBoardConfig.h"; sourceTree = "<group>"; };
 		59C5711F20E600C700D54260 /* UIViewController+UIAlertControllerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIAlertControllerKit.h"; sourceTree = "<group>"; };
 		59C5712020E600C700D54260 /* UIViewController+UIAlertControllerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UIAlertControllerKit.m"; sourceTree = "<group>"; };
-		59C5712120E600C800D54260 /* NSString+NSData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NSData.m"; sourceTree = "<group>"; };
 		59C5712220E600C800D54260 /* UIView+ViewKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewKit.h"; sourceTree = "<group>"; };
 		59C5712320E600C900D54260 /* CALayer+LayerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LayerColor.m"; sourceTree = "<group>"; };
 		59C5712420E600C900D54260 /* UILabel+LabelKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelKit.m"; sourceTree = "<group>"; };
-		59C5712520E600CA00D54260 /* NSString+NSData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NSData.h"; sourceTree = "<group>"; };
 		59C5712620E600CA00D54260 /* UIColor+AddColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AddColor.m"; sourceTree = "<group>"; };
 		59C5712720E600CB00D54260 /* UITabBar+badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+badge.h"; sourceTree = "<group>"; };
 		59C5712820E600CB00D54260 /* NSString+LabelKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LabelKit.m"; sourceTree = "<group>"; };
@@ -1074,8 +1077,6 @@
 				592FE24420EA32570052E60E /* NSObject+event.m */,
 				59C5711D20E600C600D54260 /* NSString+LabelKit.h */,
 				59C5712820E600CB00D54260 /* NSString+LabelKit.m */,
-				59C5712520E600CA00D54260 /* NSString+NSData.h */,
-				59C5712120E600C800D54260 /* NSString+NSData.m */,
 				59C5711A20E600C400D54260 /* UIColor+AddColor.h */,
 				59C5712620E600CA00D54260 /* UIColor+AddColor.m */,
 				59C5712F20E600CF00D54260 /* UIFont+TargetFont.h */,
@@ -1211,6 +1212,14 @@
 		595E7DD620EC623D001D65B6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				597C73CE20EA17520090960B /* HQWYUserStatusManager.h */,
+				597C73CF20EA17520090960B /* HQWYUserStatusManager.m */,
+				59FD9E7620EA1A85008C98DE /* HQWYUserBaseInfo.h */,
+				59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */,
+				5965CB8F20F485990009DB84 /* HQWYUserManager.h */,
+				5965CB9020F485990009DB84 /* HQWYUserManager.m */,
+				5965CB9220F4863F0009DB84 /* HQWYUser.h */,
+				5965CB9320F4863F0009DB84 /* HQWYUser.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1285,10 +1294,6 @@
 		597C73B820E9AF470090960B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				597C73CE20EA17520090960B /* HQWYUserStatusManager.h */,
-				597C73CF20EA17520090960B /* HQWYUserStatusManager.m */,
-				59FD9E7620EA1A85008C98DE /* HQWYUserBaseInfo.h */,
-				59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */,
 				59FD9E7F20EA21A7008C98DE /* HQWYJavaScriptResponse.h */,
 				59FD9E8020EA21A7008C98DE /* HQWYJavaScriptResponse.m */,
 			);
@@ -2034,7 +2039,6 @@
 				"${BUILT_PRODUCTS_DIR}/WebViewJavascriptBridge/WebViewJavascriptBridge.framework",
 				"${BUILT_PRODUCTS_DIR}/YYModel/YYModel.framework",
 				"${BUILT_PRODUCTS_DIR}/YYText/YYText.framework",
-				"${BUILT_PRODUCTS_DIR}/objective-zip/objective_zip.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2050,7 +2054,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WebViewJavascriptBridge.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/objective_zip.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2129,7 +2132,6 @@
 				A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */,
 				59435A7E20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m in Sources */,
 				A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */,
-				59C5713720E600D100D54260 /* NSString+NSData.m in Sources */,
 				59C570FD20E5FB8200D54260 /* ScoreProgressView.m in Sources */,
 				59C4D14F20E5DFFC00BDCA48 /* AppDelegate+APNS.m in Sources */,
 				5958089720F2F53A002A6F0C /* AuthCodeModel+Service.m in Sources */,
@@ -2149,6 +2151,7 @@
 				A8F8DFB020B3AB3300DB9A6A /* MineFooterView.m in Sources */,
 				591D961920ABDE6E00193B09 /* AALegend.m in Sources */,
 				A8F8DFD120B3AB5300DB9A6A /* DiscoverDetailTopView.m in Sources */,
+				5965CB9120F485990009DB84 /* HQWYUserManager.m in Sources */,
 				592FE23920EA2B3D0052E60E /* HQWYJavaScriptOpenNativeHandler.m in Sources */,
 				59C570FB20E5FB8200D54260 /* WangYiWave.m in Sources */,
 				A8F8DFAD20B3AB3300DB9A6A /* MineTableViewCell.m in Sources */,
@@ -2165,6 +2168,7 @@
 				591D95F520ABDE6E00193B09 /* AATooltip.m in Sources */,
 				59C5710620E5FB8200D54260 /* CredictUsingRateCell.m in Sources */,
 				59C570C920E5FADC00D54260 /* HQWYSMSModel.m in Sources */,
+				5965CB9420F4863F0009DB84 /* HQWYUser.m in Sources */,
 				59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */,
 				A8F8DFD220B3AB5300DB9A6A /* TopBannerView.m in Sources */,
 				59C5713520E600D100D54260 /* UIFont+TargetFont.m in Sources */,

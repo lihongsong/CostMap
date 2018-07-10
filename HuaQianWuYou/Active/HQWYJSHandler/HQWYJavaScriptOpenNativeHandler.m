@@ -34,7 +34,7 @@
     }else if([pageId integerValue] == 3){
         
     }else if([pageId integerValue] == 4){
-        
+        [self changePasswordAction];
     }else if([pageId integerValue] == 5){
         [self feedbackAction];
     }
@@ -67,16 +67,19 @@
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
     loginVc.navigationController.navigationBar.hidden = true;
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:loginVc];
     [rootVC presentViewController:loginVc animated:true completion:^{
         
     }];
-       // [rootVC presentViewController:nav animated:true completion:nil];
 }
 
 # pragma mark 跳修改密码
 - (void)changePasswordAction{
     AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new];
+    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
+    authPhoneNumVC.navigationController.navigationBar.hidden = true;
+    [rootVC presentViewController:authPhoneNumVC animated:true completion:^{
+        
+    }];
 }
 
 
