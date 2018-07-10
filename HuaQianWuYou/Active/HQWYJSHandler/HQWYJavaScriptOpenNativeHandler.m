@@ -10,7 +10,7 @@
 #import "HQWYJavaSBridgeHandleMacros.h"
 #import "LoginAndRegisterViewController.h"
 #import "FBManager.h"
-
+#import "AuthPhoneNumViewController.h"
 @implementation HQWYJavaScriptOpenNativeHandler
 
 - (NSString *)handlerName {
@@ -72,6 +72,11 @@
         
     }];
        // [rootVC presentViewController:nav animated:true completion:nil];
+}
+
+# pragma mark 跳修改密码
+- (void)changePasswordAction{
+    AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new];
 }
 
 
