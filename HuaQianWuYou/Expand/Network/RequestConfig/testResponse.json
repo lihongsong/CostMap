@@ -1,0 +1,29 @@
+{
+    "code" : "success",
+    "result": {
+        "approveDate": "2018-08-08",
+        "availAmt": 78438,
+        "bankcard": {
+            "bankId": 87385,
+            "bankName": "农业银行",
+            "bankcardId": 3887134,
+            "bankcardNo": "6228480402564890018"
+        },
+        "billId": "112",
+        "borrowDate": "2018-01-17",
+        "borrowHelpList": [
+                           {
+                           "helpAction": 62877,
+                           "helpRedirect": "http://baidu.com",
+                           "helpTitle": "这里是helpTitle"
+                           }
+                           ],
+        "borrowStatus": 1,
+        "managerFee": 200,
+        "nextPayDate": "2018-08-08",
+        "processDate": "2018-08-12",
+        "remainRepayDays": 13,
+        "usedAmt": 68277,
+        "userName" :"王钰钢"
+    }
+}

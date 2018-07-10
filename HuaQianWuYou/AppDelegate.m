@@ -9,9 +9,8 @@
 #import "AppDelegate.h"
 #import "MainTabBarViewController.h"
 #import "HJGuidePage.h"
-#import "UtilitiesDefine.h"
-#import "ThirdPartKeyDefine.h"
-#import <UMMobClick/MobClick.h>
+#import "HQWYUtilitiesDefine.h"
+#import "HQWYThirdPartKeyDefine.h"
 #import "DeviceHelp.h"
 #import "TouchIDViewController.h"
 #import "LaunchViewController.h"
@@ -33,23 +32,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     //移动武林榜
-    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:MobClick_Channel isIntegral:YES];
+    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
     /** TalkingData */
-    [TalkingData sessionStarted:TalkingData_AppId withChannelId:AppChannel];
-    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:AppChannel];
+    [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
+    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
     [self setUpSDKs];
-    //友盟  老的58fec71d677baa3921000b81
-   // UMConfigInstance.appKey = UMen_AppKey;
-   // UMConfigInstance.channelId = UMen_channelId;
-    NSString *appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    [MobClick setAppVersion:appVersion];
-    [MobClick startWithConfigure:UMConfigInstance];
     
-#ifdef DEBUG
-    [MobClick setLogEnabled:YES];//调试用，发布需改回默认no
-#endif
-    
-   
     WeakObj(self);
     [self registerAppUpdate];
     //    /** 通过通知栏调起APP处理通知信息 */

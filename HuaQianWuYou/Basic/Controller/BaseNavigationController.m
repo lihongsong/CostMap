@@ -7,7 +7,7 @@
 //
 
 #import "BaseNavigationController.h"
-#import "UtilitiesDefine.h"
+#import "HQWYUtilitiesDefine.h"
 
 @interface BaseNavigationController ()
 

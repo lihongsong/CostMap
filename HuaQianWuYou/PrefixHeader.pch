@@ -19,13 +19,16 @@
 #import "BaseModel.h"
 #import "BasicDataModel.h"
 #import "BaseNavigationController.h"
-#import "UtilitiesDefine.h"
+#import "HQWYUtilitiesDefine.h"
 #import "ZYZControl.h"
 #import "LoginViewController.h"
+
+
+#pragma mark Macros
 #import "ApiConfigDefine.h"
-#import "LNMBProgressHUD.h"
-#import "ThirdPartKeyDefine.h"
-#import "UtilitiesDefine.h"
+#import "HQWYNetworkMacros.h"
+#import "HQWYThirdPartKeyDefine.h"
+#import "HQWYUtilitiesDefine.h"
 
 #pragma mark user
 #import "HQWYUserStatusManager.h"
@@ -38,6 +41,7 @@
 #import "NSObject+event.h"
 #import "YYModel.h"
 #import "UIViewController+UIAlertControllerKit.h"
+#import "UIAlertView+Block.h"
 
 #pragma mark    三方以及自定义库
 #import "LNNetwork.h"
@@ -47,6 +51,8 @@
 #import <Masonry/Masonry.h>
 #import <RCMobClick/RCMobClick.h>
 #import <HJCategories/HJUIKit.h>
+#import <HJ_UIKit/HJAlertView.h>
+#import "LNMBProgressHUD.h"
 
 
 #pragma mark JsBridge

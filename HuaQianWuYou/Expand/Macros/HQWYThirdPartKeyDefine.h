@@ -18,7 +18,7 @@
 // jpush key值
 #define JPush_AppKey              @"d13190ffaafa7ef2a730cac8"
 // jpush 应用程序下载渠道，为方便分渠道统计，具体值由你自行定义
-#define JPush_Channel               @"bx-ioshqwy_fr_gyq"
+
 //(默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。
 //注：此字段的值要与Build Settings的Code Signing配置的证书环境一致
 
@@ -28,7 +28,6 @@
 // 移动武林绑
 #define MobClick_ProjectName  @"jieqian_ios"
 #define MobClick_AppKey   @"8289c4204c5e7cddb30a14a4d2f7c72d"
-#define MobClick_Channel   @"bx-ioshqwy_fr_gyq"
 
 // TalkingData
 #if defined (DEBUG)
@@ -40,23 +39,11 @@
 // TalkingDataAppCpa
 #define TalkingDataAppCpa_AppId       @"2FC9A30BE32A429B882B634013718E1B"
 
-
-// 统一渠道号
-#define AppChannel @"jkd-appstorejkj_fr_liuj"
-
-
-
-
-// 友盟
-#define UMen_AppKey  @"5b0688258f4a9d4249000045";
-#define UMen_channelId   @"bx-ioshqwy_fr_gyq";
-
 //意见反馈
 #define MessageBoard_SecretKey @"87b38eba12ff2c9dcd09e8d35ec7b697";
 #define MessageBoard_Id @"30";
 
 //公共强制升级SDK
 #define Update_SDK_AppId @"bd5d7524662dbbaeb0de4621469e18d9"
-#define Updata_SDK_ChannelId @"bx-ioshqwy_fr_gyq"
 
 #endif /* ThirdPartKeyDefine_h */

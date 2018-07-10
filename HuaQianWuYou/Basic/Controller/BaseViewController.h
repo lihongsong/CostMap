@@ -13,5 +13,4 @@
 @property (nonatomic, strong) DefaultView *defaultView;
 - (void)setLelftNavigationItem:(BOOL)hidden;
 - (void)setLelftNavigationItemWithImageName:(NSString *)imageName hidden:(BOOL)hidden;
-- (void)showAlertView;
 @end

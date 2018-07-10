@@ -7,7 +7,7 @@
 //
 
 #import "PlistManager.h"
-#import "UtilitiesDefine.h"
+#import "HQWYUtilitiesDefine.h"
 
 // plistName
 // 测试服

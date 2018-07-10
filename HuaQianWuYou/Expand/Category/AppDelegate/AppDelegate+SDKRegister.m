@@ -15,7 +15,7 @@
  */
 - (void)registerAppUpdate {
   [XZYAppUpdate startWithAppKey:Update_SDK_AppId
-                      channelId:Updata_SDK_ChannelId
+                      channelId:APP_ChannelId
               appUpdatePriority:AppUpdatePriorityDefault];
 }
 

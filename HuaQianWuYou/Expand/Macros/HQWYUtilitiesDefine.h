@@ -53,4 +53,13 @@
 
 #define LNAOPSAFESTRING(str) ((((str) != nil) && ![(str) isKindOfClass:[NSNull class]]) ? [NSString stringWithFormat:@"%@", (str)] : @"")
 
-#endif /* UtilitiesDefine_h */
+//***********归档**************//
+//用户model归档key值
+#define kUserArchiverKey @"userInfoModel"
+//用户model写入沙盒的文件名
+#define kUserArchiverFileName @"userInfoFile"
+//用户基本信息归档key值
+#define KUserBaseMessageFileName_Before @"UserBasicMsg_Before"
+#define KUserBaseMessageFileName_After @"UserBasicMsg_After"
+
+#endif

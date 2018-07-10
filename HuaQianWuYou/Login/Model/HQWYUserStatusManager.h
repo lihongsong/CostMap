@@ -29,79 +29,10 @@ typedef void (^HQWYUserStatusCallBack)(HQWYUserBaseInfo *userInfo);
 
 + (instancetype)sharedInstance;
 
-#pragma mark - UpdateUserInfoWithoutRequst
-
-/**
- *  更新userInfo 不发送请求
- */
-- (void)freshUserStatusWithoutRequst:(NSNumber *)status needNotification:(BOOL)needNotif;
-
-/**
- *  更新userInfo 不发送请求 不发送通知
- */
-- (void)freshUserInformationWithoutRequst:(HQWYUserBaseInfo *)userInfo;
-
-/**
- *  更新Userinfo 不需要发起请求
- */
-- (void)freshUserInformationWithoutRequst:(HQWYUserBaseInfo *)userInfo needNotification:(BOOL)needNotif;
-
-#pragma mark--个人消息
-
-/**
- 更新未读消息和未读公告数
- */
-- (void)updateMessageAndNews;
 /**
  获取未读个人消息
  */
 - (void)getUnreadMessage;
-
-/**
- *  更新userInfo 且需要发送通知
- *
- *  @param userInfo 回调成功的数据信息
- *  @parma needNotif 是否需要通知
- *  @parma storeToken 存储token信息
- */
-- (void)freshUserInformationWithoutRequst:(HQWYUserBaseInfo *)userInfo needNotification:(BOOL)needNotif needStoreToken:(BOOL)storeToken;
-
-#pragma mark - UpdateUserInfoWithRequst
-
-/**
- *  只更新userInfo 不发送通知 不现实loading
- *  @param userInfo 回调成功的数据信息
- */
-
-- (void)freshUserInformation:(HQWYUserStatusCallBack)userInfo;
-
-/**
- *  只更新userInfo 不发送通知
- *  @param showLoading 是否展示loading状体
- *  @param userInfo 回调成功的数据信息
- */
-
-- (void)freshUserInformation:(HQWYUserStatusCallBack)userInfo showLoading:(BOOL)showLoading;
-
-/**
- *  更新userInfo 且需要发送通知
- *
- *  @param userInfo 回调成功的数据信息
- *  @parma needNotif 是否需要通知
- */
-
-- (void)freshUserInformation:(HQWYUserStatusCallBack)userInfo needNotification:(BOOL)needNotif;
-
-/**
- *  更新userInfo 且需要发送通知
- *
- *  @param userInfo 回调成功的数据信息
- *  @param showLoading 是否展示loading 状态
- *  @parma needNotif 是否需要通知
- */
-
--(void)freshUserInformation:(HQWYUserStatusCallBack)userInfo needNotification:(BOOL)needNotif showLoading:(BOOL)showLoading;
-
 
 #pragma mark - Public Method
 
@@ -125,15 +56,16 @@ typedef void (^HQWYUserStatusCallBack)(HQWYUserBaseInfo *userInfo);
  */
 + (BOOL)hasAlreadyLoggedIn;
 
-/**
- *  判断用户是否曾经登录过
- */
-+ (BOOL)hasAlreadySignedUp;
+///**
+// *  判断用户是否曾经登录过
+// */
+//+ (BOOL)hasAlreadySignedUp;
+//
+///**
+// *  设置用户登录标记
+// */
+//+ (void)setAlreadySignedUp;
 
-/**
- *  设置用户登录标记
- */
-+ (void)setAlreadySignedUp;
 
 + (void)handleInvalidateToken:(NSDictionary *)dict;
 
