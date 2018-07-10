@@ -19,10 +19,13 @@
 #import "HQWYJavaScriptGetAjaxHeaderHandler.h"
 #import "HQWYJavaScriptOpenNativeHandler.h"
 #import "LocationManager.h"
-#import <BMKLocationkit/BMKLocationComponent.h>
 #import "PopViewManager.h"
 #import "DeviceManager.h"
 #import "LoginAndRegisterViewController.h"
+#import "HQWYJavaScriptOpenWebViewHandler.h"
+#import <AppUpdate/XZYAppUpdate.h>
+
+
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
@@ -47,8 +50,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    self.navigationController.navigationBar.hidden = true;
+    // Do any additional setup after loading the view
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.16.79:8088/#/home"]]];
     //http://172.17.16.79:8088/#/home
@@ -61,6 +63,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     [self registerHander];
     [self initlocationService];
+     [self initNavigation];
     [HJJSBridgeManager enableLogging];
     [_manager callHandler:kWebViewDidLoad];
     
@@ -82,9 +85,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 
+//自定义导航栏
 - (void)initNavigation{
-    self.navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,20, SWidth, NavigationHeight - 20)];
+    self.navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
     [self.view addSubview:self.navigationView];
+    self.navigationView.delegate = self;
 }
 
 -(void)initlocationService{
@@ -106,8 +111,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [_manager callHandler:kWebViewWillAppear];
-    self.navigationItem.title = @"花钱无忧";
-    [self initNavigation];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -145,9 +148,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             ResponseCallback([HQWYJavaScriptResponse success]);
         }];
     
-    /** 注册Native获取City事件 */
-    [_manager registerHandler:kAppGetSelectCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        //[self.leftItem.leftItemButton setTitle:[NSString stringWithFormat:@"%@",data] forState:UIControlStateNormal];
+    /** 更新 */
+    [_manager registerHandler:kAppCheckUpdate handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [XZYAppUpdate checkUpdate:^(NSError *error) {
+            
+        }];
+    }];
+    
+    /*退出登录 */
+    [_manager registerHandler:kAppExecLogout handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        
     }];
     
     /** 导航栏样式事件 */
@@ -211,7 +221,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }];
     
     /** 注册打开webView事件 */
-   // [_manager registerHandler:[JKJavaScriptOpenWebViewHandler new]];
+    [_manager registerHandler:[HQWYJavaScriptOpenWebViewHandler new]];
     
     /** 注册打开原生APP页面事件 */
     HQWYJavaScriptOpenNativeHandler *handler = [HQWYJavaScriptOpenNativeHandler new];
@@ -235,7 +245,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (typeDic != nil && [[typeDic objectForKey:@"hide"] integerValue]) {
         [UIView animateWithDuration:0.1 animations:^{
             self.navigationView.hidden = true;
-            self.wkWebView.frame = CGRectMake(0,-20, SWidth, SHeight + TabBarHeight - 49 + 20);
+            self.wkWebView.frame = CGRectMake(0,-StatusBarHeight, SWidth, SHeight + TabBarHeight - 49 + StatusBarHeight);
         }];
         [self.view layoutIfNeeded];
     }else{
@@ -247,11 +257,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
 }
 
-
-
 -(void)rightButtonItemClick{
-    if (StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
-        [_manager callHandler:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"]];
+    if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
+        [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+            if (!error) { // 成功
+                NSLog(@"%@",response);
+            } else { // 失败
+                NSLog(@"%@",error.localizedDescription);
+            }
+        }];
     }
 }
 
@@ -268,46 +282,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (error)
     {
         NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
-        //self.leftItemButton.locationButton.text = @"定位失败";
         [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
-    } if (location) {//得到定位信息，添加annotation
+    }
+    if (location) {//得到定位信息，添加annotation
         if (location.location) {
             NSLog(@"LOC = %@",location.location);
         }
         if (location.rgcData) {
             NSLog(@"rgc = %@",[location.rgcData description]);
-            //self.leftItemButton.locationButton.text = location.rgcData.city;
              [self.navigationView.leftItemButton setTitle:location.rgcData.city forState:UIControlStateNormal];
         }
     }
 }
-
-/*
-- (void)checkWebViewCanGoBack{
-    if (_wkWebView && [_wkWebView canGoBack]) {
-        [self addSpaceButton];
-    }
-}
-
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    if(webView == self.wkWebView) {
-        [self checkWebViewCanGoBack];
-        
-        [self updateNavigationBarState];
-        
-        self.progressBar.isLoading = NO;
-        
-        // 如果在首页且无法后退，则隐藏后退item
-        if (![webView canGoBack] && self.navigationController.viewControllers.count == 1) {
-            self.navigationItem.leftBarButtonItems = @[];
-        }
-        
-        if([self.delegate respondsToSelector:@selector(webBrowser:didFinishLoadingURL:)]) {
-            [self.delegate webBrowser:self didFinishLoadingURL:self.wkWebView.URL];
-        }
-    }
-}
- */
 
 /**
  *  @brief 当定位发生错误时，会调用代理的此方法。
@@ -316,7 +302,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  */
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nullable)error{
     NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
-    //self.leftItemButton.locationButton.text = @"定位失败";
     [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
 }
 
@@ -328,101 +313,124 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
     NSLog(@"locStatus:{%d};",status);
     if(status == kCLAuthorizationStatusDenied){
-          UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还未开启定位权限" preferredStyle:UIAlertControllerStyleAlert];
-          UIAlertAction *ok = [UIAlertAction actionWithTitle:@"去开启" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-           NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-           if ([[UIApplication sharedApplication] canOpenURL:url]) {
-            if (@available(iOS 10.0, *)) {
-             [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
-            } else {
-             [[UIApplication sharedApplication] openURL:url];
-            }
-           }
-          }];
-          [alert addAction:ok];
-          UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"不了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        
-          }];
-          [alert addAction:cancle];
-          [self presentViewController:alert animated:true completion:^{
-        
-          }];
+        [self openTheAuthorizationOfLocation];
     }
 }
 
+//- (void)openTheAuthorizationOfLocation{
+//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还未开启定位权限" preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"去开启" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//        NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+//        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+//            if (@available(iOS 10.0, *)) {
+//                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+//            } else {
+//                [[UIApplication sharedApplication] openURL:url];
+//            }
+//        }
+//    }];
+//    [alert addAction:ok];
+//    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"不了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+//        
+//    }];
+//    [alert addAction:cancle];
+//    [self presentViewController:alert animated:true completion:^{
+//        
+//    }];
+//}
+
 #pragma leftItemDelegate
 - (void)locationButtonClick{
-    if (StrIsEmpty([[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"])) {
-        [_manager callHandler:[[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"] data:self.navigationView.leftItemButton.titleLabel.text];
+     if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
+         [self openTheAuthorizationOfLocation];
+    }else{
+        [self leftClick];
     }
 }
 
 #pragma leftItemDelegate
 - (void)webGoBack{
-    if ([self.wkWebView canGoBack]){
-        [self.wkWebView goBack];
-    }
-}
-
-- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if (webView == self.wkWebView) {
-        NSURL *URL = navigationAction.request.URL;
-        if (![self externalAppRequiredToOpenURL:URL]) {
-            if (!navigationAction.targetFrame) {
-                [self loadURL:URL];
-                decisionHandler(WKNavigationActionPolicyCancel);
-                return;
-            }
-        } else if ([[UIApplication sharedApplication] canOpenURL:URL]) {
-            if ([self externalAppRequiredToFileURL:URL]) {
-                [self launchExternalAppWithURL:URL];
-                decisionHandler(WKNavigationActionPolicyCancel);
-                return;
-            }
+    if (StrIsEmpty([[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"])) {
+        if ([self.wkWebView canGoBack]){
+            [self.wkWebView goBack];
         }
-    }
-    decisionHandler(WKNavigationActionPolicyAllow);
-    return;
-}
-
-- (NSDictionary *)jsonDicFromString:(NSString *)string {
-    
-    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-    
-    return dic;
-}
-
-- (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL {
-    NSSet *validSchemes = [NSSet setWithArray:@[ @"http", @"https" ]];
-    return ![validSchemes containsObject:URL.scheme];
-}
-
-- (BOOL)externalAppRequiredToFileURL:(NSURL *)URL {
-    NSSet *validSchemes = [NSSet setWithArray:@[ @"file" ]];
-    return ![validSchemes containsObject:URL.scheme];
-}
-
-- (void)launchExternalAppWithURL:(NSURL *)URL {
-    if (@available(iOS 10.0, *)) {
-        [[UIApplication sharedApplication] openURL:URL
-                                           options:@{ UIApplicationOpenURLOptionUniversalLinksOnly : @NO }
-                                 completionHandler:^(BOOL success){
-                                 }];
-    } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        [[UIApplication sharedApplication] openURL:URL];
-#pragma clang diagnostic pop
+    }else{
+        [self leftClick];
     }
 }
+
+- (void)leftClick{
+    if (!StrIsEmpty([[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"])) {
+        [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+            if (!error) { // 成功
+                NSLog(@"%@",response);
+            } else { // 失败
+                NSLog(@"%@",error.localizedDescription);
+            }
+        }];
+    }
+}
+
+//- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+//    if (webView == self.wkWebView) {
+//        NSURL *URL = navigationAction.request.URL;
+//        if (![self externalAppRequiredToOpenURL:URL]) {
+//            if (!navigationAction.targetFrame) {
+//                [self loadURL:URL];
+//                decisionHandler(WKNavigationActionPolicyCancel);
+//                return;
+//            }
+//        } else if ([[UIApplication sharedApplication] canOpenURL:URL]) {
+//            if ([self externalAppRequiredToFileURL:URL]) {
+//                [self launchExternalAppWithURL:URL];
+//                decisionHandler(WKNavigationActionPolicyCancel);
+//                return;
+//            }
+//        }
+//    }
+//    decisionHandler(WKNavigationActionPolicyAllow);
+//    return;
+//}
+//
+//- (NSDictionary *)jsonDicFromString:(NSString *)string {
+//
+//    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+//
+//    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+//
+//    return dic;
+//}
+//
+//- (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL {
+//    NSSet *validSchemes = [NSSet setWithArray:@[ @"http", @"https" ]];
+//    return ![validSchemes containsObject:URL.scheme];
+//}
+//
+//- (BOOL)externalAppRequiredToFileURL:(NSURL *)URL {
+//    NSSet *validSchemes = [NSSet setWithArray:@[ @"file" ]];
+//    return ![validSchemes containsObject:URL.scheme];
+//}
+//
+//- (void)launchExternalAppWithURL:(NSURL *)URL {
+//    if (@available(iOS 10.0, *)) {
+//        [[UIApplication sharedApplication] openURL:URL
+//                                           options:@{ UIApplicationOpenURLOptionUniversalLinksOnly : @NO }
+//                                 completionHandler:^(BOOL success){
+//                                 }];
+//    } else {
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+//        [[UIApplication sharedApplication] openURL:URL];
+//#pragma clang diagnostic pop
+//    }
+//}
+//
 
 #pragma mark 登录
 - (void)presentNative{
     LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
     [self presentViewController:loginVc animated:true completion:^{
-        
+
     }];
 }
 

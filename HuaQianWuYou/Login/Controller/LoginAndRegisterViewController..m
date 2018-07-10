@@ -106,7 +106,7 @@
 - (UIButton *)closeButton{
     if (!_closeButton) {
         _closeButton =[UIButton buttonWithType:UIButtonTypeCustom];
-        _closeButton.frame = CGRectMake(0, 20, 50, 40);
+        _closeButton.frame = CGRectMake(0, StatusBarHeight, 50, 40);
         [_closeButton addTarget:self action:@selector(closeButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [_closeButton setImage:[UIImage imageNamed:@"navbar_close"] forState:UIControlStateNormal];
     }

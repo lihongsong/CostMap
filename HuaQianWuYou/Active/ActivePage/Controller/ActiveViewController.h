@@ -6,9 +6,9 @@
 //  Copyright © 2018年 2345. All rights reserved.
 //
 
-#import "HJWebViewController.h"
+#import "HQWYBaseWebViewController.h"
 
-@interface ActiveViewController : HJWebViewController
+@interface ActiveViewController : HQWYBaseWebViewController 
 
 /** 给JS发送通用数据 */
 - (void)sendMessageToJS:(id)message;

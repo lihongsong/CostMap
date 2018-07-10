@@ -24,7 +24,6 @@ target 'HuaQianWuYou' do
     pod 'UMengAnalytics-NO-IDFA'
     pod 'BMKLocationKit'
     pod 'AppUpdate'
-    pod 'objective-zip'
     pod 'HJJavascriptBridge', '~> 0.3.2'
     #pod 'LNRiskManage'
     pod 'RCMobClick', '~>2.0.9'

@@ -34,9 +34,16 @@
         self.backButton.hidden = true;
         if(leftDic != nil && !StrIsEmpty([leftDic objectForKey:@"text"])){
             self.leftItemButton.hidden = false;
-            self.arrowImage.hidden = false;
-            [self.leftItemButton setTitle:[leftDic objectForKey:@"text"] forState:UIControlStateNormal];
-            [self.leftItemButton setTitleColor:[UIColor hj_colorWithHexString:[leftDic objectForKey:@"textColor"]] forState:UIControlStateNormal];
+            NSRange range = [[leftDic objectForKey:@"text"] rangeOfString:@"location:"];
+            NSLog(@")_____%lu",(unsigned long)range.length);
+            if (range.location != NSNotFound && range.length > 10) {
+                self.arrowImage.hidden = false;
+                [self.leftItemButton setTitle:[[leftDic objectForKey:@"text"] substringFromIndex:range.location + range.length] forState:UIControlStateNormal];
+            }
+            
+            if (!StrIsEmpty([leftDic objectForKey:@"textColor"])) {
+                [self.leftItemButton setTitleColor:[UIColor hj_colorWithHexString:[leftDic objectForKey:@"textColor"]] forState:UIControlStateNormal];
+            }
         }else{
             self.leftItemButton.hidden = true;
             self.arrowImage.hidden = true;
@@ -51,7 +58,9 @@
     if (rightDic != nil && !StrIsEmpty([rightDic objectForKey:@"text"])) {
         self.rightItemButton.hidden = false;
         [self.rightItemButton setTitle:[rightDic objectForKey:@"text"] forState:UIControlStateNormal];
-        [self.leftItemButton setTitleColor:[UIColor hj_colorWithHexString:[rightDic objectForKey:@"textColor"]] forState:UIControlStateNormal];
+        if (!StrIsEmpty([rightDic objectForKey:@"textColor"])) {
+            [self.rightItemButton setTitleColor:[UIColor hj_colorWithHexString:[rightDic objectForKey:@"textColor"]] forState:UIControlStateNormal];
+        }
     }else{
         self.rightItemButton.hidden = true;
     }
@@ -72,7 +81,7 @@
     [self addSubview:self.leftItemButton];
     [self addSubview:self.arrowImage];
     
-    self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, NavigationHeight - 20, NavigationHeight - 20)];
+    self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     [self.backButton setImage:[UIImage imageNamed:@"nav_icon_back"] forState:UIControlStateNormal];
     [self.backButton setImage:[UIImage imageNamed:@"nav_icon_back"] forState:UIControlStateHighlighted];
     [self.backButton setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 20)];
@@ -88,7 +97,7 @@
 {
     if (_leftItemButton == nil) {
         _leftItemButton = [LeftItemButton buttonWithType:UIButtonTypeCustom];
-        _leftItemButton.frame = CGRectMake(10, 0, 70, NavigationHeight - 20);
+        _leftItemButton.frame = CGRectMake(10, 0, 70, 44);
         [_leftItemButton addTarget:self action:@selector(leftButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [_leftItemButton setImage:[UIImage imageNamed:@"navbar_location_02"] forState:UIControlStateNormal];
         [_leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
@@ -102,7 +111,7 @@
 {
     if (_rightItemButton == nil) {
         _rightItemButton = [RightItemButton buttonWithType:UIButtonTypeCustom];
-        _rightItemButton.frame = CGRectMake(SWidth - 70 - 10, 0, 70, NavigationHeight - 20);
+        _rightItemButton.frame = CGRectMake(SWidth - 70 - 10, 0, 70, 44);
         [_rightItemButton addTarget:self action:@selector(rightButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [_rightItemButton setImage:[UIImage imageNamed:@"navbar_accurate"] forState:UIControlStateNormal];
         [_rightItemButton setTitle:@"精准推荐" forState:UIControlStateNormal];
@@ -116,7 +125,7 @@
 {
     if (_titleButton == nil) {
         _titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _titleButton.frame = CGRectMake(CGRectGetMaxX(self.leftItemButton.frame), 0, self.rightItemButton.hj_x -CGRectGetMaxX(self.leftItemButton.frame), NavigationHeight - 20);
+        _titleButton.frame = CGRectMake(CGRectGetMaxX(self.leftItemButton.frame), 0, self.rightItemButton.hj_x -CGRectGetMaxX(self.leftItemButton.frame), 44);
        // [_titleButton addTarget:self action:@selector(titleButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [_titleButton setTitle:@"" forState:UIControlStateNormal];
         [_titleButton setTitleColor:[UIColor hj_colorWithHexString:@"#333333"] forState:UIControlStateNormal];
@@ -125,18 +134,21 @@
     return _titleButton;
 }
 
+#pragma mark 定位点击
 - (void)leftButtonClick{
     if ([self.delegate respondsToSelector:@selector(locationButtonClick)]) {
         [self.delegate locationButtonClick];
     }
 }
 
+#pragma mark 返回点击
 - (void)backPage{
     if ([self.delegate respondsToSelector:@selector(webGoBack)]) {
         [self.delegate webGoBack];
     }
 }
 
+#pragma mark 导航栏右边点击事件
 - (void)rightButtonClick{
     if ([self.delegate respondsToSelector:@selector(rightButtonItemClick)]) {
         [self.delegate rightButtonItemClick];

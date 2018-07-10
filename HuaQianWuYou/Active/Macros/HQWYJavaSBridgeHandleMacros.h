@@ -129,9 +129,14 @@ static NSString * const kAppGetCity = @"appGetCity";
 static NSString * const kAppGetNavigationBarStatus = @"appSetNavigationBar";
 
 /*!
- 原生获取城市
+ 获取更新内容
  */
-static NSString * const kAppGetSelectCity = @"appGetSelectCity";
+static NSString * const kAppCheckUpdate = @"appCheckUpdate";
+
+/*!
+ 安全退出
+ */
+static NSString * const kAppExecLogout = @"appExecLogout";
 
 
 #endif /* HQWYJavaSBridgeHandleMacros_h */

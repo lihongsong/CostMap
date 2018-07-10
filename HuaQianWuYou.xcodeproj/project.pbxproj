@@ -182,6 +182,10 @@
 		59698BFD209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		59698BFE209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		596B0E2320B4360A00B5A06B /* ResetPasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */; };
+		5979454D20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */; };
+		5979455020F32BDB006BB02D /* ThirdPartWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454F20F32BDB006BB02D /* ThirdPartWebVC.m */; };
+		5979455320F33905006BB02D /* HQWYReturnToDetainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979455220F33905006BB02D /* HQWYReturnToDetainView.m */; };
+		5979455620F33A6B006BB02D /* HQWYBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979455520F33A6B006BB02D /* HQWYBaseWebViewController.m */; };
 		597C73C320E9C3220090960B /* BasicDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73C220E9C3220090960B /* BasicDataModel.m */; };
 		597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */; };
 		597C73D020EA17520090960B /* HQWYUserStatusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73CF20EA17520090960B /* HQWYUserStatusManager.m */; };
@@ -466,6 +470,14 @@
 		59698BFB209FE973000E37AA /* TestApi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestApi.plist; sourceTree = "<group>"; };
 		596B0E2120B4360A00B5A06B /* ResetPasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordModel.h; sourceTree = "<group>"; };
 		596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordModel.m; sourceTree = "<group>"; };
+		5979454B20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptOpenWebViewHandler.h; sourceTree = "<group>"; };
+		5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptOpenWebViewHandler.m; sourceTree = "<group>"; };
+		5979454E20F32BDB006BB02D /* ThirdPartWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartWebVC.h; sourceTree = "<group>"; };
+		5979454F20F32BDB006BB02D /* ThirdPartWebVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThirdPartWebVC.m; sourceTree = "<group>"; };
+		5979455120F33905006BB02D /* HQWYReturnToDetainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYReturnToDetainView.h; sourceTree = "<group>"; };
+		5979455220F33905006BB02D /* HQWYReturnToDetainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYReturnToDetainView.m; sourceTree = "<group>"; };
+		5979455420F33A6B006BB02D /* HQWYBaseWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYBaseWebViewController.h; sourceTree = "<group>"; };
+		5979455520F33A6B006BB02D /* HQWYBaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYBaseWebViewController.m; sourceTree = "<group>"; };
 		597C73C120E9C3220090960B /* BasicDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDataModel.h; sourceTree = "<group>"; };
 		597C73C220E9C3220090960B /* BasicDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicDataModel.m; sourceTree = "<group>"; };
 		597C73CA20E9C8560090960B /* BasicDataProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDataProtocol.h; sourceTree = "<group>"; };
@@ -1159,8 +1171,12 @@
 		597C73B720E9AF320090960B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5979455420F33A6B006BB02D /* HQWYBaseWebViewController.h */,
+				5979455520F33A6B006BB02D /* HQWYBaseWebViewController.m */,
 				59C5715920E61DFD00D54260 /* ActiveViewController.h */,
 				59C5715A20E61DFD00D54260 /* ActiveViewController.m */,
+				5979454E20F32BDB006BB02D /* ThirdPartWebVC.h */,
+				5979454F20F32BDB006BB02D /* ThirdPartWebVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1185,6 +1201,8 @@
 				59435A8020EE0A20007D9A4D /* LeftItemView.m */,
 				595AE2CC20EF78610031A2F3 /* NavigationView.h */,
 				595AE2CD20EF78610031A2F3 /* NavigationView.m */,
+				5979455120F33905006BB02D /* HQWYReturnToDetainView.h */,
+				5979455220F33905006BB02D /* HQWYReturnToDetainView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1379,6 +1397,8 @@
 				59435A7D20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m */,
 				592FE23720EA2B3D0052E60E /* HQWYJavaScriptOpenNativeHandler.h */,
 				592FE23820EA2B3D0052E60E /* HQWYJavaScriptOpenNativeHandler.m */,
+				5979454B20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.h */,
+				5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */,
 			);
 			path = HQWYJSHandler;
 			sourceTree = "<group>";
@@ -1993,6 +2013,7 @@
 				591D962820ABDE6E00193B09 /* AAChart.m in Sources */,
 				591D960120ABDE6E00193B09 /* AAColumn.m in Sources */,
 				59C570CF20E5FADC00D54260 /* HomeDataModel.m in Sources */,
+				5979455020F32BDB006BB02D /* ThirdPartWebVC.m in Sources */,
 				59C5710020E5FB8200D54260 /* ProgressView.m in Sources */,
 				59C570AF20E5F9C100D54260 /* CInvestigationResultViewController.m in Sources */,
 				A8F8DFD920B3B91700DB9A6A /* LoginInfoModel+Service.m in Sources */,
@@ -2043,6 +2064,7 @@
 				A8F8DFCF20B3AB5300DB9A6A /* DiscoverPageModel.m in Sources */,
 				59023BF7209A9B35004B9134 /* main.m in Sources */,
 				A8F8DFCE20B3AB5300DB9A6A /* DiscoverPageModel+Service.m in Sources */,
+				5979455320F33905006BB02D /* HQWYReturnToDetainView.m in Sources */,
 				59C570CA20E5FADC00D54260 /* HQWYSMSModel+Service.m in Sources */,
 				59435A8120EE0A20007D9A4D /* LeftItemView.m in Sources */,
 				5903771A209C096E004CEBD8 /* BaseViewController.m in Sources */,
@@ -2050,6 +2072,7 @@
 				59037723209C0985004CEBD8 /* BaseTableViewController.m in Sources */,
 				59C570FA20E5FB8200D54260 /* HomeScoreHeaderView.m in Sources */,
 				5960758620EB425900D7AD1D /* ZYZButton.m in Sources */,
+				5979455620F33A6B006BB02D /* HQWYBaseWebViewController.m in Sources */,
 				591D963420ABDE6E00193B09 /* AASeriesElement.m in Sources */,
 				59C5714020E600D100D54260 /* NSError+CustomError.m in Sources */,
 				591D95EC20ABDE6E00193B09 /* AAPlotOptions.m in Sources */,
@@ -2095,6 +2118,7 @@
 				A8F8DFAC20B3AB3300DB9A6A /* LoginHeaderView.m in Sources */,
 				59C5710720E5FB8200D54260 /* HomeBaseTableViewCell.m in Sources */,
 				591D961020ABDE6E00193B09 /* AATitle.m in Sources */,
+				5979454D20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
