@@ -20,6 +20,8 @@
     [params setValue:mobilePhone forKey:@"mobilePhone"];
     [params setValue:serialNumber forKey:@"serialNumber"];
     
-    return [ChangePasswordModel ln_requestModelAPI:ChangePassword parameters:params completion:completion];
+    return [ChangePasswordModel ln_requestModelAPI:ChangePassword parameters:params completion:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
+        completion(responseObject,error);
+    }];
 }
 @end

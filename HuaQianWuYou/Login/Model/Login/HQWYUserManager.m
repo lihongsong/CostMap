@@ -32,58 +32,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [[self alloc] init];
-        [_instance readUserInfoFromSandbox]; // 处理版本兼容的本地数据信息
-        //[_instance startMonitorNetChange];
     });
     return _instance;
-}
-
-#pragma mark 处理用户升级的问题
-// 反归档
-- (void)readUserInfoFromSandbox {
-    // 从本地（kUserArchiverFileName文件中）获取.
-    NSString *file = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:kUserArchiverFileName];
-    
-    NSData *data = [NSData dataWithContentsOfFile:file];
-    
-    //  如何本地没有数据则 直接return掉
-    if (data.length <= 0) {
-        return;
-    }
-    // 反归档.
-    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-    
-    HQWYUser *userInfo = nil;
-     if ([[unarchiver decodeObjectForKey:kUserArchiverKey] isKindOfClass:[NSString class]]) {
-        
-        // 解档出用户信息，并解密
-        NSString *userInfoString = [unarchiver decodeObjectForKey:kUserArchiverKey];
-        
-        userInfo = [DES3Util decryptString:userInfoString];
-    } else {
-        userInfo = nil;
-    }
-    
-    // 反归档结束.
-    [unarchiver finishDecoding];
-    
-    self.userInfo = userInfo;
-    
-    [self storeNeedStoredUserInfomation:userInfo];
-    
-    // 清楚本地保留的数据信息
-    [self deleteUserInfoInSandbox];
-}
-
-// 清除本地archiver的信息
-- (void)deleteUserInfoInSandbox {
-    NSFileManager *defaultManager = [NSFileManager defaultManager];
-    
-    NSString *file = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:kUserArchiverFileName];
-    
-    if ([defaultManager isDeletableFileAtPath:file]) {
-        [defaultManager removeItemAtPath:file error:nil];
-    }
 }
 
 //用户是否已经登录

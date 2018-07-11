@@ -13,6 +13,6 @@
 //    
 //};
 
-@interface AuthPhoneNumViewController : UIViewController
+@interface AuthPhoneNumViewController : BaseViewController
 
 @end

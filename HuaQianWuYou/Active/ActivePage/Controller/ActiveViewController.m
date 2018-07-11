@@ -24,7 +24,7 @@
 #import "LoginAndRegisterViewController.h"
 #import "HQWYJavaScriptOpenWebViewHandler.h"
 #import <AppUpdate/XZYAppUpdate.h>
-
+#import "AuthPhoneNumViewController.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -110,6 +110,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.hidden = true;
     [_manager callHandler:kWebViewWillAppear];
 }
 
@@ -352,9 +353,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark 登录
 - (void)presentNative{
     LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
+    loginVc.forgetBlock = ^{
+        [self changePasswordAction];
+    };
     [self presentViewController:loginVc animated:true completion:^{
 
     }];
 }
 
+# pragma mark 跳修改密码
+- (void)changePasswordAction{
+    AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new]; self.navigationController.navigationBar.hidden = false;
+    [self.navigationController pushViewController:authPhoneNumVC animated:true];
+}
 @end

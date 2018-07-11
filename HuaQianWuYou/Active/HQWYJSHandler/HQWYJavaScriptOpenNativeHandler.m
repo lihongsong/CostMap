@@ -61,7 +61,7 @@
 }
 
 #pragma mark 跳登录
-
+/*
 - (void)junpToSignIn{
     
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
@@ -70,16 +70,18 @@
     [rootVC presentViewController:loginVc animated:true completion:^{
         
     }];
+    loginVc.forgetBlock = ^{
+        [self changePasswordAction];
+    };
 }
+*/
 
 # pragma mark 跳修改密码
 - (void)changePasswordAction{
     AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new];
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     authPhoneNumVC.navigationController.navigationBar.hidden = true;
-    [rootVC presentViewController:authPhoneNumVC animated:true completion:^{
-        
-    }];
+    [rootVC.navigationController pushViewController:authPhoneNumVC animated:true];
 }
 
 

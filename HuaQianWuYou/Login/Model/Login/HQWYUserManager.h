@@ -18,6 +18,8 @@ typedef void(^LNUserManegerCallBack)(HQWYUser *userInfo);
 
 + (instancetype)sharedInstance;
 
+- (void)storeNeedStoredUserInfomation:(HQWYUser *)userInfo;
+
 -(void)storeUserMobilePhone:(NSString *)mobilePhone;
 
 /**

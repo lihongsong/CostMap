@@ -94,15 +94,19 @@
         [KeyWindow ln_showToastHUD:@"两次输入的密码不相同，请检查"];
         return;
     }
+    WeakObj(self);
     [KeyWindow ln_showLoadingHUD];
     [ChangePasswordModel changePasswordCode:self.code jumpType:self.jumpType passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
-        [KeyWindow ln_hideProgressHUD];
+        StrongObj(self);
         if (error) {
-            return;
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            return ;
         }
-        //存手机号和token逻辑
-        [KeyWindow ln_showToastHUD:@"密码修改成功"];
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        if (result){
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationOK message:@"密码修改成功"];
+            [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }  
     }];
 }
 - (void)didReceiveMemoryWarning {
