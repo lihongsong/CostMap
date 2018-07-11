@@ -71,7 +71,7 @@ DEPENDENCIES:
   - GTMBase64 (~> 1.0.1)
   - HJ_UIKit/HJAlertView
   - HJ_UIKit/HJCarousel
-  - HJ_UIKit/HJGuidePage
+  - HJ_UIKit/HJGuidePage (= 2.2.3)
   - HJCategories
   - HJJavascriptBridge (~> 0.3.2)
   - IQKeyboardManager (= 5.0.6)
@@ -126,6 +126,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: 5ae5c44b9bf6b6f97dcb82662694350e861de284
+PODFILE CHECKSUM: a6ca70673e64329efa3385bac7ad72ae7028e61d
 
 COCOAPODS: 1.5.3

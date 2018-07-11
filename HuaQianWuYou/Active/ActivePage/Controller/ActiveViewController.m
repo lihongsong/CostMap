@@ -25,6 +25,7 @@
 #import "HQWYJavaScriptOpenWebViewHandler.h"
 #import <AppUpdate/XZYAppUpdate.h>
 #import "AuthPhoneNumViewController.h"
+#import "ThirdPartWebVC.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -51,6 +52,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view
+    [self showPopView];
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.16.79:8088/#/home"]]];
     //http://172.17.16.79:8088/#/home
@@ -82,7 +84,14 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 //弹框代理方法
 - (void)didSelectedContentUrl:(NSString *)url popType:(AdvertisingType)type{
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+    if ([HQWYUserManager hasAlreadyLoggedIn]) {
+        ThirdPartWebVC *webView = [ThirdPartWebVC new];
+        webView.navigationDic = @{@"backKeyHide":@"0"};
+        [webView loadURLString:url];
+        [self.navigationController pushViewController:webView animated:true];
+    }else{
+        [self presentNative];
+    }
 }
 
 //自定义导航栏

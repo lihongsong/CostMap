@@ -24,6 +24,8 @@
     NSData *jsonData = [model yy_modelToJSONData];
     NSString  *key = [NSString stringWithFormat:@"dataList%ld",(long)type];
     UserDefaultSetObj(jsonData, key);
+    
+    UserDefaultSetObj([NSData dataWithContentsOfURL:[NSURL URLWithString:model.AdvertisingVO.imgUrl]], @"advertisementStartPage");
 }
 
 + (BasicDataModel *)getCacheModel:(AdvertisingType)type{
