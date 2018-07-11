@@ -57,7 +57,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
     [self.view addSubview:navigationView];
     navigationView.delegate = self;
-    [navigationView changeNavigationType:self.navigationDic];
+    [navigationView changeNavigationType:self.navigationDic[@"nav"]];
 }
 
 - (void)initData{
