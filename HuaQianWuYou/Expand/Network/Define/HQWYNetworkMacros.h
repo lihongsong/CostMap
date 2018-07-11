@@ -110,16 +110,16 @@
 #pragma mark - 注册登录和获取个人信息接口
 
 
-
-
-
-
-
 //返回挽留推荐
 #define LN_POST_ReturnToDetain_PATH         @"/product/retain"
 
 //产品上报
 #define LN_POST_ProductUpload_PATH         @"/product/click/report"
 
+//用户验证码登录
+#define LN_POST_LOGIN_PATH              @"/user/login/code"
+
+//用户密码登录
+#define LN_POST_PASSWORD_LOGIN_PATH              @"/user/login/password"
 
 #endif /* HQWYNetworkMacros_h */

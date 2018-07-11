@@ -47,7 +47,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma mark 上报数据
 - (void)uploadData:(NSNumber *)productId {
-    [UploadProductModel uploadProduct:self.navigationDic[@"category"] mobilePhone:@"" productID:productId Completion:^(UploadProductModel * _Nullable result, NSError * _Nullable error) {
+    [UploadProductModel uploadProduct:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] productID:productId Completion:^(UploadProductModel * _Nullable result, NSError * _Nullable error) {
         
     }];
 }
@@ -65,7 +65,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         WeakObj(self);
         [KeyWindow ln_showLoadingHUD];
         self.productIndex = 0;
-        [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:@"" Completion:^(UnClickProductModel * _Nullable result, NSError * _Nullable error) {
+        [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(UnClickProductModel * _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
             [KeyWindow ln_hideProgressHUD];
             if (error) {

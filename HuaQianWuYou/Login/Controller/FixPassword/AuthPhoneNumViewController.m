@@ -105,10 +105,13 @@
 
 # pragma mark 获取图形验证码
 - (void)getImageCode{
+    [KeyWindow ln_showLoadingHUD];
     [AuthCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
             return ;
         }
+        [KeyWindow ln_hideProgressHUD];
         if (result.outputImage.length > 0) {
             //到图形验证码页面
             [self popImageCodeViewImageCodeStr:result.outputImage serialNumber:result.serialNumber];
@@ -118,51 +121,57 @@
 
 # pragma mark 校验图形验证码
 - (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
+    [KeyWindow ln_showLoadingHUD];
     [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
-            return;
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            return ;
         }
+        [KeyWindow ln_hideProgressHUD];
         if (result.result) {
             //校验成功 再次发送短信验证码
-            [self getImageCode];
+            [self getSMSCode];
         }
     }];
 }
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-    
-    [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:self.authCode Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+    [KeyWindow ln_showLoadingHUD];
+    [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:FixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
-            return;
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            if (error.code == 1013) {
+                 [self getImageCode];
+            }
+            return ;
         }
-        /*什么时候需要图形验证码添加逻辑 [self getImageCode];*/
-        /*如果发送成功 */
-        if (self.authCodeButton) {
-            //倒计时
-            [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
+        [KeyWindow ln_hideProgressHUD];
+        if (result) {
+            /*如果发送成功 */
+            if (self.authCodeButton) {
+                //倒计时
+                [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
+            }
+            self.serialNumber = result.body;
         }
-        self.serialNumber = result.body;
     }];
 }
 
 # pragma mark 校验短信验证码
 - (void)validatePhoneNum{
-    [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:@"31" serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+    [KeyWindow ln_showLoadingHUD];
+    [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:FixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
-            return;
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            return ;
         }
+        [KeyWindow ln_hideProgressHUD];
         //校验成功
         SetPasswordViewController *setPassword = [SetPasswordViewController new];
         [self.navigationController pushViewController:setPassword animated:YES];
     }];
 }
-
-
-
-
-
-
 
 - (void)nextAction:(UIButton *)sender{
     //校验是不是手机号

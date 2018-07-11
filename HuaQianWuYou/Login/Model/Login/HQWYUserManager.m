@@ -10,8 +10,11 @@
 #import "DES3Util.h"
 #import <UICKeyChainStore/UICKeyChainStore.h>
 //#import <Bugly/Bugly.h>
-//保存的最后登录手机
+//保存正在登录手机
 #define kMobilePhoneForUserDefault @"login_mobilephone"
+
+//保存的最后登录手机
+#define kMobilePhoneForLatestUser @"latest_login_mobilephone"
 
 #define KuserTokenKey @"user_token"
 
@@ -32,58 +35,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _instance = [[self alloc] init];
-        [_instance readUserInfoFromSandbox]; // 处理版本兼容的本地数据信息
-        //[_instance startMonitorNetChange];
     });
     return _instance;
-}
-
-#pragma mark 处理用户升级的问题
-// 反归档
-- (void)readUserInfoFromSandbox {
-    // 从本地（kUserArchiverFileName文件中）获取.
-    NSString *file = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:kUserArchiverFileName];
-    
-    NSData *data = [NSData dataWithContentsOfFile:file];
-    
-    //  如何本地没有数据则 直接return掉
-    if (data.length <= 0) {
-        return;
-    }
-    // 反归档.
-    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
-    
-    HQWYUser *userInfo = nil;
-     if ([[unarchiver decodeObjectForKey:kUserArchiverKey] isKindOfClass:[NSString class]]) {
-        
-        // 解档出用户信息，并解密
-        NSString *userInfoString = [unarchiver decodeObjectForKey:kUserArchiverKey];
-        
-        userInfo = [DES3Util decryptString:userInfoString];
-    } else {
-        userInfo = nil;
-    }
-    
-    // 反归档结束.
-    [unarchiver finishDecoding];
-    
-    self.userInfo = userInfo;
-    
-    [self storeNeedStoredUserInfomation:userInfo];
-    
-    // 清楚本地保留的数据信息
-    [self deleteUserInfoInSandbox];
-}
-
-// 清除本地archiver的信息
-- (void)deleteUserInfoInSandbox {
-    NSFileManager *defaultManager = [NSFileManager defaultManager];
-    
-    NSString *file = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:kUserArchiverFileName];
-    
-    if ([defaultManager isDeletableFileAtPath:file]) {
-        [defaultManager removeItemAtPath:file error:nil];
-    }
 }
 
 //用户是否已经登录
@@ -130,6 +83,7 @@
     if (mobilePhone) {
         NSString *mobilePhoneStr = [DES3Util encryptObject:mobilePhone];
         [[NSUserDefaults standardUserDefaults] setObject:mobilePhoneStr forKey:kMobilePhoneForUserDefault];
+        [[NSUserDefaults standardUserDefaults] setObject:mobilePhoneStr forKey:kMobilePhoneForLatestUser];
     }
 }
 
@@ -146,17 +100,27 @@
     return _userToken;
 }
 
-//从UserDefault中获取用户上次登录成功的手机号码
-+ (NSString *)lastLoginMobilePhone {
+//从UserDefault中获取用户登录成功的手机号码
++ (NSString *)loginMobilePhone {
     
     NSString *mobilStr = [[NSUserDefaults standardUserDefaults] objectForKey:kMobilePhoneForUserDefault];
     if (mobilStr) {
         return [DES3Util decryptString:mobilStr];
     }
-    
     return nil;
 }
 
+
++ (NSString *)lastLoginMobilePhone{
+ 
+     NSString *phoneStr = [[NSUserDefaults standardUserDefaults] objectForKey:kMobilePhoneForLatestUser];
+     if (phoneStr) {
+         return [DES3Util decryptString:phoneStr];
+     }
+ 
+     return nil;
+ }
+ 
 
 //从UserDefault中获取用户上次登录成功的CustomerID
 /*
@@ -180,6 +144,8 @@
     UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:nil];
     keychain[KuserTokenKey] = nil;
     
+    // 删除用户登录手机
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kMobilePhoneForUserDefault];
    // [[NSUserDefaults standardUserDefaults] removeObjectForKey:kuserCustomerIDForUserDefault];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }

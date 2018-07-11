@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SetPasswordViewController : UIViewController
+@interface SetPasswordViewController : BaseViewController
 
 /* 验证码 */
 @property (nonatomic, strong) NSString  *code;
