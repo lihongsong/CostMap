@@ -33,11 +33,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    //移动武林榜
-    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
-    /** TalkingData */
-    [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
-    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
+
     [self setUpSDKs];
     
     WeakObj(self);
@@ -193,12 +189,19 @@
 #pragma 三方SDK设置
 
 - (void)setUpSDKs{
+    //移动武林榜
+    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
+    /** TalkingData */
+    [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
+    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
+
     //设置意见反馈
     [FBManager configFB];
     [self setUpBugly];
 }
 
 - (void)setUpBugly {
+
     /** bugly */
     BuglyConfig *buglyConfig = [[BuglyConfig alloc] init];
     buglyConfig.blockMonitorEnable = YES;
