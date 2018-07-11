@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - AppUpdate (1.0.9)
   - BMKLocationKit (1.2.0)
+  - Bugly (2.5.0)
   - Feedback (1.2.1):
     - Masonry
     - SDWebImage
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
   - AppUpdate
   - BMKLocationKit
+  - Bugly (= 2.5.0)
   - Feedback (~> 1.2.1)
   - GTMBase64 (~> 1.0.1)
   - HJ_UIKit/HJAlertView
@@ -96,6 +98,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
     - BMKLocationKit
+    - Bugly
     - GTMBase64
     - IQKeyboardManager
     - Masonry
@@ -110,6 +113,7 @@ SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppUpdate: 1dca17a2783a99f32d7e184739e8fb16193600e7
   BMKLocationKit: 043a9eaf3767916a692708804324adcfe86e281d
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   Feedback: 2906898da5232308a0ebae3e773505c0784577cd
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
   HJ_UIKit: 05e1c88ae266ebda16002eab0ed823bf5301ba50
@@ -126,6 +130,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: 5ae5c44b9bf6b6f97dcb82662694350e861de284
+PODFILE CHECKSUM: bb6ef23e6dcd920acd581648e116ddddaf62bbf5
 
 COCOAPODS: 1.5.3

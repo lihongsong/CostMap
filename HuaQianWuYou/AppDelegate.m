@@ -20,8 +20,10 @@
 #import "FBManager.h"
 #import "TalkingData.h"
 #import "TalkingDataAppCpa.h"
+#import <Bugly/Bugly.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<BuglyDelegate>
+
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 
 @end
@@ -37,7 +39,7 @@
     [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
     [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
     [self setUpSDKs];
-    
+//    [self performSelector:@selector(aaa) withObject:self afterDelay:5];
     WeakObj(self);
     [self registerAppUpdate];
     //    /** 通过通知栏调起APP处理通知信息 */
@@ -191,9 +193,25 @@
 #pragma 三方SDK设置
 
 - (void)setUpSDKs{
-    
     //设置意见反馈
     [FBManager configFB];
+    [self setUpBugly];
+}
+
+- (void)setUpBugly {
+    /** bugly */
+    BuglyConfig *buglyConfig = [[BuglyConfig alloc] init];
+    buglyConfig.blockMonitorEnable = YES;
+    buglyConfig.reportLogLevel = BuglyLogLevelError;
+    buglyConfig.delegate = self;
+#if defined(Release)
+    [Bugly startWithAppId:Bugly_AppId
+                   config:buglyConfig];
+#else
+    [Bugly startWithAppId:Bugly_AppIdDebug
+        developmentDevice:YES
+                   config:buglyConfig];
+#endif
 }
 
 @end
