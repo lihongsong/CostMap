@@ -285,6 +285,10 @@
 		59C5714120E600D100D54260 /* ZYZControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713320E600D100D54260 /* ZYZControl.m */; };
 		59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */; };
 		59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5715A20E61DFD00D54260 /* ActiveViewController.m */; };
+		59E72DA820F5FECA007AB6C9 /* UnClickProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DA720F5FECA007AB6C9 /* UnClickProductModel.m */; };
+		59E72DAB20F60A4F007AB6C9 /* UnClickProductModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DAA20F60A4F007AB6C9 /* UnClickProductModel+Service.m */; };
+		59E72DAE20F61B80007AB6C9 /* UploadProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DAD20F61B80007AB6C9 /* UploadProductModel.m */; };
+		59E72DB120F61BAA007AB6C9 /* UploadProductModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DB020F61BAA007AB6C9 /* UploadProductModel+Service.m */; };
 		59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */; };
 		59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */; };
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
@@ -690,6 +694,14 @@
 		59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+SDKRegister.m"; sourceTree = "<group>"; };
 		59C5715920E61DFD00D54260 /* ActiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActiveViewController.h; sourceTree = "<group>"; };
 		59C5715A20E61DFD00D54260 /* ActiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActiveViewController.m; sourceTree = "<group>"; };
+		59E72DA620F5FECA007AB6C9 /* UnClickProductModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnClickProductModel.h; sourceTree = "<group>"; };
+		59E72DA720F5FECA007AB6C9 /* UnClickProductModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnClickProductModel.m; sourceTree = "<group>"; };
+		59E72DA920F60A4F007AB6C9 /* UnClickProductModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnClickProductModel+Service.h"; sourceTree = "<group>"; };
+		59E72DAA20F60A4F007AB6C9 /* UnClickProductModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UnClickProductModel+Service.m"; sourceTree = "<group>"; };
+		59E72DAC20F61B80007AB6C9 /* UploadProductModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadProductModel.h; sourceTree = "<group>"; };
+		59E72DAD20F61B80007AB6C9 /* UploadProductModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadProductModel.m; sourceTree = "<group>"; };
+		59E72DAF20F61BAA007AB6C9 /* UploadProductModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UploadProductModel+Service.h"; sourceTree = "<group>"; };
+		59E72DB020F61BAA007AB6C9 /* UploadProductModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UploadProductModel+Service.m"; sourceTree = "<group>"; };
 		59FD9E7620EA1A85008C98DE /* HQWYUserBaseInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUserBaseInfo.h; sourceTree = "<group>"; };
 		59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserBaseInfo.m; sourceTree = "<group>"; };
 		59FD9E7920EA1E0A008C98DE /* HQWYJavaSBridgeHandleMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaSBridgeHandleMacros.h; sourceTree = "<group>"; };
@@ -1426,6 +1438,14 @@
 			children = (
 				59FD9E7F20EA21A7008C98DE /* HQWYJavaScriptResponse.h */,
 				59FD9E8020EA21A7008C98DE /* HQWYJavaScriptResponse.m */,
+				59E72DA620F5FECA007AB6C9 /* UnClickProductModel.h */,
+				59E72DA720F5FECA007AB6C9 /* UnClickProductModel.m */,
+				59E72DA920F60A4F007AB6C9 /* UnClickProductModel+Service.h */,
+				59E72DAA20F60A4F007AB6C9 /* UnClickProductModel+Service.m */,
+				59E72DAC20F61B80007AB6C9 /* UploadProductModel.h */,
+				59E72DAD20F61B80007AB6C9 /* UploadProductModel.m */,
+				59E72DAF20F61BAA007AB6C9 /* UploadProductModel+Service.h */,
+				59E72DB020F61BAA007AB6C9 /* UploadProductModel+Service.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2225,6 +2245,7 @@
 				591D962520ABDE6E00193B09 /* AAPie.m in Sources */,
 				59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */,
 				A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */,
+				59E72DA820F5FECA007AB6C9 /* UnClickProductModel.m in Sources */,
 				59C5710820E5FB8200D54260 /* ApplyRecordCell.m in Sources */,
 				591D961620ABDE6E00193B09 /* AAAnimation.m in Sources */,
 				59C5713B20E600D100D54260 /* NSString+LabelKit.m in Sources */,
@@ -2295,6 +2316,7 @@
 				59C570FB20E5FB8200D54260 /* WangYiWave.m in Sources */,
 				A8F8DFAD20B3AB3300DB9A6A /* MineTableViewCell.m in Sources */,
 				591D962E20ABDE6E00193B09 /* AAChartModel.m in Sources */,
+				59E72DAE20F61B80007AB6C9 /* UploadProductModel.m in Sources */,
 				59C570AA20E5F9C100D54260 /* TouchIDViewController.m in Sources */,
 				597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */,
 				59C5713820E600D100D54260 /* CALayer+LayerColor.m in Sources */,
@@ -2303,6 +2325,7 @@
 				591D960420ABDE6E00193B09 /* AAPlotLinesElement.m in Sources */,
 				59C570B120E5F9C100D54260 /* HomeViewController.m in Sources */,
 				59037711209C0387004CEBD8 /* BaseModel.m in Sources */,
+				59E72DAB20F60A4F007AB6C9 /* UnClickProductModel+Service.m in Sources */,
 				59C5710220E5FB8200D54260 /* CircleIndicatorView.m in Sources */,
 				5965CBB420F4AF320009DB84 /* NSObject+HQWYSendNetworkError.m in Sources */,
 				591D95F520ABDE6E00193B09 /* AATooltip.m in Sources */,
@@ -2316,6 +2339,7 @@
 				A8F8DFB620B3AB3300DB9A6A /* AboutUsViewController.m in Sources */,
 				59BE198D20EC9FA300704B2C /* PopViewManager.m in Sources */,
 				59C5710C20E5FB8200D54260 /* GradientCompareBarView.m in Sources */,
+				59E72DB120F61BAA007AB6C9 /* UploadProductModel+Service.m in Sources */,
 				5958089C20F2F53A002A6F0C /* ImageCodePopView.m in Sources */,
 				A8F8DFCF20B3AB5300DB9A6A /* DiscoverPageModel.m in Sources */,
 				59023BF7209A9B35004B9134 /* main.m in Sources */,

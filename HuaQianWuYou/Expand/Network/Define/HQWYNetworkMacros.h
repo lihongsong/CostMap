@@ -109,69 +109,17 @@
 
 #pragma mark - 注册登录和获取个人信息接口
 
-//用户登录
-#define LN_POST_LOGIN_PATH              @"api/v5_7_5/login"
-//获取用户信息
-#define LN_POST_RETRIEVEUSER_PATH       @"api/v5_7_5/secure/retrieveUser"
-
-//获取用户信息
-#define LN_POST_ELECTRONIC_PATH       @"api/v5_2/secure/bosh/getElectronicAccount"
-
-#pragma mark - 是否有新版本更新接口
-//应用更新提示
-#define LN_GET_APP_UPDATE_PATH              @"api/v4/version"
-
-//提交修改手机号
-#define LN_POST_CHANGE_PHONE_PATH               @"api/v5/secure/changephone/change"
-//获取图片验证码
-#define LN_POST_GET_IMAGECODE_PATH              @"api/v4/captcha"
 
 
-#pragma mark - 意见反馈
-//意见反馈
-#define LN_POST_FEEDBACK_PATH         @"api/v2/feedback"
 
 
-#pragma mark - 上传用户头像
-//上传用户头像
-#define LN_POST_AVATAR_PATH           @"api/v4/setUserImage"
 
 
-#pragma mark - 上传设备信息
-//上传设备信息
-#define LN_POST_SENDDECIVE_PATH       @"api/plus/sendDeviceInfo"
+//返回挽留推荐
+#define LN_POST_ReturnToDetain_PATH         @"/product/retain"
 
-
-#pragma mark - 设置别名
-//设置推送别名
-#define LN_POST_SET_ALIAS_PATH        @"api/v4/setAlias"
-
-
-#pragma mark -上传用户相关的数据信息
-
-#define LN_POST_USER_UBT_PATH          @"api/v5/report/update"
-
-// 上传设备信息
-#define LN_POST_SEND_DEVICE_INFO @"api/v6/sendDeviceInfo"
-
-//获取注册验证码
-#define LN_POST_GET_LOGIN_CODE   @"api/v5_9_1/login/getCode"
-//用户登录
-#define LN_POST_LOGIN_WITH_CODE  @"api/v5_9_1/login"
-//设置登录密码
-#define LN_POST_SET_PASSWORD     @"api/v5_9_1/login/setPassword"
-
-// 获取首页热门产品列表
-#define LN_GET_PRODUCTGUIDE_PATH            @"/api/guide/getProductGuide"
-
-//获取公告列表
-#define IL_POST_PERSON_PUBLIC_MESSAGE_PATH         @"/manage/queryAnnouncements"
-//首页公告
-#define IL_POST_PUBLIC_MESSAGE @"manage/announcement"
-// 活动弹窗
-#define IL_POST_HOME_ACTIVITY @"/manage/homePopUp"
-//获取启动页信息
-#define IL_POST_LAUNCH_PAGE @"/manage/launchPage"
+//产品上报
+#define LN_POST_ProductUpload_PATH         @"/product/click/report"
 
 
 #endif /* HQWYNetworkMacros_h */
