@@ -18,12 +18,14 @@ typedef void(^LNUserManegerCallBack)(HQWYUser *userInfo);
 
 + (instancetype)sharedInstance;
 
+- (void)storeNeedStoredUserInfomation:(HQWYUser *)userInfo;
+
 -(void)storeUserMobilePhone:(NSString *)mobilePhone;
 
 /**
- *  删除已归档的用户信息 model
+ *  删除用户信息 model
  */
-//- (void)deleteUserInfo;
+- (void)deleteUserInfo;
 
 /**
  *  判断用户是否已经登录
@@ -38,6 +40,13 @@ typedef void(^LNUserManegerCallBack)(HQWYUser *userInfo);
  *  @return 上次登录的手机号码
  */
 + (NSString *)lastLoginMobilePhone;
+
+/**
+ *  从UserDefault中获取用户登录成功的手机号码
+ *
+ *  @return 登录的手机号码
+ */
++ (NSString *)loginMobilePhone;
 
 /**
  *  从UserDefault中获取用户上次登录成功的CustomerID

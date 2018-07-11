@@ -9,6 +9,10 @@
 #import "ThirdPartWebVC.h"
 #import "HQWYJavaScriptResponse.h"
 #import "HQWYReturnToDetainView.h"
+#import "UnClickProductModel.h"
+#import "UnClickProductModel+Service.h"
+#import "UploadProductModel.h"
+#import "UploadProductModel+Service.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -21,6 +25,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 @property (strong, nonatomic) HJJSBridgeManager *manager;
 @property(nonatomic,strong)NSTimer *timer;
 @property(nonatomic,assign)NSInteger countTime;
+@property(nonatomic,strong)UnClickProductModel *listModel;
+@property(nonatomic,assign)NSInteger productIndex;
 @end
 
 @implementation ThirdPartWebVC
@@ -34,7 +40,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
+    [self uploadData:self.navigationDic[@"productId"]];
+    [self initData];
     
+}
+
+#pragma mark 上报数据
+- (void)uploadData:(NSNumber *)productId {
+    [UploadProductModel uploadProduct:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] productID:productId Completion:^(UploadProductModel * _Nullable result, NSError * _Nullable error) {
+        
+    }];
 }
 
 //自定义导航栏
@@ -43,6 +58,22 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.view addSubview:navigationView];
     navigationView.delegate = self;
     [navigationView changeNavigationType:self.navigationDic];
+}
+
+- (void)initData{
+    if ([self.navigationDic[@"needBackDialog"] integerValue]) {
+        WeakObj(self);
+        [KeyWindow ln_showLoadingHUD];
+        self.productIndex = 0;
+        [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(UnClickProductModel * _Nullable result, NSError * _Nullable error) {
+            StrongObj(self);
+            [KeyWindow ln_hideProgressHUD];
+            if (error) {
+                return;
+            }
+            self.listModel = result;
+        }];
+    }
 }
 
 -(void)rightButtonItemClick{
@@ -60,22 +91,26 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma leftItemDelegate
 - (void)webGoBack{
-    if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
-        [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-            if (!error) { // 成功
-                NSLog(@"%@",response);
-            } else { // 失败
-                NSLog(@"%@",error.localizedDescription);
-            }
-        }];
-    }
-    if ([GetUserDefault(@"isShowPromptToday") isEqualToString:[self getToday]]) {
-        self.countTime = 3;
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
-        [HQWYReturnToDetainView showController:self];
-        [HQWYReturnToDetainView countTime:@"3"];
+    if ([self.navigationDic[@"needBackDialog"] integerValue]) {
+        if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
+            [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                if (!error) { // 成功
+                    NSLog(@"%@",response);
+                } else { // 失败
+                    NSLog(@"%@",error.localizedDescription);
+                }
+            }];
+        }
+        if ([GetUserDefault(@"isShowPromptToday") isEqualToString:[self getToday]]) {
+            self.countTime = 3;
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
+            [HQWYReturnToDetainView showController:self];
+            [HQWYReturnToDetainView countTime:@"3"];
+        }else{
+            [self toBeforeViewController];
+        }
     }else{
-        [self toBeforeViewController];
+         [self toBeforeViewController];
     }
 }
 
@@ -96,12 +131,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.countTime = 3;
         [self.timer invalidate];
         self.timer = nil;
-        [self loadURLString:@"http://www.baidu.com"];
-      
+        ProductInfo *product = self.listModel.productCategoryVO[self.productIndex];
+        [self loadURLString:product.address];
+        [self uploadData:product.id];
+        self.productIndex ++;
     }else{
         [HQWYReturnToDetainView countTime:[NSString stringWithFormat:@"%ld",(long)self.countTime]];
     }
-    
 }
 
 - (void)dealloc {

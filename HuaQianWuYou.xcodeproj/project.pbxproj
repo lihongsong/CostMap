@@ -96,6 +96,7 @@
 		596075BB20EB6F2100D7AD1D /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 596075BA20EB6F2100D7AD1D /* libsqlite3.0.tbd */; };
 		596075BD20EB6F4800D7AD1D /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 596075BC20EB6F4800D7AD1D /* libstdc++.6.0.9.tbd */; };
 		596075BF20EB6F5600D7AD1D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596075BE20EB6F5600D7AD1D /* AdSupport.framework */; };
+		5962070A20F5AFD600FAF3CF /* HQWYUser+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 5962070920F5AFD600FAF3CF /* HQWYUser+Service.m */; };
 		5965CB9120F485990009DB84 /* HQWYUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9020F485990009DB84 /* HQWYUserManager.m */; };
 		5965CB9420F4863F0009DB84 /* HQWYUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9320F4863F0009DB84 /* HQWYUser.m */; };
 		5965CBAE20F4AF320009DB84 /* testResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 5965CB9B20F4AF310009DB84 /* testResponse.json */; };
@@ -183,6 +184,10 @@
 		59C5714120E600D100D54260 /* ZYZControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713320E600D100D54260 /* ZYZControl.m */; };
 		59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */; };
 		59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5715A20E61DFD00D54260 /* ActiveViewController.m */; };
+		59E72DA820F5FECA007AB6C9 /* UnClickProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DA720F5FECA007AB6C9 /* UnClickProductModel.m */; };
+		59E72DAB20F60A4F007AB6C9 /* UnClickProductModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DAA20F60A4F007AB6C9 /* UnClickProductModel+Service.m */; };
+		59E72DAE20F61B80007AB6C9 /* UploadProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DAD20F61B80007AB6C9 /* UploadProductModel.m */; };
+		59E72DB120F61BAA007AB6C9 /* UploadProductModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DB020F61BAA007AB6C9 /* UploadProductModel+Service.m */; };
 		59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */; };
 		59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */; };
 		9CA9292420F6164200F65941 /* NSObject+HQWYResponseCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */; };
@@ -393,6 +398,8 @@
 		596075BA20EB6F2100D7AD1D /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		596075BC20EB6F4800D7AD1D /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
 		596075BE20EB6F5600D7AD1D /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		5962070820F5AFD600FAF3CF /* HQWYUser+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HQWYUser+Service.h"; sourceTree = "<group>"; };
+		5962070920F5AFD600FAF3CF /* HQWYUser+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HQWYUser+Service.m"; sourceTree = "<group>"; };
 		5965CB8F20F485990009DB84 /* HQWYUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUserManager.h; sourceTree = "<group>"; };
 		5965CB9020F485990009DB84 /* HQWYUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserManager.m; sourceTree = "<group>"; };
 		5965CB9220F4863F0009DB84 /* HQWYUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUser.h; sourceTree = "<group>"; };
@@ -560,6 +567,14 @@
 		59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+SDKRegister.m"; sourceTree = "<group>"; };
 		59C5715920E61DFD00D54260 /* ActiveViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActiveViewController.h; sourceTree = "<group>"; };
 		59C5715A20E61DFD00D54260 /* ActiveViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActiveViewController.m; sourceTree = "<group>"; };
+		59E72DA620F5FECA007AB6C9 /* UnClickProductModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnClickProductModel.h; sourceTree = "<group>"; };
+		59E72DA720F5FECA007AB6C9 /* UnClickProductModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnClickProductModel.m; sourceTree = "<group>"; };
+		59E72DA920F60A4F007AB6C9 /* UnClickProductModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UnClickProductModel+Service.h"; sourceTree = "<group>"; };
+		59E72DAA20F60A4F007AB6C9 /* UnClickProductModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UnClickProductModel+Service.m"; sourceTree = "<group>"; };
+		59E72DAC20F61B80007AB6C9 /* UploadProductModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UploadProductModel.h; sourceTree = "<group>"; };
+		59E72DAD20F61B80007AB6C9 /* UploadProductModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UploadProductModel.m; sourceTree = "<group>"; };
+		59E72DAF20F61BAA007AB6C9 /* UploadProductModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UploadProductModel+Service.h"; sourceTree = "<group>"; };
+		59E72DB020F61BAA007AB6C9 /* UploadProductModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UploadProductModel+Service.m"; sourceTree = "<group>"; };
 		59FD9E7620EA1A85008C98DE /* HQWYUserBaseInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUserBaseInfo.h; sourceTree = "<group>"; };
 		59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserBaseInfo.m; sourceTree = "<group>"; };
 		59FD9E7920EA1E0A008C98DE /* HQWYJavaSBridgeHandleMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaSBridgeHandleMacros.h; sourceTree = "<group>"; };
@@ -967,57 +982,6 @@
 			path = DeviceManager;
 			sourceTree = "<group>";
 		};
-		5958087D20F2F53A002A6F0C /* Password */ = {
-			isa = PBXGroup;
-			children = (
-				5958087E20F2F53A002A6F0C /* Model */,
-				5958088720F2F53A002A6F0C /* Contoller */,
-				5958088E20F2F53A002A6F0C /* Views */,
-			);
-			path = Password;
-			sourceTree = "<group>";
-		};
-		5958087E20F2F53A002A6F0C /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				5958087F20F2F53A002A6F0C /* AuthCodeModel+Service.h */,
-				5958088020F2F53A002A6F0C /* ChangePasswordModel+Service.m */,
-				5958088120F2F53A002A6F0C /* ChangePasswordModel.h */,
-				5958088220F2F53A002A6F0C /* AuthCodeModel.h */,
-				5958088320F2F53A002A6F0C /* ChangePasswordModel.m */,
-				5958088420F2F53A002A6F0C /* ChangePasswordModel+Service.h */,
-				5958088520F2F53A002A6F0C /* AuthCodeModel+Service.m */,
-				5958088620F2F53A002A6F0C /* AuthCodeModel.m */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		5958088720F2F53A002A6F0C /* Contoller */ = {
-			isa = PBXGroup;
-			children = (
-				5958088920F2F53A002A6F0C /* AuthPhoneNumViewController.h */,
-				5958088B20F2F53A002A6F0C /* AuthPhoneNumViewController.m */,
-				5958088820F2F53A002A6F0C /* ImageCodeViewController.h */,
-				5958088C20F2F53A002A6F0C /* ImageCodeViewController.m */,
-				5958088A20F2F53A002A6F0C /* SetPasswordViewController.h */,
-				5958088D20F2F53A002A6F0C /* SetPasswordViewController.m */,
-			);
-			path = Contoller;
-			sourceTree = "<group>";
-		};
-		5958088E20F2F53A002A6F0C /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				5958088F20F2F53A002A6F0C /* ImageCodePopView.m */,
-				5958089020F2F53A002A6F0C /* PasswordInputView.m */,
-				5958089120F2F53A002A6F0C /* ImageCodePopView.xib */,
-				5958089220F2F53A002A6F0C /* ImageCodePopView.h */,
-				5958089320F2F53A002A6F0C /* PasswordInputView.xib */,
-				5958089420F2F53A002A6F0C /* PasswordInputView.h */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		595808A020F2F945002A6F0C /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,7 +996,6 @@
 		595E7DD320EC6214001D65B6 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				5958087D20F2F53A002A6F0C /* Password */,
 				595E7DD720EC6242001D65B6 /* View */,
 				595E7DD620EC623D001D65B6 /* Model */,
 				595E7DD420EC622E001D65B6 /* Controller */,
@@ -1043,13 +1006,34 @@
 		595E7DD420EC622E001D65B6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				595E7DD820EC68CA001D65B6 /* LoginAndRegisterViewController.h */,
-				595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */,
+				5962070120F5A92A00FAF3CF /* Common */,
+				5962070020F5A8F000FAF3CF /* Login */,
+				596206FF20F5A89F00FAF3CF /* FixPassword */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
 		595E7DD620EC623D001D65B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5962070220F5A94100FAF3CF /* Common */,
+				596206FC20F5A86A00FAF3CF /* Login */,
+				596206FD20F5A87D00FAF3CF /* FixPassword */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		595E7DD720EC6242001D65B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5962070320F5A94600FAF3CF /* Common */,
+				5962070420F5A94B00FAF3CF /* Login */,
+				596206FE20F5A89600FAF3CF /* FixPassword */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		596206FC20F5A86A00FAF3CF /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				59FD9E7620EA1A85008C98DE /* HQWYUserBaseInfo.h */,
@@ -1058,19 +1042,92 @@
 				5965CB9020F485990009DB84 /* HQWYUserManager.m */,
 				5965CB9220F4863F0009DB84 /* HQWYUser.h */,
 				5965CB9320F4863F0009DB84 /* HQWYUser.m */,
+				5962070820F5AFD600FAF3CF /* HQWYUser+Service.h */,
+				5962070920F5AFD600FAF3CF /* HQWYUser+Service.m */,
 			);
-			path = Model;
+			path = Login;
 			sourceTree = "<group>";
 		};
-		595E7DD720EC6242001D65B6 /* View */ = {
+		596206FD20F5A87D00FAF3CF /* FixPassword */ = {
+			isa = PBXGroup;
+			children = (
+				5958088020F2F53A002A6F0C /* ChangePasswordModel+Service.m */,
+				5958088120F2F53A002A6F0C /* ChangePasswordModel.h */,
+				5958088320F2F53A002A6F0C /* ChangePasswordModel.m */,
+				5958088420F2F53A002A6F0C /* ChangePasswordModel+Service.h */,
+			);
+			path = FixPassword;
+			sourceTree = "<group>";
+		};
+		596206FE20F5A89600FAF3CF /* FixPassword */ = {
+			isa = PBXGroup;
+			children = (
+				5958089320F2F53A002A6F0C /* PasswordInputView.xib */,
+				5958089020F2F53A002A6F0C /* PasswordInputView.m */,
+				5958089420F2F53A002A6F0C /* PasswordInputView.h */,
+			);
+			path = FixPassword;
+			sourceTree = "<group>";
+		};
+		596206FF20F5A89F00FAF3CF /* FixPassword */ = {
+			isa = PBXGroup;
+			children = (
+				5958088A20F2F53A002A6F0C /* SetPasswordViewController.h */,
+				5958088D20F2F53A002A6F0C /* SetPasswordViewController.m */,
+				5958088920F2F53A002A6F0C /* AuthPhoneNumViewController.h */,
+				5958088B20F2F53A002A6F0C /* AuthPhoneNumViewController.m */,
+			);
+			path = FixPassword;
+			sourceTree = "<group>";
+		};
+		5962070020F5A8F000FAF3CF /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				595E7DD820EC68CA001D65B6 /* LoginAndRegisterViewController.h */,
+				595E7DD920EC68CA001D65B6 /* LoginAndRegisterViewController..m */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		5962070120F5A92A00FAF3CF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5958088820F2F53A002A6F0C /* ImageCodeViewController.h */,
+				5958088C20F2F53A002A6F0C /* ImageCodeViewController.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5962070220F5A94100FAF3CF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5958087F20F2F53A002A6F0C /* AuthCodeModel+Service.h */,
+				5958088220F2F53A002A6F0C /* AuthCodeModel.h */,
+				5958088520F2F53A002A6F0C /* AuthCodeModel+Service.m */,
+				5958088620F2F53A002A6F0C /* AuthCodeModel.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5962070320F5A94600FAF3CF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				595E7DDE20EC90E2001D65B6 /* TwoTextFieldView.h */,
+				595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */,
+				5958088F20F2F53A002A6F0C /* ImageCodePopView.m */,
+				5958089120F2F53A002A6F0C /* ImageCodePopView.xib */,
+				5958089220F2F53A002A6F0C /* ImageCodePopView.h */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5962070420F5A94B00FAF3CF /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				595E7DDB20EC6B77001D65B6 /* SelectTheLoginModeView.h */,
 				595E7DDC20EC6B77001D65B6 /* SelectTheLoginModeView.m */,
-				595E7DDE20EC90E2001D65B6 /* TwoTextFieldView.h */,
-				595E7DDF20EC90E2001D65B6 /* TwoTextFieldView.m */,
 			);
-			path = View;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		5965CB9620F4AAB10009DB84 /* Expand */ = {
@@ -1259,6 +1316,14 @@
 			children = (
 				59FD9E7F20EA21A7008C98DE /* HQWYJavaScriptResponse.h */,
 				59FD9E8020EA21A7008C98DE /* HQWYJavaScriptResponse.m */,
+				59E72DA620F5FECA007AB6C9 /* UnClickProductModel.h */,
+				59E72DA720F5FECA007AB6C9 /* UnClickProductModel.m */,
+				59E72DA920F60A4F007AB6C9 /* UnClickProductModel+Service.h */,
+				59E72DAA20F60A4F007AB6C9 /* UnClickProductModel+Service.m */,
+				59E72DAC20F61B80007AB6C9 /* UploadProductModel.h */,
+				59E72DAD20F61B80007AB6C9 /* UploadProductModel.m */,
+				59E72DAF20F61BAA007AB6C9 /* UploadProductModel+Service.h */,
+				59E72DB020F61BAA007AB6C9 /* UploadProductModel+Service.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1979,12 +2044,14 @@
 				591D962520ABDE6E00193B09 /* AAPie.m in Sources */,
 				59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */,
 				A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */,
+				59E72DA820F5FECA007AB6C9 /* UnClickProductModel.m in Sources */,
 				59C5710820E5FB8200D54260 /* ApplyRecordCell.m in Sources */,
 				591D961620ABDE6E00193B09 /* AAAnimation.m in Sources */,
 				59C5713B20E600D100D54260 /* NSString+LabelKit.m in Sources */,
 				59C570A820E5F9C100D54260 /* CInvestigationOneViewController.m in Sources */,
 				59C5711720E5FF7700D54260 /* DeviceHelp.m in Sources */,
 				59C570C820E5FADC00D54260 /* CInvestigationModel.m in Sources */,
+				5962070A20F5AFD600FAF3CF /* HQWYUser+Service.m in Sources */,
 				5960756D20EB3C8800D7AD1D /* RightItemButton.m in Sources */,
 				591D95E920ABDE6E00193B09 /* AAXAxis.m in Sources */,
 				591D95FB20ABDE6E00193B09 /* AAYAxis.m in Sources */,
@@ -2046,6 +2113,7 @@
 				59C570FB20E5FB8200D54260 /* WangYiWave.m in Sources */,
 				A8F8DFAD20B3AB3300DB9A6A /* MineTableViewCell.m in Sources */,
 				591D962E20ABDE6E00193B09 /* AAChartModel.m in Sources */,
+				59E72DAE20F61B80007AB6C9 /* UploadProductModel.m in Sources */,
 				59C570AA20E5F9C100D54260 /* TouchIDViewController.m in Sources */,
 				597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */,
 				59C5713820E600D100D54260 /* CALayer+LayerColor.m in Sources */,
@@ -2054,6 +2122,7 @@
 				591D960420ABDE6E00193B09 /* AAPlotLinesElement.m in Sources */,
 				59C570B120E5F9C100D54260 /* HomeViewController.m in Sources */,
 				59037711209C0387004CEBD8 /* BaseModel.m in Sources */,
+				59E72DAB20F60A4F007AB6C9 /* UnClickProductModel+Service.m in Sources */,
 				59C5710220E5FB8200D54260 /* CircleIndicatorView.m in Sources */,
 				5965CBB420F4AF320009DB84 /* NSObject+HQWYSendNetworkError.m in Sources */,
 				591D95F520ABDE6E00193B09 /* AATooltip.m in Sources */,
@@ -2067,6 +2136,7 @@
 				A8F8DFB620B3AB3300DB9A6A /* AboutUsViewController.m in Sources */,
 				59BE198D20EC9FA300704B2C /* PopViewManager.m in Sources */,
 				59C5710C20E5FB8200D54260 /* GradientCompareBarView.m in Sources */,
+				59E72DB120F61BAA007AB6C9 /* UploadProductModel+Service.m in Sources */,
 				5958089C20F2F53A002A6F0C /* ImageCodePopView.m in Sources */,
 				A8F8DFCF20B3AB5300DB9A6A /* DiscoverPageModel.m in Sources */,
 				59023BF7209A9B35004B9134 /* main.m in Sources */,
