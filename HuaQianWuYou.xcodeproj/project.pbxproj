@@ -193,11 +193,7 @@
 		596075BF20EB6F5600D7AD1D /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 596075BE20EB6F5600D7AD1D /* AdSupport.framework */; };
 		5965CB9120F485990009DB84 /* HQWYUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9020F485990009DB84 /* HQWYUserManager.m */; };
 		5965CB9420F4863F0009DB84 /* HQWYUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9320F4863F0009DB84 /* HQWYUser.m */; };
-		5965CBAD20F4AF320009DB84 /* NSError+LNError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9A20F4AF310009DB84 /* NSError+LNError.m */; };
 		5965CBAE20F4AF320009DB84 /* testResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 5965CB9B20F4AF310009DB84 /* testResponse.json */; };
-		5965CBAF20F4AF320009DB84 /* NSObject+LNRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9D20F4AF310009DB84 /* NSObject+LNRequestConfig.m */; };
-		5965CBB020F4AF320009DB84 /* NSObject+LNSendNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9E20F4AF310009DB84 /* NSObject+LNSendNetworkError.m */; };
-		5965CBB120F4AF320009DB84 /* NSError+HQWYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CB9F20F4AF310009DB84 /* NSError+HQWYError.m */; };
 		5965CBB320F4AF320009DB84 /* NSObject+LNHQWYFailed.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CBA720F4AF310009DB84 /* NSObject+LNHQWYFailed.m */; };
 		5965CBB420F4AF320009DB84 /* NSObject+HQWYSendNetworkError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CBA820F4AF310009DB84 /* NSObject+HQWYSendNetworkError.m */; };
 		5965CBB520F4AF320009DB84 /* NSObject+HQWYUpdateAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CBA920F4AF320009DB84 /* NSObject+HQWYUpdateAlert.m */; };
@@ -281,13 +277,17 @@
 		59C5713C20E600D100D54260 /* UIView+ViewKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712920E600CC00D54260 /* UIView+ViewKit.m */; };
 		59C5713D20E600D100D54260 /* NSObject+HQIQKeyBoardConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712A20E600CC00D54260 /* NSObject+HQIQKeyBoardConfig.m */; };
 		59C5713E20E600D100D54260 /* UITabBar+badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712D20E600CE00D54260 /* UITabBar+badge.m */; };
-		59C5713F20E600D100D54260 /* NSObject+RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713120E600D000D54260 /* NSObject+RequestConfig.m */; };
 		59C5714020E600D100D54260 /* NSError+CustomError.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713220E600D000D54260 /* NSError+CustomError.m */; };
 		59C5714120E600D100D54260 /* ZYZControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713320E600D100D54260 /* ZYZControl.m */; };
 		59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */; };
 		59C5715B20E61DFE00D54260 /* ActiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5715A20E61DFD00D54260 /* ActiveViewController.m */; };
 		59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */; };
 		59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */; };
+		9CA9292420F6164200F65941 /* NSObject+HQWYResponseCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */; };
+		9CA9292520F6164200F65941 /* NSError+HQWYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291820F6164100F65941 /* NSError+HQWYError.m */; };
+		9CA9292720F6164200F65941 /* NSObject+HQWYRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */; };
+		9CA9292820F6164200F65941 /* NSError+LNError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9292020F6164100F65941 /* NSError+LNError.m */; };
+		9CA9292920F6164200F65941 /* NSObject+RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */; };
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
 		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
 		A858A81620B2D7B600657C09 /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A858A81520B2D7B600657C09 /* DES3Util.m */; };
@@ -518,15 +518,7 @@
 		5965CB9020F485990009DB84 /* HQWYUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserManager.m; sourceTree = "<group>"; };
 		5965CB9220F4863F0009DB84 /* HQWYUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUser.h; sourceTree = "<group>"; };
 		5965CB9320F4863F0009DB84 /* HQWYUser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUser.m; sourceTree = "<group>"; };
-		5965CB9A20F4AF310009DB84 /* NSError+LNError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LNError.m"; sourceTree = "<group>"; };
 		5965CB9B20F4AF310009DB84 /* testResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = testResponse.json; sourceTree = "<group>"; };
-		5965CB9D20F4AF310009DB84 /* NSObject+LNRequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LNRequestConfig.m"; sourceTree = "<group>"; };
-		5965CB9E20F4AF310009DB84 /* NSObject+LNSendNetworkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LNSendNetworkError.m"; sourceTree = "<group>"; };
-		5965CB9F20F4AF310009DB84 /* NSError+HQWYError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+HQWYError.m"; sourceTree = "<group>"; };
-		5965CBA120F4AF310009DB84 /* NSError+LNError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LNError.h"; sourceTree = "<group>"; };
-		5965CBA220F4AF310009DB84 /* NSObject+LNRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LNRequestConfig.h"; sourceTree = "<group>"; };
-		5965CBA420F4AF310009DB84 /* NSError+HQWYError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+HQWYError.h"; sourceTree = "<group>"; };
-		5965CBA520F4AF310009DB84 /* NSObject+LNSendNetworkError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LNSendNetworkError.h"; sourceTree = "<group>"; };
 		5965CBA620F4AF310009DB84 /* NSObject+LNHQWYFailed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LNHQWYFailed.h"; sourceTree = "<group>"; };
 		5965CBA720F4AF310009DB84 /* NSObject+LNHQWYFailed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LNHQWYFailed.m"; sourceTree = "<group>"; };
 		5965CBA820F4AF310009DB84 /* NSObject+HQWYSendNetworkError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQWYSendNetworkError.m"; sourceTree = "<group>"; };
@@ -668,7 +660,6 @@
 		59C5711920E600C400D54260 /* UIFont+TargetFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+TargetFont.m"; sourceTree = "<group>"; };
 		59C5711A20E600C400D54260 /* UIColor+AddColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+AddColor.h"; sourceTree = "<group>"; };
 		59C5711B20E600C500D54260 /* UILabel+LabelKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelKit.h"; sourceTree = "<group>"; };
-		59C5711C20E600C500D54260 /* NSObject+RequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RequestConfig.h"; sourceTree = "<group>"; };
 		59C5711D20E600C600D54260 /* NSString+LabelKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LabelKit.h"; sourceTree = "<group>"; };
 		59C5711E20E600C600D54260 /* NSObject+HQIQKeyBoardConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQIQKeyBoardConfig.h"; sourceTree = "<group>"; };
 		59C5711F20E600C700D54260 /* UIViewController+UIAlertControllerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIAlertControllerKit.h"; sourceTree = "<group>"; };
@@ -687,7 +678,6 @@
 		59C5712E20E600CE00D54260 /* NSError+CustomError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+CustomError.h"; sourceTree = "<group>"; };
 		59C5712F20E600CF00D54260 /* UIFont+TargetFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TargetFont.h"; sourceTree = "<group>"; };
 		59C5713020E600CF00D54260 /* CALayer+LayerColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+LayerColor.h"; sourceTree = "<group>"; };
-		59C5713120E600D000D54260 /* NSObject+RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RequestConfig.m"; sourceTree = "<group>"; };
 		59C5713220E600D000D54260 /* NSError+CustomError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+CustomError.m"; sourceTree = "<group>"; };
 		59C5713320E600D100D54260 /* ZYZControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYZControl.m; sourceTree = "<group>"; };
 		59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+SDKRegister.m"; sourceTree = "<group>"; };
@@ -703,6 +693,16 @@
 		6C4C910B5B222225D22E9E93 /* Pods-HuaQianWuYouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYouTests/Pods-HuaQianWuYouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		742D8DBB7019FDEB7546A10A /* Pods_HuaQianWuYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuaQianWuYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C820524E8455524D0D33F53 /* Pods-HuaQianWuYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.debug.xcconfig"; sourceTree = "<group>"; };
+		9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQWYResponseCode.m"; sourceTree = "<group>"; };
+		9CA9291820F6164100F65941 /* NSError+HQWYError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+HQWYError.m"; sourceTree = "<group>"; };
+		9CA9291920F6164100F65941 /* NSObject+HQWYRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQWYRequestConfig.h"; sourceTree = "<group>"; };
+		9CA9291B20F6164100F65941 /* NSObject+HQWYResponseCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQWYResponseCode.h"; sourceTree = "<group>"; };
+		9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQWYRequestConfig.m"; sourceTree = "<group>"; };
+		9CA9291D20F6164100F65941 /* NSError+HQWYError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+HQWYError.h"; sourceTree = "<group>"; };
+		9CA9292020F6164100F65941 /* NSError+LNError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LNError.m"; sourceTree = "<group>"; };
+		9CA9292120F6164100F65941 /* NSObject+RequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RequestConfig.h"; sourceTree = "<group>"; };
+		9CA9292220F6164100F65941 /* NSError+LNError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LNError.h"; sourceTree = "<group>"; };
+		9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RequestConfig.m"; sourceTree = "<group>"; };
 		A8118B9D20AD66D30046099D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A8118BD520B295620046099D /* LNMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNMBProgressHUD.h; sourceTree = "<group>"; };
 		A8118BD620B295620046099D /* LNMBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNMBProgressHUD.m; sourceTree = "<group>"; };
@@ -1250,8 +1250,6 @@
 			isa = PBXGroup;
 			children = (
 				596AAB0620A97E1600D0FC35 /* Define */,
-				5965CBAA20F4AF320009DB84 /* NSObject+HQWYSendNetworkError.h */,
-				5965CBA820F4AF310009DB84 /* NSObject+HQWYSendNetworkError.m */,
 				5965CBAB20F4AF320009DB84 /* NSObject+HQWYUpdateAlert.h */,
 				5965CBA920F4AF320009DB84 /* NSObject+HQWYUpdateAlert.m */,
 				5965CBA620F4AF310009DB84 /* NSObject+LNHQWYFailed.h */,
@@ -1264,17 +1262,9 @@
 		5965CB9820F4AF310009DB84 /* RequestConfig */ = {
 			isa = PBXGroup;
 			children = (
-				59C5711C20E600C500D54260 /* NSObject+RequestConfig.h */,
-				59C5713120E600D000D54260 /* NSObject+RequestConfig.m */,
-				5965CB9A20F4AF310009DB84 /* NSError+LNError.m */,
+				9CA9291620F6164100F65941 /* HQWYRequestConfig */,
+				9CA9291F20F6164100F65941 /* ZXRequestConfig */,
 				5965CB9B20F4AF310009DB84 /* testResponse.json */,
-				5965CB9D20F4AF310009DB84 /* NSObject+LNRequestConfig.m */,
-				5965CB9E20F4AF310009DB84 /* NSObject+LNSendNetworkError.m */,
-				5965CB9F20F4AF310009DB84 /* NSError+HQWYError.m */,
-				5965CBA120F4AF310009DB84 /* NSError+LNError.h */,
-				5965CBA220F4AF310009DB84 /* NSObject+LNRequestConfig.h */,
-				5965CBA420F4AF310009DB84 /* NSError+HQWYError.h */,
-				5965CBA520F4AF310009DB84 /* NSObject+LNSendNetworkError.h */,
 			);
 			path = RequestConfig;
 			sourceTree = "<group>";
@@ -1749,6 +1739,32 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9CA9291620F6164100F65941 /* HQWYRequestConfig */ = {
+			isa = PBXGroup;
+			children = (
+				5965CBAA20F4AF320009DB84 /* NSObject+HQWYSendNetworkError.h */,
+				5965CBA820F4AF310009DB84 /* NSObject+HQWYSendNetworkError.m */,
+				9CA9291D20F6164100F65941 /* NSError+HQWYError.h */,
+				9CA9291820F6164100F65941 /* NSError+HQWYError.m */,
+				9CA9291920F6164100F65941 /* NSObject+HQWYRequestConfig.h */,
+				9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */,
+				9CA9291B20F6164100F65941 /* NSObject+HQWYResponseCode.h */,
+				9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */,
+			);
+			path = HQWYRequestConfig;
+			sourceTree = "<group>";
+		};
+		9CA9291F20F6164100F65941 /* ZXRequestConfig */ = {
+			isa = PBXGroup;
+			children = (
+				9CA9292220F6164100F65941 /* NSError+LNError.h */,
+				9CA9292020F6164100F65941 /* NSError+LNError.m */,
+				9CA9292120F6164100F65941 /* NSObject+RequestConfig.h */,
+				9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */,
+			);
+			path = ZXRequestConfig;
+			sourceTree = "<group>";
+		};
 		A8118BD420B295620046099D /* LNMBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
@@ -2209,7 +2225,6 @@
 			files = (
 				595AE2CA20EF5D9D0031A2F3 /* HQWYJavaScriptResponse.h in Sources */,
 				595AE2CB20EF5D9D0031A2F3 /* HQWYJavaScriptResponse.m in Sources */,
-				5965CBAD20F4AF320009DB84 /* NSError+LNError.m in Sources */,
 				59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */,
 				A858A81620B2D7B600657C09 /* DES3Util.m in Sources */,
 				59C570CC20E5FADC00D54260 /* BasicConfigModel.m in Sources */,
@@ -2223,6 +2238,7 @@
 				5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */,
 				595808A520F2F946002A6F0C /* UIButton+EnlableColor.m in Sources */,
 				59C5714120E600D100D54260 /* ZYZControl.m in Sources */,
+				9CA9292720F6164200F65941 /* NSObject+HQWYRequestConfig.m in Sources */,
 				597C73D020EA17520090960B /* HQWYUserStatusManager.m in Sources */,
 				A8F8DFB220B3AB3300DB9A6A /* AgreementViewController.m in Sources */,
 				5958089820F2F53A002A6F0C /* AuthCodeModel.m in Sources */,
@@ -2250,14 +2266,12 @@
 				595AE2CE20EF78610031A2F3 /* NavigationView.m in Sources */,
 				59C570CE20E5FADC00D54260 /* CInvestigationModel+Service.m in Sources */,
 				592FE23620EA29A80052E60E /* FBManager.m in Sources */,
-				5965CBB120F4AF320009DB84 /* NSError+HQWYError.m in Sources */,
 				596B0E2320B4360A00B5A06B /* ResetPasswordModel.m in Sources */,
 				A8F8DFDC20B3F06900DB9A6A /* DiscoverDetailModel.m in Sources */,
 				595AE2C920EF37C40031A2F3 /* UIDevice+LNRiksHardware.m in Sources */,
 				A8F8DFFA20B4F31200DB9A6A /* FeedbackModel+Service.m in Sources */,
 				5958089920F2F53A002A6F0C /* AuthPhoneNumViewController.m in Sources */,
 				A8F8DFD020B3AB5300DB9A6A /* DiscoverTopBannerCell.m in Sources */,
-				59C5713F20E600D100D54260 /* NSObject+RequestConfig.m in Sources */,
 				595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */,
 				59C570A920E5F9C100D54260 /* CInvestigationTwoViewController.m in Sources */,
 				595AE2C720EF37C40031A2F3 /* LNRiskDeviceHelp.m in Sources */,
@@ -2274,7 +2288,6 @@
 				A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */,
 				59435A7E20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m in Sources */,
 				A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */,
-				5965CBB020F4AF320009DB84 /* NSObject+LNSendNetworkError.m in Sources */,
 				59C570FD20E5FB8200D54260 /* ScoreProgressView.m in Sources */,
 				59C4D14F20E5DFFC00BDCA48 /* AppDelegate+APNS.m in Sources */,
 				5958089720F2F53A002A6F0C /* AuthCodeModel+Service.m in Sources */,
@@ -2291,11 +2304,11 @@
 				591D960720ABDE6E00193B09 /* AAOptions3d.m in Sources */,
 				591D963120ABDE6E00193B09 /* AAOptions.m in Sources */,
 				591D95E320ABDE6E00193B09 /* AALabels.m in Sources */,
-				5965CBAF20F4AF320009DB84 /* NSObject+LNRequestConfig.m in Sources */,
 				5965CBB320F4AF320009DB84 /* NSObject+LNHQWYFailed.m in Sources */,
 				A8F8DFB020B3AB3300DB9A6A /* MineFooterView.m in Sources */,
 				591D961920ABDE6E00193B09 /* AALegend.m in Sources */,
 				A8F8DFD120B3AB5300DB9A6A /* DiscoverDetailTopView.m in Sources */,
+				9CA9292920F6164200F65941 /* NSObject+RequestConfig.m in Sources */,
 				5965CB9120F485990009DB84 /* HQWYUserManager.m in Sources */,
 				592FE23920EA2B3D0052E60E /* HQWYJavaScriptOpenNativeHandler.m in Sources */,
 				59C570FB20E5FB8200D54260 /* WangYiWave.m in Sources */,
@@ -2364,12 +2377,15 @@
 				595E7DDA20EC68CA001D65B6 /* LoginAndRegisterViewController..m in Sources */,
 				59C5713A20E600D100D54260 /* UIColor+AddColor.m in Sources */,
 				59C5710A20E5FB8200D54260 /* AreaSplineChartView.m in Sources */,
+				9CA9292420F6164200F65941 /* NSObject+HQWYResponseCode.m in Sources */,
 				59C570FE20E5FB8200D54260 /* CircleProgressView.m in Sources */,
 				591D962220ABDE6E00193B09 /* AAItemStyle.m in Sources */,
 				591D95E020ABDE6E00193B09 /* AAAreaspline.m in Sources */,
 				591D95EF20ABDE6E00193B09 /* AADataLabels.m in Sources */,
 				59C5710120E5FB8200D54260 /* UICountingLabel.m in Sources */,
+				9CA9292520F6164200F65941 /* NSError+HQWYError.m in Sources */,
 				59C570A720E5F9C100D54260 /* CInvestigationFiveViewController.m in Sources */,
+				9CA9292820F6164200F65941 /* NSError+LNError.m in Sources */,
 				591D95FE20ABDE6E00193B09 /* AACrosshair.m in Sources */,
 				59C5713D20E600D100D54260 /* NSObject+HQIQKeyBoardConfig.m in Sources */,
 				59C5713920E600D100D54260 /* UILabel+LabelKit.m in Sources */,

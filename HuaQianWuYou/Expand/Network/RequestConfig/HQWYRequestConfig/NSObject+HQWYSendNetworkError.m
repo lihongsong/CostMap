@@ -57,12 +57,12 @@
     }
  
     RCNetworkError *networkerror = [[RCNetworkError alloc] init];
-        NSString *userId = [[HQWYUserManager sharedInstance].userInfo.userId stringValue];
-        networkerror.userId = [HQWYUserManager sharedInstance].userInfo.userId ? userId :@"";
-        networkerror.mobile = [HQWYUserManager sharedInstance].userInfo.mobilephone ?:(HQWYUserStatusSharedManager.tempMobilePhone ?: @"");
- 
-   // networkerror.pid = [@(LNProductIDHQWYDSZD) stringValue];
-    
+    networkerror.userId = @"";
+    //FIXME:v2.0 手机号获取
+    networkerror.mobile = [HQWYUserManager sharedInstance].userInfo.mobilephone ?:(HQWYUserStatusSharedManager.tempMobilePhone ?: @"");
+
+    networkerror.pid = @"";
+
     networkerror.responseTime = [NSString stringWithFormat:@"%.0f",duration];
     networkerror.requestUrl = [failingURLString stringByReplacingOccurrencesOfString:@"api/" withString:@"/"];
     networkerror.requestUrlFunction = [self mapInterfaceFunctions][failingURLString];
