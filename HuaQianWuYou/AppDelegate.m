@@ -39,7 +39,7 @@
     [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
     [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
     [self setUpSDKs];
-//    [self performSelector:@selector(aaa) withObject:self afterDelay:5];
+    
     WeakObj(self);
     [self registerAppUpdate];
     //    /** 通过通知栏调起APP处理通知信息 */
