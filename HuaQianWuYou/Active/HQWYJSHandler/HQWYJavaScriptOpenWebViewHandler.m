@@ -27,7 +27,7 @@
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     BOOL needLogin = [dic[@"needLogin"] boolValue];
    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    if (needLogin && ![HQWYUserStatusManager hasAlreadyLoggedIn]) {
+    if (needLogin && ![HQWYUserManager hasAlreadyLoggedIn]) {
         LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
         loginVc.loginBlock = ^{
             if (rootVC.navigationController != nil) {

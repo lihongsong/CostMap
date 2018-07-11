@@ -12,7 +12,7 @@
 #import "YYModel.h"
 #import <RCMobClick/RCMobClick.h>
 #import <RCMobClick/RCBaseCommon.h>
-
+#import "HQWYUserManager.h"
 #import "NSObject+HQWYSendNetworkError.h"
 
 
@@ -44,13 +44,15 @@ static NSString *const kHQWYBodyKey         = @"body";
     userAgent = [userAgent stringByAppendingString:[RCBaseCommon getUIDString]];
     [requestSerializer setValue:userAgent forHTTPHeaderField:@"UserAgent"];
 
-    [requestSerializer setValue:@"" forHTTPHeaderField:@"channel"];
+    [requestSerializer setValue:APP_ChannelId forHTTPHeaderField:@"channel"];
     //获取设备唯一标识符 uid
     [requestSerializer setValue:[RCBaseCommon getIdfaString] forHTTPHeaderField:@"deviceNo"];
 
     //城市
+    //FIXME:v2.0
     [requestSerializer setValue:@"" forHTTPHeaderField:@"city"];
-    [requestSerializer setValue:@"" forHTTPHeaderField:@"token"];
+
+    [requestSerializer setValue:HQWYUserManager.sharedInstance.userToken forHTTPHeaderField:@"token"];
     //客户端统一使用小写，服务端不区分大小写
     [requestSerializer setValue:@"hqwyios" forHTTPHeaderField:@"terminalId"];
     [requestSerializer setValue:[RCBaseCommon getBundleIdentifier] forHTTPHeaderField:@"packageName"];

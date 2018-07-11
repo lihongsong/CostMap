@@ -17,6 +17,7 @@
 
 + (NSDictionary *)mapInterfaceFunctions {
     return @{
+             //FIXME:v2.0
              /*
              LN_SMS_DYNAMICCODE : @"getDynamicCode",                // 获取验证码
              LN_TOKEN_PASSWORD : @"loginByPassword",                // 密码登录
@@ -59,8 +60,8 @@
     RCNetworkError *networkerror = [[RCNetworkError alloc] init];
     networkerror.userId = @"";
     //FIXME:v2.0 手机号获取
-    networkerror.mobile = [HQWYUserManager sharedInstance].userInfo.mobilephone ?:(HQWYUserStatusSharedManager.tempMobilePhone ?: @"");
-
+    networkerror.mobile = @"";
+    //此处pid传空值
     networkerror.pid = @"";
 
     networkerror.responseTime = [NSString stringWithFormat:@"%.0f",duration];

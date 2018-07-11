@@ -13,6 +13,7 @@
 + (NSDictionary*)modelCustomPropertyMapper {
     return @{
              @"mobilephone" : @"mobilephone",
+             @"respDateTime" : @"respDateTime",
              @"token" : @"token",
              @"userId" : @"userId",
              };

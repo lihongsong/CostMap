@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HQWYUser.h"
+#define HQWYUserSharedManager [HQWYUserManager sharedInstance]
+
 typedef void(^LNUserManegerCallBack)(HQWYUser *userInfo);
 @interface HQWYUserManager : NSObject
 // 外部只读去userInfo信息  不让外部修改相关的数据
@@ -20,7 +23,7 @@ typedef void(^LNUserManegerCallBack)(HQWYUser *userInfo);
 /**
  *  删除已归档的用户信息 model
  */
-- (void)deleteUserInfo;
+//- (void)deleteUserInfo;
 
 /**
  *  判断用户是否已经登录
@@ -41,7 +44,7 @@ typedef void(^LNUserManegerCallBack)(HQWYUser *userInfo);
  *
  *  @return 上次登录的CustomerID
  */
-+ (NSString *)lastUserCustomerID;
+//+ (NSString *)lastUserCustomerID;
 
 @property (nonatomic, assign) BOOL showingTokenValidateAlertView;//是否弹出token失效的弹框
 
