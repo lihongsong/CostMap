@@ -23,7 +23,7 @@
 
 @interface AppDelegate ()
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
-
+@property(nonatomic,strong)HJGuidePageViewController *launchVc;
 @end
 
 @implementation AppDelegate
@@ -50,7 +50,7 @@
     [self.window makeKeyAndVisible];
     launchVC.accomplishBlock = ^(NSString *exampleCreditScore) {
         StrongObj(self);
-        if (![exampleCreditScore isEqualToString:@"88"]) {
+        if ([exampleCreditScore isEqualToString:@"88"]) {
             [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
             [self checkUpdate];
         }else{
@@ -80,13 +80,14 @@
 }
 
 - (void)setUpViewControllerWithHighScoreWithRemoteNotificaton:(NSDictionary *)remoteNotification launchOptions:(NSDictionary *)launchOptions {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setGuideImage:) name:KLoadingAdvertisement object:nil];
     ActiveViewController *activeVC = [[ActiveViewController alloc]init];
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
     UIWindow *oldWindow = self.window;
     
     __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow sheareGuidePageWindow:GuidePageAPPLaunchStateNormal];
    WeakObj(self)
-    HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
+    self.launchVc = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)
         // 1秒 网络加载  3秒图片加载
         make.setTimer(0, 5, nil,YES);
@@ -104,15 +105,21 @@
         });
     }];
     [HJGuidePageWindow show];
-    
-   BasicDataModel *model = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
-    BasicDataInfo *info = model.AdvertisingVO;
-    //launchVC.setTimer(info.showTime.integerValue,0, @"s跳过",NO);
-    launchVC.setTimer(5,0, @"s跳过",NO);
-    launchVC.setBackGroundImage(info.imgUrl, YES, NO, ^{
-        //[HJGuidePageWindow dismiss];
-    });
+    self.launchVc.setTimer(5,0, @"s跳过",NO);
 }
+
+-(void)setGuideImage:(NSNotification *)noti{
+    if (noti.object == nil) {
+    self.launchVc.setBackGroundImage(
+                                     [UIImage imageWithData:GetUserDefault(@"advertisementStartPage")], YES, NO, ^{
+        });
+    }else{
+    self.launchVc.setBackGroundImage(noti.userInfo[@"imgUrl"], YES, NO, ^{
+        });
+    }
+    
+}
+
 
 #pragma mark - 启动图设置
 - (void)setupLaunchViewControllerWithRemoteNotification:(NSDictionary *)remoteNotification {
@@ -150,6 +157,8 @@
 #pragma mark - 渐变动画更换RootVC
 
 - (void)loadActiveViewController:(UIViewController *)rootViewController {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.launchVc = nil;
     [UIView transitionWithView:self.window
                       duration:0.25f
                        options:UIViewAnimationOptionTransitionCrossDissolve

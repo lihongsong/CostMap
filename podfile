@@ -16,7 +16,7 @@ target 'HuaQianWuYou' do
     pod 'HJCategories'
     pod 'Masonry','1.1.0'
     pod 'HJ_UIKit/HJCarousel'
-    pod 'HJ_UIKit/HJGuidePage'
+    pod 'HJ_UIKit/HJGuidePage', '2.2.3'
     pod 'HJ_UIKit/HJAlertView'
     pod 'IQKeyboardManager', '5.0.6'
     pod 'GTMBase64', '~> 1.0.1'

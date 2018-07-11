@@ -24,7 +24,7 @@
                                                        BasicDataModel *_Nullable dataModel = (BasicDataModel *_Nullable)responseObject;
                                                        if (ObjIsNilOrNull(dataModel)  || ObjIsNilOrNull(dataModel.versionStamp)|| ObjIsNilOrNull(dataModel.AdvertisingVO)) {
                                                        }else{
-                                                           if (type != AdvertisingTypeSuspensionWindow) {
+                                                           if (type == AdvertisingTypeAlert) {
                                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                                    [BasicDataModel cacheToLoacl:dataModel withType:type];
                                                                });
