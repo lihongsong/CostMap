@@ -10,8 +10,8 @@
 
 @interface HQWYUserBaseInfo : NSObject
 @property(nonatomic,copy)NSString *mobilephone; //用户手机号
-@property(nonatomic,copy)NSString *customerId;  //客户id
-@property(nonatomic,strong)NSNumber *status;    //用户状态
+//@property(nonatomic,copy)NSString *customerId;  //客户id
+//@property(nonatomic,strong)NSNumber *status;    //用户状态
 @property(nonatomic,copy)NSString *token;       //token
 @property(nonatomic,copy)NSString *userId;      //用户ID
 @property(nonatomic,copy)NSString *uuId;        //推送别名

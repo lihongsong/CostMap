@@ -7,7 +7,7 @@
 //
 
 #import "ActiveViewController.h"
-#import "HQWYUserStatusManager.h"
+#import "HQWYUserManager.h"
 #import <WebKit/WebKit.h>
 #import "HQWYJavaSBridgeHandleMacros.h"
 #import "HQWYJavaScriptResponse.h"
@@ -189,24 +189,24 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取用户token事件 */
     [_manager registerHandler:kAppGetUserToken handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        ResponseCallback([HQWYJavaScriptResponse result:HQWYUserStatusSharedManager.token]);
+        ResponseCallback([HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken]);
     }];
     
     /** 注册获取用户唯一id事件 */
-    [_manager registerHandler:kAppGetUserId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        NSString *useid = HQWYUserStatusSharedManager.userBaseInfo.userId;
-        ResponseCallback([HQWYJavaScriptResponse result:useid]);
-    }];
+//    [_manager registerHandler:kAppGetUserId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+//        NSString *useid = HQWYUserStatusSharedManager.userBaseInfo.userId;
+//        ResponseCallback([HQWYJavaScriptResponse result:useid]);
+//    }];
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        NSString *phone = HQWYUserStatusSharedManager.userBaseInfo.mobilephone;
+        NSString *phone = HQWYUserSharedManager.userInfo.mobilephone;
         ResponseCallback([HQWYJavaScriptResponse result:phone]);
     }];
     
     /** 注册获取用户是否登录事件 */
     [_manager registerHandler:kAppIsLogin handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        NSString *isLogin = @([HQWYUserStatusManager hasAlreadyLoggedIn]).stringValue;
+        NSString *isLogin = @([HQWYUserManager hasAlreadyLoggedIn]).stringValue;
         ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
     }];
     

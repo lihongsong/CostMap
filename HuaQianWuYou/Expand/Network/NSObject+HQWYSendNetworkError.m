@@ -59,7 +59,7 @@
     RCNetworkError *networkerror = [[RCNetworkError alloc] init];
         NSString *userId = [[HQWYUserManager sharedInstance].userInfo.userId stringValue];
         networkerror.userId = [HQWYUserManager sharedInstance].userInfo.userId ? userId :@"";
-        networkerror.mobile = [HQWYUserManager sharedInstance].userInfo.mobilephone ?:(HQWYUserStatusSharedManager.tempMobilePhone ?: @"");
+        networkerror.mobile = [HQWYUserManager sharedInstance].userInfo.mobilephone;
  
    // networkerror.pid = [@(LNProductIDHQWYDSZD) stringValue];
     

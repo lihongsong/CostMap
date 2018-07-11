@@ -12,8 +12,7 @@
 //#import <Bugly/Bugly.h>
 //保存的最后登录手机
 #define kMobilePhoneForUserDefault @"login_mobilephone"
-//保存的最后登录用户的customerID
-#define kuserCustomerIDForUserDefault @"user_customerID"
+
 #define KuserTokenKey @"user_token"
 
 @interface HQWYUserManager ()
@@ -90,20 +89,21 @@
 //用户是否已经登录
 + (BOOL)hasAlreadyLoggedIn {
     // token存放在keychain中，用户删除app再安装，还是可以获取到。为了保持跟之前版本的表现一致，“是否登录”添加一个判断条件：customerID
-    if ([[self sharedInstance] userToken] && [self lastUserCustomerID]) {
+    if ([[self sharedInstance] userToken]) {
         return YES;
     }
     return NO;
 }
 
 #pragma mark 需要存储到本地的信息及读取
-// 用户的手机号、customID 及token信息 采用3DES 进行加密
+// 用户的手机号、token信息 采用3DES 进行加密
 - (void)storeNeedStoredUserInfomation:(HQWYUser *)userInfo {
     if (userInfo) {
         [self storeUserMobilePhone:userInfo.mobilephone];
+        [self setUserToken:userInfo.token];
        // [self dealUserApplicationIconBadgeNumber:userInfo];
         // Bugly设置用户标示
-      //  [Bugly setUserIdentifier:userInfo.userId.stringValue?:@""];
+        //[Bugly setUserIdentifier:userInfo.userId.stringValue?:@""];
     }
 }
 
@@ -116,12 +116,14 @@
     }
 }
 
+/*
 - (void)storeCustomerID:(NSString *)customerID {
     if (customerID) {
         NSString *customerIDStr = [DES3Util encryptObject:customerID];
         [[NSUserDefaults standardUserDefaults] setObject:customerIDStr forKey:kuserCustomerIDForUserDefault];
     }
 }
+ */
 
 // 外界需要调用保存mobilePhone
 - (void)storeUserMobilePhone:(NSString *)mobilePhone {
@@ -131,7 +133,7 @@
     }
 }
 
-#pragma mark 获取用户的相关token、customerID及mobile Phone
+#pragma mark 获取用户的相关token、mobile Phone
 //从keychain中获取用户上次登录成功的token
 - (NSString *)userToken {
     if (!_userToken) {
@@ -155,7 +157,9 @@
     return nil;
 }
 
+
 //从UserDefault中获取用户上次登录成功的CustomerID
+/*
 + (NSString *)lastUserCustomerID {
     
     NSString *customerIdStr = [[NSUserDefaults standardUserDefaults] objectForKey:kuserCustomerIDForUserDefault];
@@ -165,8 +169,10 @@
     
     return nil;
 }
+ */
 
 // 从NSUserDefaults中删存储的用户信息
+
 - (void)deleteUserInfo {
     self.userInfo = nil;
     _userToken = nil;
@@ -174,7 +180,7 @@
     UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:nil];
     keychain[KuserTokenKey] = nil;
     
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kuserCustomerIDForUserDefault];
+   // [[NSUserDefaults standardUserDefaults] removeObjectForKey:kuserCustomerIDForUserDefault];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 

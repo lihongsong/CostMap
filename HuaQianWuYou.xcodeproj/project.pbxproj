@@ -212,7 +212,6 @@
 		5979455620F33A6B006BB02D /* HQWYBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979455520F33A6B006BB02D /* HQWYBaseWebViewController.m */; };
 		597C73C320E9C3220090960B /* BasicDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73C220E9C3220090960B /* BasicDataModel.m */; };
 		597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */; };
-		597C73D020EA17520090960B /* HQWYUserStatusManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73CF20EA17520090960B /* HQWYUserStatusManager.m */; };
 		59BE198320EC9DA300704B2C /* PopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE198220EC9DA300704B2C /* PopView.m */; };
 		59BE198620EC9DD600704B2C /* SuspendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE198520EC9DD600704B2C /* SuspendView.m */; };
 		59BE198820EC9F1A00704B2C /* PopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BE198720EC9F1A00704B2C /* PopView.xib */; };
@@ -554,8 +553,6 @@
 		597C73CA20E9C8560090960B /* BasicDataProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDataProtocol.h; sourceTree = "<group>"; };
 		597C73CB20E9C8D40090960B /* BasicDataModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BasicDataModel+Service.h"; sourceTree = "<group>"; };
 		597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BasicDataModel+Service.m"; sourceTree = "<group>"; };
-		597C73CE20EA17520090960B /* HQWYUserStatusManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUserStatusManager.h; sourceTree = "<group>"; };
-		597C73CF20EA17520090960B /* HQWYUserStatusManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserStatusManager.m; sourceTree = "<group>"; };
 		59BE198120EC9DA300704B2C /* PopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopView.h; sourceTree = "<group>"; };
 		59BE198220EC9DA300704B2C /* PopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopView.m; sourceTree = "<group>"; };
 		59BE198420EC9DD600704B2C /* SuspendView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuspendView.h; sourceTree = "<group>"; };
@@ -1212,8 +1209,6 @@
 		595E7DD620EC623D001D65B6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				597C73CE20EA17520090960B /* HQWYUserStatusManager.h */,
-				597C73CF20EA17520090960B /* HQWYUserStatusManager.m */,
 				59FD9E7620EA1A85008C98DE /* HQWYUserBaseInfo.h */,
 				59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */,
 				5965CB8F20F485990009DB84 /* HQWYUserManager.h */,
@@ -2223,7 +2218,6 @@
 				5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */,
 				595808A520F2F946002A6F0C /* UIButton+EnlableColor.m in Sources */,
 				59C5714120E600D100D54260 /* ZYZControl.m in Sources */,
-				597C73D020EA17520090960B /* HQWYUserStatusManager.m in Sources */,
 				A8F8DFB220B3AB3300DB9A6A /* AgreementViewController.m in Sources */,
 				5958089820F2F53A002A6F0C /* AuthCodeModel.m in Sources */,
 				5958089620F2F53A002A6F0C /* ChangePasswordModel.m in Sources */,

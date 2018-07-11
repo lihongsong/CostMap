@@ -31,7 +31,7 @@
 #import "HQWYUtilitiesDefine.h"
 
 #pragma mark user
-#import "HQWYUserStatusManager.h"
+#import "HQWYUserManager.h"
 #import "HQWYUser.h"
 #import "HQWYUserManager.h"
 
