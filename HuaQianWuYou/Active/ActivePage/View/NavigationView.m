@@ -34,11 +34,10 @@
         self.backButton.hidden = true;
         if(leftDic != nil && !StrIsEmpty([leftDic objectForKey:@"text"])){
             self.leftItemButton.hidden = false;
-            NSRange range = [[leftDic objectForKey:@"text"] rangeOfString:@"location:"];
-            NSLog(@")_____%lu",(unsigned long)range.length);
-            if (range.location != NSNotFound && range.length > 10) {
+            NSString *leftTitle = [[leftDic objectForKey:@"text"] stringByReplacingOccurrencesOfString:@"location:" withString:@""];
+            if (leftTitle.length > 0) {
                 self.arrowImage.hidden = false;
-                [self.leftItemButton setTitle:[[leftDic objectForKey:@"text"] substringFromIndex:range.location + range.length] forState:UIControlStateNormal];
+                [self.leftItemButton setTitle:leftTitle forState:UIControlStateNormal];
             }
             
             if (!StrIsEmpty([leftDic objectForKey:@"textColor"])) {

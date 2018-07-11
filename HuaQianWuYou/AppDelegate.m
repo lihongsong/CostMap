@@ -20,8 +20,9 @@
 #import "FBManager.h"
 #import "TalkingData.h"
 #import "TalkingDataAppCpa.h"
+#import <BMKLocationKit/BMKLocationAuth.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<BMKLocationAuthDelegate>
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 
 @end
@@ -37,6 +38,11 @@
     [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
     [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
     [self setUpSDKs];
+    
+    // 百度定位 3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB
+    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:Baidu_AppKey authDelegate:self];
+    
+//    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:@"Ue0z9bSN4xfpxwK5npiFESyRSnFqx6ii" authDelegate:self];
     
     WeakObj(self);
     [self registerAppUpdate];

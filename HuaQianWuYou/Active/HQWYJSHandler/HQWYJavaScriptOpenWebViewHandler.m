@@ -40,8 +40,8 @@
             
         }];
     }else{
-        if (rootVC.navigationController != nil) {
-            [rootVC.navigationController pushViewController:[self WebViewWithDictionary:dic] animated:YES];
+        if (rootVC != nil && [rootVC isKindOfClass:[UINavigationController class]]) {
+            [(UINavigationController*)rootVC pushViewController:[self WebViewWithDictionary:dic] animated:YES];
         }
         else{
             [rootVC presentViewController:[self WebViewWithDictionary:dic] animated:NO completion:nil];
