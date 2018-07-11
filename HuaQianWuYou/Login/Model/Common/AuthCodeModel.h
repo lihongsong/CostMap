@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#define LoginType   @"21"
+#define FixPassword   @"31"
 
 //短信验证码Model
 @interface AuthCodeModel : NSObject

@@ -9,17 +9,26 @@
 #import "LoginAndRegisterViewController.h"
 #import "SelectTheLoginModeView.h"
 #import "TwoTextFieldView.h"
-#import "HQWYSMSModel.h"
-#import "HQWYSMSModel+Service.h"
+#import "AuthCodeModel.h"
+#import "AuthCodeModel+Service.h"
+#import "ImageCodeViewController.h"
+#import "UIButton+Count.h"
+#import "HQWYUser.h"
+#import "HQWYUser+Service.h"
 
 @interface LoginAndRegisterViewController ()<SelectTheLoginModeViewDelegate,UITextFieldDelegate,TwoTextFieldViewDelegate>
+/* 验证码登录 */
 @property(nonatomic,strong)TwoTextFieldView *codeInputView;
+/* 密码登录 */
 @property(nonatomic,strong)TwoTextFieldView *passwordInputView;
+/* 忘记密码按钮 */
 @property(nonatomic,strong)UIButton *forgetButton;
+/* 登录按钮 */
 @property(nonatomic,strong)UIButton *loginButton;
-@property(nonatomic,strong)NSTimer *timer;
-@property(nonatomic,assign)NSInteger countTime;
+/* 返回按钮 */
 @property(nonatomic,strong)UIButton *closeButton;
+/* 流水号 */
+@property (nonatomic, copy) NSString  *serialNumber;
 @end
 
 @implementation LoginAndRegisterViewController
@@ -28,7 +37,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
-    self.countTime = 60;
     [self setUpUi];
 }
 - (void)setUpUi{
@@ -144,7 +152,11 @@
 
 #pragma mark 忘记密码
 - (void)forgetButtonClick{
-    
+    [self dismissViewControllerAnimated:true completion:^{
+        if (self.forgetBlock) {
+            self.forgetBlock();
+        }
+    }];
 }
 
 #pragma mark 登录事件
@@ -196,9 +208,39 @@
 
 #pragma mark 请求登录
 - (void)requestLogin{
-    [self dismissViewControllerAnimated:true completion:^{
-        self.loginBlock();
-    }];
+    WeakObj(self);
+    [KeyWindow ln_showLoadingHUD];
+    if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
+        [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
+            StrongObj(self);
+            if (error) {
+                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+                return ;
+            }
+            [KeyWindow ln_hideProgressHUD];
+            if (result){
+                [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
+                [self dismissViewControllerAnimated:true completion:^{
+                    self.loginBlock();
+                }];
+            }
+        }];
+    }else{
+        [HQWYUser passwordLogin:self.passwordInputView.secondTF.text mobile:self.passwordInputView.firstTF.text Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error){
+            StrongObj(self);
+            if (error) {
+                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+                return ;
+            }
+            [KeyWindow ln_hideProgressHUD];
+            if (result){
+                [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
+                [self dismissViewControllerAnimated:true completion:^{
+                    self.loginBlock();
+                }];
+            }
+        }];
+    }
 }
 
 #pragma mark 协议点击事件
@@ -278,8 +320,25 @@
         }
              
     }
-        
+        if (textField == self.codeInputView.firstTF || textField == self.passwordInputView.firstTF) {
+            //超过12位禁止输入
+            if(range.location >= 12 || string.length>12 || (textField.text.length + string.length) >12) {
+                return NO;
+            }else if (textField.text.length>=12&&![string isEqualToString:@""]){
+                return NO;
+            }
+        }
     
+        if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
+            if (textField == self.codeInputView.secondTF) {
+                //超过6位禁止输入
+                if(range.location >= 6 || string.length>6 || (textField.text.length + string.length) >6) {
+                    return NO;
+                }else if (textField.text.length>=6 && ![string isEqualToString:@""]){
+                    return NO;
+                }
+            }
+        }
     return true;
 }
 
@@ -323,50 +382,74 @@
     return YES;
 }
 
-#pragma mark 获取验证码按钮点击
-- (void)getSMSCode{
-    if ([self.codeInputView.firstTF.text hj_isMobileNumber]){
-        [KeyWindow ln_showLoadingHUD];
-        WeakObj(self);
-        [HQWYSMSModel requestSMSCodeWithMobile:self.codeInputView.firstTF.text
-                                    Completion:^(id  _Nullable result, NSError * _Nullable error) {
-                                        [KeyWindow ln_hideProgressHUD];
-                                        StrongObj(self);
-                                        if (error) {
-                                            [KeyWindow ln_showToastHUD:error.userInfo[@"msg"]];
-                                            return ;
-                                        }
-                                        if (result) {
-                                            [KeyWindow ln_showToastHUD:@"发送成功"];
-                                            self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
-                                            return ;
-                                        }
-                                    }];
-    }else{
-        [self addAlertView:@"输入手机号格式不正确" block:^{
-            
-        }];
-    }
-    
+# pragma mark pod 图形验证码
+- (void)popImageCodeViewImageCodeStr:(NSString *)imagStr serialNumber:(NSString *)serialNumber{
+    ImageCodeViewController *imageCodeVC = [ImageCodeViewController new];
+    imageCodeVC.imageStr = imagStr;
+    imageCodeVC.serialNumber = serialNumber;
+    WeakObj(self);
+    imageCodeVC.block = ^(NSString *imageCode, NSString *serialNumber) {
+        StrongObj(self);
+        [self validateImageCode:imageCode serialNumber:serialNumber];
+    };
+    imageCodeVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:imageCodeVC animated:NO completion:nil];
 }
 
-- (void)changeTime{
-    
-    _countTime--;
-    if (_countTime == 0) {
-        _countTime = 60;
-        [_timer invalidate];
-        _timer = nil;
-        self.codeInputView.codeButton.userInteractionEnabled = YES;
-        [self.codeInputView.codeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-        
-    }else{
-        NSString * timeString = [NSString stringWithFormat:@"%lds 重新获取",(long)_countTime];
-        [self.codeInputView.codeButton setTitle:timeString forState:UIControlStateNormal];
-        [self.codeInputView.codeButton setTitle:timeString forState:UIControlStateSelected];
-    }
-    
-    
+# pragma mark 获取图形验证码
+- (void)getImageCode{
+    WeakObj(self);
+    [KeyWindow ln_showLoadingHUD];
+    [AuthCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
+        StrongObj(self);
+        if (error) {
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            return ;
+        }
+        [KeyWindow ln_hideProgressHUD];
+        if (result.outputImage.length > 0) {
+            //到图形验证码页面
+            [self popImageCodeViewImageCodeStr:result.outputImage serialNumber:result.serialNumber];
+        }
+    }];
+}
+
+# pragma mark 校验图形验证码
+- (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
+    WeakObj(self);
+    [KeyWindow ln_showLoadingHUD];
+    [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+        StrongObj(self);
+        if (error) {
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            return ;
+        }
+        [KeyWindow ln_hideProgressHUD];
+        if (result.result) {
+            //校验成功 再次发送短信验证码
+            [self getSMSCode];
+        }
+    }];
+}
+
+# pragma mark 获取短信验证码
+- (void)getSMSCode{
+    [KeyWindow ln_showLoadingHUD];
+    [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:LoginType Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            if (error.code == 1013) {
+                [self getImageCode];
+            }
+            return ;
+        }
+        [KeyWindow ln_hideProgressHUD];
+        if (self.codeInputView.codeButton) {
+            //倒计时
+            [self.codeInputView.codeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
+        }
+        self.serialNumber = result.body;
+    }];
 }
 
 #pragma mark 登录取消返回
