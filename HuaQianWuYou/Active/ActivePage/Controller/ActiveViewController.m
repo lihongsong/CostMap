@@ -25,6 +25,7 @@
 #import "HQWYJavaScriptOpenWebViewHandler.h"
 #import <AppUpdate/XZYAppUpdate.h>
 #import "AuthPhoneNumViewController.h"
+#import "HQWYJavaScriptOpenSDKHandler.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -130,7 +131,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)dealloc {
-    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     _manager = nil;
 }
@@ -228,6 +228,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     HQWYJavaScriptOpenNativeHandler *handler = [HQWYJavaScriptOpenNativeHandler new];
     handler.delegate = self;
     [_manager registerHandler:handler];
+    
+    /** 注册打开SDK意见反馈事件 */
+    [_manager registerHandler:[HQWYJavaScriptOpenSDKHandler new]];
     
     /** 注册获取请求头事件 */
     

@@ -20,8 +20,10 @@
 #import "FBManager.h"
 #import "TalkingData.h"
 #import "TalkingDataAppCpa.h"
+#import <Bugly/Bugly.h>
 
-@interface AppDelegate ()
+@interface AppDelegate ()<BuglyDelegate>
+
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 
 @end
@@ -31,11 +33,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    //移动武林榜
-    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
-    /** TalkingData */
-    [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
-    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
     [self setUpSDKs];
     
     WeakObj(self);
@@ -50,7 +47,7 @@
     [self.window makeKeyAndVisible];
     launchVC.accomplishBlock = ^(NSString *exampleCreditScore) {
         StrongObj(self);
-        if (![exampleCreditScore isEqualToString:@"88"]) {
+        if ([exampleCreditScore isEqualToString:@"88"]) {
             [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
             [self checkUpdate];
         }else{
@@ -171,11 +168,15 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    UserDefaultSetObj([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"], @"TenMinutesRefresh");
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    if ([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"].integerValue - [GetUserDefault(@"TenMinutesRefresh") integerValue] > 10) {
+        
+    }
 }
 
 
@@ -191,9 +192,32 @@
 #pragma 三方SDK设置
 
 - (void)setUpSDKs{
-    
+    //移动武林榜
+    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
+    /** TalkingData */
+    [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
+    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
+
     //设置意见反馈
     [FBManager configFB];
+    [self setUpBugly];
+}
+
+- (void)setUpBugly {
+
+    /** bugly */
+    BuglyConfig *buglyConfig = [[BuglyConfig alloc] init];
+    buglyConfig.blockMonitorEnable = YES;
+    buglyConfig.reportLogLevel = BuglyLogLevelError;
+    buglyConfig.delegate = self;
+#if defined(Release)
+    [Bugly startWithAppId:Bugly_AppId
+                   config:buglyConfig];
+#else
+    [Bugly startWithAppId:Bugly_AppIdDebug
+        developmentDevice:YES
+                   config:buglyConfig];
+#endif
 }
 
 @end
