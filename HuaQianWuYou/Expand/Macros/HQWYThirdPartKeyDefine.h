@@ -37,6 +37,7 @@
 #endif
 
 // TalkingDataAppCpa
+//FIXME:v2.0 id 需要产品给
 #define TalkingDataAppCpa_AppId       @"2FC9A30BE32A429B882B634013718E1B"
 
 //意见反馈
