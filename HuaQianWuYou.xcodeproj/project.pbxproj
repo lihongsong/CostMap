@@ -107,6 +107,7 @@
 		5965CBB920F4B22E0009DB84 /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CBB720F4B22E0009DB84 /* UIAlertView+Block.m */; };
 		59698BFC209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		596B0E2320B4360A00B5A06B /* ResetPasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */; };
+		5977034020F71D2700F29F33 /* HQWYLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977033F20F71D2700F29F33 /* HQWYLaunchManager.m */; };
 		5979454D20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */; };
 		5979455020F32BDB006BB02D /* ThirdPartWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454F20F32BDB006BB02D /* ThirdPartWebVC.m */; };
 		5979455320F33905006BB02D /* HQWYReturnToDetainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979455220F33905006BB02D /* HQWYReturnToDetainView.m */; };
@@ -403,6 +404,7 @@
 		5962070920F5AFD600FAF3CF /* HQWYUser+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HQWYUser+Service.m"; sourceTree = "<group>"; };
 		5964A87320F6E99C004C2629 /* HQWYJavaScriptOpenSDKHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptOpenSDKHandler.h; sourceTree = "<group>"; };
 		5964A87420F6E99C004C2629 /* HQWYJavaScriptOpenSDKHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptOpenSDKHandler.m; sourceTree = "<group>"; };
+		5964A87620F6EC48004C2629 /* HQWYTDEventIdMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYTDEventIdMacros.h; sourceTree = "<group>"; };
 		5965CB8F20F485990009DB84 /* HQWYUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUserManager.h; sourceTree = "<group>"; };
 		5965CB9020F485990009DB84 /* HQWYUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserManager.m; sourceTree = "<group>"; };
 		5965CB9220F4863F0009DB84 /* HQWYUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUser.h; sourceTree = "<group>"; };
@@ -422,6 +424,8 @@
 		59698BFB209FE973000E37AA /* TestApi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestApi.plist; sourceTree = "<group>"; };
 		596B0E2120B4360A00B5A06B /* ResetPasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordModel.h; sourceTree = "<group>"; };
 		596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordModel.m; sourceTree = "<group>"; };
+		5977033E20F71D2700F29F33 /* HQWYLaunchManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYLaunchManager.h; sourceTree = "<group>"; };
+		5977033F20F71D2700F29F33 /* HQWYLaunchManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYLaunchManager.m; sourceTree = "<group>"; };
 		5979454B20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptOpenWebViewHandler.h; sourceTree = "<group>"; };
 		5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptOpenWebViewHandler.m; sourceTree = "<group>"; };
 		5979454E20F32BDB006BB02D /* ThirdPartWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartWebVC.h; sourceTree = "<group>"; };
@@ -1454,6 +1458,8 @@
 				597C73CB20E9C8D40090960B /* BasicDataModel+Service.h */,
 				597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */,
 				597C73CA20E9C8560090960B /* BasicDataProtocol.h */,
+				5977033E20F71D2700F29F33 /* HQWYLaunchManager.h */,
+				5977033F20F71D2700F29F33 /* HQWYLaunchManager.m */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -1523,6 +1529,7 @@
 				59FD9E7920EA1E0A008C98DE /* HQWYJavaSBridgeHandleMacros.h */,
 				5957530E209AD35C00F602EB /* HQWYUtilitiesDefine.h */,
 				5935907A20A1A9BB0057C0F4 /* HQWYThirdPartKeyDefine.h */,
+				5964A87620F6EC48004C2629 /* HQWYTDEventIdMacros.h */,
 			);
 			path = Macros;
 			sourceTree = "<group>";
@@ -2103,6 +2110,7 @@
 				595754C4209B191D00F602EB /* BaseNavigationController.m in Sources */,
 				A8F8E00B20B50A6100DB9A6A /* DefaultView.m in Sources */,
 				591D960D20ABDE6E00193B09 /* AABar.m in Sources */,
+				5977034020F71D2700F29F33 /* HQWYLaunchManager.m in Sources */,
 				591D961320ABDE6E00193B09 /* AAArea.m in Sources */,
 				59BE198620EC9DD600704B2C /* SuspendView.m in Sources */,
 				591D960720ABDE6E00193B09 /* AAOptions3d.m in Sources */,
