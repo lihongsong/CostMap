@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AA3DCEB5872D6183EFED3AF /* Pods_HuaQianWuYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742D8DBB7019FDEB7546A10A /* Pods_HuaQianWuYou.framework */; };
 		59023BE9209A9B33004B9134 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 59023BE8209A9B33004B9134 /* AppDelegate.m */; };
 		59023BEF209A9B33004B9134 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59023BED209A9B33004B9134 /* Main.storyboard */; };
 		59023BF1209A9B35004B9134 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59023BF0209A9B35004B9134 /* Assets.xcassets */; };
@@ -227,7 +228,6 @@
 		A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8DFF620B4F30300DB9A6A /* FeedbackModel.m */; };
 		A8F8DFFA20B4F31200DB9A6A /* FeedbackModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8DFF920B4F31200DB9A6A /* FeedbackModel+Service.m */; };
 		A8F8E00B20B50A6100DB9A6A /* DefaultView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8E00A20B50A6100DB9A6A /* DefaultView.m */; };
-		B66FA94CBD5682D7BDE6FEC9 /* Pods_HuaQianWuYou.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 742D8DBB7019FDEB7546A10A /* Pods_HuaQianWuYou.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -683,7 +683,7 @@
 				592FE24120EA31300052E60E /* libTalkingData.a in Frameworks */,
 				59C4D13F20E5DE5800BDCA48 /* libresolv.tbd in Frameworks */,
 				59C4D13D20E5DE4E00BDCA48 /* UserNotifications.framework in Frameworks */,
-				B66FA94CBD5682D7BDE6FEC9 /* Pods_HuaQianWuYou.framework in Frameworks */,
+				4AA3DCEB5872D6183EFED3AF /* Pods_HuaQianWuYou.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2350,6 +2350,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_ENTITLEMENTS = HuaQianWuYou/HuaQianWuYou.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2458,6 +2460,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				CODE_SIGN_ENTITLEMENTS = HuaQianWuYou/HuaQianWuYou.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;

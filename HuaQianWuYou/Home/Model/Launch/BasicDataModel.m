@@ -7,7 +7,7 @@
 //
 
 #import "BasicDataModel.h"
-
+#import "YYModel.h"
  @implementation BasicDataInfo
      
      + (NSDictionary*)modelCustomPropertyMapper {

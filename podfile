@@ -7,6 +7,9 @@ source 'http://172.16.0.245:2345/Apple_SDK/iOS_Specs.git'
 source 'git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git'
 
 platform :ios, '8.0'
+
+inhibit_all_warnings!
+
 use_frameworks!
 
 target 'HuaQianWuYou' do

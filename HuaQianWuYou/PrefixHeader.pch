@@ -39,19 +39,19 @@
 #import "UIColor+AddColor.h"
 #import "UIFont+TargetFont.h"
 #import "NSObject+event.h"
-#import "YYModel.h"
+
 #import "UIViewController+UIAlertControllerKit.h"
 #import "UIAlertView+Block.h"
 
 #pragma mark    三方以及自定义库
 #import "LNNetwork.h"
-#import "HJFoundation.h"
-#import "HJUIKit.h"
 #import "AAGlobalMacro.h"
 #import <Masonry/Masonry.h>
 #import <RCMobClick/RCMobClick.h>
+#import <HJCategories/HJCoreFoundation.h>
+#import <HJCategories/HJFoundation.h>
 #import <HJCategories/HJUIKit.h>
-#import <HJ_UIKit/HJAlertView.h>
+#import <HJ_UIKit/HJGuidePage.h>
 #import "LNMBProgressHUD.h"
 
 

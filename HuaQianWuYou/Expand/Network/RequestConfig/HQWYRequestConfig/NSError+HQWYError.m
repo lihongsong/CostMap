@@ -44,8 +44,8 @@ static NSString *const kHQWYErrorRespMsgKey       = @"respMsg";
     return message;
 }
 
-- (HQWYRESPONSECODE)hqwy_codeInteger {
-    return [self responseIntegerCode:self.userInfo[kHQWYErrorRespCodeKey]];
+- (HQWYRESPONSECODE)hqwy_respCode {
+    return !self.userInfo[kHQWYErrorRespCodeKey] ? HQWYRESPONSECODE_UNKNOW : [self.userInfo[kHQWYErrorRespCodeKey] integerValue];
 }
 
 
@@ -97,7 +97,7 @@ static NSString *const kHQWYErrorRespMsgKey       = @"respMsg";
 
 + (NSError *)hqwy_handleLogicError:(NSString *)respMsg respCode:(NSString *)respCode {
     return [NSError errorWithDomain:HQWYSystemErrorDomain
-                               code:[self responseIntegerCode:respCode]
+                               code:[respCode integerValue]
                            userInfo:@{kHQWYErrorRespMsgKey : respMsg, kHQWYErrorRespCodeKey : respCode}];
 }
 
