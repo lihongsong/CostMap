@@ -27,6 +27,7 @@
 #import "AuthPhoneNumViewController.h"
 #import "HQWYJavaScriptOpenSDKHandler.h"
 #import "HJUIKit.h"
+#import "NSString+cityInfos.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -96,6 +97,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
     [PopViewManager showType:AdvertisingTypeSuspensionWindow fromVC:self];
     
+}
+
+- (void )setSelectedLocation:(NSString *)selectedLocation{
+    _selectedLocation = selectedLocation;
+    if (![selectedLocation containsString:@"失败"] && ![selectedLocation containsString:@"定位"] && ![selectedLocation containsString:@"未知"]){
+        SetUserDefault([NSString getDistrictNoFromCity:selectedLocation], @"locationCity");
+        }else{
+            SetUserDefault(@"", @"locationCity");
+        }
 }
 
 - (void)appWillEnterForeground {
@@ -193,18 +203,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }
     }];
     
-    
-    /** 注册获取PID事件 */
-//        [_manager registerHandler:kAppGetProductId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//            NSString *productID = @(LNProductIDJKDSZD).stringValue;
-//            ResponseCallback([HQWYJavaScriptResponse result:productID]);
-//        }];
-//
-    /** 注册获取ChannelID事件 */
-//        [_manager registerHandler:kAppGetChannel handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//            ResponseCallback([HQWYJavaScriptResponse result:AppChannel]);
-//        }];
-    
     /** 注册获取app版本事件 */
     [_manager registerHandler:kAppGetVersion handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([HQWYJavaScriptResponse result:[UIDevice hj_appVersion]]);
@@ -219,12 +217,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager registerHandler:kAppGetUserToken handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken]);
     }];
-    
-    /** 注册获取用户唯一id事件 */
-//    [_manager registerHandler:kAppGetUserId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//        NSString *useid = HQWYUserStatusSharedManager.userBaseInfo.userId;
-//        ResponseCallback([HQWYJavaScriptResponse result:useid]);
-//    }];
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
