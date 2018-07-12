@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BasicDataModel.h"
+#import "HJGuidePageViewController.h"
 
 @interface HQWYLaunchManager : NSObject
-@property(nonatomic,strong)JKLaunchPageModel *launchModel;
-
-@property(nonatomic,copy)DefaultBlock callBack;
+@property(nonatomic,strong)BasicDataModel *launchModel;
 
 @property (nonatomic,strong)HJGuidePageViewController *guideVC;
 

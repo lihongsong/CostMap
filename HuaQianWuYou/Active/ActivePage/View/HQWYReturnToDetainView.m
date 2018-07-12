@@ -243,6 +243,7 @@
 
 #pragma mark 取消点击
 - (void)cancleButtonClick{
+    [self eventId:HQWY_ThirdPart_AlertClose_click];
     if ([self.delegate respondsToSelector:@selector(cancleAlertClick)]) {
         [self.delegate cancleAlertClick];
     }
@@ -250,6 +251,7 @@
 
 #pragma mark 今日不再提示点击事件
 - (void)promptButtonClick{
+    [self eventId:HQWY_ThirdPart_NoneAlert_click];
     if ([self.delegate respondsToSelector:@selector(nonePromptButtonClick)]) {
         [self.delegate nonePromptButtonClick];
     }

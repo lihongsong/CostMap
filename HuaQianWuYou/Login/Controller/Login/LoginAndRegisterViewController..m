@@ -152,6 +152,7 @@
 
 #pragma mark 忘记密码
 - (void)forgetButtonClick{
+    [self eventId:HQWY_Login_ForgetPassword_click];
     [self dismissViewControllerAnimated:true completion:^{
         if (self.forgetBlock) {
             self.forgetBlock();
@@ -162,44 +163,47 @@
 #pragma mark 登录事件
 - (void)loginButtonClick{
     self.loginButton.enabled = false;
+    WeakObj(self);
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
+        [self eventId:HQWY_Login_SignIn_click];
         if ([self.codeInputView.firstTF.text length] > 0) {
             if ([self.codeInputView.secondTF.text length] > 0) {
                 if ([self.codeInputView.firstTF.text hj_isMobileNumber]) {
                     [self requestLogin];
                 }else{
                     [self addAlertView:@"手机号格式不正确" block:^{
-                        
+                       selfWeak.loginButton.enabled = true;
                     }];
                 }
             }else{
                 [self addAlertView:@"请输入验证码" block:^{
-                    
+                    selfWeak.loginButton.enabled = true;
                 }];
             }
         }else{
             [self addAlertView:@"请输入手机号" block:^{
-                
+                selfWeak.loginButton.enabled = true;
             }];
         }
     }else{
+        [self eventId:HQWY_Login_PasswordLogin_click];
         if ([self.passwordInputView.firstTF.text length] > 0) {
             if ([self.passwordInputView.secondTF.text length] > 0) {
                 if ([self.passwordInputView.firstTF.text hj_isMobileNumber]) {
                     [self requestLogin];
                 }else{
                     [self addAlertView:@"手机号格式不正确" block:^{
-                        
+                        selfWeak.loginButton.enabled = true;
                     }];
                 }
             }else{
                 [self addAlertView:@"请输入密码" block:^{
-                    
+                    selfWeak.loginButton.enabled = true;
                 }];
             }
         }else{
             [self addAlertView:@"请输入手机号" block:^{
-                
+                selfWeak.loginButton.enabled = true;
             }];
         }
     }
@@ -213,6 +217,7 @@
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
+            self.loginButton.enabled = true;
             if (error) {
                 [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
                 return ;
@@ -228,6 +233,7 @@
     }else{
         [HQWYUser passwordLogin:self.passwordInputView.secondTF.text mobile:self.passwordInputView.firstTF.text Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error){
             StrongObj(self);
+            self.loginButton.enabled = true;
             if (error) {
                 [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
                 return ;
@@ -245,7 +251,11 @@
 
 #pragma mark 协议点击事件
 - (void)agrementClick{
-    
+    if (self.forgetButton.hidden ) {
+        [self eventId:HQWY_Login_Agreement_click];
+    }else{
+        [self eventId:HQWY_Login_PasswordAgreement_click];
+    }
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -454,6 +464,7 @@
 
 #pragma mark 登录取消返回
 - (void)closeButtonClick{
+    [self eventId:HQWY_Login_Close_click];
     [self dismissViewControllerAnimated:true completion:^{
         
     }];

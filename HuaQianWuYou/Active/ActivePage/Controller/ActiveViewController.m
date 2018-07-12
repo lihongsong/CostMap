@@ -26,6 +26,7 @@
 #import <AppUpdate/XZYAppUpdate.h>
 #import "AuthPhoneNumViewController.h"
 #import "HQWYJavaScriptOpenSDKHandler.h"
+#import "HJUIKit.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -70,6 +71,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     //发送设备信息采集
     [DeviceManager sendDeviceinfo];
+
 }
 
 # pragma mark 弹框和悬浮弹框逻辑

@@ -21,7 +21,7 @@
 #import "TalkingData.h"
 #import "TalkingDataAppCpa.h"
 #import <Bugly/Bugly.h>
-
+#import "HQWYLaunchManager.h"
 @interface AppDelegate ()<BuglyDelegate>
 
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
@@ -86,7 +86,7 @@
     HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)
         // 1秒 网络加载  3秒图片加载
-        make.setTimer(0, 5, nil,YES);
+        make.setTimer(0, 3, nil,YES);
         make.setAnimateFinishedBlock(^(id info) {
             
             self.window = oldWindow;
@@ -98,17 +98,13 @@
         });
         make.setCountdownBtnBlock(^(UIButton *btn) {
             btn.frame = CGRectMake(SWidth - 66 - 30, SHeight - 30 -28, 66, 28);
+        // 点击跳过，埋点
         });
     }];
     [HJGuidePageWindow show];
-    
-   BasicDataModel *model = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
-    BasicDataInfo *info = model.AdvertisingVO;
-    //launchVC.setTimer(info.showTime.integerValue,0, @"s跳过",NO);
-    launchVC.setTimer(5,0, @"s跳过",NO);
-    launchVC.setBackGroundImage(info.imgUrl, YES, NO, ^{
-        //[HJGuidePageWindow dismiss];
-    });
+    HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
+    launchManager.guideVC = launchVC;
+    [launchManager showLanuchPageModel];
 }
 
 #pragma mark - 启动图设置

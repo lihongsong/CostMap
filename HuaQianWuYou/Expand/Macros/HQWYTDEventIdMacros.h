@@ -35,6 +35,7 @@ static NSString * const HQWY_Login_PasswordAgreement_click   = @"dlzc;mmdl;fwxy;
 static NSString * const HQWY_Login_ForgetPassword_click  = @"dlzc;mmdl;wjmm;w13";
 // 登录注册-关闭
 static NSString * const HQWY_Login_Close_click = @"dlzc;w14";
+
 // 提示定位权限用途
 static NSString * const HQWY_Location_Alert_click = @"qx;tsdw;w15";
 // 定位被拒弹窗-去设置
@@ -62,18 +63,7 @@ static NSString * const HQWY_Fix_Back_click     = @"xgmm;ysjh;fh;w131";
 static NSString * const HQWY_Fix_Sure_click = @"xgmm;szmm;qr;w132";
 // 设置密码-返回
 static NSString * const HQWY_Fix_PasswordBack_click = @"xgmm;szmm;fh;w133";
-// 个人中心发现版*本*升*级
-static NSString * const HQWY_Mine_Version_click = @"jcgx;fxxbb;w137";
-// 发现新*版*本-取消
-static NSString * const HQWY_Mine_VersionCancle_click = @"jcgx;fxxbb;w138";
-// 启动app发现新*版*本-立*即*升*级
-static NSString * const HQWY_StartApp_Version_click = @"tsgx;fxxbb;w141";
-// 启动app发现新*版*本-取消
-static NSString * const HQWY_StartApp_VersionCancle_click = @"tsgx;fxxbb;w142";
-// 启动app强*制*更*新-立*即*升*级
-static NSString * const HQWY_StartApp_ForceVersion_click = @"tsgx;qzgx;w143";
-// 合作方精准推荐
-static NSString * const HQWY_ThirdPart_Recommend_click = @"zcy;jztj;w147";
+
 // 返回
 static NSString * const HQWY_ThirdPart_Back_click = @"zcy;fh;w148";
 

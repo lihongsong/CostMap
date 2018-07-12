@@ -80,8 +80,13 @@
     return _nextButton;
 }
 
+-(void)backPage {
+    [self eventId:HQWY_Fix_PasswordBack_click];
+    [self.navigationController popToRootViewControllerAnimated:true];
+}
+
 - (void)nextAction:(UIButton *)sender{
-    
+    [self eventId:HQWY_Fix_Sure_click];
 //    if (![self.password hj_isValidWithMinLenth:6 maxLenth:20 containChinese:NO containDigtal:YES containLetter:YES containOtherCharacter:nil firstCannotBeDigtal:YES]) {
 //        [KeyWindow ln_showToastHUD:@"请输入6～20位数字或字母密码"];
 //    }
