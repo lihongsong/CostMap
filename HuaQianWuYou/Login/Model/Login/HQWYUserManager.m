@@ -169,6 +169,7 @@
 //    }
 //}
 
+//FIXME:review 这里需要么？
 + (void)handleInvalidateToken:(NSDictionary *)dict {
     if ([HQWYUserManager sharedInstance].showingTokenValidateAlertView) {
         return;

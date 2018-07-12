@@ -35,8 +35,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setUpSDKs];
-    
+    //FIXME:review 在这里weakSelf 最好放在block上面吧
     WeakObj(self);
+
+    //FIXME:review 注册三方SDK相关的，统一放到一个方法里吧
     [self registerAppUpdate];
     //    /** 通过通知栏调起APP处理通知信息 */
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -62,7 +64,9 @@
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi) {
+            //FIXME:review 这里什么意思？
             //[selfWeak appBasicAPISend:launchOptions WithBlock:YES];
+
         }
     }];
     
@@ -98,6 +102,7 @@
             [guideWindow removeFromSuperview];
         });
         make.setCountdownBtnBlock(^(UIButton *btn) {
+            //FIXME:review 此处不要写死坐标，需要优化
             btn.frame = CGRectMake(SWidth - 66 - 30, SHeight - 30 -28, 66, 28);
         });
     }];
@@ -197,6 +202,7 @@
     [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
     /** TalkingData */
     [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
+    //FIXME:v2.0 这个产品确认是否需要
     [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
 
     //设置意见反馈

@@ -51,7 +51,7 @@
     
     [self.view addSubview:self.forgetButton];
     [self.view addSubview:self.loginButton];
-    
+
     UILabel *stateLabel = [ZYZControl createLabelWithFrame:CGRectMake(SWidth/2.0 - 100, CGRectGetMaxY(self.loginButton.frame) + 15, 110, 30) Font:[UIFont systemFontOfSize:13.0] Text:@"登录即代表您同意"];
     stateLabel.textColor = [UIColor stateGrayColor];
     [self.view addSubview:stateLabel];
@@ -162,6 +162,8 @@
 #pragma mark 登录事件
 - (void)loginButtonClick{
     self.loginButton.enabled = false;
+    //FIXME:review 这里的if else 太深了，要调整
+
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         if ([self.codeInputView.firstTF.text length] > 0) {
             if ([self.codeInputView.secondTF.text length] > 0) {
@@ -210,6 +212,7 @@
 - (void)requestLogin{
     WeakObj(self);
     [KeyWindow ln_showLoadingHUD];
+    //FIXME:review if else 中一部分内容是一样的，抽出来共用
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
@@ -245,10 +248,12 @@
 
 #pragma mark 协议点击事件
 - (void)agrementClick{
-    
+    //FIXME:review 这里的功能？
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
+    //FIXME:review 这里的if else 太深了，要调整
+    //FIXME:review 这里的重复代码较多，可以优化
      if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
          if ([textField isEqual:self.codeInputView.firstTF]) {
              self.codeInputView.firstLineView.backgroundColor = [UIColor skinColor];
@@ -286,7 +291,7 @@
 
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    
+    //FIXME:review textField 的长度限制方法，在我们分类里面已有，UITextField+HJInputLimit 中
     if(textField.text.length == 10){
         if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
             if ([textField isEqual:self.codeInputView.firstTF]) {
@@ -320,6 +325,7 @@
         }
              
     }
+
         if (textField == self.codeInputView.firstTF || textField == self.passwordInputView.firstTF) {
             //超过12位禁止输入
             if(range.location >= 12 || string.length>12 || (textField.text.length + string.length) >12) {
@@ -400,6 +406,7 @@
 - (void)getImageCode{
     WeakObj(self);
     [KeyWindow ln_showLoadingHUD];
+    //FIXME:review 这个请求图形验证码的逻辑在三个类中都有，可以抽离
     [AuthCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
         if (error) {
@@ -435,8 +442,10 @@
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
     [KeyWindow ln_showLoadingHUD];
+    //FIXME:review LoginType 用枚举定义
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:LoginType Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
+            //FIXME:review 获取error msg 方法见HQWYError 分类中封装的
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
             if (error.code == 1013) {
                 [self getImageCode];
