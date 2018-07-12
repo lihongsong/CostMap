@@ -58,11 +58,12 @@
     }
  
     RCNetworkError *networkerror = [[RCNetworkError alloc] init];
-    networkerror.userId = @"";
+
     //FIXME:v2.0 手机号获取
     networkerror.mobile = @"";
     //此处pid传空值
-    networkerror.pid = @"";
+//    networkerror.pid = @"";
+//    networkerror.userId = @"";
 
     networkerror.responseTime = [NSString stringWithFormat:@"%.0f",duration];
     networkerror.requestUrl = [failingURLString stringByReplacingOccurrencesOfString:@"api/" withString:@"/"];

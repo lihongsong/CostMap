@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MainTabBarViewController.h"
-#import "HJGuidePage.h"
 #import "HQWYUtilitiesDefine.h"
 #import "HQWYThirdPartKeyDefine.h"
 #import "DeviceHelp.h"
@@ -22,6 +21,7 @@
 #import "TalkingDataAppCpa.h"
 #import <Bugly/Bugly.h>
 #import "HQWYLaunchManager.h"
+#import "HJGuidePageWindow.h"
 @interface AppDelegate ()<BuglyDelegate>
 
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
@@ -81,7 +81,7 @@
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
     UIWindow *oldWindow = self.window;
     
-    __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow sheareGuidePageWindow:GuidePageAPPLaunchStateNormal];
+    __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
    WeakObj(self)
     HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)

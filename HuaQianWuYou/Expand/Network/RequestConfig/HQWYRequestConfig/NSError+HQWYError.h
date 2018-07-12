@@ -40,7 +40,7 @@ typedef enum
 
  @return 返回封装后的 errorCode 字符串
  */
-- (HQWYRESPONSECODE)hqwy_codeInteger;
+- (HQWYRESPONSECODE)hqwy_respCode;
 
 /**
  处理系统异常，例如服务器异常

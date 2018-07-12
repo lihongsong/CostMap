@@ -9,7 +9,7 @@
 #import "PasswordInputView.h"
 #import "UIButton+Count.h"
 #import "UIButton+EnlableColor.h"
-#import <HJCategories/NSString+HJNormalRegex.h>
+//#import <HJCategories/NSString+HJNormalRegex.h>
 
 @interface PasswordInputView ()<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *firstTitleLable;

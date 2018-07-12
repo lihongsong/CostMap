@@ -105,14 +105,15 @@ static NSString *const kHQWYBodyKey         = @"body";
 
     NSString *respCode = [responseObject objectForKey:kHQWYRespCodeKey];
 
-    if (!respCode) {
+    if (!respCode || ![respCode isKindOfClass:[NSString class]]
+        || [respCode isEqual:[NSNull null]]) {
         if (failure) {
             failure(nil, [NSError hqwy_handleApiDataError]);
         }
         return;
     }
 
-    if ([self responseIntegerCode:respCode] == HQWYRESPONSECODE_SUCC) {
+    if (respCode.integerValue == HQWYRESPONSECODE_SUCC) {
         //success
         id body = [responseObject objectForKey:kHQWYBodyKey];
         if (!body) {
@@ -124,13 +125,20 @@ static NSString *const kHQWYBodyKey         = @"body";
         return;
     }
 
+    NSString *respMsg = [responseObject objectForKey:kHQWYRespMsgKey];
+    if (respCode && ![respCode isEqual:[NSNull null]]
+        && [respCode isKindOfClass:[NSString class]]
+        && respCode.integerValue == HQWYRESPONSECODE_FAIL) {
+        //服务端异常，上传移动武林榜接口异常监测
+        [self sendNetworkError:nil ofTask:task];
+    }
+
     //业务异常
     if (failure) {
-        NSString *respMsg = [responseObject objectForKey:kHQWYRespMsgKey];
         //这里重新包装Error
         failure(nil, [NSError hqwy_handleLogicError:respMsg respCode:respCode]);
-        return;
     }
+    return;
 }
 
 + (id)ln_parseResponseObject:(id)responseObject {

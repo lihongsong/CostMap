@@ -20,12 +20,13 @@ typedef NS_ENUM(NSInteger, HQWYRESPONSECODE) {
     HQWYRESPONSECODE_UCENTER_INVALID_MSG            = 1007, //互金后台验证失效!
     HQWYRESPONSECODE_UCENTER_LOGIN_TIMEOUT          = 1008, //登录超时或未登录!
     HQWYRESPONSECODE_UN_AUTHORIZATION               = 1004, //非授权访问
-    HQWYRESPONSECODE_VERIFY_CODE_FAILURE            = 1014  //短信验证码校验失败
+    HQWYRESPONSECODE_VERIFY_CODE_FAILURE            = 1014,  //短信验证码校验失败
+    HQWYRESPONSECODE_UNKNOW                         = 88888  //未知
 };
 
 
 @interface NSObject (HQWYResponseCode)
 
-- (HQWYRESPONSECODE)responseIntegerCode:(NSString *)respCode;
+//- (HQWYRESPONSECODE)responseIntegerCode:(NSString *)respCode;
 
 @end

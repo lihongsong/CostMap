@@ -11,6 +11,7 @@
 #import "SuspendView.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "BasicDataModel+Service.h"
+#import "YYModel.h"
 @interface PopViewManager()
 
 ///* <#cintent#> */
