@@ -22,8 +22,10 @@
 #import <Bugly/Bugly.h>
 #import "HQWYLaunchManager.h"
 #import "HJGuidePageWindow.h"
-@interface AppDelegate ()<BuglyDelegate>
 
+#import <BMKLocationKit/BMKLocationAuth.h>
+
+@interface AppDelegate ()<BMKLocationAuthDelegate,BuglyDelegate>
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 
 @end
@@ -34,6 +36,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setUpSDKs];
+    
+    // 百度定位 3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB
+    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:Baidu_AppKey authDelegate:self];
+    
+//    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:@"Ue0z9bSN4xfpxwK5npiFESyRSnFqx6ii" authDelegate:self];
     
     WeakObj(self);
     [self registerAppUpdate];
@@ -173,6 +180,8 @@
     if ([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"].integerValue - [GetUserDefault(@"TenMinutesRefresh") integerValue] > 10) {
         
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppWillEnterForeground" object:nil];
 }
 
 
