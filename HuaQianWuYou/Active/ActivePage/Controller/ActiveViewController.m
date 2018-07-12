@@ -83,6 +83,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [DeviceManager sendDeviceinfo];
     
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -92,6 +94,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
     [PopViewManager showType:AdvertisingTypeSuspensionWindow fromVC:self];
     
+}
+
+- (void)appWillEnterForeground {
+    [_manager callHandler:kWebViewWillAppear];
 }
 
 //弹框代理方法
