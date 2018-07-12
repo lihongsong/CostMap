@@ -290,6 +290,8 @@
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
 		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
 		A858A81620B2D7B600657C09 /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A858A81520B2D7B600657C09 /* DES3Util.m */; };
+		A8F1288520F75D4300907FC6 /* NSString+cityInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F1288420F75D4300907FC6 /* NSString+cityInfos.m */; };
+		A8F1288720F75E4F00907FC6 /* cityInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = A8F1288620F75E4F00907FC6 /* cityInfo.json */; };
 		A8F8DFAC20B3AB3300DB9A6A /* LoginHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8DF9120B3AB3200DB9A6A /* LoginHeaderView.m */; };
 		A8F8DFAD20B3AB3300DB9A6A /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8DF9320B3AB3200DB9A6A /* MineTableViewCell.m */; };
 		A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8DF9520B3AB3200DB9A6A /* MineNoticeView.m */; };
@@ -707,6 +709,9 @@
 		A8118BDA20B2968C0046099D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A858A81420B2D7B600657C09 /* DES3Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DES3Util.h; sourceTree = "<group>"; };
 		A858A81520B2D7B600657C09 /* DES3Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DES3Util.m; sourceTree = "<group>"; };
+		A8F1288320F75D4300907FC6 /* NSString+cityInfos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+cityInfos.h"; sourceTree = "<group>"; };
+		A8F1288420F75D4300907FC6 /* NSString+cityInfos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+cityInfos.m"; sourceTree = "<group>"; };
+		A8F1288620F75E4F00907FC6 /* cityInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityInfo.json; sourceTree = "<group>"; };
 		A8F8DF9020B3AB3200DB9A6A /* MineNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineNoticeView.h; sourceTree = "<group>"; };
 		A8F8DF9120B3AB3200DB9A6A /* LoginHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginHeaderView.m; sourceTree = "<group>"; };
 		A8F8DF9220B3AB3200DB9A6A /* MineTopHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTopHeaderView.h; sourceTree = "<group>"; };
@@ -1085,6 +1090,9 @@
 				59C5712D20E600CE00D54260 /* UITabBar+badge.m */,
 				59C5712B20E600CD00D54260 /* ZYZControl.h */,
 				59C5713320E600D100D54260 /* ZYZControl.m */,
+				A8F1288320F75D4300907FC6 /* NSString+cityInfos.h */,
+				A8F1288420F75D4300907FC6 /* NSString+cityInfos.m */,
+				A8F1288620F75E4F00907FC6 /* cityInfo.json */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -2031,6 +2039,7 @@
 				59C5711820E5FF7700D54260 /* func.list in Resources */,
 				5965CBAE20F4AF320009DB84 /* testResponse.json in Resources */,
 				591D95DA20ABDE6E00193B09 /* AAHighcharts-3d.js in Resources */,
+				A8F1288720F75E4F00907FC6 /* cityInfo.json in Resources */,
 				59C5710420E5FB8200D54260 /* HomeBaseTableViewCell.xib in Resources */,
 				5958089E20F2F53A002A6F0C /* ImageCodePopView.xib in Resources */,
 				59023BEF209A9B33004B9134 /* Main.storyboard in Resources */,
@@ -2216,6 +2225,7 @@
 				A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */,
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
 				5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */,
+				A8F1288520F75D4300907FC6 /* NSString+cityInfos.m in Sources */,
 				595808A520F2F946002A6F0C /* UIButton+EnlableColor.m in Sources */,
 				59C5714120E600D100D54260 /* ZYZControl.m in Sources */,
 				A8F8DFB220B3AB3300DB9A6A /* AgreementViewController.m in Sources */,
