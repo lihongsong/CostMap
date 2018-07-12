@@ -40,6 +40,7 @@
 #import "UIColor+AddColor.h"
 #import "UIFont+TargetFont.h"
 #import "NSObject+event.h"
+#import "NSError+HQWYError.h"
 
 #import "UIViewController+UIAlertControllerKit.h"
 #import "UIAlertView+Block.h"
@@ -54,7 +55,7 @@
 #import <HJCategories/HJUIKit.h>
 #import <HJ_UIKit/HJGuidePage.h>
 #import "LNMBProgressHUD.h"
-
+#import "ZYZMBProgressHUD.h"
 
 #pragma mark JsBridge
 #import <HJJavascriptBridge/HJJSBridgeManager.h>

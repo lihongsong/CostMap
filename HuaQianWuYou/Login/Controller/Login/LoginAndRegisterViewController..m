@@ -66,6 +66,7 @@
 - (TwoTextFieldView *)codeInputView{
     if (!_codeInputView) {
         _codeInputView = [[TwoTextFieldView alloc]initWithFrame:CGRectMake(0, 100 + 50, SWidth, 125)];
+        _codeInputView.delegate = self;
         _codeInputView.firstTF.delegate = self;
         _codeInputView.secondTF.delegate = self;
         [_codeInputView setType:TextFieldTypeCode];
@@ -75,7 +76,8 @@
 
 - (TwoTextFieldView *)passwordInputView{
     if (!_passwordInputView) {
-        _passwordInputView = [[TwoTextFieldView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.codeInputView.frame), self.codeInputView.hj_y, SWidth, 125)];;
+        _passwordInputView = [[TwoTextFieldView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.codeInputView.frame), self.codeInputView.hj_y, SWidth, 125)];
+        _passwordInputView.delegate = self;
         _passwordInputView.firstTF.delegate = self;
         _passwordInputView.secondTF.delegate = self;
         [_passwordInputView setType:TextFieldTypeCode];
@@ -166,43 +168,43 @@
     WeakObj(self);
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [self eventId:HQWY_Login_SignIn_click];
-        if ([self.codeInputView.firstTF.text length] > 0) {
-            if ([self.codeInputView.secondTF.text length] > 0) {
-                if ([self.codeInputView.firstTF.text hj_isMobileNumber]) {
-                    [self requestLogin];
-                }else{
-                    [self addAlertView:@"手机号格式不正确" block:^{
-                       selfWeak.loginButton.enabled = true;
-                    }];
-                }
-            }else{
-                [self addAlertView:@"请输入验证码" block:^{
-                    selfWeak.loginButton.enabled = true;
-                }];
-            }
-        }else{
+        if (!([self.codeInputView.firstTF.text length] > 0)) {
             [self addAlertView:@"请输入手机号" block:^{
                 selfWeak.loginButton.enabled = true;
+                return;
+            }];
+        }
+        if (!([self.codeInputView.secondTF.text length] > 0)){
+            [self addAlertView:@"请输入验证码" block:^{
+                selfWeak.loginButton.enabled = true;
+                return;
+            }];
+        }
+        if ([self.codeInputView.firstTF.text hj_isMobileNumber]) {
+            [self requestLogin];
+        }else{
+            [self addAlertView:@"手机号格式不正确" block:^{
+               selfWeak.loginButton.enabled = true;
             }];
         }
     }else{
         [self eventId:HQWY_Login_PasswordLogin_click];
-        if ([self.passwordInputView.firstTF.text length] > 0) {
-            if ([self.passwordInputView.secondTF.text length] > 0) {
-                if ([self.passwordInputView.firstTF.text hj_isMobileNumber]) {
-                    [self requestLogin];
-                }else{
-                    [self addAlertView:@"手机号格式不正确" block:^{
-                        selfWeak.loginButton.enabled = true;
-                    }];
-                }
-            }else{
-                [self addAlertView:@"请输入密码" block:^{
-                    selfWeak.loginButton.enabled = true;
-                }];
-            }
-        }else{
+        if (!([self.passwordInputView.firstTF.text length] > 0)) {
             [self addAlertView:@"请输入手机号" block:^{
+                selfWeak.loginButton.enabled = true;
+                return ;
+            }];
+        }
+        if (!([self.passwordInputView.secondTF.text length] > 0)) {
+            [self addAlertView:@"请输入密码" block:^{
+                selfWeak.loginButton.enabled = true;
+                return;
+            }];
+        }
+        if ([self.passwordInputView.firstTF.text hj_isMobileNumber]) {
+            [self requestLogin];
+        }else{
+            [self addAlertView:@"手机号格式不正确" block:^{
                 selfWeak.loginButton.enabled = true;
             }];
         }
@@ -213,16 +215,16 @@
 #pragma mark 请求登录
 - (void)requestLogin{
     WeakObj(self);
-    [KeyWindow ln_showLoadingHUD];
+   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
             self.loginButton.enabled = true;
+            [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
             if (error) {
-                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+              [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
                 return ;
             }
-            [KeyWindow ln_hideProgressHUD];
             if (result){
                 [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
                 [self dismissViewControllerAnimated:true completion:^{
@@ -235,10 +237,9 @@
             StrongObj(self);
             self.loginButton.enabled = true;
             if (error) {
-                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+                [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
                 return ;
             }
-            [KeyWindow ln_hideProgressHUD];
             if (result){
                 [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
                 [self dismissViewControllerAnimated:true completion:^{
@@ -409,14 +410,14 @@
 # pragma mark 获取图形验证码
 - (void)getImageCode{
     WeakObj(self);
-    [KeyWindow ln_showLoadingHUD];
+   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [AuthCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
-        [KeyWindow ln_hideProgressHUD];
         if (result.outputImage.length > 0) {
             //到图形验证码页面
             [self popImageCodeViewImageCodeStr:result.outputImage serialNumber:result.serialNumber];
@@ -427,11 +428,12 @@
 # pragma mark 校验图形验证码
 - (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
     WeakObj(self);
-    [KeyWindow ln_showLoadingHUD];
+   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
         [KeyWindow ln_hideProgressHUD];
@@ -444,16 +446,18 @@
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-    [KeyWindow ln_showLoadingHUD];
+   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:LoginType Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
+        NSLog(@"____%ld",(long)error.hqwy_respCode);
+        NSLog(@"____%@",error.hqwy_errorMessage);
         if (error) {
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             if (error.code == 1013) {
                 [self getImageCode];
             }
             return ;
         }
-        [KeyWindow ln_hideProgressHUD];
         if (self.codeInputView.codeButton) {
             //倒计时
             [self.codeInputView.codeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];

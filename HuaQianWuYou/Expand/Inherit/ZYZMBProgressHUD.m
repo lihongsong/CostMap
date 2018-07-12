@@ -11,7 +11,7 @@
 @implementation ZYZMBProgressHUD
 
 + (instancetype)showHUDAddedTo:(UIView *)view animated:(BOOL)animated {
-    MBProgressHUD *hud = [[self alloc] initWithView:view];
+    ZYZMBProgressHUD *hud = [[self alloc] initWithView:view];
     hud.removeFromSuperViewOnHide = YES;
     [view addSubview:hud];
     UIImage *image = [UIImage jk_animatedGIFNamed:@"MBProgressloading"];

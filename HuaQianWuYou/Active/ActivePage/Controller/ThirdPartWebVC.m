@@ -13,7 +13,7 @@
 #import "UnClickProductModel+Service.h"
 #import "UploadProductModel.h"
 #import "UploadProductModel+Service.h"
-#import "ZYZMBProgressHUD.h"
+
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -43,7 +43,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self registerHander];
     [self uploadData:self.navigationDic[@"productId"]];
     [self initData];
-  //  [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
+    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
     
 }
 
@@ -65,11 +65,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)initData{
     if ([self.navigationDic[@"needBackDialog"] integerValue]) {
         WeakObj(self);
-        [KeyWindow ln_showLoadingHUD];
+        [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
         self.productIndex = 0;
         [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(UnClickProductModel * _Nullable result, NSError * _Nullable error) {
+            [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
             StrongObj(self);
-            [KeyWindow ln_hideProgressHUD];
             if (error) {
                 return;
             }
@@ -204,7 +204,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
-    //[ZYZMBProgressHUD dismiss]
+    [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
 }
 
 

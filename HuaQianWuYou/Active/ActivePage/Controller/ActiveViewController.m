@@ -66,7 +66,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewDidLoad];
     // Do any additional setup after loading the view
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.16.79:8088/#/home"]]];
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.106.138:8088/#/home"]]];
     //http://172.17.16.79:8088/#/home
     //http://172.17.106.138:8088/#/citylist
     //http://t1-static.huaqianwy.com/hqwy/dist/#/home

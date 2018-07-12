@@ -100,11 +100,12 @@
         return;
     }
     WeakObj(self);
-    [KeyWindow ln_showLoadingHUD];
+    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [ChangePasswordModel changePasswordCode:self.code jumpType:self.jumpType passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
         if (result){

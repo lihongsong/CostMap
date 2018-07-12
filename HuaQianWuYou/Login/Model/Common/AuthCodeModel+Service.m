@@ -9,6 +9,9 @@
 #import "AuthCodeModel+Service.h"
 
 @implementation AuthCodeModel (Service)
++ (NSString *)ln_APIServer {
+    return @"http://172.17.16.115:10024";
+}
 
 + (NSURLSessionDataTask *)requsetMobilePhoneCode:(NSString *)mobilePhone smsType:(NSString *)smsType Completion:(void (^)(AuthCodeModel * _Nullable, NSError * _Nullable))completion{
        NSMutableDictionary *params = [@{} mutableCopy];

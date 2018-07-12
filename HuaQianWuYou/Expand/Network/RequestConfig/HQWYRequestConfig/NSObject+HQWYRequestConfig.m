@@ -67,7 +67,7 @@ static NSString *const kHQWYBodyKey         = @"body";
 
 + (NSString *)ln_APIServer {
     //FIXME:v2.0
-    return LN_BASE_URL;
+    return HQWY_HOST_PATH;
 }
 
 /**
@@ -104,7 +104,7 @@ static NSString *const kHQWYBodyKey         = @"body";
     NSLog(@"task.currentRequest.URL=======%@", task.currentRequest.URL);
 
     NSString *respCode = [responseObject objectForKey:kHQWYRespCodeKey];
-
+    NSLog(@"____%@",respCode);
     if (!respCode || ![respCode isKindOfClass:[NSString class]]
         || [respCode isEqual:[NSNull null]]) {
         if (failure) {
