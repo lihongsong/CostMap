@@ -10,6 +10,7 @@
 
 @interface HQWYUser : NSObject
 @property(nonatomic,copy)NSString *mobilephone;//用户手机号
+//FIXME:review respDateTime是什么？
 @property(nonatomic,copy)NSString *respDateTime;//响应时间
 @property(nonatomic,copy)NSString *token;//用户令牌
 @property(nonatomic, strong)NSNumber *userId;//用户ID

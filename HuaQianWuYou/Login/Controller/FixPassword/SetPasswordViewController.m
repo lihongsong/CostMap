@@ -122,6 +122,7 @@
 
 
 //验证密码格式
+//FIXME:review 这个密码验证分类里是否已有？如果已有，就不用自己再写了
 - (BOOL)validatePassword:(NSString *)password{
         NSString *regular = @"[a-zA-Z0-9]{1,3}+";
 //    NSString *regular = @"^1[3,4,5,7,8]\\d{9}|^(199|166)\\d{8}";
