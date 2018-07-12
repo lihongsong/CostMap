@@ -177,7 +177,10 @@
 
 #pragma mark 获取验证码
 - (void)codeButtonClick:(UIButton*)codeButton{
-    [codeButton setTitle:@"60秒后重试" forState:UIControlStateNormal];
+    [self eventId:HQWY_Login__GetCode_click];
+    if ([self.delegate respondsToSelector:@selector(getSMSCode)]) {
+        [self.delegate getSMSCode];
+    }
 }
 
 #pragma mark  是否密码可见

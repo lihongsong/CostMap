@@ -53,9 +53,11 @@
  }
 
 - (void)canceAction{
+    [self eventId:HQWY_Login_ImageCodeCheck_click];
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)sureAction{
+    [self eventId:HQWY_Login_ImageCode_click];
     if (self.codeView.imageCodeInputLable.text.length == 0) {
         [KeyWindow ln_showToastHUD:@"验证码不能为空"];
         return;

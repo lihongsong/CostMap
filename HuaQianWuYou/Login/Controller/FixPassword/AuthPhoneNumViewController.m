@@ -45,7 +45,13 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupUI];
+    //[self setLelftNavigationItem:NO];
     // Do any additional setup after loading the view.
+}
+
+-(void)backPage {
+    [self eventId:HQWY_Fix_Back_click];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void)setupUI{
@@ -174,6 +180,7 @@
 }
 
 - (void)nextAction:(UIButton *)sender{
+    [self eventId:HQWY_Fix_Next_click];
     //校验是不是手机号
     if (![self.phoneNum hj_isMobileNumber]) {
         [KeyWindow ln_showToastHUD:@"手机号错误"];

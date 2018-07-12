@@ -26,6 +26,8 @@
 #import <AppUpdate/XZYAppUpdate.h>
 #import "AuthPhoneNumViewController.h"
 #import "HQWYJavaScriptOpenSDKHandler.h"
+#import "HJUIKit.h"
+#import "NSString+cityInfos.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -43,6 +45,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 @property(strong,nonatomic)NavigationView *navigationView;
 
 @property(strong,nonatomic)NSDictionary *getH5Dic;// 获取H5返回导航栏样式，点击回调H5
+
+/**
+ 定位到的城市信息
+ */
+
+@property(strong,nonatomic) NSMutableDictionary *locatedCity;
+
+/**
+ 用户选择的城市
+ */
+@property(copy,nonatomic) NSString *selectedLocation;
 
 @end
 
@@ -67,9 +80,14 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
      [self initNavigation];
     [HJJSBridgeManager enableLogging];
     [_manager callHandler:kWebViewDidLoad];
+    self.wkWebView.scrollView.bounces = NO;
     
     //发送设备信息采集
     [DeviceManager sendDeviceinfo];
+    
+    self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -79,6 +97,19 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
     [PopViewManager showType:AdvertisingTypeSuspensionWindow fromVC:self];
     
+}
+
+- (void )setSelectedLocation:(NSString *)selectedLocation{
+    _selectedLocation = selectedLocation;
+    if (![selectedLocation containsString:@"失败"] && ![selectedLocation containsString:@"定位"] && ![selectedLocation containsString:@"未知"]){
+        SetUserDefault([NSString getDistrictNoFromCity:selectedLocation], @"locationCity");
+        }else{
+            SetUserDefault(@"", @"locationCity");
+        }
+}
+
+- (void)appWillEnterForeground {
+    [_manager callHandler:kWebViewWillAppear];
 }
 
 //弹框代理方法
@@ -165,18 +196,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager registerHandler:kAppGetNavigationBarStatus handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         self.getH5Dic = [[self jsonDicFromString:data] objectForKey:@"nav"];
         [self setNavigationStyle:self.getH5Dic];
+        if ([(NSString *)data containsString:@"location:"]) {
+//            NSString *selectedLocation = self.getH5Dic[@"left"][@"text"];
+            self.selectedLocation = self.getH5Dic[@"left"][@"text"];
+            NSLog(@"-----> %@",self.selectedLocation);
+        }
     }];
-    
-    /** 注册获取PID事件 */
-//        [_manager registerHandler:kAppGetProductId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//            NSString *productID = @(LNProductIDJKDSZD).stringValue;
-//            ResponseCallback([HQWYJavaScriptResponse result:productID]);
-//        }];
-//
-    /** 注册获取ChannelID事件 */
-//        [_manager registerHandler:kAppGetChannel handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//            ResponseCallback([HQWYJavaScriptResponse result:AppChannel]);
-//        }];
     
     /** 注册获取app版本事件 */
     [_manager registerHandler:kAppGetVersion handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -192,12 +217,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager registerHandler:kAppGetUserToken handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken]);
     }];
-    
-    /** 注册获取用户唯一id事件 */
-//    [_manager registerHandler:kAppGetUserId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//        NSString *useid = HQWYUserStatusSharedManager.userBaseInfo.userId;
-//        ResponseCallback([HQWYJavaScriptResponse result:useid]);
-//    }];
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -219,6 +238,20 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     /** 注册获取设备唯一标识事件 */
     [_manager registerHandler:kAppGetDeviceUID handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([HQWYJavaScriptResponse result:[RCBaseCommon getUIDString]]);
+    }];
+    
+    /** 注册获取H5获取原生定位城市 */
+    [_manager registerHandler:kAppGetLocationCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([HQWYJavaScriptResponse result:self.locatedCity]);
+    }];
+    
+    /** 注册获取H5获取原生定位城市 */
+    [_manager registerHandler:kAppExecLocation handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [self.navigationView.leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
+        self.locatedCity[@"country"] = @"";
+        self.locatedCity[@"city"] = @"定位中...";
+        self.locatedCity[@"province"] = @"";
+        [self.locationManager startUpdatingLocation];
     }];
     
     /** 注册打开webView事件 */
@@ -287,6 +320,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     {
         NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
         [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+        self.locatedCity[@"country"] = @"";
+        self.locatedCity[@"city"] = @"定位失败";
+        self.locatedCity[@"province"] = @"";
     }
     if (location) {//得到定位信息，添加annotation
         if (location.location) {
@@ -295,6 +331,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         if (location.rgcData) {
             NSLog(@"rgc = %@",[location.rgcData description]);
              [self.navigationView.leftItemButton setTitle:location.rgcData.city forState:UIControlStateNormal];
+            self.locatedCity[@"country"] = location.rgcData.country;
+            self.locatedCity[@"city"] = location.rgcData.city;
+            self.locatedCity[@"province"] = location.rgcData.province;
+            [self.locationManager stopUpdatingLocation];
         }
     }
 }

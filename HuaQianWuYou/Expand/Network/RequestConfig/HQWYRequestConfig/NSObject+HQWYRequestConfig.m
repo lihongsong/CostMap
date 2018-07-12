@@ -50,7 +50,7 @@ static NSString *const kHQWYBodyKey         = @"body";
 
     //城市
     //FIXME:v2.0
-    [requestSerializer setValue:@"" forHTTPHeaderField:@"city"];
+    [requestSerializer setValue:GetUserDefault(@"locationCity") forHTTPHeaderField:@"city"];
 
     [requestSerializer setValue:HQWYUserManager.sharedInstance.userToken forHTTPHeaderField:@"token"];
     //客户端统一使用小写，服务端不区分大小写

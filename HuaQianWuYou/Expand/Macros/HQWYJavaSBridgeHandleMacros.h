@@ -121,7 +121,13 @@ static NSString * const kWebViewDidDisappear = @"webViewDidDisappear";
 /*!
  H5获取城市
  */
-static NSString * const kAppGetCity = @"appGetCity";
+static NSString * const kAppGetLocationCity = @"appGetLocationCity";
+
+
+/*!
+ H5调用定位
+ */
+static NSString * const kAppExecLocation = @"appExecLocation";
 
 /*!
  获取导航栏样式

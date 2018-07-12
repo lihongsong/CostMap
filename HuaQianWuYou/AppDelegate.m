@@ -20,11 +20,12 @@
 #import "TalkingData.h"
 #import "TalkingDataAppCpa.h"
 #import <Bugly/Bugly.h>
-
+#import "HQWYLaunchManager.h"
 #import "HJGuidePageWindow.h"
 
-@interface AppDelegate ()<BuglyDelegate>
+#import <BMKLocationKit/BMKLocationAuth.h>
 
+@interface AppDelegate ()<BMKLocationAuthDelegate,BuglyDelegate>
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 
 @end
@@ -35,6 +36,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setUpSDKs];
+
+    // 百度定位 3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB
+    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:Baidu_AppKey authDelegate:self];
     //FIXME:review 在这里weakSelf 最好放在block上面吧
     WeakObj(self);
 
@@ -91,7 +95,7 @@
     HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)
         // 1秒 网络加载  3秒图片加载
-        make.setTimer(0, 5, nil,YES);
+        make.setTimer(0, 3, nil,YES);
         make.setAnimateFinishedBlock(^(id info) {
             
             self.window = oldWindow;
@@ -104,17 +108,13 @@
         make.setCountdownBtnBlock(^(UIButton *btn) {
             //FIXME:review 此处不要写死坐标，需要优化
             btn.frame = CGRectMake(SWidth - 66 - 30, SHeight - 30 -28, 66, 28);
+        // 点击跳过，埋点
         });
     }];
     [HJGuidePageWindow show];
-    
-   BasicDataModel *model = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
-    BasicDataInfo *info = model.AdvertisingVO;
-    //launchVC.setTimer(info.showTime.integerValue,0, @"s跳过",NO);
-    launchVC.setTimer(5,0, @"s跳过",NO);
-    launchVC.setBackGroundImage(info.imgUrl, YES, NO, ^{
-        //[HJGuidePageWindow dismiss];
-    });
+    HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
+    launchManager.guideVC = launchVC;
+    [launchManager showLanuchPageModel];
 }
 
 #pragma mark - 启动图设置
@@ -183,6 +183,8 @@
     if ([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"].integerValue - [GetUserDefault(@"TenMinutesRefresh") integerValue] > 10) {
         
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppWillEnterForeground" object:nil];
 }
 
 

@@ -29,6 +29,7 @@
 #import "HQWYNetworkMacros.h"
 #import "HQWYThirdPartKeyDefine.h"
 #import "HQWYUtilitiesDefine.h"
+#import "HQWYTDEventIdMacros.h"
 
 #pragma mark user
 #import "HQWYUserManager.h"

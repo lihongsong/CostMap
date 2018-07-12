@@ -57,10 +57,15 @@
                 manage.popView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.5f];
                 [manage.popView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.AdvertisingVO.imgUrl] placeholderImage:nil];
                 WeakObj(manage);
-                manage.popView.block = ^{
+                manage.popView.block = ^(BOOL isClose){
+                    if (isClose) {
+                        [self eventId:HQWY_Home_AdvertiseClose_click];
+                    }else{
                     StrongObj(manage);
+                    [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_Home_Advertisement_click,model.AdvertisingVO.productId]];
                     if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContentUrl:popType:)]) {
                         [manage.delegate didSelectedContentUrl:model.AdvertisingVO.address popType:type];
+                    }
                     }
                 };
                 
@@ -77,10 +82,15 @@
                 }];
                 [manage.suspendView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.AdvertisingVO.imgUrl] placeholderImage:nil];
                 WeakObj(manage);
-                manage.suspendView.block = ^{
+                manage.suspendView.block = ^(BOOL isClose){
+                    if (isClose) {
+                        [self eventId:HQWY_Home_AdverAlertClose_click];
+                    }else{
                     StrongObj(manage);
+                    [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_Home_AdverAlert_click,model.AdvertisingVO.productId]];
                     if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContentUrl:popType:)]) {
                         [manage.delegate didSelectedContentUrl:model.AdvertisingVO.address popType:type];
+                    }
                     }
                 };
             }

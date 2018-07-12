@@ -108,6 +108,10 @@
 		5965CBB920F4B22E0009DB84 /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 5965CBB720F4B22E0009DB84 /* UIAlertView+Block.m */; };
 		59698BFC209FE973000E37AA /* TestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59698BFB209FE973000E37AA /* TestApi.plist */; };
 		596B0E2320B4360A00B5A06B /* ResetPasswordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */; };
+		5977034020F71D2700F29F33 /* HQWYLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977033F20F71D2700F29F33 /* HQWYLaunchManager.m */; };
+		5977034320F7254600F29F33 /* HQWYActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977034220F7254600F29F33 /* HQWYActionHandler.m */; };
+		5977034620F7451A00F29F33 /* MBProgressloading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5977034520F7451A00F29F33 /* MBProgressloading.gif */; };
+		5977034A20F7553D00F29F33 /* ZYZMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977034920F7553D00F29F33 /* ZYZMBProgressHUD.m */; };
 		5979454D20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */; };
 		5979455020F32BDB006BB02D /* ThirdPartWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454F20F32BDB006BB02D /* ThirdPartWebVC.m */; };
 		5979455320F33905006BB02D /* HQWYReturnToDetainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979455220F33905006BB02D /* HQWYReturnToDetainView.m */; };
@@ -200,6 +204,8 @@
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
 		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
 		A858A81620B2D7B600657C09 /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A858A81520B2D7B600657C09 /* DES3Util.m */; };
+		A8F1288520F75D4300907FC6 /* NSString+cityInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F1288420F75D4300907FC6 /* NSString+cityInfos.m */; };
+		A8F1288720F75E4F00907FC6 /* cityInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = A8F1288620F75E4F00907FC6 /* cityInfo.json */; };
 		A8F8DFAC20B3AB3300DB9A6A /* LoginHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8DF9120B3AB3200DB9A6A /* LoginHeaderView.m */; };
 		A8F8DFAD20B3AB3300DB9A6A /* MineTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8DF9320B3AB3200DB9A6A /* MineTableViewCell.m */; };
 		A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F8DF9520B3AB3200DB9A6A /* MineNoticeView.m */; };
@@ -403,6 +409,7 @@
 		5962070920F5AFD600FAF3CF /* HQWYUser+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "HQWYUser+Service.m"; sourceTree = "<group>"; };
 		5964A87320F6E99C004C2629 /* HQWYJavaScriptOpenSDKHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptOpenSDKHandler.h; sourceTree = "<group>"; };
 		5964A87420F6E99C004C2629 /* HQWYJavaScriptOpenSDKHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptOpenSDKHandler.m; sourceTree = "<group>"; };
+		5964A87620F6EC48004C2629 /* HQWYTDEventIdMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYTDEventIdMacros.h; sourceTree = "<group>"; };
 		5965CB8F20F485990009DB84 /* HQWYUserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUserManager.h; sourceTree = "<group>"; };
 		5965CB9020F485990009DB84 /* HQWYUserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYUserManager.m; sourceTree = "<group>"; };
 		5965CB9220F4863F0009DB84 /* HQWYUser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYUser.h; sourceTree = "<group>"; };
@@ -422,6 +429,14 @@
 		59698BFB209FE973000E37AA /* TestApi.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TestApi.plist; sourceTree = "<group>"; };
 		596B0E2120B4360A00B5A06B /* ResetPasswordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResetPasswordModel.h; sourceTree = "<group>"; };
 		596B0E2220B4360A00B5A06B /* ResetPasswordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResetPasswordModel.m; sourceTree = "<group>"; };
+		5977033E20F71D2700F29F33 /* HQWYLaunchManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYLaunchManager.h; sourceTree = "<group>"; };
+		5977033F20F71D2700F29F33 /* HQWYLaunchManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYLaunchManager.m; sourceTree = "<group>"; };
+		5977034120F7254600F29F33 /* HQWYActionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYActionHandler.h; sourceTree = "<group>"; };
+		5977034220F7254600F29F33 /* HQWYActionHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYActionHandler.m; sourceTree = "<group>"; };
+		5977034420F7262C00F29F33 /* HQWYActionHandlerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYActionHandlerProtocol.h; sourceTree = "<group>"; };
+		5977034520F7451A00F29F33 /* MBProgressloading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MBProgressloading.gif; sourceTree = "<group>"; };
+		5977034820F7553D00F29F33 /* ZYZMBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYZMBProgressHUD.h; sourceTree = "<group>"; };
+		5977034920F7553D00F29F33 /* ZYZMBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYZMBProgressHUD.m; sourceTree = "<group>"; };
 		5979454B20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptOpenWebViewHandler.h; sourceTree = "<group>"; };
 		5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptOpenWebViewHandler.m; sourceTree = "<group>"; };
 		5979454E20F32BDB006BB02D /* ThirdPartWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartWebVC.h; sourceTree = "<group>"; };
@@ -432,7 +447,6 @@
 		5979455520F33A6B006BB02D /* HQWYBaseWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYBaseWebViewController.m; sourceTree = "<group>"; };
 		597C73C120E9C3220090960B /* BasicDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDataModel.h; sourceTree = "<group>"; };
 		597C73C220E9C3220090960B /* BasicDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicDataModel.m; sourceTree = "<group>"; };
-		597C73CA20E9C8560090960B /* BasicDataProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BasicDataProtocol.h; sourceTree = "<group>"; };
 		597C73CB20E9C8D40090960B /* BasicDataModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BasicDataModel+Service.h"; sourceTree = "<group>"; };
 		597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BasicDataModel+Service.m"; sourceTree = "<group>"; };
 		59BE198120EC9DA300704B2C /* PopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopView.h; sourceTree = "<group>"; };
@@ -605,6 +619,9 @@
 		A8118BDA20B2968C0046099D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A858A81420B2D7B600657C09 /* DES3Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DES3Util.h; sourceTree = "<group>"; };
 		A858A81520B2D7B600657C09 /* DES3Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DES3Util.m; sourceTree = "<group>"; };
+		A8F1288320F75D4300907FC6 /* NSString+cityInfos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+cityInfos.h"; sourceTree = "<group>"; };
+		A8F1288420F75D4300907FC6 /* NSString+cityInfos.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+cityInfos.m"; sourceTree = "<group>"; };
+		A8F1288620F75E4F00907FC6 /* cityInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityInfo.json; sourceTree = "<group>"; };
 		A8F8DF9020B3AB3200DB9A6A /* MineNoticeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineNoticeView.h; sourceTree = "<group>"; };
 		A8F8DF9120B3AB3200DB9A6A /* LoginHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginHeaderView.m; sourceTree = "<group>"; };
 		A8F8DF9220B3AB3200DB9A6A /* MineTopHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MineTopHeaderView.h; sourceTree = "<group>"; };
@@ -946,6 +963,9 @@
 				59C5712D20E600CE00D54260 /* UITabBar+badge.m */,
 				59C5712B20E600CD00D54260 /* ZYZControl.h */,
 				59C5713320E600D100D54260 /* ZYZControl.m */,
+				A8F1288320F75D4300907FC6 /* NSString+cityInfos.h */,
+				A8F1288420F75D4300907FC6 /* NSString+cityInfos.m */,
+				A8F1288620F75E4F00907FC6 /* cityInfo.json */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1136,6 +1156,7 @@
 		5965CB9620F4AAB10009DB84 /* Expand */ = {
 			isa = PBXGroup;
 			children = (
+				5977034720F7550200F29F33 /* Inherit */,
 				5965CBC020F4B4390009DB84 /* Utilities */,
 				5965CB9720F4AE550009DB84 /* Network */,
 				59FD9E7A20EA1E8C008C98DE /* Macros */,
@@ -1288,6 +1309,15 @@
 				A8F8DFC320B3AB5300DB9A6A /* View */,
 			);
 			path = Discover;
+			sourceTree = "<group>";
+		};
+		5977034720F7550200F29F33 /* Inherit */ = {
+			isa = PBXGroup;
+			children = (
+				5977034820F7553D00F29F33 /* ZYZMBProgressHUD.h */,
+				5977034920F7553D00F29F33 /* ZYZMBProgressHUD.m */,
+			);
+			path = Inherit;
 			sourceTree = "<group>";
 		};
 		597C73B620E9AF210090960B /* Active */ = {
@@ -1453,7 +1483,11 @@
 				597C73C220E9C3220090960B /* BasicDataModel.m */,
 				597C73CB20E9C8D40090960B /* BasicDataModel+Service.h */,
 				597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */,
-				597C73CA20E9C8560090960B /* BasicDataProtocol.h */,
+				5977033E20F71D2700F29F33 /* HQWYLaunchManager.h */,
+				5977033F20F71D2700F29F33 /* HQWYLaunchManager.m */,
+				5977034120F7254600F29F33 /* HQWYActionHandler.h */,
+				5977034220F7254600F29F33 /* HQWYActionHandler.m */,
+				5977034420F7262C00F29F33 /* HQWYActionHandlerProtocol.h */,
 			);
 			path = Launch;
 			sourceTree = "<group>";
@@ -1523,6 +1557,7 @@
 				59FD9E7920EA1E0A008C98DE /* HQWYJavaSBridgeHandleMacros.h */,
 				5957530E209AD35C00F602EB /* HQWYUtilitiesDefine.h */,
 				5935907A20A1A9BB0057C0F4 /* HQWYThirdPartKeyDefine.h */,
+				5964A87620F6EC48004C2629 /* HQWYTDEventIdMacros.h */,
 			);
 			path = Macros;
 			sourceTree = "<group>";
@@ -1685,6 +1720,7 @@
 		A8118BD820B2968C0046099D /* MBProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
+				5977034520F7451A00F29F33 /* MBProgressloading.gif */,
 				A8118BD920B2968C0046099D /* MBProgressHUD.m */,
 				A8118BDA20B2968C0046099D /* MBProgressHUD.h */,
 			);
@@ -1909,6 +1945,7 @@
 				59C5711820E5FF7700D54260 /* func.list in Resources */,
 				5965CBAE20F4AF320009DB84 /* testResponse.json in Resources */,
 				591D95DA20ABDE6E00193B09 /* AAHighcharts-3d.js in Resources */,
+				A8F1288720F75E4F00907FC6 /* cityInfo.json in Resources */,
 				59C5710420E5FB8200D54260 /* HomeBaseTableViewCell.xib in Resources */,
 				5958089E20F2F53A002A6F0C /* ImageCodePopView.xib in Resources */,
 				59023BEF209A9B33004B9134 /* Main.storyboard in Resources */,
@@ -1916,6 +1953,7 @@
 				A8F8DFB320B3AB3300DB9A6A /* AgreementViewController.xib in Resources */,
 				5958089F20F2F53A002A6F0C /* PasswordInputView.xib in Resources */,
 				591D95D420ABDE6E00193B09 /* AAHighchartsMore.js in Resources */,
+				5977034620F7451A00F29F33 /* MBProgressloading.gif in Resources */,
 				59575507209B33DE00F602EB /* ColorFont.plist in Resources */,
 				591D95DD20ABDE6E00193B09 /* AAChartView.html in Resources */,
 			);
@@ -2039,6 +2077,7 @@
 				A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */,
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
 				5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */,
+				A8F1288520F75D4300907FC6 /* NSString+cityInfos.m in Sources */,
 				595808A520F2F946002A6F0C /* UIButton+EnlableColor.m in Sources */,
 				59C5714120E600D100D54260 /* ZYZControl.m in Sources */,
 				9CA9292720F6164200F65941 /* NSObject+HQWYRequestConfig.m in Sources */,
@@ -2079,6 +2118,7 @@
 				595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */,
 				59C570A920E5F9C100D54260 /* CInvestigationTwoViewController.m in Sources */,
 				595AE2C720EF37C40031A2F3 /* LNRiskDeviceHelp.m in Sources */,
+				5977034A20F7553D00F29F33 /* ZYZMBProgressHUD.m in Sources */,
 				A8F8DFB520B3AB3300DB9A6A /* RegisterOrForgetPwdVC.m in Sources */,
 				591D962820ABDE6E00193B09 /* AAChart.m in Sources */,
 				591D960120ABDE6E00193B09 /* AAColumn.m in Sources */,
@@ -2103,6 +2143,7 @@
 				595754C4209B191D00F602EB /* BaseNavigationController.m in Sources */,
 				A8F8E00B20B50A6100DB9A6A /* DefaultView.m in Sources */,
 				591D960D20ABDE6E00193B09 /* AABar.m in Sources */,
+				5977034020F71D2700F29F33 /* HQWYLaunchManager.m in Sources */,
 				591D961320ABDE6E00193B09 /* AAArea.m in Sources */,
 				59BE198620EC9DD600704B2C /* SuspendView.m in Sources */,
 				591D960720ABDE6E00193B09 /* AAOptions3d.m in Sources */,
@@ -2119,6 +2160,7 @@
 				A8F8DFAD20B3AB3300DB9A6A /* MineTableViewCell.m in Sources */,
 				591D962E20ABDE6E00193B09 /* AAChartModel.m in Sources */,
 				59E72DAE20F61B80007AB6C9 /* UploadProductModel.m in Sources */,
+				5977034320F7254600F29F33 /* HQWYActionHandler.m in Sources */,
 				59C570AA20E5F9C100D54260 /* TouchIDViewController.m in Sources */,
 				597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */,
 				59C5713820E600D100D54260 /* CALayer+LayerColor.m in Sources */,

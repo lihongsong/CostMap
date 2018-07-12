@@ -13,6 +13,7 @@
      + (NSDictionary*)modelCustomPropertyMapper {
          return @{
                   @"productId": @"id",
+                  @"productName": @"description",
                   };
      }
      

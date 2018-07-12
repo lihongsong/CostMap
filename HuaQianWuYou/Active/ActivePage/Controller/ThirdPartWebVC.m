@@ -13,12 +13,13 @@
 #import "UnClickProductModel+Service.h"
 #import "UploadProductModel.h"
 #import "UploadProductModel+Service.h"
+#import "ZYZMBProgressHUD.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
-@interface ThirdPartWebVC ()<NavigationViewDelegate,HQWYReturnToDetainViewDelegate>
+@interface ThirdPartWebVC ()<NavigationViewDelegate,HQWYReturnToDetainViewDelegate,WKNavigationDelegate,WKUIDelegate>
 /**
  桥接管理器
  */
@@ -42,6 +43,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self registerHander];
     [self uploadData:self.navigationDic[@"productId"]];
     [self initData];
+  //  [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
     
 }
 
@@ -57,7 +59,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
     [self.view addSubview:navigationView];
     navigationView.delegate = self;
-    [navigationView changeNavigationType:self.navigationDic];
+    [navigationView changeNavigationType:self.navigationDic[@"nav"]];
 }
 
 - (void)initData{
@@ -77,6 +79,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 -(void)rightButtonItemClick{
+    [self eventId:HQWY_ThirdPart_Back_click];
     [self toBeforeViewController];
     if (!StrIsEmpty([[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"])) {
         [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
@@ -199,5 +202,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (NSString *)getToday{
     return [NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"];
 }
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    //[ZYZMBProgressHUD dismiss]
+}
+
+
 
 @end
