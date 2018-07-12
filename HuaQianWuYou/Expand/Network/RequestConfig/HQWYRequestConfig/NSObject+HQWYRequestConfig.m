@@ -113,7 +113,7 @@ static NSString *const kHQWYBodyKey         = @"body";
         return;
     }
 
-    if ([respCode isEqualToString:@"1000"]) {
+    if (respCode.integerValue == HQWYRESPONSECODE_SUCC) {
         //success
         id body = [responseObject objectForKey:kHQWYBodyKey];
         if (!body) {
@@ -125,19 +125,20 @@ static NSString *const kHQWYBodyKey         = @"body";
         return;
     }
 
+    NSString *respMsg = [responseObject objectForKey:kHQWYRespMsgKey];
+    if (respCode && ![respCode isEqual:[NSNull null]]
+        && [respCode isKindOfClass:[NSString class]]
+        && respCode.integerValue == HQWYRESPONSECODE_FAIL) {
+        //服务端异常，上传移动武林榜接口异常监测
+        [self sendNetworkError:nil ofTask:task];
+    }
+
     //业务异常
     if (failure) {
-        NSString *respMsg = [responseObject objectForKey:kHQWYRespMsgKey];
-        if (respCode && ![respCode isEqual:[NSNull null]]
-            && [respCode isKindOfClass:[NSString class]]
-            && [respCode isEqualToString:@"1001"]) {
-            //服务端异常，上传移动武林榜接口异常监测
-            [self sendNetworkError:nil ofTask:task];
-        }
         //这里重新包装Error
         failure(nil, [NSError hqwy_handleLogicError:respMsg respCode:respCode]);
-        return;
     }
+    return;
 }
 
 + (id)ln_parseResponseObject:(id)responseObject {
