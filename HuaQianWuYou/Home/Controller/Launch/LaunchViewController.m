@@ -67,17 +67,16 @@
     [BasicConfigModel requestBasicConfigCompletion:^(BasicConfigModel *_Nullable result, NSError *_Nullable error) {
         StrongObj(self);
         [self->activityView stopAnimating];
-        if (error) {
-            [KeyWindow ln_showToastHUD:error.userInfo[@"msg"]];
-            self.defaultView.hidden = NO;
-            return;
-        }
+//        if (error) {
+//            //[KeyWindow ln_showToastHUD:error.userInfo[@"msg"]];
+//            self.defaultView.hidden = NO;
+//            return;
+//        }
         self.defaultView.hidden = YES;
         if (self.accomplishBlock) {
-        self.accomplishBlock(result.exampleCreditScore);
+        self.accomplishBlock(result.isOpen);
         }
     }];
-     
 }
 
 - (UIImage *)getLaunchImage {

@@ -52,17 +52,17 @@
     LaunchViewController *launchVC = [LaunchViewController new];
     self.window.rootViewController = launchVC;
     [self.window makeKeyAndVisible];
-    launchVC.accomplishBlock = ^(NSString *exampleCreditScore) {
+    launchVC.accomplishBlock = ^(BOOL isOpen) {
         StrongObj(self);
-        if ([exampleCreditScore isEqualToString:@"88"]) {
-            [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
-            [self checkUpdate];
-        }else{
+//        if (![exampleCreditScore isEqualToString:@"88"]) {
+//            [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
+//            [self checkUpdate];
+//        }else{
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
             [self checkUpdate];
-        }
+//        }
     };
-    
+
     //开始检测网络状态(主要针对IOS10以后的网络需要授权问题)
     //如果还没有网络授权,则在用户选择后再发送一些API
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];

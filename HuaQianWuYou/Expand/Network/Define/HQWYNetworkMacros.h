@@ -12,7 +12,9 @@
 
 #ifdef DEBUG
 
-#define HQWY_HOST_PATH @"http://172.17.16.115:10024"
+//#define HQWY_HOST_PATH @"http://172.17.16.115:10024"
+#define HQWY_HOST_PATH @"http://dev-static.huaqianwy.com/mem"
+
 
 #else
 
@@ -43,6 +45,8 @@
 
 
 #pragma mark - 注册登录和获取个人信息接口
+
+#define APPGetConfig @"/config/getConfig"
 
 #define Device_info @"/collect/deviceInfo"
 

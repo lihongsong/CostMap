@@ -165,20 +165,20 @@
 
 #pragma mark 登录事件
 - (void)loginButtonClick{
-    self.loginButton.enabled = false;
+    self.loginButton.userInteractionEnabled = false;
     //FIXME:review 这里的if else 太深了，要调整
     WeakObj(self);
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [self eventId:HQWY_Login_SignIn_click];
         if (!([self.codeInputView.firstTF.text length] > 0)) {
             [self addAlertView:@"请输入手机号" block:^{
-                selfWeak.loginButton.enabled = true;
+                selfWeak.loginButton.userInteractionEnabled = true;
                 return;
             }];
         }
         if (!([self.codeInputView.secondTF.text length] > 0)){
             [self addAlertView:@"请输入验证码" block:^{
-                selfWeak.loginButton.enabled = true;
+                selfWeak.loginButton.userInteractionEnabled = true;
                 return;
             }];
         }
@@ -186,20 +186,20 @@
             [self requestLogin];
         }else{
             [self addAlertView:@"手机号格式不正确" block:^{
-               selfWeak.loginButton.enabled = true;
+               selfWeak.loginButton.userInteractionEnabled = true;
             }];
         }
     }else{
         [self eventId:HQWY_Login_PasswordLogin_click];
         if (!([self.passwordInputView.firstTF.text length] > 0)) {
             [self addAlertView:@"请输入手机号" block:^{
-                selfWeak.loginButton.enabled = true;
+                selfWeak.loginButton.userInteractionEnabled = true;
                 return ;
             }];
         }
         if (!([self.passwordInputView.secondTF.text length] > 0)) {
             [self addAlertView:@"请输入密码" block:^{
-                selfWeak.loginButton.enabled = true;
+                selfWeak.loginButton.userInteractionEnabled = true;
                 return;
             }];
         }
@@ -207,7 +207,7 @@
             [self requestLogin];
         }else{
             [self addAlertView:@"手机号格式不正确" block:^{
-                selfWeak.loginButton.enabled = true;
+                selfWeak.loginButton.userInteractionEnabled = true;
             }];
         }
     }
@@ -223,7 +223,7 @@
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber registerType:RegisterTypeHQWYApp Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
-            self.loginButton.enabled = true;
+            self.loginButton.userInteractionEnabled = true;
             [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
             NSLog(@"______%ld",(long)error.hqwy_respCode);
             NSLog(@"_____%@",error.hqwy_errorMessage);
@@ -241,7 +241,7 @@
     }else{
         [HQWYUser passwordLogin:self.passwordInputView.secondTF.text mobile:self.passwordInputView.firstTF.text Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error){
             StrongObj(self);
-            self.loginButton.enabled = true;
+            self.loginButton.userInteractionEnabled = true;
             if (error) {
                 [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
                 return ;
@@ -428,10 +428,13 @@
             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
-        if (result.outputImage.length > 0) {
-            //到图形验证码页面
-            [self popImageCodeViewImageCodeStr:result.outputImage serialNumber:result.serialNumber];
+        if(result){
+            if (result.outputImage.length > 0) {
+                //到图形验证码页面
+                [self popImageCodeViewImageCodeStr:result.outputImage serialNumber:result.serialNumber];
+            }
         }
+        
     }];
 }
 
@@ -447,7 +450,7 @@
             return ;
         }
         [KeyWindow ln_hideProgressHUD];
-        if (result.result) {
+        if (result) {
             //校验成功 再次发送短信验证码
             [self getSMSCode];
         }
@@ -473,7 +476,11 @@
             //倒计时
             [self.codeInputView.codeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
         }
-        self.serialNumber = result.body;
+        NSLog(@")_____%@",result);
+        NSLog(@"_____%@",result);
+        if (result) {
+            self.serialNumber = result;
+        }
     }];
 }
 

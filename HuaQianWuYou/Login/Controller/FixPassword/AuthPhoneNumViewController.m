@@ -134,7 +134,7 @@
             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
-        if (result.result) {
+        if (result) {
             //校验成功 再次发送短信验证码
             [self getSMSCode];
         }
@@ -158,7 +158,7 @@
                 //倒计时
                 [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
             }
-            self.serialNumber = result.body;
+            self.serialNumber = result;
         }
     }];
 }
