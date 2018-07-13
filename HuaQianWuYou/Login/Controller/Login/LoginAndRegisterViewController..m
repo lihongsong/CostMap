@@ -38,6 +38,7 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     [self setUpUi];
+    self.serialNumber = @"";
 }
 - (void)setUpUi{
     [self.view addSubview:self.closeButton];
@@ -220,10 +221,12 @@
     //FIXME:review if else 中一部分内容是一样的，抽出来共用
 
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
-        [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
+        [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber registerType:RegisterTypeHQWYApp Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
             self.loginButton.enabled = true;
             [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
+            NSLog(@"______%ld",(long)error.hqwy_respCode);
+            NSLog(@"_____%@",error.hqwy_errorMessage);
             if (error) {
               [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
                 return ;

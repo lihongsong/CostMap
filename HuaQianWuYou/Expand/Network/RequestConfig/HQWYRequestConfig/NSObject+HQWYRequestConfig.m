@@ -86,6 +86,8 @@ static NSString *const kHQWYBodyKey         = @"body";
                            error:(NSError *)error
                          success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                          failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    NSLog(@"______%ld",(long)error.code);
+    NSLog(@"____%@",error.description);
 
     if (error) {
 

@@ -38,6 +38,8 @@
                            error:(NSError *)error
                          success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                          failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    NSLog(@"__%@___%ld",error,(long)error.code);
+    NSLog(@"_____%@",error.description);
     if (error) {
         if (failure) {
             failure(task, error);

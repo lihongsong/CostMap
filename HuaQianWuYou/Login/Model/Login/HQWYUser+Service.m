@@ -15,13 +15,13 @@
 }
 
 #pragma mark 验证码登录
-+ (NSURLSessionDataTask *)authenticationCodeLogin:(NSString *)code mobile:(NSString *)phoneNumber serialNumber:(NSString *)serialNumber Completion:(void (^)(HQWYUser * _Nullable, NSError * _Nullable))completion{
++ (NSURLSessionDataTask *)authenticationCodeLogin:(NSString *)code mobile:(NSString *)phoneNumber serialNumber:(NSString *)serialNumber registerType:(RegisterType)type Completion:(void (^)(HQWYUser * _Nullable, NSError * _Nullable))completion{
     
     NSMutableDictionary *params = [@{} mutableCopy];
     [params setValue:code forKey:@"code"];
     [params setValue:phoneNumber forKey:@"mobilePhone"];
     [params setValue:serialNumber forKey:@"serialNumber"];
-    
+    [params setValue:[NSNumber numberWithInteger:type] forKey:@"registerType"];
     return [HQWYUser ln_requestModelAPI:LN_POST_LOGIN_PATH  parameters:params completion:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
         completion(responseObject,error);
     }];
