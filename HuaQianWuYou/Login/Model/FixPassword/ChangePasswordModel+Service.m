@@ -10,6 +10,9 @@
 
 @implementation ChangePasswordModel (Service)
 
++ (NSString *)ln_APIServer {
+    return HQWY_HOST_PATH;
+}
 
 + (NSURLSessionDataTask *)changePasswordCode:(NSString *)code jumpType:(NSString *)jumpType passWord:(NSString *)password mobilePhone:(NSString *)mobilePhone serialNumber:(NSString *)serialNumber Completion:(void (^)(ChangePasswordModel * _Nullable, NSError * _Nullable))completion{
     

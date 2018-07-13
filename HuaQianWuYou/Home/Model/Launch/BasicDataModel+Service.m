@@ -10,6 +10,10 @@
 
 @implementation BasicDataModel (Service)
 
+    + (NSString *)ln_APIServer {
+        return HQWY_HOST_PATH;
+    }
+
     +(NSURLSessionDataTask *)requestBasicData:(AdvertisingType)type productId:(NSNumber *)productId sort:(NSNumber *)sort Completion:(void (^)(BasicDataModel * _Nullable, NSError * _Nullable))completion{
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];

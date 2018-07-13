@@ -9,6 +9,16 @@
 #import "UploadProductModel.h"
 
 @interface UploadProductModel (Service)
+
+/**
+ 上*报接口
+ 
+ @param category 类别
+ @param mobilePhone 手机号
+ @param productId 产*品*id
+ @param completion <#completion description#>
+ @return <#return value description#>
+ */
 + (NSURLSessionDataTask *_Nullable)uploadProduct:(NSNumber *)category mobilePhone:(NSString*)mobilePhone productID:(NSNumber *)productId Completion:(nullable void (^)(UploadProductModel *_Nullable result,
                                                                                                                                                NSError *_Nullable error))completion;
 @end

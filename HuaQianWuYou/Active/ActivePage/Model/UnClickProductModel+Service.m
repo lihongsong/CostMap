@@ -9,6 +9,11 @@
 #import "UnClickProductModel+Service.h"
 
 @implementation UnClickProductModel (Service)
+
++ (NSString *)ln_APIServer {
+    return HQWY_HOST_PATH;
+}
+
 + (NSURLSessionDataTask *_Nullable)getUnClickProductList:(NSNumber *)category mobilePhone:(NSString*)mobilePhone Completion:(nullable void (^)(UnClickProductModel * _Nullable, NSError * _Nullable))completion{
     NSMutableDictionary *params = [@{} mutableCopy];
     [params setValue:mobilePhone forKey:@"mobilePhone"];

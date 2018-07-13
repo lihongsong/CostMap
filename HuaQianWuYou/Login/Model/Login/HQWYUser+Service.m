@@ -10,6 +10,10 @@
 
 @implementation HQWYUser (Service)
 
++ (NSString *)ln_APIServer {
+    return HQWY_HOST_PATH;
+}
+
 #pragma mark 验证码登录
 + (NSURLSessionDataTask *)authenticationCodeLogin:(NSString *)code mobile:(NSString *)phoneNumber serialNumber:(NSString *)serialNumber Completion:(void (^)(HQWYUser * _Nullable, NSError * _Nullable))completion{
     
