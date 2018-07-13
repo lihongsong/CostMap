@@ -50,6 +50,7 @@
         }
         return;
     }
+    NSLog(@"___%@",responseObject);
     NSString *code = [[responseObject objectForKey:@"code"] stringValue];
     if (code && [code isEqualToString:@"1"]) {
         if (success) {
