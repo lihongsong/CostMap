@@ -28,7 +28,8 @@
 #import "HQWYJavaScriptOpenSDKHandler.h"
 #import "HJUIKit.h"
 #import "NSString+cityInfos.h"
-
+#import "HQWYUser.h"
+#import "HQWYUser+Service.h"
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
@@ -186,8 +187,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /*退出登录 */
     [_manager registerHandler:kAppExecLogout handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        [HQWYUserSharedManager deleteUserInfo];
-        
+        [self loginOut];
     }];
     
     /** 导航栏样式事件 */
@@ -407,5 +407,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)changePasswordAction{
     AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new]; self.navigationController.navigationBar.hidden = false;
     [self.navigationController pushViewController:authPhoneNumVC animated:true];
+}
+
+- (void)loginOut{
+    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
+    
+    [HQWYUser loginOUT:^(HQWYUser * _Nullable user, NSError * _Nullable error) {
+        [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+        if (error) {
+             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            return ;
+        }
+        [HQWYUserSharedManager deleteUserInfo];
+    }];
 }
 @end

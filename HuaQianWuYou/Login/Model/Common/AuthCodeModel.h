@@ -21,19 +21,3 @@
 
 @end
 
-
-//图形验证码Model
-@interface ImageCodeModel : NSObject
-
-/* 图片 base64 */
-@property (nonatomic, copy) NSString  *outputImage;
-
-/* 验证码唯一key     */
-@property (nonatomic, copy) NSString  *serialNumber;
-
-/*     */
-@property (nonatomic, copy) NSString  *reqId;
-
-/*     */
-@property (nonatomic, copy) NSString  *respDateTime;
-@end

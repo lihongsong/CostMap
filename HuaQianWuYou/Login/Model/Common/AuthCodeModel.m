@@ -11,10 +11,3 @@
 @implementation AuthCodeModel
 
 @end
-
-
-@implementation ImageCodeModel
-
-
-
-@end

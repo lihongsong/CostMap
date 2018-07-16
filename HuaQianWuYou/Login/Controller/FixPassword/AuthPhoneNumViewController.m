@@ -14,6 +14,8 @@
 #import "ImageCodeViewController.h"
 #import "AuthCodeModel+Service.h"
 
+#import "ImageCodeModel+Service.h"
+#import "ImageCodeModel.h"
 #import "UIButton+Count.h"
 
 @interface AuthPhoneNumViewController ()<PasswordInputViewDelegate>
@@ -112,7 +114,7 @@ self.navigationController.navigationBar.translucent = NO;
 # pragma mark 获取图形验证码
 - (void)getImageCode{
     [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
-    [AuthCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
+    [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];

@@ -13,8 +13,8 @@
 #ifdef DEBUG
 
 //#define HQWY_HOST_PATH @"http://172.17.16.115:10024"
-#define HQWY_HOST_PATH @"http://dev-static.huaqianwy.com/mem"
-
+//#define HQWY_HOST_PATH @"http://dev-static.huaqianwy.com/mem"
+#define HQWY_HOST_PATH @"http://t1-static.huaqianwy.com/mem"
 
 #else
 
@@ -78,5 +78,5 @@
 
 //用户密码登录
 #define LN_POST_PASSWORD_LOGIN_PATH              @"/user/login/password"
-
+#define LN_POST_LOGIN_OUT_PATH @"/user/logout"
 #endif /* HQWYNetworkMacros_h */

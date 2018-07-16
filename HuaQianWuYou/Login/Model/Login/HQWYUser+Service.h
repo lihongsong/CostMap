@@ -37,4 +37,7 @@ typedef NS_ENUM(NSInteger, RegisterType) {
  */
 + (NSURLSessionDataTask *)passwordLogin:(NSString *)password mobile:(NSString *)phoneNumber Completion:(void (^)(HQWYUser * _Nullable, NSError * _Nullable))completion;
 
++ (NSURLSessionDataTask *)loginOUT:(void (^)(HQWYUser * _Nullable, NSError * _Nullable))completion;
+
+
 @end
