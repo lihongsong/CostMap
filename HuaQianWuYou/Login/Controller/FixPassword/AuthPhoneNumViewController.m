@@ -40,7 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"验证手机号";
-    self.navigationController.navigationBar.translucent = NO;
+self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     
@@ -145,10 +145,13 @@
 - (void)getSMSCode{
     [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:FixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             if (error.code == 1013) {
+                self.serialNumber = [NSString stringWithFormat:@"%@",result];
                  [self getImageCode];
+            }else {
+              [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             }
             return ;
         }
@@ -158,7 +161,7 @@
                 //倒计时
                 [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
             }
-            self.serialNumber = result;
+            self.serialNumber = [NSString stringWithFormat:@"%@",result] ;
         }
     }];
 }
@@ -174,6 +177,10 @@
         }
         //校验成功
         SetPasswordViewController *setPassword = [SetPasswordViewController new];
+        setPassword.jumpType = @"1";
+        setPassword.code = self.authCode;
+        setPassword.mobilePhone = self.phoneNum;
+        setPassword.serialNumber = self.serialNumber;
         [self.navigationController pushViewController:setPassword animated:YES];
     }];
 }

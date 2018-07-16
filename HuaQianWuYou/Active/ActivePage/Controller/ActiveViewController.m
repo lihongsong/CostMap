@@ -186,6 +186,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /*退出登录 */
     [_manager registerHandler:kAppExecLogout handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [HQWYUserSharedManager deleteUserInfo];
         
     }];
     
@@ -212,6 +213,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取用户token事件 */
     [_manager registerHandler:kAppGetUserToken handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        
         ResponseCallback([HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken]);
     }];
     

@@ -27,7 +27,7 @@
     [params setValue:mobilePhone forKey:@"mobilePhone"];
     [params setValue:smsType forKey:@"smsType"];
     [params setValue:code forKey:@"code"];
-    [params setValue:serialNumber forKey:@"code"];
+    [params setValue:serialNumber forKey:@"serialNumber"];
     return [self ln_requestModelAPI:SMS_Validate parameters:params completion:completion];
     
 }

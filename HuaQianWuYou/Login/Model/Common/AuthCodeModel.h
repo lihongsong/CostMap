@@ -31,5 +31,9 @@
 /* 验证码唯一key     */
 @property (nonatomic, copy) NSString  *serialNumber;
 
+/*     */
+@property (nonatomic, copy) NSString  *reqId;
 
+/*     */
+@property (nonatomic, copy) NSString  *respDateTime;
 @end

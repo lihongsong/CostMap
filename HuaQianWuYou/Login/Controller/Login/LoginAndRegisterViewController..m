@@ -234,7 +234,9 @@
             if (result){
                 [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
                 [self dismissViewControllerAnimated:true completion:^{
-                    self.loginBlock();
+                    if(self.loginBlock){
+                        self.loginBlock();
+                    }
                 }];
             }
         }];
@@ -249,7 +251,9 @@
             if (result){
                 [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
                 [self dismissViewControllerAnimated:true completion:^{
-                    self.loginBlock();
+                    if(self.loginBlock){
+                        self.loginBlock();
+                    }
                 }];
             }
         }];
@@ -302,7 +306,6 @@
          }
      }
 }
-
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     //FIXME:review textField 的长度限制方法，在我们分类里面已有，UITextField+HJInputLimit 中
@@ -449,7 +452,6 @@
             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
-        [KeyWindow ln_hideProgressHUD];
         if (result) {
             //校验成功 再次发送短信验证码
             [self getSMSCode];
@@ -464,22 +466,24 @@
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:LoginType Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         NSLog(@"____%ld",(long)error.hqwy_respCode);
-        NSLog(@"____%@",error.hqwy_errorMessage);
+        //NSLog(@"____%@",error.hqwy_errorMessage);
         if (error) {
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
-            if (error.code == 1013) {
+            if (error.code == 1013 || error.code == 1017) {
+                self.serialNumber = [NSString stringWithFormat:@"%@", result];
                 [self getImageCode];
+            }else{
+               [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             }
             return ;
         }
         if (self.codeInputView.codeButton) {
             //倒计时
-            [self.codeInputView.codeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
+            [self.codeInputView.codeButton startTotalTime:10 title:@"获取验证码" waitingTitle:@"后重试"];
         }
         NSLog(@")_____%@",result);
         NSLog(@"_____%@",result);
         if (result) {
-            self.serialNumber = result;
+            self.serialNumber = [NSString stringWithFormat:@"%@", result];
         }
     }];
 }

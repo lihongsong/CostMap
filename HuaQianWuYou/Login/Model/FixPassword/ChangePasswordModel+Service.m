@@ -23,8 +23,14 @@
     [params setValue:mobilePhone forKey:@"mobilePhone"];
     [params setValue:serialNumber forKey:@"serialNumber"];
     
-    return [ChangePasswordModel ln_requestModelAPI:ChangePassword parameters:params completion:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
-        completion(responseObject,error);
-    }];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
+    
+    return  [ChangePasswordModel ln_requestJsonModelAPI:ChangePassword
+                                     headers:@{@"Content-Type" : @"application/json"}
+                                    httpBody:data
+                                  completion:completion];
+//    return [ChangePasswordModel ln_requestModelAPI:ChangePassword parameters:params completion:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
+//        completion(responseObject,error);
+//    }];
 }
 @end

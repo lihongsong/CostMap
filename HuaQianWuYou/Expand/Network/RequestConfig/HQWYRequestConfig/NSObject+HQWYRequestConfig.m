@@ -46,7 +46,8 @@ static NSString *const kHQWYBodyKey         = @"body";
 
     [requestSerializer setValue:APP_ChannelId forHTTPHeaderField:@"channel"];
     //获取设备唯一标识符 uid
-    [requestSerializer setValue:[RCBaseCommon getIdfaString] forHTTPHeaderField:@"deviceNo"];
+    //[RCBaseCommon getIdfaString]
+    [requestSerializer setValue:@"dfsfd4fff4f44f" forHTTPHeaderField:@"deviceNo"];
 
     //城市
     //FIXME:v2.0

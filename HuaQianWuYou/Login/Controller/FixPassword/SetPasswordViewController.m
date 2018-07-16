@@ -37,7 +37,7 @@
 - (void)setupUI{
     PasswordInputView *pasView = [PasswordInputView instance];
     pasView.delegate = self;
-    pasView.type = PasswordInputTypeAuthPhoneNum;
+    pasView.type = PasswordInputTypeSet;
     [self.view addSubview:pasView];
     [pasView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(47);
@@ -90,7 +90,7 @@
 //    if (![self.password hj_isValidWithMinLenth:6 maxLenth:20 containChinese:NO containDigtal:YES containLetter:YES containOtherCharacter:nil firstCannotBeDigtal:YES]) {
 //        [KeyWindow ln_showToastHUD:@"请输入6～20位数字或字母密码"];
 //    }
-    if (![self validatePassword:self.password]) {
+    if (!(self.password.length > 5) || !(self.password.length < 20)) {
         [KeyWindow ln_showToastHUD:@"密码输入格式错误"];
         return;
 
