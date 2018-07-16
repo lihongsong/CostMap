@@ -28,8 +28,8 @@
 #import "HQWYJavaScriptOpenSDKHandler.h"
 #import "HJUIKit.h"
 #import "NSString+cityInfos.h"
-#import "HQWYUser.h"
-#import "HQWYUser+Service.h"
+#import "LoginOut.h"
+
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
@@ -86,6 +86,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
+    [self showPopView];
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -187,7 +188,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /*退出登录 */
     [_manager registerHandler:kAppExecLogout handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        [self loginOut];
+        [self loginOut:^(BOOL isOut) {
+            ResponseCallback([NSNumber numberWithBool:isOut]);
+        }];
     }];
     
     /** 导航栏样式事件 */
@@ -409,16 +412,23 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.navigationController pushViewController:authPhoneNumVC animated:true];
 }
 
-- (void)loginOut{
+- (void)loginOut:(loginOutBlock)outBlock{
     [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
-    
-    [HQWYUser loginOUT:^(HQWYUser * _Nullable user, NSError * _Nullable error) {
+    [LoginOut signOUT:^(id _Nullable result, NSError * _Nullable error) {
         [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
         if (error) {
-             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            outBlock(false);
+            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
+        NSLog(@"_____%@",result);
+        if ((BOOL)result) {
+            [HQWYUserSharedManager deleteUserInfo];
+            outBlock(true);
+            return;
+        }
         [HQWYUserSharedManager deleteUserInfo];
+        outBlock(false);
     }];
 }
 @end

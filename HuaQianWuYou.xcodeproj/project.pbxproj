@@ -121,7 +121,6 @@
 		597E863020FC7C3B0018DA54 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 597E862F20FC7C3B0018DA54 /* ImageCodeModel.m */; };
 		597E863320FC7C7C0018DA54 /* ImageCodeModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 597E863220FC7C7C0018DA54 /* ImageCodeModel+Service.m */; };
 		597E863620FC9F380018DA54 /* LoginOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 597E863520FC9F380018DA54 /* LoginOut.m */; };
-		597E863920FC9F500018DA54 /* LoginOut+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 597E863820FC9F500018DA54 /* LoginOut+Service.m */; };
 		59BE198320EC9DA300704B2C /* PopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE198220EC9DA300704B2C /* PopView.m */; };
 		59BE198620EC9DD600704B2C /* SuspendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE198520EC9DD600704B2C /* SuspendView.m */; };
 		59BE198820EC9F1A00704B2C /* PopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BE198720EC9F1A00704B2C /* PopView.xib */; };
@@ -459,8 +458,6 @@
 		597E863220FC7C7C0018DA54 /* ImageCodeModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ImageCodeModel+Service.m"; sourceTree = "<group>"; };
 		597E863420FC9F380018DA54 /* LoginOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginOut.h; sourceTree = "<group>"; };
 		597E863520FC9F380018DA54 /* LoginOut.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginOut.m; sourceTree = "<group>"; };
-		597E863720FC9F500018DA54 /* LoginOut+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LoginOut+Service.h"; sourceTree = "<group>"; };
-		597E863820FC9F500018DA54 /* LoginOut+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "LoginOut+Service.m"; sourceTree = "<group>"; };
 		59BE198120EC9DA300704B2C /* PopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopView.h; sourceTree = "<group>"; };
 		59BE198220EC9DA300704B2C /* PopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopView.m; sourceTree = "<group>"; };
 		59BE198420EC9DD600704B2C /* SuspendView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuspendView.h; sourceTree = "<group>"; };
@@ -1081,8 +1078,6 @@
 				5962070920F5AFD600FAF3CF /* HQWYUser+Service.m */,
 				597E863420FC9F380018DA54 /* LoginOut.h */,
 				597E863520FC9F380018DA54 /* LoginOut.m */,
-				597E863720FC9F500018DA54 /* LoginOut+Service.h */,
-				597E863820FC9F500018DA54 /* LoginOut+Service.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -2204,7 +2199,6 @@
 				A8F8DFD220B3AB5300DB9A6A /* TopBannerView.m in Sources */,
 				59C5713520E600D100D54260 /* UIFont+TargetFont.m in Sources */,
 				5958089B20F2F53A002A6F0C /* SetPasswordViewController.m in Sources */,
-				597E863920FC9F500018DA54 /* LoginOut+Service.m in Sources */,
 				A8F8DFB620B3AB3300DB9A6A /* AboutUsViewController.m in Sources */,
 				59BE198D20EC9FA300704B2C /* PopViewManager.m in Sources */,
 				59C5710C20E5FB8200D54260 /* GradientCompareBarView.m in Sources */,

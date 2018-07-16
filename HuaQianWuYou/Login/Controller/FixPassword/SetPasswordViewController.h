@@ -13,8 +13,6 @@
 /* 验证码 */
 @property (nonatomic, strong) NSString  *code;
 
-/* 跳转类型 */
-@property (nonatomic, strong) NSString  *jumpType;
 
 /* 手机号 */
 @property (nonatomic, strong) NSString  *mobilePhone;

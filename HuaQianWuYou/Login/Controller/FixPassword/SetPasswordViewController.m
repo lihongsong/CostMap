@@ -101,7 +101,7 @@
     }
     WeakObj(self);
     [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
-    [ChangePasswordModel changePasswordCode:self.code jumpType:self.jumpType passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
+    [ChangePasswordModel changePasswordCode:self.code passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {

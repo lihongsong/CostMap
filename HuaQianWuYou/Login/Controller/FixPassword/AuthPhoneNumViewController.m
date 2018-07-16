@@ -179,7 +179,6 @@ self.navigationController.navigationBar.translucent = NO;
         }
         //校验成功
         SetPasswordViewController *setPassword = [SetPasswordViewController new];
-        setPassword.jumpType = @"1";
         setPassword.code = self.authCode;
         setPassword.mobilePhone = self.phoneNum;
         setPassword.serialNumber = self.serialNumber;

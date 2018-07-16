@@ -11,7 +11,6 @@
 @interface ChangePasswordModel (Service)
 
 + (NSURLSessionDataTask *_Nullable)changePasswordCode:(NSString *)code
-                                             jumpType:(NSString *)jumpType
                                              passWord:(NSString*)password
                                           mobilePhone:(NSString*)mobilePhone
                                          serialNumber:(NSString*)serialNumber
