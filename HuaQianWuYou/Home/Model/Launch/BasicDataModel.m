@@ -7,12 +7,13 @@
 //
 
 #import "BasicDataModel.h"
-
+#import "YYModel.h"
  @implementation BasicDataInfo
      
      + (NSDictionary*)modelCustomPropertyMapper {
          return @{
                   @"productId": @"id",
+                  @"productName": @"description",
                   };
      }
      

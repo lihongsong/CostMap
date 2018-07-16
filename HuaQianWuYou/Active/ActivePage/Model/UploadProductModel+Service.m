@@ -9,6 +9,11 @@
 #import "UploadProductModel+Service.h"
 
 @implementation UploadProductModel (Service)
+
++ (NSString *)ln_APIServer {
+    return HQWY_HOST_PATH;
+}
+
 + (NSURLSessionDataTask *_Nullable)uploadProduct:(NSNumber *)category mobilePhone:(NSString*)mobilePhone productID:(NSNumber *)productId Completion:(nullable void (^)(UploadProductModel * _Nullable, NSError * _Nullable))completion{
     NSMutableDictionary *params = [@{} mutableCopy];
     [params setValue:mobilePhone forKey:@"mobilePhone"];

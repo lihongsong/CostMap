@@ -141,8 +141,11 @@ static NSString * const kAppCheckUpdate = @"appCheckUpdate";
 
 /*!
  安全退出
- */
+ */ 
 static NSString * const kAppExecLogout = @"appExecLogout";
 
-
+/*!
+  打开意见反馈SDK
+ */
+static NSString * const kAppOpenSDK = @"appOpenFeedback";
 #endif /* HQWYJavaSBridgeHandleMacros_h */

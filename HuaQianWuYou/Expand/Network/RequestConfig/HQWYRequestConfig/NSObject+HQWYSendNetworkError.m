@@ -17,6 +17,7 @@
 
 + (NSDictionary *)mapInterfaceFunctions {
     return @{
+             //FIXME:v2.0
              /*
              LN_SMS_DYNAMICCODE : @"getDynamicCode",                // 获取验证码
              LN_TOKEN_PASSWORD : @"loginByPassword",                // 密码登录
@@ -57,12 +58,13 @@
     }
  
     RCNetworkError *networkerror = [[RCNetworkError alloc] init];
-        NSString *userId = [[HQWYUserManager sharedInstance].userInfo.userId stringValue];
-        networkerror.userId = [HQWYUserManager sharedInstance].userInfo.userId ? userId :@"";
-        networkerror.mobile = [HQWYUserManager sharedInstance].userInfo.mobilephone;
- 
-   // networkerror.pid = [@(LNProductIDHQWYDSZD) stringValue];
-    
+
+    //FIXME:v2.0 手机号获取
+    networkerror.mobile = @"";
+    //此处pid传空值
+//    networkerror.pid = @"";
+//    networkerror.userId = @"";
+
     networkerror.responseTime = [NSString stringWithFormat:@"%.0f",duration];
     networkerror.requestUrl = [failingURLString stringByReplacingOccurrencesOfString:@"api/" withString:@"/"];
     networkerror.requestUrlFunction = [self mapInterfaceFunctions][failingURLString];

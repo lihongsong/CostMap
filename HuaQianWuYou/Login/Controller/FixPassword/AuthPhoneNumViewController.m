@@ -9,11 +9,13 @@
 #import "AuthPhoneNumViewController.h"
 #import "PasswordInputView.h"
 #import "UIButton+EnlableColor.h"
-#import <HJCategories/NSString+HJNormalRegex.h>
+//#import <HJCategories/NSString+HJNormalRegex.h>
 #import "SetPasswordViewController.h"
 #import "ImageCodeViewController.h"
 #import "AuthCodeModel+Service.h"
 
+#import "ImageCodeModel+Service.h"
+#import "ImageCodeModel.h"
 #import "UIButton+Count.h"
 
 @interface AuthPhoneNumViewController ()<PasswordInputViewDelegate>
@@ -40,12 +42,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"验证手机号";
-    self.navigationController.navigationBar.translucent = NO;
+self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupUI];
+    //[self setLelftNavigationItem:NO];
     // Do any additional setup after loading the view.
+}
+
+-(void)backPage {
+    [self eventId:HQWY_Fix_Back_click];
+    [self.navigationController popViewControllerAnimated:true];
 }
 
 - (void)setupUI{
@@ -105,13 +113,13 @@
 
 # pragma mark 获取图形验证码
 - (void)getImageCode{
-    [KeyWindow ln_showLoadingHUD];
-    [AuthCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
+    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+    [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
-        [KeyWindow ln_hideProgressHUD];
         if (result.outputImage.length > 0) {
             //到图形验证码页面
             [self popImageCodeViewImageCodeStr:result.outputImage serialNumber:result.serialNumber];
@@ -121,14 +129,14 @@
 
 # pragma mark 校验图形验证码
 - (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
-    [KeyWindow ln_showLoadingHUD];
+    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
-        [KeyWindow ln_hideProgressHUD];
-        if (result.result) {
+        if (result) {
             //校验成功 再次发送短信验证码
             [self getSMSCode];
         }
@@ -137,43 +145,50 @@
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-    [KeyWindow ln_showLoadingHUD];
+    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:FixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
             if (error.code == 1013) {
+                self.serialNumber = [NSString stringWithFormat:@"%@",result];
                  [self getImageCode];
+            }else {
+              [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             }
             return ;
         }
-        [KeyWindow ln_hideProgressHUD];
         if (result) {
             /*如果发送成功 */
             if (self.authCodeButton) {
                 //倒计时
                 [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
             }
-            self.serialNumber = result.body;
+            self.serialNumber = [NSString stringWithFormat:@"%@",result] ;
         }
     }];
 }
 
 # pragma mark 校验短信验证码
 - (void)validatePhoneNum{
-    [KeyWindow ln_showLoadingHUD];
+    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:FixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+           [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
-        [KeyWindow ln_hideProgressHUD];
         //校验成功
         SetPasswordViewController *setPassword = [SetPasswordViewController new];
+        setPassword.jumpType = @"1";
+        setPassword.code = self.authCode;
+        setPassword.mobilePhone = self.phoneNum;
+        setPassword.serialNumber = self.serialNumber;
         [self.navigationController pushViewController:setPassword animated:YES];
     }];
 }
 
 - (void)nextAction:(UIButton *)sender{
+    [self eventId:HQWY_Fix_Next_click];
     //校验是不是手机号
     if (![self.phoneNum hj_isMobileNumber]) {
         [KeyWindow ln_showToastHUD:@"手机号错误"];

@@ -26,6 +26,11 @@
 #import <AppUpdate/XZYAppUpdate.h>
 #import "AuthPhoneNumViewController.h"
 #import "ThirdPartWebVC.h"
+#import "HQWYJavaScriptOpenSDKHandler.h"
+#import "HJUIKit.h"
+#import "NSString+cityInfos.h"
+#import "HQWYUser.h"
+#import "HQWYUser+Service.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -65,11 +70,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     // Do any additional setup after loading the view
     [self showPopView];
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://172.17.16.79:8088/#/home"]]];
-    //http://172.17.16.79:8088/#/home
-    //http://172.17.106.138:8088/#/citylist
-    //http://t1-static.huaqianwy.com/hqwy/dist/#/home
-    //http://www.baidu.com
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Host]]];
+   
     [self.wkWebView setNavigationDelegate:self];
     [self.view addSubview:self.wkWebView];
     self.manager = [HJJSBridgeManager new];
@@ -85,6 +87,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [DeviceManager sendDeviceinfo];
     
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -94,6 +98,19 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
     [PopViewManager showType:AdvertisingTypeSuspensionWindow fromVC:self];
     
+}
+
+- (void )setSelectedLocation:(NSString *)selectedLocation{
+    _selectedLocation = selectedLocation;
+    if (![selectedLocation containsString:@"失败"] && ![selectedLocation containsString:@"定位"] && ![selectedLocation containsString:@"未知"]){
+        SetUserDefault([NSString getDistrictNoFromCity:selectedLocation], @"locationCity");
+        }else{
+            SetUserDefault(@"", @"locationCity");
+        }
+}
+
+- (void)appWillEnterForeground {
+    [_manager callHandler:kWebViewWillAppear];
 }
 
 //弹框代理方法
@@ -153,7 +170,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)dealloc {
-
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     _manager = nil;
 }
@@ -181,7 +197,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /*退出登录 */
     [_manager registerHandler:kAppExecLogout handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        
+        [self loginOut];
     }];
     
     /** 导航栏样式事件 */
@@ -195,18 +211,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }
     }];
     
-    
-    /** 注册获取PID事件 */
-//        [_manager registerHandler:kAppGetProductId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//            NSString *productID = @(LNProductIDJKDSZD).stringValue;
-//            ResponseCallback([HQWYJavaScriptResponse result:productID]);
-//        }];
-//
-    /** 注册获取ChannelID事件 */
-//        [_manager registerHandler:kAppGetChannel handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//            ResponseCallback([HQWYJavaScriptResponse result:AppChannel]);
-//        }];
-    
     /** 注册获取app版本事件 */
     [_manager registerHandler:kAppGetVersion handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([HQWYJavaScriptResponse result:[UIDevice hj_appVersion]]);
@@ -219,14 +223,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取用户token事件 */
     [_manager registerHandler:kAppGetUserToken handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        
         ResponseCallback([HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken]);
     }];
-    
-    /** 注册获取用户唯一id事件 */
-//    [_manager registerHandler:kAppGetUserId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-//        NSString *useid = HQWYUserStatusSharedManager.userBaseInfo.userId;
-//        ResponseCallback([HQWYJavaScriptResponse result:useid]);
-//    }];
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -271,6 +270,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     HQWYJavaScriptOpenNativeHandler *handler = [HQWYJavaScriptOpenNativeHandler new];
     handler.delegate = self;
     [_manager registerHandler:handler];
+    
+    /** 注册打开SDK意见反馈事件 */
+    [_manager registerHandler:[HQWYJavaScriptOpenSDKHandler new]];
     
     /** 注册获取请求头事件 */
     
@@ -415,5 +417,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)changePasswordAction{
     AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new]; self.navigationController.navigationBar.hidden = false;
     [self.navigationController pushViewController:authPhoneNumVC animated:true];
+}
+
+- (void)loginOut{
+    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
+    
+    [HQWYUser loginOUT:^(HQWYUser * _Nullable user, NSError * _Nullable error) {
+        [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+        if (error) {
+             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            return ;
+        }
+        [HQWYUserSharedManager deleteUserInfo];
+    }];
 }
 @end

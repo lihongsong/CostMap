@@ -138,12 +138,12 @@
 #if DEBUG
     NSAssert(NO, @"数据类型不匹配，请检查！");
     return [self ln_errorWithDomain:LNAPIDataErrorDomain
-                         codeString:[NSString stringWithFormat:@"%zd",LNSystemErrorWrongApiData]
+                         codeString:[NSString stringWithFormat:@"%d",LNSystemErrorWrongApiData]
                             message:LNSystemErrorMessageWrongApiDataMessage];;
 #endif
     
     return [self ln_errorWithDomain:LNAPIDataErrorDomain
-                         codeString:[NSString stringWithFormat:@"%zd",LNSystemErrorWrongApiData]
+                         codeString:[NSString stringWithFormat:@"%d",LNSystemErrorWrongApiData]
                             message:LNSystemErrorMessageWrongApiDataMessage];
 }
 

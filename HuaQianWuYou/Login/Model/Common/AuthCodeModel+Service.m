@@ -9,6 +9,9 @@
 #import "AuthCodeModel+Service.h"
 
 @implementation AuthCodeModel (Service)
++ (NSString *)ln_APIServer {
+    return HQWY_HOST_PATH;
+}
 
 + (NSURLSessionDataTask *)requsetMobilePhoneCode:(NSString *)mobilePhone smsType:(NSString *)smsType Completion:(void (^)(AuthCodeModel * _Nullable, NSError * _Nullable))completion{
        NSMutableDictionary *params = [@{} mutableCopy];
@@ -24,16 +27,11 @@
     [params setValue:mobilePhone forKey:@"mobilePhone"];
     [params setValue:smsType forKey:@"smsType"];
     [params setValue:code forKey:@"code"];
-    [params setValue:serialNumber forKey:@"code"];
+    [params setValue:serialNumber forKey:@"serialNumber"];
     return [self ln_requestModelAPI:SMS_Validate parameters:params completion:completion];
     
 }
 
-+ (NSURLSessionDataTask *)requsetImageCodeCompletion:(void (^)(ImageCodeModel * _Nullable, NSError * _Nullable))completion{
-    return [self ln_requestModelAPI:IMAGE_CODE parameters:nil completion:completion];
-    
-    
-}
 
 
 

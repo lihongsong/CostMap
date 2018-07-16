@@ -7,30 +7,29 @@ source 'http://172.16.0.245:2345/Apple_SDK/iOS_Specs.git'
 source 'git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git'
 
 platform :ios, '8.0'
+
+inhibit_all_warnings!
+
 use_frameworks!
 
 target 'HuaQianWuYou' do
+    pod 'Bugly', '2.5.0'
     pod 'AFNetworking', '~> 3.1.0'
     pod 'SDWebImage'
-    pod 'LNNetwork'
-    pod 'HJCategories'
+    pod 'LNNetwork', '1.0.4'
+    pod 'HJCategories', '1.0.7'
     pod 'Masonry','1.1.0'
-    pod 'HJ_UIKit/HJCarousel'
-    pod 'HJ_UIKit/HJGuidePage', '2.2.3'
-    pod 'HJ_UIKit/HJAlertView'
+    pod 'HJ_UIKit/HJCarousel', '2.2.6'
+    pod 'HJ_UIKit/HJGuidePage', '2.2.6'
+    pod 'HJ_UIKit/HJAlertView', '2.2.6'
     pod 'IQKeyboardManager', '5.0.6'
     pod 'GTMBase64', '~> 1.0.1'
     pod 'YYText', '1.0.4'
-    pod 'YYModel'
+    pod 'YYModel', '1.0.4'
     pod 'BMKLocationKit'
     pod 'AppUpdate'
     pod 'HJJavascriptBridge', '~> 0.3.2'
-    #pod 'LNRiskManage'
     pod 'RCMobClick', '~>2.0.9'
     pod 'Feedback', '~> 1.2.1'
     pod 'UICKeyChainStore','2.1.1'
-end
-
-target 'HuaQianWuYouTests' do
-
 end

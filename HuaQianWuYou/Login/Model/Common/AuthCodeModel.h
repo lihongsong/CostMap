@@ -13,23 +13,11 @@
 //短信验证码Model
 @interface AuthCodeModel : NSObject
 
-/* 流水号 */
-@property (nonatomic, strong) NSString  *body;
-
-/* 校验图形验证码结果result */
-@property (nonatomic, assign) BOOL  result;
-
-@end
-
-
-//图形验证码Model
-@interface ImageCodeModel : NSObject
-
-/* 图片 base64 */
-@property (nonatomic, copy) NSString  *outputImage;
-
-/* 验证码唯一key     */
-@property (nonatomic, copy) NSString  *serialNumber;
-
+///* 流水号 */
+//@property (nonatomic, strong) NSString  *body;
+//
+///* 校验图形验证码结果result */
+//@property (nonatomic, assign) BOOL  result;
 
 @end
+

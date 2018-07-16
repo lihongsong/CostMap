@@ -14,11 +14,12 @@
 #import "UploadProductModel.h"
 #import "UploadProductModel+Service.h"
 
+
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
-@interface ThirdPartWebVC ()<NavigationViewDelegate,HQWYReturnToDetainViewDelegate>
+@interface ThirdPartWebVC ()<NavigationViewDelegate,HQWYReturnToDetainViewDelegate,WKNavigationDelegate,WKUIDelegate>
 /**
  桥接管理器
  */
@@ -42,6 +43,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self registerHander];
     [self uploadData:self.navigationDic[@"productId"]];
     [self initData];
+    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
     
 }
 
@@ -63,11 +65,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)initData{
     if ([self.navigationDic[@"needBackDialog"] integerValue]) {
         WeakObj(self);
-        [KeyWindow ln_showLoadingHUD];
+        [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
         self.productIndex = 0;
         [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(UnClickProductModel * _Nullable result, NSError * _Nullable error) {
+            [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
             StrongObj(self);
-            [KeyWindow ln_hideProgressHUD];
             if (error) {
                 return;
             }
@@ -77,6 +79,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 -(void)rightButtonItemClick{
+    [self eventId:HQWY_ThirdPart_Back_click];
     [self toBeforeViewController];
     if (!StrIsEmpty([[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"])) {
         [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
@@ -199,5 +202,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (NSString *)getToday{
     return [NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"];
 }
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+}
+
+
 
 @end

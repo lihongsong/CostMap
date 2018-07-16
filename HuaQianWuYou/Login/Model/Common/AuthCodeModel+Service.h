@@ -45,16 +45,6 @@
                                           Completion:(nullable void (^)(AuthCodeModel *_Nullable result,
                                                                         NSError *_Nullable error))completion;
 
-/**
- 获取图形验证
-
- @param completion <#completion description#>
- @return <#return value description#>
- */
-+ (NSURLSessionDataTask *_Nullable)requsetImageCodeCompletion:(nullable void (^)(ImageCodeModel *_Nullable result,NSError *_Nullable error))completion;
-
-
-
 
 /**
  校验图形验证码

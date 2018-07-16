@@ -9,7 +9,7 @@
 #import "SetPasswordViewController.h"
 #import "PasswordInputView.h"
 #import "UIButton+EnlableColor.h"
-#import <HJCategories/NSString+HJNormalRegex.h>
+//#import <HJCategories/NSString+HJNormalRegex.h>
 #import "ChangePasswordModel+Service.h"
 @interface SetPasswordViewController ()<PasswordInputViewDelegate>
 @property (nonatomic ,strong) UIButton *nextButton;
@@ -37,7 +37,7 @@
 - (void)setupUI{
     PasswordInputView *pasView = [PasswordInputView instance];
     pasView.delegate = self;
-    pasView.type = PasswordInputTypeAuthPhoneNum;
+    pasView.type = PasswordInputTypeSet;
     [self.view addSubview:pasView];
     [pasView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(47);
@@ -80,12 +80,17 @@
     return _nextButton;
 }
 
+-(void)backPage {
+    [self eventId:HQWY_Fix_PasswordBack_click];
+    [self.navigationController popToRootViewControllerAnimated:true];
+}
+
 - (void)nextAction:(UIButton *)sender{
-    
+    [self eventId:HQWY_Fix_Sure_click];
 //    if (![self.password hj_isValidWithMinLenth:6 maxLenth:20 containChinese:NO containDigtal:YES containLetter:YES containOtherCharacter:nil firstCannotBeDigtal:YES]) {
 //        [KeyWindow ln_showToastHUD:@"请输入6～20位数字或字母密码"];
 //    }
-    if (![self validatePassword:self.password]) {
+    if (!(self.password.length > 5) || !(self.password.length < 20)) {
         [KeyWindow ln_showToastHUD:@"密码输入格式错误"];
         return;
 
@@ -95,11 +100,12 @@
         return;
     }
     WeakObj(self);
-    [KeyWindow ln_showLoadingHUD];
+    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [ChangePasswordModel changePasswordCode:self.code jumpType:self.jumpType passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
+        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.userInfo[@"msg"]];
+            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
         if (result){
@@ -116,6 +122,7 @@
 
 
 //验证密码格式
+//FIXME:review 这个密码验证分类里是否已有？如果已有，就不用自己再写了
 - (BOOL)validatePassword:(NSString *)password{
         NSString *regular = @"[a-zA-Z0-9]{1,3}+";
 //    NSString *regular = @"^1[3,4,5,7,8]\\d{9}|^(199|166)\\d{8}";

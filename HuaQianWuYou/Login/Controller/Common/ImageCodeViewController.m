@@ -8,7 +8,8 @@
 
 #import "ImageCodeViewController.h"
 #import "ImageCodePopView.h"
-#import "AuthCodeModel+Service.h"
+#import "ImageCodeModel.h"
+#import "ImageCodeModel+Service.h"
 @interface ImageCodeViewController ()
 
 /* <#cintent#> */
@@ -40,7 +41,7 @@
 
 //刷新图片
 - (void)reloadImageCode{
-    [AuthCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
+    [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             return;
         }
@@ -53,9 +54,11 @@
  }
 
 - (void)canceAction{
+    [self eventId:HQWY_Login_ImageCodeCheck_click];
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 - (void)sureAction{
+    [self eventId:HQWY_Login_ImageCode_click];
     if (self.codeView.imageCodeInputLable.text.length == 0) {
         [KeyWindow ln_showToastHUD:@"验证码不能为空"];
         return;

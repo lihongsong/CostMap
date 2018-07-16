@@ -10,6 +10,9 @@
 
 @implementation ChangePasswordModel (Service)
 
++ (NSString *)ln_APIServer {
+    return HQWY_HOST_PATH;
+}
 
 + (NSURLSessionDataTask *)changePasswordCode:(NSString *)code jumpType:(NSString *)jumpType passWord:(NSString *)password mobilePhone:(NSString *)mobilePhone serialNumber:(NSString *)serialNumber Completion:(void (^)(ChangePasswordModel * _Nullable, NSError * _Nullable))completion{
     
@@ -20,8 +23,14 @@
     [params setValue:mobilePhone forKey:@"mobilePhone"];
     [params setValue:serialNumber forKey:@"serialNumber"];
     
-    return [ChangePasswordModel ln_requestModelAPI:ChangePassword parameters:params completion:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
-        completion(responseObject,error);
-    }];
+    NSData *data = [NSJSONSerialization dataWithJSONObject:params options:0 error:nil];
+    
+    return  [ChangePasswordModel ln_requestJsonModelAPI:ChangePassword
+                                     headers:@{@"Content-Type" : @"application/json"}
+                                    httpBody:data
+                                  completion:completion];
+//    return [ChangePasswordModel ln_requestModelAPI:ChangePassword parameters:params completion:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
+//        completion(responseObject,error);
+//    }];
 }
 @end

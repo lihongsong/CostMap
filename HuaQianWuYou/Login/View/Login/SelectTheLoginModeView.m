@@ -50,6 +50,7 @@
 }
 
 - (void)codeButtonClick:(UIButton*)codeButton{
+    [self eventId:HQWY_Login_Code_click];
     if (!codeButton.selected) {
         if ([self.delegate respondsToSelector:@selector(selectTheLoginModeCode)]) {
             [self.delegate selectTheLoginModeCode];
@@ -70,6 +71,7 @@
 }
 
 - (void)passwordButtonClick:(UIButton*)passwordButton{
+    [self eventId:HQWY_Login_Password_click];
     if (!passwordButton.selected) {
         if ([self.delegate respondsToSelector:@selector(selectTheLoginModePassword)]) {
             [self.delegate selectTheLoginModePassword];
