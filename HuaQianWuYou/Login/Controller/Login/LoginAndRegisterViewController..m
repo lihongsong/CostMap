@@ -233,6 +233,7 @@
               [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
                 return ;
             }
+            NSLog(@"____%@",result);
             if (result){
                 [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
                 [self dismissViewControllerAnimated:true completion:^{
@@ -347,7 +348,7 @@
 
         if (textField == self.codeInputView.firstTF || textField == self.passwordInputView.firstTF) {
             //超过12位禁止输入
-            if(range.location >= 12 || string.length>12 || (textField.text.length + string.length) >12) {
+            if(range.location >= 11 || string.length>=12 || (textField.text.length + string.length) >=12) {
                 return NO;
             }else if (textField.text.length>=12&&![string isEqualToString:@""]){
                 return NO;
@@ -470,7 +471,7 @@
         NSLog(@"____%ld",(long)error.hqwy_respCode);
         //NSLog(@"____%@",error.hqwy_errorMessage);
         if (error) {
-            if (error.code == 1013 || error.code == 1017) {
+            if (error.code == 1013) {
                 self.serialNumber = [NSString stringWithFormat:@"%@", result];
                 [self getImageCode];
             }else{

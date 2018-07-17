@@ -56,6 +56,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 //自定义导航栏
 - (void)initNavigation{
+    UIView *statusView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SWidth, StatusBarHeight)];
+    [self.view addSubview:statusView];
+    statusView.backgroundColor = [UIColor whiteColor];
     NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
     [self.view addSubview:navigationView];
     navigationView.delegate = self;

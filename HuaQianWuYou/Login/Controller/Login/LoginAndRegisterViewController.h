@@ -7,7 +7,7 @@
 //
 typedef void (^loginFinishBlock)(void);
 typedef void (^loginForgetBlock)(void);
-
+typedef void (^loginOutBlock)(BOOL);
 #import "BaseViewController.h"
 
 

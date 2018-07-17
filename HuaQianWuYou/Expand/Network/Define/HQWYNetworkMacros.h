@@ -16,6 +16,8 @@
 //#define HQWY_HOST_PATH @"http://dev-static.huaqianwy.com/mem"
 #define HQWY_HOST_PATH @"http://t1-static.huaqianwy.com/mem"
 
+#define HQWY_PRODUCT_PATH @"http://t1-static.huaqianwy.com/api"
+
 #else
 
 #define HQWY_HOST_PATH @"http:"
@@ -32,7 +34,7 @@
 
 #import "HQWYWebViewURLDebugMacros.h"
 
-#define Active_Host  @"http://t1-static.huaqianwy.com/hqwy/dist/#/home"
+#define Active_Host  @"http://172.17.16.79:8088/#/home"
 //http://172.17.16.79:8088/#/home
 //http://172.17.106.138:8088/#/citylist
 //http://t1-static.huaqianwy.com/hqwy/dist/#/home
@@ -51,7 +53,7 @@
 #define Device_info @"/collect/deviceInfo"
 
 //广告信息
-#define AdvertisingInfo @"/product/ad/search"
+#define AdvertisingInfo @"/product/advertising/search"
 
 //修改密码
 #define ChangePassword @"/user/pwdchg"

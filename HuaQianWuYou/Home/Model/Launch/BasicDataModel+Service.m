@@ -11,13 +11,13 @@
 @implementation BasicDataModel (Service)
 
     + (NSString *)ln_APIServer {
-        return HQWY_HOST_PATH;
+        return HQWY_PRODUCT_PATH;
     }
 
     +(NSURLSessionDataTask *)requestBasicData:(AdvertisingType)type productId:(NSNumber *)productId sort:(NSNumber *)sort Completion:(void (^)(BasicDataModel * _Nullable, NSError * _Nullable))completion{
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setValue:@(type) forKey:@"category"];
+        [dict setValue:[NSNumber numberWithInt:type] forKey:@"category"];
         [dict setValue:productId forKey:@"pId"];
         [dict setValue:sort forKey:@"sort"];
         NSURLSessionDataTask *task = [self ln_requestModelAPI:AdvertisingInfo

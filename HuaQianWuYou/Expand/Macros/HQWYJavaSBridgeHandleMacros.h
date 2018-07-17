@@ -74,6 +74,11 @@ static NSString * const kAppGetMobilephone = @"appGetMobilephone";
 static NSString * const kAppIsLogin = @"appIsLogin";
 
 /*!
+ 获取用户需要登录
+ */
+static NSString * const kAppNeedLogin = @"appNeedUserLogin";
+
+/*!
  获取设备类型 (iOS/Android)
  */
 static NSString * const kAppGetDeviceType = @"appGetDeviceType";
