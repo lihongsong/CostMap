@@ -108,6 +108,8 @@
         make.setCountdownBtnBlock(^(UIButton *btn) {
             //FIXME:review 此处不要写死坐标，需要优化
             btn.frame = CGRectMake(SWidth - 66 - 30, SHeight - 30 -28, 66, 28);
+            
+            [btn addTarget:self action:@selector(launchButtonClick) forControlEvents:UIControlEventTouchUpInside];
         // 点击跳过，埋点
         });
     }];
@@ -115,6 +117,10 @@
     HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
     launchManager.guideVC = launchVC;
     [launchManager showLanuchPageModel];
+}
+
+- (void)launchButtonClick {
+    [self eventId:HQWY_StartApp_Jump_click];
 }
 
 #pragma mark - 启动图设置
