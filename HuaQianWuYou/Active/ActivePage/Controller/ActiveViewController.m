@@ -24,6 +24,7 @@
 #import "LoginAndRegisterViewController.h"
 #import "HQWYJavaScriptOpenWebViewHandler.h"
 #import <AppUpdate/XZYAppUpdate.h>
+#import "ThirdPartWebVC.h"
 #import "AuthPhoneNumViewController.h"
 #import "ThirdPartWebVC.h"
 #import "HQWYJavaScriptOpenSDKHandler.h"
@@ -102,7 +103,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
-    [self showPopView];
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -128,11 +128,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 //弹框代理方法
-- (void)didSelectedContentUrl:(NSString *)url popType:(AdvertisingType)type{
+- (void)didSelectedContent:(BasicDataModel *)dataModel popType:(AdvertisingType)type{
     if ([HQWYUserManager hasAlreadyLoggedIn]) {
         ThirdPartWebVC *webView = [ThirdPartWebVC new];
-        webView.navigationDic = @{@"backKeyHide":@"0"};
-        [webView loadURLString:url];
+        webView.navigationDic = @{@"backKeyHide":@"0",@"category":[NSString stringWithFormat:@"%ld",(long)type],@"needBackDialog":@"0",@"productId":dataModel.productId};
+        [webView loadURLString:dataModel.address];
         [self.navigationController pushViewController:webView animated:true];
     }else{
         [self presentNative:^{
@@ -247,8 +247,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        NSString *phone = HQWYUserSharedManager.userInfo.mobilePhone;
-        ResponseCallback([HQWYJavaScriptResponse result:phone]);
+        ResponseCallback([HQWYJavaScriptResponse result:[HQWYUserManager loginMobilePhone]]);
     }];
     
     /** 注册获取用户是否登录事件 */
