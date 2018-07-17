@@ -74,7 +74,7 @@
             if (controller) {
                 [controller.view addSubview:manage.suspendView];
                 [manage.suspendView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.bottom.mas_equalTo(-45 - TabBarHeight);
+                    make.bottom.mas_equalTo(-30);
                     make.right.mas_equalTo(-10);
                     make.height.mas_equalTo(80);
                     make.width.mas_equalTo(80);
