@@ -42,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"验证手机号";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor colorFromHexCode:@"#111111"]}];
 self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -179,10 +180,12 @@ self.navigationController.navigationBar.translucent = NO;
         }
         //校验成功
         SetPasswordViewController *setPassword = [SetPasswordViewController new];
-        setPassword.jumpType = @"1";
         setPassword.code = self.authCode;
         setPassword.mobilePhone = self.phoneNum;
         setPassword.serialNumber = self.serialNumber;
+        setPassword.finishblock = ^{
+            self.finishblock();
+        };
         [self.navigationController pushViewController:setPassword animated:YES];
     }];
 }

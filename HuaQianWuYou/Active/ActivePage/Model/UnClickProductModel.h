@@ -10,7 +10,7 @@
 @class ProductInfo;
 
 @interface UnClickProductModel : BaseModel
-@property(nonatomic,strong)NSArray<ProductInfo *> *productCategoryVO;
+//@property(nonatomic,strong)NSArray<ProductInfo *> *productCategoryVO;
 @end
 
 @interface ProductInfo : NSObject

@@ -29,6 +29,7 @@
     [super viewDidLoad];
     self.title = @"设置密码";
     self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor colorFromHexCode:@"#111111"]}];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupUI];
     // Do any additional setup after loading the view.
@@ -101,7 +102,7 @@
     }
     WeakObj(self);
     [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
-    [ChangePasswordModel changePasswordCode:self.code jumpType:self.jumpType passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
+    [ChangePasswordModel changePasswordCode:self.code passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
@@ -111,6 +112,7 @@
         if (result){
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationOK message:@"密码修改成功"];
             [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
+            self.finishblock();
             [self.navigationController popToRootViewControllerAnimated:YES];
         }  
     }];

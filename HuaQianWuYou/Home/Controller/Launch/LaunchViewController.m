@@ -73,27 +73,6 @@
 //            return;
 //        }
         self.defaultView.hidden = YES;
-        
-//        if (result) {
-//            if ([result.exampleCreditScore isEqualToString:@"88"]) {
-//                [BasicDataModel requestBasicData:AdvertisingTypeStartPage productId:nil sort:nil Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
-//                    if (error) {
-//                        return;
-//                    }
-//                    BasicDataModel *model = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
-//                    BasicDataInfo *info = model.AdvertisingVO;
-//                    if (info.productId == result.AdvertisingVO.productId && [info.imgUrl isEqualToString:result.AdvertisingVO.imgUrl] && info.sort == result.AdvertisingVO.sort) {
-//                         [[NSNotificationCenter defaultCenter] postNotificationName:KLoadingAdvertisement object:nil];
-//                    }else{
-//                        [[NSNotificationCenter defaultCenter] postNotificationName:KLoadingAdvertisement object:nil userInfo:@{@"imgUrl":result.AdvertisingVO.imgUrl}];
-//                    }
-//                        dispatch_async(dispatch_get_main_queue(), ^{
-//                            [BasicDataModel cacheToLoacl:result withType:AdvertisingTypeStartPage];
-//                        });
-//                }];
-//            }
-//        }
-//        
         if (self.accomplishBlock) {
         self.accomplishBlock(result.isOpen);
         }

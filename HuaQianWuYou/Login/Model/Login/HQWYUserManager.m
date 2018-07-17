@@ -52,7 +52,7 @@
 // 用户的手机号、token信息 采用3DES 进行加密
 - (void)storeNeedStoredUserInfomation:(HQWYUser *)userInfo {
     if (userInfo) {
-        [self storeUserMobilePhone:userInfo.mobilephone];
+        [self storeUserMobilePhone:userInfo.mobilePhone];
         [self setUserToken:userInfo.token];
        // [self dealUserApplicationIconBadgeNumber:userInfo];
         // Bugly设置用户标示

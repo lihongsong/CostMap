@@ -6,10 +6,11 @@
 //  Copyright © 2018年 2345. All rights reserved.
 //
 
+
 #import "HQWYJavaScriptBaseHandler.h"
 
 @protocol HQWYJavaScriptOpenNativeHandlerDelegate<NSObject>
-- (void)presentNative;
+- (void)presentNative:(loginFinshBlock)block;
 @end
 
 @interface HQWYJavaScriptOpenNativeHandler : HQWYJavaScriptBaseHandler

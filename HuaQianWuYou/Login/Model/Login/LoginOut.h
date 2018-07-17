@@ -9,5 +9,5 @@
 #import "BaseModel.h"
 
 @interface LoginOut : BaseModel
-
++ (NSURLSessionDataTask *)signOUT:(void (^)(id _Nullable, NSError * _Nullable))completion;
 @end
