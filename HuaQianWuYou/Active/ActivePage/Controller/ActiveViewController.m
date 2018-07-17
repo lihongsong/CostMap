@@ -34,6 +34,9 @@
 #import "HQWYUser+Service.h"
 #import "LoginOut.h"
 
+#import <HJ_UIKit/HJAlertView.h>
+#import <CoreLocation/CLLocationManager.h>
+
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
@@ -70,7 +73,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view
-    [self showPopView];
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Host]]];
    
@@ -148,7 +150,27 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.navigationView.delegate = self;
 }
 
--(void)initlocationService{
+-(void)initlocationService {
+    
+    WeakObj(self);
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        // 提示定位权限用途弹窗
+        [self eventId:HQWY_Location_Alert_click];
+        HJAlertView *alertView =
+        [[HJAlertView alloc] initWithTitle:@"请允许获取定位权限"
+                                   message:@"您的位置将被用来精准匹配贷款产品，并享受贷款优惠服务"
+                        confirmButtonTitle:@"我知道了" confirmBlock:^{
+                            StrongObj(self);
+                            [self startLocationService];
+                                   }];
+        [alertView show];
+    } else {
+        [self startLocationService];
+    }
+}
+
+- (void)startLocationService {
+    
     //初始化实例
     self.locationManager = [[BMKLocationManager alloc] init];
     

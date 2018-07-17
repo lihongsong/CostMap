@@ -15,7 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - AppUpdate (1.0.9)
-  - BMKLocationKit (1.2.1)
+  - BMKLocationKit (1.2.0)
   - Bugly (2.5.0)
   - Feedback (1.2.1):
     - Masonry
@@ -112,7 +112,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppUpdate: 1dca17a2783a99f32d7e184739e8fb16193600e7
-  BMKLocationKit: c0fd588904738a6865e9311ed445c38452039007
+  BMKLocationKit: 043a9eaf3767916a692708804324adcfe86e281d
   Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   Feedback: 2906898da5232308a0ebae3e773505c0784577cd
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82

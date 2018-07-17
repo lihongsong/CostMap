@@ -8,16 +8,30 @@
 
 #import "DeviceManager.h"
 #import "DeviceHelp.h"
+#import "LoginInfoModel.h"
+
 @implementation DeviceManager
+
++ (NSString *)ln_APIServer {
+    return @"http://t1-static.huaqianwy.com/mem";
+}
 
 + (void)sendDeviceinfo{
     
     NSDictionary *devInfo = [DeviceHelp collectDeviceInfo];
-    [self ln_requestAPI:Device_info parameters:devInfo success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        
-    } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
-        
-    }];
     
+    LoginUserInfoModel *userInfo = [LoginUserInfoModel cachedLoginModel];
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:devInfo
+                                                   options:NSJSONWritingPrettyPrinted
+                                                     error:nil];
+    
+    [self ln_requestJsonModelAPI:Device_info
+                         headers:@{@"Content-Type" : @"application/json",
+                                   @"phone": userInfo.mobile ?: @""}
+                        httpBody:data
+                      completion:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
+                          
+                      }];
 }
 @end
