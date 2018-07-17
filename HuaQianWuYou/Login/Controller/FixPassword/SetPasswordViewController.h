@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+typedef void (^FixPWDBlock)(void);
 
 @interface SetPasswordViewController : BaseViewController
 
@@ -20,7 +21,6 @@
 /* 业务流水号 */
 @property (nonatomic, strong) NSString  *serialNumber;
 
-
-
+@property(nonatomic,copy)FixPWDBlock finishblock;
 
 @end

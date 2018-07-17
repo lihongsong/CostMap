@@ -29,6 +29,7 @@
     [super viewDidLoad];
     self.title = @"设置密码";
     self.navigationController.navigationBar.translucent = NO;
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor colorFromHexCode:@"#111111"]}];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupUI];
     // Do any additional setup after loading the view.
@@ -111,6 +112,7 @@
         if (result){
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationOK message:@"密码修改成功"];
             [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
+            self.finishblock();
             [self.navigationController popToRootViewControllerAnimated:YES];
         }  
     }];

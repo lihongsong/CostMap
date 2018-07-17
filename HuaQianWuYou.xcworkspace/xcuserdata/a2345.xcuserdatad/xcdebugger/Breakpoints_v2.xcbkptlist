@@ -378,7 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/AppDelegate.m"
-            timestampString = "553427793.557475"
+            timestampString = "553485315.475177"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "48"
@@ -394,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-            timestampString = "553435659.165872"
+            timestampString = "553498715.5962321"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "47"
@@ -410,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-            timestampString = "553435659.165954"
+            timestampString = "553498715.5963"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
@@ -426,7 +426,7 @@
                   moduleName = "HuaQianWuYou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-                  timestampString = "553435659.5447069"
+                  timestampString = "553503914.1185549"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
@@ -441,7 +441,7 @@
                   moduleName = "HuaQianWuYou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-                  timestampString = "553435659.546376"
+                  timestampString = "553503914.1202331"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "50"
@@ -452,11 +452,11 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.150"
+                  symbolName = "__destroy_helper_block_.152"
                   moduleName = "HuaQianWuYou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-                  timestampString = "553435659.548023"
+                  timestampString = "553503914.1219"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "49"
@@ -473,7 +473,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-            timestampString = "553435659.166019"
+            timestampString = "553498715.596351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "51"
@@ -489,7 +489,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-            timestampString = "553435659.166079"
+            timestampString = "553498715.5963989"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -504,24 +504,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Expand/Network/RequestConfig/HQWYRequestConfig/NSObject+HQWYRequestConfig.m"
-            timestampString = "553434731.0180449"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "+ln_receiveResponseObject:task:error:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.145052"
+            timestampString = "553503913.776368"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "228"
@@ -537,7 +521,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.1454639"
+            timestampString = "553503913.776884"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "233"
@@ -553,39 +537,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/LNNetwork/LNNetwork/NSObject+LNNetworkCore.m"
-            timestampString = "553432437.10737"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
-            landmarkName = "+ln_requestAPI:method:headers:parameters:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/LNNetwork/LNNetwork/NSObject+LNNetworkCore.m"
-            timestampString = "553432437.107892"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "+ln_requestAPI:method:headers:parameters:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/LNNetwork/LNNetwork/NSObject+LNNetworkCore.m"
-            timestampString = "553432437.108237"
+            timestampString = "553500837.389967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "139"
@@ -601,7 +553,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/LNNetwork/LNNetwork/NSObject+LNNetworkCore.m"
-            timestampString = "553432437.108549"
+            timestampString = "553500837.390146"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "145"
@@ -617,108 +569,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/LNNetwork/LNNetwork/NSObject+LNNetworkCore.m"
-            timestampString = "553432437.108829"
+            timestampString = "553500837.390318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "192"
             endingLineNumber = "192"
             landmarkName = "+ln_requestJsonAPI:method:headers:httpBody:parameters:uploadProgress:downloadProgress:success:failure:"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Pods/LNNetwork/LNNetwork/NSObject+LNNetworkCore.m"
-            timestampString = "553432437.109107"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "+ln_requestJsonAPI:method:headers:httpBody:parameters:uploadProgress:downloadProgress:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/AppDelegate.m"
-            timestampString = "553427793.557909"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "-setUpViewControllerWithHighScoreWithRemoteNotificaton:launchOptions:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[AppDelegate setUpViewControllerWithHighScoreWithRemoteNotificaton:launchOptions:]"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/AppDelegate.m"
-                  timestampString = "553435659.586983"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "343">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__83-[AppDelegate setUpViewControllerWithHighScoreWithRemoteNotificaton:launchOptions:]_block_invoke"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/AppDelegate.m"
-                  timestampString = "553435659.5892839"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.203"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/AppDelegate.m"
-                  timestampString = "553435659.59166"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/AppDelegate.m"
-            timestampString = "553427793.557978"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "AppDelegate"
-            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -744,11 +601,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.146446"
+            timestampString = "553503913.777007"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
+            startingLineNumber = "440"
+            endingLineNumber = "440"
             landmarkName = "-getImageCode"
             landmarkType = "7">
          </BreakpointContent>
@@ -760,11 +617,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.146724"
+            timestampString = "553503913.777058"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "470"
-            endingLineNumber = "470"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "-getSMSCode"
             landmarkType = "7">
          </BreakpointContent>
@@ -776,11 +633,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.146865"
+            timestampString = "553503913.777105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "471"
-            endingLineNumber = "471"
+            startingLineNumber = "486"
+            endingLineNumber = "486"
             landmarkName = "-getSMSCode"
             landmarkType = "7">
          </BreakpointContent>
@@ -792,187 +649,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.146976"
+            timestampString = "553503913.777279"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "472"
-            endingLineNumber = "472"
+            startingLineNumber = "488"
+            endingLineNumber = "488"
             landmarkName = "-getSMSCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.147081"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "483"
-            endingLineNumber = "483"
-            landmarkName = "-getSMSCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.147166"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "475"
-            endingLineNumber = "475"
-            landmarkName = "-getSMSCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.147251"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "485"
-            endingLineNumber = "485"
-            landmarkName = "-getSMSCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-            timestampString = "553435659.166635"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "-registerHander"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.14741"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
-            landmarkName = "-getSMSCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.1475919"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "226"
-            endingLineNumber = "226"
-            landmarkName = "-requestLogin"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LoginAndRegisterViewController requestLogin]"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-                  timestampString = "553435659.648793"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "226"
-                  endingLineNumber = "226"
-                  offsetFromSymbolStart = "366">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__46-[LoginAndRegisterViewController requestLogin]_block_invoke"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-                  timestampString = "553435659.650964"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "227"
-                  endingLineNumber = "227"
-                  offsetFromSymbolStart = "78">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.334"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-                  timestampString = "553435659.653234"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "226"
-                  endingLineNumber = "226"
-                  offsetFromSymbolStart = "12">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Model/Login/HQWYUser+Service.m"
-            timestampString = "553427284.14772"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "+authenticationCodeLogin:mobile:serialNumber:registerType:Completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Model/Login/HQWYUser+Service.m"
-            timestampString = "553427284.147789"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "+authenticationCodeLogin:mobile:serialNumber:registerType:Completion:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -998,40 +680,8 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Model/Login/HQWYUser+Service.m"
-            timestampString = "553427284.1478781"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "+authenticationCodeLogin:mobile:serialNumber:registerType:Completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/FixPassword/SetPasswordViewController.m"
-            timestampString = "553435659.167182"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "105"
-            endingLineNumber = "105"
-            landmarkName = "-nextAction:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/FixPassword/SetPasswordViewController.m"
-            timestampString = "553435659.167246"
+            timestampString = "553503913.777449"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "106"
@@ -1046,188 +696,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
-            timestampString = "553435659.167303"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "-getSMSCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
-            timestampString = "553435659.167358"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "-getSMSCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
-            timestampString = "553435659.167408"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "-validatePhoneNum"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Model/Common/AuthCodeModel+Service.m"
-            timestampString = "553427284.148131"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "+validateSMSCode:mobilePhone:smsType:serialNumber:Completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Model/Common/AuthCodeModel+Service.m"
-            timestampString = "553427284.148177"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "+validateSMSCode:mobilePhone:smsType:serialNumber:Completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Model/Common/AuthCodeModel+Service.m"
-            timestampString = "553427284.148222"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "+validateSMSCode:mobilePhone:smsType:serialNumber:Completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
-            timestampString = "553435659.167528"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "-validatePhoneNum"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[AuthPhoneNumViewController validatePhoneNum]"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
-                  timestampString = "553435659.710966"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "174"
-                  endingLineNumber = "174"
-                  offsetFromSymbolStart = "117">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__46-[AuthPhoneNumViewController validatePhoneNum]_block_invoke"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
-                  timestampString = "553435659.712646"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "174"
-                  endingLineNumber = "174"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.280"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
-                  timestampString = "553435659.714483"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "174"
-                  endingLineNumber = "174"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
-            timestampString = "553435659.167582"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "150"
-            endingLineNumber = "150"
-            landmarkName = "-getSMSCode"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/FixPassword/SetPasswordViewController.m"
-            timestampString = "553435659.167634"
+            timestampString = "553503913.7777261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "-viewDidLoad"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "-nextAction:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1238,12 +713,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
-            timestampString = "553435659.167688"
+            timestampString = "553503913.7778161"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
-            landmarkName = "-validatePhoneNum"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "-getSMSCode"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1254,7 +729,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Model/FixPassword/ChangePasswordModel+Service.m"
-            timestampString = "553435659.1677361"
+            timestampString = "553435874.6477309"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "27"
@@ -1270,7 +745,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Model/FixPassword/ChangePasswordModel+Service.m"
-            timestampString = "553435659.167781"
+            timestampString = "553435874.6477751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -1286,7 +761,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Model/FixPassword/ChangePasswordModel+Service.m"
-            timestampString = "553435659.167825"
+            timestampString = "553435874.6478159"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "23"
@@ -1302,11 +777,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/FixPassword/SetPasswordViewController.m"
-            timestampString = "553435659.167868"
+            timestampString = "553503913.777909"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "104"
-            endingLineNumber = "104"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "-nextAction:"
             landmarkType = "7">
             <Locations>
@@ -1318,11 +793,11 @@
                   moduleName = "HuaQianWuYou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/FixPassword/SetPasswordViewController.m"
-                  timestampString = "553435659.743611"
+                  timestampString = "553503914.206362"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
                   offsetFromSymbolStart = "1067">
                </Location>
                <Location
@@ -1333,26 +808,503 @@
                   moduleName = "HuaQianWuYou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/FixPassword/SetPasswordViewController.m"
-                  timestampString = "553435659.745455"
+                  timestampString = "553503914.208217"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "105"
-                  endingLineNumber = "105"
+                  startingLineNumber = "106"
+                  endingLineNumber = "106"
                   offsetFromSymbolStart = "78">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.248"
+                  symbolName = "__destroy_helper_block_.264"
                   moduleName = "HuaQianWuYou"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/FixPassword/SetPasswordViewController.m"
-                  timestampString = "553435659.7471581"
+                  timestampString = "553503914.209963"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "104"
-                  endingLineNumber = "104"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ThirdPartWebVC.m"
+            timestampString = "553503913.778005"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "-uploadData:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ThirdPartWebVC uploadData:]"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/ActivePage/Controller/ThirdPartWebVC.m"
+                  timestampString = "553503914.220458"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "39">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__29-[ThirdPartWebVC uploadData:]_block_invoke"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/ActivePage/Controller/ThirdPartWebVC.m"
+                  timestampString = "553503914.2221299"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "83">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ThirdPartWebVC.m"
+            timestampString = "553503913.778186"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-initData"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ThirdPartWebVC.m"
+            timestampString = "553503913.7782331"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "-initData"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[ThirdPartWebVC initData]"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/ActivePage/Controller/ThirdPartWebVC.m"
+                  timestampString = "553503914.232919"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "437">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__26-[ThirdPartWebVC initData]_block_invoke"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/ActivePage/Controller/ThirdPartWebVC.m"
+                  timestampString = "553503914.235178"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/ActivePage/Controller/ThirdPartWebVC.m"
+                  timestampString = "553503914.237906"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "73"
+                  endingLineNumber = "73"
+                  offsetFromSymbolStart = "16">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Active/ActivePage/Model/UnClickProductModel+Service.m"
+            timestampString = "553487881.072842"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "+getUnClickProductList:mobilePhone:Completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+            timestampString = "553503913.778316"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "-requestLogin"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Active/HQWYJSHandler/HQWYJavaScriptOpenNativeHandler.m"
+            timestampString = "553498715.598652"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-didReceiveMessage:hander:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[HQWYJavaScriptOpenNativeHandler didReceiveMessage:hander:]"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/HQWYJSHandler/HQWYJavaScriptOpenNativeHandler.m"
+                  timestampString = "553503914.254535"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "32"
+                  endingLineNumber = "32"
+                  offsetFromSymbolStart = "457">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__60-[HQWYJavaScriptOpenNativeHandler didReceiveMessage:hander:]_block_invoke"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/HQWYJSHandler/HQWYJavaScriptOpenNativeHandler.m"
+                  timestampString = "553503914.256827"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/FixPassword/AuthPhoneNumViewController.m"
+            timestampString = "553503913.77844"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-backPage"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Active/ActivePage/Controller/HQWYBaseWebViewController.h"
+            timestampString = "553502366.187964"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+            timestampString = "553503913.779099"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "455"
+            endingLineNumber = "455"
+            landmarkName = "-validateImageCode:serialNumber:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+            timestampString = "553503913.779155"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "460"
+            endingLineNumber = "460"
+            landmarkName = "-validateImageCode:serialNumber:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+            timestampString = "553503913.779248"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "448"
+            endingLineNumber = "448"
+            landmarkName = "-validateImageCode:serialNumber:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+            timestampString = "553503913.77934"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
+            landmarkName = "-popImageCodeViewImageCodeStr:serialNumber:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/Common/ImageCodeViewController.m"
+            timestampString = "553501838.128621"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "-sureAction"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+            timestampString = "553503913.779439"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "450"
+            endingLineNumber = "450"
+            landmarkName = "-validateImageCode:serialNumber:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LoginAndRegisterViewController validateImageCode:serialNumber:]"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+                  timestampString = "553503914.2976609"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "450"
+                  endingLineNumber = "450"
+                  offsetFromSymbolStart = "270">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__65-[LoginAndRegisterViewController validateImageCode:serialNumber:]_block_invoke"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+                  timestampString = "553503914.299683"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "451"
+                  endingLineNumber = "451"
+                  offsetFromSymbolStart = "78">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.399"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+                  timestampString = "553503914.3019069"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "450"
+                  endingLineNumber = "450"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Model/Common/AuthCodeModel+Service.m"
+            timestampString = "553501906.401137"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "+validateImageCode:serialNumber:Completion:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+            timestampString = "553503913.779573"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "-requestLogin"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+            timestampString = "553503913.779623"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "-requestLogin"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[LoginAndRegisterViewController requestLogin]"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+                  timestampString = "553503914.3212841"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "247"
+                  endingLineNumber = "247"
+                  offsetFromSymbolStart = "1123">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__46-[LoginAndRegisterViewController requestLogin]_block_invoke.343"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+                  timestampString = "553503914.323296"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "248"
+                  endingLineNumber = "248"
+                  offsetFromSymbolStart = "78">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__destroy_helper_block_.349"
+                  moduleName = "HuaQianWuYou"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+                  timestampString = "553503914.325533"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "247"
+                  endingLineNumber = "247"
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
@@ -1365,12 +1317,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
-            timestampString = "553427284.148713"
+            timestampString = "553503913.779673"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
-            landmarkName = "-getSMSCode"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "-requestLogin"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1380,283 +1332,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Expand/Network/RequestConfig/HQWYRequestConfig/NSObject+HQWYRequestConfig.m"
-            timestampString = "553434731.0199569"
+            filePath = "HuaQianWuYou/Login/Controller/Login/LoginAndRegisterViewController..m"
+            timestampString = "553503913.779721"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "+ln_receiveResponseObject:task:error:success:failure:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-            timestampString = "553435659.167969"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "417"
-            endingLineNumber = "417"
-            landmarkName = "-loginOut:"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[ActiveViewController loginOut:]"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-                  timestampString = "553435659.760358"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "417"
-                  endingLineNumber = "417"
-                  offsetFromSymbolStart = "158">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__33-[ActiveViewController loginOut:]_block_invoke"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-                  timestampString = "553435659.762408"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "417"
-                  endingLineNumber = "417"
-                  offsetFromSymbolStart = "19">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.524"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-                  timestampString = "553435659.764201"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "417"
-                  endingLineNumber = "417"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-            timestampString = "553435659.168384"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "415"
-            endingLineNumber = "415"
-            landmarkName = "-loginOut:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-            timestampString = "553435659.168726"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "426"
-            endingLineNumber = "426"
-            landmarkName = "-loginOut:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-            timestampString = "553435659.169053"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "420"
-            endingLineNumber = "420"
-            landmarkName = "-loginOut:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Active/ActivePage/Controller/ActiveViewController.m"
-            timestampString = "553435659.16936"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
-            landmarkName = "-loginOut:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-            timestampString = "553435659.169574"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "-showLanuchPageModel"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[HQWYLaunchManager showLanuchPageModel]"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-                  timestampString = "553435659.785238"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "182">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__40-[HQWYLaunchManager showLanuchPageModel]_block_invoke"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-                  timestampString = "553435659.786925"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "78">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_"
-                  moduleName = "HuaQianWuYou"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a2345/Desktop/%E8%BF%98%E9%92%B1%E6%97%A0%E5%BF%A7Git/%E8%8A%B1%E9%92%B1%E6%97%A0%E5%BF%A72.0/iOS_HJHQWY/HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-                  timestampString = "553435659.788725"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "17">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-            timestampString = "553435659.169639"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "-showLanuchPageModel"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Home/Model/Launch/HQWYLaunchManager.m"
-            timestampString = "553435659.169699"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
-            landmarkName = "-showLanuchPageModel"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Home/Model/Launch/BasicDataModel+Service.m"
-            timestampString = "553435659.169758"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "+requestBasicData:productId:sort:Completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Home/Model/Launch/BasicDataModel+Service.m"
-            timestampString = "553435659.169807"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "+requestBasicData:productId:sort:Completion:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HuaQianWuYou/Home/Model/Launch/BasicDataModel+Service.m"
-            timestampString = "553435659.169853"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "+requestBasicData:productId:sort:Completion:"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "-requestLogin"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
