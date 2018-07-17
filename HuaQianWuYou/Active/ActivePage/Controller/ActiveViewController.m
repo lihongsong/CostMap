@@ -139,6 +139,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     WeakObj(self);
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        // 提示定位权限用途弹窗
+        [self eventId:HQWY_Location_Alert_click];
         HJAlertView *alertView =
         [[HJAlertView alloc] initWithTitle:@"请允许获取定位权限"
                                    message:@"您的位置将被用来精准匹配贷款产品，并享受贷款优惠服务"
