@@ -14,7 +14,7 @@
     return HQWY_PRODUCT_PATH;
 }
 
-+ (NSURLSessionDataTask *_Nullable)getUnClickProductList:(NSNumber *)category mobilePhone:(NSString*)mobilePhone Completion:(nullable void (^)(UnClickProductModel * _Nullable, NSError * _Nullable))completion{
++ (NSURLSessionDataTask *_Nullable)getUnClickProductList:(NSNumber *)category mobilePhone:(NSString*)mobilePhone Completion:(nullable void (^)(NSArray * _Nullable, NSError * _Nullable))completion{
     NSMutableDictionary *params = [@{} mutableCopy];
     [params setValue:mobilePhone forKey:@"mobilePhone"];
     [params setValue:category forKey:@"category"];
