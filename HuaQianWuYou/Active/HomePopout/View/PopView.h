@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^actionBlock)(void);
+typedef void(^actionBlock)(BOOL isClose);
 @interface PopView : UIView
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
 

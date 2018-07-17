@@ -37,6 +37,7 @@
 #endif
 
 // TalkingDataAppCpa
+//FIXME:v2.0 id 需要产品给
 #define TalkingDataAppCpa_AppId       @"2FC9A30BE32A429B882B634013718E1B"
 
 //意见反馈
@@ -45,5 +46,13 @@
 
 //公共强制升级SDK
 #define Update_SDK_AppId @"bd5d7524662dbbaeb0de4621469e18d9"
+
+#if defined (DEBUG)
+#define Bugly_AppIdDebug @"5a71ccc8-3006-4e7f-a51f-1b14eb941f7f"
+#else
+#define Bugly_AppId @"0f87d85-3a93-4596-b60f-5b6e77685175"
+#endif
+
+
 
 #endif /* ThirdPartKeyDefine_h */

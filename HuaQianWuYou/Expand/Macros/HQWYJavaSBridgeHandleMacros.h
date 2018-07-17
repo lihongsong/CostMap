@@ -74,6 +74,11 @@ static NSString * const kAppGetMobilephone = @"appGetMobilephone";
 static NSString * const kAppIsLogin = @"appIsLogin";
 
 /*!
+ 获取用户需要登录
+ */
+static NSString * const kAppNeedLogin = @"appNeedUserLogin";
+
+/*!
  获取设备类型 (iOS/Android)
  */
 static NSString * const kAppGetDeviceType = @"appGetDeviceType";
@@ -121,7 +126,13 @@ static NSString * const kWebViewDidDisappear = @"webViewDidDisappear";
 /*!
  H5获取城市
  */
-static NSString * const kAppGetCity = @"appGetCity";
+static NSString * const kAppGetLocationCity = @"appGetLocationCity";
+
+
+/*!
+ H5调用定位
+ */
+static NSString * const kAppExecLocation = @"appExecLocation";
 
 /*!
  获取导航栏样式
@@ -135,8 +146,11 @@ static NSString * const kAppCheckUpdate = @"appCheckUpdate";
 
 /*!
  安全退出
- */
+ */ 
 static NSString * const kAppExecLogout = @"appExecLogout";
 
-
+/*!
+  打开意见反馈SDK
+ */
+static NSString * const kAppOpenSDK = @"appOpenFeedback";
 #endif /* HQWYJavaSBridgeHandleMacros_h */

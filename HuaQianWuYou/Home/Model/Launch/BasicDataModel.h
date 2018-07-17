@@ -7,44 +7,32 @@
 //
 
 #import "BaseModel.h"
-#import "BasicDataProtocol.h"
+#import "HQWYActionHandlerProtocol.h"
 typedef NS_ENUM(NSInteger, AdvertisingType) {
-    AdvertisingTypeStartPage,//启动图
-    AdvertisingTypeAlert,//弹窗
-    AdvertisingTypeSuspensionWindow //悬浮窗
+    AdvertisingTypeStartPage = 18,//启动图
+    AdvertisingTypeAlert = 20,//弹窗
+    AdvertisingTypeSuspensionWindow = 21 //悬浮窗
 };
 
-@interface BasicDataInfo:NSObject<BasicDataProtocol>
-
 NS_ASSUME_NONNULL_BEGIN
-/************************************************************************************
- ************************************************************************************/
+@interface BasicDataModel : NSObject<HQWYActionHandlerProtocol>
 /* type=2 有值 H5跳转页面地址 */
 @property (nonatomic, copy) NSString  *address;
 
 /* 广告图片存储路径 */
 @property (nonatomic, copy) NSString  *imgUrl;
-    
+
 /* 产品名称 */
-@property (nonatomic, copy) NSString  *description;
-    
+@property (nonatomic, copy) NSString  *productName;
+
 /* 产品id */
 @property (nonatomic, strong) NSNumber  *productId;
-    
+
 /* 产品分类中的排序 */
 @property (nonatomic, strong) NSNumber   *sort;
-    
+
 /* 1：请求分类列表 2：请求H5页面 */
 @property (nonatomic, strong) NSNumber   *type;
-
-NS_ASSUME_NONNULL_END
-
-@end
-
-NS_ASSUME_NONNULL_BEGIN
-@interface BasicDataModel : NSObject
-@property(nonatomic, strong) BasicDataInfo *AdvertisingVO;
-@property(nonatomic,strong)NSNumber *versionStamp;
 
 + (void)cacheToLoacl:(BasicDataModel *)model withType:(AdvertisingType)type;
 

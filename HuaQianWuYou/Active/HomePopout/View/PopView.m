@@ -31,12 +31,15 @@
 # pragma mark 关闭
 
 - (void)closeAction{
+    if (self.block != nil) {
+        self.block(true);
+    }
     [self removeFromSuperview];
 }
 
 - (void)tapContentImageViewAction{
     if (self.block != nil) {
-        self.block();
+        self.block(false);
     }
     [self removeFromSuperview];
 }

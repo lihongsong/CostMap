@@ -7,34 +7,32 @@
 //
 
 #import "HQWYJavaScriptGetAjaxHeaderHandler.h"
-
+#import <RCMobClick/RCBaseCommon.h>
+#import "NSString+cityInfos.h"
 @implementation HQWYJavaScriptGetAjaxHeaderHandler
 - (NSString *)handlerName {
     return kAppGetAjaxHeader;
 }
 
 - (void)didReceiveMessage:(id)message hander:(HJResponseCallback)hander {
-    /*
-    NSString *pid = @(LNProductIDJKDSZD).stringValue;
-    NSString *uid = [RCBaseCommon getUIDString]?:@"";
-    NSString *channel = AppChannel;
-    NSString *os = @"iOS";
-    NSString *token = HQWYUserStatusSharedManager.token?:@"";
-    NSString *version = [UIDevice hj_appVersion]?:@"";
-    NSString *useid = HQWYUserStatusSharedManager.userBaseInfo.userId?:@"";
-    
+    AFHTTPRequestSerializer *requestSerializer = [AFHTTPRequestSerializer new];
+    NSString *userAgent = [requestSerializer.HTTPRequestHeaders objectForKey:@"User-Agent"];
+    userAgent = [userAgent stringByAppendingString:[RCBaseCommon getUIDString]];
+    NSString *token = HQWYUserManager.sharedInstance.userToken?:@"";
+    NSString *version = [RCBaseCommon getAppReleaseVersionString]?:@"";
+    NSString *cityId = GetUserDefault(@"locationCity");
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    [param setValue:uid forKey:@"uid"];
-    [param setValue:channel forKey:@"channel"];
-    [param setValue:os forKey:@"os"];
-    [param setValue:pid forKey:@"pid"];
-    [param setValue:useid forKey:@"userId"];
+    [param setValue:APP_ChannelId forKey:@"channel"];
+    [param setValue:cityId forKey:@"city"];
+    [param setValue:@"iOS" forKey:@"os"];
+    [param setValue:userAgent forKey:@"UserAgent"];
+    [param setValue:[RCBaseCommon getBundleIdentifier] forKey:@"packageName"];
     [param setValue:token forKey:@"token"];
     [param setValue:version forKey:@"version"];
-    [param setValue:@"apple" forKey:@"manufacture"];
-    [param setValue:[UIDevice hj_manufacture] forKey:@"operators"];
+    [param setValue:@"hqwyios" forKey:@"terminalId"];
+    [param setValue:[RCBaseCommon getIdfaString] forKey:@"deviceNo"];
     
-    !hander?:hander([JKJavaScriptResponse result:param]);
-     */
+    !hander?:hander([HQWYJavaScriptResponse result:param]);
+     
 }
 @end
