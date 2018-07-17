@@ -18,6 +18,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController.navigationBar.hidden = true;
+    self.backButtonItem = nil;
+    self.closeButtonItem = nil;
+    self.customHeaderView = nil;
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 
 //自定义导航栏

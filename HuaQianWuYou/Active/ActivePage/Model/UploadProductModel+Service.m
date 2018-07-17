@@ -11,7 +11,7 @@
 @implementation UploadProductModel (Service)
 
 + (NSString *)ln_APIServer {
-    return HQWY_HOST_PATH;
+    return HQWY_PRODUCT_PATH;
 }
 
 + (NSURLSessionDataTask *_Nullable)uploadProduct:(NSNumber *)category mobilePhone:(NSString*)mobilePhone productID:(NSNumber *)productId Completion:(nullable void (^)(UploadProductModel * _Nullable, NSError * _Nullable))completion{

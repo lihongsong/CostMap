@@ -28,8 +28,10 @@
     NSString *pageId = dic[@"pageId"];
 
     if ([pageId integerValue] == 2) {
-        if ([self.delegate respondsToSelector:@selector(presentNative)]) {
-            [self.delegate presentNative];
+        if ([self.delegate respondsToSelector:@selector(presentNative:)]) {
+            [self.delegate presentNative:^{
+                
+            }];
         }
     }else if([pageId integerValue] == 3){
         

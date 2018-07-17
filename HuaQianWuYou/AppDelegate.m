@@ -117,6 +117,7 @@
     HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
     launchManager.guideVC = launchVC;
     [launchManager showLanuchPageModel];
+
 }
 
 - (void)launchButtonClick {

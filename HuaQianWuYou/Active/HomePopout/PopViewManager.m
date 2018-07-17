@@ -1,4 +1,4 @@
-//
+ //
 //  PopViewManager.m
 //  HuaQianWuYou
 //
@@ -47,24 +47,23 @@
 
 + (void)showType:(AdvertisingType)type contentModel:(BasicDataModel*)model fromVC:(UIViewController *)controller{
     PopViewManager *manage = [PopViewManager sharedInstance];
-    if (model == nil || model.AdvertisingVO == nil) {
+    if (model == nil) {
         return;
     }
-    [PopViewManager cacheToLoacl:model withType:type];
     switch (type) {
         case AdvertisingTypeAlert:
             if (controller) {
                 manage.popView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.5f];
-                [manage.popView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.AdvertisingVO.imgUrl] placeholderImage:nil];
+                [manage.popView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:nil];
                 WeakObj(manage);
                 manage.popView.block = ^(BOOL isClose){
                     if (isClose) {
                         [self eventId:HQWY_Home_AdvertiseClose_click];
                     }else{
                     StrongObj(manage);
-                    [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_Home_Advertisement_click,model.AdvertisingVO.productId]];
-                    if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContentUrl:popType:)]) {
-                        [manage.delegate didSelectedContentUrl:model.AdvertisingVO.address popType:type];
+                    [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_Home_Advertisement_click,model.productId]];
+                    if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContent:popType:)]) {
+                        [manage.delegate didSelectedContent:model popType:type];
                     }
                     }
                 };
@@ -80,16 +79,16 @@
                     make.height.mas_equalTo(80);
                     make.width.mas_equalTo(80);
                 }];
-                [manage.suspendView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.AdvertisingVO.imgUrl] placeholderImage:nil];
+                [manage.suspendView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:nil];
                 WeakObj(manage);
                 manage.suspendView.block = ^(BOOL isClose){
                     if (isClose) {
                         [self eventId:HQWY_Home_AdverAlertClose_click];
                     }else{
                     StrongObj(manage);
-                    [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_Home_AdverAlert_click,model.AdvertisingVO.productId]];
-                    if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContentUrl:popType:)]) {
-                        [manage.delegate didSelectedContentUrl:model.AdvertisingVO.address popType:type];
+                    [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_Home_AdverAlert_click,model.productId]];
+                    if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContent:popType:)]) {
+                        [manage.delegate didSelectedContent:model popType:type];
                     }
                     }
                 };
@@ -102,24 +101,27 @@
 
 # pragma mark 弹框数据显示逻辑
 + (void)requstDataType:(AdvertisingType)type fromVC:(UIViewController *)controller{
-    BasicDataModel *model = [PopViewManager getCacheModel:type];
-    [BasicDataModel requestBasicData:type productId:model.AdvertisingVO.productId sort:model.AdvertisingVO.sort Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
+    BasicDataModel *model = [BasicDataModel getCacheModel:type];
+    [BasicDataModel requestBasicData:type productId:model.productId sort:model.sort Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
+        if (error) {
+            return;
+        }
         [PopViewManager showType:type contentModel:result fromVC:controller];
     }];
     
 }
 
-+ (void)cacheToLoacl:(BasicDataModel *)model withType:(AdvertisingType)type{
-    NSData *jsonData = [model yy_modelToJSONData];
-    NSString  *cacheKey = [NSString stringWithFormat:@"dataList%ld",(long)type];
-    UserDefaultSetObj(jsonData, cacheKey);
-}
-
-+ (BasicDataModel *)getCacheModel:(AdvertisingType)type{
-    NSString  *cacheKey = [NSString stringWithFormat:@"dataList%ld",(long)type];
-    NSData *jsonData = UserDefaultGetObj(cacheKey);
-    return  [BasicDataModel yy_modelWithJSON:jsonData];
-}
+//+ (void)cacheToLoacl:(BasicDataModel *)model withType:(AdvertisingType)type{
+//    NSData *jsonData = [model yy_modelToJSONData];
+//    NSString  *cacheKey = [NSString stringWithFormat:@"dataList%ld",(long)type];
+//    UserDefaultSetObj(jsonData, cacheKey);
+//}
+//
+//+ (BasicDataModel *)getCacheModel:(AdvertisingType)type{
+//    NSString  *cacheKey = [NSString stringWithFormat:@"dataList%ld",(long)type];
+//    NSData *jsonData = UserDefaultGetObj(cacheKey);
+//    return  [BasicDataModel yy_modelWithJSON:jsonData];
+//}
 
 
 
