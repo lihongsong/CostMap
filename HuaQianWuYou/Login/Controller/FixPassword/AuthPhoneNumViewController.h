@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void (^FixPWDBlock)(void);
 //typedef NS_ENUM(NSInteger,PopControllerType) {
 //    PopControllerTypeLogin = 21;
 //    
 //};
 
 @interface AuthPhoneNumViewController : BaseViewController
-
+@property(nonatomic,copy)FixPWDBlock finishblock;
 @end

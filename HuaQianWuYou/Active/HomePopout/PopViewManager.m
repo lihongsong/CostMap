@@ -62,8 +62,8 @@
                     }else{
                     StrongObj(manage);
                     [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_Home_Advertisement_click,model.productId]];
-                    if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContentUrl:popType:)]) {
-                        [manage.delegate didSelectedContentUrl:model.address popType:type];
+                    if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContent:popType:)]) {
+                        [manage.delegate didSelectedContent:model popType:type];
                     }
                     }
                 };
@@ -87,8 +87,8 @@
                     }else{
                     StrongObj(manage);
                     [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_Home_AdverAlert_click,model.productId]];
-                    if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContentUrl:popType:)]) {
-                        [manage.delegate didSelectedContentUrl:model.address popType:type];
+                    if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContent:popType:)]) {
+                        [manage.delegate didSelectedContent:model popType:type];
                     }
                     }
                 };

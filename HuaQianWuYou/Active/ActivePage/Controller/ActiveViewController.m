@@ -113,14 +113,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 //弹框代理方法
-- (void)didSelectedContentUrl:(NSString *)url popType:(AdvertisingType)type{
+- (void)didSelectedContent:(BasicDataModel *)dataModel popType:(AdvertisingType)type{
     if ([HQWYUserManager hasAlreadyLoggedIn]) {
         ThirdPartWebVC *webView = [ThirdPartWebVC new];
-        webView.navigationDic = @{@"backKeyHide":@"0"};
-        [webView loadURLString:url];
+        webView.navigationDic = @{@"backKeyHide":@"0",@"category":[NSString stringWithFormat:@"%ld",(long)type],@"needBackDialog":@"0",@"productId":dataModel.productId};
+        [webView loadURLString:dataModel.address];
         [self.navigationController pushViewController:webView animated:true];
     }else{
-        [self presentNative];
+        [self presentNative:^{
+            
+        }];
     }
 }
 
@@ -197,7 +199,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     /*退出登录 */
     [_manager registerHandler:kAppExecLogout handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         [self loginOut:^(BOOL isOut) {
-            ResponseCallback([NSNumber numberWithBool:isOut]);
+            NSString *result = [NSString stringWithFormat:@"%d",isOut]; ResponseCallback([HQWYJavaScriptResponse result:result]);
         }];
     }];
     
@@ -230,8 +232,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        NSString *phone = HQWYUserSharedManager.userInfo.mobilephone;
-        ResponseCallback([HQWYJavaScriptResponse result:phone]);
+        ResponseCallback([HQWYJavaScriptResponse result:[HQWYUserManager loginMobilePhone]]);
     }];
     
     /** 注册获取用户是否登录事件 */
@@ -239,6 +240,20 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         NSString *isLogin = @([HQWYUserManager hasAlreadyLoggedIn]).stringValue;
         ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
     }];
+    
+    /** 获取用户需要登录事件 */
+    [_manager registerHandler:kAppNeedLogin handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSString *isLogin = @([HQWYUserManager hasAlreadyLoggedIn]).stringValue;
+        if ([HQWYUserManager hasAlreadyLoggedIn]) {
+        ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
+        }else{
+            [self presentNative:^{
+        ResponseCallback([HQWYJavaScriptResponse result:@1]);
+            }];
+        }
+    }];
+    
+    
     
     /** 注册获取设备类型事件 */
     [_manager registerHandler:kAppGetDeviceType handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -404,10 +419,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 #pragma mark 登录
-- (void)presentNative{
+- (void)presentNative:(loginFinshBlock)block{
     LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
     loginVc.forgetBlock = ^{
-        [self changePasswordAction];
+        [self changePasswordAction:^{
+             block();
+        }];
+    };
+    loginVc.loginBlock = ^{
+        block();
     };
     [self presentViewController:loginVc animated:true completion:^{
 
@@ -415,8 +435,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 # pragma mark 跳修改密码
-- (void)changePasswordAction{
+- (void)changePasswordAction:(SignFinishBlock)fixBlock{
     AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new]; self.navigationController.navigationBar.hidden = false;
+    authPhoneNumVC.finishblock = ^{
+        fixBlock();
+    };
     [self.navigationController pushViewController:authPhoneNumVC animated:true];
 }
 
@@ -429,13 +452,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
-        NSLog(@"_____%@",result);
-        if ((BOOL)result) {
-            [HQWYUserSharedManager deleteUserInfo];
-            outBlock(true);
-            return;
-        }
-        outBlock(false);
+        [HQWYUserSharedManager deleteUserInfo];
+        outBlock(true);
+        return;
     }];
 }
 @end
