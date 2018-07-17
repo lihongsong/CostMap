@@ -34,11 +34,12 @@
 
 #import "HQWYWebViewURLDebugMacros.h"
 
-#define Active_Host  @"http://t1-static.huaqianwy.com/hqwy/dist/#/home"
+#define Active_Host  @"http://172.17.16.79:8088/#/home"
 //http://172.17.16.79:8088/#/home
 //http://172.17.106.138:8088/#/citylist
 //http://t1-static.huaqianwy.com/hqwy/dist/#/home
 //http://www.baidu.com
+//http://t1-static.huaqianwy.com/hqwy/dist/#/home
 #else
 
 #import "HQWYWebViewURLReleaseMacros.h"

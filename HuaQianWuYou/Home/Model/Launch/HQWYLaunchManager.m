@@ -19,17 +19,21 @@
 {
     __block BOOL getFromNet = NO;
    self.launchModel = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
-    [BasicDataModel requestBasicData:AdvertisingTypeStartPage productId:self.launchModel.AdvertisingVO.productId sort:self.launchModel.AdvertisingVO.sort Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
+    [BasicDataModel requestBasicData:AdvertisingTypeStartPage productId:self.launchModel.productId sort:self.launchModel.sort Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
+            [HJGuidePageWindow dismiss];
             return ;
         }
         BasicDataModel *lanuchPageModel = result;
-        if (ObjIsNilOrNull(lanuchPageModel)||ObjIsNilOrNull(lanuchPageModel.AdvertisingVO)) {// 空对象为什么还会有值？
+        if (ObjIsNilOrNull(lanuchPageModel)) {// 空对象为什么还会有值？
+            [HJGuidePageWindow dismiss];
             return;
         }else{
             getFromNet = YES;
             self.launchModel = lanuchPageModel;
+            [self showCustomLaunchImage];
             [BasicDataModel cacheToLoacl:self.launchModel withType:AdvertisingTypeStartPage];
+            return;
         }
     }];
     
@@ -46,9 +50,9 @@
 {
             self.guideVC.setTimer(3,0, @"s跳过",NO);
             WeakObj(self)
-    self.guideVC.setBackGroundImage(self.launchModel.AdvertisingVO.imgUrl, YES, NO, ^{
+    self.guideVC.setBackGroundImage(self.launchModel.imgUrl, YES, NO, ^{
                 StrongObj(self)
-                [HQWYActionHandler handleWithActionModel:self.launchModel.AdvertisingVO];
+                [HQWYActionHandler handleWithActionModel:self.launchModel];
                     [HJGuidePageWindow dismiss];
             });
             [self.guideVC reloadData];
