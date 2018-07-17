@@ -10,10 +10,14 @@
 
 @implementation BasicDataModel (Service)
 
+    + (NSString *)ln_APIServer {
+        return HQWY_PRODUCT_PATH;
+    }
+
     +(NSURLSessionDataTask *)requestBasicData:(AdvertisingType)type productId:(NSNumber *)productId sort:(NSNumber *)sort Completion:(void (^)(BasicDataModel * _Nullable, NSError * _Nullable))completion{
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-        [dict setValue:@(type) forKey:@"category"];
+        [dict setValue:[NSNumber numberWithInt:type] forKey:@"category"];
         [dict setValue:productId forKey:@"pId"];
         [dict setValue:sort forKey:@"sort"];
         NSURLSessionDataTask *task = [self ln_requestModelAPI:AdvertisingInfo
@@ -22,7 +26,7 @@
                                                    completion:^(id _Nonnull responseObject, NSError *_Nonnull error) {
                                                        completion(responseObject, error);
                                                        BasicDataModel *_Nullable dataModel = (BasicDataModel *_Nullable)responseObject;
-                                                       if (ObjIsNilOrNull(dataModel)  || ObjIsNilOrNull(dataModel.versionStamp)|| ObjIsNilOrNull(dataModel.AdvertisingVO)) {
+                                                       if (ObjIsNilOrNull(dataModel) || ObjIsNilOrNull(dataModel.AdvertisingVO)) {
                                                        }else{
                                                            if (type == AdvertisingTypeAlert) {
                                                                dispatch_async(dispatch_get_main_queue(), ^{

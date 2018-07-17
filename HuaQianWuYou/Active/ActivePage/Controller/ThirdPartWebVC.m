@@ -9,18 +9,25 @@
 #import "ThirdPartWebVC.h"
 #import "HQWYJavaScriptResponse.h"
 #import "HQWYReturnToDetainView.h"
+#import "UnClickProductModel.h"
+#import "UnClickProductModel+Service.h"
+#import "UploadProductModel.h"
+#import "UploadProductModel+Service.h"
+
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
-@interface ThirdPartWebVC ()<NavigationViewDelegate,HQWYReturnToDetainViewDelegate>
+@interface ThirdPartWebVC ()<NavigationViewDelegate,HQWYReturnToDetainViewDelegate,WKNavigationDelegate,WKUIDelegate>
 /**
  桥接管理器
  */
 @property (strong, nonatomic) HJJSBridgeManager *manager;
 @property(nonatomic,strong)NSTimer *timer;
 @property(nonatomic,assign)NSInteger countTime;
+@property(nonatomic,strong)UnClickProductModel *listModel;
+@property(nonatomic,assign)NSInteger productIndex;
 @end
 
 @implementation ThirdPartWebVC
@@ -34,7 +41,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
+    [self uploadData:self.navigationDic[@"productId"]];
+    [self initData];
+    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
     
+}
+
+#pragma mark 上报数据
+- (void)uploadData:(NSNumber *)productId {
+    [UploadProductModel uploadProduct:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] productID:productId Completion:^(UploadProductModel * _Nullable result, NSError * _Nullable error) {
+        
+    }];
 }
 
 //自定义导航栏
@@ -42,10 +59,27 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
     [self.view addSubview:navigationView];
     navigationView.delegate = self;
-    [navigationView changeNavigationType:self.navigationDic];
+    [navigationView changeNavigationType:self.navigationDic[@"nav"]];
+}
+
+- (void)initData{
+    if ([self.navigationDic[@"needBackDialog"] integerValue]) {
+        WeakObj(self);
+        [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
+        self.productIndex = 0;
+        [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(UnClickProductModel * _Nullable result, NSError * _Nullable error) {
+            [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+            StrongObj(self);
+            if (error) {
+                return;
+            }
+            self.listModel = result;
+        }];
+    }
 }
 
 -(void)rightButtonItemClick{
+    [self eventId:HQWY_ThirdPart_Back_click];
     [self toBeforeViewController];
     if (!StrIsEmpty([[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"])) {
         [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
@@ -60,22 +94,26 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma leftItemDelegate
 - (void)webGoBack{
-    if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
-        [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-            if (!error) { // 成功
-                NSLog(@"%@",response);
-            } else { // 失败
-                NSLog(@"%@",error.localizedDescription);
-            }
-        }];
-    }
-    if ([GetUserDefault(@"isShowPromptToday") isEqualToString:[self getToday]]) {
-        self.countTime = 3;
-        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
-        [HQWYReturnToDetainView showController:self];
-        [HQWYReturnToDetainView countTime:@"3"];
+    if ([self.navigationDic[@"needBackDialog"] integerValue]) {
+        if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
+            [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                if (!error) { // 成功
+                    NSLog(@"%@",response);
+                } else { // 失败
+                    NSLog(@"%@",error.localizedDescription);
+                }
+            }];
+        }
+        if ([GetUserDefault(@"isShowPromptToday") isEqualToString:[self getToday]]) {
+            self.countTime = 3;
+            self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
+            [HQWYReturnToDetainView showController:self];
+            [HQWYReturnToDetainView countTime:@"3"];
+        }else{
+            [self toBeforeViewController];
+        }
     }else{
-        [self toBeforeViewController];
+         [self toBeforeViewController];
     }
 }
 
@@ -96,12 +134,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.countTime = 3;
         [self.timer invalidate];
         self.timer = nil;
-        [self loadURLString:@"http://www.baidu.com"];
-      
+        ProductInfo *product = self.listModel.productCategoryVO[self.productIndex];
+        [self loadURLString:product.address];
+        [self uploadData:product.id];
+        self.productIndex ++;
     }else{
         [HQWYReturnToDetainView countTime:[NSString stringWithFormat:@"%ld",(long)self.countTime]];
     }
-    
 }
 
 - (void)dealloc {
@@ -163,5 +202,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (NSString *)getToday{
     return [NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"];
 }
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+}
+
+
 
 @end

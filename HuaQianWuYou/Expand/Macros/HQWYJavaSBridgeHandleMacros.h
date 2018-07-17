@@ -121,7 +121,13 @@ static NSString * const kWebViewDidDisappear = @"webViewDidDisappear";
 /*!
  H5获取城市
  */
-static NSString * const kAppGetCity = @"appGetCity";
+static NSString * const kAppGetLocationCity = @"appGetLocationCity";
+
+
+/*!
+ H5调用定位
+ */
+static NSString * const kAppExecLocation = @"appExecLocation";
 
 /*!
  获取导航栏样式
@@ -135,8 +141,11 @@ static NSString * const kAppCheckUpdate = @"appCheckUpdate";
 
 /*!
  安全退出
- */
+ */ 
 static NSString * const kAppExecLogout = @"appExecLogout";
 
-
+/*!
+  打开意见反馈SDK
+ */
+static NSString * const kAppOpenSDK = @"appOpenFeedback";
 #endif /* HQWYJavaSBridgeHandleMacros_h */

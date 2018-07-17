@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "MainTabBarViewController.h"
-#import "HJGuidePage.h"
 #import "HQWYUtilitiesDefine.h"
 #import "HQWYThirdPartKeyDefine.h"
 #import "DeviceHelp.h"
@@ -20,8 +19,13 @@
 #import "FBManager.h"
 #import "TalkingData.h"
 #import "TalkingDataAppCpa.h"
+#import <Bugly/Bugly.h>
+#import "HQWYLaunchManager.h"
+#import "HJGuidePageWindow.h"
 
-@interface AppDelegate ()
+#import <BMKLocationKit/BMKLocationAuth.h>
+
+@interface AppDelegate ()<BMKLocationAuthDelegate,BuglyDelegate>
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
 @property(nonatomic,strong)HJGuidePageViewController *launchVc;
 @end
@@ -31,14 +35,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    //移动武林榜
-    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
-    /** TalkingData */
-    [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
-    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
     [self setUpSDKs];
-    
+
+    // 百度定位 3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB
+    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:Baidu_AppKey authDelegate:self];
+    //FIXME:review 在这里weakSelf 最好放在block上面吧
     WeakObj(self);
+
+    //FIXME:review 注册三方SDK相关的，统一放到一个方法里吧
     [self registerAppUpdate];
     //    /** 通过通知栏调起APP处理通知信息 */
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
@@ -48,23 +52,25 @@
     LaunchViewController *launchVC = [LaunchViewController new];
     self.window.rootViewController = launchVC;
     [self.window makeKeyAndVisible];
-    launchVC.accomplishBlock = ^(NSString *exampleCreditScore) {
+    launchVC.accomplishBlock = ^(BOOL isOpen) {
         StrongObj(self);
-        if ([exampleCreditScore isEqualToString:@"88"]) {
-            [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
-            [self checkUpdate];
-        }else{
+//        if (![exampleCreditScore isEqualToString:@"88"]) {
+//            [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
+//            [self checkUpdate];
+//        }else{
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
             [self checkUpdate];
-        }
+//        }
     };
-    
+
     //开始检测网络状态(主要针对IOS10以后的网络需要授权问题)
     //如果还没有网络授权,则在用户选择后再发送一些API
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi) {
+            //FIXME:review 这里什么意思？
             //[selfWeak appBasicAPISend:launchOptions WithBlock:YES];
+
         }
     }];
     
@@ -85,12 +91,12 @@
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
     UIWindow *oldWindow = self.window;
     
-    __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow sheareGuidePageWindow:GuidePageAPPLaunchStateNormal];
+    __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
    WeakObj(self)
     self.launchVc = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)
         // 1秒 网络加载  3秒图片加载
-        make.setTimer(0, 5, nil,YES);
+        make.setTimer(0, 3, nil,YES);
         make.setAnimateFinishedBlock(^(id info) {
             
             self.window = oldWindow;
@@ -101,23 +107,15 @@
             [guideWindow removeFromSuperview];
         });
         make.setCountdownBtnBlock(^(UIButton *btn) {
+            //FIXME:review 此处不要写死坐标，需要优化
             btn.frame = CGRectMake(SWidth - 66 - 30, SHeight - 30 -28, 66, 28);
+        // 点击跳过，埋点
         });
     }];
     [HJGuidePageWindow show];
-    self.launchVc.setTimer(5,0, @"s跳过",NO);
-}
-
--(void)setGuideImage:(NSNotification *)noti{
-    if (noti.object == nil) {
-    self.launchVc.setBackGroundImage(
-                                     [UIImage imageWithData:GetUserDefault(@"advertisementStartPage")], YES, NO, ^{
-        });
-    }else{
-    self.launchVc.setBackGroundImage(noti.userInfo[@"imgUrl"], YES, NO, ^{
-        });
-    }
-    
+    HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
+    launchManager.guideVC = self.launchVc;
+    [launchManager showLanuchPageModel];
 }
 
 
@@ -180,11 +178,17 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    UserDefaultSetObj([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"], @"TenMinutesRefresh");
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    if ([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"].integerValue - [GetUserDefault(@"TenMinutesRefresh") integerValue] > 10) {
+        
+    }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppWillEnterForeground" object:nil];
 }
 
 
@@ -200,9 +204,33 @@
 #pragma 三方SDK设置
 
 - (void)setUpSDKs{
-    
+    //移动武林榜
+    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
+    /** TalkingData */
+    [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
+    //FIXME:v2.0 这个产品确认是否需要
+    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
+
     //设置意见反馈
     [FBManager configFB];
+    [self setUpBugly];
+}
+
+- (void)setUpBugly {
+
+    /** bugly */
+    BuglyConfig *buglyConfig = [[BuglyConfig alloc] init];
+    buglyConfig.blockMonitorEnable = YES;
+    buglyConfig.reportLogLevel = BuglyLogLevelError;
+    buglyConfig.delegate = self;
+#if defined(Release)
+    [Bugly startWithAppId:Bugly_AppId
+                   config:buglyConfig];
+#else
+    [Bugly startWithAppId:Bugly_AppIdDebug
+        developmentDevice:YES
+                   config:buglyConfig];
+#endif
 }
 
 @end
