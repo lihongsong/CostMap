@@ -111,7 +111,6 @@
 		5977034020F71D2700F29F33 /* HQWYLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977033F20F71D2700F29F33 /* HQWYLaunchManager.m */; };
 		5977034320F7254600F29F33 /* HQWYActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977034220F7254600F29F33 /* HQWYActionHandler.m */; };
 		5977034620F7451A00F29F33 /* MBProgressloading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5977034520F7451A00F29F33 /* MBProgressloading.gif */; };
-		5977034A20F7553D00F29F33 /* ZYZMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977034920F7553D00F29F33 /* ZYZMBProgressHUD.m */; };
 		5979454D20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */; };
 		5979455020F32BDB006BB02D /* ThirdPartWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454F20F32BDB006BB02D /* ThirdPartWebVC.m */; };
 		5979455320F33905006BB02D /* HQWYReturnToDetainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979455220F33905006BB02D /* HQWYReturnToDetainView.m */; };
@@ -199,6 +198,7 @@
 		59E72DB120F61BAA007AB6C9 /* UploadProductModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DB020F61BAA007AB6C9 /* UploadProductModel+Service.m */; };
 		59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */; };
 		59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */; };
+		8258CA1A20FEE80D00873DDE /* LNMBProgressImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8258CA1920FEE80D00873DDE /* LNMBProgressImageView.m */; };
 		9CA9292420F6164200F65941 /* NSObject+HQWYResponseCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */; };
 		9CA9292520F6164200F65941 /* NSError+HQWYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291820F6164100F65941 /* NSError+HQWYError.m */; };
 		9CA9292720F6164200F65941 /* NSObject+HQWYRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */; };
@@ -438,8 +438,6 @@
 		5977034220F7254600F29F33 /* HQWYActionHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYActionHandler.m; sourceTree = "<group>"; };
 		5977034420F7262C00F29F33 /* HQWYActionHandlerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYActionHandlerProtocol.h; sourceTree = "<group>"; };
 		5977034520F7451A00F29F33 /* MBProgressloading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MBProgressloading.gif; sourceTree = "<group>"; };
-		5977034820F7553D00F29F33 /* ZYZMBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYZMBProgressHUD.h; sourceTree = "<group>"; };
-		5977034920F7553D00F29F33 /* ZYZMBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYZMBProgressHUD.m; sourceTree = "<group>"; };
 		5979454B20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptOpenWebViewHandler.h; sourceTree = "<group>"; };
 		5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptOpenWebViewHandler.m; sourceTree = "<group>"; };
 		5979454E20F32BDB006BB02D /* ThirdPartWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartWebVC.h; sourceTree = "<group>"; };
@@ -611,6 +609,8 @@
 		6C4C910B5B222225D22E9E93 /* Pods-HuaQianWuYouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYouTests/Pods-HuaQianWuYouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		742D8DBB7019FDEB7546A10A /* Pods_HuaQianWuYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuaQianWuYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C820524E8455524D0D33F53 /* Pods-HuaQianWuYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.debug.xcconfig"; sourceTree = "<group>"; };
+		8258CA1820FEE80D00873DDE /* LNMBProgressImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNMBProgressImageView.h; sourceTree = "<group>"; };
+		8258CA1920FEE80D00873DDE /* LNMBProgressImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LNMBProgressImageView.m; sourceTree = "<group>"; };
 		9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQWYResponseCode.m"; sourceTree = "<group>"; };
 		9CA9291820F6164100F65941 /* NSError+HQWYError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+HQWYError.m"; sourceTree = "<group>"; };
 		9CA9291920F6164100F65941 /* NSObject+HQWYRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQWYRequestConfig.h"; sourceTree = "<group>"; };
@@ -1329,8 +1329,6 @@
 		5977034720F7550200F29F33 /* Inherit */ = {
 			isa = PBXGroup;
 			children = (
-				5977034820F7553D00F29F33 /* ZYZMBProgressHUD.h */,
-				5977034920F7553D00F29F33 /* ZYZMBProgressHUD.m */,
 			);
 			path = Inherit;
 			sourceTree = "<group>";
@@ -1728,6 +1726,8 @@
 			children = (
 				A8118BD520B295620046099D /* LNMBProgressHUD.h */,
 				A8118BD620B295620046099D /* LNMBProgressHUD.m */,
+				8258CA1820FEE80D00873DDE /* LNMBProgressImageView.h */,
+				8258CA1920FEE80D00873DDE /* LNMBProgressImageView.m */,
 			);
 			path = LNMBProgressHUD;
 			sourceTree = "<group>";
@@ -1736,8 +1736,8 @@
 			isa = PBXGroup;
 			children = (
 				5977034520F7451A00F29F33 /* MBProgressloading.gif */,
-				A8118BD920B2968C0046099D /* MBProgressHUD.m */,
 				A8118BDA20B2968C0046099D /* MBProgressHUD.h */,
+				A8118BD920B2968C0046099D /* MBProgressHUD.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -2134,7 +2134,6 @@
 				595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */,
 				59C570A920E5F9C100D54260 /* CInvestigationTwoViewController.m in Sources */,
 				595AE2C720EF37C40031A2F3 /* LNRiskDeviceHelp.m in Sources */,
-				5977034A20F7553D00F29F33 /* ZYZMBProgressHUD.m in Sources */,
 				A8F8DFB520B3AB3300DB9A6A /* RegisterOrForgetPwdVC.m in Sources */,
 				591D962820ABDE6E00193B09 /* AAChart.m in Sources */,
 				591D960120ABDE6E00193B09 /* AAColumn.m in Sources */,
@@ -2162,6 +2161,7 @@
 				5977034020F71D2700F29F33 /* HQWYLaunchManager.m in Sources */,
 				591D961320ABDE6E00193B09 /* AAArea.m in Sources */,
 				59BE198620EC9DD600704B2C /* SuspendView.m in Sources */,
+				8258CA1A20FEE80D00873DDE /* LNMBProgressImageView.m in Sources */,
 				591D960720ABDE6E00193B09 /* AAOptions3d.m in Sources */,
 				591D963120ABDE6E00193B09 /* AAOptions.m in Sources */,
 				591D95E320ABDE6E00193B09 /* AALabels.m in Sources */,

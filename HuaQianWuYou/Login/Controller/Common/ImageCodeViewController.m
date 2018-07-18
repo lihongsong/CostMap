@@ -41,9 +41,15 @@
 
 //刷新图片
 - (void)reloadImageCode{
+    
+    [KeyWindow ln_showLoadingHUD];
     [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             return;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         if (result.outputImage) {
             self.codeView.base64ImageStr = result.outputImage;

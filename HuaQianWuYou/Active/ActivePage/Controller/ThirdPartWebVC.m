@@ -46,14 +46,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         [self uploadData:self.navigationDic[@"productId"]];
     }
     [self initData];
-    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
     
+    [KeyWindow ln_showLoadingHUD];
 }
 
 #pragma mark 上报数据
 - (void)uploadData:(NSNumber *)productId {
+    
+    [KeyWindow ln_showLoadingHUD];
+    
     [UploadProductModel uploadProduct:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] productID:productId Completion:^(UploadProductModel * _Nullable result, NSError * _Nullable error) {
-        
+        [KeyWindow ln_hideProgressHUD];
     }];
 }
 
@@ -71,13 +74,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)initData{
     if ([self.navigationDic[@"needBackDialog"] integerValue] ||[self.navigationDic[@"needBackDialog"] isEqualToString:@"true"]) {
         WeakObj(self);
-        [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
+        
+        [KeyWindow ln_showLoadingHUD];
+        
         self.productIndex = 0;
         [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(id _Nullable result, NSError * _Nullable error) {
-            [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
             StrongObj(self);
             if (error) {
+                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                      message:error.hqwy_errorMessage];
                 return;
+            } else {
+                [KeyWindow ln_hideProgressHUD];
             }
             self.listArr = result;
         }];
@@ -225,7 +233,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
-    [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+    [KeyWindow ln_hideProgressHUD];
 }
 
 
