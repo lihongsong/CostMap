@@ -10,15 +10,13 @@
 
 @implementation BasicConfigModel (Service)
 
-+ (NSString *)ln_APIServer {
-    return @"http://dev-static.huaqianwy.com/api";
-}
-
-
 + (NSURLSessionDataTask *_Nullable)requestBasicConfigCompletion:(nullable void (^)(BasicConfigModel *_Nullable result,
-        NSError *_Nullable error))completion {
+                                                                                   NSError *_Nullable error))completion {
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-    NSURLSessionDataTask *task = [self ln_requestModelAPI:APPGetConfig
+    [dict setValue:@"homeSet" forKey:@"a"];
+    [dict setValue:@"hqwy" forKey:@"m"];
+    [dict setValue:@"shell" forKey:@"c"];
+    NSURLSessionDataTask *task = [self ln_requestModelAPI:@""
                                                    method:HTTP_POST
                                                parameters:dict
                                                completion:^(id _Nonnull responseObject, NSError *_Nonnull error) {

@@ -10,11 +10,13 @@
 #define ApiConfigDefine_h
 
 #ifdef DEBUG
-#define HOST_PATH 
-#define HOST_PATH
-#else
 
 #define HOST_PATH @"http://172.16.0.140:3022"
+
+
+#else
+
+#define HQWY_HOST_PATH @"http:"
 
 #endif
 
