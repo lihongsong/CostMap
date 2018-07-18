@@ -101,13 +101,18 @@
         return;
     }
     WeakObj(self);
-    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+    
+    [KeyWindow ln_showLoadingHUD];
+    
     [ChangePasswordModel changePasswordCode:self.code passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
+        
         if (error) {
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         if (result){
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationOK message:@"密码修改成功"];

@@ -219,19 +219,22 @@
 #pragma mark 请求登录
 - (void)requestLogin{
     WeakObj(self);
-   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+    
+    [KeyWindow ln_showLoadingHUD];
     //FIXME:review if else 中一部分内容是一样的，抽出来共用
 
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber registerType:RegisterTypeHQWYApp Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
             self.loginButton.userInteractionEnabled = true;
-            [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
             NSLog(@"______%ld",(long)error.hqwy_respCode);
             NSLog(@"_____%@",error.hqwy_errorMessage);
             if (error) {
-              [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                    message:error.hqwy_errorMessage];
                 return ;
+            } else {
+                [KeyWindow ln_hideProgressHUD];
             }
             NSLog(@"____%@",result);
             if (result){
@@ -248,8 +251,11 @@
             StrongObj(self);
             self.loginButton.userInteractionEnabled = true;
             if (error) {
-                [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                      message:error.hqwy_errorMessage];
                 return ;
+            } else {
+                [KeyWindow ln_hideProgressHUD];
             }
             if (result){
                 [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
@@ -425,14 +431,20 @@
 # pragma mark 获取图形验证码
 - (void)getImageCode{
     WeakObj(self);
-   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+   
+    [KeyWindow ln_showLoadingHUD];
+    
     //FIXME:review 这个请求图形验证码的逻辑在三个类中都有，可以抽离
     [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
+        
+        
         if (error) {
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         if(result){
             if (result.outputImage.length > 0) {
@@ -446,14 +458,16 @@
 # pragma mark 校验图形验证码
 - (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
     WeakObj(self);
-   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+    [KeyWindow ln_showLoadingHUD];
     [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             [self getImageCode];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         if (result) {
             //校验成功 再次发送短信验证码
@@ -464,20 +478,23 @@
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+    [KeyWindow ln_showLoadingHUD];
     //FIXME:review LoginType 用枚举定义
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:LoginType Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         NSLog(@"____%ld",(long)error.hqwy_respCode);
         //NSLog(@"____%@",error.hqwy_errorMessage);
         if (error) {
             if (error.code == 1013) {
+                [KeyWindow ln_hideProgressHUD];
                 self.serialNumber = [NSString stringWithFormat:@"%@", result];
                 [self getImageCode];
             }else{
-               [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+               [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                     message:error.hqwy_errorMessage];
             }
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         if (self.codeInputView.codeButton) {
             //倒计时

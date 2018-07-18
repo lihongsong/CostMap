@@ -90,6 +90,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
+    
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -466,13 +467,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)loginOut:(loginOutBlock)outBlock{
-    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
+    
+    [KeyWindow ln_showLoadingHUD];
+    
     [LoginOut signOUT:^(id _Nullable result, NSError * _Nullable error) {
-        [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+        
         if (error) {
             outBlock(false);
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         [HQWYUserSharedManager deleteUserInfo];
         outBlock(true);

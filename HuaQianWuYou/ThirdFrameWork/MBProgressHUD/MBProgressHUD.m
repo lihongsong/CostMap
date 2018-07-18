@@ -108,7 +108,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     self.alpha = 0.0f;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.layer.allowsGroupOpacity = NO;
-//    self.loadingImageDirection = MBProgressHUDImageDirectionLeft;
+    self.loadingContentDirection = MBProgressHUDContentNineClock;
     [self setupViews];
     [self updateIndicators];
     [self registerForNotifications];
@@ -535,10 +535,42 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     CGFloat margin = self.margin;
     NSMutableArray *bezelConstraints = [NSMutableArray array];
     NSDictionary *metrics = @{@"margin": @(margin)};
-
-    NSMutableArray *subviews = [NSMutableArray arrayWithObjects:self.topSpacer, self.label, self.detailsLabel, self.button, self.bottomSpacer, nil];
-    if (self.indicator) [subviews insertObject:self.indicator atIndex:1];
-
+    
+    NSMutableArray *subviews;
+    switch (self.loadingContentDirection) {
+        case MBProgressHUDContentThreeClock:
+        case MBProgressHUDContentSixClock: {
+            subviews = [NSMutableArray arrayWithObjects:
+                        self.topSpacer,
+                        self.label,
+                        self.detailsLabel,
+                        self.button,
+                        self.bottomSpacer, nil];
+            
+            if (self.indicator) {
+                [subviews insertObject:self.indicator atIndex:1];
+            }
+        }
+            break;
+        case MBProgressHUDContentZeroClock:
+        case MBProgressHUDContentNineClock: {
+            subviews = [NSMutableArray arrayWithObjects:
+                        self.bottomSpacer,
+                        self.button,
+                        self.detailsLabel,
+                        self.label,
+                        self.topSpacer, nil];
+            
+            if (self.indicator) {
+                [subviews insertObject:self.indicator atIndex:4];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
     // Remove existing constraints
     [self removeConstraints:self.constraints];
     [topSpacer removeConstraints:topSpacer.constraints];
@@ -564,6 +596,30 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 
     [self applyPriority:998.f toConstraints:sideConstraints];
     [self addConstraints:sideConstraints];
+    
+    // Square aspect ratio, if set
+    if (self.square) {
+        NSLayoutConstraint *square = [NSLayoutConstraint constraintWithItem:bezel
+                                                                  attribute:NSLayoutAttributeHeight
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:bezel
+                                                                  attribute:NSLayoutAttributeWidth
+                                                                 multiplier:1.f
+                                                                   constant:0];
+        square.priority = 997.f;
+        [bezelConstraints addObject:square];
+    } else {
+        //set bezel height
+        NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:bezel
+                                                                  attribute:NSLayoutAttributeHeight
+                                                                  relatedBy:NSLayoutRelationEqual
+                                                                     toItem:nil
+                                                                  attribute:NSLayoutAttributeNotAnAttribute
+                                                                 multiplier:0.f
+                                                                   constant:MBDefaultBezelViewHeight];
+        height.priority = 996.f;
+        [bezelConstraints addObject:height];
+    }
 
     // Minimum bezel size, if set
     CGSize minimumSize = self.minSize;
@@ -575,46 +631,170 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
         [bezelConstraints addObjectsFromArray:minSizeConstraints];
     }
 
-    // Square aspect ratio, if set
-    if (self.square) {
-        NSLayoutConstraint *square = [NSLayoutConstraint constraintWithItem:bezel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:bezel attribute:NSLayoutAttributeWidth multiplier:1.f constant:0];
-        square.priority = 997.f;
-        [bezelConstraints addObject:square];
-    } else {
-        //set bezel height
-        NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:bezel attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.f constant:MBDefaultBezelViewHeight];
-        [bezelConstraints addObject:height];
-    }
-
     // Top and bottom spacing
-    [topSpacer addConstraint:[NSLayoutConstraint constraintWithItem:topSpacer attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:margin]];
-    [bottomSpacer addConstraint:[NSLayoutConstraint constraintWithItem:bottomSpacer attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationGreaterThanOrEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.f constant:margin]];
+    
+    NSLayoutAttribute attribute;
+    
+    switch (self.loadingContentDirection) {
+        case MBProgressHUDContentZeroClock:
+        case MBProgressHUDContentSixClock:
+            attribute = NSLayoutAttributeHeight;
+            break;
+        case MBProgressHUDContentThreeClock:
+        case MBProgressHUDContentNineClock:
+            attribute = NSLayoutAttributeHeight;
+            break;
+            
+        default:
+            break;
+    }
+    
+    [topSpacer addConstraint:[NSLayoutConstraint constraintWithItem:topSpacer
+                                                          attribute:attribute
+                                                          relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                             toItem:nil
+                                                          attribute:NSLayoutAttributeNotAnAttribute
+                                                         multiplier:1.f
+                                                           constant:0]];
+    
+    [bottomSpacer addConstraint:[NSLayoutConstraint constraintWithItem:bottomSpacer
+                                                             attribute:attribute
+                                                             relatedBy:NSLayoutRelationGreaterThanOrEqual
+                                                                toItem:nil
+                                                             attribute:NSLayoutAttributeNotAnAttribute
+                                                            multiplier:1.f
+                                                              constant:margin]];
     // Top and bottom spaces should be equal
-    [bezelConstraints addObject:[NSLayoutConstraint constraintWithItem:topSpacer attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:bottomSpacer attribute:NSLayoutAttributeHeight multiplier:1.f constant:0.f]];
+    [bezelConstraints addObject:[NSLayoutConstraint constraintWithItem:topSpacer
+                                                             attribute:attribute
+                                                             relatedBy:NSLayoutRelationEqual
+                                                                toItem:bottomSpacer
+                                                             attribute:attribute
+                                                            multiplier:1.f
+                                                              constant:0.f]];
 
     // Layout subviews in bezel
     NSMutableArray *paddingConstraints = [NSMutableArray new];
     [subviews enumerateObjectsUsingBlock:^(UIView *view, NSUInteger idx, BOOL *stop) {
-        [bezelConstraints addObject:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:bezel attribute:NSLayoutAttributeCenterY multiplier:1.f constant:0.f]];
+        
+        NSLayoutAttribute centerAttribute;
+        
+        switch (self.loadingContentDirection) {
+            case MBProgressHUDContentZeroClock:
+            case MBProgressHUDContentSixClock:
+                centerAttribute = NSLayoutAttributeCenterX;
+                break;
+            case MBProgressHUDContentThreeClock:
+            case MBProgressHUDContentNineClock:
+                centerAttribute = NSLayoutAttributeCenterY;
+                break;
+                
+            default:
+                break;
+        }
+        
+        [bezelConstraints addObject:[NSLayoutConstraint constraintWithItem:view
+                                                                 attribute:centerAttribute
+                                                                 relatedBy:NSLayoutRelationEqual
+                                                                    toItem:bezel
+                                                                 attribute:centerAttribute
+                                                                multiplier:1.f
+                                                                  constant:0.f]];
         // Ensure the minimum edge margin is kept
-        NSArray <NSLayoutConstraint *>*constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"|-(>=margin)-[view]-(>=margin)-|" options:0 metrics:metrics views:NSDictionaryOfVariableBindings(view)];
+        NSArray <NSLayoutConstraint *>*constraints =
+        [NSLayoutConstraint constraintsWithVisualFormat:@"|-(>=margin)-[view]-(>=margin)-|"
+                                                options:0
+                                                metrics:metrics
+                                                  views:NSDictionaryOfVariableBindings(view)];
 
         [bezelConstraints addObjectsFromArray:constraints];
 
         // Element spacing
         if (idx == 0) {
+            
             // First, ensure spacing to bezel edge
-            NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:bezel attribute:NSLayoutAttributeLeft multiplier:1.f constant:0.f];
-            constraint.priority = 998.0f;
+            NSLayoutAttribute attribute;
+            switch (self.loadingContentDirection) {
+                case MBProgressHUDContentThreeClock:
+                case MBProgressHUDContentNineClock:
+                    attribute = NSLayoutAttributeLeft;
+                    break;
+                case MBProgressHUDContentZeroClock:
+                case MBProgressHUDContentSixClock:
+                    attribute = NSLayoutAttributeTop;
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            NSLayoutConstraint *constraint = [NSLayoutConstraint constraintWithItem:view
+                                                                          attribute:attribute
+                                                                          relatedBy:NSLayoutRelationEqual
+                                                                             toItem:bezel
+                                                                          attribute:attribute
+                                                                         multiplier:1.f
+                                                                           constant:0.f];
             [bezelConstraints addObject:constraint];
         } else if (idx == subviews.count - 1) {
+            
+            // First, ensure spacing to bezel edge
+            NSLayoutAttribute attribute;
+            switch (self.loadingContentDirection) {
+                case MBProgressHUDContentThreeClock:
+                case MBProgressHUDContentNineClock:
+                    attribute = NSLayoutAttributeRight;
+                    break;
+                case MBProgressHUDContentSixClock:
+                case MBProgressHUDContentZeroClock:
+                    attribute = NSLayoutAttributeBottom;
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             // Last, ensure spacing to bezel edge
-            [bezelConstraints addObject:[NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:bezel attribute:NSLayoutAttributeBottom multiplier:1.f constant:0.f]];
+            [bezelConstraints addObject:[NSLayoutConstraint constraintWithItem:view
+                                                                     attribute:attribute
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:bezel
+                                                                     attribute:attribute
+                                                                    multiplier:1.f
+                                                                      constant:0.f]];
         }
         if (idx > 0) {
+            
+            // First, ensure spacing to bezel edge
+            NSLayoutAttribute attributeFrom;
+            NSLayoutAttribute attributeTo;
+            switch (self.loadingContentDirection) {
+                    
+                case MBProgressHUDContentThreeClock:
+                case MBProgressHUDContentNineClock: {
+                    attributeFrom = NSLayoutAttributeLeft;
+                    attributeTo = NSLayoutAttributeRight;
+                }
+                    break;
+                case MBProgressHUDContentSixClock:
+                case MBProgressHUDContentZeroClock: {
+                    attributeFrom = NSLayoutAttributeTop;
+                    attributeTo = NSLayoutAttributeBottom;
+                }
+                    break;
+                    
+                default:
+                    break;
+            }
+            
             NSLayoutConstraint *padding = nil;
-//            NSLog(@"====view ====[%@], preview====[%@]", view, subviews[idx - 1]);
-            padding = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:subviews[idx - 1] attribute:NSLayoutAttributeRight multiplier:1.f constant:0.f];
+            padding = [NSLayoutConstraint constraintWithItem:view
+                                                   attribute:attributeFrom
+                                                   relatedBy:NSLayoutRelationEqual
+                                                      toItem:subviews[idx - 1]
+                                                   attribute:attributeTo
+                                                  multiplier:1.f
+                                                    constant:0.f];
             [bezelConstraints addObject:padding];
             [paddingConstraints addObject:padding];
         }
@@ -753,6 +933,13 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 #pragma mark - Properties
+
+- (void)setLoadingContentDirection:(MBProgressHUDContentDirection)loadingContentDirection {
+    if (loadingContentDirection != _loadingContentDirection) {
+        _loadingContentDirection = loadingContentDirection;
+        [self updateIndicators];
+    }
+}
 
 - (void)setMode:(MBProgressHUDMode)mode {
     if (mode != _mode) {

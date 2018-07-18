@@ -51,12 +51,15 @@ typedef NS_ENUM(NSInteger, MBProgressHUDMode) {
     MBProgressHUDModeText
 };
 
-typedef NS_ENUM(NSInteger, MBProgressHUDImageDirection) {
-    MBProgressHUDImageDirectionTop,
-    MBProgressHUDImageDirectionMiddle,
-    MBProgressHUDImageDirectionLeft,
-    MBProgressHUDImageDirectionRight,
-    MBProgressHUDImageDirectionBottom
+typedef NS_ENUM(NSInteger, MBProgressHUDContentDirection) {
+    /// Content Direction From Bottom To Top
+    MBProgressHUDContentZeroClock,
+    /// Content Direction From Left To Right
+    MBProgressHUDContentThreeClock,
+    /// Content Direction From Top To Bottom
+    MBProgressHUDContentSixClock,
+    /// Content Direction From Right To Left
+    MBProgressHUDContentNineClock,
 };
 
 
@@ -295,7 +298,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong, nonatomic, nullable) UIView *customView;
 
-@property (assign, nonatomic) MBProgressHUDImageDirection loadingImageDirection;
+@property (assign, nonatomic) MBProgressHUDContentDirection loadingContentDirection;
 
 /**
  * A label that holds an optional short message to be displayed below the activity indicator. The HUD is automatically resized to fit

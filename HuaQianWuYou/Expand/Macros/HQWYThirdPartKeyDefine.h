@@ -48,9 +48,11 @@
 #define Update_SDK_AppId @"bd5d7524662dbbaeb0de4621469e18d9"
 
 #if defined (DEBUG)
-#define Bugly_AppIdDebug @"5a71ccc8-3006-4e7f-a51f-1b14eb941f7f"
+#define Bugly_AppIdDebug @"6de36697de"
+#define Bugly_AppKeyDebug @"5a71ccc8-3006-4e7f-a51f-1b14eb941f7f"
 #else
-#define Bugly_AppId @"0f87d85-3a93-4596-b60f-5b6e77685175"
+#define Bugly_AppId @"55e9dc2e06"
+#define Bugly_AppKey @"70f87d85-3a93-4596-b60f-5b6e77685175"
 #endif
 
 

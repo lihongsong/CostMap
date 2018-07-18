@@ -15,6 +15,11 @@ typedef NS_ENUM (NSInteger, LNMBProgressHUDAnimationType) {
     LNMBProgressHUDAnimationToast   = 4
 };
 
+typedef NS_ENUM (NSInteger, LNMBProgressHUDLoadingType) {
+    LNMBProgressHUDLoadingMoney  = 0,
+    LNMBProgressHUDLoadingCommon = 1,
+};
+
 NS_ASSUME_NONNULL_BEGIN
 @interface LNMBProgressHUD : MBProgressHUD
 @end
@@ -22,7 +27,19 @@ NS_ASSUME_NONNULL_BEGIN
 @interface UIView (LNMBProgressHUD)
 
 - (void)ln_showToastHUD:(NSString * _Nonnull)message;
+
 - (LNMBProgressHUD *)ln_showLoadingHUD;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDType:(LNMBProgressHUDLoadingType)loadingType;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDMoney;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDCommon;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDMoney:(NSString * _Nullable)message;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDCommon:(NSString * _Nullable)message;
+
 - (LNMBProgressHUD *)ln_showLoadingHUD:(NSString * _Nullable)message;
 
 - (void)ln_hideProgressHUD;
