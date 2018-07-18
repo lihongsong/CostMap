@@ -129,6 +129,8 @@
         [_titleButton setTitle:@"" forState:UIControlStateNormal];
         [_titleButton setTitleColor:[UIColor hj_colorWithHexString:@"#333333"] forState:UIControlStateNormal];
         _titleButton.titleLabel.font = [UIFont NavigationTitleFont];
+        [_titleButton.titleLabel setAdjustsFontSizeToFitWidth:true];
+
     }
     return _titleButton;
 }
