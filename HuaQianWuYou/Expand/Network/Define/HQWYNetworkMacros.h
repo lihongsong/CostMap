@@ -34,7 +34,7 @@
 
 #import "HQWYWebViewURLDebugMacros.h"
 
-#define Active_Host  @"http://172.17.16.79:8088/#/home"
+#define Active_Host  @"http://t1-static.huaqianwy.com/hqwy/dist/#/home"
 //http://172.17.16.79:8088/#/home
 //http://172.17.106.138:8088/#/citylist
 //http://t1-static.huaqianwy.com/hqwy/dist/#/home
@@ -80,5 +80,6 @@
 
 //用户密码登录
 #define LN_POST_PASSWORD_LOGIN_PATH              @"/user/login/password"
+
 #define LN_POST_LOGIN_OUT_PATH @"/user/logout"
 #endif /* HQWYNetworkMacros_h */

@@ -79,7 +79,7 @@
             self.firstTitleLable.text = nil;
             self.secondTitleLable.text = nil;
             self.firstTextFieldView.keyboardType = UIKeyboardTypeNamePhonePad;
-            self.firstTextFieldView.placeholder = @"请填写手机号码";
+            self.firstTextFieldView.placeholder = @"请填写真实有效的手机号";
             self.secondTextFieldView.placeholder = @"请填写短信验证码";
             self.firstTextFieldView.secureTextEntry = NO;
             self.secondTextFieldView.secureTextEntry = NO;

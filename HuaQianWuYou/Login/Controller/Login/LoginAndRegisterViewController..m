@@ -17,6 +17,7 @@
 #import "HQWYUser+Service.h"
 #import "ImageCodeModel.h"
 #import "ImageCodeModel+Service.h"
+#import "ThirdPartWebVC.h"
 
 @interface LoginAndRegisterViewController ()<SelectTheLoginModeViewDelegate,UITextFieldDelegate,TwoTextFieldViewDelegate>
 /* 验证码登录 */
@@ -50,8 +51,10 @@
     [self.view addSubview:selectHeader];
     
     [self.view addSubview:self.codeInputView];
+    [self.codeInputView.firstTF becomeFirstResponder];
+    self.codeInputView.secondTF.hj_maxLength = 6;
     [self.view addSubview:self.passwordInputView];
-    
+    self.passwordInputView.secondTF.hj_maxLength = 20;
     [self.view addSubview:self.forgetButton];
     [self.view addSubview:self.loginButton];
 
@@ -71,6 +74,7 @@
         _codeInputView = [[TwoTextFieldView alloc]initWithFrame:CGRectMake(0, 100 + 50, SWidth, 125)];
         _codeInputView.delegate = self;
         _codeInputView.firstTF.delegate = self;
+        _codeInputView.firstTF.text = [HQWYUserManager lastLoginMobilePhone];
         _codeInputView.secondTF.delegate = self;
         [_codeInputView setType:TextFieldTypeCode];
     }
@@ -82,6 +86,7 @@
         _passwordInputView = [[TwoTextFieldView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.codeInputView.frame), self.codeInputView.hj_y, SWidth, 125)];
         _passwordInputView.delegate = self;
         _passwordInputView.firstTF.delegate = self;
+        _passwordInputView.firstTF.text = [HQWYUserManager lastLoginMobilePhone];
         _passwordInputView.secondTF.delegate = self;
         [_passwordInputView setType:TextFieldTypeCode];
     }
@@ -172,38 +177,33 @@
     WeakObj(self);
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [self eventId:HQWY_Login_SignIn_click];
-        if (!([self.codeInputView.firstTF.text length] > 0)) {
-            [self addAlertView:@"请输入手机号" block:^{
+        if (![self.codeInputView.firstTF.text hj_isMobileNumber]) {
+            [self addAlertView:@"请输入有效手机号" block:^{
+                selfWeak.loginButton.userInteractionEnabled = true;
+            }];
+            return;
+        }
+        if ([self.codeInputView.secondTF.text length] < 6){
+            [self addAlertView:@"请输入正确的验证码" block:^{
                 selfWeak.loginButton.userInteractionEnabled = true;
                 return;
             }];
+            return;
         }
-        if (!([self.codeInputView.secondTF.text length] > 0)){
-            [self addAlertView:@"请输入验证码" block:^{
-                selfWeak.loginButton.userInteractionEnabled = true;
-                return;
-            }];
-        }
-        if ([self.codeInputView.firstTF.text hj_isMobileNumber]) {
-            [self requestLogin];
-        }else{
-            [self addAlertView:@"手机号格式不正确" block:^{
-               selfWeak.loginButton.userInteractionEnabled = true;
-            }];
-        }
+        [self requestLogin];
     }else{
         [self eventId:HQWY_Login_PasswordLogin_click];
         if (!([self.passwordInputView.firstTF.text length] > 0)) {
             [self addAlertView:@"请输入手机号" block:^{
                 selfWeak.loginButton.userInteractionEnabled = true;
-                return ;
             }];
+            return ;
         }
         if (!([self.passwordInputView.secondTF.text length] > 0)) {
             [self addAlertView:@"请输入密码" block:^{
                 selfWeak.loginButton.userInteractionEnabled = true;
-                return;
             }];
+            return;
         }
         if ([self.passwordInputView.firstTF.text hj_isMobileNumber]) {
             [self requestLogin];
@@ -211,6 +211,7 @@
             [self addAlertView:@"手机号格式不正确" block:^{
                 selfWeak.loginButton.userInteractionEnabled = true;
             }];
+            return;
         }
     }
     
@@ -227,13 +228,10 @@
             StrongObj(self);
             self.loginButton.userInteractionEnabled = true;
             [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
-            NSLog(@"______%ld",(long)error.hqwy_respCode);
-            NSLog(@"_____%@",error.hqwy_errorMessage);
             if (error) {
               [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
                 return ;
             }
-            NSLog(@"____%@",result);
             if (result){
                 [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
                 [self dismissViewControllerAnimated:true completion:^{
@@ -270,6 +268,11 @@
     }else{
         [self eventId:HQWY_Login_PasswordAgreement_click];
     }
+    ThirdPartWebVC *webView = [ThirdPartWebVC new];
+    [webView loadURLString:AGGREMENT_PATH];
+    [self presentViewController:webView animated:true completion:^{
+        
+    }];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -279,115 +282,62 @@
          if ([textField isEqual:self.codeInputView.firstTF]) {
              self.codeInputView.firstLineView.backgroundColor = [UIColor skinColor];
               self.codeInputView.secondLineView.backgroundColor = [UIColor lightGrayColor];
-             if ([self.codeInputView.secondTF.text length] > 0) {
-                 self.loginButton.enabled = true;
-                 self.loginButton.backgroundColor = [UIColor skinColor];;
-             }
          }else if([textField isEqual:self.codeInputView.secondTF]){
              self.codeInputView.firstLineView.backgroundColor = [UIColor lightGrayColor];
              self.codeInputView.secondLineView.backgroundColor = [UIColor skinColor];
-             if ([self.codeInputView.firstTF.text length] > 0) {
-                 self.loginButton.enabled = true;
-                 self.loginButton.backgroundColor = [UIColor skinColor];;
-             }
          }
      }else{
          if ([textField isEqual:self.passwordInputView.firstTF]) {
               self.passwordInputView.firstLineView.backgroundColor = [UIColor skinColor];
              self.passwordInputView.secondLineView.backgroundColor = [UIColor lightGrayColor];
-             if ([self.passwordInputView.secondTF.text length] > 0) {
-                 self.loginButton.enabled = true;
-                 self.loginButton.backgroundColor = [UIColor skinColor];;
-             }
          }else if([textField isEqual:self.passwordInputView.secondTF]){
               self.passwordInputView.firstLineView.backgroundColor = [UIColor lightGrayColor];
              self.passwordInputView.secondLineView.backgroundColor = [UIColor skinColor];
-             if ([self.passwordInputView.firstTF.text length] > 0) {
-                 self.loginButton.enabled = true;
-                 self.loginButton.backgroundColor = [UIColor skinColor];
-             }
          }
      }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
     //FIXME:review textField 的长度限制方法，在我们分类里面已有，UITextField+HJInputLimit 中
-    if(textField.text.length == 10){
-        if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
-            if ([textField isEqual:self.codeInputView.firstTF]) {
+    if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
+        if ([textField isEqual:self.codeInputView.firstTF]) {
+            if (textField.text.length == 10) {
                 self.codeInputView.codeButton.selected = true;
-                self.codeInputView.codeButton.enabled = true;
-            }
-            /*
-            else if([textField isEqual:self.codeInputView.secondTF]){
-                if ([self.codeInputView.firstTF.text length] > 0) {
-                    self.loginButton.enabled = true;
+                if (self.codeInputView.secondTF.text.length == 6) {
                     self.loginButton.backgroundColor = [UIColor skinColor];
+                    
                 }
+            }else{
+             self.codeInputView.codeButton.selected = false;
+                self.loginButton.backgroundColor = [UIColor lightGrayColor];
             }
         }else{
-            if ([textField isEqual:self.passwordInputView.firstTF]) {
-                self.passwordInputView.firstLineView.backgroundColor = [UIColor skinColor];
-                self.passwordInputView.secondLineView.backgroundColor = [UIColor lightGrayColor];
-                if ([self.passwordInputView.secondTF.text length] > 0) {
-                    self.loginButton.enabled = true;
-                    self.loginButton.backgroundColor = [UIColor skinColor];;
-                }
-            }else if([textField isEqual:self.passwordInputView.secondTF]){
-                self.passwordInputView.firstLineView.backgroundColor = [UIColor lightGrayColor];
-                self.passwordInputView.secondLineView.backgroundColor = [UIColor skinColor];
-                if ([self.passwordInputView.firstTF.text length] > 0) {
-                    self.loginButton.enabled = true;
-                    self.loginButton.backgroundColor = [UIColor skinColor];
-                }
+            if (textField.text.length == 5 && self.codeInputView.firstTF.text.length == 11) {
+                self.loginButton.backgroundColor = [UIColor skinColor];
+            }else{
+                self.loginButton.backgroundColor = [UIColor lightGrayColor];
             }
-             */
         }
-             
+    }else{
+        if ([textField isEqual:self.passwordInputView.firstTF]) {
+            if (textField.text.length == 10 && [self.passwordInputView.secondTF.text length] >= 6) {
+                self.loginButton.backgroundColor = [UIColor skinColor];
+            }else{
+                self.loginButton.backgroundColor = [UIColor lightGrayColor];
+            }
+        }else{
+            if (textField.text.length >= 5 && self.passwordInputView.firstTF.text.length == 11) {
+                self.loginButton.backgroundColor = [UIColor skinColor];
+            }else{
+                self.loginButton.backgroundColor = [UIColor lightGrayColor];
+            }
+        }
     }
-
-        if (textField == self.codeInputView.firstTF || textField == self.passwordInputView.firstTF) {
-            //超过12位禁止输入
-            if(range.location >= 11 || string.length>=12 || (textField.text.length + string.length) >=12) {
-                return NO;
-            }else if (textField.text.length>=12&&![string isEqualToString:@""]){
-                return NO;
-            }
-        }
-    
-        if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
-            if (textField == self.codeInputView.secondTF) {
-                //超过6位禁止输入
-                if(range.location >= 6 || string.length>6 || (textField.text.length + string.length) >6) {
-                    return NO;
-                }else if (textField.text.length>=6 && ![string isEqualToString:@""]){
-                    return NO;
-                }
-            }
-        }
     return true;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
-    if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
-        if ([self.codeInputView.firstTF.text length] > 0 && [self.codeInputView.secondTF.text length] > 0) {
-            self.loginButton.enabled = true;
-            self.loginButton.backgroundColor = [UIColor skinColor];
-        }else{
-            self.loginButton.enabled = false;
-            self.loginButton.backgroundColor = [UIColor lightGrayColor];
-        }
-    }else{
-        if ([self.passwordInputView.firstTF.text length] > 0 && [self.passwordInputView.secondTF.text length] > 0) {
-            self.loginButton.enabled = true;
-            self.loginButton.backgroundColor = [UIColor skinColor];;
-        }else{
-            self.loginButton.enabled = false;
-            self.loginButton.backgroundColor = [UIColor lightGrayColor];
-        }
-    }
-    
-    
+   
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
@@ -455,15 +405,17 @@
             [self getImageCode];
             return ;
         }
-        if (result) {
             //校验成功 再次发送短信验证码
             [self getSMSCode];
-        }
     }];
 }
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
+    if (![self.codeInputView.firstTF.text hj_isMobileNumber]) {
+        [KeyWindow ln_showToastHUD:@"请输入有效手机号"];
+        return;
+    }
    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     //FIXME:review LoginType 用枚举定义
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:LoginType Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
@@ -481,7 +433,7 @@
         }
         if (self.codeInputView.codeButton) {
             //倒计时
-            [self.codeInputView.codeButton startTotalTime:10 title:@"获取验证码" waitingTitle:@"后重试"];
+            [self.codeInputView.codeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
         }
         NSLog(@")_____%@",result);
         if (result) {
