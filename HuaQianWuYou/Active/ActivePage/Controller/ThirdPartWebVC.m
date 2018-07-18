@@ -71,7 +71,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         WeakObj(self);
         [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
         self.productIndex = 0;
-        [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(NSArray * _Nullable result, NSError * _Nullable error) {
+        [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(id _Nullable result, NSError * _Nullable error) {
             [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
             StrongObj(self);
             if (error) {
@@ -108,10 +108,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             }
         }];
     }
-    
-    if (![self.navigationDic[@"needBackDialog"] integerValue]) {
-         [self toBeforeViewController];
-        return;
+    NSString *needBackDialog = [NSString stringWithFormat:@"%@",self.navigationDic[@"needBackDialog"]];
+    NSLog(@"___%@___%ld",needBackDialog,(long)[needBackDialog integerValue]);
+    if (![needBackDialog integerValue]){
+        if (![needBackDialog isEqualToString:@"true"]){
+            [self toBeforeViewController];
+            return;
+        }
     }
     
     if ([GetUserDefault(@"isShowPromptToday") isEqualToString:[self getToday]]) {
@@ -120,6 +123,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
     
     if (!(self.listArr.count > 0)) {
+        [self toBeforeViewController];
+        return;
+    }
+    if(self.productIndex >= self.listArr.count){
         [self toBeforeViewController];
         return;
     }
@@ -148,6 +155,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.timer = nil;
         NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[self.productIndex]];
         [self uploadData:product[@"id"]];
+        [self loadURLString:product[@"address"]];
+        NSLog(@"_____%@_____%@",product,product[@"address"]);
         self.productIndex ++;
     }else{
         [HQWYReturnToDetainView countTime:[NSString stringWithFormat:@"%ld",(long)self.countTime]];
