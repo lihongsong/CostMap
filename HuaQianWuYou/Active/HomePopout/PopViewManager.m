@@ -106,7 +106,9 @@
         if (error) {
             return;
         }
-        [PopViewManager showType:type contentModel:result fromVC:controller];
+        if (result) {
+             [PopViewManager showType:type contentModel:result fromVC:controller];
+        }
     }];
     
 }
