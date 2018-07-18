@@ -633,32 +633,16 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 
     // Top and bottom spacing
     
-    NSLayoutAttribute attribute;
-    
-    switch (self.loadingContentDirection) {
-        case MBProgressHUDContentZeroClock:
-        case MBProgressHUDContentSixClock:
-            attribute = NSLayoutAttributeHeight;
-            break;
-        case MBProgressHUDContentThreeClock:
-        case MBProgressHUDContentNineClock:
-            attribute = NSLayoutAttributeHeight;
-            break;
-            
-        default:
-            break;
-    }
-    
     [topSpacer addConstraint:[NSLayoutConstraint constraintWithItem:topSpacer
-                                                          attribute:attribute
+                                                          attribute:NSLayoutAttributeHeight
                                                           relatedBy:NSLayoutRelationGreaterThanOrEqual
                                                              toItem:nil
                                                           attribute:NSLayoutAttributeNotAnAttribute
                                                          multiplier:1.f
-                                                           constant:0]];
+                                                           constant:margin]];
     
     [bottomSpacer addConstraint:[NSLayoutConstraint constraintWithItem:bottomSpacer
-                                                             attribute:attribute
+                                                             attribute:NSLayoutAttributeHeight
                                                              relatedBy:NSLayoutRelationGreaterThanOrEqual
                                                                 toItem:nil
                                                              attribute:NSLayoutAttributeNotAnAttribute
@@ -666,10 +650,10 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
                                                               constant:margin]];
     // Top and bottom spaces should be equal
     [bezelConstraints addObject:[NSLayoutConstraint constraintWithItem:topSpacer
-                                                             attribute:attribute
+                                                             attribute:NSLayoutAttributeHeight
                                                              relatedBy:NSLayoutRelationEqual
                                                                 toItem:bottomSpacer
-                                                             attribute:attribute
+                                                             attribute:NSLayoutAttributeHeight
                                                             multiplier:1.f
                                                               constant:0.f]];
 

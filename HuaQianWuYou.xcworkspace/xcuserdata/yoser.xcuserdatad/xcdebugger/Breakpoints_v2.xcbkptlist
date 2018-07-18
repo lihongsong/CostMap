@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "HuaQianWuYou/ThirdFrameWork/MBProgressHUD/MBProgressHUD.m"
-            timestampString = "553597071.218996"
+            timestampString = "553597811.87016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1657"
-            endingLineNumber = "1657"
+            startingLineNumber = "1642"
+            endingLineNumber = "1642"
             landmarkName = "-setDetailsLabelColor:"
             landmarkType = "7">
          </BreakpointContent>
