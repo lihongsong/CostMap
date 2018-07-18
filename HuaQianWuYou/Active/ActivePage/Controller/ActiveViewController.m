@@ -482,6 +482,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.navigationController pushViewController:authPhoneNumVC animated:true];
 }
 
+#pragma mark 退出登录
 - (void)loginOut:(loginOutBlock)outBlock{
     
     [KeyWindow ln_showLoadingHUD];
