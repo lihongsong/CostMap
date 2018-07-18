@@ -95,8 +95,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)showPopView{
     [PopViewManager sharedInstance].delegate = self;
     [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
-    [PopViewManager showType:AdvertisingTypeSuspensionWindow fromVC:self];
-    
 }
 
 - (void )setSelectedLocation:(NSString *)selectedLocation{

@@ -77,7 +77,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             if (error) {
                 return;
             }
-            NSLog(@"____%@",result);
             self.listArr = result;
         }];
     }

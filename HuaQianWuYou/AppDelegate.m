@@ -89,6 +89,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setGuideImage:) name:KLoadingAdvertisement object:nil];
     ActiveViewController *activeVC = [[ActiveViewController alloc]init];
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
+    self.window.rootViewController = hNC;
     UIWindow *oldWindow = self.window;
     
     __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
@@ -116,6 +117,7 @@
     [HJGuidePageWindow show];
     HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
     launchManager.guideVC = self.launchVc;
+    launchManager.rootViewController = hNC;
     [launchManager showLanuchPageModel];
 }
 
