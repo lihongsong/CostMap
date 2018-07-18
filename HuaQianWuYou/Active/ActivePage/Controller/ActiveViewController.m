@@ -392,9 +392,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }
         if (location.rgcData) {
             NSLog(@"rgc = %@",[location.rgcData description]);
-             [self.navigationView.leftItemButton setTitle:location.rgcData.city forState:UIControlStateNormal];
+            NSString *cityString = [location.rgcData.city stringByReplacingOccurrencesOfString:@"市" withString:@""];
+             [self.navigationView.leftItemButton setTitle:cityString forState:UIControlStateNormal];
             self.locatedCity[@"country"] = location.rgcData.country;
-            self.locatedCity[@"city"] = location.rgcData.city;
+            self.locatedCity[@"city"] = cityString;
             self.locatedCity[@"province"] = location.rgcData.province;
             [self.locationManager stopUpdatingLocation];
         }
