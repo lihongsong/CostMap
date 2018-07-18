@@ -112,6 +112,7 @@
         // 点击跳过，埋点
         });
     }];
+    
     [HJGuidePageWindow show];
     HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
     launchManager.guideVC = self.launchVc;
