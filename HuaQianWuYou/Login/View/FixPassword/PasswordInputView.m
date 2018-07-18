@@ -80,6 +80,9 @@
             self.firstTextFieldView.keyboardType = UIKeyboardTypeNumberPad;
             self.firstTextFieldView.placeholder = @"请填写真实有效的手机号";
             self.firstTextFieldView.text = [HQWYUserManager lastLoginMobilePhone];
+            if ([[HQWYUserManager lastLoginMobilePhone] length] > 0) {
+                self.authCodeButton.selected = true;
+            }
             self.secondTextFieldView.placeholder = @"请填写短信验证码";
             self.firstTextFieldView.hj_maxLength = 11; self.firstTextFieldView.secureTextEntry = NO;
             self.secondTextFieldView.hj_maxLength = 6; self.secondTextFieldView.secureTextEntry = NO;

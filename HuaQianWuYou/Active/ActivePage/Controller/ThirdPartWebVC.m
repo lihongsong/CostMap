@@ -41,7 +41,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
-    if (self.navigationDic != nil && [self.navigationDic[@"productId"] length] > 0) {
+    if (self.navigationDic != nil && [[NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]] length] > 0) {
         [self uploadData:self.navigationDic[@"productId"]];
     }
     [self initData];
