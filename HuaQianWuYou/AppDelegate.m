@@ -88,6 +88,7 @@
 - (void)setUpViewControllerWithHighScoreWithRemoteNotificaton:(NSDictionary *)remoteNotification launchOptions:(NSDictionary *)launchOptions {
     ActiveViewController *activeVC = [[ActiveViewController alloc]init];
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
+    self.window.rootViewController = hNC;
     UIWindow *oldWindow = self.window;
     
     __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
@@ -113,9 +114,11 @@
         // 点击跳过，埋点
         });
     }];
+    
     [HJGuidePageWindow show];
     HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
     launchManager.guideVC = launchVC;
+    launchManager.rootViewController = hNC;
     [launchManager showLanuchPageModel];
 
 }

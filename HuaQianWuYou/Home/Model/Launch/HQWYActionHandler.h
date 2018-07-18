@@ -24,6 +24,6 @@ typedef void(^HQWYActionHandleBlock)(BOOL isHandle);
 /**
  必须要有tabBar
  */
-+ (void)handleWithActionModel:(id<HQWYActionHandlerProtocol>)launchModel;
++ (void)handleWithActionModel:(id<HQWYActionHandlerProtocol>)launchModel fromVC:(UIViewController*)rootVC;
 
 @end

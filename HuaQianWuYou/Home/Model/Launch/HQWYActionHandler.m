@@ -9,14 +9,16 @@
 #import "HQWYActionHandler.h"
 #import "ThirdPartWebVC.h"
 #import "LoginAndRegisterViewController.h"
+#import "AuthPhoneNumViewController.h"
 
 @interface HQWYActionHandler()
 @property(nonatomic,copy)HQWYActionHandleBlock finishHandle;
-
+@property(nonatomic,strong)UIViewController *rootViewController;
 /**
  事件是否被处理
  */
 @property(nonatomic,assign)BOOL isHandled;
+
 
 @end
 
@@ -32,23 +34,24 @@
     return _defaultHandle;
 }
 
-+ (void)handleWithActionModel:(id<HQWYActionHandlerProtocol>)launchModel finishHandle:(HQWYActionHandleBlock)completionHandle
-{
-    [HQWYActionHandler defauleHandle].finishHandle = completionHandle;
-    [HQWYActionHandler handleWithActionModel:launchModel];
-}
+//+ (void)handleWithActionModel:(id<HQWYActionHandlerProtocol>)launchModel finishHandle:(HQWYActionHandleBlock)completionHandle
+//{
+//    [HQWYActionHandler defauleHandle].finishHandle = completionHandle;
+//    [HQWYActionHandler handleWithActionModel:launchModel fromVC:nil];
+//}
 
-+ (void)handleWithActionModel:(id<HQWYActionHandlerProtocol> )launchModel
++ (void)handleWithActionModel:(id<HQWYActionHandlerProtocol> )launchModel fromVC:(UIViewController *)rootVC
 {
 
-    NSDictionary *dic = @{launchModel.productName:@" title",launchModel.address:@"url"};
+    [HQWYActionHandler defauleHandle].rootViewController = rootVC;
+    NSDictionary *dic = @{@" title":launchModel.productName,@"url":launchModel.address};
     [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_StartApp_Advertisement_click,launchModel.productId]];
     if ([HQWYUserManager hasAlreadyLoggedIn] == NO) {
         [self presentNative:dic];
         [HQWYActionHandler execultHandle:NO];
         return;
     }
-    [self WebViewWithDictionary:dic];
+    [self jumpControllerAction:[self WebViewWithDictionary:dic]];
 }
 
 + (void)execultHandle:(BOOL)isHandle {
@@ -60,36 +63,16 @@
     }
 }
 
-/*
-+ (void)goToNativePage:(NSInteger)pageTag
-{
-    __block UIViewController *pushedVC;
-    HQWYTabBarControllerItemsType rootVCType = HQWYTabBarControllerItemsTypeDefault;
-    switch (pageTag) {
-        default:
-            break;
-    }
-    
-    if (pushedVC == nil) {
-        
-    }else{
-        [self pushVCWithIndex:rootVCType viewController:pushedVC];
-    }
-}
-*/
-
 #pragma mark 登录
 + (void)presentNative:(NSDictionary *)dic{
-    UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
         LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
         loginVc.loginBlock = ^{
-            if (rootVC.navigationController != nil) {
-                [rootVC.navigationController pushViewController:[self WebViewWithDictionary:dic] animated:YES];
-            }else{
-                [rootVC presentViewController:[self WebViewWithDictionary:dic] animated:NO completion:nil];
-            }
+            [self jumpControllerAction:[self WebViewWithDictionary:dic]];
         };
-        [rootVC presentViewController:loginVc animated:true completion:^{
+    loginVc.forgetBlock = ^{
+        [self changePasswordAction:dic];
+    };
+        [[HQWYActionHandler defauleHandle].rootViewController presentViewController:loginVc animated:true completion:^{
             
         }];
 }
@@ -101,10 +84,27 @@
     return webView;
 }
 
-//# pragma mark 跳修改密码
-//- (void)changePasswordAction{
-//    AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new]; self.navigationController.navigationBar.hidden = false;
-//    [self.navigationController pushViewController:authPhoneNumVC animated:true];
-//}
+# pragma mark 跳修改密码
++ (void)jumpControllerAction:(UIViewController*)vc{
+    if ([[HQWYActionHandler defauleHandle].rootViewController isKindOfClass:[UINavigationController class]]) {
+        ((UINavigationController *)[HQWYActionHandler defauleHandle].rootViewController).navigationBar.hidden = false;
+        [(UINavigationController *)[HQWYActionHandler defauleHandle].rootViewController pushViewController:vc animated:true];
+    }else{
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+        [[HQWYActionHandler defauleHandle].rootViewController presentViewController:nav animated:true completion:^{
+            
+        }];
+    }
+}
+
+# pragma mark 跳修改密码
++ (void)changePasswordAction:(NSDictionary *)dic{
+    AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new];
+    authPhoneNumVC.finishblock = ^{
+        [self jumpControllerAction:[self WebViewWithDictionary:dic]];
+    };
+    [self jumpControllerAction:authPhoneNumVC];
+   
+}
 
 @end
