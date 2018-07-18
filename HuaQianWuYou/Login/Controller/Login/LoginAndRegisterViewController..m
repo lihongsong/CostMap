@@ -87,6 +87,7 @@
         _passwordInputView.delegate = self;
         _passwordInputView.firstTF.delegate = self;
         _passwordInputView.firstTF.text = [HQWYUserManager lastLoginMobilePhone];
+        _passwordInputView.firstTF.secureTextEntry = true;
         _passwordInputView.secondTF.delegate = self;
         [_passwordInputView setType:TextFieldTypeCode];
     }
