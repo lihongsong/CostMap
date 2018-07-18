@@ -75,6 +75,9 @@
         _codeInputView.delegate = self;
         _codeInputView.firstTF.delegate = self;
         _codeInputView.firstTF.text = [HQWYUserManager lastLoginMobilePhone];
+        if ([[HQWYUserManager lastLoginMobilePhone] length] > 0) {
+            _codeInputView.codeButton.selected = true;
+        }
         _codeInputView.secondTF.delegate = self;
         [_codeInputView setType:TextFieldTypeCode];
     }
@@ -309,9 +312,9 @@
     //FIXME:review textField 的长度限制方法，在我们分类里面已有，UITextField+HJInputLimit 中
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         if ([textField isEqual:self.codeInputView.firstTF]) {
-            if (textField.text.length == 10) {
+            if (textField.text.length >= 10) {
                 self.codeInputView.codeButton.selected = true;
-                if (self.codeInputView.secondTF.text.length == 6) {
+                if (self.codeInputView.secondTF.text.length >= 6) {
                     self.loginButton.backgroundColor = [UIColor skinColor];
                     
                 }
@@ -320,7 +323,7 @@
                 self.loginButton.backgroundColor = [UIColor lightGrayColor];
             }
         }else{
-            if (textField.text.length == 5 && self.codeInputView.firstTF.text.length == 11) {
+            if (textField.text.length >= 5 && self.codeInputView.firstTF.text.length >= 11) {
                 self.loginButton.backgroundColor = [UIColor skinColor];
             }else{
                 self.loginButton.backgroundColor = [UIColor lightGrayColor];
@@ -328,13 +331,13 @@
         }
     }else{
         if ([textField isEqual:self.passwordInputView.firstTF]) {
-            if (textField.text.length == 10 && [self.passwordInputView.secondTF.text length] >= 6) {
+            if (textField.text.length >= 10 && [self.passwordInputView.secondTF.text length] >= 6) {
                 self.loginButton.backgroundColor = [UIColor skinColor];
             }else{
                 self.loginButton.backgroundColor = [UIColor lightGrayColor];
             }
         }else{
-            if (textField.text.length >= 5 && self.passwordInputView.firstTF.text.length == 11) {
+            if (textField.text.length >= 5 && self.passwordInputView.firstTF.text.length >= 11) {
                 self.loginButton.backgroundColor = [UIColor skinColor];
             }else{
                 self.loginButton.backgroundColor = [UIColor lightGrayColor];
