@@ -269,7 +269,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        ResponseCallback([HQWYJavaScriptResponse result:[HQWYUserManager loginMobilePhone]]);
+        NSString *phone = [HQWYUserManager loginMobilePhone];
+        
+        ResponseCallback([HQWYJavaScriptResponse result:phone]);
     }];
     
     /** 注册获取用户是否登录事件 */

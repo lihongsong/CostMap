@@ -42,7 +42,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
-    [self uploadData:self.navigationDic[@"productId"]];
+    if (self.navigationDic != nil && [self.navigationDic[@"productId"] length] > 0) {
+        [self uploadData:self.navigationDic[@"productId"]];
+    }
     [self initData];
     [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
     
