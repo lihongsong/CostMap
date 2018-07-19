@@ -13,7 +13,7 @@
 @implementation DeviceManager
 
 + (NSString *)ln_APIServer {
-    return @"http://t1-static.huaqianwy.com/mem";
+    return HQWY_MEMBER_HOST_PATH;
 }
 
 + (void)sendDeviceinfo{

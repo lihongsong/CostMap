@@ -25,13 +25,6 @@
  */
 #define REQUESTCOMMONHEADER @{@"content-Type": @"application/json"}
 
-/**
- 发现列表数据
- */
-#define DISCOVER_LIST @"discover/discoverList"
 
-
-//修改密码
-#define ChangePassword @"/user/pwdchg"
 
 #endif /* ApiConfigDefine_h */

@@ -10,7 +10,7 @@
 
 @implementation AuthCodeModel (Service)
 + (NSString *)ln_APIServer {
-    return HQWY_HOST_PATH;
+    return HQWY_MEMBER_HOST_PATH;
 }
 
 + (NSURLSessionDataTask *)requsetMobilePhoneCode:(NSString *)mobilePhone smsType:(NSInteger)smsType Completion:(void (^)(AuthCodeModel * _Nullable, NSError * _Nullable))completion{

@@ -2687,6 +2687,7 @@
 				CODE_SIGN_ENTITLEMENTS = HuaQianWuYou/HuaQianWuYou.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 69C2M2FU4A;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2713,7 +2714,7 @@
 					"$(PROJECT_DIR)/HuaQianWuYou/ThirdFrameWork/TalkingData/AppAnalytics_V4.0.16",
 					"$(PROJECT_DIR)/HuaQianWuYou/ThirdFrameWork/TalkingData/AdTracking_V4.0.16",
 				);
-				MiSDKRun = debug;
+				MiSDKRun = online;
 				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "";
 				OTHER_CFLAGS = (
 					"$(inherited)",

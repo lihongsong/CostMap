@@ -9,6 +9,11 @@
 #import "ImageCodeModel+Service.h"
 
 @implementation ImageCodeModel (Service)
+
++ (NSString *)ln_APIServer {
+    return HQWY_MEMBER_HOST_PATH;
+}
+
 + (NSURLSessionDataTask *)requsetImageCodeCompletion:(void (^)(ImageCodeModel * _Nullable, NSError * _Nullable))completion{
     return [self ln_requestModelAPI:IMAGE_CODE parameters:nil completion:completion];
 }

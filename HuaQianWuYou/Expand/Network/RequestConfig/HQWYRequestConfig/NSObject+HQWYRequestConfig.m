@@ -87,7 +87,7 @@ static NSString *const kHQWYBodyKey         = @"body";
 
 + (NSString *)ln_APIServer {
     if ([GetUserDefault(KExample_Credit_Score) isEqualToString:CONFIG_SCORE]) {
-        return HQWY_HOST_PATH;
+        return HQWY_PRODUCT_PATH;
     }
     return HOST_PATH;
 }

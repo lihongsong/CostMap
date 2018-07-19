@@ -30,7 +30,7 @@
 
 
 + (NSString *)ln_APIServer {
-    return @"http://appjieqian.2345.com/index.php";
+    return HQWY_MAJIA_PATH;
 }
 
 + (void)ln_setupRequestSerializer:(AFHTTPRequestSerializer *)requestSerializer {
