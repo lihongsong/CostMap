@@ -220,7 +220,7 @@
 - (void)requestLogin{
     WeakObj(self);
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     //FIXME:review if else 中一部分内容是一样的，抽出来共用
     [self requestBlock:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
@@ -418,7 +418,7 @@
 - (void)getImageCode{
     WeakObj(self);
    
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     
     //FIXME:review 这个请求图形验证码的逻辑在三个类中都有，可以抽离
     [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
@@ -444,7 +444,7 @@
 # pragma mark 校验图形验证码
 - (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
     WeakObj(self);
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
         if (error) {
@@ -466,7 +466,7 @@
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     if (![self.codeInputView.firstTF.text hj_isMobileNumber]) {
         [KeyWindow ln_showToastHUD:@"请输入有效手机号"];
         return;

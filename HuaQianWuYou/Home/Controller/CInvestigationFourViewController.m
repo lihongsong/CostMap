@@ -123,7 +123,7 @@
 
 
 - (void)smsButtonAction {
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     WeakObj(self);
     LoginUserInfoModel *userModel = [LoginUserInfoModel cachedLoginModel];
     [HQWYSMSModel requestSMSCodeWithMobile:userModel.mobile Completion:^(id  _Nullable result, NSError * _Nullable error) {
@@ -174,7 +174,7 @@
 }
 
 - (void)requestData {
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [CInvestigationModel requestCInvestigationWithAccumulationFundAccount:self.requestModel.accumulationFundAccount
                                                       accumulationFundPWD:self.requestModel.accumulationFundPWD
                                                                    iDCard:self.requestModel.iDCard

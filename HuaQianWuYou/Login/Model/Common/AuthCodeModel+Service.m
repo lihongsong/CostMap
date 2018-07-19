@@ -14,11 +14,11 @@
 }
 
 + (NSURLSessionDataTask *)requsetMobilePhoneCode:(NSString *)mobilePhone smsType:(NSInteger)smsType Completion:(void (^)(AuthCodeModel * _Nullable, NSError * _Nullable))completion{
-       NSMutableDictionary *params = [@{} mutableCopy];
-       [params setValue:mobilePhone forKey:@"mobilePhone"];
+    NSMutableDictionary *params = [@{} mutableCopy];
+    [params setValue:mobilePhone forKey:@"mobilePhone"];
     [params setValue:[NSString stringWithFormat:@"%ld", (long)smsType] forKey:@"smsType"];
-       return [self ln_requestModelAPI:SMS_SEND parameters:params completion:completion];
-  
+    return [self ln_requestModelAPI:SMS_SEND parameters:params completion:completion];
+    
 }
 
 
@@ -26,6 +26,7 @@
     NSMutableDictionary *params = [@{} mutableCopy];
     [params setValue:mobilePhone forKey:@"mobilePhone"];
     [params setValue:[NSString stringWithFormat:@"%ld", (long)smsType] forKey:@"smsType"];
+    
     [params setValue:code forKey:@"code"];
     [params setValue:serialNumber forKey:@"serialNumber"];
     return [self ln_requestModelAPI:SMS_Validate parameters:params completion:completion];

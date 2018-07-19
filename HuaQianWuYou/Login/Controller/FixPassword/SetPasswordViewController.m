@@ -99,7 +99,7 @@
     }
     WeakObj(self);
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     
     [ChangePasswordModel changePasswordCode:self.code passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);

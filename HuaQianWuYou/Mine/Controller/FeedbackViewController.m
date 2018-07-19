@@ -94,7 +94,7 @@
         return;
     }
      LoginUserInfoModel *userInfo = [LoginUserInfoModel cachedLoginModel];
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [FeedbackModel requestFeedbackWithAccount:userInfo?userInfo.mobile:@"15618775597"
                                    adviceString:self.feedbackTextView.text
                                      Completion:^(FeedbackModel * _Nullable result, NSError * _Nullable error) {
