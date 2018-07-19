@@ -60,7 +60,7 @@
     RCNetworkError *networkerror = [[RCNetworkError alloc] init];
 
     //FIXME:v2.0 手机号获取
-    networkerror.mobile = @"";
+    networkerror.mobile = [HQWYUserManager loginMobilePhone];
     //此处pid传空值
 //    networkerror.pid = @"";
 //    networkerror.userId = @"";

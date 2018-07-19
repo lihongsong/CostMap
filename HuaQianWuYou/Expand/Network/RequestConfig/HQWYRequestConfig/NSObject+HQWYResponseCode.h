@@ -23,7 +23,7 @@ typedef NS_ENUM(NSInteger, HQWYRESPONSECODE) {
     HQWYRESPONSECODE_VERIFY_CODE_FAILURE            = 1014,  //短信验证码校验失败
     HQWYRESPONSECODE_EXIST_THRITY_DAYS_RECORD       = 1015,  //存在30天内的数据
     HQWYRESPONSECODE_DYNAMIC_LIMIT_MOBILE_FAIL      = 1017,  //获取验证码次数超限,请1小时后再试（手机，透传直接提示用户
-    HQWYRESPONSECODE_DYNAMIC_LIMIT_IP_FAIL          = 1018,  //获取验证码次数超限（IP，弹图形验证码）
+    HQWYRESPONSECODE_DYNAMIC_LIMIT_IP_FAIL          = 1018,  //获取验证码次数超限（IP，弹图形验证码）,H5用不用管
     HQWYRESPONSECODE_HEADER_PARAM_ERROR             = 1019,  //packageName或os头参数有误
     HQWYRESPONSECODE_IMAGE_CODE_INPUT_FAIL          = 1100,  //图形验证码输入错误
     HQWYRESPONSECODE_UNKNOW                         = 88888  //未知

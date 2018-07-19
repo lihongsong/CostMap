@@ -19,7 +19,7 @@
 {
     __block BOOL getFromNet = NO;
    self.launchModel = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
-    [BasicDataModel requestBasicData:AdvertisingTypeStartPage productId:nil sort:nil Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
+    [BasicDataModel requestBasicData:AdvertisingTypeStartPage productId:self.launchModel.AdvertisingVO.productId sort:self.launchModel.AdvertisingVO.sort Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             return ;
         }

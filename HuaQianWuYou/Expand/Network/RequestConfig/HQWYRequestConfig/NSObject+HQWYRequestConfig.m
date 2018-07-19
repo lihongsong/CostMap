@@ -221,6 +221,8 @@ static NSString *const kHQWYBodyKey         = @"body";
     } else if ([responseObject isKindOfClass:[NSArray class]]) {
         if (self != [NSString class] && self != [NSNumber class]) {
             return [NSArray yy_modelArrayWithClass:self json:responseObject];
+        }else{
+            return nil;
         }
     } else if ([responseObject isKindOfClass:[NSDictionary class]]) {
         NSDictionary *responseDict = responseObject;
@@ -229,11 +231,11 @@ static NSString *const kHQWYBodyKey         = @"body";
         }else{
             return nil;
         }
-
     } else if ([responseObject isKindOfClass:[NSString class]]) {
         return responseObject;
     }
-    return nil;
+    return responseObject;
+    
 }
 
 @end

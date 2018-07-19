@@ -118,6 +118,9 @@
 		5979455620F33A6B006BB02D /* HQWYBaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979455520F33A6B006BB02D /* HQWYBaseWebViewController.m */; };
 		597C73C320E9C3220090960B /* BasicDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73C220E9C3220090960B /* BasicDataModel.m */; };
 		597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */; };
+		597E863020FC7C3B0018DA54 /* ImageCodeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 597E862F20FC7C3B0018DA54 /* ImageCodeModel.m */; };
+		597E863320FC7C7C0018DA54 /* ImageCodeModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 597E863220FC7C7C0018DA54 /* ImageCodeModel+Service.m */; };
+		597E863620FC9F380018DA54 /* LoginOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 597E863520FC9F380018DA54 /* LoginOut.m */; };
 		59BE198320EC9DA300704B2C /* PopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE198220EC9DA300704B2C /* PopView.m */; };
 		59BE198620EC9DD600704B2C /* SuspendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59BE198520EC9DD600704B2C /* SuspendView.m */; };
 		59BE198820EC9F1A00704B2C /* PopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59BE198720EC9F1A00704B2C /* PopView.xib */; };
@@ -448,6 +451,12 @@
 		597C73C220E9C3220090960B /* BasicDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BasicDataModel.m; sourceTree = "<group>"; };
 		597C73CB20E9C8D40090960B /* BasicDataModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BasicDataModel+Service.h"; sourceTree = "<group>"; };
 		597C73CC20E9C8D40090960B /* BasicDataModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "BasicDataModel+Service.m"; sourceTree = "<group>"; };
+		597E862E20FC7C3B0018DA54 /* ImageCodeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCodeModel.h; sourceTree = "<group>"; };
+		597E862F20FC7C3B0018DA54 /* ImageCodeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCodeModel.m; sourceTree = "<group>"; };
+		597E863120FC7C7C0018DA54 /* ImageCodeModel+Service.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ImageCodeModel+Service.h"; sourceTree = "<group>"; };
+		597E863220FC7C7C0018DA54 /* ImageCodeModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "ImageCodeModel+Service.m"; sourceTree = "<group>"; };
+		597E863420FC9F380018DA54 /* LoginOut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginOut.h; sourceTree = "<group>"; };
+		597E863520FC9F380018DA54 /* LoginOut.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginOut.m; sourceTree = "<group>"; };
 		59BE198120EC9DA300704B2C /* PopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopView.h; sourceTree = "<group>"; };
 		59BE198220EC9DA300704B2C /* PopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopView.m; sourceTree = "<group>"; };
 		59BE198420EC9DD600704B2C /* SuspendView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SuspendView.h; sourceTree = "<group>"; };
@@ -1064,6 +1073,8 @@
 				5965CB9320F4863F0009DB84 /* HQWYUser.m */,
 				5962070820F5AFD600FAF3CF /* HQWYUser+Service.h */,
 				5962070920F5AFD600FAF3CF /* HQWYUser+Service.m */,
+				597E863420FC9F380018DA54 /* LoginOut.h */,
+				597E863520FC9F380018DA54 /* LoginOut.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1125,6 +1136,10 @@
 				5958088220F2F53A002A6F0C /* AuthCodeModel.h */,
 				5958088520F2F53A002A6F0C /* AuthCodeModel+Service.m */,
 				5958088620F2F53A002A6F0C /* AuthCodeModel.m */,
+				597E862E20FC7C3B0018DA54 /* ImageCodeModel.h */,
+				597E863120FC7C7C0018DA54 /* ImageCodeModel+Service.h */,
+				597E863220FC7C7C0018DA54 /* ImageCodeModel+Service.m */,
+				597E862F20FC7C3B0018DA54 /* ImageCodeModel.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -2101,6 +2116,7 @@
 				59C5710B20E5FB8200D54260 /* BaseChartView.m in Sources */,
 				591D961F20ABDE6E00193B09 /* AASpline.m in Sources */,
 				A8F8DFD620B3B90200DB9A6A /* LoginInfoModel.m in Sources */,
+				597E863020FC7C3B0018DA54 /* ImageCodeModel.m in Sources */,
 				595AE2CE20EF78610031A2F3 /* NavigationView.m in Sources */,
 				59C570CE20E5FADC00D54260 /* CInvestigationModel+Service.m in Sources */,
 				592FE23620EA29A80052E60E /* FBManager.m in Sources */,
@@ -2160,9 +2176,11 @@
 				597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */,
 				59C5713820E600D100D54260 /* CALayer+LayerColor.m in Sources */,
 				A8F8DFEE20B4384D00DB9A6A /* ResetPasswordModel+Service.m in Sources */,
+				597E863320FC7C7C0018DA54 /* ImageCodeModel+Service.m in Sources */,
 				591D95E620ABDE6E00193B09 /* AASeries.m in Sources */,
 				591D960420ABDE6E00193B09 /* AAPlotLinesElement.m in Sources */,
 				59C570B120E5F9C100D54260 /* HomeViewController.m in Sources */,
+				597E863620FC9F380018DA54 /* LoginOut.m in Sources */,
 				59037711209C0387004CEBD8 /* BaseModel.m in Sources */,
 				59E72DAB20F60A4F007AB6C9 /* UnClickProductModel+Service.m in Sources */,
 				59C5710220E5FB8200D54260 /* CircleIndicatorView.m in Sources */,

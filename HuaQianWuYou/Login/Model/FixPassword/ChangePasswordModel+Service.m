@@ -14,11 +14,10 @@
     return HQWY_HOST_PATH;
 }
 
-+ (NSURLSessionDataTask *)changePasswordCode:(NSString *)code jumpType:(NSString *)jumpType passWord:(NSString *)password mobilePhone:(NSString *)mobilePhone serialNumber:(NSString *)serialNumber Completion:(void (^)(ChangePasswordModel * _Nullable, NSError * _Nullable))completion{
++ (NSURLSessionDataTask *)changePasswordCode:(NSString *)code passWord:(NSString *)password mobilePhone:(NSString *)mobilePhone serialNumber:(NSString *)serialNumber Completion:(void (^)(ChangePasswordModel * _Nullable, NSError * _Nullable))completion{
     
      NSMutableDictionary *params = [@{} mutableCopy];
     [params setValue:code forKey:@"code"];
-    [params setValue:jumpType forKey:@"jumpType"];
     [params setValue:password forKey:@"loginPwd"];
     [params setValue:mobilePhone forKey:@"mobilePhone"];
     [params setValue:serialNumber forKey:@"serialNumber"];

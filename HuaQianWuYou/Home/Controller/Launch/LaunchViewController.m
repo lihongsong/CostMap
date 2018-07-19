@@ -75,6 +75,7 @@
         if (result) {
             self.defaultView.hidden = YES;
         }
+        result.exampleCreditScore = @"88";
         if (result.exampleCreditScore != GetUserDefault(KExample_Credit_Score)) {
         SetUserDefault(result.exampleCreditScore, KExample_Credit_Score)
         }

@@ -55,5 +55,8 @@
 //    }];
 }
 
++ (NSURLSessionDataTask *)loginOUT:(void (^)(HQWYUser * _Nullable, NSError * _Nullable))completion{
+    return [self ln_requestModelAPI:LN_POST_LOGIN_OUT_PATH parameters:nil completion:completion];
+}
 
 @end
