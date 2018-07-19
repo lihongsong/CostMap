@@ -194,14 +194,21 @@
             }];
             return;
         }
+        if (!(self.serialNumber.length > 0)) {
+            [self addAlertView:@"请先获取验证码" block:^{
+                selfWeak.loginButton.userInteractionEnabled = true;
+                return;
+            }];
+            return;
+        }
         [self requestLogin];
     }else{
         [self eventId:HQWY_Login_PasswordLogin_click];
-        if (!([self.passwordInputView.firstTF.text length] > 0)) {
-            [self addAlertView:@"请输入手机号" block:^{
+        if (![self.passwordInputView.firstTF.text hj_isMobileNumber]) {
+            [self addAlertView:@"请输入有效手机号" block:^{
                 selfWeak.loginButton.userInteractionEnabled = true;
             }];
-            return ;
+            return;
         }
         if (!([self.passwordInputView.secondTF.text length] > 0)) {
             [self addAlertView:@"请输入密码" block:^{
@@ -209,16 +216,8 @@
             }];
             return;
         }
-        if ([self.passwordInputView.firstTF.text hj_isMobileNumber]) {
-            [self requestLogin];
-        }else{
-            [self addAlertView:@"手机号格式不正确" block:^{
-                selfWeak.loginButton.userInteractionEnabled = true;
-            }];
-            return;
-        }
+        [self requestLogin];
     }
-    
 }
 
 #pragma mark 请求登录
@@ -422,7 +421,7 @@
     }
    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     //FIXME:review LoginType 用枚举定义
-    [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:LoginType Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+    [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:GetCodeTypeLogin Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         NSLog(@"____%ld",(long)error.hqwy_respCode);
         //NSLog(@"____%@",error.hqwy_errorMessage);

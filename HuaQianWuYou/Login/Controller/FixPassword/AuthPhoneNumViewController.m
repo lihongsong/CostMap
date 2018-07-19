@@ -156,7 +156,7 @@ self.navigationController.navigationBar.translucent = NO;
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
     [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
-    [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:FixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+    [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:GetCodeTypeFixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         self.authCodeButton.userInteractionEnabled = true;
         if (error) {
@@ -180,7 +180,7 @@ self.navigationController.navigationBar.translucent = NO;
 # pragma mark 校验短信验证码
 - (void)validatePhoneNum{
     [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
-    [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:FixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+    [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:GetCodeTypeFixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];

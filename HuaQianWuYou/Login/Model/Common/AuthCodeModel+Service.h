@@ -19,7 +19,7 @@
  @param completion 完成
  @return <#return value description#>
  */
-+ (NSURLSessionDataTask *_Nullable)requsetMobilePhoneCode:(NSString *)mobilePhone                                 smsType:(NSString *)smsType
++ (NSURLSessionDataTask *_Nullable)requsetMobilePhoneCode:(NSString *)mobilePhone                                 smsType:(NSInteger)smsType
                                                Completion:(nullable void (^)(AuthCodeModel *_Nullable result,
                                                                          NSError *_Nullable error))completion;
 
@@ -40,7 +40,7 @@
  */
 + (NSURLSessionDataTask *_Nullable)validateSMSCode:(NSString *)code
                                        mobilePhone:(NSString *)mobilePhone
-                                           smsType:(NSString *)smsType
+                                           smsType:(NSInteger)smsType
                                       serialNumber:(NSString *)serialNumber
                                           Completion:(nullable void (^)(AuthCodeModel *_Nullable result,
                                                                         NSError *_Nullable error))completion;
