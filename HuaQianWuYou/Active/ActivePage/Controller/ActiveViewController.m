@@ -217,8 +217,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取用户token事件 */
     [_manager registerHandler:kAppGetUserToken handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        
-        ResponseCallback([HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken]);
+        NSString *token = @"";
+        if ([HQWYUserManager hasAlreadyLoggedIn]) {
+            token = [HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken];
+        }
+        ResponseCallback(token);
     }];
     
     /** 注册获取手机号事件 */
