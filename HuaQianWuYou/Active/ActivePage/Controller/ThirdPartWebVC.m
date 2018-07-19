@@ -23,11 +23,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 /**
  桥接管理器
  */
-@property (strong, nonatomic) HJJSBridgeManager *manager;
-@property(nonatomic,strong)NSTimer *timer;
-@property(nonatomic,assign)NSInteger countTime;
-@property(nonatomic,strong)NSArray *listArr;
-@property(nonatomic,assign)NSInteger productIndex;
+@property (strong, nonatomic)HJJSBridgeManager *manager;
+@property(nonatomic, strong)NSTimer *timer;
+@property(nonatomic, assign)NSInteger countTime;
+@property(nonatomic, strong)NSArray *listArr;
+@property(nonatomic, assign)NSInteger productIndex;
+@property(nonatomic, strong)NavigationView *navigationView;
 @end
 
 @implementation ThirdPartWebVC
@@ -65,10 +66,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     UIView *statusView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SWidth, StatusBarHeight)];
     [self.view addSubview:statusView];
     statusView.backgroundColor = [UIColor whiteColor];
-    NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
-    [self.view addSubview:navigationView];
-    navigationView.delegate = self;
-    [navigationView changeNavigationType:self.navigationDic[@"nav"]];
+    self.navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
+    [self.view addSubview:self.navigationView];
+    self.navigationView.delegate = self;
+    [self.navigationView changeNavigationType:self.navigationDic[@"nav"]];
 }
 
 - (void)initData{
@@ -166,7 +167,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[self.productIndex]];
         [self uploadData:product[@"id"]];
         [self loadURLString:product[@"address"]];
-        NSLog(@"_____%@_____%@",product,product[@"address"]);
+        [self.navigationView.titleButton setTitle:product[@"name"] forState:UIControlStateNormal];
         self.productIndex ++;
     }else{
         [HQWYReturnToDetainView countTime:[NSString stringWithFormat:@"%ld",(long)self.countTime]];
