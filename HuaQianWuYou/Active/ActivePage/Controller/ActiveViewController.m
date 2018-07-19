@@ -90,7 +90,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     [self registerHander];
-    [self initlocationService];
      [self initNavigation];
     [HJJSBridgeManager enableLogging];
     [_manager callHandler:kWebViewDidLoad];

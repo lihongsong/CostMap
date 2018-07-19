@@ -15,4 +15,6 @@ typedef void (^SignFinishBlock)(void);
 
 - (void)showPopView;
 
+- (void)initlocationService;
+
 @end
