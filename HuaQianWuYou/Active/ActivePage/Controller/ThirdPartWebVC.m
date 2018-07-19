@@ -237,6 +237,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [KeyWindow ln_hideProgressHUD];
 }
 
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    [KeyWindow ln_hideProgressHUD];
+}
+
 
 
 @end
