@@ -67,9 +67,7 @@
 
     networkerror.responseTime = [NSString stringWithFormat:@"%.0f",duration];
     networkerror.requestUrl = [failingURLString stringByReplacingOccurrencesOfString:@"api/" withString:@"/"];
-    networkerror.requestUrlFunction = [self mapInterfaceFunctions][failingURLString];
-    networkerror.requestUrlFunction = @"AAAAAAAAAAA";
- 
+    networkerror.requestUrlFunction = failingURLString.lastPathComponent;
     networkerror.errorType = [self errorTypeOf:error];
  
     if (error) {
