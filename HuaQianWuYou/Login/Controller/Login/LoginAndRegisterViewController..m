@@ -182,38 +182,31 @@
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [self eventId:HQWY_Login_SignIn_click];
         if (![self.codeInputView.firstTF.text hj_isMobileNumber]) {
-            [self addAlertView:@"请输入有效手机号" block:^{
-                selfWeak.loginButton.userInteractionEnabled = true;
-            }];
+            [KeyWindow ln_showToastHUD:@"请输入有效手机号"];
+            selfWeak.loginButton.userInteractionEnabled = true;
             return;
         }
         if ([self.codeInputView.secondTF.text length] < 6){
-            [self addAlertView:@"请输入正确的验证码" block:^{
-                selfWeak.loginButton.userInteractionEnabled = true;
-                return;
-            }];
+            [KeyWindow ln_showToastHUD:@"请输入正确的验证码"];
+            selfWeak.loginButton.userInteractionEnabled = true;
             return;
         }
         if (!(self.serialNumber.length > 0)) {
-            [self addAlertView:@"请先获取验证码" block:^{
-                selfWeak.loginButton.userInteractionEnabled = true;
-                return;
-            }];
+            [KeyWindow ln_showToastHUD:@"请先获取验证码"];
+            selfWeak.loginButton.userInteractionEnabled = true;
             return;
         }
         [self requestLogin];
     }else{
         [self eventId:HQWY_Login_PasswordLogin_click];
         if (![self.passwordInputView.firstTF.text hj_isMobileNumber]) {
-            [self addAlertView:@"请输入有效手机号" block:^{
-                selfWeak.loginButton.userInteractionEnabled = true;
-            }];
+            [KeyWindow ln_showToastHUD:@"请输入有效手机号"];
+            selfWeak.loginButton.userInteractionEnabled = true;
             return;
         }
         if (!([self.passwordInputView.secondTF.text length] > 0)) {
-            [self addAlertView:@"请输入密码" block:^{
-                selfWeak.loginButton.userInteractionEnabled = true;
-            }];
+            [KeyWindow ln_showToastHUD:@"请输入密码"];
+            selfWeak.loginButton.userInteractionEnabled = true;
             return;
         }
         [self requestLogin];
@@ -240,6 +233,7 @@
                 [KeyWindow ln_hideProgressHUD];
             }
             if (result){
+                [KeyWindow ln_showToastHUD:@"登录成功"];
                 [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
                 [self dismissViewControllerAnimated:true completion:^{
                     if(self.loginBlock){
@@ -260,6 +254,7 @@
                 [KeyWindow ln_hideProgressHUD];
             }
             if (result){
+                [KeyWindow ln_showToastHUD:@"登录成功"];
                 [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
                 [self dismissViewControllerAnimated:true completion:^{
                     if(self.loginBlock){
