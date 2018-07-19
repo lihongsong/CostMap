@@ -17,13 +17,14 @@
   [XZYAppUpdate startWithAppKey:Update_SDK_AppId
                       channelId:APP_ChannelId
               appUpdatePriority:AppUpdatePriorityDefault];
+#ifdef DEBUG
+    [XZYAppUpdate setDebug:YES];
+#endif
 }
 
 
 - (void)checkUpdate {
   [XZYAppUpdate checkUpdateAtLaunch:nil];
-#ifdef DEBUG
-  [XZYAppUpdate setDebug:YES];
-#endif
+
 }
 @end

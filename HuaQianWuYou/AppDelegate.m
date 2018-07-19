@@ -59,7 +59,6 @@
 //            [self checkUpdate];
 //        }else{
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
-            [self checkUpdate];
 //        }
     };
 
@@ -101,6 +100,8 @@
             self.window = oldWindow;
             [self loadActiveViewController:hNC];
             [self.window makeKeyWindow];
+            
+            [self checkUpdate];
             
             guideWindow.hidden = YES;
             [guideWindow removeFromSuperview];
