@@ -202,12 +202,18 @@ self.navigationController.navigationBar.translucent = NO;
     [self eventId:HQWY_Fix_Next_click];
     //校验是不是手机号
     if (![self.phoneNum hj_isMobileNumber]) {
-        [KeyWindow ln_showToastHUD:@"手机号错误"];
+        [KeyWindow ln_showToastHUD:@"请输入有效手机号"];
+        return;
+    }
+    
+    if (!(self.serialNumber.length > 0)) {
+        [self addAlertView:@"请先获取验证码" block:^{
+            return;
+        }];
         return;
     }
     [self validatePhoneNum];
 }
-
 
 - (UIButton *)nextButton{
     if (!_nextButton) {

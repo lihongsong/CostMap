@@ -183,7 +183,7 @@
 //      //  [SharedAppDelegate logoutAndLoginAgain];
 //    }];
 //    [alert show];
-    [HQWYUserManager sharedInstance].showingTokenValidateAlertView = YES;
-}
+//    [HQWYUserManager sharedInstance].showingTokenValidateAlertView = YES;
+//}
 
 @end
