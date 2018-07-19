@@ -186,6 +186,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     _manager = nil;
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 #pragma mark - Private Method
@@ -236,6 +238,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)nonePromptButtonClick {
     SetUserDefault([self getToday],@"isShowPromptToday");
     [self toBeforeViewController];
+    [HQWYReturnToDetainView  dismiss];
 }
 
 - (NSString *)getToday{

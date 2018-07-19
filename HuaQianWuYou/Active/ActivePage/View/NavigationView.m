@@ -135,7 +135,7 @@
     [self.backButton setImage:[UIImage imageNamed:@"nav_icon_back"] forState:UIControlStateNormal];
     [self.backButton setImage:[UIImage imageNamed:@"nav_icon_back"] forState:UIControlStateHighlighted];
     [self.backButton addTarget:self action:@selector(backPage) forControlEvents:UIControlEventTouchUpInside];
-    
+    self.backButton.hidden = true;
     [self addSubview:self.rightItemButton];
     [self addSubview:self.titleButton];
     [self.titleButton mas_makeConstraints:^(MASConstraintMaker *make) {
