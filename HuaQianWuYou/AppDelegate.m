@@ -107,9 +107,20 @@
             [guideWindow removeFromSuperview];
         });
         make.setCountdownBtnBlock(^(UIButton *btn) {
-            //FIXME:review 此处不要写死坐标，需要优化
-            btn.frame = CGRectMake(SWidth - 66 - 30, SHeight - 30 -28, 66, 28);
             
+            CGFloat h = kLaunchSkipButtonH;
+            CGFloat w = kLaunchSkipButtonW;
+            CGFloat x = SWidth - kLaunchSkipButtonSpace - w;
+            CGFloat y = SHeight - kLaunchSkipButtonSpace - h;
+            
+            btn.frame = CGRectMake(x, y, w, h);
+            [btn setTitleColor:HJHexColor(0x666666) forState:UIControlStateNormal];
+            [btn.layer setCornerRadius:15];
+            [btn setBackgroundColor:[UIColor clearColor]];
+            [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+            [btn.layer setBorderColor:HJHexColor(0xbbbbbb).CGColor];
+            [btn.layer setBorderWidth:1.0f];
+    
             [btn addTarget:self action:@selector(launchButtonClick) forControlEvents:UIControlEventTouchUpInside];
         // 点击跳过，埋点
         });
