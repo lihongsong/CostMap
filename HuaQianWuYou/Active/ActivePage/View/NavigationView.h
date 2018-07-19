@@ -20,6 +20,7 @@
 @property (strong, nonatomic)LeftItemButton *leftItemButton;
 @property(nonatomic,strong)id<NavigationViewDelegate>delegate;
 @property(nonatomic,strong) UILabel *leftLabel;
+@property(strong,nonatomic)UIButton *titleButton;
 
 - (void)changeNavigationType:(NSDictionary *)typeDic;
 
