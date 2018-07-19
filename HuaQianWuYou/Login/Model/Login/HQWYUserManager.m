@@ -173,17 +173,17 @@
 //}
 
 //FIXME:review 这里需要么？
-+ (void)handleInvalidateToken:(NSDictionary *)dict {
-    if ([HQWYUserManager sharedInstance].showingTokenValidateAlertView) {
-        return;
-    }
+//+ (void)handleInvalidateToken:(NSDictionary *)dict {
+//    if ([HQWYUserManager sharedInstance].showingTokenValidateAlertView) {
+//        return;
+//    }
     
 //    HJAlertView *alert = [[HJAlertView alloc] initWithTitle:nil message:dict[@"message"] confirmButtonTitle:@"确定" confirmBlock:^{
 //        [HQWYUserManager sharedInstance].showingTokenValidateAlertView = NO;
 //      //  [SharedAppDelegate logoutAndLoginAgain];
 //    }];
 //    [alert show];
-    [HQWYUserManager sharedInstance].showingTokenValidateAlertView = YES;
-}
+//    [HQWYUserManager sharedInstance].showingTokenValidateAlertView = YES;
+//}
 
 @end
