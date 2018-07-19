@@ -57,10 +57,10 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7WR-Eb-EXw">
-                            <rect key="frame" x="218" y="57" width="72" height="50"/>
+                            <rect key="frame" x="218" y="64" width="72" height="45"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hjW-kl-lna">
-                                    <rect key="frame" x="0.0" y="7" width="72" height="45"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="45"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="45" id="ABR-4u-rIF"/>
                                         <constraint firstAttribute="width" constant="72" id="N0s-HT-Iiz"/>
@@ -69,7 +69,7 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="50" id="Fme-gb-xwC"/>
+                                <constraint firstAttribute="height" constant="45" id="Fme-gb-xwC"/>
                                 <constraint firstItem="hjW-kl-lna" firstAttribute="leading" secondItem="7WR-Eb-EXw" secondAttribute="leading" id="nTe-IG-jd2"/>
                                 <constraint firstAttribute="trailing" secondItem="hjW-kl-lna" secondAttribute="trailing" id="wW9-1b-bPO"/>
                             </constraints>
@@ -77,10 +77,12 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="7WR-Eb-EXw" firstAttribute="leading" secondItem="yNJ-DV-cg2" secondAttribute="trailing" constant="-3" id="3SK-RR-ElK"/>
                         <constraint firstAttribute="bottom" secondItem="vdj-Nm-ky0" secondAttribute="bottom" id="A0L-XJ-Kxy"/>
                         <constraint firstItem="vdj-Nm-ky0" firstAttribute="top" secondItem="uXe-On-MFo" secondAttribute="bottom" id="DHc-bu-iKW"/>
                         <constraint firstItem="vdj-Nm-ky0" firstAttribute="centerX" secondItem="j2y-3K-nZ4" secondAttribute="centerX" id="Dda-zg-Cxy"/>
                         <constraint firstItem="anH-C7-6Ye" firstAttribute="centerX" secondItem="j2y-3K-nZ4" secondAttribute="centerX" id="H9C-Re-NhA"/>
+                        <constraint firstItem="7WR-Eb-EXw" firstAttribute="centerY" secondItem="j2y-3K-nZ4" secondAttribute="centerY" id="IVT-f1-HMQ"/>
                         <constraint firstItem="yNJ-DV-cg2" firstAttribute="centerY" secondItem="hjW-kl-lna" secondAttribute="centerY" id="Ljb-w2-7M4"/>
                         <constraint firstItem="uXe-On-MFo" firstAttribute="leading" secondItem="j2y-3K-nZ4" secondAttribute="leading" id="MF0-r9-Uqf"/>
                         <constraint firstAttribute="bottom" secondItem="uXe-On-MFo" secondAttribute="bottom" constant="45" id="PM6-z7-P21"/>
@@ -96,9 +98,7 @@
                         <constraint firstItem="cWq-BI-0rU" firstAttribute="top" secondItem="uXe-On-MFo" secondAttribute="bottom" id="lah-8P-RSr"/>
                         <constraint firstItem="hjW-kl-lna" firstAttribute="centerY" secondItem="j2y-3K-nZ4" secondAttribute="centerY" id="mkg-wc-zhP"/>
                         <constraint firstAttribute="bottom" secondItem="cWq-BI-0rU" secondAttribute="bottom" id="rSr-f0-ucc"/>
-                        <constraint firstItem="7WR-Eb-EXw" firstAttribute="leading" secondItem="yNJ-DV-cg2" secondAttribute="trailing" constant="-3" id="sDi-UR-jf0"/>
                         <constraint firstAttribute="trailing" secondItem="7WR-Eb-EXw" secondAttribute="trailing" constant="15" id="u84-Au-PV8"/>
-                        <constraint firstItem="uXe-On-MFo" firstAttribute="top" secondItem="7WR-Eb-EXw" secondAttribute="bottom" constant="20" id="xQh-PN-rb1"/>
                         <constraint firstItem="vdj-Nm-ky0" firstAttribute="leading" secondItem="cWq-BI-0rU" secondAttribute="trailing" id="z6q-0w-mpp"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>

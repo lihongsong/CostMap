@@ -44,6 +44,7 @@
                 self.firstTF.placeholder = @"请填写真实有效手机号";
                 self.secondTF.placeholder = @"请填写短信验证码";
                 self.codeButton.hidden = false;
+                self.secondTF.keyboardType = UIKeyboardTypeNumberPad;
                 self.secondTF.frame = CGRectMake(LeftSpace, 70,CGRectGetMaxX(self.codeButton.frame) - self.codeButton.hj_width - 15 - LeftSpace, 50);
                 self.firstLineView.backgroundColor = [UIColor skinColor];
             }
@@ -52,6 +53,8 @@
         {
             self.firstTF.placeholder = @"请填写真实有效手机号";
             self.secondTF.placeholder = @"请填写登录密码";
+            self.secondTF.secureTextEntry = true;
+            self.secondTF.keyboardType = UIKeyboardTypeDefault;
             self.eyeButton.hidden = false;
             self.secondTF.frame = CGRectMake(LeftSpace, 70,CGRectGetMaxX(self.eyeButton.frame) - self.eyeButton.hj_width - 5 - LeftSpace, 50);
         }
@@ -60,6 +63,8 @@
         {
             self.firstTF.placeholder = @"请填写真实有效手机号";
             self.secondTF.placeholder = @"请填写登录密码";
+            self.secondTF.secureTextEntry = true;
+            self.secondTF.keyboardType = UIKeyboardTypeDefault;
             self.eyeButton.hidden = true;
             self.firstLineView.backgroundColor = [UIColor skinColor];
         }

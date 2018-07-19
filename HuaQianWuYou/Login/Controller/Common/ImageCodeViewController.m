@@ -60,7 +60,7 @@
 - (void)sureAction{
     [self eventId:HQWY_Login_ImageCode_click];
     if (self.codeView.imageCodeInputLable.text.length == 0) {
-        [KeyWindow ln_showToastHUD:@"验证码不能为空"];
+        [KeyWindow ln_showToastHUD:@"请输入图形验证码"];
         return;
     }
     if (self.block) {
