@@ -162,7 +162,7 @@
 }
 
 - (void)reloadWebview {
-    [self.wkWebView reload];
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:self.failUrl]];
 }
 
 /*
