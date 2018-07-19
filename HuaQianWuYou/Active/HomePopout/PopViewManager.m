@@ -102,6 +102,12 @@
 # pragma mark 弹框数据显示逻辑
 + (void)requstDataType:(AdvertisingType)type fromVC:(UIViewController *)controller{
     BasicDataModel *model = [BasicDataModel getCacheModel:type];
+    if (type == AdvertisingTypeAlert) {
+        if (![GetUserDefault(@"advertisementDate") isEqualToString:[NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"]]){
+            model.sort = @0;
+            model.productId = @0;
+        }
+    }
     [BasicDataModel requestBasicData:type productId:model.productId sort:model.sort Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             return;
