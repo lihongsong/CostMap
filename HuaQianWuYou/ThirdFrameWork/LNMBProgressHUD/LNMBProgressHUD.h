@@ -6,7 +6,7 @@
 //  Copyright © 2017年 terrywang. All rights reserved.
 //
 
-#import "MBProgressHUD.h"
+#import "HQWYProgressHUD.h"
 
 typedef NS_ENUM (NSInteger, LNMBProgressHUDAnimationType) {
     LNMBProgressHUDAnimationLoading = 1,
@@ -21,7 +21,7 @@ typedef NS_ENUM (NSInteger, LNMBProgressHUDLoadingType) {
 };
 
 NS_ASSUME_NONNULL_BEGIN
-@interface LNMBProgressHUD : MBProgressHUD
+@interface LNMBProgressHUD : HQWYProgressHUD
 @end
 
 @interface UIView (LNMBProgressHUD)

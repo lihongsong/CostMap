@@ -47,7 +47,6 @@ PODS:
     - AFNetworking (~> 3.1.0)
     - YYModel (~> 1.0.4)
   - Masonry (1.1.0)
-  - MBProgressHUD (1.0.0)
   - RCMobClick (2.0.9)
   - SDWebImage (4.4.1):
     - SDWebImage/Core (= 4.4.1)
@@ -80,7 +79,6 @@ DEPENDENCIES:
   - IQKeyboardManager (= 5.0.6)
   - LNNetwork (= 1.0.4)
   - Masonry (= 1.1.0)
-  - MBProgressHUD (= 1.0.0)
   - RCMobClick (~> 2.0.9)
   - SDWebImage
   - UICKeyChainStore (= 2.1.1)
@@ -104,7 +102,6 @@ SPEC REPOS:
     - GTMBase64
     - IQKeyboardManager
     - Masonry
-    - MBProgressHUD
     - SDWebImage
     - UICKeyChainStore
     - UMengUShare
@@ -125,7 +122,6 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   LNNetwork: ad1e6c0cba42f957670183e615563be1c0f613fb
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
-  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   RCMobClick: 05cdb2fc6ebf656ee690eddece9dce3ec75f3c02
   SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
@@ -134,6 +130,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: bd91cca919d11bd27ecc8e45f23a7e647fb760ff
+PODFILE CHECKSUM: 34c1f45e8326197ecfe8b9ac68660ff300affdd8
 
 COCOAPODS: 1.5.3
