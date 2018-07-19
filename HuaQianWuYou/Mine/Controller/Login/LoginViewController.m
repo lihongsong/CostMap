@@ -206,7 +206,7 @@
         [KeyWindow ln_showToastHUD:@"请输入正确的手机号码"];
         return;
     }
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [LoginInfoModel requestLoginWithMobile:self.accountTF.text
                                    channel:APP_ChannelId
                                   password:self.passwordTF.text

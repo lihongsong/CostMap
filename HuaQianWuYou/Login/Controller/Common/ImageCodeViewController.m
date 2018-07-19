@@ -42,7 +42,7 @@
 //刷新图片
 - (void)reloadImageCode{
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError

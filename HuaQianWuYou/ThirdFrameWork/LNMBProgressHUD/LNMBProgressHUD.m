@@ -237,7 +237,7 @@ static const CGFloat kLNHUDHideDelay            = 2.0;
 }
 
 - (LNMBProgressHUD *)ln_showLoadingHUDCommon {
-    return [self ln_showLoadingHUDCommon:nil];
+    return [self ln_showLoadingHUDCommon:@"拼命加载中…"];
 }
 
 - (LNMBProgressHUD *)ln_showLoadingHUDMoney {

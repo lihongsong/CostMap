@@ -128,7 +128,7 @@ self.navigationController.navigationBar.translucent = NO;
 # pragma mark 获取图形验证码
 - (void)getImageCode {
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
@@ -147,7 +147,7 @@ self.navigationController.navigationBar.translucent = NO;
 # pragma mark 校验图形验证码
 - (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
@@ -164,7 +164,7 @@ self.navigationController.navigationBar.translucent = NO;
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
 
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:GetCodeTypeFixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
     
         self.authCodeButton.userInteractionEnabled = true;
@@ -192,7 +192,7 @@ self.navigationController.navigationBar.translucent = NO;
 
 # pragma mark 校验短信验证码
 - (void)validatePhoneNum{
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:GetCodeTypeFixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError

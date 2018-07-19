@@ -93,8 +93,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     [self registerHander];
-    [self initlocationService];
-     [self initNavigation];
+    [self initNavigation];
     [HJJSBridgeManager enableLogging];
     [_manager callHandler:kWebViewDidLoad];
     self.wkWebView.scrollView.bounces = NO;
@@ -158,10 +157,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         HJAlertView *alertView =
         [[HJAlertView alloc] initWithTitle:@"请允许获取定位权限"
                                    message:@"您的位置将被用来精准匹配贷款产品，并享受贷款优惠服务"
-                        confirmButtonTitle:@"我知道了" confirmBlock:^{
+                        confirmButtonTitle:@"确认" confirmBlock:^{
                             StrongObj(self);
                             [self startLocationService];
                                    }];
+        alertView.messageLabel.textAlignment = NSTextAlignmentCenter;
+        alertView.confirmColor = HJHexColor(0xff6a45);
         [alertView show];
     } else {
         [self startLocationService];
@@ -215,6 +216,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)registerHander {
     WeakObj(self)
+    
+    /** 隐藏 loading */
+    [_manager registerHandler:kAppDismissLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_hideProgressHUD];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
+    
+    /** 展示 loading */
+    [_manager registerHandler:kAppShowLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_showLoadingHUDCommon:@"拼命加载中…"];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
     
     /** 注册埋点事件 */
         [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -485,7 +498,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark 退出登录
 - (void)loginOut:(loginOutBlock)outBlock{
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     
     [LoginOut signOUT:^(id _Nullable result, NSError * _Nullable error) {
         

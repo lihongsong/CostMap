@@ -50,6 +50,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [KeyWindow ln_showLoadingHUD];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    
+    [KeyWindow ln_hideProgressHUD];
+}
+
 #pragma mark 上报数据
 - (void)uploadData:(NSNumber *)productId {
     
