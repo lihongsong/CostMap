@@ -26,9 +26,12 @@
 #import <AppUpdate/XZYAppUpdate.h>
 #import "ThirdPartWebVC.h"
 #import "AuthPhoneNumViewController.h"
+#import "ThirdPartWebVC.h"
 #import "HQWYJavaScriptOpenSDKHandler.h"
 #import "HJUIKit.h"
 #import "NSString+cityInfos.h"
+#import "HQWYUser.h"
+#import "HQWYUser+Service.h"
 #import "LoginOut.h"
 
 #import <HJ_UIKit/HJAlertView.h>
@@ -90,6 +93,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     [self registerHander];
+    [self initlocationService];
      [self initNavigation];
     [HJJSBridgeManager enableLogging];
     [_manager callHandler:kWebViewDidLoad];
@@ -103,7 +107,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
     
 }
-
 
 # pragma mark 弹框和悬浮弹框逻辑
 
@@ -155,12 +158,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         HJAlertView *alertView =
         [[HJAlertView alloc] initWithTitle:@"请允许获取定位权限"
                                    message:@"您的位置将被用来精准匹配贷款产品，并享受贷款优惠服务"
-                        confirmButtonTitle:@"确认" confirmBlock:^{
+                        confirmButtonTitle:@"我知道了" confirmBlock:^{
                             StrongObj(self);
                             [self startLocationService];
                                    }];
-        alertView.messageLabel.textAlignment = NSTextAlignmentCenter;
-        alertView.confirmColor = HJHexColor(0xff6a45);
         [alertView show];
     } else {
         [self startLocationService];
@@ -215,26 +216,14 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)registerHander {
     WeakObj(self)
     
-    /** 隐藏 loading */
-    [_manager registerHandler:kAppDismissLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        [KeyWindow ln_hideProgressHUD];
-        ResponseCallback([HQWYJavaScriptResponse success]);
-    }];
-    
-    /** 展示 loading */
-    [_manager registerHandler:kAppShowLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        [KeyWindow ln_showLoadingHUDCommon:@"拼命加载中…"];
-        ResponseCallback([HQWYJavaScriptResponse success]);
-    }];
-    
     /** 注册埋点事件 */
-    [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        StrongObj(self)
-        NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-        [self eventId:dic[@"eventId"]];
-        ResponseCallback([HQWYJavaScriptResponse success]);
-    }];
+        [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+            StrongObj(self)
+            NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+            [self eventId:dic[@"eventId"]];
+            ResponseCallback([HQWYJavaScriptResponse success]);
+        }];
     
     /** 更新 */
     [_manager registerHandler:kAppCheckUpdate handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -279,7 +268,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        ResponseCallback([HQWYJavaScriptResponse result:[HQWYUserManager loginMobilePhone]]);
+        NSString *phone = [HQWYUserManager loginMobilePhone];
+        
+        ResponseCallback([HQWYJavaScriptResponse result:phone]);
     }];
     
     /** 注册获取用户是否登录事件 */
@@ -338,6 +329,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager registerHandler:[HQWYJavaScriptOpenSDKHandler new]];
     
     /** 注册获取请求头事件 */
+    
     [_manager registerHandler:[HQWYJavaScriptGetAjaxHeaderHandler new]];
 }
 
@@ -397,13 +389,14 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
     if (location) {//得到定位信息，添加annotation
         if (location.location) {
-            NSLog(@"LOC = %@",location.location);
+//            NSLog(@"LOC = %@",location.location);
         }
         if (location.rgcData) {
-            NSLog(@"rgc = %@",[location.rgcData description]);
-             [self.navigationView.leftItemButton setTitle:location.rgcData.city forState:UIControlStateNormal];
+//            NSLog(@"rgc = %@",[location.rgcData description]);
+            NSString *cityString = [location.rgcData.city stringByReplacingOccurrencesOfString:@"市" withString:@""];
+             [self.navigationView.leftItemButton setTitle:cityString forState:UIControlStateNormal];
             self.locatedCity[@"country"] = location.rgcData.country;
-            self.locatedCity[@"city"] = location.rgcData.city;
+            self.locatedCity[@"city"] = cityString;
             self.locatedCity[@"province"] = location.rgcData.province;
             [self.locationManager stopUpdatingLocation];
         }
@@ -489,6 +482,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.navigationController pushViewController:authPhoneNumVC animated:true];
 }
 
+#pragma mark 退出登录
 - (void)loginOut:(loginOutBlock)outBlock{
     
     [KeyWindow ln_showLoadingHUD];
