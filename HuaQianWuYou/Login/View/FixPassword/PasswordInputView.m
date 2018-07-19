@@ -72,6 +72,7 @@
             self.firstTextFieldView.hj_maxLength = 20;
             self.secondTextFieldView.hj_maxLength = 20;
             self.firstTextFieldView.keyboardType = UIKeyboardTypeDefault;
+            self.secondTextFieldView.keyboardType = UIKeyboardTypeDefault;
 
             break;
         case PasswordInputTypeAuthPhoneNum:
@@ -84,6 +85,7 @@
                 self.authCodeButton.selected = true;
             }
             self.secondTextFieldView.placeholder = @"请填写短信验证码";
+            self.secondTextFieldView.keyboardType = UIKeyboardTypeNumberPad;
             self.firstTextFieldView.hj_maxLength = 11; self.firstTextFieldView.secureTextEntry = NO;
             self.secondTextFieldView.hj_maxLength = 6; self.secondTextFieldView.secureTextEntry = NO;
             break;

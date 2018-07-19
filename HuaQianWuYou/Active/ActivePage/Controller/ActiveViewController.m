@@ -162,7 +162,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         alertView.messageLabel.textAlignment = NSTextAlignmentCenter;
         alertView.confirmColor = HJHexColor(0xff6a45);
         [alertView show];
-        
     } else {
         [self startLocationService];
     }
