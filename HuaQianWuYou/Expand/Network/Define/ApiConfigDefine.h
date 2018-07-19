@@ -16,7 +16,7 @@
 
 #else
 
-#define HQWY_HOST_PATH @"http:"
+#define HOST_PATH @"http://appjieqian.2345.com/index.php"
 
 #endif
 

@@ -75,6 +75,9 @@
         if (result) {
             self.defaultView.hidden = YES;
         }
+        if (result.exampleCreditScore != GetUserDefault(KExample_Credit_Score)) {
+        SetUserDefault(result.exampleCreditScore, KExample_Credit_Score)
+        }
         if (self.accomplishBlock) {
             self.accomplishBlock(result.exampleCreditScore);
         }

@@ -1,25 +1,25 @@
+////
+////  NSObject+RequestConfig.m
+////  HuaQianWuYou
+////
+////  Created by jasonzhang on 2018/5/21.
+////  Copyright © 2018年 jason. All rights reserved.
+////
 //
-//  NSObject+RequestConfig.m
-//  HuaQianWuYou
+//#import "NSObject+RequestConfig.h"
+//#import "NSObject+YYModel.h"
+//#import "LoginInfoModel.h"
+//#import "NSError+CustomError.h"
+//#import <RCMobClick/RCBaseCommon.h>
+////#import "NSError+HQWYError.h"
+//#import "NSObject+HQWYResponseCode.h"
+//#import "NSObject+HQWYSendNetworkError.h"
 //
-//  Created by jasonzhang on 2018/5/21.
-//  Copyright © 2018年 jason. All rights reserved.
+//static NSString *const kHQWYRespCodeKey     = @"respCode";
+//static NSString *const kHQWYRespMsgKey      = @"respMsg";
+//static NSString *const kHQWYBodyKey         = @"body";
 //
-
-#import "NSObject+RequestConfig.h"
-#import "NSObject+YYModel.h"
-#import "LoginInfoModel.h"
-#import "NSError+CustomError.h"
-#import <RCMobClick/RCBaseCommon.h>
-//#import "NSError+HQWYError.h"
-#import "NSObject+HQWYResponseCode.h"
-#import "NSObject+HQWYSendNetworkError.h"
-
-static NSString *const kHQWYRespCodeKey     = @"respCode";
-static NSString *const kHQWYRespMsgKey      = @"respMsg";
-static NSString *const kHQWYBodyKey         = @"body";
-
-@implementation NSObject (RequestConfig)
+//@implementation NSObject (RequestConfig)
 //
 //+ (NSString *)ln_APIServer {
 //    return @"http://appjieqian.2345.com/index.php";
@@ -185,5 +185,5 @@ static NSString *const kHQWYBodyKey         = @"body";
 //    }
 //    return 0;
 //}
-
-@end
+//
+//@end
