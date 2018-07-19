@@ -88,6 +88,17 @@
     [RCMobClick reportError:networkerror];
 }
 
++ (void)sendNetworkErrorDic:(NSDictionary *)errorDic{
+    RCNetworkError *networkerror = [[RCNetworkError alloc] init];
+    networkerror.mobile = errorDic[@"mobile"];
+    networkerror.responseTime = errorDic[@"responseTime"];
+    networkerror.requestUrl = errorDic[@"requestUrl"];
+    networkerror.requestUrlFunction = errorDic[@"requestUrlFunction"];
+    networkerror.errorType = [errorDic[@"errorType"] integerValue];
+    networkerror.errorContent = errorDic[@"errorContent"];
+    [RCMobClick reportError:networkerror];
+}
+
 + (RCNetworkErrorType)errorTypeOf:(NSError *)error {
  
     //如果为nil，表示是服务器系统异常

@@ -31,7 +31,7 @@
     [param setValue:version forKey:@"version"];
     [param setValue:@"hqwyios" forKey:@"terminalId"];
     [param setValue:[RCBaseCommon getIdfaString] forKey:@"deviceNo"];
-    
+    [param setValue:GetUserDefault(KProductHidden) forKey:@"productHidden"];
     !hander?:hander([HQWYJavaScriptResponse result:param]);
      
 }

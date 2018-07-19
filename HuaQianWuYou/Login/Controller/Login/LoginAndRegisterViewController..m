@@ -32,6 +32,8 @@
 @property(nonatomic,strong)UIButton *closeButton;
 /* 流水号 */
 @property (nonatomic, copy) NSString  *serialNumber;
+/* 图形验证码获取方式，1验证码，2验证码登录，3密码登录 */
+@property (nonatomic, assign)NSInteger imageCodeType;
 @end
 
 @implementation LoginAndRegisterViewController
@@ -42,6 +44,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self setUpUi];
     self.serialNumber = @"";
+    self.imageCodeType = 0;
 }
 - (void)setUpUi{
     [self.view addSubview:self.closeButton];
@@ -90,7 +93,7 @@
         _passwordInputView.delegate = self;
         _passwordInputView.firstTF.delegate = self;
         _passwordInputView.firstTF.text = [HQWYUserManager lastLoginMobilePhone];
-        _passwordInputView.firstTF.secureTextEntry = true;
+        _passwordInputView.secondTF.secureTextEntry = true;
         _passwordInputView.secondTF.delegate = self;
         [_passwordInputView setType:TextFieldTypeCode];
     }
@@ -140,12 +143,12 @@
     [self.codeInputView.firstTF becomeFirstResponder];
     self.codeInputView.secondLineView.backgroundColor = [UIColor lightGrayColor];
     self.forgetButton.hidden = true;
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.codeInputView setType:TextFieldTypeCode];
         self.passwordInputView.transform = CGAffineTransformIdentity;
         self.codeInputView.transform = CGAffineTransformIdentity;
-    } completion:^(BOOL finished) {
-    }];
+//    } completion:^(BOOL finished) {
+//    }];
 }
 
 
@@ -154,13 +157,13 @@
     [self.passwordInputView.firstTF becomeFirstResponder];
     self.passwordInputView.firstLineView.backgroundColor = [UIColor skinColor];
     self.passwordInputView.secondLineView.backgroundColor = [UIColor lightGrayColor];
-    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+//    [UIView animateWithDuration:0.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         [self.passwordInputView setType:TextFieldTypeNoneIsSeePassword];
         self.passwordInputView.transform = CGAffineTransformMakeTranslation(-SWidth, 0);
         self.codeInputView.transform = CGAffineTransformMakeTranslation(-SWidth, 0);
-    } completion:^(BOOL finished) {
+//    } completion:^(BOOL finished) {
         self.forgetButton.hidden = false;
-    }];
+//    }];
     
 }
 
@@ -218,43 +221,39 @@
     WeakObj(self);
    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     //FIXME:review if else 中一部分内容是一样的，抽出来共用
+    [self requestBlock:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
+        StrongObj(self);
+        self.loginButton.userInteractionEnabled = true;
+        if (error) {
+            if (error.code == 1060) {
+                [self getImageCode];
+            }else{
+                [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            }
+            return ;
+        }
+        if (result){
+            [KeyWindow ln_showToastHUD:@"登录成功"];
+            [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
+            [self dismissViewControllerAnimated:true completion:^{
+                if(self.loginBlock){
+                    self.loginBlock();
+                }
+            }];
+        }
+    }];
+}
 
+- (void)requestBlock:(void (^)(HQWYUser * _Nullable, NSError * _Nullable))completion{
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber registerType:RegisterTypeHQWYApp Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
-            StrongObj(self);
-            self.loginButton.userInteractionEnabled = true;
-            [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
-            if (error) {
-              [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
-                return ;
-            }
-            if (result){
-                [KeyWindow ln_showToastHUD:@"登录成功"];
-                [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
-                [self dismissViewControllerAnimated:true completion:^{
-                    if(self.loginBlock){
-                        self.loginBlock();
-                    }
-                }];
-            }
+            self.imageCodeType = 2;
+            completion(result,error);
         }];
     }else{
         [HQWYUser passwordLogin:self.passwordInputView.secondTF.text mobile:self.passwordInputView.firstTF.text Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error){
-            StrongObj(self);
-            self.loginButton.userInteractionEnabled = true;
-            if (error) {
-                [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
-                return ;
-            }
-            if (result){
-                [KeyWindow ln_showToastHUD:@"登录成功"];
-                [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
-                [self dismissViewControllerAnimated:true completion:^{
-                    if(self.loginBlock){
-                        self.loginBlock();
-                    }
-                }];
-            }
+            self.imageCodeType = 3;
+           completion(result,error);
         }];
     }
 }
@@ -267,6 +266,7 @@
         [self eventId:HQWY_Login_PasswordAgreement_click];
     }
     ThirdPartWebVC *webView = [ThirdPartWebVC new];
+    webView.navigationDic = @{@"nav": @{@"title" : @{@"text" : @"用户服务协议"}}};
     [webView loadURLString:AGGREMENT_PATH];
     [self presentViewController:webView animated:true completion:^{
         
@@ -404,7 +404,11 @@
             return ;
         }
             //校验成功 再次发送短信验证码
-            [self getSMSCode];
+        if (self.imageCodeType == 1) {
+             [self getSMSCode];
+        }else{ //如果登录图形校验成功，再次登录
+            [self requestLogin];
+        }
     }];
 }
 
@@ -423,6 +427,7 @@
         if (error) {
             if (error.code == 1013) {
                 self.serialNumber = [NSString stringWithFormat:@"%@", result];
+                self.imageCodeType = 1;
                 [self getImageCode];
             }else{
                [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];

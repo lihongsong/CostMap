@@ -13,5 +13,6 @@
 //FIXME:review respDateTime是什么？
 @property(nonatomic,copy)NSString *respDateTime;//响应时间
 @property(nonatomic,copy)NSString *token;//用户令牌
+@property(nonatomic,copy)NSString *productHidden;//屏蔽产品信息
 //@property(nonatomic, strong)NSNumber *userId;//用户ID
 @end
