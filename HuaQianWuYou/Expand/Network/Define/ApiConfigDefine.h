@@ -31,5 +31,7 @@
 #define DISCOVER_LIST @"discover/discoverList"
 
 
+//修改密码
+#define ChangePassword @"/user/pwdchg"
 
 #endif /* ApiConfigDefine_h */

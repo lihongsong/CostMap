@@ -49,6 +49,8 @@ typedef void (^loginFinshBlock)(void);
 #pragma mark    三方以及自定义库
 #import "LNNetwork.h"
 #import "AAGlobalMacro.h"
+#import "LNMBProgressHUD.h"
+
 #import <Masonry/Masonry.h>
 #import <RCMobClick/RCMobClick.h>
 #import <HJCategories/HJCoreFoundation.h>
