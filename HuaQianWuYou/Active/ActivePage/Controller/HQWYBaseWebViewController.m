@@ -22,13 +22,57 @@
     self.closeButtonItem = nil;
     self.customHeaderView = nil;
     self.view.backgroundColor = [UIColor whiteColor];
+    [self initRefreshView];
 }
 
 //自定义导航栏
 - (void)initNavigation{
    NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
     [self.view addSubview:navigationView];
+    
+   
+
     navigationView.delegate = self;
+}
+
+- (void)initRefreshView {
+    UIView *customeDefaultView = [UIView new];
+    customeDefaultView.frame = self.view.frame;
+    self.refreshView = customeDefaultView;
+    
+     UIImageView *imageView = [UIImageView new];
+    imageView.image = [UIImage imageNamed:@"defaultpage_nowifi"];
+    [customeDefaultView addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.mas_equalTo(customeDefaultView);
+        make.size.mas_equalTo(CGSizeMake(130, 130));
+    }];
+    UILabel *label = [UILabel new];
+    [customeDefaultView addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(imageView.mas_bottom);
+        make.centerX.mas_equalTo(imageView.mas_centerX);
+        make.height.mas_equalTo(16.5);
+    }];
+    label.text = @"网络异常";
+    label.font = [UIFont systemFontOfSize:12];
+    label.textColor = HJHexColor(0xbbbbbb);
+    
+    UIButton *refreshBtn = [UIButton new];
+    [customeDefaultView addSubview:refreshBtn];
+    [refreshBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(80, 30));
+        make.top.mas_equalTo(label.mas_bottom).mas_offset(15);
+        make.centerX.mas_equalTo(label.mas_centerX);
+    }];
+    
+    [refreshBtn setTitle:@"点击重试" forState:UIControlStateNormal];
+    [refreshBtn setTitleColor:HJHexColor(0xFF601A) forState:UIControlStateNormal];
+    refreshBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    refreshBtn.layer.borderColor = HJHexColor(0xFF601A).CGColor;
+    refreshBtn.layer.borderWidth = 0.5;
+    refreshBtn.cornerRadius = 15;
+    [refreshBtn addTarget:self action:@selector(reloadWebview) forControlEvents:UIControlEventTouchUpInside];
 }
 
 // 定位权限
@@ -115,6 +159,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)reloadWebview {
+    [self.wkWebView reload];
 }
 
 /*
