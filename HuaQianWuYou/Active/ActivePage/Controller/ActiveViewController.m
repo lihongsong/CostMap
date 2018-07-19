@@ -322,7 +322,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取H5获取原生定位城市 */
     [_manager registerHandler:kAppExecLocation handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        [self.navigationView.leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
+        self.navigationView.leftLabel.text = @"定位中...";
+//        [self.navigationView.leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
         self.locatedCity[@"country"] = @"";
         self.locatedCity[@"city"] = @"定位中...";
         self.locatedCity[@"province"] = @"";
@@ -397,7 +398,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (error)
     {
         NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
-        [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+        self.navigationView.leftLabel.text = @"定位失败";
+//        [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
         self.locatedCity[@"country"] = @"";
         self.locatedCity[@"city"] = @"定位失败";
         self.locatedCity[@"province"] = @"";
@@ -409,7 +411,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         if (location.rgcData) {
 //            NSLog(@"rgc = %@",[location.rgcData description]);
             NSString *cityString = [location.rgcData.city stringByReplacingOccurrencesOfString:@"市" withString:@""];
-             [self.navigationView.leftItemButton setTitle:cityString forState:UIControlStateNormal];
+//             [self.navigationView.leftItemButton setTitle:cityString forState:UIControlStateNormal];
+            self.navigationView.leftLabel.text = cityString;
             self.locatedCity[@"country"] = location.rgcData.country;
             self.locatedCity[@"city"] = cityString;
             self.locatedCity[@"province"] = location.rgcData.province;
@@ -425,7 +428,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  */
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nullable)error{
     NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
-    [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+//    [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+    self.navigationView.leftLabel.text = @"定位失败";
 }
 
 /**
