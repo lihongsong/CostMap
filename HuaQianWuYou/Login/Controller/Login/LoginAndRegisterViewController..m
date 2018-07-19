@@ -248,48 +248,7 @@
 - (void)requestBlock:(void (^)(HQWYUser * _Nullable, NSError * _Nullable))completion{
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber registerType:RegisterTypeHQWYApp Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
-<<<<<<< HEAD
-            StrongObj(self);
-            NSLog(@"____%@____%@____%@",error,error.domain,error.userInfo);
-            self.loginButton.userInteractionEnabled = true;
-            if (error) {
-                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
-                                    message:error.hqwy_errorMessage];
-                return ;
-            } else {
-                [KeyWindow ln_hideProgressHUD];
-            }
-            if (result){
-                [KeyWindow ln_showToastHUD:@"登录成功"];
-                [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
-                [self dismissViewControllerAnimated:true completion:^{
-                    if(self.loginBlock){
-                        self.loginBlock();
-                    }
-                }];
-            }
-        }];
-    }else{
-        [HQWYUser passwordLogin:self.passwordInputView.secondTF.text mobile:self.passwordInputView.firstTF.text Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error){
-            StrongObj(self);
-            self.loginButton.userInteractionEnabled = true;
-            if (error) {
-                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
-                                      message:error.hqwy_errorMessage];
-                return ;
-            } else {
-                [KeyWindow ln_hideProgressHUD];
-            }
-            if (result){
-                [KeyWindow ln_showToastHUD:@"登录成功"];
-                [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
-                [self dismissViewControllerAnimated:true completion:^{
-                    if(self.loginBlock){
-                        self.loginBlock();
-                    }
-                }];
-            }
-=======
+
             self.imageCodeType = 2;
             completion(result,error);
         }];
@@ -297,7 +256,6 @@
         [HQWYUser passwordLogin:self.passwordInputView.secondTF.text mobile:self.passwordInputView.firstTF.text Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error){
             self.imageCodeType = 3;
            completion(result,error);
->>>>>>> hqwy_zx/feature/v2.0_7.4_login
         }];
     }
 }

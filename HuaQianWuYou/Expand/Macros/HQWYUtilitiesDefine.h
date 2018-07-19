@@ -63,11 +63,7 @@
 //用户基本信息归档key值
 #define KUserBaseMessageFileName_Before @"UserBasicMsg_Before"
 #define KUserBaseMessageFileName_After @"UserBasicMsg_After"
-<<<<<<< HEAD
-
 #define KLoadingAdvertisement @"RefreshLoadingAdvertisement"
 #define KExample_Credit_Score @"example_Credit_Score"
-=======
 #define KProductHidden @"Productions_Hidden"
->>>>>>> hqwy_zx/feature/v2.0_7.4_login
 #endif
