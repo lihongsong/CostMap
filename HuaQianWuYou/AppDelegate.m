@@ -104,6 +104,8 @@
             
             [self checkUpdate];
             
+            [activeVC showPopView];
+            
             guideWindow.hidden = YES;
             [guideWindow removeFromSuperview];
         });
