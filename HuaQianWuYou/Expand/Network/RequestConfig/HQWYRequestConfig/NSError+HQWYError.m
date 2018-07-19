@@ -96,7 +96,7 @@ static NSString *const kHQWYErrorRespMsgKey       = @"respMsg";
 //注意：message为实际的错误信息，方便开发调试。当showError时，会再做一次过滤，用户看到的是过滤后的消息。
 
 + (NSError *)hqwy_handleLogicError:(NSString *)respMsg respCode:(NSString *)respCode {
-    return [NSError errorWithDomain:HQWYSystemErrorDomain
+    return [NSError errorWithDomain:HQWYLogicErrorDomain
                                code:[respCode integerValue]
                            userInfo:@{kHQWYErrorRespMsgKey : respMsg, kHQWYErrorRespCodeKey : respCode}];
 }
@@ -106,7 +106,7 @@ static NSString *const kHQWYErrorRespMsgKey       = @"respMsg";
     return [NSError errorWithDomain:HQWYSystemErrorDomain
                                code:error.code
                            userInfo:@{kHQWYErrorRespMsgKey : HQWYSystemErrorMessageUnkownErrorMessage,
-                                      kHQWYErrorRespCodeKey : [NSString stringWithFormat:@"%zd", error.code]}];
+                                      kHQWYErrorRespCodeKey : [NSString stringWithFormat:@"%ld", (long)error.code]}];
 }
 
 //处理API数据错误，如：返回的result对象类型错误
