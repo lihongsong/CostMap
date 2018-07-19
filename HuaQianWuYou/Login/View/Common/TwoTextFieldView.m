@@ -87,6 +87,8 @@
         textField.textColor = [UIColor grayColor];
         textField.font = [UIFont NormalSmallTitleFont];
         textField.textAlignment = NSTextAlignmentLeft;
+        textField.keyboardType = UIKeyboardTypeNumberPad;
+        textField.hj_maxLength = 11;
         textField.delegate = self;
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         [self addSubview:textField];
@@ -131,7 +133,6 @@
     if (!_codeButton) {
         UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
         tempButton.frame = CGRectMake(SWidth - 10 - 100,self.secondTF.hj_y, 100, self.secondTF.hj_height);
-        tempButton.enabled = false;
         [tempButton addTarget:self action:@selector(codeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [tempButton setTitle:@"获取验证码" forState:UIControlStateNormal];
         [tempButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];

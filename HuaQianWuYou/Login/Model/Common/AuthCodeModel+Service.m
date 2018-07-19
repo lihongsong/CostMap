@@ -32,11 +32,6 @@
     
 }
 
-+ (NSURLSessionDataTask *)requsetImageCodeCompletion:(void (^)(ImageCodeModel * _Nullable, NSError * _Nullable))completion{
-    return [self ln_requestModelAPI:IMAGE_CODE parameters:nil completion:completion];
-    
-    
-}
 
 
 

@@ -1,15 +1,15 @@
+////
+////  NSObject+HQWYResponseCode.m
+////  HuaQianWuYou
+////
+////  Created by terrywang on 2018/7/11.
+////  Copyright © 2018年 2345. All rights reserved.
+////
 //
-//  NSObject+HQWYResponseCode.m
-//  HuaQianWuYou
+//#import "NSObject+HQWYResponseCode.h"
 //
-//  Created by terrywang on 2018/7/11.
-//  Copyright © 2018年 2345. All rights reserved.
+//@implementation NSObject (HQWYResponseCode)
 //
-
-#import "NSObject+HQWYResponseCode.h"
-
-@implementation NSObject (HQWYResponseCode)
-
 //
 //- (HQWYRESPONSECODE)responseIntegerCode:(NSString *)respCode {
 //    if (!respCode || [respCode isEqual:[NSNull null]]) {
@@ -57,6 +57,6 @@
 //    }
 //    return HQWYRESPONSECODE_FAIL;
 //}
-
-
-@end
+//
+//
+//@end

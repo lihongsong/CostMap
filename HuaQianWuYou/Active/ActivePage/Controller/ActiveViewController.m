@@ -28,6 +28,7 @@
 #import "HQWYJavaScriptOpenSDKHandler.h"
 #import "HJUIKit.h"
 #import "NSString+cityInfos.h"
+#import "LoginOut.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -70,6 +71,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
    
     [self.wkWebView setNavigationDelegate:self];
     [self.view addSubview:self.wkWebView];
+    WeakObj(self);
+    [self.wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
+        StrongObj(self);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(NavigationHeight);
+        make.center.left.right.mas_equalTo(self.view);
+        if (@available(iOS 11.0, *)) {
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+        } else {
+            // Fallback on earlier versions
+            make.bottom.mas_equalTo(self.view.mas_bottom);
+        }
+    }];
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     [self registerHander];
@@ -85,6 +98,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
+    [self showPopView];
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -97,9 +111,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void )setSelectedLocation:(NSString *)selectedLocation{
-    _selectedLocation = selectedLocation;
+    _selectedLocation = [selectedLocation stringByReplacingOccurrencesOfString:@"location:" withString:@""];
     if (![selectedLocation containsString:@"失败"] && ![selectedLocation containsString:@"定位"] && ![selectedLocation containsString:@"未知"]){
-        SetUserDefault([NSString getDistrictNoFromCity:selectedLocation], @"locationCity");
+        SetUserDefault([NSString getDistrictNoFromCity:_selectedLocation], @"locationCity");
         }else{
             SetUserDefault(@"", @"locationCity");
         }
@@ -186,8 +200,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /*退出登录 */
     [_manager registerHandler:kAppExecLogout handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        [HQWYUserSharedManager deleteUserInfo];
-        
+        [self loginOut:^(BOOL isOut) {
+            NSString *result = [NSString stringWithFormat:@"%d",isOut]; ResponseCallback([HQWYJavaScriptResponse result:result]);
+        }];
     }];
     
     /** 导航栏样式事件 */
@@ -219,7 +234,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        NSString *phone = HQWYUserSharedManager.userInfo.mobilephone;
+        NSString *phone = [HQWYUserManager loginMobilePhone];
+        
         ResponseCallback([HQWYJavaScriptResponse result:phone]);
     }];
     
@@ -228,6 +244,20 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         NSString *isLogin = @([HQWYUserManager hasAlreadyLoggedIn]).stringValue;
         ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
     }];
+    
+    /** 获取用户需要登录事件 */
+    [_manager registerHandler:kAppNeedLogin handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSString *isLogin = @([HQWYUserManager hasAlreadyLoggedIn]).stringValue;
+        if ([HQWYUserManager hasAlreadyLoggedIn]) {
+        ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
+        }else{
+            [self presentNative:^{
+        ResponseCallback([HQWYJavaScriptResponse result:@1]);
+            }];
+        }
+    }];
+    
+    
     
     /** 注册获取设备类型事件 */
     [_manager registerHandler:kAppGetDeviceType handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -281,13 +311,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (typeDic != nil && [[typeDic objectForKey:@"hide"] integerValue]) {
         [UIView animateWithDuration:0.1 animations:^{
             self.navigationView.hidden = true;
-            self.wkWebView.frame = CGRectMake(0,-StatusBarHeight, SWidth, SHeight + TabBarHeight - 49 + StatusBarHeight);
+//            self.wkWebView.frame = CGRectMake(0,-StatusBarHeight, SWidth, SHeight + TabBarHeight - 49 + StatusBarHeight);
         }];
         [self.view layoutIfNeeded];
     }else{
         [UIView animateWithDuration:0.1 animations:^{
              self.navigationView.hidden = false;
-            self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
+//            self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
         }];
         [self.navigationView changeNavigationType:typeDic];
     }
@@ -393,10 +423,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 #pragma mark 登录
-- (void)presentNative{
+- (void)presentNative:(loginFinshBlock)block{
     LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
     loginVc.forgetBlock = ^{
-        [self changePasswordAction];
+        [self changePasswordAction:^{
+             block();
+        }];
+    };
+    loginVc.loginBlock = ^{
+        block();
     };
     [self presentViewController:loginVc animated:true completion:^{
 
@@ -404,8 +439,26 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 # pragma mark 跳修改密码
-- (void)changePasswordAction{
+- (void)changePasswordAction:(SignFinishBlock)fixBlock{
     AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new]; self.navigationController.navigationBar.hidden = false;
+    authPhoneNumVC.finishblock = ^{
+        fixBlock();
+    };
     [self.navigationController pushViewController:authPhoneNumVC animated:true];
+}
+
+- (void)loginOut:(loginOutBlock)outBlock{
+    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
+    [LoginOut signOUT:^(id _Nullable result, NSError * _Nullable error) {
+        [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+        if (error) {
+            outBlock(false);
+            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            return ;
+        }
+        [HQWYUserSharedManager deleteUserInfo];
+        outBlock(true);
+        return;
+    }];
 }
 @end

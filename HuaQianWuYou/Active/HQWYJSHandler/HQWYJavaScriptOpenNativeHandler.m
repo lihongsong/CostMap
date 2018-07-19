@@ -28,8 +28,10 @@
     NSString *pageId = dic[@"pageId"];
 
     if ([pageId integerValue] == 2) {
-        if ([self.delegate respondsToSelector:@selector(presentNative)]) {
-            [self.delegate presentNative];
+        if ([self.delegate respondsToSelector:@selector(presentNative:)]) {
+            [self.delegate presentNative:^{
+                
+            }];
         }
     }else if([pageId integerValue] == 3){
         
@@ -80,8 +82,14 @@
 - (void)changePasswordAction{
     AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new];
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    authPhoneNumVC.navigationController.navigationBar.hidden = true;
-    [rootVC.navigationController pushViewController:authPhoneNumVC animated:true];
+    [(UINavigationController*)rootVC pushViewController:authPhoneNumVC animated:true];
+    if (rootVC != nil && [rootVC isKindOfClass:[UINavigationController class]]) {
+        ((UINavigationController*)rootVC).navigationBar.hidden = false;
+        [(UINavigationController*)rootVC pushViewController:authPhoneNumVC animated:YES];
+    }
+    else{
+        [rootVC presentViewController:authPhoneNumVC animated:NO completion:nil];
+    }
 }
 
 

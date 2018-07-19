@@ -9,9 +9,9 @@
 #import "BaseModel.h"
 #import "HQWYActionHandlerProtocol.h"
 typedef NS_ENUM(NSInteger, AdvertisingType) {
-    AdvertisingTypeStartPage,//启动图
-    AdvertisingTypeAlert,//弹窗
-    AdvertisingTypeSuspensionWindow //悬浮窗
+    AdvertisingTypeStartPage = 18,//启动图
+    AdvertisingTypeAlert = 20,//弹窗
+    AdvertisingTypeSuspensionWindow = 21 //悬浮窗
 };
 
 @interface BasicDataInfo:NSObject<HQWYActionHandlerProtocol>

@@ -21,10 +21,14 @@ build/
 *.xcuserdata
 *.xccheckout
 *.moved-aside
+.DS_Store
+*.xccheckout
 DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+*.xcscmblueprint
+
 project.xcworkspace
 *ios/symbols
 

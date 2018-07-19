@@ -10,5 +10,5 @@
 
 @interface BasicConfigModel (Service)
 + (NSURLSessionDataTask *_Nullable)requestBasicConfigCompletion:(nullable void (^)(BasicConfigModel *_Nullable result,
-        NSError *_Nullable error))completion;
+                                                                                   NSError *_Nullable error))completion;
 @end

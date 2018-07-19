@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ImageCodePopView : UIView
-@property (weak, nonatomic) IBOutlet UILabel *imageCodeInputLable;
+@property (weak, nonatomic) IBOutlet UITextField *imageCodeInputLable;
 @property (weak, nonatomic) IBOutlet UIImageView *codeImageVIew;
 @property (weak, nonatomic) IBOutlet UIButton *canceButton;
 @property (weak, nonatomic) IBOutlet UIButton *sureButton;

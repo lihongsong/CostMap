@@ -41,7 +41,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
-    [self uploadData:self.navigationDic[@"productId"]];
+    if (self.navigationDic != nil && [[NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]] length] > 0) {
+        [self uploadData:self.navigationDic[@"productId"]];
+    }
     [self initData];
     [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
     
@@ -56,6 +58,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 //自定义导航栏
 - (void)initNavigation{
+    UIView *statusView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SWidth, StatusBarHeight)];
+    [self.view addSubview:statusView];
+    statusView.backgroundColor = [UIColor whiteColor];
     NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
     [self.view addSubview:navigationView];
     navigationView.delegate = self;

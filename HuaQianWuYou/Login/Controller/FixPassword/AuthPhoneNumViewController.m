@@ -14,6 +14,8 @@
 #import "ImageCodeViewController.h"
 #import "AuthCodeModel+Service.h"
 
+#import "ImageCodeModel+Service.h"
+#import "ImageCodeModel.h"
 #import "UIButton+Count.h"
 
 @interface AuthPhoneNumViewController ()<PasswordInputViewDelegate>
@@ -40,6 +42,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"验证手机号";
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor colorFromHexCode:@"#111111"]}];
 self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
@@ -74,21 +77,32 @@ self.navigationController.navigationBar.translucent = NO;
         make.height.mas_equalTo(45);
     }];
     [self.nextButton setTitle:@"下一步" forState:UIControlStateNormal];
-    [self.nextButton enlableColor:[UIColor skinColor] disEnlableColor:[UIColor hj_colorWithHexString:@"D6D6D6"]];
-    self.nextButton.enabled = NO;
+    [self.nextButton hj_setBackgroundColor:[UIColor hj_colorWithHexString:@"D6D6D6"] forState:UIControlStateNormal];
+    [self.nextButton hj_setBackgroundColor:[UIColor skinColor] forState:UIControlStateSelected];
 }
 
 # pragma mark 输入View 代理方法 输入就会调用
 
 - (void)textFieldContentdidChangeValues:(NSString *)firstValue secondValue:(NSString *)secondValue{
-    self.nextButton.enabled = (firstValue.length >0 && secondValue.length>0);
+    if (firstValue.length > 11) {
+        return;
+    }
+    if (secondValue.length > 6) {
+        return;
+    }
     self.phoneNum = firstValue;
     self.authCode = secondValue;
+    if (firstValue.length == 11 && secondValue.length == 6) {
+        self.nextButton.selected = true;
+    }else{
+        self.nextButton.selected = false;
+    }
 }
 
 - (void)didSendAuthCodeAction:(UIButton *)sender{
     //点击发送验证码
     self.authCodeButton = sender;//发送验证码按钮
+    self.authCodeButton.userInteractionEnabled = false;
     [self getSMSCode];
 }
 
@@ -112,7 +126,7 @@ self.navigationController.navigationBar.translucent = NO;
 # pragma mark 获取图形验证码
 - (void)getImageCode{
     [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
-    [AuthCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
+    [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
@@ -134,10 +148,8 @@ self.navigationController.navigationBar.translucent = NO;
             [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
             return ;
         }
-        if (result) {
             //校验成功 再次发送短信验证码
             [self getSMSCode];
-        }
     }];
 }
 
@@ -146,6 +158,7 @@ self.navigationController.navigationBar.translucent = NO;
     [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
     [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:FixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
+        self.authCodeButton.userInteractionEnabled = true;
         if (error) {
             if (error.code == 1013) {
                 self.serialNumber = [NSString stringWithFormat:@"%@",result];
@@ -155,14 +168,12 @@ self.navigationController.navigationBar.translucent = NO;
             }
             return ;
         }
-        if (result) {
             /*如果发送成功 */
             if (self.authCodeButton) {
                 //倒计时
                 [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
             }
             self.serialNumber = [NSString stringWithFormat:@"%@",result] ;
-        }
     }];
 }
 
@@ -177,10 +188,12 @@ self.navigationController.navigationBar.translucent = NO;
         }
         //校验成功
         SetPasswordViewController *setPassword = [SetPasswordViewController new];
-        setPassword.jumpType = @"1";
         setPassword.code = self.authCode;
         setPassword.mobilePhone = self.phoneNum;
         setPassword.serialNumber = self.serialNumber;
+        setPassword.finishblock = ^{
+            self.finishblock();
+        };
         [self.navigationController pushViewController:setPassword animated:YES];
     }];
 }
