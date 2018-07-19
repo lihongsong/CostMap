@@ -29,6 +29,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 @property(nonatomic, strong)NSArray *listArr;
 @property(nonatomic, assign)NSInteger productIndex;
 @property(nonatomic, strong)NavigationView *navigationView;
+@property(nonatomic, assign)BOOL isShowAlert;//是否弹挽留或者回列表
 @end
 
 @implementation ThirdPartWebVC
@@ -38,6 +39,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.listArr = [[NSArray alloc]init];
+    self.isShowAlert = true;
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
@@ -173,6 +175,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[self.productIndex]];
         [self uploadData:product[@"id"]];
         [self loadURLString:product[@"address"]];
+        NSLog(@"____%@",product[@"address"]);
         [self.navigationView.titleButton setTitle:product[@"name"] forState:UIControlStateNormal];
         self.productIndex ++;
     }else{
