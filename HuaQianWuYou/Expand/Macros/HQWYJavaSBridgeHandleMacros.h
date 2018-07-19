@@ -153,4 +153,17 @@ static NSString * const kAppExecLogout = @"appExecLogout";
   打开意见反馈SDK
  */
 static NSString * const kAppOpenSDK = @"appOpenFeedback";
+
+/*!
+ 关闭 loading
+ */
+static NSString * const kAppDismissLoading = @"appDismissLoadingDialog";
+
+/*!
+ 打开 loading
+ */
+static NSString * const kAppShowLoading = @"appShowLoadingDialog";
+
+
+
 #endif /* HQWYJavaSBridgeHandleMacros_h */

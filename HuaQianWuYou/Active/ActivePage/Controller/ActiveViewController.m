@@ -203,14 +203,26 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)registerHander {
     WeakObj(self)
     
+    /** 隐藏 loading */
+    [_manager registerHandler:kAppDismissLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_hideProgressHUD];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
+    
+    /** 展示 loading */
+    [_manager registerHandler:kAppShowLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_showLoadingHUDCommon:@"拼命加载中…"];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
+    
     /** 注册埋点事件 */
-        [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-            StrongObj(self)
-            NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-            [self eventId:dic[@"eventId"]];
-            ResponseCallback([HQWYJavaScriptResponse success]);
-        }];
+    [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        StrongObj(self)
+        NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [self eventId:dic[@"eventId"]];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
     
     /** 更新 */
     [_manager registerHandler:kAppCheckUpdate handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -314,7 +326,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager registerHandler:[HQWYJavaScriptOpenSDKHandler new]];
     
     /** 注册获取请求头事件 */
-    
     [_manager registerHandler:[HQWYJavaScriptGetAjaxHeaderHandler new]];
 }
 
