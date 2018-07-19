@@ -204,8 +204,6 @@
     [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
     /** TalkingData */
     [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
-    //FIXME:v2.0 这个产品确认是否需要
-    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
 
     //设置意见反馈
     [FBManager configFB];

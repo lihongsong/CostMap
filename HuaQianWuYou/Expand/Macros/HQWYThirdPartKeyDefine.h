@@ -36,10 +36,6 @@
 #define TalkingData_AppId       @"AC95102F0E334875B02D2CDA50822E02"
 #endif
 
-// TalkingDataAppCpa
-//FIXME:v2.0 id 需要产品给
-#define TalkingDataAppCpa_AppId       @"2FC9A30BE32A429B882B634013718E1B"
-
 //意见反馈
 #define MessageBoard_SecretKey @"87b38eba12ff2c9dcd09e8d35ec7b697";
 #define MessageBoard_Id @"30";
