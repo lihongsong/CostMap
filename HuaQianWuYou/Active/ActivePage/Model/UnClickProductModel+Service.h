@@ -19,6 +19,6 @@
  @return <#return value description#>
  */
 
-+ (NSURLSessionDataTask *_Nullable)getUnClickProductList:(NSNumber *)category mobilePhone:(NSString*)mobilePhone Completion:(nullable void (^)(UnClickProductModel *_Nullable result,
++ (NSURLSessionDataTask *_Nullable)getUnClickProductList:(NSNumber *)category mobilePhone:(NSString*)mobilePhone Completion:(nullable void (^)(id _Nullable result,
                                                                          NSError *_Nullable error))completion;
 @end

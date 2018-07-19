@@ -52,14 +52,14 @@
     LaunchViewController *launchVC = [LaunchViewController new];
     self.window.rootViewController = launchVC;
     [self.window makeKeyAndVisible];
-    launchVC.accomplishBlock = ^(BOOL isOpen) {
+    launchVC.accomplishBlock = ^(NSString *exampleCreditScore) {
         StrongObj(self);
-//        if (![exampleCreditScore isEqualToString:@"88"]) {
-//            [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
-//            [self checkUpdate];
-//        }else{
+        if (![exampleCreditScore isEqualToString:@"88"]) {
+            [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
+            [self checkUpdate];
+        }else{
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
-//        }
+        }
     };
 
     //开始检测网络状态(主要针对IOS10以后的网络需要授权问题)
@@ -87,6 +87,7 @@
 - (void)setUpViewControllerWithHighScoreWithRemoteNotificaton:(NSDictionary *)remoteNotification launchOptions:(NSDictionary *)launchOptions {
     ActiveViewController *activeVC = [[ActiveViewController alloc]init];
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
+    self.window.rootViewController = hNC;
     UIWindow *oldWindow = self.window;
     
     __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
@@ -125,9 +126,11 @@
         // 点击跳过，埋点
         });
     }];
+    
     [HJGuidePageWindow show];
     HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
     launchManager.guideVC = launchVC;
+    launchManager.rootViewController = hNC;
     [launchManager showLanuchPageModel];
 
 }
@@ -223,8 +226,6 @@
     [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
     /** TalkingData */
     [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
-    //FIXME:v2.0 这个产品确认是否需要
-    [TalkingDataAppCpa init:TalkingDataAppCpa_AppId withChannelId:APP_ChannelId];
 
     //设置意见反馈
     [FBManager configFB];

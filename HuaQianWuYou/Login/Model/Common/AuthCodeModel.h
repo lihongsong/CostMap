@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#define LoginType   @"21"
-#define FixPassword   @"31"
+typedef NS_ENUM(NSInteger, GetCodeType) {
+    GetCodeTypeLogin = 21,//登录注册获取验证码
+    GetCodeTypeFixPassword = 31,//修改密码获取验证码
+};
+
 
 //短信验证码Model
 @interface AuthCodeModel : NSObject

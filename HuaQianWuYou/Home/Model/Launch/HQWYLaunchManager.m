@@ -31,7 +31,7 @@
         }else{
             getFromNet = YES;
             self.launchModel = lanuchPageModel;
-            [self showCustomLaunchImage];
+            [self showCustomLaunchImage:self.launchModel fromVC:self.rootViewController];
             [BasicDataModel cacheToLoacl:self.launchModel withType:AdvertisingTypeStartPage];
             return;
         }
@@ -45,13 +45,13 @@
     });
 }
 
-- (void)showCustomLaunchImage
+- (void)showCustomLaunchImage:(BasicDataModel*)model fromVC:(UIViewController*)vc
 {
             self.guideVC.setTimer(3,0, @"s跳过",NO);
             WeakObj(self)
     self.guideVC.setBackGroundImage(self.launchModel.imgUrl, YES, NO, ^{
-                StrongObj(self)
-                [HQWYActionHandler handleWithActionModel:self.launchModel];
+                //StrongObj(self)
+                [HQWYActionHandler handleWithActionModel:model fromVC:vc];
                     [HJGuidePageWindow dismiss];
             });
             [self.guideVC reloadData];

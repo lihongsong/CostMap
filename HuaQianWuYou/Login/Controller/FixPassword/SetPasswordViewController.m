@@ -54,14 +54,14 @@
         make.height.mas_equalTo(45);
     }];
     [self.nextButton setTitle:@"确认" forState:UIControlStateNormal];
-    [self.nextButton enlableColor:[UIColor skinColor] disEnlableColor:[UIColor hj_colorWithHexString:@"D6D6D6"]];
-    self.nextButton.enabled = NO;
+    [self.nextButton hj_setBackgroundColor:[UIColor hj_colorWithHexString:@"D6D6D6"] forState:UIControlStateNormal];
+    [self.nextButton hj_setBackgroundColor:[UIColor skinColor] forState:UIControlStateSelected];
 }
 
 # pragma mark 输入View 代理方法 输入就会调用
 
 - (void)textFieldContentdidChangeValues:(NSString *)firstValue secondValue:(NSString *)secondValue{
-    self.nextButton.enabled = (firstValue.length >6 && secondValue.length>6);
+    self.nextButton.selected = (firstValue.length >=6 && secondValue.length>=6);
     self.password = firstValue;
     self.surePassword = secondValue;
 }
@@ -88,10 +88,7 @@
 
 - (void)nextAction:(UIButton *)sender{
     [self eventId:HQWY_Fix_Sure_click];
-//    if (![self.password hj_isValidWithMinLenth:6 maxLenth:20 containChinese:NO containDigtal:YES containLetter:YES containOtherCharacter:nil firstCannotBeDigtal:YES]) {
-//        [KeyWindow ln_showToastHUD:@"请输入6～20位数字或字母密码"];
-//    }
-    if (!(self.password.length > 5) || !(self.password.length < 20)) {
+    if (!(self.password.length > 5) || !(self.password.length < 21)) {
         [KeyWindow ln_showToastHUD:@"密码输入格式错误"];
         return;
 
@@ -114,36 +111,15 @@
         } else {
             [KeyWindow ln_hideProgressHUD];
         }
-        if (result){
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationOK message:@"密码修改成功"];
             [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
-            self.finishblock();
             [self.navigationController popToRootViewControllerAnimated:YES];
-        }  
+            self.finishblock();
     }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-//验证密码格式
-//FIXME:review 这个密码验证分类里是否已有？如果已有，就不用自己再写了
-- (BOOL)validatePassword:(NSString *)password{
-        NSString *regular = @"[a-zA-Z0-9]{1,3}+";
-//    NSString *regular = @"^1[3,4,5,7,8]\\d{9}|^(199|166)\\d{8}";
-    NSPredicate *regextestAll = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regular];
-    return [regextestAll evaluateWithObject:password];
-}
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

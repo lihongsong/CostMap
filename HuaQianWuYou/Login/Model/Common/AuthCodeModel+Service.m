@@ -13,10 +13,10 @@
     return HQWY_HOST_PATH;
 }
 
-+ (NSURLSessionDataTask *)requsetMobilePhoneCode:(NSString *)mobilePhone smsType:(NSString *)smsType Completion:(void (^)(AuthCodeModel * _Nullable, NSError * _Nullable))completion{
++ (NSURLSessionDataTask *)requsetMobilePhoneCode:(NSString *)mobilePhone smsType:(NSInteger)smsType Completion:(void (^)(AuthCodeModel * _Nullable, NSError * _Nullable))completion{
        NSMutableDictionary *params = [@{} mutableCopy];
        [params setValue:mobilePhone forKey:@"mobilePhone"];
-       [params setValue:smsType forKey:@"smsType"];
+       [params setValue:[NSString stringWithFormat:@"%d", smsType] forKey:@"smsType"];
        return [self ln_requestModelAPI:SMS_SEND parameters:params completion:completion];
   
 }

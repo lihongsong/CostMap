@@ -82,8 +82,15 @@
 - (void)changePasswordAction{
     AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new];
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
-    authPhoneNumVC.navigationController.navigationBar.hidden = true;
-    [rootVC.navigationController pushViewController:authPhoneNumVC animated:true];
+    if ([rootVC isKindOfClass:[UINavigationController class]]) {
+        ((UINavigationController *)rootVC).navigationBar.hidden = false;
+        [(UINavigationController *)rootVC pushViewController:authPhoneNumVC animated:true];
+    }else{
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:authPhoneNumVC];
+        [rootVC presentViewController:nav animated:true completion:^{
+            
+        }];
+    }
 }
 
 

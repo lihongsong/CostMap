@@ -77,21 +77,32 @@ self.navigationController.navigationBar.translucent = NO;
         make.height.mas_equalTo(45);
     }];
     [self.nextButton setTitle:@"下一步" forState:UIControlStateNormal];
-    [self.nextButton enlableColor:[UIColor skinColor] disEnlableColor:[UIColor hj_colorWithHexString:@"D6D6D6"]];
-    self.nextButton.enabled = NO;
+    [self.nextButton hj_setBackgroundColor:[UIColor hj_colorWithHexString:@"D6D6D6"] forState:UIControlStateNormal];
+    [self.nextButton hj_setBackgroundColor:[UIColor skinColor] forState:UIControlStateSelected];
 }
 
 # pragma mark 输入View 代理方法 输入就会调用
 
 - (void)textFieldContentdidChangeValues:(NSString *)firstValue secondValue:(NSString *)secondValue{
-    self.nextButton.enabled = (firstValue.length >0 && secondValue.length>0);
+    if (firstValue.length > 11) {
+        return;
+    }
+    if (secondValue.length > 6) {
+        return;
+    }
     self.phoneNum = firstValue;
     self.authCode = secondValue;
+    if (firstValue.length == 11 && secondValue.length == 6) {
+        self.nextButton.selected = true;
+    }else{
+        self.nextButton.selected = false;
+    }
 }
 
 - (void)didSendAuthCodeAction:(UIButton *)sender{
     //点击发送验证码
     self.authCodeButton = sender;//发送验证码按钮
+    self.authCodeButton.userInteractionEnabled = false;
     [self getSMSCode];
 }
 
@@ -143,18 +154,18 @@ self.navigationController.navigationBar.translucent = NO;
         } else {
             [KeyWindow ln_hideProgressHUD];
         }
-        if (result) {
             //校验成功 再次发送短信验证码
             [self getSMSCode];
-        }
     }];
 }
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-    
+
     [KeyWindow ln_showLoadingHUD];
-    [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:FixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+    [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:GetCodeTypeFixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+    
+        self.authCodeButton.userInteractionEnabled = true;
         if (error) {
             if (error.code == 1013) {
                 [KeyWindow ln_hideProgressHUD];
@@ -168,24 +179,19 @@ self.navigationController.navigationBar.translucent = NO;
         } else {
             [KeyWindow ln_hideProgressHUD];
         }
-        if (result) {
             /*如果发送成功 */
             if (self.authCodeButton) {
                 //倒计时
                 [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
             }
             self.serialNumber = [NSString stringWithFormat:@"%@",result] ;
-        }
     }];
 }
 
 # pragma mark 校验短信验证码
 - (void)validatePhoneNum{
-    
     [KeyWindow ln_showLoadingHUD];
-    
-    [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:FixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
-        
+    [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:GetCodeTypeFixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
                                  message:error.hqwy_errorMessage];
@@ -209,12 +215,18 @@ self.navigationController.navigationBar.translucent = NO;
     [self eventId:HQWY_Fix_Next_click];
     //校验是不是手机号
     if (![self.phoneNum hj_isMobileNumber]) {
-        [KeyWindow ln_showToastHUD:@"手机号错误"];
+        [KeyWindow ln_showToastHUD:@"请输入有效手机号"];
+        return;
+    }
+    
+    if (!(self.serialNumber.length > 0)) {
+        [self addAlertView:@"请先获取验证码" block:^{
+            return;
+        }];
         return;
     }
     [self validatePhoneNum];
 }
-
 
 - (UIButton *)nextButton{
     if (!_nextButton) {

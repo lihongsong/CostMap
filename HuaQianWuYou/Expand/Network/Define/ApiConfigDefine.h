@@ -10,11 +10,13 @@
 #define ApiConfigDefine_h
 
 #ifdef DEBUG
-#define HOST_PATH 
-#define HOST_PATH
-#else
 
 #define HOST_PATH @"http://172.16.0.140:3022"
+
+
+#else
+
+#define HOST_PATH @"http://appjieqian.2345.com/index.php"
 
 #endif
 
@@ -29,5 +31,7 @@
 #define DISCOVER_LIST @"discover/discoverList"
 
 
+//修改密码
+#define ChangePassword @"/user/pwdchg"
 
 #endif /* ApiConfigDefine_h */

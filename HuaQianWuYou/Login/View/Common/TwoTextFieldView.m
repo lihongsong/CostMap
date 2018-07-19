@@ -68,12 +68,15 @@
         {
             self.firstTF.placeholder = @"6~20数字或者字母";
             self.secondTF.placeholder = @"请再输入一次";
+            
         }
             break;
         case TextFieldTypeModify:
         {
-            self.firstTF.placeholder = @"6~20数字或者字母";
-            self.secondTF.placeholder = @"请再输入一次";
+            self.firstTF.placeholder = @"请填写手机号码";
+            self.secondTF.placeholder = @"请填写短信验证码";
+            self.codeButton.hidden = false;
+            self.secondTF.frame = CGRectMake(LeftSpace, 70,CGRectGetMaxX(self.codeButton.frame) - self.codeButton.hj_width - 15 - LeftSpace, 50);
         }
             break;
         default:
@@ -87,6 +90,8 @@
         textField.textColor = [UIColor grayColor];
         textField.font = [UIFont NormalSmallTitleFont];
         textField.textAlignment = NSTextAlignmentLeft;
+        textField.keyboardType = UIKeyboardTypeNumberPad;
+        textField.hj_maxLength = 11;
         textField.delegate = self;
         textField.clearButtonMode = UITextFieldViewModeWhileEditing;
         [self addSubview:textField];
@@ -131,7 +136,6 @@
     if (!_codeButton) {
         UIButton *tempButton = [UIButton buttonWithType:UIButtonTypeCustom];
         tempButton.frame = CGRectMake(SWidth - 10 - 100,self.secondTF.hj_y, 100, self.secondTF.hj_height);
-        tempButton.enabled = false;
         [tempButton addTarget:self action:@selector(codeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [tempButton setTitle:@"获取验证码" forState:UIControlStateNormal];
         [tempButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];

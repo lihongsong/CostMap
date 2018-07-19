@@ -15,7 +15,8 @@
 
 //保存的最后登录手机
 #define kMobilePhoneForLatestUser @"latest_login_mobilephone"
-
+//保存用户登录状态
+#define kLoginStatusUserDefault @"Login_Status_User_Default"
 #define KuserTokenKey @"user_token"
 
 @interface HQWYUserManager ()
@@ -42,7 +43,7 @@
 //用户是否已经登录
 + (BOOL)hasAlreadyLoggedIn {
     // token存放在keychain中，用户删除app再安装，还是可以获取到。为了保持跟之前版本的表现一致，“是否登录”添加一个判断条件：customerID
-    if ([[self sharedInstance] userToken]) {
+    if ([[self sharedInstance] userToken] && GetUserDefault(kLoginStatusUserDefault) != nil && [GetUserDefault(kLoginStatusUserDefault) isEqualToString:@"1"]) {
         return YES;
     }
     return NO;
@@ -54,6 +55,7 @@
     if (userInfo) {
         [self storeUserMobilePhone:userInfo.mobilePhone];
         [self setUserToken:userInfo.token];
+        SetUserDefault(@"1", kLoginStatusUserDefault)
        // [self dealUserApplicationIconBadgeNumber:userInfo];
         // Bugly设置用户标示
         //[Bugly setUserIdentifier:userInfo.userId.stringValue?:@""];
@@ -138,6 +140,7 @@
 // 从NSUserDefaults中删存储的用户信息
 
 - (void)deleteUserInfo {
+    
     self.userInfo = nil;
     _userToken = nil;
     // 删除keychain中的token信息
@@ -146,7 +149,7 @@
     
     // 删除用户登录手机
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kMobilePhoneForUserDefault];
-   // [[NSUserDefaults standardUserDefaults] removeObjectForKey:kuserCustomerIDForUserDefault];
+   SetUserDefault(@"0", kLoginStatusUserDefault)
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -170,17 +173,17 @@
 //}
 
 //FIXME:review 这里需要么？
-+ (void)handleInvalidateToken:(NSDictionary *)dict {
-    if ([HQWYUserManager sharedInstance].showingTokenValidateAlertView) {
-        return;
-    }
+//+ (void)handleInvalidateToken:(NSDictionary *)dict {
+//    if ([HQWYUserManager sharedInstance].showingTokenValidateAlertView) {
+//        return;
+//    }
     
 //    HJAlertView *alert = [[HJAlertView alloc] initWithTitle:nil message:dict[@"message"] confirmButtonTitle:@"确定" confirmBlock:^{
 //        [HQWYUserManager sharedInstance].showingTokenValidateAlertView = NO;
 //      //  [SharedAppDelegate logoutAndLoginAgain];
 //    }];
 //    [alert show];
-    [HQWYUserManager sharedInstance].showingTokenValidateAlertView = YES;
-}
+//    [HQWYUserManager sharedInstance].showingTokenValidateAlertView = YES;
+//}
 
 @end
