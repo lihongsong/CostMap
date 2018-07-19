@@ -27,7 +27,7 @@
 
 @interface AppDelegate ()<BMKLocationAuthDelegate,BuglyDelegate>
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
-@property(nonatomic,strong)HJGuidePageViewController *launchVc;
+
 @end
 
 @implementation AppDelegate
@@ -59,7 +59,6 @@
             [self checkUpdate];
         }else{
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
-            [self checkUpdate];
         }
     };
 
@@ -86,7 +85,6 @@
 }
 
 - (void)setUpViewControllerWithHighScoreWithRemoteNotificaton:(NSDictionary *)remoteNotification launchOptions:(NSDictionary *)launchOptions {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setGuideImage:) name:KLoadingAdvertisement object:nil];
     ActiveViewController *activeVC = [[ActiveViewController alloc]init];
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
     self.window.rootViewController = hNC;
@@ -94,7 +92,7 @@
     
     __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
    WeakObj(self)
-    self.launchVc = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
+    HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)
         // 1秒 网络加载  3秒图片加载
         make.setTimer(0, 3, nil,YES);
@@ -104,23 +102,44 @@
             [self loadActiveViewController:hNC];
             [self.window makeKeyWindow];
             
+            [self checkUpdate];
+            
+            [activeVC showPopView];
+            
             guideWindow.hidden = YES;
             [guideWindow removeFromSuperview];
         });
         make.setCountdownBtnBlock(^(UIButton *btn) {
-            //FIXME:review 此处不要写死坐标，需要优化
-            btn.frame = CGRectMake(SWidth - 66 - 30, SHeight - 30 -28, 66, 28);
+            
+            CGFloat h = kLaunchSkipButtonH;
+            CGFloat w = kLaunchSkipButtonW;
+            CGFloat x = SWidth - kLaunchSkipButtonSpace - w;
+            CGFloat y = SHeight - kLaunchSkipButtonSpace - h;
+            
+            btn.frame = CGRectMake(x, y, w, h);
+            [btn setTitleColor:HJHexColor(0x666666) forState:UIControlStateNormal];
+            [btn.layer setCornerRadius:15];
+            [btn setBackgroundColor:[UIColor clearColor]];
+            [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
+            [btn.layer setBorderColor:HJHexColor(0xbbbbbb).CGColor];
+            [btn.layer setBorderWidth:1.0f];
+    
+            [btn addTarget:self action:@selector(launchButtonClick) forControlEvents:UIControlEventTouchUpInside];
         // 点击跳过，埋点
         });
     }];
     
     [HJGuidePageWindow show];
     HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
-    launchManager.guideVC = self.launchVc;
+    launchManager.guideVC = launchVC;
     launchManager.rootViewController = hNC;
     [launchManager showLanuchPageModel];
+
 }
 
+- (void)launchButtonClick {
+    [self eventId:HQWY_StartApp_Jump_click];
+}
 
 #pragma mark - 启动图设置
 - (void)setupLaunchViewControllerWithRemoteNotification:(NSDictionary *)remoteNotification {
@@ -158,8 +177,6 @@
 #pragma mark - 渐变动画更换RootVC
 
 - (void)loadActiveViewController:(UIViewController *)rootViewController {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    self.launchVc = nil;
     [UIView transitionWithView:self.window
                       duration:0.25f
                        options:UIViewAnimationOptionTransitionCrossDissolve

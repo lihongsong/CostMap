@@ -21,9 +21,11 @@
     XZYFBConfigInstance.highLightColor = [UIColor hj_colorWithHexString:@"#ff6a45"];
     XZYFBConfigInstance.disableColor = [UIColor hj_colorWithHexString:@"#ff6a45"];
     XZYFBConfigInstance.leaveWordDefaultValue = @"感谢您的留言";
+    XZYFBConfigInstance.navBackImage = [UIImage imageNamed:@"nav_icon_back"];
+    XZYFBConfigInstance.navBackHighlightImage = [UIImage imageNamed:@"nav_icon_back"];
     XZYFBConfigInstance.contactDefaultValue = @"留下联系方式帮助更快联系到您";
-    XZYFBConfigInstance.navItemTitleColor = [UIColor hj_colorWithHexString:@"#ff6a45"];
-    XZYFBConfigInstance.navItemTitleHighlightColor = [UIColor hj_colorWithHexString:@"#ff6a45"];
+    XZYFBConfigInstance.navItemTitleColor = [UIColor hj_colorWithHexString:@"#333333"];
+    XZYFBConfigInstance.navItemTitleHighlightColor = [UIColor hj_colorWithHexString:@"#333333"];
     XZYFBConfigInstance.wordLimitColor = [UIColor hj_colorWithHexString:@"#ff6a45"];
     XZYFBConfigInstance.navBackImage = [UIImage imageNamed:@"nav_icon_back"];
 }
@@ -31,10 +33,10 @@
 + (void)showFBViewController:(UIViewController *)frameVC{
     
     FBFeedbackViewController *controller = [[FBFeedbackViewController alloc] init];
+    
     if (frameVC.navigationController != nil) {
         [frameVC.navigationController pushViewController:controller animated:YES];
-    }
-    else{
+    } else {
         UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:controller];
         [frameVC presentViewController:nav animated:NO completion:nil];
     }

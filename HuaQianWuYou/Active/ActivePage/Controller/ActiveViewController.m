@@ -31,6 +31,9 @@
 #import "NSString+cityInfos.h"
 #import "LoginOut.h"
 
+#import <HJ_UIKit/HJAlertView.h>
+#import <CoreLocation/CLLocationManager.h>
+
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
@@ -67,7 +70,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view
-    [self showPopView];
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Host]]];
    
@@ -100,7 +102,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
+    
 }
+
 
 # pragma mark 弹框和悬浮弹框逻辑
 
@@ -143,7 +147,27 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.navigationView.delegate = self;
 }
 
--(void)initlocationService{
+-(void)initlocationService {
+    
+    WeakObj(self);
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        // 提示定位权限用途弹窗
+        [self eventId:HQWY_Location_Alert_click];
+        HJAlertView *alertView =
+        [[HJAlertView alloc] initWithTitle:@"请允许获取定位权限"
+                                   message:@"您的位置将被用来精准匹配贷款产品，并享受贷款优惠服务"
+                        confirmButtonTitle:@"我知道了" confirmBlock:^{
+                            StrongObj(self);
+                            [self startLocationService];
+                                   }];
+        [alertView show];
+    } else {
+        [self startLocationService];
+    }
+}
+
+- (void)startLocationService {
+    
     //初始化实例
     self.locationManager = [[BMKLocationManager alloc] init];
     
@@ -190,14 +214,26 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)registerHander {
     WeakObj(self)
     
+    /** 隐藏 loading */
+    [_manager registerHandler:kAppDismissLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_hideProgressHUD];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
+    
+    /** 展示 loading */
+    [_manager registerHandler:kAppShowLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_showLoadingHUDCommon:@"拼命加载中…"];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
+    
     /** 注册埋点事件 */
-        [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-            StrongObj(self)
-            NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
-            NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-            [self eventId:dic[@"eventId"]];
-            ResponseCallback([HQWYJavaScriptResponse success]);
-        }];
+    [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        StrongObj(self)
+        NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [self eventId:dic[@"eventId"]];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
     
     /** 更新 */
     [_manager registerHandler:kAppCheckUpdate handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -301,7 +337,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager registerHandler:[HQWYJavaScriptOpenSDKHandler new]];
     
     /** 注册获取请求头事件 */
-    
     [_manager registerHandler:[HQWYJavaScriptGetAjaxHeaderHandler new]];
 }
 
@@ -454,13 +489,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)loginOut:(loginOutBlock)outBlock{
-    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
+    
+    [KeyWindow ln_showLoadingHUD];
+    
     [LoginOut signOUT:^(id _Nullable result, NSError * _Nullable error) {
-        [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+        
         if (error) {
             outBlock(false);
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         [HQWYUserSharedManager deleteUserInfo];
         outBlock(true);

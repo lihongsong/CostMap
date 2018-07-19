@@ -10,6 +10,10 @@
 #import "BasicDataModel.h"
 #import "HJGuidePageViewController.h"
 
+#define kLaunchSkipButtonW 60
+#define kLaunchSkipButtonH 30
+#define kLaunchSkipButtonSpace 15
+
 @interface HQWYLaunchManager : NSObject
 @property(nonatomic,strong)BasicDataModel *launchModel;
 

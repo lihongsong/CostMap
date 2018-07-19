@@ -12,4 +12,7 @@ typedef void (^SignFinishBlock)(void);
 
 /** 给JS发送通用数据 */
 - (void)sendMessageToJS:(id)message;
+
+- (void)showPopView;
+
 @end
