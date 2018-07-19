@@ -227,12 +227,14 @@
         self.loginButton.userInteractionEnabled = true;
         if (error) {
             if (error.code == 1060) {
+                [KeyWindow ln_hideProgressHUD];
                 [self getImageCode];
             }else{
-                [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.hqwy_errorMessage];
             }
             return ;
         }
+        [KeyWindow ln_hideProgressHUD];
         if (result){
             [KeyWindow ln_showToastHUD:@"登录成功"];
             [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
@@ -424,12 +426,12 @@
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-    [KeyWindow ln_showLoadingHUDCommon];
     if (![self.codeInputView.firstTF.text hj_isMobileNumber]) {
         [KeyWindow ln_showToastHUD:@"请输入有效手机号"];
         return;
     }
     //FIXME:review LoginType 用枚举定义
+     [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:GetCodeTypeLogin Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         NSLog(@"____%ld",(long)error.hqwy_respCode);
         //NSLog(@"____%@",error.hqwy_errorMessage);

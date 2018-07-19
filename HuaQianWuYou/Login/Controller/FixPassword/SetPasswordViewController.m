@@ -108,9 +108,7 @@
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
                                   message:error.hqwy_errorMessage];
             return ;
-        } else {
-            [KeyWindow ln_hideProgressHUD];
-        }
+        } 
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationOK message:@"密码修改成功"];
             [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
             [self.navigationController popToRootViewControllerAnimated:YES];
