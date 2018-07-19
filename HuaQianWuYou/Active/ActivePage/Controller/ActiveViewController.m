@@ -389,10 +389,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
     if (location) {//得到定位信息，添加annotation
         if (location.location) {
-            NSLog(@"LOC = %@",location.location);
+//            NSLog(@"LOC = %@",location.location);
         }
         if (location.rgcData) {
-            NSLog(@"rgc = %@",[location.rgcData description]);
+//            NSLog(@"rgc = %@",[location.rgcData description]);
             NSString *cityString = [location.rgcData.city stringByReplacingOccurrencesOfString:@"市" withString:@""];
              [self.navigationView.leftItemButton setTitle:cityString forState:UIControlStateNormal];
             self.locatedCity[@"country"] = location.rgcData.country;
