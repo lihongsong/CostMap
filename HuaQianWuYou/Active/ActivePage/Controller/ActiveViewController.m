@@ -30,6 +30,7 @@
 #import "HJUIKit.h"
 #import "NSString+cityInfos.h"
 #import "LoginOut.h"
+#import "HQWYJavaScriptMonitorHandler.h"
 
 #import <HJ_UIKit/HJAlertView.h>
 #import <CoreLocation/CLLocationManager.h>
@@ -298,8 +299,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }
     }];
     
-    
-    
     /** 注册获取设备类型事件 */
     [_manager registerHandler:kAppGetDeviceType handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([HQWYJavaScriptResponse result:@"iOS"]);
@@ -337,6 +336,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取请求头事件 */
     [_manager registerHandler:[HQWYJavaScriptGetAjaxHeaderHandler new]];
+    
+    /** 注册异常监控事件 */
+    [_manager registerHandler:[HQWYJavaScriptMonitorHandler new]];
 }
 
 #pragma mark - Public Method

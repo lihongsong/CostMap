@@ -17,7 +17,8 @@
 #define kMobilePhoneForLatestUser @"latest_login_mobilephone"
 //保存用户登录状态
 #define kLoginStatusUserDefault @"Login_Status_User_Default"
-#define KuserTokenKey @"user_token"
+
+#define KUserTokenKey @"user_token"
 
 @interface HQWYUserManager ()
 
@@ -56,6 +57,7 @@
         [self storeUserMobilePhone:userInfo.mobilePhone];
         [self setUserToken:userInfo.token];
         SetUserDefault(@"1", kLoginStatusUserDefault)
+        SetUserDefault(userInfo.productHidden, KProductHidden)
        // [self dealUserApplicationIconBadgeNumber:userInfo];
         // Bugly设置用户标示
         //[Bugly setUserIdentifier:userInfo.userId.stringValue?:@""];
@@ -67,7 +69,7 @@
         _userToken = userToken;
         NSString *tokenStr = [DES3Util encryptObject:userToken];
         UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:nil];
-        keychain[KuserTokenKey] = tokenStr;
+        keychain[KUserTokenKey] = tokenStr;
     }
 }
 
@@ -94,7 +96,7 @@
 - (NSString *)userToken {
     if (!_userToken) {
         UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:nil];
-        NSString *userTokenStr = keychain[KuserTokenKey];
+        NSString *userTokenStr = keychain[KUserTokenKey];
         if (userTokenStr) {
             _userToken = [DES3Util decryptString:userTokenStr];
         }
@@ -145,12 +147,13 @@
     _userToken = nil;
     // 删除keychain中的token信息
     UICKeyChainStore *keychain = [UICKeyChainStore keyChainStoreWithService:nil];
-    keychain[KuserTokenKey] = nil;
+    keychain[KUserTokenKey] = nil;
     
     // 删除用户登录手机
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kMobilePhoneForUserDefault];
    SetUserDefault(@"0", kLoginStatusUserDefault)
     [[NSUserDefaults standardUserDefaults] synchronize];
+    SetUserDefault(@"", KProductHidden)
 }
 
 //清除通知栏
