@@ -34,11 +34,22 @@
         self.backButton.hidden = true;
         if(leftDic != nil && !StrIsEmpty([leftDic objectForKey:@"text"])){
             self.leftItemButton.hidden = false;
+            self.arrowImage.hidden = false;
             NSString *leftTitle = [[leftDic objectForKey:@"text"] stringByReplacingOccurrencesOfString:@"location:" withString:@""];
             if (leftTitle.length > 0) {
-                self.arrowImage.hidden = false;
                 [self.leftItemButton setTitle:leftTitle forState:UIControlStateNormal];
+            }else{
+                leftTitle = self.leftItemButton.titleLabel.text;
             }
+            //NSLog(@"____%f___",[leftTitle hj_sizeWithFont:[UIFont systemFontOfSize:13.0] constrainedToWidth:SWidth].width);
+            if([leftTitle hj_sizeWithFont:[UIFont systemFontOfSize:13.0] constrainedToWidth:SWidth].width >= 40 && [leftTitle hj_sizeWithFont:[UIFont systemFontOfSize:13.0] constrainedToWidth:SWidth].width <45){
+                self.leftItemButton.frame = CGRectMake(10, 0, 60, 44);
+            }else if ([leftTitle hj_sizeWithFont:[UIFont systemFontOfSize:13.0] constrainedToWidth:SWidth].width < 40 && [leftTitle hj_sizeWithFont:[UIFont systemFontOfSize:13.0] constrainedToWidth:SWidth].width > 20){
+                self.leftItemButton.frame = CGRectMake(10, 0, 48, 44);
+            }else{
+                self.leftItemButton.frame = CGRectMake(10, 0, 70, 44);
+            }
+            self.arrowImage.frame = CGRectMake(CGRectGetMaxX(self.leftItemButton.frame) + 5, 18.5, 5, 3);
             
             if (!StrIsEmpty([leftDic objectForKey:@"textColor"])) {
                 [self.leftItemButton setTitleColor:[UIColor hj_colorWithHexString:[leftDic objectForKey:@"textColor"]] forState:UIControlStateNormal];
@@ -102,6 +113,7 @@
         [_leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
         [_leftItemButton setTitleColor:[UIColor hj_colorWithHexString:@"#333333"] forState:UIControlStateNormal];
         _leftItemButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
+        _leftItemButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _leftItemButton;
 }
@@ -125,7 +137,6 @@
     if (_titleButton == nil) {
         _titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _titleButton.frame = CGRectMake(CGRectGetMaxX(self.leftItemButton.frame), 0, self.rightItemButton.hj_x -CGRectGetMaxX(self.leftItemButton.frame), 44);
-       // [_titleButton addTarget:self action:@selector(titleButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [_titleButton setTitle:@"" forState:UIControlStateNormal];
         [_titleButton setTitleColor:[UIColor hj_colorWithHexString:@"#333333"] forState:UIControlStateNormal];
         _titleButton.titleLabel.font = [UIFont NavigationTitleFont];

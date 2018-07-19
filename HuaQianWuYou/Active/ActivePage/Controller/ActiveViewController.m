@@ -24,6 +24,7 @@
 #import "LoginAndRegisterViewController.h"
 #import "HQWYJavaScriptOpenWebViewHandler.h"
 #import <AppUpdate/XZYAppUpdate.h>
+#import "ThirdPartWebVC.h"
 #import "AuthPhoneNumViewController.h"
 #import "HQWYJavaScriptOpenSDKHandler.h"
 #import "HJUIKit.h"
@@ -66,6 +67,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view
+    [self showPopView];
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Host]]];
    
@@ -98,7 +100,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
-    [self showPopView];
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -106,8 +107,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)showPopView{
     [PopViewManager sharedInstance].delegate = self;
     [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
-    [PopViewManager showType:AdvertisingTypeSuspensionWindow fromVC:self];
-    
 }
 
 - (void )setSelectedLocation:(NSString *)selectedLocation{
@@ -124,8 +123,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 //弹框代理方法
-- (void)didSelectedContentUrl:(NSString *)url popType:(AdvertisingType)type{
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+- (void)didSelectedContent:(BasicDataModel *)dataModel popType:(AdvertisingType)type{
+    if ([HQWYUserManager hasAlreadyLoggedIn]) {
+        ThirdPartWebVC *webView = [ThirdPartWebVC new];
+        webView.navigationDic = @{@"backKeyHide":@"0",@"category":[NSString stringWithFormat:@"%ld",(long)type],@"needBackDialog":@"0",@"productId":dataModel.productId};
+        [webView loadURLString:dataModel.address];
+        [self.navigationController pushViewController:webView animated:true];
+    }else{
+        [self presentNative:^{
+            
+        }];
+    }
 }
 
 //自定义导航栏
@@ -234,9 +242,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        NSString *phone = [HQWYUserManager loginMobilePhone];
-        
-        ResponseCallback([HQWYJavaScriptResponse result:phone]);
+        ResponseCallback([HQWYJavaScriptResponse result:[HQWYUserManager loginMobilePhone]]);
     }];
     
     /** 注册获取用户是否登录事件 */

@@ -27,7 +27,7 @@
 
 @interface AppDelegate ()<BMKLocationAuthDelegate,BuglyDelegate>
 @property(nonatomic,strong)MainTabBarViewController * mTabBarVC;
-
+@property(nonatomic,strong)HJGuidePageViewController *launchVc;
 @end
 
 @implementation AppDelegate
@@ -86,13 +86,15 @@
 }
 
 - (void)setUpViewControllerWithHighScoreWithRemoteNotificaton:(NSDictionary *)remoteNotification launchOptions:(NSDictionary *)launchOptions {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setGuideImage:) name:KLoadingAdvertisement object:nil];
     ActiveViewController *activeVC = [[ActiveViewController alloc]init];
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
+    self.window.rootViewController = hNC;
     UIWindow *oldWindow = self.window;
     
     __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
    WeakObj(self)
-    HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
+    self.launchVc = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)
         // 1秒 网络加载  3秒图片加载
         make.setTimer(0, 3, nil,YES);
@@ -111,11 +113,14 @@
         // 点击跳过，埋点
         });
     }];
+    
     [HJGuidePageWindow show];
     HQWYLaunchManager *launchManager = [[HQWYLaunchManager alloc] init];
-    launchManager.guideVC = launchVC;
+    launchManager.guideVC = self.launchVc;
+    launchManager.rootViewController = hNC;
     [launchManager showLanuchPageModel];
 }
+
 
 #pragma mark - 启动图设置
 - (void)setupLaunchViewControllerWithRemoteNotification:(NSDictionary *)remoteNotification {
@@ -153,6 +158,8 @@
 #pragma mark - 渐变动画更换RootVC
 
 - (void)loadActiveViewController:(UIViewController *)rootViewController {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    self.launchVc = nil;
     [UIView transitionWithView:self.window
                       duration:0.25f
                        options:UIViewAnimationOptionTransitionCrossDissolve

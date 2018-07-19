@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BasicDataModel.h"
 @protocol PopViewManagerDelegate <NSObject>
 
-- (void)didSelectedContentUrl:(NSString *)url popType:(AdvertisingType)type;
+- (void)didSelectedContent:(BasicDataModel *)dataModel popType:(AdvertisingType)type;
 
 @end
 
