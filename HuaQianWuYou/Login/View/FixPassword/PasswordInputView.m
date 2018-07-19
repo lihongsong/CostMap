@@ -39,10 +39,7 @@
     [self.firstTextFieldView addTarget:self action:@selector(textFieldEditChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.secondTextFieldView addTarget:self action:@selector(textFieldEditChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.authCodeButton addTarget:self action:@selector(authCodeAction:) forControlEvents:UIControlEventTouchUpInside];
-    [self.authCodeButton setTitleColor:[UIColor skinColor] forState:UIControlStateNormal];
-//    [self.authCodeButton enlableColor:[UIColor skinColor] disEnlableColor:[UIColor grayColor]];
-//    self.authCodeButton.enabled = YES;
-  
+    self.authCodeButton.selected = false;
 }
 
 
@@ -51,7 +48,7 @@
     [self eventId:HQWY_Fix_Next_click];
     if (self.type == PasswordInputTypeAuthPhoneNum) {
         if (![self.firstTextFieldView.text hj_isMobileNumber] ) {
-            [KeyWindow ln_showToastHUD:@"手机号错误"];
+             [KeyWindow ln_showToastHUD:@"请输入正确的手机号码"];
             return;
         }
         if (self.delegate && [self.delegate respondsToSelector:@selector(didSendAuthCodeAction:)]) {
@@ -72,32 +69,49 @@
             self.secondTextFieldView.placeholder = @"请再输入一遍";
             self.firstTextFieldView.secureTextEntry = YES;
             self.secondTextFieldView.secureTextEntry = YES;
+            self.firstTextFieldView.hj_maxLength = 20;
+            self.secondTextFieldView.hj_maxLength = 20;
             self.firstTextFieldView.keyboardType = UIKeyboardTypeDefault;
 
             break;
         case PasswordInputTypeAuthPhoneNum:
             self.firstTitleLable.text = nil;
             self.secondTitleLable.text = nil;
-            self.firstTextFieldView.keyboardType = UIKeyboardTypeNamePhonePad;
-            self.firstTextFieldView.placeholder = @"请填写手机号码";
+            self.firstTextFieldView.keyboardType = UIKeyboardTypeNumberPad;
+            self.firstTextFieldView.placeholder = @"请填写真实有效的手机号";
+            self.firstTextFieldView.text = [HQWYUserManager lastLoginMobilePhone];
+            if ([[HQWYUserManager lastLoginMobilePhone] length] > 0) {
+                self.authCodeButton.selected = true;
+            }
             self.secondTextFieldView.placeholder = @"请填写短信验证码";
-            self.firstTextFieldView.secureTextEntry = NO;
-            self.secondTextFieldView.secureTextEntry = NO;
+            self.firstTextFieldView.hj_maxLength = 11; self.firstTextFieldView.secureTextEntry = NO;
+            self.secondTextFieldView.hj_maxLength = 6; self.secondTextFieldView.secureTextEntry = NO;
             break;
         default:
             break;
     }
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    if ([textField isEqual:self.firstTextFieldView] ) {
+        self.firstSepView.backgroundColor = [UIColor skinColor];
+        self.secondSepView.backgroundColor = [UIColor sepreateColor];
+    }else{
+        self.secondSepView.backgroundColor = [UIColor skinColor];
+        self.firstSepView.backgroundColor = [UIColor sepreateColor];
+    }
+}
 
 
 - (void)textFieldEditChanged:(UITextField *)textField{
-  
-    if ([textField isEqual:self.firstTextFieldView] ) {
-        self.firstSepView.backgroundColor = textField.text.length>0 ? [UIColor skinColor] : [UIColor sepreateColor];
-    }
-    else{
-        self.secondSepView.backgroundColor = textField.text.length>0 ? [UIColor skinColor] : [UIColor sepreateColor];
+    if (self.type == PasswordInputTypeAuthPhoneNum) {
+        if ([textField isEqual:self.firstTextFieldView]) {
+            if (textField.text.length == 11) {
+                self.authCodeButton.selected = true;
+            }else{
+                self.authCodeButton.selected = false;
+            }
+        }
     }
     if (self.delegate && [self.delegate respondsToSelector:@selector(textFieldContentdidChangeValues:secondValue:)]) {
         [self.delegate textFieldContentdidChangeValues:self.firstTextFieldView.text secondValue:self.secondTextFieldView.text];

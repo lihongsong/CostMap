@@ -42,7 +42,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
-    [self uploadData:self.navigationDic[@"productId"]];
+    if (self.navigationDic != nil && [[NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]] length] > 0) {
+        [self uploadData:self.navigationDic[@"productId"]];
+    }
     [self initData];
     [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
     
@@ -67,7 +69,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)initData{
-    if ([self.navigationDic[@"needBackDialog"] integerValue] ||[self.navigationDic[@"needBackDialog"] isEqualToString:@"true"]) {
+     NSString *needBackDialog = [NSString stringWithFormat:@"%@",self.navigationDic[@"needBackDialog"]];
+    if ([needBackDialog integerValue] ||[needBackDialog isEqualToString:@"true"]) {
         WeakObj(self);
         [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
         self.productIndex = 0;
@@ -108,7 +111,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }];
     }
     NSString *needBackDialog = [NSString stringWithFormat:@"%@",self.navigationDic[@"needBackDialog"]];
-    NSLog(@"___%@___%ld",needBackDialog,(long)[needBackDialog integerValue]);
     if (![needBackDialog integerValue]){
         if (![needBackDialog isEqualToString:@"true"]){
             [self toBeforeViewController];

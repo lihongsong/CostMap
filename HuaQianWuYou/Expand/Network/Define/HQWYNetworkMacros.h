@@ -81,5 +81,6 @@
 
 //用户密码登录
 #define LN_POST_PASSWORD_LOGIN_PATH              @"/user/login/password"
+
 #define LN_POST_LOGIN_OUT_PATH @"/user/logout"
 #endif /* HQWYNetworkMacros_h */

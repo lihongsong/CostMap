@@ -202,7 +202,6 @@
 		9CA9292420F6164200F65941 /* NSObject+HQWYResponseCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */; };
 		9CA9292520F6164200F65941 /* NSError+HQWYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291820F6164100F65941 /* NSError+HQWYError.m */; };
 		9CA9292720F6164200F65941 /* NSObject+HQWYRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */; };
-		9CA9292820F6164200F65941 /* NSError+LNError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9292020F6164100F65941 /* NSError+LNError.m */; };
 		9CA9292920F6164200F65941 /* NSObject+RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */; };
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
 		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
@@ -617,9 +616,7 @@
 		9CA9291B20F6164100F65941 /* NSObject+HQWYResponseCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQWYResponseCode.h"; sourceTree = "<group>"; };
 		9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQWYRequestConfig.m"; sourceTree = "<group>"; };
 		9CA9291D20F6164100F65941 /* NSError+HQWYError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+HQWYError.h"; sourceTree = "<group>"; };
-		9CA9292020F6164100F65941 /* NSError+LNError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LNError.m"; sourceTree = "<group>"; };
 		9CA9292120F6164100F65941 /* NSObject+RequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RequestConfig.h"; sourceTree = "<group>"; };
-		9CA9292220F6164100F65941 /* NSError+LNError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LNError.h"; sourceTree = "<group>"; };
 		9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RequestConfig.m"; sourceTree = "<group>"; };
 		A8118B9D20AD66D30046099D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A8118BD520B295620046099D /* LNMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNMBProgressHUD.h; sourceTree = "<group>"; };
@@ -1715,8 +1712,6 @@
 		9CA9291F20F6164100F65941 /* ZXRequestConfig */ = {
 			isa = PBXGroup;
 			children = (
-				9CA9292220F6164100F65941 /* NSError+LNError.h */,
-				9CA9292020F6164100F65941 /* NSError+LNError.m */,
 				9CA9292120F6164100F65941 /* NSObject+RequestConfig.h */,
 				9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */,
 			);
@@ -2253,7 +2248,6 @@
 				59C5710120E5FB8200D54260 /* UICountingLabel.m in Sources */,
 				9CA9292520F6164200F65941 /* NSError+HQWYError.m in Sources */,
 				59C570A720E5F9C100D54260 /* CInvestigationFiveViewController.m in Sources */,
-				9CA9292820F6164200F65941 /* NSError+LNError.m in Sources */,
 				591D95FE20ABDE6E00193B09 /* AACrosshair.m in Sources */,
 				59C5713D20E600D100D54260 /* NSObject+HQIQKeyBoardConfig.m in Sources */,
 				59C5713920E600D100D54260 /* UILabel+LabelKit.m in Sources */,
