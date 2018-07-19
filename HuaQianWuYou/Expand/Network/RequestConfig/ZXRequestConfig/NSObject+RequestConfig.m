@@ -1,0 +1,189 @@
+////
+////  NSObject+RequestConfig.m
+////  HuaQianWuYou
+////
+////  Created by jasonzhang on 2018/5/21.
+////  Copyright © 2018年 jason. All rights reserved.
+////
+//
+//#import "NSObject+RequestConfig.h"
+//#import "NSObject+YYModel.h"
+//#import "LoginInfoModel.h"
+//#import "NSError+CustomError.h"
+//#import <RCMobClick/RCBaseCommon.h>
+////#import "NSError+HQWYError.h"
+//#import "NSObject+HQWYResponseCode.h"
+//#import "NSObject+HQWYSendNetworkError.h"
+//
+//static NSString *const kHQWYRespCodeKey     = @"respCode";
+//static NSString *const kHQWYRespMsgKey      = @"respMsg";
+//static NSString *const kHQWYBodyKey         = @"body";
+//
+//@implementation NSObject (RequestConfig)
+//
+//+ (NSString *)ln_APIServer {
+//    return @"http://appjieqian.2345.com/index.php";
+//}
+//
+//+ (NSDictionary *)ln_signParameters:(NSDictionary *)paramters {
+//    return paramters;
+//}
+//
+//+ (void)ln_setupRequestSerializer:(AFHTTPRequestSerializer *)requestSerializer {
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        LoginUserInfoModel *userInfo = [LoginUserInfoModel cachedLoginModel];
+//        NSString *cookieString = userInfo?userInfo.cookie:@"";
+//        NSString *version = [UIDevice hj_appVersion];
+//        NSString *buddleId = [UIDevice hj_bundleIdentifier];
+//        [requestSerializer setValue:version forHTTPHeaderField:@"version"];
+//        [requestSerializer setValue:APP_ChannelId forHTTPHeaderField:@"channel"];
+//        [requestSerializer setValue:APP_ID forHTTPHeaderField:@"appid"];
+//        [requestSerializer setValue:buddleId forHTTPHeaderField:@"package-name"];
+//        [requestSerializer setValue:cookieString forHTTPHeaderField:@"cookie"];
+//    });
+//    [requestSerializer setValue:@"ios" forHTTPHeaderField:@"os"];
+//    
+//    [requestSerializer setValue:[RCBaseCommon getAppReleaseVersionString] forHTTPHeaderField:@"version"];
+//    
+//    //拼接武林榜UID字符串到User-Agent尾部
+//    NSString *userAgent = [requestSerializer.HTTPRequestHeaders objectForKey:@"User-Agent"];
+//    userAgent = [userAgent stringByAppendingString:[RCBaseCommon getUIDString]];
+//    [requestSerializer setValue:userAgent forHTTPHeaderField:@"UserAgent"];
+//    
+//    [requestSerializer setValue:APP_ChannelId forHTTPHeaderField:@"channel"];
+//    //获取设备唯一标识符 uid
+//    [requestSerializer setValue:[RCBaseCommon getIdfaString] forHTTPHeaderField:@"deviceNo"];
+//    
+//    //城市
+//    //FIXME:v2.0
+//    [requestSerializer setValue:GetUserDefault(@"locationCity") forHTTPHeaderField:@"city"];
+//    
+//    [requestSerializer setValue:HQWYUserManager.sharedInstance.userToken forHTTPHeaderField:@"token"];
+//    //客户端统一使用小写，服务端不区分大小写
+//    [requestSerializer setValue:@"hqwyios" forHTTPHeaderField:@"terminalId"];
+//    [requestSerializer setValue:[RCBaseCommon getBundleIdentifier] forHTTPHeaderField:@"packageName"];
+//}
+//
+//+ (void)ln_receiveResponseObject:(id)responseObject
+//                            task:(NSURLSessionDataTask *)task
+//                           error:(NSError *)error
+//                         success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+//                         failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+//    NSLog(@"__%@___%ld",error,(long)error.code);
+//    NSLog(@"_____%@",error.description);
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        if (error) {
+//            if (failure) {
+//                failure(task, error);
+//                if (!error) {
+//                    NSString *errMsg = [responseObject objectForKey:@"msg"];
+//                    [KeyWindow ln_showToastHUD:errMsg];
+//                }
+//            }
+//            return;
+//        }
+//        NSLog(@"___%@",responseObject);
+//        NSString *code = [[responseObject objectForKey:@"code"] stringValue];
+//        if (code && [code isEqualToString:@"1"]) {
+//            if (success) {
+//                id response = responseObject[@"data"];
+//                if (response == nil) {
+//                    response = responseObject;
+//                }
+//                success(task, [self ln_parseResponseObject:response]);
+//            }
+//            return;
+//        } else {
+//            NSError *customError = [NSError custom_errorWithDomain:CustomErrorDomain
+//                                                        codeString:code
+//                                                         errorInfo:responseObject];
+//            if (failure) {
+//                failure(task, customError);
+//            }
+//            
+//        }
+//        return;
+//    });
+//    if (error) {
+//        
+//        // 断网不发送
+//        if (error.code != kCFURLErrorNotConnectedToInternet) {
+//            //发送移动武林榜接口异常监测
+//            [self sendNetworkError:error ofTask:task];
+//        }
+//        
+//        if (failure) {
+//            failure(nil, [NSError hqwy_handleSystemError:error]);
+//        }
+//        return;
+//    }
+//    
+//    NSLog(@"task.currentRequest.URL=======%@", task.currentRequest.URL);
+//    
+//    NSString *respCode = [responseObject objectForKey:kHQWYRespCodeKey];
+//    NSLog(@"____%@",respCode);
+//    if (!respCode || ![respCode isKindOfClass:[NSString class]]
+//        || [respCode isEqual:[NSNull null]]) {
+//        if (failure) {
+//            failure(nil, [NSError hqwy_handleApiDataError]);
+//        }
+//        return;
+//    }
+//    
+//    if (respCode.integerValue == HQWYRESPONSECODE_SUCC) {
+//        //success
+//        id body = [responseObject objectForKey:kHQWYBodyKey];
+//        if (!body) {
+//            body = nil;
+//        }
+//        if (success) {
+//            success(task, body);
+//        }
+//        return;
+//    }
+//    
+//    NSString *respMsg = [responseObject objectForKey:kHQWYRespMsgKey];
+//    if (respCode && ![respCode isEqual:[NSNull null]]
+//        && [respCode isKindOfClass:[NSString class]]
+//        && respCode.integerValue == HQWYRESPONSECODE_FAIL) {
+//        //服务端异常，上传移动武林榜接口异常监测
+//        [self sendNetworkError:nil ofTask:task];
+//    }
+//    
+//    //业务异常
+//    if (failure) {
+//        //这里重新包装Error
+//        failure(nil, [NSError hqwy_handleLogicError:respMsg respCode:respCode]);
+//    }
+//    return;
+//   
+//    
+//}
+//
+//+ (id)ln_parseResponseObject:(id)responseObject {
+//    if (!responseObject || [responseObject isEqual:[NSNull null]]) {
+//        return nil;
+//    } else if ([responseObject isKindOfClass:[NSArray class]]) {
+//        if (self != [NSString class] && self != [NSNumber class]) {
+//            return [NSArray yy_modelArrayWithClass:self json:responseObject];
+//        }
+//    } else if ([responseObject isKindOfClass:[NSDictionary class]]) {
+//        NSDictionary *responseDict = responseObject;
+//
+//        NSLog(@"[JSONRESPONSE] - %@", [responseDict hj_JSONString]);
+//
+//        if (responseDict.allKeys.count > 0) {
+//            return [self yy_modelWithJSON:responseObject];
+//        } else {
+//            return nil;
+//        }
+//
+//    } else  {
+//        return responseObject;
+//    }
+//    return 0;
+//}
+//
+//@end
