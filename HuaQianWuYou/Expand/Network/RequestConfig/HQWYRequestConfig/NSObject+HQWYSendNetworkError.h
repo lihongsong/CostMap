@@ -19,4 +19,10 @@
  */
 + (void)sendNetworkError:(NSError *)error ofTask:(NSURLSessionDataTask *)task;
 
+/**
+异常信息字典
+ @param errorDic 错误字典，包含错误类型，错误信息，方法等
+ */
++ (void)sendNetworkErrorDic:(NSDictionary *)errorDic;
+
 @end

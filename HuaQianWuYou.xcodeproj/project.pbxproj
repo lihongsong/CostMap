@@ -19,6 +19,7 @@
 		59037723209C0985004CEBD8 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59037721209C0985004CEBD8 /* BaseTableViewController.m */; };
 		59037726209C0985004CEBD8 /* BaseTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59037722209C0985004CEBD8 /* BaseTableViewController.xib */; };
 		5903772B209C09E6004CEBD8 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5903772A209C09E6004CEBD8 /* BaseTableView.m */; };
+		59078F002100BFE90077814B /* HQWYJavaScriptMonitorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59078EFF2100BFE90077814B /* HQWYJavaScriptMonitorHandler.m */; };
 		591D95D120ABDE6E00193B09 /* AAHighchartsLib.js in Resources */ = {isa = PBXBuildFile; fileRef = 591D958E20ABDE6E00193B09 /* AAHighchartsLib.js */; };
 		591D95D420ABDE6E00193B09 /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 591D958F20ABDE6E00193B09 /* AAHighchartsMore.js */; };
 		591D95D720ABDE6E00193B09 /* AAFunnel.js in Resources */ = {isa = PBXBuildFile; fileRef = 591D959020ABDE6E00193B09 /* AAFunnel.js */; };
@@ -262,6 +263,8 @@
 		59037722209C0985004CEBD8 /* BaseTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTableViewController.xib; sourceTree = "<group>"; };
 		59037729209C09E6004CEBD8 /* BaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
 		5903772A209C09E6004CEBD8 /* BaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
+		59078EFE2100BFE90077814B /* HQWYJavaScriptMonitorHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptMonitorHandler.h; sourceTree = "<group>"; };
+		59078EFF2100BFE90077814B /* HQWYJavaScriptMonitorHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptMonitorHandler.m; sourceTree = "<group>"; };
 		591D958E20ABDE6E00193B09 /* AAHighchartsLib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsLib.js; sourceTree = "<group>"; };
 		591D958F20ABDE6E00193B09 /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
 		591D959020ABDE6E00193B09 /* AAFunnel.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAFunnel.js; sourceTree = "<group>"; };
@@ -1586,6 +1589,8 @@
 				5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */,
 				5964A87320F6E99C004C2629 /* HQWYJavaScriptOpenSDKHandler.h */,
 				5964A87420F6E99C004C2629 /* HQWYJavaScriptOpenSDKHandler.m */,
+				59078EFE2100BFE90077814B /* HQWYJavaScriptMonitorHandler.h */,
+				59078EFF2100BFE90077814B /* HQWYJavaScriptMonitorHandler.m */,
 			);
 			path = HQWYJSHandler;
 			sourceTree = "<group>";
@@ -2086,6 +2091,7 @@
 				595E7DDD20EC6B77001D65B6 /* SelectTheLoginModeView.m in Sources */,
 				59C570FC20E5FB8200D54260 /* NameHeaderView.m in Sources */,
 				59BE198320EC9DA300704B2C /* PopView.m in Sources */,
+				59078F002100BFE90077814B /* HQWYJavaScriptMonitorHandler.m in Sources */,
 				A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */,
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
 				5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */,

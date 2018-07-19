@@ -19,6 +19,7 @@
 @interface NavigationView : UIView
 @property (strong, nonatomic)LeftItemButton *leftItemButton;
 @property(nonatomic,strong)id<NavigationViewDelegate>delegate;
+@property(strong,nonatomic)UIButton *titleButton;
 
 - (void)changeNavigationType:(NSDictionary *)typeDic;
 
