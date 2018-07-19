@@ -188,7 +188,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark - Private Method
 /*
 - (void)setUpUI {
-    
     self.progressView.progressTintColor = RGBCOLORV(k0xff9d00);
     //自定义加载失败页面
     JKRefreshView *refreshView = [[JKRefreshView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
