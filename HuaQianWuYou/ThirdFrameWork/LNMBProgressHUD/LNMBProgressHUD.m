@@ -49,10 +49,10 @@ static const CGFloat kLNHUDHideDelay            = 2.0;
 - (LNMBProgressHUD *)progressHUD:(UIView *)view type:(LNMBProgressHUDAnimationType)type {
     LNMBProgressHUD *hud = [LNMBProgressHUD showHUDAddedTo:view animated:YES];
     hud.removeFromSuperViewOnHide = YES;
-    hud.bezelView.style = MBProgressHUDBackgroundStyleBlur;
+    hud.bezelView.style = HQWYProgressHUDBackgroundStyleBlur;
     if (type == LNMBProgressHUDAnimationLoading || type == 0) {
         // Change the background view style and color.
-        hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
+        hud.backgroundView.style = HQWYProgressHUDBackgroundStyleSolidColor;
         if ([view isMemberOfClass:[UIView class]]) {
             hud.backgroundView.color = [UIColor colorWithWhite:0.0f alpha:0.0f];
         } else {
@@ -84,7 +84,7 @@ static const CGFloat kLNHUDHideDelay            = 2.0;
     
     _loadingHud.detailsLabel.text = message;
     _loadingHud.customView = customView;
-    _loadingHud.mode = MBProgressHUDModeCustomView;
+    _loadingHud.mode = HQWYProgressHUDModeCustomView;
     _loadingHud.userInteractionEnabled = YES;
     
     _loadingHud.hidden = toastNumber > 0;
@@ -105,7 +105,7 @@ static const CGFloat kLNHUDHideDelay            = 2.0;
     if (loadingNumber <= 0 || !_loadingHud) {
         loadingNumber = 0;
         _loadingHud = [self progressHUD:view type:LNMBProgressHUDAnimationLoading];
-        [_loadingHud setMode:MBProgressHUDModeIndeterminate];
+        [_loadingHud setMode:HQWYProgressHUDModeIndeterminate];
     }
     _loadingHud.userInteractionEnabled = YES;
     
@@ -182,7 +182,7 @@ static const CGFloat kLNHUDHideDelay            = 2.0;
             //创建 toastHUD
             LNMBProgressHUD *toastHud = [self progressHUD:view type:LNMBProgressHUDAnimationToast];
             toastHud.tag = LNTOAST_TAG;
-            [toastHud setMode:MBProgressHUDModeText];
+            [toastHud setMode:HQWYProgressHUDModeText];
             toastHud.detailsLabel.text = message;
             toastHud.userInteractionEnabled = loadingNumber > 0;
             
@@ -258,7 +258,7 @@ static const CGFloat kLNHUDHideDelay            = 2.0;
                                                                 customView:gifview
                                                                    message:message];
     
-    hud.loadingContentDirection = MBProgressHUDContentSixClock;
+    hud.loadingContentDirection = HQWYProgressHUDContentSixClock;
     // FIXME：yoser 字体颜色？？？？
     hud.detailsLabel.textColor = [UIColor redColor];
     hud.backgroundView.backgroundColor = [UIColor clearColor];
@@ -275,7 +275,7 @@ static const CGFloat kLNHUDHideDelay            = 2.0;
     LNMBProgressHUD *hud = [[LNMBProgressHUD sharedManager] showLoadingHUD:self
                                                                 customView:gifview
                                                                    message:message];
-    hud.loadingContentDirection = MBProgressHUDContentThreeClock;
+    hud.loadingContentDirection = HQWYProgressHUDContentThreeClock;
     
     return hud;
 }

@@ -1,10 +1,10 @@
 //
-// MBProgressHUD.m
+// HQWYProgressHUD.m
 // Version 1.0.0
 // Created by Matej Bukovinski on 2.4.09.
 //
 
-#import "MBProgressHUD.h"
+#import "HQWYProgressHUD.h"
 #import <tgmath.h>
 
 
@@ -16,18 +16,18 @@
     #define kCFCoreFoundationVersionNumber_iOS_8_0 1129.15
 #endif
 
-#define MBMainThreadAssert() NSAssert([NSThread isMainThread], @"MBProgressHUD needs to be accessed on the main thread.");
+#define HQWYMainThreadAssert() NSAssert([NSThread isMainThread], @"HQWYProgressHUD needs to be accessed on the main thread.");
 
-CGFloat const MBProgressMaxOffset = 1000000.f;
+CGFloat const HQWYProgressMaxOffset = 1000000.f;
 
-static const CGFloat MBDefaultPadding = 12.f; //左侧和右侧视图间距。如：左侧图和右侧文字的间距
-static const CGFloat MBDefaultLabelFontSize = 16.f;
-static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
+static const CGFloat HQWYDefaultPadding = 12.f; //左侧和右侧视图间距。如：左侧图和右侧文字的间距
+static const CGFloat HQWYDefaultLabelFontSize = 16.f;
+static const CGFloat HQWYDefaultDetailsLabelFontSize = 12.f;
 
-static const CGFloat MBDefaultBezelViewHeight = 50.f;
+static const CGFloat HQWYDefaultBezelViewHeight = 50.f;
 
 
-@interface MBProgressHUD () {
+@interface HQWYProgressHUD () {
     // Deprecated
     UIColor *_activityIndicatorColor;
     CGFloat _opacity;
@@ -52,16 +52,16 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 @end
 
 
-@interface MBProgressHUDRoundedButton : UIButton
+@interface HQWYProgressHUDRoundedButton : UIButton
 @end
 
 
-@implementation MBProgressHUD
+@implementation HQWYProgressHUD
 
 #pragma mark - Class methods
 
 + (instancetype)showHUDAddedTo:(UIView *)view animated:(BOOL)animated {
-    MBProgressHUD *hud = [[self alloc] initWithView:view];
+    HQWYProgressHUD *hud = [[self alloc] initWithView:view];
     hud.removeFromSuperViewOnHide = YES;
     [view addSubview:hud];
     [hud showAnimated:animated];
@@ -69,7 +69,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 + (BOOL)hideHUDForView:(UIView *)view animated:(BOOL)animated {
-    MBProgressHUD *hud = [self HUDForView:view];
+    HQWYProgressHUD *hud = [self HUDForView:view];
     if (hud != nil) {
         hud.removeFromSuperViewOnHide = YES;
         [hud hideAnimated:animated];
@@ -78,11 +78,11 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     return NO;
 }
 
-+ (MBProgressHUD *)HUDForView:(UIView *)view {
++ (HQWYProgressHUD *)HUDForView:(UIView *)view {
     NSEnumerator *subviewsEnum = [view.subviews reverseObjectEnumerator];
     for (UIView *subview in subviewsEnum) {
         if ([subview isKindOfClass:self]) {
-            return (MBProgressHUD *)subview;
+            return (HQWYProgressHUD *)subview;
         }
     }
     return nil;
@@ -92,8 +92,8 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 
 - (void)commonInit {
     // Set default values for properties
-    _animationType = MBProgressHUDAnimationFade;
-    _mode = MBProgressHUDModeIndeterminate;
+    _animationType = HQWYProgressHUDAnimationFade;
+    _mode = HQWYProgressHUDModeIndeterminate;
     _margin = 20.0f;
     _opacity = 1.f;
     _defaultMotionEffectsEnabled = YES;
@@ -108,7 +108,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     self.alpha = 0.0f;
     self.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.layer.allowsGroupOpacity = NO;
-    self.loadingContentDirection = MBProgressHUDContentNineClock;
+    self.loadingContentDirection = HQWYProgressHUDContentNineClock;
     [self setupViews];
     [self updateIndicators];
     [self registerForNotifications];
@@ -140,7 +140,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 #pragma mark - Show & hide
 
 - (void)showAnimated:(BOOL)animated {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     [self.minShowTimer invalidate];
     self.useAnimation = animated;
     self.finished = NO;
@@ -157,7 +157,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)hideAnimated:(BOOL)animated {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     [self.graceTimer invalidate];
     self.useAnimation = animated;
     self.finished = YES;
@@ -246,10 +246,10 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     }
 }
 
-- (void)animateIn:(BOOL)animatingIn withType:(MBProgressHUDAnimation)type completion:(void(^)(BOOL finished))completion {
+- (void)animateIn:(BOOL)animatingIn withType:(HQWYProgressHUDAnimation)type completion:(void(^)(BOOL finished))completion {
     // Automatically determine the correct zoom animation type
-    if (type == MBProgressHUDAnimationZoom) {
-        type = animatingIn ? MBProgressHUDAnimationZoomIn : MBProgressHUDAnimationZoomOut;
+    if (type == HQWYProgressHUDAnimationZoom) {
+        type = animatingIn ? HQWYProgressHUDAnimationZoomIn : HQWYProgressHUDAnimationZoomOut;
     }
 
     CGAffineTransform small = CGAffineTransformMakeScale(0.5f, 0.5f);
@@ -257,9 +257,9 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 
     // Set starting state
     UIView *bezelView = self.bezelView;
-    if (animatingIn && bezelView.alpha == 0.f && type == MBProgressHUDAnimationZoomIn) {
+    if (animatingIn && bezelView.alpha == 0.f && type == HQWYProgressHUDAnimationZoomIn) {
         bezelView.transform = small;
-    } else if (animatingIn && bezelView.alpha == 0.f && type == MBProgressHUDAnimationZoomOut) {
+    } else if (animatingIn && bezelView.alpha == 0.f && type == HQWYProgressHUDAnimationZoomOut) {
         bezelView.transform = large;
     }
 
@@ -267,9 +267,9 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     dispatch_block_t animations = ^{
         if (animatingIn) {
             bezelView.transform = CGAffineTransformIdentity;
-        } else if (!animatingIn && type == MBProgressHUDAnimationZoomIn) {
+        } else if (!animatingIn && type == HQWYProgressHUDAnimationZoomIn) {
             bezelView.transform = large;
-        } else if (!animatingIn && type == MBProgressHUDAnimationZoomOut) {
+        } else if (!animatingIn && type == HQWYProgressHUDAnimationZoomOut) {
             bezelView.transform = small;
         }
 #pragma clang diagnostic push
@@ -300,11 +300,11 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
             [self removeFromSuperview];
         }
     }
-    MBProgressHUDCompletionBlock completionBlock = self.completionBlock;
+    HQWYProgressHUDCompletionBlock completionBlock = self.completionBlock;
     if (completionBlock) {
         completionBlock();
     }
-    id<MBProgressHUDDelegate> delegate = self.delegate;
+    id<HQWYProgressHUDDelegate> delegate = self.delegate;
     if ([delegate respondsToSelector:@selector(hudWasHidden:)]) {
         [delegate performSelector:@selector(hudWasHidden:) withObject:self];
     }
@@ -315,9 +315,9 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 - (void)setupViews {
     UIColor *defaultColor = self.contentColor;
 
-    MBBackgroundView *backgroundView = [[MBBackgroundView alloc] initWithFrame:self.bounds];
+    HQWYBackgroundView *backgroundView = [[HQWYBackgroundView alloc] initWithFrame:self.bounds];
 
-    backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
+    backgroundView.style = HQWYProgressHUDBackgroundStyleSolidColor;
 
     backgroundView.backgroundColor = [UIColor clearColor];
     backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
@@ -325,7 +325,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     [self addSubview:backgroundView];
     _backgroundView = backgroundView;
 
-    MBBackgroundView *bezelView = [MBBackgroundView new];
+    HQWYBackgroundView *bezelView = [HQWYBackgroundView new];
     bezelView.translatesAutoresizingMaskIntoConstraints = NO;
     bezelView.layer.cornerRadius = 8.f;
     bezelView.alpha = 0.f;
@@ -337,7 +337,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     label.adjustsFontSizeToFitWidth = NO;
     label.textAlignment = NSTextAlignmentCenter;
     label.textColor = defaultColor;
-    label.font = [UIFont boldSystemFontOfSize:MBDefaultLabelFontSize];
+    label.font = [UIFont boldSystemFontOfSize:HQWYDefaultLabelFontSize];
     label.opaque = NO;
     label.backgroundColor = [UIColor clearColor];
     _label = label;
@@ -347,14 +347,14 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     detailsLabel.textAlignment = NSTextAlignmentCenter;
     detailsLabel.textColor = defaultColor;
     detailsLabel.numberOfLines = 0;
-    detailsLabel.font = [UIFont boldSystemFontOfSize:MBDefaultDetailsLabelFontSize];
+    detailsLabel.font = [UIFont boldSystemFontOfSize:HQWYDefaultDetailsLabelFontSize];
     detailsLabel.opaque = NO;
     detailsLabel.backgroundColor = [UIColor clearColor];
     _detailsLabel = detailsLabel;
 
-    UIButton *button = [MBProgressHUDRoundedButton buttonWithType:UIButtonTypeCustom];
+    UIButton *button = [HQWYProgressHUDRoundedButton buttonWithType:UIButtonTypeCustom];
     button.titleLabel.textAlignment = NSTextAlignmentCenter;
-    button.titleLabel.font = [UIFont boldSystemFontOfSize:MBDefaultDetailsLabelFontSize];
+    button.titleLabel.font = [UIFont boldSystemFontOfSize:HQWYDefaultDetailsLabelFontSize];
     [button setTitleColor:defaultColor forState:UIControlStateNormal];
     _button = button;
 
@@ -381,10 +381,10 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 - (void)updateIndicators {
     UIView *indicator = self.indicator;
     BOOL isActivityIndicator = [indicator isKindOfClass:[UIActivityIndicatorView class]];
-    BOOL isRoundIndicator = [indicator isKindOfClass:[MBRoundProgressView class]];
+    BOOL isRoundIndicator = [indicator isKindOfClass:[HQWYRoundProgressView class]];
 
-    MBProgressHUDMode mode = self.mode;
-    if (mode == MBProgressHUDModeIndeterminate) {
+    HQWYProgressHUDMode mode = self.mode;
+    if (mode == HQWYProgressHUDModeIndeterminate) {
         if (!isActivityIndicator) {
             // Update to indeterminate indicator
             [indicator removeFromSuperview];
@@ -393,30 +393,30 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
             [self.bezelView addSubview:indicator];
         }
     }
-    else if (mode == MBProgressHUDModeDeterminateHorizontalBar) {
+    else if (mode == HQWYProgressHUDModeDeterminateHorizontalBar) {
         // Update to bar determinate indicator
         [indicator removeFromSuperview];
-        indicator = [[MBBarProgressView alloc] init];
+        indicator = [[HQWYBarProgressView alloc] init];
         [self.bezelView addSubview:indicator];
     }
-    else if (mode == MBProgressHUDModeDeterminate || mode == MBProgressHUDModeAnnularDeterminate) {
+    else if (mode == HQWYProgressHUDModeDeterminate || mode == HQWYProgressHUDModeAnnularDeterminate) {
         if (!isRoundIndicator) {
             // Update to determinante indicator
             [indicator removeFromSuperview];
-            indicator = [[MBRoundProgressView alloc] init];
+            indicator = [[HQWYRoundProgressView alloc] init];
             [self.bezelView addSubview:indicator];
         }
-        if (mode == MBProgressHUDModeAnnularDeterminate) {
-            [(MBRoundProgressView *)indicator setAnnular:YES];
+        if (mode == HQWYProgressHUDModeAnnularDeterminate) {
+            [(HQWYRoundProgressView *)indicator setAnnular:YES];
         }
     } 
-    else if (mode == MBProgressHUDModeCustomView && self.customView != indicator) {
+    else if (mode == HQWYProgressHUDModeCustomView && self.customView != indicator) {
         // Update custom view indicator
         [indicator removeFromSuperview];
         indicator = self.customView;
         [self.bezelView addSubview:indicator];
     }
-    else if (mode == MBProgressHUDModeText) {
+    else if (mode == HQWYProgressHUDModeText) {
         [indicator removeFromSuperview];
         indicator = nil;
     }
@@ -454,40 +454,40 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     if ([indicator isKindOfClass:[UIActivityIndicatorView class]]) {
         UIActivityIndicatorView *appearance = nil;
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 90000
-        appearance = [UIActivityIndicatorView appearanceWhenContainedIn:[MBProgressHUD class], nil];
+        appearance = [UIActivityIndicatorView appearanceWhenContainedIn:[HQWYProgressHUD class], nil];
 #else
         // For iOS 9+
-        appearance = [UIActivityIndicatorView appearanceWhenContainedInInstancesOfClasses:@[[MBProgressHUD class]]];
+        appearance = [UIActivityIndicatorView appearanceWhenContainedInInstancesOfClasses:@[[HQWYProgressHUD class]]];
 #endif
         
         if (appearance.color == nil) {
             ((UIActivityIndicatorView *)indicator).color = color;
         }
-    } else if ([indicator isKindOfClass:[MBRoundProgressView class]]) {
-        MBRoundProgressView *appearance = nil;
+    } else if ([indicator isKindOfClass:[HQWYRoundProgressView class]]) {
+        HQWYRoundProgressView *appearance = nil;
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 90000
-        appearance = [MBRoundProgressView appearanceWhenContainedIn:[MBProgressHUD class], nil];
+        appearance = [HQWYRoundProgressView appearanceWhenContainedIn:[HQWYProgressHUD class], nil];
 #else
-        appearance = [MBRoundProgressView appearanceWhenContainedInInstancesOfClasses:@[[MBProgressHUD class]]];
+        appearance = [HQWYRoundProgressView appearanceWhenContainedInInstancesOfClasses:@[[HQWYProgressHUD class]]];
 #endif
         if (appearance.progressTintColor == nil) {
-            ((MBRoundProgressView *)indicator).progressTintColor = color;
+            ((HQWYRoundProgressView *)indicator).progressTintColor = color;
         }
         if (appearance.backgroundTintColor == nil) {
-            ((MBRoundProgressView *)indicator).backgroundTintColor = [color colorWithAlphaComponent:0.1];
+            ((HQWYRoundProgressView *)indicator).backgroundTintColor = [color colorWithAlphaComponent:0.1];
         }
-    } else if ([indicator isKindOfClass:[MBBarProgressView class]]) {
-        MBBarProgressView *appearance = nil;
+    } else if ([indicator isKindOfClass:[HQWYBarProgressView class]]) {
+        HQWYBarProgressView *appearance = nil;
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 90000
-        appearance = [MBBarProgressView appearanceWhenContainedIn:[MBProgressHUD class], nil];
+        appearance = [HQWYBarProgressView appearanceWhenContainedIn:[HQWYProgressHUD class], nil];
 #else
-        appearance = [MBBarProgressView appearanceWhenContainedInInstancesOfClasses:@[[MBProgressHUD class]]];
+        appearance = [HQWYBarProgressView appearanceWhenContainedInInstancesOfClasses:@[[HQWYProgressHUD class]]];
 #endif
         if (appearance.progressColor == nil) {
-            ((MBBarProgressView *)indicator).progressColor = color;
+            ((HQWYBarProgressView *)indicator).progressColor = color;
         }
         if (appearance.lineColor == nil) {
-            ((MBBarProgressView *)indicator).lineColor = color;
+            ((HQWYBarProgressView *)indicator).lineColor = color;
         }
     } else {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 || TARGET_OS_TV
@@ -500,7 +500,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 
 - (void)updateBezelMotionEffects {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000 || TARGET_OS_TV
-    MBBackgroundView *bezelView = self.bezelView;
+    HQWYBackgroundView *bezelView = self.bezelView;
     if (![bezelView respondsToSelector:@selector(addMotionEffect:)]) return;
 
     if (self.defaultMotionEffectsEnabled) {
@@ -538,8 +538,8 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     
     NSMutableArray *subviews;
     switch (self.loadingContentDirection) {
-        case MBProgressHUDContentThreeClock:
-        case MBProgressHUDContentSixClock: {
+        case HQWYProgressHUDContentThreeClock:
+        case HQWYProgressHUDContentSixClock: {
             subviews = [NSMutableArray arrayWithObjects:
                         self.topSpacer,
                         self.label,
@@ -552,8 +552,8 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
             }
         }
             break;
-        case MBProgressHUDContentZeroClock:
-        case MBProgressHUDContentNineClock: {
+        case HQWYProgressHUDContentZeroClock:
+        case HQWYProgressHUDContentNineClock: {
             subviews = [NSMutableArray arrayWithObjects:
                         self.bottomSpacer,
                         self.button,
@@ -616,7 +616,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
                                                                      toItem:nil
                                                                   attribute:NSLayoutAttributeNotAnAttribute
                                                                  multiplier:0.f
-                                                                   constant:MBDefaultBezelViewHeight];
+                                                                   constant:HQWYDefaultBezelViewHeight];
         height.priority = 996.f;
         [bezelConstraints addObject:height];
     }
@@ -664,12 +664,12 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
         NSLayoutAttribute centerAttribute;
         
         switch (self.loadingContentDirection) {
-            case MBProgressHUDContentZeroClock:
-            case MBProgressHUDContentSixClock:
+            case HQWYProgressHUDContentZeroClock:
+            case HQWYProgressHUDContentSixClock:
                 centerAttribute = NSLayoutAttributeCenterX;
                 break;
-            case MBProgressHUDContentThreeClock:
-            case MBProgressHUDContentNineClock:
+            case HQWYProgressHUDContentThreeClock:
+            case HQWYProgressHUDContentNineClock:
                 centerAttribute = NSLayoutAttributeCenterY;
                 break;
                 
@@ -699,12 +699,12 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
             // First, ensure spacing to bezel edge
             NSLayoutAttribute attribute;
             switch (self.loadingContentDirection) {
-                case MBProgressHUDContentThreeClock:
-                case MBProgressHUDContentNineClock:
+                case HQWYProgressHUDContentThreeClock:
+                case HQWYProgressHUDContentNineClock:
                     attribute = NSLayoutAttributeLeft;
                     break;
-                case MBProgressHUDContentZeroClock:
-                case MBProgressHUDContentSixClock:
+                case HQWYProgressHUDContentZeroClock:
+                case HQWYProgressHUDContentSixClock:
                     attribute = NSLayoutAttributeTop;
                     break;
                     
@@ -725,12 +725,12 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
             // First, ensure spacing to bezel edge
             NSLayoutAttribute attribute;
             switch (self.loadingContentDirection) {
-                case MBProgressHUDContentThreeClock:
-                case MBProgressHUDContentNineClock:
+                case HQWYProgressHUDContentThreeClock:
+                case HQWYProgressHUDContentNineClock:
                     attribute = NSLayoutAttributeRight;
                     break;
-                case MBProgressHUDContentSixClock:
-                case MBProgressHUDContentZeroClock:
+                case HQWYProgressHUDContentSixClock:
+                case HQWYProgressHUDContentZeroClock:
                     attribute = NSLayoutAttributeBottom;
                     break;
                     
@@ -754,14 +754,14 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
             NSLayoutAttribute attributeTo;
             switch (self.loadingContentDirection) {
                     
-                case MBProgressHUDContentThreeClock:
-                case MBProgressHUDContentNineClock: {
+                case HQWYProgressHUDContentThreeClock:
+                case HQWYProgressHUDContentNineClock: {
                     attributeFrom = NSLayoutAttributeLeft;
                     attributeTo = NSLayoutAttributeRight;
                 }
                     break;
-                case MBProgressHUDContentSixClock:
-                case MBProgressHUDContentZeroClock: {
+                case HQWYProgressHUDContentSixClock:
+                case HQWYProgressHUDContentZeroClock: {
                     attributeFrom = NSLayoutAttributeTop;
                     attributeTo = NSLayoutAttributeBottom;
                 }
@@ -905,7 +905,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
         BOOL secondVisible = !secondView.hidden && !CGSizeEqualToSize(secondView.intrinsicContentSize, CGSizeZero);
         // Set if both views are visible or if there's a visible view on top that doesn't have padding
         // added relative to the current view yet
-        padding.constant = (firstVisible && (secondVisible || hasVisibleAncestors)) ? MBDefaultPadding : 0.f;
+        padding.constant = (firstVisible && (secondVisible || hasVisibleAncestors)) ? HQWYDefaultPadding : 0.f;
         hasVisibleAncestors |= secondVisible;
     }];
 }
@@ -918,14 +918,14 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 
 #pragma mark - Properties
 
-- (void)setLoadingContentDirection:(MBProgressHUDContentDirection)loadingContentDirection {
+- (void)setLoadingContentDirection:(HQWYProgressHUDContentDirection)loadingContentDirection {
     if (loadingContentDirection != _loadingContentDirection) {
         _loadingContentDirection = loadingContentDirection;
         [self updateIndicators];
     }
 }
 
-- (void)setMode:(MBProgressHUDMode)mode {
+- (void)setMode:(HQWYProgressHUDMode)mode {
     if (mode != _mode) {
         _mode = mode;
         [self updateIndicators];
@@ -935,7 +935,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 - (void)setCustomView:(UIView *)customView {
     if (customView != _customView) {
         _customView = customView;
-        if (self.mode == MBProgressHUDModeCustomView) {
+        if (self.mode == HQWYProgressHUDModeCustomView) {
             [self updateIndicators];
         }
     }
@@ -1101,7 +1101,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 @end
 
 
-@implementation MBRoundProgressView
+@implementation HQWYRoundProgressView
 
 #pragma mark - Lifecycle
 
@@ -1222,7 +1222,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 @end
 
 
-@implementation MBBarProgressView
+@implementation HQWYBarProgressView
 
 #pragma mark - Lifecycle
 
@@ -1364,7 +1364,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 @end
 
 
-@interface MBBackgroundView ()
+@interface HQWYBackgroundView ()
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000 || TARGET_OS_TV
 @property UIVisualEffectView *effectView;
@@ -1376,23 +1376,23 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 @end
 
 
-@implementation MBBackgroundView
+@implementation HQWYBackgroundView
 
 #pragma mark - Lifecycle
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_7_0) {
-            _style = MBProgressHUDBackgroundStyleBlur;
+            _style = HQWYProgressHUDBackgroundStyleBlur;
             if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_8_0) {
                 _color = [UIColor colorWithWhite:0.8f alpha:0.6f];
             } else {
                 _color = [UIColor colorWithWhite:0.95f alpha:0.6f];
                 //TODO:这里 iOS 7 要设置style，后期优化
-                _style = MBProgressHUDBackgroundStyleSolidColor;
+                _style = HQWYProgressHUDBackgroundStyleSolidColor;
             }
         } else {
-            _style = MBProgressHUDBackgroundStyleSolidColor;
+            _style = HQWYProgressHUDBackgroundStyleSolidColor;
             _color = [[UIColor blackColor] colorWithAlphaComponent:0.8];
         }
 
@@ -1413,12 +1413,12 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 
 #pragma mark - Appearance
 
-- (void)setStyle:(MBProgressHUDBackgroundStyle)style {
+- (void)setStyle:(HQWYProgressHUDBackgroundStyle)style {
     if (!_needHUDBackgroundStyle) {
         return;
     }
-    if (style == MBProgressHUDBackgroundStyleBlur && kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_7_0) {
-        style = MBProgressHUDBackgroundStyleSolidColor;
+    if (style == HQWYProgressHUDBackgroundStyleBlur && kCFCoreFoundationVersionNumber < kCFCoreFoundationVersionNumber_iOS_7_0) {
+        style = HQWYProgressHUDBackgroundStyleSolidColor;
     }
     if (_style != style) {
         _style = style;
@@ -1438,8 +1438,8 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 #pragma mark - Views
 
 - (void)updateForBackgroundStyle {
-    MBProgressHUDBackgroundStyle style = self.style;
-    if (style == MBProgressHUDBackgroundStyleBlur) {
+    HQWYProgressHUDBackgroundStyle style = self.style;
+    if (style == HQWYProgressHUDBackgroundStyleBlur) {
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000 || TARGET_OS_TV
         if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_8_0) {
             UIBlurEffect *effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
@@ -1482,7 +1482,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)updateViewsForColor:(UIColor *)color {
-    if (self.style == MBProgressHUDBackgroundStyleBlur) {
+    if (self.style == HQWYProgressHUDBackgroundStyleBlur) {
         if (kCFCoreFoundationVersionNumber >= kCFCoreFoundationVersionNumber_iOS_8_0) {
             self.backgroundColor = self.color;
         } else {
@@ -1498,13 +1498,13 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 @end
 
 
-@implementation MBProgressHUD (Deprecated)
+@implementation HQWYProgressHUD (Deprecated)
 
 #pragma mark - Class
 
 + (NSUInteger)hideAllHUDsForView:(UIView *)view animated:(BOOL)animated {
-    NSArray *huds = [MBProgressHUD allHUDsForView:view];
-    for (MBProgressHUD *hud in huds) {
+    NSArray *huds = [HQWYProgressHUD allHUDsForView:view];
+    for (HQWYProgressHUD *hud in huds) {
         hud.removeFromSuperViewOnHide = YES;
         [hud hideAnimated:animated];
     }
@@ -1568,7 +1568,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
     [self showAnimated:animated whileExecutingBlock:block onQueue:queue completionBlock:NULL];
 }
 
-- (void)showAnimated:(BOOL)animated whileExecutingBlock:(dispatch_block_t)block onQueue:(dispatch_queue_t)queue completionBlock:(nullable MBProgressHUDCompletionBlock)completion {
+- (void)showAnimated:(BOOL)animated whileExecutingBlock:(dispatch_block_t)block onQueue:(dispatch_queue_t)queue completionBlock:(nullable HQWYProgressHUDCompletionBlock)completion {
     self.taskInProgress = YES;
     self.completionBlock = completion;
     dispatch_async(queue, ^(void) {
@@ -1592,7 +1592,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setLabelText:(NSString *)labelText {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.label.text = labelText;
 }
 
@@ -1601,7 +1601,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setLabelFont:(UIFont *)labelFont {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.label.font = labelFont;
 }
 
@@ -1610,7 +1610,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setLabelColor:(UIColor *)labelColor {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.label.textColor = labelColor;
 }
 
@@ -1619,7 +1619,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setDetailsLabelText:(NSString *)detailsLabelText {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.detailsLabel.text = detailsLabelText;
 }
 
@@ -1628,7 +1628,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setDetailsLabelFont:(UIFont *)detailsLabelFont {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.detailsLabel.font = detailsLabelFont;
 }
 
@@ -1637,7 +1637,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setDetailsLabelColor:(UIColor *)detailsLabelColor {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.detailsLabel.textColor = detailsLabelColor;
 }
 
@@ -1646,7 +1646,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setOpacity:(CGFloat)opacity {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     _opacity = opacity;
 }
 
@@ -1655,7 +1655,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setColor:(UIColor *)color {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.bezelView.color = color;
 }
 
@@ -1664,7 +1664,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setYOffset:(CGFloat)yOffset {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.offset = CGPointMake(self.offset.x, yOffset);
 }
 
@@ -1673,7 +1673,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setXOffset:(CGFloat)xOffset {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.offset = CGPointMake(xOffset, self.offset.y);
 }
 
@@ -1682,19 +1682,19 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 }
 
 - (void)setCornerRadius:(CGFloat)cornerRadius {
-    MBMainThreadAssert();
+    HQWYMainThreadAssert();
     self.bezelView.layer.cornerRadius = cornerRadius;
 }
 
 - (BOOL)dimBackground {
-    MBBackgroundView *backgroundView = self.backgroundView;
+    HQWYBackgroundView *backgroundView = self.backgroundView;
     UIColor *dimmedColor =  [UIColor colorWithWhite:0.f alpha:.2f];
-    return backgroundView.style == MBProgressHUDBackgroundStyleSolidColor && [backgroundView.color isEqual:dimmedColor];
+    return backgroundView.style == HQWYProgressHUDBackgroundStyleSolidColor && [backgroundView.color isEqual:dimmedColor];
 }
 
 - (void)setDimBackground:(BOOL)dimBackground {
-    MBMainThreadAssert();
-    self.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
+    HQWYMainThreadAssert();
+    self.backgroundView.style = HQWYProgressHUDBackgroundStyleSolidColor;
     self.backgroundView.color = dimBackground ? [UIColor colorWithWhite:0.f alpha:.2f] : [UIColor clearColor];
 }
 
@@ -1718,7 +1718,7 @@ static const CGFloat MBDefaultBezelViewHeight = 50.f;
 
 @end
 
-@implementation MBProgressHUDRoundedButton
+@implementation HQWYProgressHUDRoundedButton
 
 #pragma mark - Lifecycle
 
