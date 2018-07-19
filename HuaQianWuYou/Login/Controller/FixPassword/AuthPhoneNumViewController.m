@@ -48,6 +48,7 @@ self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupUI];
+    self.serialNumber = @"";
     //[self setLelftNavigationItem:NO];
     // Do any additional setup after loading the view.
 }
@@ -207,9 +208,7 @@ self.navigationController.navigationBar.translucent = NO;
     }
     
     if (!(self.serialNumber.length > 0)) {
-        [self addAlertView:@"请先获取验证码" block:^{
-            return;
-        }];
+        [KeyWindow ln_showToastHUD:@"请先获取验证码"];
         return;
     }
     [self validatePhoneNum];

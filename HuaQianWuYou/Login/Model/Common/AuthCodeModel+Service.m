@@ -16,16 +16,16 @@
 + (NSURLSessionDataTask *)requsetMobilePhoneCode:(NSString *)mobilePhone smsType:(NSInteger)smsType Completion:(void (^)(AuthCodeModel * _Nullable, NSError * _Nullable))completion{
        NSMutableDictionary *params = [@{} mutableCopy];
        [params setValue:mobilePhone forKey:@"mobilePhone"];
-       [params setValue:[NSString stringWithFormat:@"%d", smsType] forKey:@"smsType"];
+    [params setValue:[NSString stringWithFormat:@"%ld", (long)smsType] forKey:@"smsType"];
        return [self ln_requestModelAPI:SMS_SEND parameters:params completion:completion];
   
 }
 
 
-+ (NSURLSessionDataTask *)validateSMSCode:(NSString *)code mobilePhone:(NSString *)mobilePhone smsType:(NSString *)smsType serialNumber:(NSString *)serialNumber Completion:(void (^)(AuthCodeModel * _Nullable, NSError * _Nullable))completion{
++ (NSURLSessionDataTask *)validateSMSCode:(NSString *)code mobilePhone:(NSString *)mobilePhone smsType:(NSInteger)smsType serialNumber:(NSString *)serialNumber Completion:(void (^)(AuthCodeModel * _Nullable, NSError * _Nullable))completion{
     NSMutableDictionary *params = [@{} mutableCopy];
     [params setValue:mobilePhone forKey:@"mobilePhone"];
-    [params setValue:smsType forKey:@"smsType"];
+    [params setValue:[NSString stringWithFormat:@"%ld", (long)smsType] forKey:@"smsType"];
     [params setValue:code forKey:@"code"];
     [params setValue:serialNumber forKey:@"serialNumber"];
     return [self ln_requestModelAPI:SMS_Validate parameters:params completion:completion];
