@@ -218,7 +218,9 @@ self.navigationController.navigationBar.translucent = NO;
         setPassword.mobilePhone = self.phoneNum;
         setPassword.serialNumber = self.serialNumber;
         setPassword.finishblock = ^{
-            self.finishblock();
+            if (self.finishblock) {
+                self.finishblock();
+            }
         };
         [self.navigationController pushViewController:setPassword animated:YES];
     }];

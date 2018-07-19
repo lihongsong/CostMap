@@ -112,7 +112,9 @@
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationOK message:@"密码修改成功"];
             [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
             [self.navigationController popToRootViewControllerAnimated:YES];
+        if(self.finishblock){
             self.finishblock();
+        }
     }];
 }
 - (void)didReceiveMemoryWarning {

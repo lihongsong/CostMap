@@ -44,7 +44,10 @@
 {
 
     [HQWYActionHandler defauleHandle].rootViewController = rootVC;
-    NSDictionary *dic = @{@" title":launchModel.productName,@"url":launchModel.address};
+    NSDictionary *dic = @{@"nav" :@{@"title" : @{@"text" : launchModel.productName},
+                                     @"backKeyHide" : @"0"},
+                          @"url" : launchModel.address,
+                          @"productId" : launchModel.productId};
     [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_StartApp_Advertisement_click,launchModel.productId]];
     if ([HQWYUserManager hasAlreadyLoggedIn] == NO) {
         [self presentNative:dic];
