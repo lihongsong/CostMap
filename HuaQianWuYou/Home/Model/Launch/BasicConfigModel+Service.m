@@ -34,6 +34,8 @@
 }
 
 + (void)ln_setupRequestSerializer:(AFHTTPRequestSerializer *)requestSerializer {
+    //超时时间
+    requestSerializer.timeoutInterval = 15;
     LoginUserInfoModel *userInfo = [LoginUserInfoModel cachedLoginModel];
     NSString *cookieString = userInfo?userInfo.cookie:@"";
     NSString *version = [UIDevice hj_appVersion];

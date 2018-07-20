@@ -65,18 +65,13 @@
 
 - (void)requestData {
     WeakObj(self);
-//    [activityView startAnimating];
-    [bgImageView ln_showLoadingHUDMoney];
     [BasicConfigModel requestBasicConfigCompletion:^(BasicConfigModel *_Nullable result, NSError *_Nullable error) {
         StrongObj(self);
         [self->activityView stopAnimating];
         if (error) {
-            [bgImageView ln_hideProgressHUD:LNMBProgressHUDAnimationError
-                                  message:error.userInfo[@"msg"]];
+            [bgImageView ln_showToastHUD:error.userInfo[@"msg"]];
             self.defaultView.hidden = NO;
             return;
-        } else {
-            [bgImageView ln_hideProgressHUD];
         }
         if (result) {
             self.defaultView.hidden = YES;
