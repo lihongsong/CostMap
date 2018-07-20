@@ -279,7 +279,7 @@
         [self eventId:HQWY_Login_PasswordAgreement_click];
     }
     ThirdPartWebVC *webView = [ThirdPartWebVC new];
-    [webView loadURLString:AGGREMENT_PATH];
+    [webView loadURLString:Agreement_Path];
     [self presentViewController:webView animated:true completion:^{
         
     }];

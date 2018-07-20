@@ -199,6 +199,8 @@
 		59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */; };
 		59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */; };
 		8258CA1A20FEE80D00873DDE /* LNMBProgressImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8258CA1920FEE80D00873DDE /* LNMBProgressImageView.m */; };
+		82E7103A2101A14A008FCFE3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 82E710392101A14A008FCFE3 /* Settings.bundle */; };
+		82E7103D2101A4B1008FCFE3 /* HQWYNetSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7103C2101A4B1008FCFE3 /* HQWYNetSetting.m */; };
 		9CA9292420F6164200F65941 /* NSObject+HQWYResponseCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */; };
 		9CA9292520F6164200F65941 /* NSError+HQWYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291820F6164100F65941 /* NSError+HQWYError.m */; };
 		9CA9292720F6164200F65941 /* NSObject+HQWYRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */; };
@@ -610,6 +612,9 @@
 		7C820524E8455524D0D33F53 /* Pods-HuaQianWuYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.debug.xcconfig"; sourceTree = "<group>"; };
 		8258CA1820FEE80D00873DDE /* LNMBProgressImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNMBProgressImageView.h; sourceTree = "<group>"; };
 		8258CA1920FEE80D00873DDE /* LNMBProgressImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LNMBProgressImageView.m; sourceTree = "<group>"; };
+		82E710392101A14A008FCFE3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		82E7103B2101A4B1008FCFE3 /* HQWYNetSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYNetSetting.h; sourceTree = "<group>"; };
+		82E7103C2101A4B1008FCFE3 /* HQWYNetSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYNetSetting.m; sourceTree = "<group>"; };
 		9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQWYResponseCode.m"; sourceTree = "<group>"; };
 		9CA9291820F6164100F65941 /* NSError+HQWYError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+HQWYError.m"; sourceTree = "<group>"; };
 		9CA9291920F6164100F65941 /* NSObject+HQWYRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQWYRequestConfig.h"; sourceTree = "<group>"; };
@@ -683,6 +688,7 @@
 		A8F8DFF920B4F31200DB9A6A /* FeedbackModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FeedbackModel+Service.m"; sourceTree = "<group>"; };
 		A8F8E00920B50A6100DB9A6A /* DefaultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultView.h; sourceTree = "<group>"; };
 		A8F8E00A20B50A6100DB9A6A /* DefaultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultView.m; sourceTree = "<group>"; };
+		E3DCCEE7BA02A30CE26A845C /* Pods-HuaQianWuYou.pre.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.pre.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.pre.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -981,6 +987,7 @@
 			children = (
 				59698BFA209FE953000E37AA /* Plist */,
 				5958080120EDA988002A6F0C /* RiskDefaultConfig */,
+				82E710392101A14A008FCFE3 /* Settings.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1186,6 +1193,8 @@
 				5965CBA620F4AF310009DB84 /* NSObject+LNHQWYFailed.h */,
 				5965CBA720F4AF310009DB84 /* NSObject+LNHQWYFailed.m */,
 				5965CB9820F4AF310009DB84 /* RequestConfig */,
+				82E7103B2101A4B1008FCFE3 /* HQWYNetSetting.h */,
+				82E7103C2101A4B1008FCFE3 /* HQWYNetSetting.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1688,6 +1697,7 @@
 				4E40A2FC79C98CE826B4BBAC /* Pods-HuaQianWuYou.release.xcconfig */,
 				6C4C910B5B222225D22E9E93 /* Pods-HuaQianWuYouTests.debug.xcconfig */,
 				17B31D10A3519E420DC0CB53 /* Pods-HuaQianWuYouTests.release.xcconfig */,
+				E3DCCEE7BA02A30CE26A845C /* Pods-HuaQianWuYou.pre.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1959,6 +1969,7 @@
 				59C5710420E5FB8200D54260 /* HomeBaseTableViewCell.xib in Resources */,
 				5958089E20F2F53A002A6F0C /* ImageCodePopView.xib in Resources */,
 				59023BEF209A9B33004B9134 /* Main.storyboard in Resources */,
+				82E7103A2101A14A008FCFE3 /* Settings.bundle in Resources */,
 				59BE198A20EC9F3C00704B2C /* SuspendView.xib in Resources */,
 				A8F8DFB320B3AB3300DB9A6A /* AgreementViewController.xib in Resources */,
 				5958089F20F2F53A002A6F0C /* PasswordInputView.xib in Resources */,
@@ -2137,6 +2148,7 @@
 				59C570CF20E5FADC00D54260 /* HomeDataModel.m in Sources */,
 				5979455020F32BDB006BB02D /* ThirdPartWebVC.m in Sources */,
 				595808A620F2F946002A6F0C /* UIButton+Count.m in Sources */,
+				82E7103D2101A4B1008FCFE3 /* HQWYNetSetting.m in Sources */,
 				59C5710020E5FB8200D54260 /* ProgressView.m in Sources */,
 				59C570AF20E5F9C100D54260 /* CInvestigationResultViewController.m in Sources */,
 				A8F8DFD920B3B91700DB9A6A /* LoginInfoModel+Service.m in Sources */,
@@ -2675,7 +2687,7 @@
 		};
 		9CBE0F0A210088D6003A48D5 /* Pre */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7C820524E8455524D0D33F53 /* Pods-HuaQianWuYou.debug.xcconfig */;
+			baseConfigurationReference = E3DCCEE7BA02A30CE26A845C /* Pods-HuaQianWuYou.pre.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;

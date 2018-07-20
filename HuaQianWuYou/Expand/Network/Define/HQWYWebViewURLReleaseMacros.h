@@ -9,5 +9,6 @@
 #ifndef HQWYWebViewURLReleaseMacros_h
 #define HQWYWebViewURLReleaseMacros_h
 
+#define Active_Path             @"https://static.huaqianwy.com/hqwy/dist/#/home"
 
 #endif /* HQWYWebViewURLReleaseMacros_h */

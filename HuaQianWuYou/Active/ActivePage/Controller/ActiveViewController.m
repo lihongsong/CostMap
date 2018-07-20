@@ -71,7 +71,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewDidLoad];
     // Do any additional setup after loading the view
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Host]]];
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
    
     [self.wkWebView setNavigationDelegate:self];
     [self.view addSubview:self.wkWebView];
