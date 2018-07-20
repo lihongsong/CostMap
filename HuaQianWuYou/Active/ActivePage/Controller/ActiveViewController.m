@@ -280,8 +280,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         NSString *token = @"";
         if ([HQWYUserManager hasAlreadyLoggedIn]) {
             token = [HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken];
+             ResponseCallback(token);
+        } else {
+             ResponseCallback([HQWYJavaScriptResponse result:token]);
         }
-        ResponseCallback(token);
+       
     }];
     
     /** 注册获取手机号事件 */
