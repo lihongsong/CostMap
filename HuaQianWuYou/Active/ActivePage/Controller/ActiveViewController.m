@@ -308,10 +308,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager registerHandler:kAppNeedLogin handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         NSString *isLogin = @([HQWYUserManager hasAlreadyLoggedIn]).stringValue;
         if ([HQWYUserManager hasAlreadyLoggedIn]) {
-        ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
+            ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
         }else{
             [self presentNative:^{
-        ResponseCallback([HQWYJavaScriptResponse result:@1]);
+                ResponseCallback([HQWYJavaScriptResponse result:@1]);
             }];
         }
     }];
@@ -333,12 +333,21 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取H5获取原生定位城市 */
     [_manager registerHandler:kAppExecLocation handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        self.navigationView.leftLabel.text = @"定位中...";
-//        [self.navigationView.leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
-        self.locatedCity[@"country"] = @"";
-        self.locatedCity[@"city"] = @"定位中...";
-        self.locatedCity[@"province"] = @"";
-        [self.locationManager startUpdatingLocation];
+        //        self.navigationView.leftLabel.text = @"定位中...";
+        //        [self.navigationView.leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
+        if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
+            [self openTheAuthorizationOfLocation];
+            
+        } else {
+            if ([self.navigationView.leftLabel.text containsString:@"定位"]) {
+                //这种场景说明没有定位成功，需要刷新在定位时候显示定位中
+                self.navigationView.leftLabel.text = @"定位中...";
+            }
+            self.locatedCity[@"country"] = @"";
+            self.locatedCity[@"city"] = @"定位中...";
+            self.locatedCity[@"province"] = @"";
+            [self.locationManager startUpdatingLocation];
+        }
     }];
     
     /** 注册打开webView事件 */
@@ -425,7 +434,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }
         if (location.rgcData) {
 //            NSLog(@"rgc = %@",[location.rgcData description]);
-            NSString *cityString = [location.rgcData.city stringByReplacingOccurrencesOfString:@"市" withString:@""];
+            NSString *cityString = location.rgcData.city;
 //             [self.navigationView.leftItemButton setTitle:cityString forState:UIControlStateNormal];
             self.navigationView.leftLabel.text = cityString;
             self.locatedCity[@"country"] = location.rgcData.country;
