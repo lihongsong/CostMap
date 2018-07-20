@@ -133,7 +133,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)didSelectedContent:(BasicDataModel *)dataModel popType:(AdvertisingType)type{
     if ([HQWYUserManager hasAlreadyLoggedIn]) {
         ThirdPartWebVC *webView = [ThirdPartWebVC new];
-        webView.navigationDic = @{@"nav" :@{@"title" : @{@"text" : dataModel.productName} , @"backKeyHide":@"0"},@"category":[NSString stringWithFormat:@"%ld",(long)type],@"needBackDialog":@"0",@"productId":dataModel.productId};
+        webView.navigationDic = @{@"nav" : @{@"title" : @{@"text" : dataModel.productName}, @"backKeyHide":@"0"}, @"category" : [NSString stringWithFormat:@"%ld",(long)type], @"needBackDialog" : @"0", @"productId" : dataModel.productId, @"url" : dataModel.address};
         [webView loadURLString:dataModel.address];
         [self.navigationController pushViewController:webView animated:true];
     }else{

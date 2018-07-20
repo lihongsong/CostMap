@@ -270,7 +270,7 @@
         [self eventId:HQWY_Login_PasswordAgreement_click];
     }
     ThirdPartWebVC *webView = [ThirdPartWebVC new];
-    webView.navigationDic = @{@"nav": @{@"title" : @{@"text" : @"用户服务协议"}}};
+    webView.navigationDic = @{@"nav": @{@"title" : @{@"text" : @"用户服务协议"}}, @"url" : AGGREMENT_PATH};
     [webView loadURLString:AGGREMENT_PATH];
     [self presentViewController:webView animated:true completion:^{
         
