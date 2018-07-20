@@ -193,7 +193,7 @@ self.navigationController.navigationBar.translucent = NO;
             /*如果发送成功 */
             if (self.authCodeButton) {
                 //倒计时
-                [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
+                [self.authCodeButton startTotalTime:60 title:@"重新获取" waitingTitle:@"后重试"];
             }
             self.serialNumber = [NSString stringWithFormat:@"%@",result] ;
     }];

@@ -444,7 +444,7 @@
         }
         if (self.codeInputView.codeButton) {
             //倒计时
-            [self.codeInputView.codeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
+            [self.codeInputView.codeButton startTotalTime:60 title:@"重新获取" waitingTitle:@"后重试"];
         }
         NSLog(@")_____%@",result);
         if (result) {
