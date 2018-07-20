@@ -19,6 +19,7 @@
 		59037723209C0985004CEBD8 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59037721209C0985004CEBD8 /* BaseTableViewController.m */; };
 		59037726209C0985004CEBD8 /* BaseTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59037722209C0985004CEBD8 /* BaseTableViewController.xib */; };
 		5903772B209C09E6004CEBD8 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5903772A209C09E6004CEBD8 /* BaseTableView.m */; };
+		59078F002100BFE90077814B /* HQWYJavaScriptMonitorHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59078EFF2100BFE90077814B /* HQWYJavaScriptMonitorHandler.m */; };
 		591D95D120ABDE6E00193B09 /* AAHighchartsLib.js in Resources */ = {isa = PBXBuildFile; fileRef = 591D958E20ABDE6E00193B09 /* AAHighchartsLib.js */; };
 		591D95D420ABDE6E00193B09 /* AAHighchartsMore.js in Resources */ = {isa = PBXBuildFile; fileRef = 591D958F20ABDE6E00193B09 /* AAHighchartsMore.js */; };
 		591D95D720ABDE6E00193B09 /* AAFunnel.js in Resources */ = {isa = PBXBuildFile; fileRef = 591D959020ABDE6E00193B09 /* AAFunnel.js */; };
@@ -206,7 +207,7 @@
 		9CA9292720F6164200F65941 /* NSObject+HQWYRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */; };
 		9CA9292920F6164200F65941 /* NSObject+RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */; };
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
-		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
+		A8118BDB20B2968D0046099D /* HQWYProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* HQWYProgressHUD.m */; };
 		A858A81620B2D7B600657C09 /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A858A81520B2D7B600657C09 /* DES3Util.m */; };
 		A8F1288520F75D4300907FC6 /* NSString+cityInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F1288420F75D4300907FC6 /* NSString+cityInfos.m */; };
 		A8F1288720F75E4F00907FC6 /* cityInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = A8F1288620F75E4F00907FC6 /* cityInfo.json */; };
@@ -241,6 +242,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010C44D1A83D35EE0C970507 /* Pods-HuaQianWuYou.pre.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.pre.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.pre.xcconfig"; sourceTree = "<group>"; };
 		17B31D10A3519E420DC0CB53 /* Pods-HuaQianWuYouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYouTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYouTests/Pods-HuaQianWuYouTests.release.xcconfig"; sourceTree = "<group>"; };
 		1FAEFAC0028619FEC0773FB9 /* Pods_HuaQianWuYouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuaQianWuYouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E40A2FC79C98CE826B4BBAC /* Pods-HuaQianWuYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.release.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.release.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +265,8 @@
 		59037722209C0985004CEBD8 /* BaseTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseTableViewController.xib; sourceTree = "<group>"; };
 		59037729209C09E6004CEBD8 /* BaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
 		5903772A209C09E6004CEBD8 /* BaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
+		59078EFE2100BFE90077814B /* HQWYJavaScriptMonitorHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptMonitorHandler.h; sourceTree = "<group>"; };
+		59078EFF2100BFE90077814B /* HQWYJavaScriptMonitorHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptMonitorHandler.m; sourceTree = "<group>"; };
 		591D958E20ABDE6E00193B09 /* AAHighchartsLib.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsLib.js; sourceTree = "<group>"; };
 		591D958F20ABDE6E00193B09 /* AAHighchartsMore.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAHighchartsMore.js; sourceTree = "<group>"; };
 		591D959020ABDE6E00193B09 /* AAFunnel.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = AAFunnel.js; sourceTree = "<group>"; };
@@ -626,8 +630,8 @@
 		A8118B9D20AD66D30046099D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A8118BD520B295620046099D /* LNMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNMBProgressHUD.h; sourceTree = "<group>"; };
 		A8118BD620B295620046099D /* LNMBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNMBProgressHUD.m; sourceTree = "<group>"; };
-		A8118BD920B2968C0046099D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		A8118BDA20B2968C0046099D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A8118BD920B2968C0046099D /* HQWYProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQWYProgressHUD.m; sourceTree = "<group>"; };
+		A8118BDA20B2968C0046099D /* HQWYProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQWYProgressHUD.h; sourceTree = "<group>"; };
 		A858A81420B2D7B600657C09 /* DES3Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DES3Util.h; sourceTree = "<group>"; };
 		A858A81520B2D7B600657C09 /* DES3Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DES3Util.m; sourceTree = "<group>"; };
 		A8F1288320F75D4300907FC6 /* NSString+cityInfos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+cityInfos.h"; sourceTree = "<group>"; };
@@ -1594,6 +1598,8 @@
 				5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */,
 				5964A87320F6E99C004C2629 /* HQWYJavaScriptOpenSDKHandler.h */,
 				5964A87420F6E99C004C2629 /* HQWYJavaScriptOpenSDKHandler.m */,
+				59078EFE2100BFE90077814B /* HQWYJavaScriptMonitorHandler.h */,
+				59078EFF2100BFE90077814B /* HQWYJavaScriptMonitorHandler.m */,
 			);
 			path = HQWYJSHandler;
 			sourceTree = "<group>";
@@ -1741,8 +1747,8 @@
 			isa = PBXGroup;
 			children = (
 				5977034520F7451A00F29F33 /* MBProgressloading.gif */,
-				A8118BDA20B2968C0046099D /* MBProgressHUD.h */,
-				A8118BD920B2968C0046099D /* MBProgressHUD.m */,
+				A8118BDA20B2968C0046099D /* HQWYProgressHUD.h */,
+				A8118BD920B2968C0046099D /* HQWYProgressHUD.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -2050,7 +2056,6 @@
 				"${BUILT_PRODUCTS_DIR}/HJ_UIKit/HJ_UIKit.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/LNNetwork/LNNetwork.framework",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/UICKeyChainStore/UICKeyChainStore.framework",
@@ -2067,7 +2072,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HJ_UIKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LNNetwork.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICKeyChainStore.framework",
@@ -2097,6 +2101,7 @@
 				595E7DDD20EC6B77001D65B6 /* SelectTheLoginModeView.m in Sources */,
 				59C570FC20E5FB8200D54260 /* NameHeaderView.m in Sources */,
 				59BE198320EC9DA300704B2C /* PopView.m in Sources */,
+				59078F002100BFE90077814B /* HQWYJavaScriptMonitorHandler.m in Sources */,
 				A8F8DFF720B4F30300DB9A6A /* FeedbackModel.m in Sources */,
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
 				5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */,
@@ -2153,7 +2158,7 @@
 				59C570AF20E5F9C100D54260 /* CInvestigationResultViewController.m in Sources */,
 				A8F8DFD920B3B91700DB9A6A /* LoginInfoModel+Service.m in Sources */,
 				A8F8DFDF20B3F07800DB9A6A /* DiscoverDetailModel+Service.m in Sources */,
-				A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */,
+				A8118BDB20B2968D0046099D /* HQWYProgressHUD.m in Sources */,
 				59435A7E20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m in Sources */,
 				A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */,
 				59C570FD20E5FB8200D54260 /* ScoreProgressView.m in Sources */,

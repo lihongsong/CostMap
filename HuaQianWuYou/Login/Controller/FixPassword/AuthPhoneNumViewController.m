@@ -34,6 +34,8 @@
 /* 发送验证码按钮 */
 @property (nonatomic, strong) UIButton  *authCodeButton;
 
+/* 下一步弹图形验证码，还是验证码弹图形验证码 */
+@property (nonatomic, assign) BOOL isNext;
 
 @end
 
@@ -42,12 +44,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"验证手机号";
+    self.isNext = false;
     [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor colorFromHexCode:@"#111111"]}];
 self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupUI];
+
+    self.serialNumber = @"";
     //[self setLelftNavigationItem:NO];
     // Do any additional setup after loading the view.
 }
@@ -103,6 +108,7 @@ self.navigationController.navigationBar.translucent = NO;
     //点击发送验证码
     self.authCodeButton = sender;//发送验证码按钮
     self.authCodeButton.userInteractionEnabled = false;
+    self.isNext = false;
     [self getSMSCode];
 }
 
@@ -126,7 +132,7 @@ self.navigationController.navigationBar.translucent = NO;
 # pragma mark 获取图形验证码
 - (void)getImageCode {
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
@@ -145,7 +151,7 @@ self.navigationController.navigationBar.translucent = NO;
 # pragma mark 校验图形验证码
 - (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
@@ -154,15 +160,20 @@ self.navigationController.navigationBar.translucent = NO;
         } else {
             [KeyWindow ln_hideProgressHUD];
         }
+        
+        if (self.isNext) {
+            [self validatePhoneNum];
+        }else{
             //校验成功 再次发送短信验证码
             [self getSMSCode];
+        }
     }];
 }
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
 
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:GetCodeTypeFixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
     
         self.authCodeButton.userInteractionEnabled = true;
@@ -182,7 +193,7 @@ self.navigationController.navigationBar.translucent = NO;
             /*如果发送成功 */
             if (self.authCodeButton) {
                 //倒计时
-                [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
+                [self.authCodeButton startTotalTime:60 title:@"重新获取" waitingTitle:@"后重试"];
             }
             self.serialNumber = [NSString stringWithFormat:@"%@",result] ;
     }];
@@ -190,14 +201,16 @@ self.navigationController.navigationBar.translucent = NO;
 
 # pragma mark 校验短信验证码
 - (void)validatePhoneNum{
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:GetCodeTypeFixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
+        [KeyWindow ln_hideProgressHUD];
         if (error) {
-           [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
-                                 message:error.hqwy_errorMessage];
-            return ;
-        } else {
-            [KeyWindow ln_hideProgressHUD];
+            if(error.code == 1013){
+                [self getImageCode];
+            }else{
+                [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+                return ;
+            }
         }
         //校验成功
         SetPasswordViewController *setPassword = [SetPasswordViewController new];
@@ -205,7 +218,9 @@ self.navigationController.navigationBar.translucent = NO;
         setPassword.mobilePhone = self.phoneNum;
         setPassword.serialNumber = self.serialNumber;
         setPassword.finishblock = ^{
-            self.finishblock();
+            if (self.finishblock) {
+                self.finishblock();
+            }
         };
         [self.navigationController pushViewController:setPassword animated:YES];
     }];
@@ -220,11 +235,10 @@ self.navigationController.navigationBar.translucent = NO;
     }
     
     if (!(self.serialNumber.length > 0)) {
-        [self addAlertView:@"请先获取验证码" block:^{
-            return;
-        }];
+        [KeyWindow ln_showToastHUD:@"请先获取验证码"];
         return;
     }
+    self.isNext = true;
     [self validatePhoneNum];
 }
 

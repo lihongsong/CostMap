@@ -23,11 +23,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 /**
  桥接管理器
  */
-@property (strong, nonatomic) HJJSBridgeManager *manager;
-@property(nonatomic,strong)NSTimer *timer;
-@property(nonatomic,assign)NSInteger countTime;
-@property(nonatomic,strong)NSArray *listArr;
-@property(nonatomic,assign)NSInteger productIndex;
+@property (strong, nonatomic)HJJSBridgeManager *manager;
+@property(nonatomic, strong)NSTimer *timer;
+@property(nonatomic, assign)NSInteger countTime;
+@property(nonatomic, strong)NSArray *listArr;
+@property(nonatomic, assign)NSInteger productIndex;
+@property(nonatomic, strong)NavigationView *navigationView;
+@property(nonatomic, assign)BOOL isShowAlertOrBack;//是否弹挽留或者回列表
 @end
 
 @implementation ThirdPartWebVC
@@ -37,26 +39,31 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.listArr = [[NSArray alloc]init];
+    self.isShowAlertOrBack = true;
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
-    if (self.navigationDic != nil && [[NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]] length] > 0) {
-        [self uploadData:self.navigationDic[@"productId"]];
+    if (self.navigationDic != nil && self.navigationDic[@"productId"] != nil) {
+         NSString *productID = [NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]];
+        if(!StrIsEmpty(productID)){
+            [self uploadData:self.navigationDic[@"productId"]];
+        }
     }
     [self initData];
+    [self.wkWebView ln_showLoadingHUDMoney];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     
-    [KeyWindow ln_showLoadingHUD];
+    [self.wkWebView ln_hideProgressHUD];
 }
 
 #pragma mark 上报数据
 - (void)uploadData:(NSNumber *)productId {
-    
-    [KeyWindow ln_showLoadingHUD];
-    
     [UploadProductModel uploadProduct:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] productID:productId Completion:^(UploadProductModel * _Nullable result, NSError * _Nullable error) {
-        [KeyWindow ln_hideProgressHUD];
     }];
 }
 
@@ -65,30 +72,25 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     UIView *statusView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SWidth, StatusBarHeight)];
     [self.view addSubview:statusView];
     statusView.backgroundColor = [UIColor whiteColor];
-    NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
-    [self.view addSubview:navigationView];
-    navigationView.delegate = self;
-    [navigationView changeNavigationType:self.navigationDic[@"nav"]];
+    self.navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
+    [self.view addSubview:self.navigationView];
+    self.navigationView.delegate = self;
+    [self.navigationView changeNavigationType:self.navigationDic[@"nav"]];
 }
 
 - (void)initData{
      NSString *needBackDialog = [NSString stringWithFormat:@"%@",self.navigationDic[@"needBackDialog"]];
     if ([needBackDialog integerValue] ||[needBackDialog isEqualToString:@"true"]) {
         WeakObj(self);
-        
-        [KeyWindow ln_showLoadingHUD];
-        
         self.productIndex = 0;
         
         [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(id _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
             if (error) {
-                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
-                                      message:error.hqwy_errorMessage];
+//                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+//                                      message:error.hqwy_errorMessage];
                 return;
-            } else {
-                [KeyWindow ln_hideProgressHUD];
-            }
+            } 
             self.listArr = result;
         }];
     }
@@ -110,40 +112,46 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma leftItemDelegate
 - (void)webGoBack{
-    if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
-        [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-            if (!error) { // 成功
-           
-            } else { // 失败
-;
+    if (self.isShowAlertOrBack) {
+        if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
+            [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                if (!error) { // 成功
+                } else { // 失败
+                }
+            }];
+        }
+        NSString *needBackDialog = [NSString stringWithFormat:@"%@",self.navigationDic[@"needBackDialog"]];
+        if (![needBackDialog integerValue]){
+            if (![needBackDialog isEqualToString:@"true"]){
+                [self toBeforeViewController];
+                return;
             }
-        }];
-    }
-    NSString *needBackDialog = [NSString stringWithFormat:@"%@",self.navigationDic[@"needBackDialog"]];
-    if (![needBackDialog integerValue]){
-        if (![needBackDialog isEqualToString:@"true"]){
+        }
+        
+        if ([GetUserDefault(@"isShowPromptToday") isEqualToString:[self getToday]]) {
             [self toBeforeViewController];
             return;
         }
+        
+        if (!(self.listArr.count > 0)) {
+            [self toBeforeViewController];
+            return;
+        }
+        if(self.productIndex >= self.listArr.count){
+            [self toBeforeViewController];
+            return;
+        }
+        self.countTime = 3;
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
+        [HQWYReturnToDetainView showController:self];
+        [HQWYReturnToDetainView countTime:@"3"];
+    }else{
+        if(self.wkWebView.canGoBack){
+            [self.wkWebView goBack];
+        }else{
+            [self toBeforeViewController];
+        }
     }
-    
-    if ([GetUserDefault(@"isShowPromptToday") isEqualToString:[self getToday]]) {
-        [self toBeforeViewController];
-        return;
-    }
-    
-    if (!(self.listArr.count > 0)) {
-        [self toBeforeViewController];
-        return;
-    }
-    if(self.productIndex >= self.listArr.count){
-        [self toBeforeViewController];
-        return;
-    }
-    self.countTime = 3;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
-    [HQWYReturnToDetainView showController:self];
-    [HQWYReturnToDetainView countTime:@"3"];
 }
 
 - (void)toBeforeViewController{
@@ -157,7 +165,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)changeTime{
-    self.countTime--;
+     self.countTime--;
     if (self.countTime <= 0) {
         [HQWYReturnToDetainView dismiss];
         self.countTime = 3;
@@ -166,7 +174,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[self.productIndex]];
         [self uploadData:product[@"id"]];
         [self loadURLString:product[@"address"]];
-        NSLog(@"_____%@_____%@",product,product[@"address"]);
+        //NSLog(@"____%@",product[@"address"]);
+        [self.navigationView.titleButton setTitle:product[@"name"] forState:UIControlStateNormal];
         self.productIndex ++;
     }else{
         [HQWYReturnToDetainView countTime:[NSString stringWithFormat:@"%ld",(long)self.countTime]];
@@ -176,21 +185,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     _manager = nil;
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 #pragma mark - Private Method
-/*
-- (void)setUpUI {
-    
-    self.progressView.progressTintColor = RGBCOLORV(k0xff9d00);
-    //自定义加载失败页面
-    JKRefreshView *refreshView = [[JKRefreshView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    refreshView.block = ^{
-        [self loadURL:self.failUrl];
-    };
-    self.refreshView = refreshView;
-}
-*/
 
 - (void)registerHander {
     WeakObj(self)
@@ -227,6 +226,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)nonePromptButtonClick {
     SetUserDefault([self getToday],@"isShowPromptToday");
     [self toBeforeViewController];
+    [HQWYReturnToDetainView  dismiss];
 }
 
 - (NSString *)getToday{
@@ -234,13 +234,31 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
-    [KeyWindow ln_hideProgressHUD];
+    [self checkIsShowAlertOrBack:webView];
+    [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    [KeyWindow ln_hideProgressHUD];
+    [self checkIsShowAlertOrBack:webView];
+    [self.wkWebView ln_hideProgressHUD];
 }
 
-
+- (void)checkIsShowAlertOrBack:(WKWebView *)webView{
+    NSString *urlStr = [NSString stringWithFormat:@"%@",webView.URL];
+    if (self.productIndex > 0){
+        NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[self.productIndex - 1]];
+        if ([urlStr isEqualToString:product[@"address"]]) {
+            self.isShowAlertOrBack = true;
+        }else{
+            self.isShowAlertOrBack = false;
+        }
+    }else{
+        if ([urlStr isEqualToString:self.navigationDic[@"url"]]){
+            self.isShowAlertOrBack = true;
+        }else{
+            self.isShowAlertOrBack = false;
+        }
+    }
+}
 
 @end

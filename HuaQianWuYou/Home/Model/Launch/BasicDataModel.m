@@ -22,8 +22,9 @@
     NSData *jsonData = [model yy_modelToJSONData];
     NSString  *key = [NSString stringWithFormat:@"dataList%ld",(long)type];
     UserDefaultSetObj(jsonData, key);
-    
-    UserDefaultSetObj([NSData dataWithContentsOfURL:[NSURL URLWithString:model.imgUrl]], @"advertisementStartPage");
+    if (type == AdvertisingTypeAlert) {
+        UserDefaultSetObj([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"], @"advertisementDate");
+    }
 }
 
 + (BasicDataModel *)getCacheModel:(AdvertisingType)type{

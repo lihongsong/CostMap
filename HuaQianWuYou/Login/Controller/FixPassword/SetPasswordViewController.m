@@ -99,7 +99,7 @@
     }
     WeakObj(self);
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     
     [ChangePasswordModel changePasswordCode:self.code passWord:self.surePassword mobilePhone:self.mobilePhone serialNumber:self.serialNumber Completion:^(ChangePasswordModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
@@ -108,13 +108,13 @@
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
                                   message:error.hqwy_errorMessage];
             return ;
-        } else {
-            [KeyWindow ln_hideProgressHUD];
-        }
+        } 
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationOK message:@"密码修改成功"];
             [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
             [self.navigationController popToRootViewControllerAnimated:YES];
+        if(self.finishblock){
             self.finishblock();
+        }
     }];
 }
 - (void)didReceiveMemoryWarning {

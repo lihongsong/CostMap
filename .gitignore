@@ -28,9 +28,11 @@ DerivedData
 *.ipa
 *.xcuserstate
 *.xcscmblueprint
+*.xcbkptlist
 
 project.xcworkspace
 *ios/symbols
+*/xcschememanagement.plist
 
 
 # BUCK

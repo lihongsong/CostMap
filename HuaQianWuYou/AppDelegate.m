@@ -105,6 +105,7 @@
             [self checkUpdate];
             
             [activeVC showPopView];
+            [activeVC initlocationService];
             
             guideWindow.hidden = YES;
             [guideWindow removeFromSuperview];

@@ -42,7 +42,7 @@
 //刷新图片
 - (void)reloadImageCode{
     
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
@@ -66,7 +66,7 @@
 - (void)sureAction{
     [self eventId:HQWY_Login_ImageCode_click];
     if (self.codeView.imageCodeInputLable.text.length == 0) {
-        [KeyWindow ln_showToastHUD:@"验证码不能为空"];
+        [KeyWindow ln_showToastHUD:@"请输入图形验证码"];
         return;
     }
     if (self.block) {

@@ -32,6 +32,5 @@ target 'HuaQianWuYou' do
     pod 'RCMobClick', '~>2.0.9'
     pod 'Feedback', '~> 1.2.1'
     pod 'UICKeyChainStore','2.1.1'
-    pod 'MBProgressHUD', '1.0.0'
 
 end

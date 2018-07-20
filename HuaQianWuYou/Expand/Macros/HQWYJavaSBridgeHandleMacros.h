@@ -28,6 +28,13 @@ static NSString * const kAppGetAjaxHeader = @"appGetAjaxHeader";
  */
 static NSString * const kAppExecBack = @"appExecBack";
 
+
+/*!
+ 异常监控
+ */
+static NSString * const kAppUrlExceptionMonitor = @"appUrlExceptionMonitor";
+
+
 /*!
  获取productID
  */
