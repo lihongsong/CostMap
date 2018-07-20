@@ -7,6 +7,7 @@
 //
 
 #import "HQWYBaseWebViewController.h"
+#import <HJ_UIKit/HJAlertView.h>
 
 @interface HQWYBaseWebViewController ()<NavigationViewDelegate>
 
@@ -76,7 +77,67 @@
 }
 
 // 定位权限
-- (void)openTheAuthorizationOfLocation{
+- (void)openTheAuthorizationOfLocation {
+    
+    NSMutableAttributedString *attributeString = [NSMutableAttributedString new];
+    
+    NSMutableParagraphStyle *paragraphStyle = [NSMutableParagraphStyle new];
+    paragraphStyle.lineSpacing = 7;
+    
+    NSDictionary *topParam = @{
+                               NSFontAttributeName: [UIFont systemFontOfSize:15],
+                               NSForegroundColorAttributeName: HJHexColor(0x333333),
+                               NSParagraphStyleAttributeName: paragraphStyle
+                               };
+    
+    NSDictionary *bottomParam = @{
+                                  NSFontAttributeName: [UIFont systemFontOfSize:13],
+                                  NSForegroundColorAttributeName: HJHexColor(0x666666)
+                                  };
+    
+    NSAttributedString *topContentString =
+    [[NSAttributedString alloc] initWithString:@"您的位置将被用来精准匹配贷款产品，并享受贷款优惠服务"
+                                    attributes:topParam];
+    
+    NSAttributedString *bottomContentString =
+    [[NSAttributedString alloc] initWithString:@"\n \n设置路径：设置->隐私->定位服务"
+                                    attributes:bottomParam];
+    
+    [attributeString appendAttributedString:topContentString];
+    [attributeString appendAttributedString:bottomContentString];
+    
+    HJAlertView *alertView =
+    [[HJAlertView alloc] initWithTitle:@"请允许获取定位权限"
+                      attributeMessage:attributeString
+                    confirmButtonTitle:@"去设置"
+                          confirmBlock:^{
+                              
+                              [self eventId:HQWY_Location_Seting_click];
+                              NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                              if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                                  if (@available(iOS 10.0, *)) {
+                                      [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+                                  } else {
+                                      [[UIApplication sharedApplication] openURL:url];
+                                  }
+                              }
+                              
+                          }];
+    
+    alertView.cancelBlock = ^{
+        [self eventId:HQWY_Location_Close_click];
+    };
+    
+    alertView.revokable = YES;
+    alertView.confirmColor = HJHexColor(0xff6a45);
+    alertView.titleLabel.textAlignment = NSTextAlignmentLeft;
+    alertView.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+    alertView.titleLabel.textColor = HJHexColor(0x333333);
+    
+    [alertView show];
+    
+    return ;
+    
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还未开启定位权限" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"去开启" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self eventId:HQWY_Location_Seting_click];
