@@ -75,6 +75,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewDidLoad];
     // Do any additional setup after loading the view
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
+    [self.wkWebView ln_showLoadingHUDMoney];
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Host]]];
    
     [self.wkWebView setNavigationDelegate:self];
@@ -523,5 +524,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         outBlock(true);
         return;
     }];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    [self.wkWebView ln_hideProgressHUD];
+}
+
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    [self.wkWebView ln_hideProgressHUD];
 }
 @end
