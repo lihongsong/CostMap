@@ -180,7 +180,6 @@
 #pragma mark 登录事件
 - (void)loginButtonClick{
     self.loginButton.userInteractionEnabled = false;
-    //FIXME:review 这里的if else 太深了，要调整
     WeakObj(self);
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [self eventId:HQWY_Login_SignIn_click];
@@ -220,7 +219,6 @@
 - (void)requestLogin{
     WeakObj(self);
    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
-    //FIXME:review if else 中一部分内容是一样的，抽出来共用
     [self requestBlock:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
         self.loginButton.userInteractionEnabled = true;
@@ -274,8 +272,6 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
-    //FIXME:review 这里的if else 太深了，要调整
-    //FIXME:review 这里的重复代码较多，可以优化
      if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
          if ([textField isEqual:self.codeInputView.firstTF]) {
              self.codeInputView.firstLineView.backgroundColor = [UIColor skinColor];
@@ -296,10 +292,9 @@
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    //FIXME:review textField 的长度限制方法，在我们分类里面已有，UITextField+HJInputLimit 中
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         if ([textField isEqual:self.codeInputView.firstTF]) {
-            if (textField.text.length >= 10) {
+            if (textField.text.length >= 10 && string.length > 0) {
                 self.codeInputView.codeButton.selected = true;
                 if (self.codeInputView.secondTF.text.length >= 6) {
                     self.loginButton.backgroundColor = [UIColor skinColor];
@@ -310,7 +305,7 @@
                 self.loginButton.backgroundColor = [UIColor lightGrayColor];
             }
         }else{
-            if (textField.text.length >= 5 && self.codeInputView.firstTF.text.length >= 11) {
+            if (textField.text.length >= 5 && self.codeInputView.firstTF.text.length >= 11 && string.length > 0) {
                 self.loginButton.backgroundColor = [UIColor skinColor];
             }else{
                 self.loginButton.backgroundColor = [UIColor lightGrayColor];
@@ -318,13 +313,13 @@
         }
     }else{
         if ([textField isEqual:self.passwordInputView.firstTF]) {
-            if (textField.text.length >= 10 && [self.passwordInputView.secondTF.text length] >= 6) {
+            if (textField.text.length >= 10 && [self.passwordInputView.secondTF.text length] >= 6 && string.length > 0) {
                 self.loginButton.backgroundColor = [UIColor skinColor];
             }else{
                 self.loginButton.backgroundColor = [UIColor lightGrayColor];
             }
         }else{
-            if (textField.text.length >= 5 && self.passwordInputView.firstTF.text.length >= 11) {
+            if (textField.text.length >= 5 && self.passwordInputView.firstTF.text.length >= 11 && string.length > 0) {
                 self.loginButton.backgroundColor = [UIColor skinColor];
             }else{
                 self.loginButton.backgroundColor = [UIColor lightGrayColor];
@@ -419,7 +414,6 @@
         return;
     }
    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
-    //FIXME:review LoginType 用枚举定义
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:GetCodeTypeLogin Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         NSLog(@"____%ld",(long)error.hqwy_respCode);
