@@ -45,27 +45,25 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
-    if (self.navigationDic != nil && [[NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]] length] > 0) {
-        [self uploadData:self.navigationDic[@"productId"]];
+    if (self.navigationDic != nil && self.navigationDic[@"productId"] != nil) {
+         NSString *productID = [NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]];
+        if(!StrIsEmpty(productID)){
+            [self uploadData:self.navigationDic[@"productId"]];
+        }
     }
     [self initData];
-    
-    [KeyWindow ln_showLoadingHUD];
+    [self.wkWebView ln_showLoadingHUDMoney];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [KeyWindow ln_hideProgressHUD];
+    [self.wkWebView ln_hideProgressHUD];
 }
 
 #pragma mark 上报数据
 - (void)uploadData:(NSNumber *)productId {
-    
-    [KeyWindow ln_showLoadingHUD];
-    
     [UploadProductModel uploadProduct:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] productID:productId Completion:^(UploadProductModel * _Nullable result, NSError * _Nullable error) {
-        [KeyWindow ln_hideProgressHUD];
     }];
 }
 
@@ -84,14 +82,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
      NSString *needBackDialog = [NSString stringWithFormat:@"%@",self.navigationDic[@"needBackDialog"]];
     if ([needBackDialog integerValue] ||[needBackDialog isEqualToString:@"true"]) {
         WeakObj(self);
-        
-        [KeyWindow ln_showLoadingHUD];
-        
         self.productIndex = 0;
         
         [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(id _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
-             [KeyWindow ln_hideProgressHUD];
             if (error) {
 //                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
 //                                      message:error.hqwy_errorMessage];
@@ -161,7 +155,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)toBeforeViewController{
-    
     if (self.navigationController != nil) {
         [self.navigationController popViewControllerAnimated:true];
     }else{
@@ -242,12 +235,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     [self checkIsShowAlertOrBack:webView];
-    [KeyWindow ln_hideProgressHUD];
+    [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
     [self checkIsShowAlertOrBack:webView];
-    [KeyWindow ln_hideProgressHUD];
+    [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)checkIsShowAlertOrBack:(WKWebView *)webView{
@@ -267,6 +260,5 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }
     }
 }
-
 
 @end

@@ -89,7 +89,7 @@ static NSString *const kHQWYErrorRespMsgKey       = @"respMsg";
         return self.userInfo[kHQWYErrorRespMsgKey];
     }
 
-    return self.userInfo[kHQWYErrorRespMsgKey];
+    return [self responseMessage:self.userInfo];
 }
 
 //处理系统错误，如网络异常

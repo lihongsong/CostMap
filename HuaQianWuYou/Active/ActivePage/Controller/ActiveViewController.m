@@ -381,14 +381,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 -(void)rightButtonItemClick{
-    if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
-        [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-            if (!error) { // 成功
-                NSLog(@"%@",response);
-            } else { // 失败
-                NSLog(@"%@",error.localizedDescription);
-            }
-        }];
+    if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
+        [self openTheAuthorizationOfLocation];
+    }else{
+        if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
+            [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                if (!error) { // 成功
+                    NSLog(@"%@",response);
+                } else { // 失败
+                    NSLog(@"%@",error.localizedDescription);
+                }
+            }];
+        }
     }
 }
 

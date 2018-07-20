@@ -32,6 +32,6 @@ typedef NS_ENUM(NSInteger, HQWYRESPONSECODE) {
 
 @interface NSObject (HQWYResponseCode)
 
-//- (HQWYRESPONSECODE)responseIntegerCode:(NSString *)respCode;
+- (NSString *)responseMessage:(NSDictionary<NSErrorUserInfoKey, id> *) userInfo;
 
 @end

@@ -65,7 +65,9 @@
             self.secondTF.placeholder = @"请填写登录密码";
             self.secondTF.secureTextEntry = true;
             self.secondTF.keyboardType = UIKeyboardTypeDefault;
+            self.secondTF.frame = CGRectMake(LeftSpace, 70,SWidth - 2 * LeftSpace, 50);
             self.eyeButton.hidden = true;
+            
             self.firstLineView.backgroundColor = [UIColor skinColor];
         }
             break;
