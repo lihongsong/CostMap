@@ -339,6 +339,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             [self openTheAuthorizationOfLocation];
             
         } else {
+            if ([self.navigationView.leftLabel.text containsString:@"定位"]) {
+                //这种场景说明没有定位成功，需要刷新在定位时候显示定位中
+                self.navigationView.leftLabel.text = @"定位中...";
+            }
             self.locatedCity[@"country"] = @"";
             self.locatedCity[@"city"] = @"定位中...";
             self.locatedCity[@"province"] = @"";
@@ -426,7 +430,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }
         if (location.rgcData) {
 //            NSLog(@"rgc = %@",[location.rgcData description]);
-            NSString *cityString = [location.rgcData.city stringByReplacingOccurrencesOfString:@"市" withString:@""];
+            NSString *cityString = location.rgcData.city;
 //             [self.navigationView.leftItemButton setTitle:cityString forState:UIControlStateNormal];
             self.navigationView.leftLabel.text = cityString;
             self.locatedCity[@"country"] = location.rgcData.country;
@@ -461,9 +465,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 #pragma leftItemDelegate
-
-- (void)locationButtonClick {
-    [self leftClick];
+- (void)locationButtonClick{
+     if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
+         [self openTheAuthorizationOfLocation];
+    }else{
+        [self leftClick];
+    }
 }
 
 #pragma leftItemDelegate
