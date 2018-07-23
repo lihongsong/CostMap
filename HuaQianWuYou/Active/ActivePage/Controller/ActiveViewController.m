@@ -469,12 +469,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 #pragma leftItemDelegate
-- (void)locationButtonClick{
-     if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
-         [self openTheAuthorizationOfLocation];
-    }else{
-        [self leftClick];
-    }
+- (void)locationButtonClick {
+    [self leftClick];
 }
 
 #pragma leftItemDelegate
