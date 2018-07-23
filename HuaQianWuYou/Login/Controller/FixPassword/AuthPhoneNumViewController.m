@@ -51,10 +51,8 @@ self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupUI];
-
     self.serialNumber = @"";
-    //[self setLelftNavigationItem:NO];
-    // Do any additional setup after loading the view.
+    self.phoneNum = [HQWYUserManager lastLoginMobilePhone];
 }
 
 -(void)backPage {
@@ -172,7 +170,6 @@ self.navigationController.navigationBar.translucent = NO;
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-
     [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:GetCodeTypeFixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
     
