@@ -6,7 +6,7 @@
 //  Copyright © 2017年 terrywang. All rights reserved.
 //
 
-#import "MBProgressHUD.h"
+#import "HQWYProgressHUD.h"
 
 typedef NS_ENUM (NSInteger, LNMBProgressHUDAnimationType) {
     LNMBProgressHUDAnimationLoading = 1,
@@ -15,14 +15,31 @@ typedef NS_ENUM (NSInteger, LNMBProgressHUDAnimationType) {
     LNMBProgressHUDAnimationToast   = 4
 };
 
+typedef NS_ENUM (NSInteger, LNMBProgressHUDLoadingType) {
+    LNMBProgressHUDLoadingMoney  = 0,
+    LNMBProgressHUDLoadingCommon = 1,
+};
+
 NS_ASSUME_NONNULL_BEGIN
-@interface LNMBProgressHUD : MBProgressHUD
+@interface LNMBProgressHUD : HQWYProgressHUD
 @end
 
 @interface UIView (LNMBProgressHUD)
 
 - (void)ln_showToastHUD:(NSString * _Nonnull)message;
+
 - (LNMBProgressHUD *)ln_showLoadingHUD;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDType:(LNMBProgressHUDLoadingType)loadingType;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDMoney;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDCommon;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDMoney:(NSString * _Nullable)message;
+
+- (LNMBProgressHUD *)ln_showLoadingHUDCommon:(NSString * _Nullable)message;
+
 - (LNMBProgressHUD *)ln_showLoadingHUD:(NSString * _Nullable)message;
 
 - (void)ln_hideProgressHUD;

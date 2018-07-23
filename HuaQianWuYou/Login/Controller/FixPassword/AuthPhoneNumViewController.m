@@ -51,6 +51,7 @@ self.navigationController.navigationBar.translucent = NO;
     self.view.backgroundColor = [UIColor whiteColor];
     
     [self setupUI];
+
     self.serialNumber = @"";
     //[self setLelftNavigationItem:NO];
     // Do any additional setup after loading the view.
@@ -129,13 +130,16 @@ self.navigationController.navigationBar.translucent = NO;
 
 
 # pragma mark 获取图形验证码
-- (void)getImageCode{
-    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+- (void)getImageCode {
+    
+    [KeyWindow ln_showLoadingHUDCommon];
     [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         if (result.outputImage.length > 0) {
             //到图形验证码页面
@@ -146,12 +150,15 @@ self.navigationController.navigationBar.translucent = NO;
 
 # pragma mark 校验图形验证码
 - (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
-    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+    
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         
         if (self.isNext) {
@@ -165,23 +172,28 @@ self.navigationController.navigationBar.translucent = NO;
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:GetCodeTypeFixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
+    
         self.authCodeButton.userInteractionEnabled = true;
         if (error) {
             if (error.code == 1013) {
+                [KeyWindow ln_hideProgressHUD];
                 self.serialNumber = [NSString stringWithFormat:@"%@",result];
                  [self getImageCode];
             }else {
-              [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+              [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                    message:error.hqwy_errorMessage];
             }
             return ;
+        } else {
+             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"短信验证码已发送~"];
         }
             /*如果发送成功 */
             if (self.authCodeButton) {
                 //倒计时
-                [self.authCodeButton startTotalTime:60 title:@"获取验证码" waitingTitle:@"后重试"];
+                [self.authCodeButton startTotalTime:60 title:@"重新获取" waitingTitle:@"后重试"];
             }
             self.serialNumber = [NSString stringWithFormat:@"%@",result] ;
     }];
@@ -189,9 +201,9 @@ self.navigationController.navigationBar.translucent = NO;
 
 # pragma mark 校验短信验证码
 - (void)validatePhoneNum{
-    [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:GetCodeTypeFixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
+        [KeyWindow ln_hideProgressHUD];
         if (error) {
             if(error.code == 1013){
                 [self getImageCode];
@@ -206,7 +218,9 @@ self.navigationController.navigationBar.translucent = NO;
         setPassword.mobilePhone = self.phoneNum;
         setPassword.serialNumber = self.serialNumber;
         setPassword.finishblock = ^{
-            self.finishblock();
+            if (self.finishblock) {
+                self.finishblock();
+            }
         };
         [self.navigationController pushViewController:setPassword animated:YES];
     }];

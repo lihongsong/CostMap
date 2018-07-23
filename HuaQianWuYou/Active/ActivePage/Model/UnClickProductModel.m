@@ -9,11 +9,11 @@
 #import "UnClickProductModel.h"
 
 @implementation UnClickProductModel
-+ (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {
-    return @{
-             @"ProductCategoryVO": [UnClickProductModel class]
-             };
-}
+//+ (nullable NSDictionary<NSString *, id> *)modelContainerPropertyGenericClass {
+//    return @{
+//             @"ProductCategoryVO": [UnClickProductModel class]
+//             };
+//}
 
 
 

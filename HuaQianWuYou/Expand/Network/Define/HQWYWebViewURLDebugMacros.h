@@ -9,5 +9,10 @@
 #ifndef HQWYWebViewURLDebugMacros_h
 #define HQWYWebViewURLDebugMacros_h
 
-#define AGGREMENT_PATH @"http://t1-static.huaqianwy.com/hqwy/dist/#/userServiceAgreement"
+#import "HQWYNetSetting.h"
+
+#define Agreement_Path [HQWYNetSetting agreementPath]
+
+#define Active_Path    [HQWYNetSetting activePath]
+
 #endif /* HQWYWebViewURLDebugMacros_h */

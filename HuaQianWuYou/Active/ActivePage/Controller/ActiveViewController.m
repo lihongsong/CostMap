@@ -24,12 +24,19 @@
 #import "LoginAndRegisterViewController.h"
 #import "HQWYJavaScriptOpenWebViewHandler.h"
 #import <AppUpdate/XZYAppUpdate.h>
+#import "ThirdPartWebVC.h"
 #import "AuthPhoneNumViewController.h"
+#import "ThirdPartWebVC.h"
 #import "HQWYJavaScriptOpenSDKHandler.h"
 #import "HJUIKit.h"
 #import "NSString+cityInfos.h"
+#import "HQWYUser.h"
+#import "HQWYUser+Service.h"
 #import "LoginOut.h"
 #import "HQWYJavaScriptMonitorHandler.h"
+
+#import <HJ_UIKit/HJAlertView.h>
+#import <CoreLocation/CLLocationManager.h>
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -68,15 +75,30 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewDidLoad];
     // Do any additional setup after loading the view
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Host]]];
+    [self.wkWebView ln_showLoadingHUDMoney];
+    self.wkWebView.scrollView.showsVerticalScrollIndicator = NO;
+    self.wkWebView.scrollView.showsHorizontalScrollIndicator = NO;
+    self.wkWebView.scrollView.bounces = NO;
+    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
    
     [self.wkWebView setNavigationDelegate:self];
     [self.view addSubview:self.wkWebView];
+    WeakObj(self);
+    [self.wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
+        StrongObj(self);
+        make.top.mas_equalTo(self.view.mas_top).mas_offset(NavigationHeight);
+        make.center.left.right.mas_equalTo(self.view);
+        if (@available(iOS 11.0, *)) {
+            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+        } else {
+            // Fallback on earlier versions
+            make.bottom.mas_equalTo(self.view.mas_bottom);
+        }
+    }];
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     [self registerHander];
-    [self initlocationService];
-     [self initNavigation];
+    [self initNavigation];
     [HJJSBridgeManager enableLogging];
     [_manager callHandler:kWebViewDidLoad];
     self.wkWebView.scrollView.bounces = NO;
@@ -87,7 +109,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
-    [self showPopView];
+    
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -95,14 +117,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)showPopView{
     [PopViewManager sharedInstance].delegate = self;
     [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
-    [PopViewManager showType:AdvertisingTypeSuspensionWindow fromVC:self];
-    
 }
 
 - (void )setSelectedLocation:(NSString *)selectedLocation{
-    _selectedLocation = selectedLocation;
+    _selectedLocation = [selectedLocation stringByReplacingOccurrencesOfString:@"location:" withString:@""];
     if (![selectedLocation containsString:@"失败"] && ![selectedLocation containsString:@"定位"] && ![selectedLocation containsString:@"未知"]){
-        SetUserDefault([NSString getDistrictNoFromCity:selectedLocation], @"locationCity");
+        SetUserDefault([NSString getDistrictNoFromCity:_selectedLocation], @"locationCity");
         }else{
             SetUserDefault(@"", @"locationCity");
         }
@@ -113,8 +133,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 //弹框代理方法
-- (void)didSelectedContentUrl:(NSString *)url popType:(AdvertisingType)type{
-    [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+- (void)didSelectedContent:(BasicDataModel *)dataModel popType:(AdvertisingType)type{
+    if ([HQWYUserManager hasAlreadyLoggedIn]) {
+        ThirdPartWebVC *webView = [ThirdPartWebVC new];
+        webView.navigationDic = @{@"nav" : @{@"title" : @{@"text" : dataModel.productName}, @"backKeyHide":@"0"}, @"category" : [NSString stringWithFormat:@"%ld",(long)type], @"needBackDialog" : @"0", @"productId" : dataModel.productId, @"url" : dataModel.address};
+        [webView loadURLString:dataModel.address];
+        [self.navigationController pushViewController:webView animated:true];
+    }else{
+        [self presentNative:^{
+            
+        }];
+    }
 }
 
 //自定义导航栏
@@ -124,7 +153,33 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.navigationView.delegate = self;
 }
 
--(void)initlocationService{
+-(void)initlocationService {
+    
+    WeakObj(self);
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusNotDetermined) {
+        // 提示定位权限用途弹窗
+        [self eventId:HQWY_Location_Alert_click];
+        HJAlertView *alertView =
+        [[HJAlertView alloc] initWithTitle:@"请允许获取定位权限"
+                                   message:@"您的位置将被用来精准匹配贷款产品，并享受贷款优惠服务"
+                        confirmButtonTitle:@"确认" confirmBlock:^{
+                            StrongObj(self);
+                            [self startLocationService];
+                                   }];
+        alertView.messageLabel.textAlignment = NSTextAlignmentCenter;
+        alertView.confirmColor = HJHexColor(0xff6a45);
+        alertView.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        alertView.messageLabel.textColor = HJHexColor(0x333333);
+        alertView.titleLabel.textColor = HJHexColor(0x333333);
+        
+        [alertView show];
+    } else {
+        [self startLocationService];
+    }
+}
+
+- (void)startLocationService {
+    
     //初始化实例
     self.locationManager = [[BMKLocationManager alloc] init];
     
@@ -170,6 +225,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)registerHander {
     WeakObj(self)
+    
+    /** 隐藏 loading */
+    [_manager registerHandler:kAppDismissLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_hideProgressHUD];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
+    
+    /** 展示 loading */
+    [_manager registerHandler:kAppShowLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_showLoadingHUDCommon:@"拼命加载中…"];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
     
     /** 注册埋点事件 */
         [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
@@ -220,15 +287,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         NSString *token = @"";
         if ([HQWYUserManager hasAlreadyLoggedIn]) {
             token = [HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken];
+             ResponseCallback(token);
+        } else {
+             ResponseCallback([HQWYJavaScriptResponse result:token]);
         }
-        ResponseCallback(token);
+       
     }];
     
     /** 注册获取手机号事件 */
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         NSString *phone = [HQWYUserManager loginMobilePhone];
         
-        ResponseCallback([HQWYJavaScriptResponse result:phone]);
+        ResponseCallback([HQWYJavaScriptResponse result:SafeStr(phone)]);
     }];
     
     /** 注册获取用户是否登录事件 */
@@ -241,10 +311,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager registerHandler:kAppNeedLogin handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         NSString *isLogin = @([HQWYUserManager hasAlreadyLoggedIn]).stringValue;
         if ([HQWYUserManager hasAlreadyLoggedIn]) {
-        ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
+            ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
         }else{
             [self presentNative:^{
-        ResponseCallback([HQWYJavaScriptResponse result:@1]);
+                ResponseCallback([HQWYJavaScriptResponse result:@1]);
             }];
         }
     }];
@@ -266,11 +336,21 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取H5获取原生定位城市 */
     [_manager registerHandler:kAppExecLocation handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        [self.navigationView.leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
-        self.locatedCity[@"country"] = @"";
-        self.locatedCity[@"city"] = @"定位中...";
-        self.locatedCity[@"province"] = @"";
-        [self.locationManager startUpdatingLocation];
+        //        self.navigationView.leftLabel.text = @"定位中...";
+        //        [self.navigationView.leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
+        if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
+            [self openTheAuthorizationOfLocation];
+            
+        } else {
+            if ([self.navigationView.leftLabel.text containsString:@"定位"]) {
+                //这种场景说明没有定位成功，需要刷新在定位时候显示定位中
+                self.navigationView.leftLabel.text = @"定位中...";
+            }
+            self.locatedCity[@"country"] = @"";
+            self.locatedCity[@"city"] = @"定位中...";
+            self.locatedCity[@"province"] = @"";
+            [self.locationManager startUpdatingLocation];
+        }
     }];
     
     /** 注册打开webView事件 */
@@ -304,27 +384,31 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (typeDic != nil && [[typeDic objectForKey:@"hide"] integerValue]) {
         [UIView animateWithDuration:0.1 animations:^{
             self.navigationView.hidden = true;
-            self.wkWebView.frame = CGRectMake(0,-StatusBarHeight, SWidth, SHeight + TabBarHeight - 49 + StatusBarHeight);
+//            self.wkWebView.frame = CGRectMake(0,-StatusBarHeight, SWidth, SHeight + TabBarHeight - 49 + StatusBarHeight);
         }];
         [self.view layoutIfNeeded];
     }else{
         [UIView animateWithDuration:0.1 animations:^{
              self.navigationView.hidden = false;
-            self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
+//            self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
         }];
         [self.navigationView changeNavigationType:typeDic];
     }
 }
 
 -(void)rightButtonItemClick{
-    if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
-        [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-            if (!error) { // 成功
-                NSLog(@"%@",response);
-            } else { // 失败
-                NSLog(@"%@",error.localizedDescription);
-            }
-        }];
+    if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
+        [self openTheAuthorizationOfLocation];
+    }else{
+        if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
+            [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                if (!error) { // 成功
+                    NSLog(@"%@",response);
+                } else { // 失败
+                    NSLog(@"%@",error.localizedDescription);
+                }
+            }];
+        }
     }
 }
 
@@ -341,20 +425,23 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (error)
     {
         NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
-        [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+        self.navigationView.leftLabel.text = @"定位失败";
+//        [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
         self.locatedCity[@"country"] = @"";
         self.locatedCity[@"city"] = @"定位失败";
         self.locatedCity[@"province"] = @"";
     }
     if (location) {//得到定位信息，添加annotation
         if (location.location) {
-            NSLog(@"LOC = %@",location.location);
+//            NSLog(@"LOC = %@",location.location);
         }
         if (location.rgcData) {
-            NSLog(@"rgc = %@",[location.rgcData description]);
-             [self.navigationView.leftItemButton setTitle:location.rgcData.city forState:UIControlStateNormal];
+//            NSLog(@"rgc = %@",[location.rgcData description]);
+            NSString *cityString = location.rgcData.city;
+//             [self.navigationView.leftItemButton setTitle:cityString forState:UIControlStateNormal];
+            self.navigationView.leftLabel.text = cityString;
             self.locatedCity[@"country"] = location.rgcData.country;
-            self.locatedCity[@"city"] = location.rgcData.city;
+            self.locatedCity[@"city"] = cityString;
             self.locatedCity[@"province"] = location.rgcData.province;
             [self.locationManager stopUpdatingLocation];
         }
@@ -368,7 +455,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  */
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nullable)error{
     NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
-    [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+//    [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+    self.navigationView.leftLabel.text = @"定位失败";
 }
 
 /**
@@ -384,12 +472,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 #pragma leftItemDelegate
-- (void)locationButtonClick{
-     if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
-         [self openTheAuthorizationOfLocation];
-    }else{
-        [self leftClick];
-    }
+- (void)locationButtonClick {
+    [self leftClick];
 }
 
 #pragma leftItemDelegate
@@ -440,18 +524,32 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.navigationController pushViewController:authPhoneNumVC animated:true];
 }
 
+#pragma mark 退出登录
 - (void)loginOut:(loginOutBlock)outBlock{
-    [ZYZMBProgressHUD showHUDAddedTo:self.wkWebView animated:true];
+    
+    [KeyWindow ln_showLoadingHUDCommon];
+    
     [LoginOut signOUT:^(id _Nullable result, NSError * _Nullable error) {
-        [ZYZMBProgressHUD hideHUDForView:self.wkWebView animated:true];
+        
         if (error) {
             outBlock(false);
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         [HQWYUserSharedManager deleteUserInfo];
         outBlock(true);
         return;
     }];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    [self.wkWebView ln_hideProgressHUD];
+}
+
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    [self.wkWebView ln_hideProgressHUD];
 }
 @end

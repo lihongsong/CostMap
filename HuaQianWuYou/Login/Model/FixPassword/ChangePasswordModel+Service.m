@@ -11,7 +11,7 @@
 @implementation ChangePasswordModel (Service)
 
 + (NSString *)ln_APIServer {
-    return HQWY_HOST_PATH;
+    return HQWY_MEMBER_HOST_PATH;
 }
 
 + (NSURLSessionDataTask *)changePasswordCode:(NSString *)code passWord:(NSString *)password mobilePhone:(NSString *)mobilePhone serialNumber:(NSString *)serialNumber Completion:(void (^)(ChangePasswordModel * _Nullable, NSError * _Nullable))completion{

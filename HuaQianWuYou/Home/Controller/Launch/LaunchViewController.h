@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^AccomplishBlock)(BOOL isOpen);
+typedef void(^AccomplishBlock)(NSString *exampleCreditScore);
 
 @interface LaunchViewController : BaseViewController
 @property(nonatomic, strong) AccomplishBlock accomplishBlock;

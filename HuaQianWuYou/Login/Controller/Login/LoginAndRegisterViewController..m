@@ -218,18 +218,20 @@
 #pragma mark 请求登录
 - (void)requestLogin{
     WeakObj(self);
-   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+    [KeyWindow ln_showLoadingHUDCommon];
     [self requestBlock:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
         self.loginButton.userInteractionEnabled = true;
         if (error) {
             if (error.code == 1060) {
+                [KeyWindow ln_hideProgressHUD];
                 [self getImageCode];
             }else{
-                [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.hqwy_errorMessage];
             }
             return ;
         }
+        [KeyWindow ln_hideProgressHUD];
         if (result){
             [KeyWindow ln_showToastHUD:@"登录成功"];
             [HQWYUserSharedManager storeNeedStoredUserInfomation:result];
@@ -245,6 +247,7 @@
 - (void)requestBlock:(void (^)(HQWYUser * _Nullable, NSError * _Nullable))completion{
     if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         [HQWYUser authenticationCodeLogin:self.codeInputView.secondTF.text mobile:self.codeInputView.firstTF.text serialNumber:self.serialNumber registerType:RegisterTypeHQWYApp Completion:^(HQWYUser * _Nullable result, NSError * _Nullable error) {
+
             self.imageCodeType = 2;
             completion(result,error);
         }];
@@ -264,8 +267,8 @@
         [self eventId:HQWY_Login_PasswordAgreement_click];
     }
     ThirdPartWebVC *webView = [ThirdPartWebVC new];
-    webView.navigationDic = @{@"nav": @{@"title" : @{@"text" : @"用户服务协议"}}};
-    [webView loadURLString:AGGREMENT_PATH];
+    webView.navigationDic = @{@"nav": @{@"title" : @{@"text" : @"用户服务协议"}}, @"url" : Agreement_Path};
+    [webView loadURLString:Agreement_Path];
     [self presentViewController:webView animated:true completion:^{
         
     }];
@@ -368,14 +371,20 @@
 # pragma mark 获取图形验证码
 - (void)getImageCode{
     WeakObj(self);
-   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+   
+    [KeyWindow ln_showLoadingHUDCommon];
+    
     //FIXME:review 这个请求图形验证码的逻辑在三个类中都有，可以抽离
     [ImageCodeModel requsetImageCodeCompletion:^(ImageCodeModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
+        
+        
         if (error) {
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
         if(result){
             if (result.outputImage.length > 0) {
@@ -389,14 +398,16 @@
 # pragma mark 校验图形验证码
 - (void)validateImageCode:(NSString *)imageCode serialNumber:(NSString *)serialNumber{
     WeakObj(self);
-   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+    [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel validateImageCode:imageCode serialNumber:serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         StrongObj(self);
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
         if (error) {
-            [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                  message:error.hqwy_errorMessage];
             [self getImageCode];
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD];
         }
             //校验成功 再次发送短信验证码
         if (self.imageCodeType == 1) {
@@ -413,20 +424,21 @@
         [KeyWindow ln_showToastHUD:@"请输入有效手机号"];
         return;
     }
-   [ZYZMBProgressHUD showHUDAddedTo:self.view animated:true];
+     [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:GetCodeTypeLogin Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
-        [ZYZMBProgressHUD hideHUDForView:self.view animated:true];
-        NSLog(@"____%ld",(long)error.hqwy_respCode);
-        //NSLog(@"____%@",error.hqwy_errorMessage);
         if (error) {
             if (error.code == 1013) {
+                [KeyWindow ln_hideProgressHUD];
                 self.serialNumber = [NSString stringWithFormat:@"%@", result];
                 self.imageCodeType = 1;
                 [self getImageCode];
             }else{
-               [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
+               [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                     message:error.hqwy_errorMessage];
             }
             return ;
+        } else {
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"短信验证码已发送~"];
         }
         
         if (self.codeInputView.codeButton) {

@@ -14,7 +14,11 @@
 #import <RCMobClick/RCBaseCommon.h>
 #import "HQWYUserManager.h"
 #import "NSObject+HQWYSendNetworkError.h"
+#import "NSObject+YYModel.h"
+#import "LoginInfoModel.h"
+#import "NSError+CustomError.h"
 
+#define CONFIG_SCORE @"88"
 
 static NSString *const kHQWYRespCodeKey     = @"respCode";
 static NSString *const kHQWYRespMsgKey      = @"respMsg";
@@ -24,14 +28,29 @@ static NSString *const kHQWYBodyKey         = @"body";
 
 
 + (void)ln_setupRequestSerializer:(AFHTTPRequestSerializer *)requestSerializer {
-
     //超时时间
     requestSerializer.timeoutInterval = 20;
-
-    [self setupRequestSerializer:requestSerializer];
+    if ([GetUserDefault(KExample_Credit_Score) isEqualToString:CONFIG_SCORE]) {
+        [self setupRequestSerializer:requestSerializer];
+    }else{
+        [self setRequestSerializer:requestSerializer];
+    }
 }
 
-//公共请求头
+//1.0公共请求头
++ (void)setRequestSerializer:(AFHTTPRequestSerializer *)requestSerializer {
+    LoginUserInfoModel *userInfo = [LoginUserInfoModel cachedLoginModel];
+    NSString *cookieString = userInfo?userInfo.cookie:@"";
+    NSString *version = [UIDevice hj_appVersion];
+    NSString *buddleId = [UIDevice hj_bundleIdentifier];
+    [requestSerializer setValue:version forHTTPHeaderField:@"version"];
+    [requestSerializer setValue:APP_ChannelId forHTTPHeaderField:@"channel"];
+    [requestSerializer setValue:APP_ID forHTTPHeaderField:@"appid"];
+    [requestSerializer setValue:buddleId forHTTPHeaderField:@"package-name"];
+    [requestSerializer setValue:cookieString forHTTPHeaderField:@"cookie"];
+}
+
+//2.0公共请求头
 + (void)setupRequestSerializer:(AFHTTPRequestSerializer *)requestSerializer {
     //FIXME:v2.0 请求头参数设置
     //客户端统一使用小写，服务端不区分大小写
@@ -67,8 +86,10 @@ static NSString *const kHQWYBodyKey         = @"body";
 }
 
 + (NSString *)ln_APIServer {
-    //FIXME:v2.0
-    return HQWY_HOST_PATH;
+    if ([GetUserDefault(KExample_Credit_Score) isEqualToString:CONFIG_SCORE]) {
+        return HQWY_PRODUCT_PATH;
+    }
+    return HOST_PATH;
 }
 
 /**
@@ -89,23 +110,73 @@ static NSString *const kHQWYBodyKey         = @"body";
                          failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     NSLog(@"______%ld",(long)error.code);
     NSLog(@"____%@",error.description);
+    
+    if ([GetUserDefault(KExample_Credit_Score) isEqualToString:CONFIG_SCORE]) {
+        [self ln_receiveV2ResponseObject:responseObject task:task error:error success:(void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure];
+    }else{
+        [self ln_receiveConfigResponseObject:responseObject task:task error:error success:(void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure];
+    }
+}
 
+#pragma mark 解析
++ (void)ln_receiveConfigResponseObject:(id)responseObject
+                            task:(NSURLSessionDataTask *)task
+                           error:(NSError *)error
+                         success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                         failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     if (error) {
+        if (failure) {
+            failure(task, error);
+            if (!error) {
+                NSString *errMsg = [responseObject objectForKey:@"msg"];
+                [KeyWindow ln_showToastHUD:errMsg];
+            }
+        }
+        return;
+    }
+    NSString *code = [[responseObject objectForKey:@"code"] stringValue];
+    if (code && [code isEqualToString:@"1"]) {
+        if (success) {
+            id response = responseObject[@"data"];
+            if (response == nil) {
+                response = responseObject;
+            }
+            success(task, [self ln_parseResponseObject:response]);
+        }
+        return;
+    } else {
+        NSError *customError = [NSError custom_errorWithDomain:CustomErrorDomain
+                                                    codeString:code
+                                                     errorInfo:responseObject];
+        if (failure) {
+            failure(task, customError);
+        }
+        
+    }
+}
 
+#pragma mark 2.0 解析
++ (void)ln_receiveV2ResponseObject:(id)responseObject
+                                  task:(NSURLSessionDataTask *)task
+                                 error:(NSError *)error
+                               success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+                               failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    if (error) {
+        
         // 断网不发送
         if (error.code != kCFURLErrorNotConnectedToInternet) {
             //发送移动武林榜接口异常监测
             [self sendNetworkError:error ofTask:task];
         }
-
+        
         if (failure) {
             failure(nil, [NSError hqwy_handleSystemError:error]);
         }
         return;
     }
-
+    
     NSLog(@"task.currentRequest.URL=======%@", task.currentRequest.URL);
-
+    
     NSString *respCode = [responseObject objectForKey:kHQWYRespCodeKey];
     NSLog(@"____%@",respCode);
     if (!respCode || ![respCode isKindOfClass:[NSString class]]
@@ -115,7 +186,7 @@ static NSString *const kHQWYBodyKey         = @"body";
         }
         return;
     }
-
+    
     if (respCode.integerValue == HQWYRESPONSECODE_SUCC) {
         //success
         id body = [responseObject objectForKey:kHQWYBodyKey];
@@ -127,7 +198,7 @@ static NSString *const kHQWYBodyKey         = @"body";
         }
         return;
     }
-
+    
     NSString *respMsg = [responseObject objectForKey:kHQWYRespMsgKey];
     if (respCode && ![respCode isEqual:[NSNull null]]
         && [respCode isKindOfClass:[NSString class]]
@@ -135,7 +206,7 @@ static NSString *const kHQWYBodyKey         = @"body";
         //服务端异常，上传移动武林榜接口异常监测
         [self sendNetworkError:nil ofTask:task];
     }
-
+    
     //业务异常
     if (failure) {
         //这里重新包装Error
@@ -150,6 +221,8 @@ static NSString *const kHQWYBodyKey         = @"body";
     } else if ([responseObject isKindOfClass:[NSArray class]]) {
         if (self != [NSString class] && self != [NSNumber class]) {
             return [NSArray yy_modelArrayWithClass:self json:responseObject];
+        }else{
+            return nil;
         }
     } else if ([responseObject isKindOfClass:[NSDictionary class]]) {
         NSDictionary *responseDict = responseObject;
@@ -158,11 +231,11 @@ static NSString *const kHQWYBodyKey         = @"body";
         }else{
             return nil;
         }
-
     } else if ([responseObject isKindOfClass:[NSString class]]) {
         return responseObject;
     }
-    return nil;
+    return responseObject;
+    
 }
 
 @end

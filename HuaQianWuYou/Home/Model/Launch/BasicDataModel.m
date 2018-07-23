@@ -8,23 +8,23 @@
 
 #import "BasicDataModel.h"
 #import "YYModel.h"
- @implementation BasicDataInfo
-     
-     + (NSDictionary*)modelCustomPropertyMapper {
-         return @{
-                  @"productId": @"id",
-                  @"productName": @"description",
-                  };
-     }
-     
- @end
 
 @implementation BasicDataModel
+
++ (NSDictionary*)modelCustomPropertyMapper {
+    return @{
+             @"productId": @"id",
+             @"productName": @"description",
+             };
+}
 
 + (void)cacheToLoacl:(BasicDataModel *)model withType:(AdvertisingType)type{
     NSData *jsonData = [model yy_modelToJSONData];
     NSString  *key = [NSString stringWithFormat:@"dataList%ld",(long)type];
     UserDefaultSetObj(jsonData, key);
+    if (type == AdvertisingTypeAlert) {
+        UserDefaultSetObj([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"], @"advertisementDate");
+    }
 }
 
 + (BasicDataModel *)getCacheModel:(AdvertisingType)type{

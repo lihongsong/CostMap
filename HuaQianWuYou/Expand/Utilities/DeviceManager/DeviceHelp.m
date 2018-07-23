@@ -71,6 +71,8 @@
     
     NSString *sdk = [NSString stringWithFormat:@"%@ %@", [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion]; // 当前系统名称及版本号
     
+    NSString *macAddress = [UIDevice hj_macAddress];
+    
     NSString *idfa = [RCBaseCommon getIdfaString]; // idfa
     
     NSString *platform = [UIDevice getDeviceType]; // 设备的类型 iPhone 或者iPad
@@ -114,7 +116,7 @@
                                   
                                   @"cpu" : LNAOPSAFESTRING(cpuType),
                                   
-                                  @"mac" : @"",
+                                  @"mac" : LNAOPSAFESTRING(macAddress),
                                   
                                   @"memory" : LNAOPSAFESTRING(memory),
                                   
@@ -134,7 +136,7 @@
                                   
                                   @"sdk" : LNAOPSAFESTRING(sdk),
                                   
-                                  @"appChannel" : @"",
+                                  @"appChannel" : APP_ChannelId,
                                   
                                   @"idfa" : LNAOPSAFESTRING(idfa),
                                   
@@ -155,8 +157,6 @@
                                   @"volume" : volume, // 设备的声音信息
                                   
                                   @"battery" : LNAOPSAFESTRING(battery),
-                                  
-                                  @"lnRiskSdkVersion" : LNAOPSAFESTRING(lnRiskSdkVersion),
                                   
                                   @"appVersion" : LNAOPSAFESTRING(appVersion),
                                   

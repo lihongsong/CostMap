@@ -112,7 +112,6 @@
 		5977034020F71D2700F29F33 /* HQWYLaunchManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977033F20F71D2700F29F33 /* HQWYLaunchManager.m */; };
 		5977034320F7254600F29F33 /* HQWYActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977034220F7254600F29F33 /* HQWYActionHandler.m */; };
 		5977034620F7451A00F29F33 /* MBProgressloading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5977034520F7451A00F29F33 /* MBProgressloading.gif */; };
-		5977034A20F7553D00F29F33 /* ZYZMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 5977034920F7553D00F29F33 /* ZYZMBProgressHUD.m */; };
 		5979454D20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */; };
 		5979455020F32BDB006BB02D /* ThirdPartWebVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979454F20F32BDB006BB02D /* ThirdPartWebVC.m */; };
 		5979455320F33905006BB02D /* HQWYReturnToDetainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5979455220F33905006BB02D /* HQWYReturnToDetainView.m */; };
@@ -200,13 +199,15 @@
 		59E72DB120F61BAA007AB6C9 /* UploadProductModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 59E72DB020F61BAA007AB6C9 /* UploadProductModel+Service.m */; };
 		59FD9E7820EA1A85008C98DE /* HQWYUserBaseInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7720EA1A85008C98DE /* HQWYUserBaseInfo.m */; };
 		59FD9E7E20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59FD9E7D20EA1F67008C98DE /* HQWYJavaScriptBaseHandler.m */; };
+		8258CA1A20FEE80D00873DDE /* LNMBProgressImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8258CA1920FEE80D00873DDE /* LNMBProgressImageView.m */; };
+		82E7103A2101A14A008FCFE3 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 82E710392101A14A008FCFE3 /* Settings.bundle */; };
+		82E7103D2101A4B1008FCFE3 /* HQWYNetSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7103C2101A4B1008FCFE3 /* HQWYNetSetting.m */; };
 		9CA9292420F6164200F65941 /* NSObject+HQWYResponseCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */; };
 		9CA9292520F6164200F65941 /* NSError+HQWYError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291820F6164100F65941 /* NSError+HQWYError.m */; };
 		9CA9292720F6164200F65941 /* NSObject+HQWYRequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */; };
-		9CA9292820F6164200F65941 /* NSError+LNError.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9292020F6164100F65941 /* NSError+LNError.m */; };
 		9CA9292920F6164200F65941 /* NSObject+RequestConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */; };
 		A8118BD720B295630046099D /* LNMBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD620B295620046099D /* LNMBProgressHUD.m */; };
-		A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* MBProgressHUD.m */; };
+		A8118BDB20B2968D0046099D /* HQWYProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A8118BD920B2968C0046099D /* HQWYProgressHUD.m */; };
 		A858A81620B2D7B600657C09 /* DES3Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A858A81520B2D7B600657C09 /* DES3Util.m */; };
 		A8F1288520F75D4300907FC6 /* NSString+cityInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = A8F1288420F75D4300907FC6 /* NSString+cityInfos.m */; };
 		A8F1288720F75E4F00907FC6 /* cityInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = A8F1288620F75E4F00907FC6 /* cityInfo.json */; };
@@ -441,8 +442,6 @@
 		5977034220F7254600F29F33 /* HQWYActionHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYActionHandler.m; sourceTree = "<group>"; };
 		5977034420F7262C00F29F33 /* HQWYActionHandlerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYActionHandlerProtocol.h; sourceTree = "<group>"; };
 		5977034520F7451A00F29F33 /* MBProgressloading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = MBProgressloading.gif; sourceTree = "<group>"; };
-		5977034820F7553D00F29F33 /* ZYZMBProgressHUD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZYZMBProgressHUD.h; sourceTree = "<group>"; };
-		5977034920F7553D00F29F33 /* ZYZMBProgressHUD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZYZMBProgressHUD.m; sourceTree = "<group>"; };
 		5979454B20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptOpenWebViewHandler.h; sourceTree = "<group>"; };
 		5979454C20F32A96006BB02D /* HQWYJavaScriptOpenWebViewHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptOpenWebViewHandler.m; sourceTree = "<group>"; };
 		5979454E20F32BDB006BB02D /* ThirdPartWebVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThirdPartWebVC.h; sourceTree = "<group>"; };
@@ -614,21 +613,24 @@
 		6C4C910B5B222225D22E9E93 /* Pods-HuaQianWuYouTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYouTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYouTests/Pods-HuaQianWuYouTests.debug.xcconfig"; sourceTree = "<group>"; };
 		742D8DBB7019FDEB7546A10A /* Pods_HuaQianWuYou.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuaQianWuYou.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C820524E8455524D0D33F53 /* Pods-HuaQianWuYou.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.debug.xcconfig"; sourceTree = "<group>"; };
+		8258CA1820FEE80D00873DDE /* LNMBProgressImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LNMBProgressImageView.h; sourceTree = "<group>"; };
+		8258CA1920FEE80D00873DDE /* LNMBProgressImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LNMBProgressImageView.m; sourceTree = "<group>"; };
+		82E710392101A14A008FCFE3 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		82E7103B2101A4B1008FCFE3 /* HQWYNetSetting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYNetSetting.h; sourceTree = "<group>"; };
+		82E7103C2101A4B1008FCFE3 /* HQWYNetSetting.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYNetSetting.m; sourceTree = "<group>"; };
 		9CA9291720F6164100F65941 /* NSObject+HQWYResponseCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQWYResponseCode.m"; sourceTree = "<group>"; };
 		9CA9291820F6164100F65941 /* NSError+HQWYError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+HQWYError.m"; sourceTree = "<group>"; };
 		9CA9291920F6164100F65941 /* NSObject+HQWYRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQWYRequestConfig.h"; sourceTree = "<group>"; };
 		9CA9291B20F6164100F65941 /* NSObject+HQWYResponseCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQWYResponseCode.h"; sourceTree = "<group>"; };
 		9CA9291C20F6164100F65941 /* NSObject+HQWYRequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQWYRequestConfig.m"; sourceTree = "<group>"; };
 		9CA9291D20F6164100F65941 /* NSError+HQWYError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+HQWYError.h"; sourceTree = "<group>"; };
-		9CA9292020F6164100F65941 /* NSError+LNError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+LNError.m"; sourceTree = "<group>"; };
 		9CA9292120F6164100F65941 /* NSObject+RequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+RequestConfig.h"; sourceTree = "<group>"; };
-		9CA9292220F6164100F65941 /* NSError+LNError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+LNError.h"; sourceTree = "<group>"; };
 		9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+RequestConfig.m"; sourceTree = "<group>"; };
 		A8118B9D20AD66D30046099D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		A8118BD520B295620046099D /* LNMBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LNMBProgressHUD.h; sourceTree = "<group>"; };
 		A8118BD620B295620046099D /* LNMBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNMBProgressHUD.m; sourceTree = "<group>"; };
-		A8118BD920B2968C0046099D /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		A8118BDA20B2968C0046099D /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A8118BD920B2968C0046099D /* HQWYProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HQWYProgressHUD.m; sourceTree = "<group>"; };
+		A8118BDA20B2968C0046099D /* HQWYProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HQWYProgressHUD.h; sourceTree = "<group>"; };
 		A858A81420B2D7B600657C09 /* DES3Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DES3Util.h; sourceTree = "<group>"; };
 		A858A81520B2D7B600657C09 /* DES3Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DES3Util.m; sourceTree = "<group>"; };
 		A8F1288320F75D4300907FC6 /* NSString+cityInfos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+cityInfos.h"; sourceTree = "<group>"; };
@@ -689,6 +691,7 @@
 		A8F8DFF920B4F31200DB9A6A /* FeedbackModel+Service.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FeedbackModel+Service.m"; sourceTree = "<group>"; };
 		A8F8E00920B50A6100DB9A6A /* DefaultView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultView.h; sourceTree = "<group>"; };
 		A8F8E00A20B50A6100DB9A6A /* DefaultView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultView.m; sourceTree = "<group>"; };
+		E3DCCEE7BA02A30CE26A845C /* Pods-HuaQianWuYou.pre.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.pre.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.pre.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -987,6 +990,7 @@
 			children = (
 				59698BFA209FE953000E37AA /* Plist */,
 				5958080120EDA988002A6F0C /* RiskDefaultConfig */,
+				82E710392101A14A008FCFE3 /* Settings.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1192,6 +1196,8 @@
 				5965CBA620F4AF310009DB84 /* NSObject+LNHQWYFailed.h */,
 				5965CBA720F4AF310009DB84 /* NSObject+LNHQWYFailed.m */,
 				5965CB9820F4AF310009DB84 /* RequestConfig */,
+				82E7103B2101A4B1008FCFE3 /* HQWYNetSetting.h */,
+				82E7103C2101A4B1008FCFE3 /* HQWYNetSetting.m */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1332,8 +1338,6 @@
 		5977034720F7550200F29F33 /* Inherit */ = {
 			isa = PBXGroup;
 			children = (
-				5977034820F7553D00F29F33 /* ZYZMBProgressHUD.h */,
-				5977034920F7553D00F29F33 /* ZYZMBProgressHUD.m */,
 			);
 			path = Inherit;
 			sourceTree = "<group>";
@@ -1698,6 +1702,7 @@
 				4E40A2FC79C98CE826B4BBAC /* Pods-HuaQianWuYou.release.xcconfig */,
 				6C4C910B5B222225D22E9E93 /* Pods-HuaQianWuYouTests.debug.xcconfig */,
 				17B31D10A3519E420DC0CB53 /* Pods-HuaQianWuYouTests.release.xcconfig */,
+				E3DCCEE7BA02A30CE26A845C /* Pods-HuaQianWuYou.pre.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1720,8 +1725,6 @@
 		9CA9291F20F6164100F65941 /* ZXRequestConfig */ = {
 			isa = PBXGroup;
 			children = (
-				9CA9292220F6164100F65941 /* NSError+LNError.h */,
-				9CA9292020F6164100F65941 /* NSError+LNError.m */,
 				9CA9292120F6164100F65941 /* NSObject+RequestConfig.h */,
 				9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */,
 			);
@@ -1733,6 +1736,8 @@
 			children = (
 				A8118BD520B295620046099D /* LNMBProgressHUD.h */,
 				A8118BD620B295620046099D /* LNMBProgressHUD.m */,
+				8258CA1820FEE80D00873DDE /* LNMBProgressImageView.h */,
+				8258CA1920FEE80D00873DDE /* LNMBProgressImageView.m */,
 			);
 			path = LNMBProgressHUD;
 			sourceTree = "<group>";
@@ -1741,8 +1746,8 @@
 			isa = PBXGroup;
 			children = (
 				5977034520F7451A00F29F33 /* MBProgressloading.gif */,
-				A8118BD920B2968C0046099D /* MBProgressHUD.m */,
-				A8118BDA20B2968C0046099D /* MBProgressHUD.h */,
+				A8118BDA20B2968C0046099D /* HQWYProgressHUD.h */,
+				A8118BD920B2968C0046099D /* HQWYProgressHUD.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -1969,6 +1974,7 @@
 				59C5710420E5FB8200D54260 /* HomeBaseTableViewCell.xib in Resources */,
 				5958089E20F2F53A002A6F0C /* ImageCodePopView.xib in Resources */,
 				59023BEF209A9B33004B9134 /* Main.storyboard in Resources */,
+				82E7103A2101A14A008FCFE3 /* Settings.bundle in Resources */,
 				59BE198A20EC9F3C00704B2C /* SuspendView.xib in Resources */,
 				A8F8DFB320B3AB3300DB9A6A /* AgreementViewController.xib in Resources */,
 				5958089F20F2F53A002A6F0C /* PasswordInputView.xib in Resources */,
@@ -2140,18 +2146,18 @@
 				595E7DE020EC90E2001D65B6 /* TwoTextFieldView.m in Sources */,
 				59C570A920E5F9C100D54260 /* CInvestigationTwoViewController.m in Sources */,
 				595AE2C720EF37C40031A2F3 /* LNRiskDeviceHelp.m in Sources */,
-				5977034A20F7553D00F29F33 /* ZYZMBProgressHUD.m in Sources */,
 				A8F8DFB520B3AB3300DB9A6A /* RegisterOrForgetPwdVC.m in Sources */,
 				591D962820ABDE6E00193B09 /* AAChart.m in Sources */,
 				591D960120ABDE6E00193B09 /* AAColumn.m in Sources */,
 				59C570CF20E5FADC00D54260 /* HomeDataModel.m in Sources */,
 				5979455020F32BDB006BB02D /* ThirdPartWebVC.m in Sources */,
 				595808A620F2F946002A6F0C /* UIButton+Count.m in Sources */,
+				82E7103D2101A4B1008FCFE3 /* HQWYNetSetting.m in Sources */,
 				59C5710020E5FB8200D54260 /* ProgressView.m in Sources */,
 				59C570AF20E5F9C100D54260 /* CInvestigationResultViewController.m in Sources */,
 				A8F8DFD920B3B91700DB9A6A /* LoginInfoModel+Service.m in Sources */,
 				A8F8DFDF20B3F07800DB9A6A /* DiscoverDetailModel+Service.m in Sources */,
-				A8118BDB20B2968D0046099D /* MBProgressHUD.m in Sources */,
+				A8118BDB20B2968D0046099D /* HQWYProgressHUD.m in Sources */,
 				59435A7E20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m in Sources */,
 				A8F8DFAE20B3AB3300DB9A6A /* MineNoticeView.m in Sources */,
 				59C570FD20E5FB8200D54260 /* ScoreProgressView.m in Sources */,
@@ -2168,6 +2174,7 @@
 				5977034020F71D2700F29F33 /* HQWYLaunchManager.m in Sources */,
 				591D961320ABDE6E00193B09 /* AAArea.m in Sources */,
 				59BE198620EC9DD600704B2C /* SuspendView.m in Sources */,
+				8258CA1A20FEE80D00873DDE /* LNMBProgressImageView.m in Sources */,
 				591D960720ABDE6E00193B09 /* AAOptions3d.m in Sources */,
 				591D963120ABDE6E00193B09 /* AAOptions.m in Sources */,
 				591D95E320ABDE6E00193B09 /* AALabels.m in Sources */,
@@ -2259,7 +2266,6 @@
 				59C5710120E5FB8200D54260 /* UICountingLabel.m in Sources */,
 				9CA9292520F6164200F65941 /* NSError+HQWYError.m in Sources */,
 				59C570A720E5F9C100D54260 /* CInvestigationFiveViewController.m in Sources */,
-				9CA9292820F6164200F65941 /* NSError+LNError.m in Sources */,
 				591D95FE20ABDE6E00193B09 /* AACrosshair.m in Sources */,
 				59C5713D20E600D100D54260 /* NSObject+HQIQKeyBoardConfig.m in Sources */,
 				59C5713920E600D100D54260 /* UILabel+LabelKit.m in Sources */,
@@ -2507,7 +2513,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "dd046017-f0d7-40af-9d51-2a512f3a9cd3";
+				PROVISIONING_PROFILE = "3c888a0d-7854-4512-b34c-d73ad2fdd0f5";
 				PROVISIONING_PROFILE_SPECIFIER = wuyou_dev;
 				STRIP_SWIFT_SYMBOLS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -2614,7 +2620,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "b13eb5b8-cbc0-44b3-a0e3-67ce1045c5ea";
+				PROVISIONING_PROFILE = "52c76318-c8fc-48bf-acbe-e77e19872014";
 				PROVISIONING_PROFILE_SPECIFIER = wuyou_dis;
 				STRIP_SWIFT_SYMBOLS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -2623,6 +2629,177 @@
 			};
 			name = Release;
 		};
+		9CBE0F09210088D6003A48D5 /* Pre */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Pre;
+		};
+		9CBE0F0A210088D6003A48D5 /* Pre */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3DCCEE7BA02A30CE26A845C /* Pods-HuaQianWuYou.pre.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CODE_SIGN_ENTITLEMENTS = HuaQianWuYou/HuaQianWuYou.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 69C2M2FU4A;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HJCategories\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HJ_UIKit\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LNNetwork\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel\"",
+					"\"${PODS_ROOT}/UMengAnalytics-NO-IDFA/umsdk_IOS_analyics_no-idfa_v4.2.5\"",
+				);
+				GCC_INPUT_FILETYPE = automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/HuaQianWuYou/PrefixHeader.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+				);
+				INFOPLIST_FILE = HuaQianWuYou/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HuaQianWuYou/ThirdFrameWork/MiPushSDK",
+					"$(PROJECT_DIR)/HuaQianWuYou/ThirdFrameWork/TalkingData/AppAnalytics_V4.0.16",
+					"$(PROJECT_DIR)/HuaQianWuYou/ThirdFrameWork/TalkingData/AdTracking_V4.0.16",
+				);
+				MiSDKRun = online;
+				ON_DEMAND_RESOURCES_INITIAL_INSTALL_TAGS = "";
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/AFNetworking/AFNetworking.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HJCategories/HJCategories.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/HJ_UIKit/HJ_UIKit.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/LNNetwork/LNNetwork.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/SDWebImage/SDWebImage.framework/Headers\"",
+					"-iquote",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/YYModel/YYModel.framework/Headers\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"-isystem",
+					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics-NO-IDFA\"",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"resolv\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"CFNetwork\"",
+					"-framework",
+					"\"CoreFoundation\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"HJCategories\"",
+					"-framework",
+					"\"HJ_UIKit\"",
+					"-framework",
+					"\"LNNetwork\"",
+					"-framework",
+					"\"SDWebImage\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"YYModel\"",
+					"-weak_framework",
+					"\"UserNotifications\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "52c76318-c8fc-48bf-acbe-e77e19872014";
+				PROVISIONING_PROFILE_SPECIFIER = wuyou_adhoc;
+				STRIP_SWIFT_SYMBOLS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Pre;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -2630,6 +2807,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59023C0E209A9B35004B9134 /* Debug */,
+				9CBE0F09210088D6003A48D5 /* Pre */,
 				59023C0F209A9B35004B9134 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -2639,6 +2817,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				59023C11209A9B35004B9134 /* Debug */,
+				9CBE0F0A210088D6003A48D5 /* Pre */,
 				59023C12209A9B35004B9134 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

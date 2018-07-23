@@ -14,6 +14,7 @@
 
 @interface LaunchViewController () {
     UIActivityIndicatorView *activityView;
+    UIImageView *bgImageView;
 }
 
 @end
@@ -23,8 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self requestData];
     [self setUpUI];
+    [self requestData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,7 +34,8 @@
 }
 
 - (void)setUpUI {
-    UIImageView *bgImageView = [UIImageView new];
+    
+    bgImageView = [UIImageView new];
     [self.view addSubview:bgImageView];
     [bgImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
@@ -63,18 +65,23 @@
 
 - (void)requestData {
     WeakObj(self);
-    [activityView startAnimating];
     [BasicConfigModel requestBasicConfigCompletion:^(BasicConfigModel *_Nullable result, NSError *_Nullable error) {
         StrongObj(self);
         [self->activityView stopAnimating];
-//        if (error) {
-//            //[KeyWindow ln_showToastHUD:error.userInfo[@"msg"]];
-//            self.defaultView.hidden = NO;
-//            return;
-//        }
-        self.defaultView.hidden = YES;
+        if (error) {
+            [bgImageView ln_showToastHUD:error.userInfo[@"msg"]];
+            self.defaultView.hidden = NO;
+            return;
+        }
+        if (result) {
+            self.defaultView.hidden = YES;
+        }
+        result.exampleCreditScore = @"88";
+        if (result.exampleCreditScore != GetUserDefault(KExample_Credit_Score)) {
+        SetUserDefault(result.exampleCreditScore, KExample_Credit_Score)
+        }
         if (self.accomplishBlock) {
-        self.accomplishBlock(result.isOpen);
+            self.accomplishBlock(result.exampleCreditScore);
         }
     }];
 }

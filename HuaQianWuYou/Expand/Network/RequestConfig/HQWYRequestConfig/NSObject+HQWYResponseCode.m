@@ -8,14 +8,25 @@
 
 #import "NSObject+HQWYResponseCode.h"
 
+// 1004 token 校验失败文言
+static NSString *const kHQWYTokenInvalid = @"登录失效";
+
+//响应返回参数key
+static NSString *const kHQWYErrorRespCodeKey      = @"respCode";
+//响应返回参数key
+static NSString *const kHQWYRespMsgKey      = @"respMsg";
+
+
 @implementation NSObject (HQWYResponseCode)
 
-//
-//- (HQWYRESPONSECODE)responseIntegerCode:(NSString *)respCode {
-//    if (!respCode || [respCode isEqual:[NSNull null]]) {
-//        return HQWYRESPONSECODE_FAIL;
-//    }
-//
+
+- (NSString *)responseMessage:(NSDictionary<NSErrorUserInfoKey, id> *) userInfo{
+    if ([NSString stringWithFormat:@"%@", userInfo[kHQWYErrorRespCodeKey]].integerValue == HQWYRESPONSECODE_UN_AUTHORIZATION){
+        return kHQWYTokenInvalid;
+    }else{
+        return userInfo[kHQWYRespMsgKey];
+    }
+
 //    if ([respCode isEqualToString:@"SUCC"]) {
 //        return HQWYRESPONSECODE_SUCC;
 //    }
@@ -56,7 +67,7 @@
 //        return HQWYRESPONSECODE_VERIFY_CODE_FAILURE;
 //    }
 //    return HQWYRESPONSECODE_FAIL;
-//}
+}
 
 
 @end

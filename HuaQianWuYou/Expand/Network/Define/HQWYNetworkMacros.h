@@ -8,19 +8,25 @@
 
 #ifndef HQWYNetworkMacros_h
 #define HQWYNetworkMacros_h
+
+#import "HQWYNetSetting.h"
+
 #pragma mark - HOST
 
 #ifdef DEBUG
 
 //#define HQWY_HOST_PATH @"http://172.17.16.115:10024"
 //#define HQWY_HOST_PATH @"http://dev-static.huaqianwy.com/mem"
-#define HQWY_HOST_PATH @"http://t1-static.huaqianwy.com/mem"
 
-#define HQWY_PRODUCT_PATH @"http://t1-static.huaqianwy.com/api"
+#define HQWY_MEMBER_HOST_PATH [HQWYNetSetting memberPath]
+#define HQWY_PRODUCT_PATH     [HQWYNetSetting productPath]
+#define HQWY_HQWYV1_PATH       [HQWYNetSetting hqwyV1Path]
 
 #else
 
-#define HQWY_HOST_PATH @"http:"
+#define HQWY_MEMBER_HOST_PATH   @"https://static.huaqianwy.com/mem"
+#define HQWY_PRODUCT_PATH       @"https://static.huaqianwy.com/api"
+#define HQWY_HQWYV1_PATH         @"http://appjieqian.2345.com/index.php"
 
 #endif
 
@@ -34,11 +40,11 @@
 
 #import "HQWYWebViewURLDebugMacros.h"
 
-#define Active_Host  @"http://t1-static.huaqianwy.com/hqwy/dist/#/home"
 //http://172.17.16.79:8088/#/home
 //http://172.17.106.138:8088/#/citylist
 //http://t1-static.huaqianwy.com/hqwy/dist/#/home
 //http://www.baidu.com
+//http://t1-static.huaqianwy.com/hqwy/dist/#/home
 #else
 
 #import "HQWYWebViewURLReleaseMacros.h"
@@ -82,4 +88,6 @@
 #define LN_POST_PASSWORD_LOGIN_PATH              @"/user/login/password"
 
 #define LN_POST_LOGIN_OUT_PATH @"/user/logout"
+
+
 #endif /* HQWYNetworkMacros_h */

@@ -42,33 +42,32 @@
         }
     }
 
-    __block BOOL shouldReport = NO;
- 
-    NSArray *urls = [self mapInterfaceFunctions].allKeys;
-    [urls enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if([failingURLString rangeOfString:obj].location != NSNotFound){
-            shouldReport = YES;
-            failingURLString = obj;
-            *stop = YES;
-        }
-    }];
- 
-    if (!shouldReport) {
-        return;
-    }
+//    __block BOOL shouldReport = NO;
+//
+//    NSArray *urls = [self mapInterfaceFunctions].allKeys;
+//    [urls enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        if([failingURLString rangeOfString:obj].location != NSNotFound){
+//            shouldReport = YES;
+//            failingURLString = obj;
+//            *stop = YES;
+//        }
+//    }];
+//
+//    if (!shouldReport) {
+//        return;
+//    }
  
     RCNetworkError *networkerror = [[RCNetworkError alloc] init];
-
+    
     //FIXME:v2.0 手机号获取
-    networkerror.mobile = @"";
+    networkerror.mobile = [HQWYUserManager loginMobilePhone];
     //此处pid传空值
 //    networkerror.pid = @"";
 //    networkerror.userId = @"";
 
     networkerror.responseTime = [NSString stringWithFormat:@"%.0f",duration];
     networkerror.requestUrl = [failingURLString stringByReplacingOccurrencesOfString:@"api/" withString:@"/"];
-    networkerror.requestUrlFunction = [self mapInterfaceFunctions][failingURLString];
- 
+    networkerror.requestUrlFunction = failingURLString.lastPathComponent;
     networkerror.errorType = [self errorTypeOf:error];
  
     if (error) {

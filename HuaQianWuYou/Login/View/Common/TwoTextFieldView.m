@@ -65,7 +65,9 @@
             self.secondTF.placeholder = @"请填写登录密码";
             self.secondTF.secureTextEntry = true;
             self.secondTF.keyboardType = UIKeyboardTypeDefault;
+            self.secondTF.frame = CGRectMake(LeftSpace, 70,SWidth - 2 * LeftSpace, 50);
             self.eyeButton.hidden = true;
+            
             self.firstLineView.backgroundColor = [UIColor skinColor];
         }
             break;
@@ -73,12 +75,15 @@
         {
             self.firstTF.placeholder = @"6~20数字或者字母";
             self.secondTF.placeholder = @"请再输入一次";
+            
         }
             break;
         case TextFieldTypeModify:
         {
-            self.firstTF.placeholder = @"6~20数字或者字母";
-            self.secondTF.placeholder = @"请再输入一次";
+            self.firstTF.placeholder = @"请填写手机号码";
+            self.secondTF.placeholder = @"请填写短信验证码";
+            self.codeButton.hidden = false;
+            self.secondTF.frame = CGRectMake(LeftSpace, 70,CGRectGetMaxX(self.codeButton.frame) - self.codeButton.hj_width - 15 - LeftSpace, 50);
         }
             break;
         default:

@@ -10,6 +10,8 @@
 #define UtilitiesDefine_h
 
 #define ApplicationDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+//KeyWindow
+#define KeyWindow [[UIApplication sharedApplication] delegate].window
 
 #define WeakObj(o) __weak typeof(o) o##Weak = o;
 #define StrongObj(o) __strong typeof(o) o = o##Weak;
@@ -61,5 +63,7 @@
 //用户基本信息归档key值
 #define KUserBaseMessageFileName_Before @"UserBasicMsg_Before"
 #define KUserBaseMessageFileName_After @"UserBasicMsg_After"
+#define KLoadingAdvertisement @"RefreshLoadingAdvertisement"
+#define KExample_Credit_Score @"example_Credit_Score"
 #define KProductHidden @"Productions_Hidden"
 #endif

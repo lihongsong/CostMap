@@ -10,10 +10,14 @@
 #import "BasicDataModel.h"
 #import "HJGuidePageViewController.h"
 
+#define kLaunchSkipButtonW 60
+#define kLaunchSkipButtonH 30
+#define kLaunchSkipButtonSpace 15
+
 @interface HQWYLaunchManager : NSObject
 @property(nonatomic,strong)BasicDataModel *launchModel;
 
 @property (nonatomic,strong)HJGuidePageViewController *guideVC;
-
+@property(nonatomic,strong)UIViewController *rootViewController;// guide window 所以无法获取原来window，没法实现在原来基础上跳转活动web页，传root替代
 - (void)showLanuchPageModel;
 @end

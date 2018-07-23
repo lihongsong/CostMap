@@ -242,7 +242,7 @@
 
 - (void)registerAPI{
     WeakObj(self);
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [LoginInfoModel requestRegisterWithMobile:self.accountTF.text
                                       smsCode:self.smsCodeTF.text
                                    Completion:^(LoginInfoModel * _Nullable result, NSError * _Nullable error) {
@@ -261,7 +261,7 @@
 }
 
 - (void)updatePassword {
-    [KeyWindow ln_showLoadingHUD];
+    [KeyWindow ln_showLoadingHUDCommon];
     [ResetPasswordModel requestUpdatePassword:self.passwordTF.text
                                    Completion:^(ResetPasswordModel * _Nullable result, NSError * _Nullable error) {
                                        [KeyWindow ln_hideProgressHUD];
@@ -277,7 +277,7 @@
 #pragma mark 获取验证码按钮点击
 - (void)getSMSCodeButtonClick{
     if ([self.accountTF.text hj_isMobileNumber]){
-        [KeyWindow ln_showLoadingHUD];
+        [KeyWindow ln_showLoadingHUDCommon];
         WeakObj(self);
         [HQWYSMSModel requestSMSCodeWithMobile:self.accountTF.text
                                     Completion:^(id  _Nullable result, NSError * _Nullable error) {

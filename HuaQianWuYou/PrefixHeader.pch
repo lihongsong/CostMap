@@ -49,6 +49,8 @@ typedef void (^loginFinshBlock)(void);
 #pragma mark    三方以及自定义库
 #import "LNNetwork.h"
 #import "AAGlobalMacro.h"
+#import "LNMBProgressHUD.h"
+
 #import <Masonry/Masonry.h>
 #import <RCMobClick/RCMobClick.h>
 #import <HJCategories/HJCoreFoundation.h>
@@ -56,7 +58,6 @@ typedef void (^loginFinshBlock)(void);
 #import <HJCategories/HJUIKit.h>
 #import <HJ_UIKit/HJGuidePage.h>
 #import "LNMBProgressHUD.h"
-#import "ZYZMBProgressHUD.h"
 
 #pragma mark JsBridge
 #import <HJJavascriptBridge/HJJSBridgeManager.h>

@@ -11,7 +11,7 @@
 @implementation HQWYUser (Service)
 
 + (NSString *)ln_APIServer {
-    return HQWY_HOST_PATH;
+    return HQWY_MEMBER_HOST_PATH;
 }
 
 #pragma mark 验证码登录

@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface BasicConfigModel : NSObject
-@property(nonatomic, assign) BOOL isOpen;
+@property(nonatomic, copy) NSString *exampleCreditScore;
+@property(nonatomic, copy) NSString *exampleCreditStatus;
 @end

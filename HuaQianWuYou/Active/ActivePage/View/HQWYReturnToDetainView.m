@@ -97,7 +97,7 @@
             make.centerY.mas_equalTo(self.mas_centerY).offset(-0);
             make.left.mas_equalTo(self.mas_left).offset(15);
             make.right.mas_equalTo(self.mas_right).offset(-15);
-            make.height.mas_equalTo(250);
+            make.height.mas_equalTo(220);
         }];
     }
     return _hudView;
@@ -157,13 +157,13 @@
     
     UILabel *topLabel = [[UILabel alloc]init];
     topLabel.text = @"下一笔钱马上来......";
-    topLabel.font = [UIFont normalFont];
+    topLabel.font = [UIFont systemFontOfSize:20.0];
     [self.hudView addSubview:topLabel];
     [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(30);
         make.centerX.mas_equalTo(self.hudView.mas_centerX);
         make.right.mas_equalTo(self.cancleButton.mas_left).offset(0);
-        make.top.mas_equalTo(self.hudView.mas_top).offset(5);
+        make.top.mas_equalTo(self.hudView.mas_top).offset(30);
         
     }];
     topLabel.textAlignment = NSTextAlignmentCenter;
@@ -171,27 +171,27 @@
     
     [self.hudView addSubview:self.countTimeLabel];
     [self.countTimeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.cancleButton.mas_bottom).offset(15);
-        make.left.mas_equalTo(self.hudView.mas_left).offset(15);
-        make.right.mas_equalTo(self.hudView.mas_right).mas_offset(-15);
-        make.height.mas_equalTo(40);
+        make.centerX.mas_equalTo(self.hudView.mas_centerX);
+        make.centerY.mas_equalTo(self.hudView.mas_centerY).offset(-10);
+            make.width.mas_equalTo(70);
+            make.height.mas_equalTo(70);
     }];
     UILabel *bigLabel = [[UILabel alloc]init];
      [self.hudView addSubview:bigLabel];
     [bigLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.countTimeLabel.mas_bottom).offset(15);
+        make.top.mas_equalTo(self.countTimeLabel.mas_bottom).offset(5);
         make.left.mas_equalTo(self.hudView.mas_left).offset(15);
         make.right.mas_equalTo(self.hudView.mas_right).offset(-15);
-        make.height.mas_equalTo(30);
+        make.height.mas_equalTo(20);
     }];
     bigLabel.text = @"申请越多，成功率越高";
-    bigLabel.font = [UIFont navigationRightFont];
+    bigLabel.font = [UIFont NormalSmallTitleFont];
     bigLabel.textAlignment = NSTextAlignmentCenter;
    
     [self.hudView addSubview:self.promptButton];
     [self.promptButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.hudView.mas_centerX);
-        make.bottom.mas_equalTo(self.hudView.mas_bottom).mas_offset(-45);
+        make.bottom.mas_equalTo(self.hudView.mas_bottom).mas_offset(-18);
         make.width.mas_equalTo(100);
         make.height.mas_equalTo(30);
     }];
@@ -200,7 +200,7 @@
     [self.hudView addSubview:lineView];
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.promptButton.mas_centerX).mas_offset(0);
-        make.centerY.mas_equalTo(self.promptButton.mas_centerY).mas_offset(10);
+        make.centerY.mas_equalTo(self.promptButton.mas_centerY).mas_offset(9);
         make.width.mas_equalTo(80);
         make.height.mas_equalTo(1);
     }];
@@ -234,7 +234,8 @@
 {
     if (_countTimeLabel == nil) {
         _countTimeLabel = [[UILabel alloc]init];
-        _countTimeLabel.font = [UIFont NavigationTitleFont];
+        _countTimeLabel.font = [UIFont boldSystemFontOfSize:60];
+        _countTimeLabel.textColor = [UIColor skinColor];
         _countTimeLabel.text = @"3";
         _countTimeLabel.textAlignment = NSTextAlignmentCenter;
     }
