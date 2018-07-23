@@ -140,7 +140,7 @@
         tempButton.frame = CGRectMake(SWidth - 10 - 100,self.secondTF.hj_y, 100, self.secondTF.hj_height);
         [tempButton addTarget:self action:@selector(codeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [tempButton setTitle:@"获取验证码" forState:UIControlStateNormal];
-        [tempButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [tempButton setTitleColor:[UIColor loginGrayColor] forState:UIControlStateNormal];
         [tempButton setTitleColor:[UIColor skinColor] forState:UIControlStateSelected];
         tempButton.titleLabel.font = [UIFont NormalSmallTitleFont];
         tempButton.hidden = true;

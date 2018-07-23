@@ -78,5 +78,15 @@
     return [UIColor colorFromHexCode:[PlistManager getColor:11]];
 }
 
++ (UIColor *) loginGrayColor{
+    return [UIColor colorFromHexCode:[PlistManager getColor:12]];
+}
 
++ (UIColor *) buttonGrayColor{
+    return [UIColor colorFromHexCode:[PlistManager getColor:13]];
+}
+
++ (UIColor *) whiteButtonTitleColor{ // FFFFFF
+    return [UIColor colorFromHexCode:[PlistManager getColor:14]];
+}
 @end

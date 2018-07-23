@@ -20,8 +20,11 @@
 
 
 
-#pragma mark 航栏Title文字字号 19
+#pragma mark 导航栏Title文字字号 19
 + (UIFont *)NavigationTitleFont;
+
+#pragma mark 按钮title标题 18
++ (UIFont *)bigButtonTitleFont;
 
 #pragma mark 导航栏右边字体 17
 + (UIFont *)navigationRightFont;
@@ -35,6 +38,8 @@
 #pragma mark 正文字号 14
 + (UIFont *)normalFont;
 
+#pragma mark 标签文字 13
++ (UIFont *)stateLabelFont;
 
 #pragma mark 说明性文字 12
 + (UIFont *)stateFont;

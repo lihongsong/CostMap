@@ -25,7 +25,7 @@
     codeButton.frame = CGRectMake(frame.size.width/2.0 - 20 - 100, 30, 100, 40);
     [codeButton addTarget:self action:@selector(codeButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [codeButton setTitle:@"验证码登录" forState:UIControlStateNormal];
-    [codeButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [codeButton setTitleColor:[UIColor loginGrayColor] forState:UIControlStateNormal];
     [codeButton setTitleColor:[UIColor skinColor] forState:UIControlStateSelected];
     codeButton.titleLabel.font = [UIFont systemFontOfSize:18.0];
     codeButton.selected = true;
@@ -41,7 +41,7 @@
     passwordButton.frame = CGRectMake(frame.size.width/2.0 + 20, 30, 100, 40);
     [passwordButton addTarget:self action:@selector(passwordButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     [passwordButton setTitle:@"密码登录" forState:UIControlStateNormal];
-    [passwordButton setTitleColor:[UIColor hj_colorWithHexString:@"#333333"] forState:UIControlStateNormal];
+    [passwordButton setTitleColor:[UIColor loginGrayColor] forState:UIControlStateNormal];
     [passwordButton setTitleColor:[UIColor skinColor] forState:UIControlStateSelected];
     passwordButton.titleLabel.font = [UIFont systemFontOfSize:18.0];
     passwordButton.tag = 5001;
