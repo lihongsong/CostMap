@@ -32,6 +32,11 @@
    return [UIFont fontNameIndex:2 withFontSizeIndex:3];
 }
 
+#pragma mark 按钮title标题 18
++ (UIFont *)bigButtonTitleFont{
+    return [UIFont fontNameIndex:0 withFontSizeIndex:10];
+}
+
 #pragma mark 导航栏右边字体 17
 + (UIFont *)navigationRightFont{
     return [UIFont fontNameIndex:0 withFontSizeIndex:4];
@@ -52,6 +57,10 @@
     return [UIFont fontNameIndex:1 withFontSizeIndex:7];
 }
 
+#pragma mark 标签文字 13
++ (UIFont *)stateLabelFont{
+    return [UIFont fontNameIndex:1 withFontSizeIndex:11];
+}
 
 #pragma mark 说明性文字 12
 + (UIFont *)stateFont{

@@ -23,14 +23,14 @@
             if (second > 0) {
                 
                 [self setTitle:[NSString stringWithFormat:@"%lds%@",second,waitingtitle] forState:UIControlStateNormal];
-                [self setTitleColor:[UIColor hj_colorWithHexString:@"BBBBBB"] forState:UIControlStateNormal];
+                [self setTitleColor:[UIColor loginGrayColor] forState:UIControlStateNormal];
                 second--;
                 self.enabled = NO;
             }
             else
             {
                 dispatch_source_cancel(distimer);
-                 [self setTitleColor:[UIColor skinColor] forState:UIControlStateNormal];
+                 [self setTitleColor:[UIColor skinColor] forState:UIControlStateSelected];
                 [self setTitle:title forState:UIControlStateNormal];
                 self.enabled = YES;
                 

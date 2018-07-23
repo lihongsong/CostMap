@@ -75,7 +75,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewDidLoad];
     // Do any additional setup after loading the view
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
+    self.wkWebView.backgroundColor = [UIColor backgroundGrayColor];
     [self.wkWebView ln_showLoadingHUDMoney];
+    self.wkWebView.scrollView.showsVerticalScrollIndicator = NO;
+    self.wkWebView.scrollView.showsHorizontalScrollIndicator = NO;
+    self.wkWebView.scrollView.bounces = NO;
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
    
     [self.wkWebView setNavigationDelegate:self];
@@ -295,7 +299,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [_manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         NSString *phone = [HQWYUserManager loginMobilePhone];
         
-        ResponseCallback([HQWYJavaScriptResponse result:phone]);
+        ResponseCallback([HQWYJavaScriptResponse result:SafeStr(phone)]);
     }];
     
     /** 注册获取用户是否登录事件 */

@@ -45,16 +45,15 @@
     [super viewDidLoad];
     self.title = @"验证手机号";
     self.isNext = false;
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor colorFromHexCode:@"#111111"]}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor bigTitleBlackColor]}];
 self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self setupUI];
-
     self.serialNumber = @"";
-    //[self setLelftNavigationItem:NO];
-    // Do any additional setup after loading the view.
+    self.phoneNum = [HQWYUserManager lastLoginMobilePhone];
 }
 
 -(void)backPage {
@@ -82,7 +81,7 @@ self.navigationController.navigationBar.translucent = NO;
         make.height.mas_equalTo(45);
     }];
     [self.nextButton setTitle:@"下一步" forState:UIControlStateNormal];
-    [self.nextButton hj_setBackgroundColor:[UIColor hj_colorWithHexString:@"D6D6D6"] forState:UIControlStateNormal];
+    [self.nextButton hj_setBackgroundColor:[UIColor buttonGrayColor] forState:UIControlStateNormal];
     [self.nextButton hj_setBackgroundColor:[UIColor skinColor] forState:UIControlStateSelected];
 }
 
@@ -172,7 +171,6 @@ self.navigationController.navigationBar.translucent = NO;
 
 # pragma mark 获取短信验证码
 - (void)getSMSCode{
-
     [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel requsetMobilePhoneCode:self.phoneNum smsType:GetCodeTypeFixPassword Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
     
@@ -188,7 +186,7 @@ self.navigationController.navigationBar.translucent = NO;
             }
             return ;
         } else {
-            [KeyWindow ln_hideProgressHUD];
+             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"短信验证码已发送~"];
         }
             /*如果发送成功 */
             if (self.authCodeButton) {
@@ -247,7 +245,7 @@ self.navigationController.navigationBar.translucent = NO;
         _nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _nextButton.layer.masksToBounds = YES;
         _nextButton.layer.cornerRadius = 25;
-        [_nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_nextButton setTitleColor:[UIColor whiteButtonTitleColor] forState:UIControlStateNormal];
         [_nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }

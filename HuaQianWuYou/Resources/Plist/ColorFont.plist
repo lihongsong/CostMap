@@ -76,6 +76,24 @@
 			<key>Color</key>
 			<string>333333</string>
 		</dict>
+		<dict>
+			<key>登录主要灰色</key>
+			<string>loginGrayColor</string>
+			<key>Color</key>
+			<string>BBBBBB</string>
+		</dict>
+		<dict>
+			<key>按钮灰色</key>
+			<string>buttonGrayColor</string>
+			<key>Color</key>
+			<string>D6D6D6</string>
+		</dict>
+		<dict>
+			<key>白色按钮标题</key>
+			<string>whiteButtonTitleColor</string>
+			<key>Color</key>
+			<string>FFFFFF</string>
+		</dict>
 	</array>
 	<key>FontName</key>
 	<array>
@@ -166,8 +184,18 @@
 			<key>Font</key>
 			<string>11</string>
 		</dict>
-		<dict/>
-		<dict/>
+		<dict>
+			<key>按钮大标题</key>
+			<string>bigButtonTitleFont</string>
+			<key>Font</key>
+			<string>18</string>
+		</dict>
+		<dict>
+			<key>一般标注性文字</key>
+			<string>stateLabelFont</string>
+			<key>Font</key>
+			<string>13</string>
+		</dict>
 		<dict/>
 	</array>
 	<key>目前采用顺序获取颜色，字体，字号</key>

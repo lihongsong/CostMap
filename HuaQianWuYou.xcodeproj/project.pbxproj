@@ -242,7 +242,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		010C44D1A83D35EE0C970507 /* Pods-HuaQianWuYou.pre.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.pre.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.pre.xcconfig"; sourceTree = "<group>"; };
 		17B31D10A3519E420DC0CB53 /* Pods-HuaQianWuYouTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYouTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYouTests/Pods-HuaQianWuYouTests.release.xcconfig"; sourceTree = "<group>"; };
 		1FAEFAC0028619FEC0773FB9 /* Pods_HuaQianWuYouTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HuaQianWuYouTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E40A2FC79C98CE826B4BBAC /* Pods-HuaQianWuYou.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HuaQianWuYou.release.xcconfig"; path = "Pods/Target Support Files/Pods-HuaQianWuYou/Pods-HuaQianWuYou.release.xcconfig"; sourceTree = "<group>"; };

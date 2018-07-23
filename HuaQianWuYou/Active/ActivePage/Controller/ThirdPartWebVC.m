@@ -45,7 +45,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
-    if (self.navigationDic != nil && self.navigationDic[@"productId"] != nil) {
+    if (self.navigationDic != nil && self.navigationDic[@"productId"] != nil && !StrIsEmpty([HQWYUserManager loginMobilePhone])) {
          NSString *productID = [NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]];
         if(!StrIsEmpty(productID)){
             [self uploadData:self.navigationDic[@"productId"]];
@@ -87,8 +87,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(id _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
             if (error) {
-//                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
-//                                      message:error.hqwy_errorMessage];
                 return;
             } 
             self.listArr = result;

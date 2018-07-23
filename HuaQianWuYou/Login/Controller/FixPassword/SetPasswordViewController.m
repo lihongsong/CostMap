@@ -29,7 +29,7 @@
     [super viewDidLoad];
     self.title = @"设置密码";
     self.navigationController.navigationBar.translucent = NO;
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor colorFromHexCode:@"#111111"]}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor bigTitleBlackColor]}];
     self.view.backgroundColor = [UIColor whiteColor];
     [self setupUI];
     // Do any additional setup after loading the view.
@@ -54,7 +54,7 @@
         make.height.mas_equalTo(45);
     }];
     [self.nextButton setTitle:@"确认" forState:UIControlStateNormal];
-    [self.nextButton hj_setBackgroundColor:[UIColor hj_colorWithHexString:@"D6D6D6"] forState:UIControlStateNormal];
+    [self.nextButton hj_setBackgroundColor:[UIColor buttonGrayColor] forState:UIControlStateNormal];
     [self.nextButton hj_setBackgroundColor:[UIColor skinColor] forState:UIControlStateSelected];
 }
 
@@ -74,7 +74,7 @@
         _nextButton.frame = CGRectMake(10, 400, [UIScreen mainScreen].bounds.size.width-20, 50);
         _nextButton.layer.masksToBounds = YES;
         _nextButton.layer.cornerRadius = 25;
-        [_nextButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [_nextButton setTitleColor:[UIColor whiteButtonTitleColor] forState:UIControlStateNormal];
         [_nextButton addTarget:self action:@selector(nextAction:) forControlEvents:UIControlEventTouchUpInside];
         
     }

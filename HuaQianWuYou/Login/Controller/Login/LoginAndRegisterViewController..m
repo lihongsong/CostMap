@@ -61,7 +61,7 @@
     [self.view addSubview:self.forgetButton];
     [self.view addSubview:self.loginButton];
 
-    UILabel *stateLabel = [ZYZControl createLabelWithFrame:CGRectMake(SWidth/2.0 - 100, CGRectGetMaxY(self.loginButton.frame) + 15, 110, 30) Font:[UIFont systemFontOfSize:13.0] Text:@"登录即代表您同意"];
+    UILabel *stateLabel = [ZYZControl createLabelWithFrame:CGRectMake(SWidth/2.0 - 100, CGRectGetMaxY(self.loginButton.frame) + 15, 110, 30) Font:[UIFont stateLabelFont] Text:@"登录即代表您同意"];
     stateLabel.textColor = [UIColor stateGrayColor];
     [self.view addSubview:stateLabel];
     
@@ -119,9 +119,9 @@
         _loginButton.frame = CGRectMake(LeftSpace, CGRectGetMaxY(self.forgetButton.frame) + 30, SWidth - 2 * LeftSpace, 45);
         [_loginButton addTarget:self action:@selector(loginButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
-        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateSelected];
-        [_loginButton setBackgroundColor:[UIColor lightGrayColor]];
+        [_loginButton setTitleColor:[UIColor whiteButtonTitleColor] forState:UIControlStateNormal];
+        [_loginButton setTitleColor:[UIColor whiteButtonTitleColor] forState:UIControlStateSelected];
+        [_loginButton setBackgroundColor:[UIColor buttonGrayColor]];
         _loginButton.titleLabel.font = [UIFont NormalSmallTitleFont];
         _loginButton.layer.cornerRadius = 20;
     }
@@ -305,13 +305,13 @@
                 }
             }else{
              self.codeInputView.codeButton.selected = false;
-                self.loginButton.backgroundColor = [UIColor lightGrayColor];
+                self.loginButton.backgroundColor = [UIColor buttonGrayColor];
             }
         }else{
             if (textField.text.length >= 5 && self.codeInputView.firstTF.text.length >= 11 && string.length > 0) {
                 self.loginButton.backgroundColor = [UIColor skinColor];
             }else{
-                self.loginButton.backgroundColor = [UIColor lightGrayColor];
+                self.loginButton.backgroundColor = [UIColor buttonGrayColor];
             }
         }
     }else{
@@ -319,13 +319,13 @@
             if (textField.text.length >= 10 && [self.passwordInputView.secondTF.text length] >= 6 && string.length > 0) {
                 self.loginButton.backgroundColor = [UIColor skinColor];
             }else{
-                self.loginButton.backgroundColor = [UIColor lightGrayColor];
+                self.loginButton.backgroundColor = [UIColor buttonGrayColor];
             }
         }else{
             if (textField.text.length >= 5 && self.passwordInputView.firstTF.text.length >= 11 && string.length > 0) {
                 self.loginButton.backgroundColor = [UIColor skinColor];
             }else{
-                self.loginButton.backgroundColor = [UIColor lightGrayColor];
+                self.loginButton.backgroundColor = [UIColor buttonGrayColor];
             }
         }
     }
@@ -426,8 +426,6 @@
     }
      [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:GetCodeTypeLogin Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
-        NSLog(@"____%ld",(long)error.hqwy_respCode);
-        //NSLog(@"____%@",error.hqwy_errorMessage);
         if (error) {
             if (error.code == 1013) {
                 [KeyWindow ln_hideProgressHUD];
@@ -440,14 +438,16 @@
             }
             return ;
         } else {
-            [KeyWindow ln_hideProgressHUD];
+            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"短信验证码已发送~"];
         }
+        
         if (self.codeInputView.codeButton) {
             //倒计时
             [self.codeInputView.codeButton startTotalTime:60 title:@"重新获取" waitingTitle:@"后重试"];
         }
         NSLog(@")_____%@",result);
         if (result) {
+        
             self.serialNumber = [NSString stringWithFormat:@"%@", result];
         }
     }];
