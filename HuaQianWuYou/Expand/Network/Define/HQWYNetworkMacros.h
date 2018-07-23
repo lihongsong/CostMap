@@ -20,13 +20,13 @@
 
 #define HQWY_MEMBER_HOST_PATH [HQWYNetSetting memberPath]
 #define HQWY_PRODUCT_PATH     [HQWYNetSetting productPath]
-#define HQWY_MAJIA_PATH       [HQWYNetSetting majiaPath]
+#define HQWY_HQWYV1_PATH       [HQWYNetSetting hqwyV1Path]
 
 #else
 
 #define HQWY_MEMBER_HOST_PATH   @"https://static.huaqianwy.com/mem"
 #define HQWY_PRODUCT_PATH       @"https://static.huaqianwy.com/api"
-#define HQWY_MAJIA_PATH         @"http://appjieqian.2345.com/index.php"
+#define HQWY_HQWYV1_PATH         @"http://appjieqian.2345.com/index.php"
 
 #endif
 

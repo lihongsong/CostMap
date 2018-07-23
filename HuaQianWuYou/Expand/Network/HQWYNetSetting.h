@@ -14,7 +14,7 @@
 
 + (NSString *)productPath;
 
-+ (NSString *)majiaPath;
++ (NSString *)hqwyV1Path;
 
 + (NSString *)activePath;
 

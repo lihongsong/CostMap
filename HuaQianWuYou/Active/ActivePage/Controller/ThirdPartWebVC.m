@@ -45,7 +45,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
     [self initNavigation];
     [self registerHander];
-    if (self.navigationDic != nil && self.navigationDic[@"productId"] != nil) {
+    if (self.navigationDic != nil && self.navigationDic[@"productId"] != nil && !StrIsEmpty([HQWYUserManager loginMobilePhone])) {
          NSString *productID = [NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]];
         if(!StrIsEmpty(productID)){
             [self uploadData:self.navigationDic[@"productId"]];
