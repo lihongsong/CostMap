@@ -25,8 +25,6 @@
     return [UIFont fontNameIndex:0 withFontSizeIndex:2];
 }
 
-
-
 #pragma mark 航栏Title文字字号 19
 + (UIFont *)NavigationTitleFont{
    return [UIFont fontNameIndex:2 withFontSizeIndex:3];

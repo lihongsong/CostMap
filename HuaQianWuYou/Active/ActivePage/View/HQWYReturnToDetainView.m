@@ -157,7 +157,7 @@
     
     UILabel *topLabel = [[UILabel alloc]init];
     topLabel.text = @"下一笔钱马上来......";
-    topLabel.font = [UIFont systemFontOfSize:20.0];
+    topLabel.font = [UIFont BigTitleFont];
     [self.hudView addSubview:topLabel];
     [topLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.height.mas_equalTo(30);
@@ -167,6 +167,7 @@
         
     }];
     topLabel.textAlignment = NSTextAlignmentCenter;
+    topLabel.textColor = [UIColor grayColor];
     [self.hudView addSubview:topLabel];
     
     [self.hudView addSubview:self.countTimeLabel];
@@ -186,6 +187,7 @@
     }];
     bigLabel.text = @"申请越多，成功率越高";
     bigLabel.font = [UIFont NormalSmallTitleFont];
+    bigLabel.textColor = [UIColor grayColor];
     bigLabel.textAlignment = NSTextAlignmentCenter;
    
     [self.hudView addSubview:self.promptButton];
@@ -201,10 +203,10 @@
     [lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.mas_equalTo(self.promptButton.mas_centerX).mas_offset(0);
         make.centerY.mas_equalTo(self.promptButton.mas_centerY).mas_offset(9);
-        make.width.mas_equalTo(80);
+        make.width.mas_equalTo(89);
         make.height.mas_equalTo(1);
     }];
-    lineView.backgroundColor = [UIColor hj_colorWithHexString:@"#333333"];
+    lineView.backgroundColor = [UIColor loginGrayColor];
     
 }
 
@@ -224,8 +226,8 @@
         _promptButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_promptButton addTarget:self action:@selector(promptButtonClick) forControlEvents:UIControlEventTouchUpInside];
         [_promptButton setTitle:@"今日不再提示" forState:UIControlStateNormal];
-        [_promptButton setTitleColor:[UIColor hj_colorWithHexString:@"#333333"] forState:UIControlStateNormal];
-        _promptButton.titleLabel.font = [UIFont systemFontOfSize:13.0];
+        [_promptButton setTitleColor:[UIColor loginGrayColor] forState:UIControlStateNormal];
+        _promptButton.titleLabel.font = [UIFont NormalSmallTitleFont];
     }
     return _promptButton;
 }

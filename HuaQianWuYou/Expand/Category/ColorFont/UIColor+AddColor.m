@@ -74,14 +74,17 @@
     return [UIColor colorFromHexCode:[PlistManager getColor:10]];
 }
 
+#pragma mark 333333
 + (UIColor *) grayColor{
     return [UIColor colorFromHexCode:[PlistManager getColor:11]];
 }
 
+#pragma mark BBBBBB
 + (UIColor *) loginGrayColor{
     return [UIColor colorFromHexCode:[PlistManager getColor:12]];
 }
 
+#pragma mark D6D6D6
 + (UIColor *) buttonGrayColor{
     return [UIColor colorFromHexCode:[PlistManager getColor:13]];
 }
