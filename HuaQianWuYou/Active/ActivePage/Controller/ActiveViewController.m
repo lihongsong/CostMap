@@ -75,6 +75,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewDidLoad];
     // Do any additional setup after loading the view
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
+    self.wkWebView.backgroundColor = [UIColor backgroundGrayColor];
     [self.wkWebView ln_showLoadingHUDMoney];
     self.wkWebView.scrollView.showsVerticalScrollIndicator = NO;
     self.wkWebView.scrollView.showsHorizontalScrollIndicator = NO;

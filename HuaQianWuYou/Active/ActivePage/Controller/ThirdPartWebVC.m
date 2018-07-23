@@ -87,8 +87,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(id _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
             if (error) {
-//                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
-//                                      message:error.hqwy_errorMessage];
                 return;
             } 
             self.listArr = result;
