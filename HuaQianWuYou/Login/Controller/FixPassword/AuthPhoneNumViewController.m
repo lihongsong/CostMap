@@ -49,7 +49,8 @@
 self.navigationController.navigationBar.translucent = NO;
     self.automaticallyAdjustsScrollViewInsets = YES;
     self.view.backgroundColor = [UIColor whiteColor];
-    
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     [self setupUI];
     self.serialNumber = @"";
     self.phoneNum = [HQWYUserManager lastLoginMobilePhone];
