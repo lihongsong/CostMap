@@ -30,7 +30,7 @@
 
 
 + (NSString *)ln_APIServer {
-    return HQWY_MAJIA_PATH;
+    return HQWY_HQWYV1_PATH;
 }
 
 + (void)ln_setupRequestSerializer:(AFHTTPRequestSerializer *)requestSerializer {
