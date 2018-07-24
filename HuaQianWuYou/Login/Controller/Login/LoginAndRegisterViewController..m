@@ -206,8 +206,8 @@
             selfWeak.loginButton.userInteractionEnabled = true;
             return;
         }
-        if (!([self.passwordInputView.secondTF.text length] > 0)) {
-            [KeyWindow ln_showToastHUD:@"请输入密码"];
+        if ([self.passwordInputView.secondTF.text length] < 6 || [self.passwordInputView.secondTF.text length] > 20) {
+            [KeyWindow ln_showToastHUD:@"请输入正确的登录密码"];
             selfWeak.loginButton.userInteractionEnabled = true;
             return;
         }

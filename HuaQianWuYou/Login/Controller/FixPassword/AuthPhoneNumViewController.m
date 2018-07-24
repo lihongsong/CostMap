@@ -54,6 +54,7 @@ self.navigationController.navigationBar.translucent = NO;
     [self setupUI];
     self.serialNumber = @"";
     self.phoneNum = [HQWYUserManager lastLoginMobilePhone];
+    self.authCode = @"";
 }
 
 -(void)backPage {
@@ -236,6 +237,10 @@ self.navigationController.navigationBar.translucent = NO;
         [KeyWindow ln_showToastHUD:@"请先获取验证码"];
         return;
     }
+    if([self.authCode length] < 6){
+        [KeyWindow ln_showToastHUD:@"请输入正确的验证码"];
+        return;
+    }
     self.isNext = true;
     [self validatePhoneNum];
 }
@@ -256,15 +261,5 @@ self.navigationController.navigationBar.translucent = NO;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
