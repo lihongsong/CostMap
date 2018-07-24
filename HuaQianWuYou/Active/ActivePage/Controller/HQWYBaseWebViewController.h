@@ -11,6 +11,7 @@
 
 @interface HQWYBaseWebViewController : HJWebViewController
 - (void)initNavigation;
+- (void)initRefreshView;
 - (void)openTheAuthorizationOfLocation;
 - (NSDictionary *)jsonDicFromString:(NSString *)string;
 

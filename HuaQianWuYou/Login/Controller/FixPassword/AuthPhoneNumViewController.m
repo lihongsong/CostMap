@@ -177,14 +177,14 @@ self.navigationController.navigationBar.translucent = NO;
     
         self.authCodeButton.userInteractionEnabled = true;
         if (error) {
-            if (error.code == 1013) {
-                [KeyWindow ln_hideProgressHUD];
-                self.serialNumber = [NSString stringWithFormat:@"%@",result];
-                 [self getImageCode];
-            }else {
+//            if (error.code == 1013) {
+//                [KeyWindow ln_hideProgressHUD];
+//                self.serialNumber = [NSString stringWithFormat:@"%@",result];
+//                 [self getImageCode];
+//            }else {
               [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
                                     message:error.hqwy_errorMessage];
-            }
+//            }
             return ;
         } else {
              [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"短信验证码已发送~"];
@@ -204,12 +204,12 @@ self.navigationController.navigationBar.translucent = NO;
     [AuthCodeModel validateSMSCode:self.authCode mobilePhone:self.phoneNum smsType:GetCodeTypeFixPassword serialNumber:self.serialNumber Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         [KeyWindow ln_hideProgressHUD];
         if (error) {
-            if(error.code == 1013){
-                [self getImageCode];
-            }else{
+//            if(error.code == 1013){
+//                [self getImageCode];
+//            }else{
                 [KeyWindow ln_showToastHUD:error.hqwy_errorMessage];
                 return ;
-            }
+//            }
         }
         //校验成功
         SetPasswordViewController *setPassword = [SetPasswordViewController new];
