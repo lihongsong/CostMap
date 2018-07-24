@@ -40,6 +40,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewDidLoad];
     self.listArr = [[NSArray alloc]init];
     self.isShowAlertOrBack = true;
+    if (@available(iOS 9.0, *)) {
+        self.wkWebView.allowsLinkPreview = NO;
+    } else {
+        // Fallback on earlier versions
+    }
     self.manager = [HJJSBridgeManager new];
     [_manager setupBridge:self.wkWebView navigationDelegate:self];
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);

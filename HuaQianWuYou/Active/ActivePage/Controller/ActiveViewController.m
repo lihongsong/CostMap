@@ -77,7 +77,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
     self.wkWebView.backgroundColor = [UIColor backgroundGrayColor];
     [self.wkWebView ln_showLoadingHUDMoney];
-    self.wkWebView.scrollView.showsVerticalScrollIndicator = NO;
+    if (@available(iOS 9.0, *)) {
+        self.wkWebView.allowsLinkPreview = NO;
+    } else {
+        // Fallback on earlier versions
+    } self.wkWebView.scrollView.showsVerticalScrollIndicator = NO;
     self.wkWebView.scrollView.showsHorizontalScrollIndicator = NO;
     self.wkWebView.scrollView.bounces = NO;
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
@@ -110,6 +114,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
+    [self initRefreshView];
     
 }
 
@@ -398,18 +403,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 -(void)rightButtonItemClick{
-    if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
-        [self openTheAuthorizationOfLocation];
-    }else{
-        if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
-            [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-                if (!error) { // 成功
-                    NSLog(@"%@",response);
-                } else { // 失败
-                    NSLog(@"%@",error.localizedDescription);
-                }
-            }];
-        }
+    
+    if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
+        [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+            if (!error) { // 成功
+                NSLog(@"%@",response);
+            } else { // 失败
+                NSLog(@"%@",error.localizedDescription);
+            }
+        }];
     }
 }
 

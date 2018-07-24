@@ -206,8 +206,8 @@
             selfWeak.loginButton.userInteractionEnabled = true;
             return;
         }
-        if (!([self.passwordInputView.secondTF.text length] > 0)) {
-            [KeyWindow ln_showToastHUD:@"请输入密码"];
+        if ([self.passwordInputView.secondTF.text length] < 6 || [self.passwordInputView.secondTF.text length] > 20) {
+            [KeyWindow ln_showToastHUD:@"请输入正确的登录密码"];
             selfWeak.loginButton.userInteractionEnabled = true;
             return;
         }
@@ -223,12 +223,12 @@
         StrongObj(self);
         self.loginButton.userInteractionEnabled = true;
         if (error) {
-            if (error.code == 1060) {
-                [KeyWindow ln_hideProgressHUD];
-                [self getImageCode];
-            }else{
+//            if (error.code == 1060) {
+//                [KeyWindow ln_hideProgressHUD];
+//                [self getImageCode];
+//            }else{
                 [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.hqwy_errorMessage];
-            }
+//            }
             return ;
         }
         [KeyWindow ln_hideProgressHUD];
@@ -427,15 +427,15 @@
      [KeyWindow ln_showLoadingHUDCommon];
     [AuthCodeModel requsetMobilePhoneCode:self.codeInputView.firstTF.text smsType:GetCodeTypeLogin Completion:^(AuthCodeModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
-            if (error.code == 1013) {
-                [KeyWindow ln_hideProgressHUD];
-                self.serialNumber = [NSString stringWithFormat:@"%@", result];
-                self.imageCodeType = 1;
-                [self getImageCode];
-            }else{
+//            if (error.code == 1013) {
+//                [KeyWindow ln_hideProgressHUD];
+//                self.serialNumber = [NSString stringWithFormat:@"%@", result];
+//                self.imageCodeType = 1;
+//                [self getImageCode];
+//            }else{
                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
                                      message:error.hqwy_errorMessage];
-            }
+//            }
             return ;
         } else {
             [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"短信验证码已发送~"];
