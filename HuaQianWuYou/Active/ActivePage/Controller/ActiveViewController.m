@@ -113,6 +113,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.locatedCity = [NSMutableDictionary dictionaryWithDictionary:@{@"province":@"",@"city":@"",@"country":@""}];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
+    [self initRefreshView];
     
 }
 

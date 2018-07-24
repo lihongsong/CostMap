@@ -30,9 +30,6 @@
 - (void)initNavigation{
    NavigationView *navigationView = [[NavigationView alloc]initWithFrame:CGRectMake(0,StatusBarHeight, SWidth, 44)];
     [self.view addSubview:navigationView];
-    
-   
-
     navigationView.delegate = self;
 }
 
