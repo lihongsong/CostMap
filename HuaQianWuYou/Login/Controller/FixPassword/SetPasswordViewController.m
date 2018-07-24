@@ -88,7 +88,8 @@
 
 - (void)nextAction:(UIButton *)sender{
     [self eventId:HQWY_Fix_Sure_click];
-    if (!(self.password.length > 5) || !(self.password.length < 21)) {
+    NSLog(@"____%lu____%lu",(unsigned long)self.password.length,(unsigned long)self.surePassword.length);
+    if (!(self.password.length > 5) || !(self.surePassword.length < 21) || !(self.surePassword.length > 5) || !(self.password.length < 21)) {
         [KeyWindow ln_showToastHUD:@"密码输入格式错误"];
         return;
 
