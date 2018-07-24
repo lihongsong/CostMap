@@ -172,5 +172,9 @@ static NSString * const kAppDismissLoading = @"appDismissLoadingDialog";
 static NSString * const kAppShowLoading = @"appShowLoadingDialog";
 
 
+/*!
+ 清除用户信息
+ */
+static NSString * const kAppClearUser = @"appClearUser";
 
 #endif /* HQWYJavaSBridgeHandleMacros_h */

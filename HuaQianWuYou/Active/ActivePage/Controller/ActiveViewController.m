@@ -259,6 +259,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }];
     }];
     
+    
+    //清除用户信息
+    [_manager registerHandler:kAppClearUser handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+          [HQWYUserSharedManager deleteUserInfo];
+    }];
+    
     /*退出登录 */
     [_manager registerHandler:kAppExecLogout handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         [self loginOut:^(BOOL isOut) {
