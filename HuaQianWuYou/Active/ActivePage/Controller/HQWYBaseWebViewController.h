@@ -10,8 +10,15 @@
 #import "NavigationView.h"
 
 @interface HQWYBaseWebViewController : HJWebViewController
+/**
+ 桥接管理器
+ */
+@property (strong, nonatomic)HJJSBridgeManager *manager;
+
 - (void)initNavigation;
 - (void)initRefreshView;
+- (void)setWkwebviewGesture;
+- (void)setWKWebViewInit;
 - (void)openTheAuthorizationOfLocation;
 - (NSDictionary *)jsonDicFromString:(NSString *)string;
 

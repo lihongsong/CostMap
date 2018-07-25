@@ -29,53 +29,53 @@
     WeakObj(self);
     [topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         StrongObj(self);
-        make.size.mas_equalTo(CGSizeMake(200, 200));
+        make.size.mas_equalTo(CGSizeMake(130, 130));
         make.centerX.mas_equalTo(self.mas_centerX);
-        make.top.mas_equalTo(self.mas_top).mas_offset(88);
+        make.centerY.mas_equalTo(self.mas_centerY).mas_offset(-40);
     }];
-    topImageView.image = [UIImage imageNamed:@"defaultpage_noconnection"];
+    topImageView.image = [UIImage imageNamed:@"defaultpage_nowifi"];
     
     tip1Label = [UILabel new];
     [self addSubview:tip1Label];
     [tip1Label mas_makeConstraints:^(MASConstraintMaker *make) {
         StrongObj(self);
-        make.top.mas_equalTo(self->topImageView.mas_bottom).mas_offset(10);
+        make.top.mas_equalTo(self->topImageView.mas_bottom).mas_offset(0);
         make.height.mas_equalTo(18);
         make.centerX.mas_equalTo(self.mas_centerX);
     }];
     tip1Label.textAlignment = NSTextAlignmentCenter;
-    tip1Label.textColor = HJHexColor(0x999999);
-    tip1Label.font = [UIFont systemFontOfSize:18];
-    tip1Label.text = @"网络连接失败";
+    tip1Label.textColor = [UIColor loginGrayColor];
+    tip1Label.font = [UIFont stateFont];
+    tip1Label.text = @"网络异常";
     
-    tip2Label = [UILabel new];
-    [self addSubview:tip2Label];
-    [tip2Label mas_makeConstraints:^(MASConstraintMaker *make) {
-        StrongObj(self);
-        make.top.mas_equalTo(self->tip1Label.mas_bottom).mas_offset(5);
-        make.centerX.mas_equalTo(self.mas_centerX);
-        make.height.mas_equalTo(15);
-    }];
-    tip2Label.textColor = HJHexColor(0x999999);
-    tip2Label.textAlignment = NSTextAlignmentCenter;
-    tip2Label.font = [UIFont systemFontOfSize:15];
-    tip2Label.text = @"请在此刷新或检查网络";
+//    tip2Label = [UILabel new];
+//    [self addSubview:tip2Label];
+//    [tip2Label mas_makeConstraints:^(MASConstraintMaker *make) {
+//        StrongObj(self);
+//        make.top.mas_equalTo(self->tip1Label.mas_bottom).mas_offset(5);
+//        make.centerX.mas_equalTo(self.mas_centerX);
+//        make.height.mas_equalTo(15);
+//    }];
+//    tip2Label.textColor = HJHexColor(0x999999);
+//    tip2Label.textAlignment = NSTextAlignmentCenter;
+//    tip2Label.font = [UIFont systemFontOfSize:15];
+//    tip2Label.text = @"网络异常";
     
     UIButton *reloadButton = [UIButton new];
     [self addSubview:reloadButton];
     [reloadButton mas_makeConstraints:^(MASConstraintMaker *make) {
         StrongObj(self);
         make.centerX.mas_equalTo(self.mas_centerX);
-        make.size.mas_equalTo(CGSizeMake(150, 40));
-        make.top.mas_equalTo(self->tip2Label.mas_bottom).mas_offset(60);
+        make.size.mas_equalTo(CGSizeMake(80, 30));
+        make.top.mas_equalTo(self->tip1Label.mas_bottom).mas_offset(15);
     }];
-    [reloadButton setTitle:@"刷新" forState:UIControlStateNormal];
-    [reloadButton setTitleColor:HJHexColor(0xff601a) forState:UIControlStateNormal];
-    reloadButton.titleLabel.font = [UIFont systemFontOfSize:15];
+    [reloadButton setTitle:@"点击重试" forState:UIControlStateNormal];
+    [reloadButton setTitleColor:[UIColor skinColor] forState:UIControlStateNormal];
+    reloadButton.titleLabel.font = [UIFont stateFont];
     [reloadButton addTarget:self action:@selector(reloadButtonAction) forControlEvents:UIControlEventTouchUpInside];
     reloadButton.layer.borderWidth = 0.5;
-    reloadButton.layer.borderColor = HJHexColor(0xff601a).CGColor;
-    reloadButton.layer.cornerRadius = 4;
+    reloadButton.layer.borderColor = [UIColor skinColor].CGColor;
+    reloadButton.layer.cornerRadius = 15;
 }
 
 - (void)reloadButtonAction {

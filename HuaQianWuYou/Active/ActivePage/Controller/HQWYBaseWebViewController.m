@@ -9,7 +9,7 @@
 #import "HQWYBaseWebViewController.h"
 #import <HJ_UIKit/HJAlertView.h>
 
-@interface HQWYBaseWebViewController ()<NavigationViewDelegate>
+@interface HQWYBaseWebViewController ()<NavigationViewDelegate,HJWebViewDelegate>
 
 @end
 
@@ -17,13 +17,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     self.navigationController.navigationBar.hidden = true;
     self.backButtonItem = nil;
     self.closeButtonItem = nil;
     self.customHeaderView = nil;
     self.view.backgroundColor = [UIColor whiteColor];
     [self initRefreshView];
+}
+
+#pragma mark webview 配置
+- (void)setWKWebViewInit{
+    if (@available(iOS 9.0, *)) {
+        self.wkWebView.allowsLinkPreview = NO;
+    } else {
+        // Fallback on earlier versions
+    }
+    self.wkWebView.backgroundColor = [UIColor backgroundGrayColor];
+    self.manager = [HJJSBridgeManager new];
+    [self.manager setupBridge:self.wkWebView navigationDelegate:self];
+    self.delegate = self;
+    self.wkWebView.scrollView.bounces = NO; self.wkWebView.scrollView.showsVerticalScrollIndicator = NO;
+    self.wkWebView.scrollView.showsHorizontalScrollIndicator = NO;
+    
 }
 
 //自定义导航栏
@@ -36,14 +51,16 @@
 - (void)initRefreshView {
     UIView *customeDefaultView = [UIView new];
     customeDefaultView.frame = self.view.frame;
+    customeDefaultView.backgroundColor = [UIColor backgroundGrayColor];
     self.refreshView = customeDefaultView;
     
      UIImageView *imageView = [UIImageView new];
     imageView.image = [UIImage imageNamed:@"defaultpage_nowifi"];
     [customeDefaultView addSubview:imageView];
     [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(customeDefaultView);
-        make.size.mas_equalTo(CGSizeMake(130, 130));
+        make.size.mas_equalTo(CGSizeMake(130, 130)); make.centerY.mas_equalTo(customeDefaultView.mas_centerY).mas_offset(-65.0);
+        make.centerX.mas_equalTo(customeDefaultView.mas_centerX);
+        
     }];
     UILabel *label = [UILabel new];
     [customeDefaultView addSubview:label];
@@ -53,7 +70,7 @@
         make.height.mas_equalTo(16.5);
     }];
     label.text = @"网络异常";
-    label.font = [UIFont systemFontOfSize:12];
+    label.font = [UIFont stateFont];
     label.textColor = HJHexColor(0xbbbbbb);
     
     UIButton *refreshBtn = [UIButton new];
@@ -66,7 +83,7 @@
     
     [refreshBtn setTitle:@"点击重试" forState:UIControlStateNormal];
     [refreshBtn setTitleColor:HJHexColor(0xFF601A) forState:UIControlStateNormal];
-    refreshBtn.titleLabel.font = [UIFont systemFontOfSize:12];
+    refreshBtn.titleLabel.font = [UIFont stateFont];
     refreshBtn.layer.borderColor = HJHexColor(0xFF601A).CGColor;
     refreshBtn.layer.borderWidth = 0.5;
     refreshBtn.cornerRadius = 15;
@@ -223,14 +240,20 @@
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:self.failUrl]];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setWkwebviewGesture{
+    [self.wkWebView evaluateJavaScript:@"document.documentElement.style.webkitTouchCallout='none';" completionHandler:^(id _Nullable completion, NSError * _Nullable error) {
+        
+    }];//去除长按手势
+    [self.wkWebView evaluateJavaScript:@"document.documentElement.style.webkitUserSelect='none';"completionHandler:nil];
 }
-*/
+
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential * _Nullable credential))completionHandler{
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        NSURLCredential *card = [[NSURLCredential alloc] initWithTrust:challenge.protectionSpace.serverTrust];
+    
+    completionHandler(NSURLSessionAuthChallengeUseCredential,card);
+    }
+    
+}
 
 @end

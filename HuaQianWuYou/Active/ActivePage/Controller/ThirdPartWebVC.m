@@ -19,11 +19,8 @@
 !responseCallback?:responseCallback(_value);
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
-@interface ThirdPartWebVC ()<NavigationViewDelegate,HQWYReturnToDetainViewDelegate,WKNavigationDelegate,WKUIDelegate>
-/**
- 桥接管理器
- */
-@property (strong, nonatomic)HJJSBridgeManager *manager;
+@interface ThirdPartWebVC ()<NavigationViewDelegate,HQWYReturnToDetainViewDelegate,WKNavigationDelegate,WKUIDelegate,HJWebViewDelegate>
+
 @property(nonatomic, strong)NSTimer *timer;
 @property(nonatomic, assign)NSInteger countTime;
 @property(nonatomic, strong)NSArray *listArr;
@@ -34,36 +31,36 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 @implementation ThirdPartWebVC
 
-#pragma mark - Life Cycle
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.listArr = [[NSArray alloc]init];
     self.isShowAlertOrBack = true;
-    if (@available(iOS 9.0, *)) {
-        self.wkWebView.allowsLinkPreview = NO;
-    } else {
-        // Fallback on earlier versions
-    }
-    self.manager = [HJJSBridgeManager new];
-    [_manager setupBridge:self.wkWebView navigationDelegate:self];
-    self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
+    [self setUPWKWebView];
     [self initNavigation];
     [self registerHander];
-    if (self.navigationDic != nil && self.navigationDic[@"productId"] != nil && !StrIsEmpty([HQWYUserManager loginMobilePhone])) {
-         NSString *productID = [NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]];
-        if(!StrIsEmpty(productID)){
-            [self uploadData:self.navigationDic[@"productId"]];
-        }
-    }
+    [self isUploadData];
     [self initData];
     [self.wkWebView ln_showLoadingHUDMoney];
 }
 
+#pragma mark webview 配置
+- (void)setUPWKWebView{
+    [self setWKWebViewInit];
+    self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    
     [self.wkWebView ln_hideProgressHUD];
+}
+
+- (void)isUploadData{
+    if (self.navigationDic != nil && self.navigationDic[@"productId"] != nil && !StrIsEmpty([HQWYUserManager loginMobilePhone])) {
+        NSString *productID = [NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]];
+        if(!StrIsEmpty(productID)){
+            [self uploadData:self.navigationDic[@"productId"]];
+        }
+    }
 }
 
 #pragma mark 上报数据
@@ -187,7 +184,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    _manager = nil;
+    self.manager = nil;
     [self.timer invalidate];
     self.timer = nil;
 }
@@ -196,9 +193,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)registerHander {
     WeakObj(self)
-    
+    self.manager = [HJJSBridgeManager new];
+    [self.manager setupBridge:self.wkWebView navigationDelegate:self];
     /** 注册埋点事件 */
-    [_manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+    [self.manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         StrongObj(self)
         NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
@@ -211,7 +209,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 /** 给JS发送通用数据 */
 - (void)sendMessageToJS:(id)message {
-    [_manager callHandler:kJSReceiveAppData data:[HQWYJavaScriptResponse result:message]];
+    [self.manager callHandler:kJSReceiveAppData data:[HQWYJavaScriptResponse result:message]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -236,18 +234,24 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     return [NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"];
 }
 
-- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
-    [self checkIsShowAlertOrBack:webView];
+- (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL{
+    [self checkIsShowAlertOrBack:URL];
+    [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
 }
 
-- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
-    [self checkIsShowAlertOrBack:webView];
+- (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
+    if (error.code == 101) {
+        [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
+        [self.refreshView removeFromSuperview];
+    }
+    [self checkIsShowAlertOrBack:URL];
+    [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
 }
 
-- (void)checkIsShowAlertOrBack:(WKWebView *)webView{
-    NSString *urlStr = [NSString stringWithFormat:@"%@",webView.URL];
+- (void)checkIsShowAlertOrBack:(NSURL *)webViewURL{
+    NSString *urlStr = [NSString stringWithFormat:@"%@",webViewURL];
     if (self.productIndex > 0){
         NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[self.productIndex - 1]];
         if ([urlStr isEqualToString:product[@"address"]]) {
