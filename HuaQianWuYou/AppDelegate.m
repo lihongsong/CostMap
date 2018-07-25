@@ -242,11 +242,11 @@
     buglyConfig.blockMonitorEnable = YES;
     buglyConfig.reportLogLevel = BuglyLogLevelError;
     buglyConfig.delegate = self;
-#if defined(Release)
+#if defined (Release)
     [Bugly startWithAppId:Bugly_AppId
                    config:buglyConfig];
 #else
-    [Bugly startWithAppId:Bugly_AppIdDebug
+    [Bugly startWithAppId:Bugly_AppId
         developmentDevice:YES
                    config:buglyConfig];
 #endif

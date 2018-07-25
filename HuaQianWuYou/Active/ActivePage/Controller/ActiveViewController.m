@@ -266,9 +266,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.getH5Dic = [[self jsonDicFromString:data] objectForKey:@"nav"];
         [self setNavigationStyle:self.getH5Dic];
         if ([(NSString *)data containsString:@"location:"]) {
-//            NSString *selectedLocation = self.getH5Dic[@"left"][@"text"];
             self.selectedLocation = self.getH5Dic[@"left"][@"text"];
-            NSLog(@"-----> %@",self.selectedLocation);
+            //NSLog(@"-----> %@",self.selectedLocation);
         }
     }];
     
@@ -336,8 +335,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取H5获取原生定位城市 */
     [self.manager registerHandler:kAppExecLocation handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        //        self.navigationView.leftLabel.text = @"定位中...";
-        //        [self.navigationView.leftItemButton setTitle:@"定位中..." forState:UIControlStateNormal];
         if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
             [self openTheAuthorizationOfLocation];
             
@@ -384,13 +381,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (typeDic != nil && [[typeDic objectForKey:@"hide"] integerValue]) {
         [UIView animateWithDuration:0.1 animations:^{
             self.navigationView.hidden = true;
-//            self.wkWebView.frame = CGRectMake(0,-StatusBarHeight, SWidth, SHeight + TabBarHeight - 49 + StatusBarHeight);
         }];
         [self.view layoutIfNeeded];
     }else{
         [UIView animateWithDuration:0.1 animations:^{
              self.navigationView.hidden = false;
-//            self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
         }];
         [self.navigationView changeNavigationType:typeDic];
     }
@@ -421,9 +416,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 {
     if (error)
     {
-        NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
         self.navigationView.leftLabel.text = @"定位失败";
-//        [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
         self.locatedCity[@"country"] = @"";
         self.locatedCity[@"city"] = @"定位失败";
         self.locatedCity[@"province"] = @"";
@@ -433,9 +426,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 //            NSLog(@"LOC = %@",location.location);
         }
         if (location.rgcData) {
-//            NSLog(@"rgc = %@",[location.rgcData description]);
             NSString *cityString = location.rgcData.city;
-//             [self.navigationView.leftItemButton setTitle:cityString forState:UIControlStateNormal];
             self.navigationView.leftLabel.text = cityString;
             self.locatedCity[@"country"] = location.rgcData.country;
             self.locatedCity[@"city"] = cityString;
@@ -451,8 +442,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  *  @param error 返回的错误，参考 CLError 。
  */
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nullable)error{
-    NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
-//    [self.navigationView.leftItemButton setTitle:@"定位失败" forState:UIControlStateNormal];
+   // NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
     self.navigationView.leftLabel.text = @"定位失败";
 }
 
@@ -462,7 +452,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  *  @param status 定位权限状态。
  */
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
-    NSLog(@"locStatus:{%d};",status);
+    //NSLog(@"locStatus:{%d};",status);
     if(status == kCLAuthorizationStatusDenied){
         [self openTheAuthorizationOfLocation];
     }
@@ -490,7 +480,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             if (!error) { // 成功
                 NSLog(@"%@",response);
             } else { // 失败
-                NSLog(@"%@",error.localizedDescription);
             }
         }];
     }

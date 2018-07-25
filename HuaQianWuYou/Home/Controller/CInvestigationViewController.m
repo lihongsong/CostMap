@@ -11,16 +11,14 @@
 #import <BMKLocationkit/BMKLocationComponent.h>
 //引入定位功能所有的头文件
 
-@interface CInvestigationViewController () {
+@interface CInvestigationViewController ()<BMKLocationManagerDelegate> {
     UIView *firstTfBg;
     UIView *secondTfBg;
     UIView *thirdTfBg;
     MASConstraint *heightConstraint;
     BOOL isShowThirTF;
-   BMKLocationManager* locService;
-   // BMKGeoCodeSearch *searcher;
 }
-
+@property(nonatomic,strong)BMKLocationManager *locationManager;
 @end
 
 @implementation CInvestigationViewController
@@ -227,70 +225,83 @@
 }
 
 #pragma - mark 初始化位置信息
-/*
-- (void)initLocationService {
-    //初始化BMKLocationService
-    self->locService = [[BMKLocationService alloc] init];
-    self->locService.delegate = (id <BMKLocationServiceDelegate>) self;
-    //启动LocationService
-    [self->locService startUserLocationService];
-    self->searcher = [[BMKGeoCodeSearch alloc] init];
-    self->searcher.delegate = (id <BMKGeoCodeSearchDelegate>) self;
-}
- */
 
-#pragma - mark BMKLocationServiceDelegate
+- (void)initLocationService {
+    //初始化实例
+    self.locationManager = [[BMKLocationManager alloc] init];
+    
+    self.locationManager.delegate = self;
+    
+    self.locationManager.coordinateType = BMKLocationCoordinateTypeBMK09LL;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.activityType = CLActivityTypeAutomotiveNavigation;
+    self.locationManager.pausesLocationUpdatesAutomatically = NO;
+    self.locationManager.allowsBackgroundLocationUpdates = NO;// YES的话是可以进行后台定位的，但需要项目配置，否则会报错，具体参考开发文档
+    self.locationManager.locationTimeout = 10;
+    self.locationManager.reGeocodeTimeout = 10;
+    [self.locationManager startUpdatingLocation];
+}
+ 
+
+#pragma - mark BMKLocationManagerDelegate
 
 /**
  *用户位置更新后，会调用此函数
- *@param userLocation 新的用户位置
+ *
  */
-/*
-- (void)didUpdateBMKUserLocation:(BMKUserLocation *)userLocation {
-    CLLocationCoordinate2D pt = (CLLocationCoordinate2D) {userLocation.location.coordinate.latitude, userLocation.location.coordinate.longitude};
-    BMKReverseGeoCodeOption *reverseGeocodeSearchOption = [[BMKReverseGeoCodeOption alloc] init];
-    reverseGeocodeSearchOption.reverseGeoPoint = pt;
-    [searcher reverseGeoCode:reverseGeocodeSearchOption];
-}
-*/
-#pragma - mark BMKGeoCodeSearchDelegate
 
-/**
- *返回反地理编码搜索结果
- *@param searcher 搜索对象
- *@param result 搜索结果
- *@param error 错误号，@see BMKSearchErrorCode
- */
-/*
-- (void)onGetReverseGeoCodeResult:(BMKGeoCodeSearch *)searcher result:(BMKReverseGeoCodeResult *)result errorCode:(BMKSearchErrorCode)error {
-    if (error == BMK_SEARCH_NO_ERROR) {
-      UIView *rightItemView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 90, 40)];
-      UILabel *locationLabel = [UILabel new];
-      UIImageView *locationImage = [UIImageView new];
-      [rightItemView addSubview:locationLabel];
-      [rightItemView addSubview:locationImage];
-      [locationImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(10, 13));
-        make.centerY.mas_equalTo(rightItemView.mas_centerY);
-      }];
-      [locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(40);
-        make.left.mas_equalTo(locationImage.mas_right).mas_offset(5);
-        make.right.mas_equalTo(rightItemView.mas_right);
-        make.centerY.mas_equalTo(rightItemView.mas_centerY);
-      }];
-      locationImage.image = [UIImage imageNamed:@"navbar_location_02"];
-      locationLabel.text = result.addressDetail.city;
-      locationLabel.textColor = HJHexColor(0xffffff);
-      locationLabel.adjustsFontSizeToFitWidth = YES;
-      locationLabel.textAlignment = NSTextAlignmentRight;
-      locationLabel.font = [UIFont systemFontOfSize:13];
-      UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItemView];
-      self.navigationItem.rightBarButtonItem = barButtonItem;
+- (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didUpdateLocation:(BMKLocation * _Nullable)location orError:(NSError * _Nullable)error
+
+{
+    
+    if (error == nil) {
+        UIView *rightItemView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 90, 40)];
+        UILabel *locationLabel = [UILabel new];
+        UIImageView *locationImage = [UIImageView new];
+        [rightItemView addSubview:locationLabel];
+        [rightItemView addSubview:locationImage];
+        [locationImage mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.size.mas_equalTo(CGSizeMake(10, 13));
+            make.centerY.mas_equalTo(rightItemView.mas_centerY);
+        }];
+        [locationLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.height.mas_equalTo(40);
+            make.left.mas_equalTo(locationImage.mas_right).mas_offset(5);
+            make.right.mas_equalTo(rightItemView.mas_right);
+            make.centerY.mas_equalTo(rightItemView.mas_centerY);
+        }];
+        locationImage.image = [UIImage imageNamed:@"navbar_location_02"];
+        locationLabel.text = location.rgcData.city;
+        locationLabel.textColor = HJHexColor(0xffffff);
+        locationLabel.adjustsFontSizeToFitWidth = YES;
+        locationLabel.textAlignment = NSTextAlignmentRight;
+        locationLabel.font = [UIFont systemFontOfSize:13];
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItemView];
+        self.navigationItem.rightBarButtonItem = barButtonItem;
     } else {
-      NSLog(@"地理位置反编码出错 ---> %@",[NSString stringWithFormat:@"%d", error]);
+        NSLog(@"地理位置反编码出错 ---> %@",[NSString stringWithFormat:@"%d", error.code]);
     }
 }
- */
 
+/**
+ *  @brief 当定位发生错误时，会调用代理的此方法。
+ *  @param manager 定位 BMKLocationManager 类。
+ *  @param error 返回的错误，参考 CLError 。
+ */
+- (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nullable)error{
+    // NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
+    //self.navigationView.leftLabel.text = @"定位失败";
+}
+
+/**
+ *  @brief 定位权限状态改变时回调函数
+ *  @param manager 定位 BMKLocationManager 类。
+ *  @param status 定位权限状态。
+ */
+- (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status{
+    //NSLog(@"locStatus:{%d};",status);
+    if(status == kCLAuthorizationStatusDenied){
+     //   [self openTheAuthorizationOfLocation];
+    }
+}
 @end
