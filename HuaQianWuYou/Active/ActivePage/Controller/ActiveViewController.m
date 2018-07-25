@@ -244,7 +244,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     /** 更新 */
     [self.manager registerHandler:kAppCheckUpdate handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         [XZYAppUpdate checkUpdate:^(NSError *error) {
-            
+            NSLog(@"____%@____%@",error,error.description);
         }];
     }];
     

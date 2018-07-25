@@ -40,18 +40,18 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>22720</string>
+	<string>22725</string>
 	<key>LSApplicationQueriesSchemes </key>
 	<dict>
 		<key>item0</key>
-		<string>ezloan</string>
+		<string>hqwy</string>
 	</dict>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>MiSDKAppID</key>
-	<string>2882303761517792919</string>
+	<string>2882303761517834576</string>
 	<key>MiSDKAppKey</key>
-	<string>5391779275919</string>
+	<string>5651783433576 </string>
 	<key>MiSDKRun</key>
 	<string>${MiSDKRun}</string>
 	<key>NSAppTransportSecurity</key>
@@ -75,6 +75,10 @@
 	<string>我们需要获取你的定位信息，提供对应城市的公积金和社保查询服务给您</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>我们需要打开您的相册选取照片，然后自定义您的个人头像</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

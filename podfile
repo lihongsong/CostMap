@@ -27,7 +27,7 @@ target 'HuaQianWuYou' do
     pod 'YYText', '1.0.4'
     pod 'YYModel', '1.0.4'
     pod 'BMKLocationKit'
-    pod 'AppUpdate'
+    pod 'AppUpdate', '1.0.9'
     pod 'HJJavascriptBridge', '~> 0.3.2'
     pod 'RCMobClick', '~>2.0.9'
     pod 'Feedback', '~> 1.2.1'

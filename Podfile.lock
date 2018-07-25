@@ -66,7 +66,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 3.1.0)
-  - AppUpdate
+  - AppUpdate (= 1.0.9)
   - BMKLocationKit
   - Bugly (= 2.5.0)
   - Feedback (~> 1.2.1)
@@ -130,6 +130,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: 34c1f45e8326197ecfe8b9ac68660ff300affdd8
+PODFILE CHECKSUM: a420e909a581a15eb2595bf6136741e2e22d2d17
 
 COCOAPODS: 1.5.3

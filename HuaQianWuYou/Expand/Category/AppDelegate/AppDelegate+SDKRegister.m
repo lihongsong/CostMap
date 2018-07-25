@@ -14,6 +14,7 @@
  公共强制升级SDK
  */
 - (void)registerAppUpdate {
+
   [XZYAppUpdate startWithAppKey:Update_SDK_AppId
                       channelId:APP_ChannelId
               appUpdatePriority:AppUpdatePriorityDefault];
