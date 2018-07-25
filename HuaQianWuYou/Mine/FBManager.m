@@ -17,17 +17,18 @@
     XZYFBConfigInstance.projectionID = MessageBoard_Id;
     XZYFBConfigInstance.groupQQ = nil;
     XZYFBConfigInstance.wechatPublicNumber = nil;
-    XZYFBConfigInstance.normalColor = [UIColor hj_colorWithHexString:@"#ff6a45"];
-    XZYFBConfigInstance.highLightColor = [UIColor hj_colorWithHexString:@"#ff6a45"];
-    XZYFBConfigInstance.disableColor = [UIColor hj_colorWithHexString:@"#ff6a45"];
+    XZYFBConfigInstance.normalColor = [UIColor loginGrayColor];
+    XZYFBConfigInstance.highLightColor = [UIColor skinColor];
+    XZYFBConfigInstance.disableColor = [UIColor loginGrayColor];
     XZYFBConfigInstance.leaveWordDefaultValue = @"感谢您的留言";
     XZYFBConfigInstance.navBackImage = [UIImage imageNamed:@"nav_icon_back"];
     XZYFBConfigInstance.navBackHighlightImage = [UIImage imageNamed:@"nav_icon_back"];
     XZYFBConfigInstance.contactDefaultValue = @"留下联系方式帮助更快联系到您";
-    XZYFBConfigInstance.navItemTitleColor = [UIColor hj_colorWithHexString:@"#333333"];
-    XZYFBConfigInstance.navItemTitleHighlightColor = [UIColor hj_colorWithHexString:@"#333333"];
+    XZYFBConfigInstance.navItemTitleColor = [UIColor bigTitleBlackColor];
+    XZYFBConfigInstance.navItemTitleHighlightColor = [UIColor bigTitleBlackColor];
     XZYFBConfigInstance.wordLimitColor = [UIColor hj_colorWithHexString:@"#ff6a45"];
     XZYFBConfigInstance.navBackImage = [UIImage imageNamed:@"nav_icon_back"];
+    XZYFBConfigInstance.leaveWordCountMin = 3;
 }
 
 + (void)showFBViewController:(UIViewController *)frameVC{
