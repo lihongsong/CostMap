@@ -47,7 +47,7 @@ static NSString * const aggrementDefaultPath = @"http://t1-static.huaqianwy.com/
     if (!host) {
         return activeDefaultPath;
     } else {
-        return [host stringByAppendingPathComponent:@"hqwy/dist/#/home"];
+        return [host stringByAppendingPathComponent:@"hqwy/#/home"];
     }
 }
 
@@ -57,7 +57,7 @@ static NSString * const aggrementDefaultPath = @"http://t1-static.huaqianwy.com/
     if (!host) {
         return aggrementDefaultPath;
     } else {
-        return [host stringByAppendingPathComponent:@"hqwy/dist/#/userServiceAgreement"];
+        return [host stringByAppendingPathComponent:@"hqwy/#/userServiceAgreement"];
     }
 }
 

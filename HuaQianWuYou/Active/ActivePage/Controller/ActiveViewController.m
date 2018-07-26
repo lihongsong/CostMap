@@ -542,5 +542,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.wkWebView ln_hideProgressHUD];
 }
 
+- (void)didReceiveMemoryWarning{
+    NSLog(@"______******Received memory warning*****______");
+    [self.wkWebView reload];
+}
 
 @end
