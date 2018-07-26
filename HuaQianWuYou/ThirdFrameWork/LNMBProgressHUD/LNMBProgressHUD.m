@@ -241,7 +241,7 @@ static const CGFloat kLNHUDHideDelay            = 2.0;
 }
 
 - (LNMBProgressHUD *)ln_showLoadingHUDMoney {
-    return [self ln_showLoadingHUDMoney:nil];
+    return [self ln_showLoadingHUDMoney:@"努力加载中…"];
 }
 
 - (LNMBProgressHUD *)ln_showLoadingHUDMoney:(NSString *)message {
@@ -259,10 +259,11 @@ static const CGFloat kLNHUDHideDelay            = 2.0;
                                                                    message:message];
     
     hud.loadingContentDirection = HQWYProgressHUDContentSixClock;
-    // FIXME：yoser 字体颜色？？？？
-    hud.detailsLabel.textColor = [UIColor redColor];
     hud.backgroundView.backgroundColor = [UIColor clearColor];
     hud.bezelView.backgroundColor = [UIColor clearColor];
+    hud.detailsLabel.font = [UIFont systemFontOfSize:13];
+    hud.detailsLabel.textColor = HJHexColor(0x999999);
+    hud.offset = CGPointMake(0, -50);
     
     return hud;
 }
