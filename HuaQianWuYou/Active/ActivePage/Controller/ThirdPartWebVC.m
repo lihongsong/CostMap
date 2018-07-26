@@ -33,6 +33,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.isShowFailToast = false;
     self.listArr = [[NSArray alloc]init];
     self.isShowAlertOrBack = true;
     [self setUPWKWebView];
@@ -40,7 +41,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self registerHander];
     [self isUploadData];
     [self initData];
-    [self.wkWebView ln_showLoadingHUDMoney];
+    if (![self externalAppRequiredToOpenURL:self.wkWebView.URL]) {
+         [self.wkWebView ln_showLoadingHUDMoney];
+    }
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
 }
 
 #pragma mark webview 配置
@@ -97,7 +101,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 -(void)rightButtonItemClick{
-    [self eventId:HQWY_ThirdPart_Back_click];
+    [self eventId:HQWY_ThirdPart_Right_click];
     [self toBeforeViewController];
     if (!StrIsEmpty([[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"])) {
         [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
@@ -112,6 +116,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma leftItemDelegate
 - (void)webGoBack{
+    [self eventId:HQWY_ThirdPart_Back_click];
     if (self.isShowAlertOrBack) {
         if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
             [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
@@ -240,22 +245,24 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
         return;
     }
+    self.isShowFailToast = false;
+    [self getResoponseCode:URL];
     [self checkIsShowAlertOrBack:URL];
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
-     NSLog(@"_____%@___%@____%ld",error,error.description,(long)error.code);
     if (error.code == 101) {
         [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
         [self.refreshView removeFromSuperview];
         return;
     }else{
-        if(self.refreshView.superview != nil){
+        if(self.isShowFailToast){
             [self.wkWebView ln_showToastHUD:@"网络异常~"];
         }
     }
+    self.isShowFailToast = true;
     [self checkIsShowAlertOrBack:URL];
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
@@ -277,6 +284,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             self.isShowAlertOrBack = false;
         }
     }
+}
+
+- (void)appWillEnterForeground:(NSNotification *)noti {
+    if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
+        [self.wkWebView reload];
+    }
+    [self.manager callHandler:kWebViewWillAppear];
 }
 
 @end

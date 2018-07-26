@@ -8,7 +8,6 @@
 
 #import "AuthPhoneNumViewController.h"
 #import "PasswordInputView.h"
-#import "UIButton+EnlableColor.h"
 //#import <HJCategories/NSString+HJNormalRegex.h>
 #import "SetPasswordViewController.h"
 #import "ImageCodeViewController.h"

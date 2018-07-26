@@ -8,7 +8,7 @@
 
 #import "PasswordInputView.h"
 #import "UIButton+Count.h"
-#import "UIButton+EnlableColor.h"
+
 //#import <HJCategories/NSString+HJNormalRegex.h>
 
 @interface PasswordInputView ()<UITextFieldDelegate>
@@ -45,7 +45,7 @@
 
 
 - (void)authCodeAction:(UIButton *)sender{
-    [self eventId:HQWY_Fix_Next_click];
+    [self eventId:HQWY_Fix_GetCode_click];
     if (self.type == PasswordInputTypeAuthPhoneNum) {
         if (![self.firstTextFieldView.text hj_isMobileNumber] ) {
              [KeyWindow ln_showToastHUD:@"请输入正确的手机号码"];

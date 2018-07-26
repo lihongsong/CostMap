@@ -77,7 +77,6 @@
 		5958089D20F2F53A002A6F0C /* PasswordInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5958089020F2F53A002A6F0C /* PasswordInputView.m */; };
 		5958089E20F2F53A002A6F0C /* ImageCodePopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5958089120F2F53A002A6F0C /* ImageCodePopView.xib */; };
 		5958089F20F2F53A002A6F0C /* PasswordInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5958089320F2F53A002A6F0C /* PasswordInputView.xib */; };
-		595808A520F2F946002A6F0C /* UIButton+EnlableColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 595808A120F2F945002A6F0C /* UIButton+EnlableColor.m */; };
 		595808A620F2F946002A6F0C /* UIButton+Count.m in Sources */ = {isa = PBXBuildFile; fileRef = 595808A420F2F945002A6F0C /* UIButton+Count.m */; };
 		595AE2C620EF37C40031A2F3 /* DeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2BE20EF37C30031A2F3 /* DeviceManager.m */; };
 		595AE2C720EF37C40031A2F3 /* LNRiskDeviceHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 595AE2BF20EF37C30031A2F3 /* LNRiskDeviceHelp.m */; };
@@ -379,9 +378,7 @@
 		5958089220F2F53A002A6F0C /* ImageCodePopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCodePopView.h; sourceTree = "<group>"; };
 		5958089320F2F53A002A6F0C /* PasswordInputView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PasswordInputView.xib; sourceTree = "<group>"; };
 		5958089420F2F53A002A6F0C /* PasswordInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordInputView.h; sourceTree = "<group>"; };
-		595808A120F2F945002A6F0C /* UIButton+EnlableColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlableColor.m"; sourceTree = "<group>"; };
 		595808A220F2F945002A6F0C /* UIButton+Count.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Count.h"; sourceTree = "<group>"; };
-		595808A320F2F945002A6F0C /* UIButton+EnlableColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlableColor.h"; sourceTree = "<group>"; };
 		595808A420F2F945002A6F0C /* UIButton+Count.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Count.m"; sourceTree = "<group>"; };
 		595AE2BE20EF37C30031A2F3 /* DeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceManager.m; sourceTree = "<group>"; };
 		595AE2BF20EF37C30031A2F3 /* LNRiskDeviceHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LNRiskDeviceHelp.m; sourceTree = "<group>"; };
@@ -1024,8 +1021,6 @@
 		595808A020F2F945002A6F0C /* UIButton */ = {
 			isa = PBXGroup;
 			children = (
-				595808A320F2F945002A6F0C /* UIButton+EnlableColor.h */,
-				595808A120F2F945002A6F0C /* UIButton+EnlableColor.m */,
 				595808A220F2F945002A6F0C /* UIButton+Count.h */,
 				595808A420F2F945002A6F0C /* UIButton+Count.m */,
 			);
@@ -2108,7 +2103,6 @@
 				595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */,
 				5960753E20EB21EC00D7AD1D /* LeftItemButton.m in Sources */,
 				A8F1288520F75D4300907FC6 /* NSString+cityInfos.m in Sources */,
-				595808A520F2F946002A6F0C /* UIButton+EnlableColor.m in Sources */,
 				59C5714120E600D100D54260 /* ZYZControl.m in Sources */,
 				9CA9292720F6164200F65941 /* NSObject+HQWYRequestConfig.m in Sources */,
 				A8F8DFB220B3AB3300DB9A6A /* AgreementViewController.m in Sources */,

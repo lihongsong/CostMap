@@ -111,7 +111,7 @@
     if (mobilStr) {
         return [DES3Util decryptString:mobilStr];
     }
-    return nil;
+    return @" ";
 }
 
 
@@ -122,7 +122,7 @@
          return [DES3Util decryptString:phoneStr];
      }
  
-     return nil;
+     return @" ";
  }
  
 

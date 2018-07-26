@@ -64,6 +64,9 @@ static NSString * const HQWY_Fix_Sure_click = @"xgmm;szmm;qr;w132";
 // 设置密码-返回
 static NSString * const HQWY_Fix_PasswordBack_click = @"xgmm;szmm;fh;w133";
 
+// 三方右键
+static NSString * const HQWY_ThirdPart_Right_click = @"zcy;fh;w147";
+
 // 返回
 static NSString * const HQWY_ThirdPart_Back_click = @"zcy;fh;w148";
 

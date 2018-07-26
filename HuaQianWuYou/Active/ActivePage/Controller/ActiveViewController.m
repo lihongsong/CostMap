@@ -68,7 +68,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.isShowFailToast = false;
     [self initData];
     [self setUPWKWebView];
     [self registerHander];
@@ -77,7 +77,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     //发送设备信息采集
     [DeviceManager sendDeviceinfo];
    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:@"kAppWillEnterForeground" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
 }
 
 - (void)initData{
@@ -121,7 +121,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         }
 }
 
-- (void)appWillEnterForeground {
+- (void)appWillEnterForeground:(NSNotification *)noti {
+    if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
+        [self.wkWebView reload];
+    }
     [self.manager callHandler:kWebViewWillAppear];
 }
 
@@ -423,7 +426,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
     if (location) {//得到定位信息，添加annotation
         if (location.location) {
-//            NSLog(@"LOC = %@",location.location);
+            NSString *locationStr = [NSString stringWithFormat:@"%f,%f", location.location.coordinate.latitude, location.location.coordinate.longitude];
+            UserDefaultSetObj(locationStr, @"LocationLatitudeLongitude");
         }
         if (location.rgcData) {
             NSString *cityString = location.rgcData.city;
@@ -532,25 +536,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL{
-//    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        
-//                NSHTTPURLResponse *tmpresponse = (NSHTTPURLResponse*)response;
-//        
-//                NSLog(@"statusCode:%ld", tmpresponse.statusCode);
-//        
-//            }];
-//    
-//        [dataTask resume];
-
+    self.isShowFailToast = false;
+    [self getResoponseCode:URL];
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
-    NSLog(@"_____%@___%@____%ld",error,error.description,(long)error.code);
-    if(self.refreshView.superview != nil){
+    if(self.isShowFailToast){
         [self.wkWebView ln_showToastHUD:@"网络异常~"];
     }
+    self.isShowFailToast = true;
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
 }

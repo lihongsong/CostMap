@@ -79,7 +79,7 @@
     
 //    NSString *channelId = LNSharedRiskConfiguration.channelId; // 渠道号
     
-    NSString *networkenv = [LNRiskDeviceHelp networkEnvironment]; // 网络环境 3G Wi-Fi
+  NSString *networkenv = GetUserDefault(@"networkEnvironment"); // 网络环境 3G Wi-Fi
     
     NSString *jailbreak = [NSString stringWithFormat:@"%d", [LNRiskDeviceHelp isJailBreak]]; // 0表示没有越狱，1表示越狱
     

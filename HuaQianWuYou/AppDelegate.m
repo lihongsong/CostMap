@@ -64,13 +64,26 @@
 
     //开始检测网络状态(主要针对IOS10以后的网络需要授权问题)
     //如果还没有网络授权,则在用户选择后再发送一些API
+    __block NSString *networkenv = @""; // 网络环境 3G Wi-Fi
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        if (status == AFNetworkReachabilityStatusReachableViaWWAN || status == AFNetworkReachabilityStatusReachableViaWiFi) {
-            //FIXME:review 这里什么意思？
-            //[selfWeak appBasicAPISend:launchOptions WithBlock:YES];
-
-        }
+            switch (status) {
+                case AFNetworkReachabilityStatusUnknown:
+                    networkenv = @"UNKNOWN";
+                    break;
+                case AFNetworkReachabilityStatusNotReachable:
+                    networkenv = @"NONET";
+                    break;
+                case AFNetworkReachabilityStatusReachableViaWWAN:
+                    networkenv = @"WWAN";
+                    break;
+                case AFNetworkReachabilityStatusReachableViaWiFi:
+                    networkenv = @"WiFi";
+                    break;
+                default:
+                    break;
+            }
+        SetUserDefault(networkenv, @"networkEnvironment")
     }];
     
     /** 注册小米推送,启动APNs */
@@ -199,17 +212,18 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-//    UserDefaultSetObj([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"], @"TenMinutesRefresh");
+    UserDefaultSetObj([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"], @"TenMinutesRefresh");
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    if ([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"].integerValue - [GetUserDefault(@"TenMinutesRefresh") integerValue] > 10) {
-        
+    NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"TenMinutesRefresh" : @"0"}];
+    if ([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"].integerValue - [GetUserDefault(@"TenMinutesRefresh") integerValue] > 1) {
+        [dic setObject:@"1" forKey:@"TenMinutesRefresh"];
     }
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppWillEnterForeground" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppWillEnterForeground" object:nil userInfo:dic];
 }
 
 

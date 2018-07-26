@@ -8,7 +8,6 @@
 
 #import "SetPasswordViewController.h"
 #import "PasswordInputView.h"
-#import "UIButton+EnlableColor.h"
 //#import <HJCategories/NSString+HJNormalRegex.h>
 #import "ChangePasswordModel+Service.h"
 @interface SetPasswordViewController ()<PasswordInputViewDelegate>
