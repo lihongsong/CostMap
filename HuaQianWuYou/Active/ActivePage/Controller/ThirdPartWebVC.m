@@ -250,6 +250,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (error.code == 101) {
         [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
         [self.refreshView removeFromSuperview];
+        return;
+    }else{
+        if(self.refreshView.superview != nil){
+            [self.wkWebView ln_showToastHUD:@"网络异常~"];
+        }
     }
     [self checkIsShowAlertOrBack:URL];
     [self setWkwebviewGesture];

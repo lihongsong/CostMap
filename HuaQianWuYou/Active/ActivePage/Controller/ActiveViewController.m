@@ -532,19 +532,33 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL{
+//    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        
+//                NSHTTPURLResponse *tmpresponse = (NSHTTPURLResponse*)response;
+//        
+//                NSLog(@"statusCode:%ld", tmpresponse.statusCode);
+//        
+//            }];
+//    
+//        [dataTask resume];
+
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
     NSLog(@"_____%@___%@____%ld",error,error.description,(long)error.code);
+    if(self.refreshView.superview != nil){
+        [self.wkWebView ln_showToastHUD:@"网络异常~"];
+    }
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)didReceiveMemoryWarning{
     NSLog(@"______******Received memory warning*****______");
-    [self.wkWebView reload];
+    [self.wkWebView ln_showLoadingHUDMoney];
+    [self loadURLString:Active_Path];
 }
 
 @end

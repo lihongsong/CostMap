@@ -47,19 +47,11 @@
     [self.defaultView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(0);
     }];
-    activityView = [UIActivityIndicatorView new];
-    [self.view addSubview:activityView];
-    [activityView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(self.view);
-    }];
-    activityView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    activityView.color = [UIColor redColor];
     WeakObj(self);
     self.defaultView.reloadBlock = ^{
         StrongObj(self);
-        if (!self->activityView.isAnimating) {
+        [self.defaultView ln_showLoadingHUDMoney];
           [self requestData];
-        }
     };
 }
 
@@ -67,11 +59,19 @@
     WeakObj(self);
     [BasicConfigModel requestBasicConfigCompletion:^(BasicConfigModel *_Nullable result, NSError *_Nullable error) {
         StrongObj(self);
-        [self->activityView stopAnimating];
+        NSLog(@"____%@___",error);
         if (error) {
-            [bgImageView ln_showToastHUD:error.userInfo[@"msg"]];
+            
+            if (error.code == kCFURLErrorNotConnectedToInternet && !
+                self.defaultView.hidden) {
+                [self.defaultView ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"网络异常~"];
+            }else{
+              [self.defaultView ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:error.userInfo[@"msg"]];
+            }
             self.defaultView.hidden = NO;
             return;
+        }else{
+            [self.defaultView ln_hideProgressHUD];
         }
         if (result) {
             self.defaultView.hidden = YES;

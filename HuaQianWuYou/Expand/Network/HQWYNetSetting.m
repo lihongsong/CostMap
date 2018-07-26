@@ -14,8 +14,8 @@ static NSString * const kMultiHost = @"debug_url_perference_Multi";
 static NSString * const memberDefaultPath = @"http://t1-static.huaqianwy.com/mem";
 static NSString * const productDefaultPath = @"http://t1-static.huaqianwy.com/api";
 static NSString * const hqwyV1DefaultPath = @"http://appjieqian.2345.com/index.php";
-static NSString * const activeDefaultPath = @"http://t1-static.huaqianwy.com/hqwy/#/home";
-static NSString * const aggrementDefaultPath = @"http://t1-static.huaqianwy.com/hqwy/#/userServiceAgreement";
+static NSString * const activeDefaultPath = @"http://t1-static.huaqianwy.com/hqwy/dist/#/home";
+static NSString * const aggrementDefaultPath = @"http://t1-static.huaqianwy.com/hqwy/dist/#/userServiceAgreement";
 
 @implementation HQWYNetSetting
 
@@ -47,7 +47,7 @@ static NSString * const aggrementDefaultPath = @"http://t1-static.huaqianwy.com/
     if (!host) {
         return activeDefaultPath;
     } else {
-        return [host stringByAppendingPathComponent:@"hqwy/#/home"];
+        return [host stringByAppendingPathComponent:@"hqwy/dist/#/home"];
     }
 }
 
@@ -57,7 +57,7 @@ static NSString * const aggrementDefaultPath = @"http://t1-static.huaqianwy.com/
     if (!host) {
         return aggrementDefaultPath;
     } else {
-        return [host stringByAppendingPathComponent:@"hqwy/#/userServiceAgreement"];
+        return [host stringByAppendingPathComponent:@"hqwy/dist/#/userServiceAgreement"];
     }
 }
 

@@ -237,6 +237,7 @@
 }
 
 - (void)reloadWebview {
+    [self.wkWebView ln_showLoadingHUDMoney];
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:self.failUrl]];
 }
 
