@@ -537,7 +537,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
+    NSLog(@"_____%@___%@____%ld",error,error.description,(long)error.code);
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
 }
+
+
 @end

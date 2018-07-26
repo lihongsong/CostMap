@@ -235,12 +235,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL{
+    NSString *strUrl = [NSString stringWithFormat:@"%@",URL];
+    if(StrIsEmpty(strUrl)){
+        [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
+        return;
+    }
     [self checkIsShowAlertOrBack:URL];
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
+     NSLog(@"_____%@___%@____%ld",error,error.description,(long)error.code);
     if (error.code == 101) {
         [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
         [self.refreshView removeFromSuperview];
