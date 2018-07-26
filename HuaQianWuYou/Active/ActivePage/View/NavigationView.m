@@ -84,7 +84,7 @@
         make.left.mas_equalTo(self.mas_left).mas_offset(15);
         make.centerY.mas_equalTo(self.mas_centerY);
         make.height.mas_equalTo(44);
-        make.width.mas_equalTo(50);
+        make.width.mas_equalTo(80);
 //        make.width.mas_greaterThanOrEqualTo(55);
 //        make.width.mas_greaterThanOrEqualTo(80);
     }];

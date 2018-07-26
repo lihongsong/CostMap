@@ -83,7 +83,7 @@
 
 -(void)backPage {
     [self eventId:HQWY_Fix_PasswordBack_click];
-    [self.navigationController popToRootViewControllerAnimated:true];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)nextAction:(UIButton *)sender{
