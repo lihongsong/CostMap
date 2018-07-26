@@ -17,7 +17,7 @@
     XZYFBConfigInstance.projectionID = MessageBoard_Id;
     XZYFBConfigInstance.groupQQ = nil;
     XZYFBConfigInstance.wechatPublicNumber = nil;
-    XZYFBConfigInstance.normalColor = [UIColor loginGrayColor];
+    XZYFBConfigInstance.normalColor = [UIColor skinColor];
     XZYFBConfigInstance.highLightColor = [UIColor skinColor];
     XZYFBConfigInstance.disableColor = [UIColor loginGrayColor];
     XZYFBConfigInstance.leaveWordDefaultValue = @"感谢您的留言";
