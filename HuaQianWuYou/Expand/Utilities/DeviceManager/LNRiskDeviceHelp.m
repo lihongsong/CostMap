@@ -190,7 +190,7 @@ char *LNRiskPrintEnv(void) {
 + (NSString *)networkEnvironment {
 
     LNRiskReachabilityStatus status = [LNRiskNetReachability sharedManager].networkReachabilityStatus;
-    NSString *networkENV            = nil;
+    NSString *networkENV        = nil;
     switch (status) {
         case LNRiskReachabilityStatusUnknown:
             networkENV = @"UNKNOWN";

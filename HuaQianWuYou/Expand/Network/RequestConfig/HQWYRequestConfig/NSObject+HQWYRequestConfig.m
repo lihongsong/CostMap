@@ -58,6 +58,13 @@ static NSString *const kHQWYBodyKey         = @"body";
 
     [requestSerializer setValue:[RCBaseCommon getAppReleaseVersionString] forHTTPHeaderField:@"version"];
 
+    //屏*蔽*产*品
+    NSString *productHidden = GetUserDefault(KProductHidden);
+    if (StrIsEmpty(productHidden)) {
+        productHidden = @"N";
+    }
+    [requestSerializer setValue:productHidden forHTTPHeaderField:@"productHidden"];
+    
     //拼接武林榜UID字符串到User-Agent尾部
     NSString *userAgent = [requestSerializer.HTTPRequestHeaders objectForKey:@"User-Agent"];
     userAgent = [userAgent stringByAppendingString:[RCBaseCommon getUIDString]];

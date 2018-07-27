@@ -17,7 +17,7 @@
 @implementation DiscoverDetailTopView
 
 - (instancetype)init {
-    if ([super init]) {
+    if (self = [super init]) {
         [self setUpUI];
     }
     return  self;

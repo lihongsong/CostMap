@@ -552,6 +552,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
     NSLog(@"______******Received memory warning*****______");
     [self.wkWebView ln_showLoadingHUDMoney];
     [self loadURLString:Active_Path];

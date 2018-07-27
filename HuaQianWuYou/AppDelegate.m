@@ -219,7 +219,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"TenMinutesRefresh" : @"0"}];
-    if ([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"].integerValue - [GetUserDefault(@"TenMinutesRefresh") integerValue] > 1) {
+    if ([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"].integerValue - [GetUserDefault(@"TenMinutesRefresh") integerValue] > 10) {
         [dic setObject:@"1" forKey:@"TenMinutesRefresh"];
     }
     
