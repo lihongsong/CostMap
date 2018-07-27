@@ -19,16 +19,13 @@
 + (void)sendDeviceinfo{
     
     NSDictionary *devInfo = [DeviceHelp collectDeviceInfo];
-    
-    LoginUserInfoModel *userInfo = [LoginUserInfoModel cachedLoginModel];
-    
     NSData *data = [NSJSONSerialization dataWithJSONObject:devInfo
                                                    options:NSJSONWritingPrettyPrinted
                                                      error:nil];
-    
+
     [self ln_requestJsonModelAPI:Device_info
                          headers:@{@"Content-Type" : @"application/json",
-                                   @"phone": userInfo.mobile ?: @""}
+                                   @"phone": [HQWYUserManager loginMobilePhone]}
                         httpBody:data
                       completion:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
                           
