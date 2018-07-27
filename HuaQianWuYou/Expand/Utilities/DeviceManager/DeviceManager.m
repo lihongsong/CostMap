@@ -25,7 +25,7 @@
 
     [self ln_requestJsonModelAPI:Device_info
                          headers:@{@"Content-Type" : @"application/json",
-                                   @"phone": [HQWYUserManager loginMobilePhone]}
+                                   @"phone" : [HQWYUserManager loginMobilePhone]}
                         httpBody:data
                       completion:^(id  _Nonnull responseObject, NSError * _Nonnull error) {
                           

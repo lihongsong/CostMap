@@ -69,7 +69,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark 上报数据
 - (void)uploadData:(NSNumber *)productId {
     [UploadProductModel uploadProduct:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] productID:productId Completion:^(UploadProductModel * _Nullable result, NSError * _Nullable error) {
-        [self initData];
+        [self initDataCompletion:^(id _Nullable result, NSError * _Nullable error) {
+            
+        }];
     }];
 }
 
@@ -84,19 +86,21 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.navigationView changeNavigationType:self.navigationDic[@"nav"]];
 }
 
-- (void)initData{
+- (void)initDataCompletion:(nullable void (^)(id _Nullable, NSError * _Nullable))completion{
      NSString *needBackDialog = [NSString stringWithFormat:@"%@",self.navigationDic[@"needBackDialog"]];
     if ([needBackDialog integerValue] ||[needBackDialog isEqualToString:@"true"]) {
         WeakObj(self);
-        self.productIndex = 0;
-        
         [UnClickProductModel getUnClickProductList:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] Completion:^(id _Nullable result, NSError * _Nullable error) {
             StrongObj(self);
             if (error) {
+                completion(result,error);
                 return;
-            } 
+            }
             self.listArr = result;
+            completion(result,error);
         }];
+    }else{
+        completion(nil,nil);
     }
 }
 
@@ -142,10 +146,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             [self toBeforeViewController];
             return;
         }
-        if(self.productIndex >= self.listArr.count){
-            [self toBeforeViewController];
-            return;
-        }
+    
         self.countTime = 3;
         self.timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(changeTime) userInfo:nil repeats:YES];
         [HQWYReturnToDetainView showController:self];
@@ -176,12 +177,20 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.countTime = 3;
         [self.timer invalidate];
         self.timer = nil;
-        NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[self.productIndex]];
-        [self uploadData:product[@"id"]];
-        [self loadURLString:product[@"address"]];
-        //NSLog(@"____%@",product[@"address"]);
-        [self.navigationView.titleButton setTitle:product[@"name"] forState:UIControlStateNormal];
-        self.productIndex ++;
+        [self.wkWebView ln_showLoadingHUDMoney];
+        [self initDataCompletion:^(id _Nullable result, NSError * _Nullable error) {
+            if (error) {
+                [self.wkWebView ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.hqwy_errorMessage];
+                return;
+            }
+            [self.wkWebView ln_hideProgressHUD];
+            if (self.listArr.count > 0) {
+                NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[0]];
+                [self uploadData:product[@"id"]];
+                [self loadURLString:product[@"address"]];
+                [self.navigationView.titleButton setTitle:product[@"name"] forState:UIControlStateNormal];
+            }
+        }];
     }else{
         [HQWYReturnToDetainView countTime:[NSString stringWithFormat:@"%ld",(long)self.countTime]];
     }
@@ -270,8 +279,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)checkIsShowAlertOrBack:(NSURL *)webViewURL{
     NSString *urlStr = [NSString stringWithFormat:@"%@",webViewURL];
-    if (self.productIndex > 0){
-        NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[self.productIndex - 1]];
+    if (self.listArr.count > 0){
+        NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[0]];
         if ([urlStr isEqualToString:product[@"address"]]) {
             self.isShowAlertOrBack = true;
         }else{
