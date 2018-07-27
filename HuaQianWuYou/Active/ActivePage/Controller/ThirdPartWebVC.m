@@ -40,7 +40,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self initNavigation];
     [self registerHander];
     [self isUploadData];
-    [self initData];
     if (![self externalAppRequiredToOpenURL:self.wkWebView.URL]) {
          [self.wkWebView ln_showLoadingHUDMoney];
     }
@@ -70,6 +69,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark 上报数据
 - (void)uploadData:(NSNumber *)productId {
     [UploadProductModel uploadProduct:self.navigationDic[@"category"] mobilePhone:[HQWYUserManager loginMobilePhone] productID:productId Completion:^(UploadProductModel * _Nullable result, NSError * _Nullable error) {
+        [self initData];
     }];
 }
 
