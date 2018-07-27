@@ -90,6 +90,33 @@
     [refreshBtn addTarget:self action:@selector(reloadWebview) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (UIView *)changeRefreshView {
+    UIView *customeDefaultView = [UIView new];
+    customeDefaultView.frame = self.view.frame;
+    customeDefaultView.backgroundColor = [UIColor backgroundGrayColor];
+    self.refreshView = customeDefaultView;
+    
+    UIImageView *imageView = [UIImageView new];
+    imageView.image = [UIImage imageNamed:@"defaultpage_nowifi"];
+    [customeDefaultView addSubview:imageView];
+    [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(130, 130)); make.centerY.mas_equalTo(customeDefaultView.mas_centerY).mas_offset(-65.0);
+        make.centerX.mas_equalTo(customeDefaultView.mas_centerX);
+        
+    }];
+    UILabel *label = [UILabel new];
+    [customeDefaultView addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(imageView.mas_bottom);
+        make.centerX.mas_equalTo(imageView.mas_centerX);
+        make.height.mas_equalTo(16.5);
+    }];
+    label.text = @"网络异常";
+    label.font = [UIFont stateFont];
+    label.textColor = HJHexColor(0xbbbbbb);
+    return customeDefaultView;
+}
+
 // 定位权限
 - (void)openTheAuthorizationOfLocation {
     
@@ -237,8 +264,31 @@
 }
 
 - (void)reloadWebview {
-    [self.wkWebView ln_showLoadingHUDMoney];
+    if (![self externalAppRequiredToOpenURL:self.failUrl]) {
+        [self.wkWebView ln_showLoadingHUDMoney];
+    }
     [self.wkWebView loadRequest:[NSURLRequest requestWithURL:self.failUrl]];
+}
+
+- (void)getResoponseCode:(NSURL *)URL{
+    NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSHTTPURLResponse *tmpresponse = (NSHTTPURLResponse*)response;
+        NSLog(@"statusCode:%ld", tmpresponse.statusCode);
+        if(tmpresponse.statusCode == 400 || tmpresponse.statusCode == 403 || tmpresponse.statusCode == 404 || tmpresponse.statusCode == 500 || tmpresponse.statusCode == 503 || tmpresponse.statusCode == 505 ){
+            if (self.refreshView && error.code != NSURLErrorCancelled) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.wkWebView addSubview:self.refreshView];
+                });
+            }
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (self.refreshView) {
+                    [self.refreshView removeFromSuperview];
+                }
+            });
+        }
+    }];
+    [dataTask resume];
 }
 
 - (void)setWkwebviewGesture{

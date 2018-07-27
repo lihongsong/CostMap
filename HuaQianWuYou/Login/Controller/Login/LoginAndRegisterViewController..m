@@ -77,8 +77,8 @@
         _codeInputView = [[TwoTextFieldView alloc]initWithFrame:CGRectMake(0, 100 + 50, SWidth, 125)];
         _codeInputView.delegate = self;
         _codeInputView.firstTF.delegate = self;
-        _codeInputView.firstTF.text = [HQWYUserManager lastLoginMobilePhone];
-        if ([[HQWYUserManager lastLoginMobilePhone] length] > 0) {
+        if([[HQWYUserManager lastLoginMobilePhone] length] == 11){
+            _codeInputView.firstTF.text = [HQWYUserManager lastLoginMobilePhone];
             _codeInputView.codeButton.selected = true;
         }
         _codeInputView.secondTF.delegate = self;
@@ -92,7 +92,9 @@
         _passwordInputView = [[TwoTextFieldView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.codeInputView.frame), self.codeInputView.hj_y, SWidth, 125)];
         _passwordInputView.delegate = self;
         _passwordInputView.firstTF.delegate = self;
-        _passwordInputView.firstTF.text = [HQWYUserManager lastLoginMobilePhone];
+        if([[HQWYUserManager lastLoginMobilePhone] length] == 11){
+            _passwordInputView.firstTF.text = [HQWYUserManager lastLoginMobilePhone];
+        }
         _passwordInputView.secondTF.secureTextEntry = true;
         _passwordInputView.secondTF.delegate = self;
         [_passwordInputView setType:TextFieldTypeCode];
@@ -294,8 +296,7 @@
      }
 }
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{    if (self.forgetButton.hidden) {//代表验证码登录，无忘记密码
         if ([textField isEqual:self.codeInputView.firstTF]) {
             if (textField.text.length >= 10 && string.length > 0) {
                 self.codeInputView.codeButton.selected = true;

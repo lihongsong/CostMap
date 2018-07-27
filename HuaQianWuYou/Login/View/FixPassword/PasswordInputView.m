@@ -8,7 +8,7 @@
 
 #import "PasswordInputView.h"
 #import "UIButton+Count.h"
-#import "UIButton+EnlableColor.h"
+
 //#import <HJCategories/NSString+HJNormalRegex.h>
 
 @interface PasswordInputView ()<UITextFieldDelegate>
@@ -45,7 +45,7 @@
 
 
 - (void)authCodeAction:(UIButton *)sender{
-    [self eventId:HQWY_Fix_Next_click];
+    [self eventId:HQWY_Fix_GetCode_click];
     if (self.type == PasswordInputTypeAuthPhoneNum) {
         if (![self.firstTextFieldView.text hj_isMobileNumber] ) {
              [KeyWindow ln_showToastHUD:@"请输入正确的手机号码"];
@@ -80,9 +80,9 @@
             self.secondTitleLable.text = nil;
             self.firstTextFieldView.keyboardType = UIKeyboardTypeNumberPad;
             self.firstTextFieldView.placeholder = @"请填写真实有效的手机号";
-            self.firstTextFieldView.text = [HQWYUserManager lastLoginMobilePhone];
-            if ([[HQWYUserManager lastLoginMobilePhone] length] > 0) {
-                self.authCodeButton.selected = true;
+            if([[HQWYUserManager lastLoginMobilePhone] length] == 11){
+                self.firstTextFieldView.text = [HQWYUserManager lastLoginMobilePhone];
+                 self.authCodeButton.selected = true;
             }
             self.secondTextFieldView.placeholder = @"请填写短信验证码";
             self.secondTextFieldView.keyboardType = UIKeyboardTypeNumberPad;

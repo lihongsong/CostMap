@@ -190,7 +190,7 @@ char *LNRiskPrintEnv(void) {
 + (NSString *)networkEnvironment {
 
     LNRiskReachabilityStatus status = [LNRiskNetReachability sharedManager].networkReachabilityStatus;
-    NSString *networkENV            = nil;
+    NSString *networkENV        = nil;
     switch (status) {
         case LNRiskReachabilityStatusUnknown:
             networkENV = @"UNKNOWN";
@@ -235,7 +235,7 @@ char *LNRiskPrintEnv(void) {
 
 //    LNRiskManageLocationModel *locationModel = [LNRiskGPSService instance].currentLocation;
 //    NSString *locationStr                    = [NSString stringWithFormat:@"%f,%f", locationModel.latitude, locationModel.longitude];
-    return nil;
+    return GetUserDefault(@"LocationLatitudeLongitude") ? GetUserDefault(@"LocationLatitudeLongitude") : @"";
 }
 
 // 屏幕亮度
