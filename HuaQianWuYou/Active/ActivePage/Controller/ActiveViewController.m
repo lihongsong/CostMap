@@ -76,8 +76,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [HJJSBridgeManager enableLogging];
     //发送设备信息采集
     [DeviceManager sendDeviceinfo];
-   
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
+    NSNotificationCenter *notificatoinCenter = [NSNotificationCenter defaultCenter];
+    [notificatoinCenter addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
+    
+    [notificatoinCenter addObserver:self selector:@selector(topPreRecommend:) name:@"kAppClickTopPreRecommend" object:nil];
+}
+
+- (void)topPreRecommend:(NSNotification *)notification{
+    self.getH5Dic = notification.userInfo;
+    [self rightButtonItemClick];
 }
 
 - (void)initData{
@@ -132,7 +139,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)didSelectedContent:(BasicDataModel *)dataModel popType:(AdvertisingType)type{
     if ([HQWYUserManager hasAlreadyLoggedIn]) {
         ThirdPartWebVC *webView = [ThirdPartWebVC new];
-        webView.navigationDic = @{@"nav" : @{@"title" : @{@"text" : dataModel.productName}, @"backKeyHide":@"0"}, @"category" : [NSString stringWithFormat:@"%ld",(long)type], @"needBackDialog" : @"0", @"productId" : dataModel.productId, @"url" : dataModel.address};
+        webView.navigationDic = @{@"nav" : @{@"title" : @{@"text" : dataModel.productName}, @"backKeyHide":@"0", @"right" : @{@"text" : @"精准推荐", @"callback" : @"topPreRecommend()"}}, @"category" : [NSString stringWithFormat:@"%ld",(long)type], @"needBackDialog" : @"0", @"productId" : dataModel.productId, @"url" : dataModel.address};
         [webView loadURLString:dataModel.address];
         [self.navigationController pushViewController:webView animated:true];
     }else{
@@ -395,7 +402,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 -(void)rightButtonItemClick{
-    
     if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
         [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
             if (!error) { // 成功

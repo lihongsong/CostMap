@@ -60,6 +60,9 @@
     if (rightDic != nil && !StrIsEmpty([rightDic objectForKey:@"text"])) {
         self.rightItemButton.hidden = false;
         [self.rightItemButton setTitle:[rightDic objectForKey:@"text"] forState:UIControlStateNormal];
+        if (![[rightDic objectForKey:@"text"] isEqualToString:@"精准推荐"]){
+            [self.rightItemButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+        }
         if (!StrIsEmpty([rightDic objectForKey:@"textColor"])) {
             [self.rightItemButton setTitleColor:[UIColor hj_colorWithHexString:[rightDic objectForKey:@"textColor"]] forState:UIControlStateNormal];
         }

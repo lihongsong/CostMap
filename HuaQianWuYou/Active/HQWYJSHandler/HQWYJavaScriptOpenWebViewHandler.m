@@ -28,6 +28,7 @@
     NSData *jsonData = [message dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     BOOL needLogin = [dic[@"needLogin"] boolValue];
+    
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;
     if (needLogin && ![HQWYUserManager hasAlreadyLoggedIn]) {
         LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];

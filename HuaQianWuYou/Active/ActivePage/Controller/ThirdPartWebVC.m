@@ -104,18 +104,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
 }
 
+#pragma mark 右边精准推荐
 -(void)rightButtonItemClick{
     [self eventId:HQWY_ThirdPart_Right_click];
-    [self toBeforeViewController];
-    if (!StrIsEmpty([[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"])) {
-        [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-            if (!error) { // 成功
-                NSLog(@"%@",response);
-            } else { // 失败
-                NSLog(@"%@",error.localizedDescription);
-            }
-        }];
-    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppClickTopPreRecommend" object:nil userInfo:[self.navigationDic objectForKey:@"nav"]];
+    [self toBeforeViewControllerAnimation:false];
 }
 
 #pragma leftItemDelegate
@@ -132,18 +125,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         NSString *needBackDialog = [NSString stringWithFormat:@"%@",self.navigationDic[@"needBackDialog"]];
         if (![needBackDialog integerValue]){
             if (![needBackDialog isEqualToString:@"true"]){
-                [self toBeforeViewController];
+                [self toBeforeViewControllerAnimation:true];
                 return;
             }
         }
         
         if ([GetUserDefault(@"isShowPromptToday") isEqualToString:[self getToday]]) {
-            [self toBeforeViewController];
+            [self toBeforeViewControllerAnimation:true];
             return;
         }
         
         if (!(self.listArr.count > 0)) {
-            [self toBeforeViewController];
+            [self toBeforeViewControllerAnimation:true];
             return;
         }
     
@@ -155,16 +148,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         if(self.wkWebView.canGoBack){
             [self.wkWebView goBack];
         }else{
-            [self toBeforeViewController];
+            [self toBeforeViewControllerAnimation:true];
         }
     }
 }
 
-- (void)toBeforeViewController{
+- (void)toBeforeViewControllerAnimation:(BOOL) animate{
     if (self.navigationController != nil) {
-        [self.navigationController popViewControllerAnimated:true];
+        [self.navigationController popViewControllerAnimated:animate];
     }else{
-        [self dismissViewControllerAnimated:true completion:^{
+        [self dismissViewControllerAnimated:animate completion:^{
             
         }];
     }
@@ -233,14 +226,14 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma mark HQWYReturnToDetainViewDelegate
 - (void)cancleAlertClick {
-    [self toBeforeViewController];
+    [self toBeforeViewControllerAnimation:true];
     [HQWYReturnToDetainView  dismiss];
 }
 
 #pragma mark HQWYReturnToDetainViewDelegate
 - (void)nonePromptButtonClick {
     SetUserDefault([self getToday],@"isShowPromptToday");
-    [self toBeforeViewController];
+    [self toBeforeViewControllerAnimation:true];
     [HQWYReturnToDetainView  dismiss];
 }
 
@@ -249,6 +242,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL{
+    NSLog(@"____%@",URL);
     NSString *strUrl = [NSString stringWithFormat:@"%@",URL];
     if(StrIsEmpty(strUrl)){
         [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
@@ -262,9 +256,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
+    NSLog(@"____%@_______%@,____%ld",URL,error.description,(long)error.code);
     if (error.code == 101) {
         [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
         [self.refreshView removeFromSuperview];
+        return;
+    }else if (error.code == 102){
+       [self.refreshView removeFromSuperview];
         return;
     }else{
         if(self.isShowFailToast){

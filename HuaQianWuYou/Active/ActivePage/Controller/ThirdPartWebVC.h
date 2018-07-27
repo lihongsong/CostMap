@@ -8,7 +8,9 @@
 
 
 #import "HQWYBaseWebViewController.h"
+typedef void (^RightClickBlock)(void);
 
 @interface ThirdPartWebVC : HQWYBaseWebViewController
-@property(nonatomic,strong)NSDictionary *navigationDic;
+@property (nonatomic, strong) NSDictionary *navigationDic;
+@property (nonatomic, copy) RightClickBlock rightBlock;
 @end
