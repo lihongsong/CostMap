@@ -292,9 +292,24 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         ResponseCallback([HQWYJavaScriptResponse result:[UIDevice hj_appVersion]]);
     }];
     
+    /** 注册获取channel事件 */
+    [self.manager registerHandler:kAppGetChannel handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([HQWYJavaScriptResponse result:APP_ChannelId]);
+    }];
+    
     /** 注册获取bundleID事件 */
     [self.manager registerHandler:kAppGetBundleId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([HQWYJavaScriptResponse result:[UIDevice hj_bundleName]]);
+    }];
+
+    /** web 返回 */
+    [self.manager registerHandler:kAppExecBack handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [self.navigationController popViewControllerAnimated:true];
+    }];
+    
+    /** web 返回 */
+    [self.manager registerHandler:kAppCloseWebview handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [self.navigationController popViewControllerAnimated:true];
     }];
     
     /** 注册获取用户token事件 */
@@ -442,8 +457,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             UserDefaultSetObj(locationStr, @"LocationLatitudeLongitude");
         }
         if (location.rgcData) {
-            NSString *cityString = location.rgcData.city;
-            self.navigationView.leftLabel.text = cityString;
+              NSString *cityString = location.rgcData.city;
+            if ([location.rgcData.country containsString:@"中国"]) {
+                if([cityString containsString:@"香港"] || [cityString containsString:@"澳门"] || [location.rgcData.province containsString:@"台湾"]){
+                    self.navigationView.leftLabel.text = @"未知城市";
+                }else{
+                   self.navigationView.leftLabel.text = cityString;
+                }
+            }else{
+                self.navigationView.leftLabel.text = @"未知城市";
+            }
             self.locatedCity[@"country"] = location.rgcData.country;
             self.locatedCity[@"city"] = cityString;
             self.locatedCity[@"province"] = location.rgcData.province;
@@ -534,9 +557,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [LoginOut signOUT:^(id _Nullable result, NSError * _Nullable error) {
         
         if (error) {
-            outBlock(false);
-            [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
-                                  message:error.hqwy_errorMessage];
+            if(error.hqwy_respCode == HQWYRESPONSECODE_UN_AUTHORIZATION){//这种退出登录成功处理
+                outBlock(true);
+            }else{
+                outBlock(false);
+                [KeyWindow ln_hideProgressHUD:LNMBProgressHUDAnimationError
+                                      message:error.hqwy_errorMessage];
+            }
             return ;
         } else {
             [KeyWindow ln_hideProgressHUD];

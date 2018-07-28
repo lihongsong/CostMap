@@ -7,7 +7,7 @@
 //
 
 #import "HQWYBaseWebViewController.h"
-typedef void (^SignFinishBlock)(void);
+
 @interface ActiveViewController : HQWYBaseWebViewController 
 
 /** 给JS发送通用数据 */

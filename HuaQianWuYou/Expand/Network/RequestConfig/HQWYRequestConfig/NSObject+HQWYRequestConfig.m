@@ -133,11 +133,8 @@ static NSString *const kHQWYBodyKey         = @"body";
                          failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     if (error) {
         if (failure) {
-            failure(task, error);
-            if (!error) {
-                NSString *errMsg = [responseObject objectForKey:@"msg"];
-                [KeyWindow ln_showToastHUD:errMsg];
-            }
+            NSError *customError = [NSError custom_systemErrorCodeString:error.code];
+                failure(task, customError);
         }
         return;
     }

@@ -177,4 +177,11 @@ static NSString * const kAppShowLoading = @"appShowLoadingDialog";
  */
 static NSString * const kAppClearUser = @"appClearUser";
 
+/*!
+ 退出web
+ */
+static NSString * const kAppCloseWebview = @"appCloseWebview";
+
+
+
 #endif /* HQWYJavaSBridgeHandleMacros_h */

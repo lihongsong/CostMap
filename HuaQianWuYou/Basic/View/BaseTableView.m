@@ -10,7 +10,7 @@
 
 @implementation BaseTableView
 
-@synthesize delegate = _delegate;
+//@synthesize delegate = _delegate;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];

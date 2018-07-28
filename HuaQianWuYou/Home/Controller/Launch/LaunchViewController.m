@@ -62,11 +62,8 @@
         NSLog(@"____%@___",error);
         if (error) {
             
-            if (error.code == kCFURLErrorNotConnectedToInternet && !
-                self.defaultView.hidden) {
-                [self.defaultView ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"网络异常~"];
-            }else{
-              [self.defaultView ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:error.userInfo[@"msg"]];
+            if (!self.defaultView.hidden) {
+               [self.defaultView ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:error.userInfo[@"msg"]];
             }
             self.defaultView.hidden = NO;
             return;

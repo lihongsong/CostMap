@@ -964,8 +964,6 @@
 				5965CBBA20F4B2760009DB84 /* UILabel */,
 				5965CBB620F4B22E0009DB84 /* UIAlertView */,
 				595808A020F2F945002A6F0C /* UIButton */,
-				59C5712E20E600CE00D54260 /* NSError+CustomError.h */,
-				59C5713220E600D000D54260 /* NSError+CustomError.m */,
 				59C5711E20E600C600D54260 /* NSObject+HQIQKeyBoardConfig.h */,
 				59C5712A20E600CC00D54260 /* NSObject+HQIQKeyBoardConfig.m */,
 				592FE24320EA32560052E60E /* NSObject+event.h */,
@@ -1719,6 +1717,8 @@
 		9CA9291F20F6164100F65941 /* ZXRequestConfig */ = {
 			isa = PBXGroup;
 			children = (
+				59C5712E20E600CE00D54260 /* NSError+CustomError.h */,
+				59C5713220E600D000D54260 /* NSError+CustomError.m */,
 				9CA9292120F6164100F65941 /* NSObject+RequestConfig.h */,
 				9CA9292320F6164100F65941 /* NSObject+RequestConfig.m */,
 			);

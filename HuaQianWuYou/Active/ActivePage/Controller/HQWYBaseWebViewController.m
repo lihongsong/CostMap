@@ -8,6 +8,24 @@
 
 #import "HQWYBaseWebViewController.h"
 #import <HJ_UIKit/HJAlertView.h>
+#import "HQWYJavaScriptOpenWebViewHandler.h"
+#import <AppUpdate/XZYAppUpdate.h>
+#import "HQWYUserManager.h"
+#import <WebKit/WebKit.h>
+#import "HQWYJavaSBridgeHandleMacros.h"
+#import "HQWYJavaScriptResponse.h"
+#import <RCMobClick/RCBaseCommon.h>
+#import <HJJavascriptBridge/HJJSBridgeManager.h>
+#import "HQWYJavaScriptGetAjaxHeaderHandler.h"
+#import "HQWYJavaScriptOpenNativeHandler.h"
+#import "HQWYJavaScriptOpenSDKHandler.h"
+#import "HQWYJavaScriptMonitorHandler.h"
+#import "LoginAndRegisterViewController.h"
+#import "AuthPhoneNumViewController.h"
+
+
+#define ResponseCallback(_value) \
+!responseCallback?:responseCallback(_value);
 
 @interface HQWYBaseWebViewController ()<NavigationViewDelegate,HJWebViewDelegate>
 
@@ -23,6 +41,7 @@
     self.customHeaderView = nil;
     self.view.backgroundColor = [UIColor backgroundGrayColor];
     [self initRefreshView];
+    //[self registerStaticHander];
 }
 
 #pragma mark webview 配置
@@ -34,8 +53,6 @@
     }
     self.wkWebView.backgroundColor = [UIColor backgroundGrayColor];
     self.wkWebView.scrollView.backgroundColor =  [UIColor backgroundGrayColor];
-    self.manager = [HJJSBridgeManager new];
-    [self.manager setupBridge:self.wkWebView navigationDelegate:self];
     self.delegate = self;
     self.wkWebView.scrollView.bounces = NO;
     self.wkWebView.scrollView.showsVerticalScrollIndicator = NO;
@@ -90,6 +107,120 @@
     refreshBtn.layer.borderWidth = 0.5;
     refreshBtn.cornerRadius = 15;
     [refreshBtn addTarget:self action:@selector(reloadWebview) forControlEvents:UIControlEventTouchUpInside];
+}
+
+#pragma mark - Private Method
+
+- (void)registerStaticHander {
+    WeakObj(self)
+    /** 隐藏 loading */
+    [self.manager registerHandler:kAppDismissLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_hideProgressHUD];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
+    
+    /** 展示 loading */
+    [self.manager registerHandler:kAppShowLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [KeyWindow ln_showLoadingHUDCommon:@"拼命加载中…"];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
+    
+    /** 注册埋点事件 */
+    [self.manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        StrongObj(self)
+        NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [self eventId:dic[@"eventId"]];
+        ResponseCallback([HQWYJavaScriptResponse success]);
+    }];
+    
+    /** 更新 */
+    [self.manager registerHandler:kAppCheckUpdate handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [XZYAppUpdate checkUpdate:^(NSError *error) {
+            NSLog(@"____%@____%@",error,error.description);
+        }];
+    }];
+    
+    
+    //清除用户信息
+    [self.manager registerHandler:kAppClearUser handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [HQWYUserSharedManager deleteUserInfo];
+    }];
+    
+    /** 注册获取app版本事件 */
+    [self.manager registerHandler:kAppGetVersion handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([HQWYJavaScriptResponse result:[UIDevice hj_appVersion]]);
+    }];
+    
+    /** 注册获取bundleID事件 */
+    [self.manager registerHandler:kAppGetBundleId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([HQWYJavaScriptResponse result:[UIDevice hj_bundleName]]);
+    }];
+    
+    /** 注册获取用户token事件 */
+    [self.manager registerHandler:kAppGetUserToken handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSString *token = @"";
+        if ([HQWYUserManager hasAlreadyLoggedIn]) {
+            token = [HQWYJavaScriptResponse result:HQWYUserSharedManager.userToken];
+            ResponseCallback(token);
+        } else {
+            ResponseCallback([HQWYJavaScriptResponse result:token]);
+        }
+        
+    }];
+    
+    /** 注册获取手机号事件 */
+    [self.manager registerHandler:kAppGetMobilephone handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSString *phone = [HQWYUserManager loginMobilePhone];
+        
+        ResponseCallback([HQWYJavaScriptResponse result:SafeStr(phone)]);
+    }];
+    
+    /** 注册获取用户是否登录事件 */
+    [self.manager registerHandler:kAppIsLogin handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSString *isLogin = @([HQWYUserManager hasAlreadyLoggedIn]).stringValue;
+        ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
+    }];
+    
+    /** 获取用户需要登录事件 */
+    [self.manager registerHandler:kAppNeedLogin handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSString *isLogin = @([HQWYUserManager hasAlreadyLoggedIn]).stringValue;
+        if ([HQWYUserManager hasAlreadyLoggedIn]) {
+            ResponseCallback([HQWYJavaScriptResponse result:isLogin]);
+        }else{
+            [self presentNative:^{
+                ResponseCallback([HQWYJavaScriptResponse result:@1]);
+            }];
+        }
+    }];
+    
+    /** 注册获取设备类型事件 */
+    [self.manager registerHandler:kAppGetDeviceType handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([HQWYJavaScriptResponse result:@"iOS"]);
+    }];
+    
+    /** 注册获取设备唯一标识事件 */
+    [self.manager registerHandler:kAppGetDeviceUID handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([HQWYJavaScriptResponse result:[RCBaseCommon getUIDString]]);
+    }];
+    
+    /** 注册打开webView事件 */
+    [self.manager registerHandler:[HQWYJavaScriptOpenWebViewHandler new]];
+    
+    /** 注册打开原生APP页面事件 */
+    HQWYJavaScriptOpenNativeHandler *handler = [HQWYJavaScriptOpenNativeHandler new];
+    handler.delegate = self;
+    [self.manager registerHandler:handler];
+    
+    /** 注册打开SDK意见反馈事件 */
+    [self.manager registerHandler:[HQWYJavaScriptOpenSDKHandler new]];
+    
+    /** 注册获取请求头事件 */
+    
+    [self.manager registerHandler:[HQWYJavaScriptGetAjaxHeaderHandler new]];
+    
+    /** 注册异常监控事件 */
+    [self.manager registerHandler:[HQWYJavaScriptMonitorHandler new]];
 }
 
 - (UIView *)changeRefreshView {
@@ -307,6 +438,32 @@
     completionHandler(NSURLSessionAuthChallengeUseCredential,card);
     }
     
+}
+
+#pragma mark 登录
+- (void)presentNative:(loginFinshBlock)block{
+    LoginAndRegisterViewController *loginVc = [[LoginAndRegisterViewController alloc]init];
+    loginVc.forgetBlock = ^{
+        [self changePasswordAction:^{
+            block();
+        }];
+    };
+    loginVc.loginBlock = ^{
+        block();
+    };
+    [self presentViewController:loginVc animated:true completion:^{
+        
+    }];
+}
+
+
+# pragma mark 跳修改密码
+- (void)changePasswordAction:(SignFinishBlock)fixBlock{
+    AuthPhoneNumViewController *authPhoneNumVC = [AuthPhoneNumViewController new]; self.navigationController.navigationBar.hidden = false;
+    authPhoneNumVC.finishblock = ^{
+        fixBlock();
+    };
+    [self.navigationController pushViewController:authPhoneNumVC animated:true];
 }
 
 @end
