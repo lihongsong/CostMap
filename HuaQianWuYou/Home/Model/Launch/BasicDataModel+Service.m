@@ -18,8 +18,8 @@
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:[NSNumber numberWithInt:type] forKey:@"category"];
-        [dict setValue:productId ? productId : @0 forKey:@"pId"];
-        [dict setValue:sort ? sort : @0 forKey:@"sort"];
+        [dict setValue:productId forKey:@"pId"];
+        [dict setValue:sort forKey:@"sort"];
         NSURLSessionDataTask *task = [self ln_requestModelAPI:AdvertisingInfo
                                                        method:HTTP_POST
                                                    parameters:dict

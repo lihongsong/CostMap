@@ -19,6 +19,12 @@
 {
     __block BOOL getFromNet = NO;
     self.launchModel = [BasicDataModel getCacheModel:AdvertisingTypeStartPage];
+    if (self.launchModel.productId == nil) {
+        self.launchModel.productId = @0;
+    }
+    if (self.launchModel.sort == nil) {
+        self.launchModel.sort = @0;
+    }
     [BasicDataModel requestBasicData:AdvertisingTypeStartPage productId:self.launchModel.productId sort:self.launchModel.sort Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
             [HJGuidePageWindow dismiss];

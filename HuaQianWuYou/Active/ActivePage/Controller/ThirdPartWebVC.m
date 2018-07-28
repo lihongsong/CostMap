@@ -8,7 +8,6 @@
 
 #import "ThirdPartWebVC.h"
 #import "HQWYJavaScriptResponse.h"
-#import "HQWYReturnToDetainView.h"
 #import "UnClickProductModel.h"
 #import "UnClickProductModel+Service.h"
 #import "UploadProductModel.h"
@@ -19,7 +18,7 @@
 !responseCallback?:responseCallback(_value);
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
-@interface ThirdPartWebVC ()<NavigationViewDelegate,HQWYReturnToDetainViewDelegate,WKNavigationDelegate,WKUIDelegate,HJWebViewDelegate>
+@interface ThirdPartWebVC ()<NavigationViewDelegate,WKNavigationDelegate,WKUIDelegate,HJWebViewDelegate>
 
 @property(nonatomic, strong)NSTimer *timer;
 @property(nonatomic, assign)NSInteger countTime;
@@ -49,6 +48,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark webview 配置
 - (void)setUPWKWebView{
     [self setWKWebViewInit];
+    self.wkWebView.scrollView.bounces = true;
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
 }
 

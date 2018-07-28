@@ -23,4 +23,5 @@
 @interface BaseTableView : UITableView
 @property (nonatomic, weak) id<BaseTableViewDelegate> delegate;
 
+
 @end

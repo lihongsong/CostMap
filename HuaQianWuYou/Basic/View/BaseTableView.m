@@ -9,6 +9,9 @@
 #import "BaseTableView.h"
 
 @implementation BaseTableView
+
+@synthesize delegate = _delegate;
+
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     [super touchesBegan:touches withEvent:event];
     if ([self.delegate respondsToSelector:@selector(tableView:touchesBegan:withEvent:)]) {

@@ -227,7 +227,9 @@ char *LNRiskPrintEnv(void) {
 
             wifiName = [dict valueForKey:@"SSID"];
         }
+        CFRelease(myArray);
     }
+    
     return wifiName.length > 0 ? wifiName : @"";
 }
 

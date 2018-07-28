@@ -21,7 +21,7 @@
     self.backButtonItem = nil;
     self.closeButtonItem = nil;
     self.customHeaderView = nil;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor backgroundGrayColor];
     [self initRefreshView];
 }
 
@@ -33,10 +33,12 @@
         // Fallback on earlier versions
     }
     self.wkWebView.backgroundColor = [UIColor backgroundGrayColor];
+    self.wkWebView.scrollView.backgroundColor =  [UIColor backgroundGrayColor];
     self.manager = [HJJSBridgeManager new];
     [self.manager setupBridge:self.wkWebView navigationDelegate:self];
     self.delegate = self;
-    self.wkWebView.scrollView.bounces = NO; self.wkWebView.scrollView.showsVerticalScrollIndicator = NO;
+    self.wkWebView.scrollView.bounces = NO;
+    self.wkWebView.scrollView.showsVerticalScrollIndicator = NO;
     self.wkWebView.scrollView.showsHorizontalScrollIndicator = NO;
     
 }
@@ -273,7 +275,7 @@
 - (void)getResoponseCode:(NSURL *)URL{
     NSURLSessionDataTask *dataTask = [[NSURLSession sharedSession] dataTaskWithURL:URL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSHTTPURLResponse *tmpresponse = (NSHTTPURLResponse*)response;
-        NSLog(@"statusCode:%ld", tmpresponse.statusCode);
+        NSLog(@"statusCode:%ld", (long)tmpresponse.statusCode);
         if(tmpresponse.statusCode == 400 || tmpresponse.statusCode == 403 || tmpresponse.statusCode == 404 || tmpresponse.statusCode == 500 || tmpresponse.statusCode == 503 || tmpresponse.statusCode == 505 ){
             if (self.refreshView && error.code != NSURLErrorCancelled) {
                 dispatch_async(dispatch_get_main_queue(), ^{

@@ -80,6 +80,6 @@ typedef void(^InitFinish)(ApiType);
 // ************ Release 模式下调用 ************************
 
 #pragma mark 获取
-+ (NSString *)getReleaseHost;
+//+ (NSString *)getReleaseHost;
 // ************ Release 模式下调用 ************************
 @end

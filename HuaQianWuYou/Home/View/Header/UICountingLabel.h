@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+
 typedef NS_ENUM(NSInteger,UILabelCountingMethod) {
     UILabelCountingMethodEaseInOut,
     UILabelCountingMethodEaseIn,
@@ -26,7 +27,7 @@ typedef NSAttributedString* (^UICountingLabelAttributedFormatBlock)(CGFloat valu
 
 @property (nonatomic, copy) UICountingLabelFormatBlock formatBlock;
 @property (nonatomic, copy) UICountingLabelAttributedFormatBlock attributedFormatBlock;
-@property (nonatomic, copy) void (^completionBlock)();
+@property (nonatomic, copy) void (^completionBlock)(void);
 -(void)countFrom:(CGFloat)startValue to:(CGFloat)endValue;
 -(void)countFrom:(CGFloat)startValue to:(CGFloat)endValue withDuration:(NSTimeInterval)duration;
 

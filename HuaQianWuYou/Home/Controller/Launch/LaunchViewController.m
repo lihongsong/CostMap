@@ -95,7 +95,7 @@
     } else {
         viewOrientation = @"Landscape";
     }
-    NSString *launchImage = nil;
+    NSString *launchImage = @"";
     
     NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
     for (NSDictionary* dict in imagesDict)

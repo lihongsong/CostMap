@@ -104,12 +104,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         make.top.mas_equalTo(self.view.mas_top).mas_offset(NavigationHeight);
         make.center.left.right.mas_equalTo(self.view);
         if (@available(iOS 11.0, *)) {
-            make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom);
+           self.wkWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever; make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom);
         } else {
             // Fallback on earlier versions
             make.bottom.mas_equalTo(self.view.mas_bottom);
         }
     }];
+    self.wkWebView.backgroundColor = [UIColor backgroundGrayColor];
+    self.wkWebView.scrollView.backgroundColor =  [UIColor backgroundGrayColor];
+    UIView *bgView = [ZYZControl createViewWithFrame:CGRectMake(0, SHeight - 34, SWidth, 34)];
+    bgView.backgroundColor = [UIColor redColor];
+    //[self.view addSubview:bgView];
+    
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
