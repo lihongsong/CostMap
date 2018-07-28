@@ -182,6 +182,10 @@ static NSString * const kAppClearUser = @"appClearUser";
  */
 static NSString * const kAppCloseWebview = @"appCloseWebview";
 
+/*!
+ 设置底部颜色
+ */
+static NSString * const kAppSetBottomStyle = @"appSetBottomStyle";
 
 
 #endif /* HQWYJavaSBridgeHandleMacros_h */

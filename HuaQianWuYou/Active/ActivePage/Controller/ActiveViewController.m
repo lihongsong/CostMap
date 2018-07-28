@@ -50,6 +50,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 @property(strong,nonatomic)NSDictionary *getH5Dic;// 获取H5返回导航栏样式，点击回调H5
 
+@property(nonatomic, strong)UIView *bottomView;
 /**
  定位到的城市信息
  */
@@ -112,10 +113,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }];
     self.wkWebView.backgroundColor = [UIColor backgroundGrayColor];
     self.wkWebView.scrollView.backgroundColor =  [UIColor backgroundGrayColor];
-    UIView *bgView = [ZYZControl createViewWithFrame:CGRectMake(0, SHeight - 34, SWidth, 34)];
-    bgView.backgroundColor = [UIColor redColor];
-    //[self.view addSubview:bgView];
-    
+    if ([DeviceTypes isIPhoneXSizedDevice]) {
+        self.bottomView = [ZYZControl createViewWithFrame:CGRectMake(0, SHeight - 34, SWidth, 34)];
+        self.bottomView.backgroundColor = [UIColor backgroundGrayColor];
+        [self.view addSubview:self.bottomView];
+    }
 }
 
 # pragma mark 弹框和悬浮弹框逻辑
@@ -398,6 +400,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册异常监控事件 */
     [self.manager registerHandler:[HQWYJavaScriptMonitorHandler new]];
+    
+    
+    [self.manager registerHandler:kAppSetBottomStyle handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([HQWYJavaScriptResponse result:@"iOS"]);
+    }];
 }
 
 #pragma mark - Public Method
@@ -410,6 +417,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark setNavigationStyle
 - (void)setNavigationStyle:(NSDictionary *)typeDic{
     if (typeDic != nil && [[typeDic objectForKey:@"hide"] integerValue]) {
+        self.bottomView.backgroundColor = [UIColor whiteColor];
         [UIView animateWithDuration:0.1 animations:^{
             self.navigationView.hidden = true;
         }];
@@ -419,6 +427,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
              self.navigationView.hidden = false;
         }];
         [self.navigationView changeNavigationType:typeDic];
+        NSString *title = [[typeDic objectForKey:@"title"] objectForKey:@"text"];
+        if ([title isEqualToString:@"首页"] || [title isEqualToString:@"贷款大全"] ||[title isEqualToString:@"猜你可贷"] || [title length] < 2) {
+            self.bottomView.backgroundColor = [UIColor whiteColor];
+        }else{
+           self.bottomView.backgroundColor = [UIColor backgroundGrayColor];
+        }
     }
 }
 
