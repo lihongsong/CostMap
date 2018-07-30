@@ -177,4 +177,9 @@ static NSString * const kAppShowLoading = @"appShowLoadingDialog";
  */
 static NSString * const kAppClearUser = @"appClearUser";
 
+/*!
+ h5调用原生toast
+ */
+static NSString * const kAppToastMessage = @"appToastMessage";
+
 #endif /* HQWYJavaSBridgeHandleMacros_h */
