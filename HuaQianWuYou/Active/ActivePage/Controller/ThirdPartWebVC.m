@@ -22,6 +22,7 @@
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
+static void *HJWebContext = &HJWebContext;
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 @interface ThirdPartWebVC ()<NavigationViewDelegate,WKNavigationDelegate,WKUIDelegate,HJWebViewDelegate,HQWYJavaScriptOpenNativeHandlerDelegate>
 
@@ -50,6 +51,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
          [self.wkWebView ln_showLoadingHUDMoney];
     }
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
+    
+    [self.wkWebView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:0 context:HJWebContext];
 }
 
 #pragma mark webview 配置
@@ -129,7 +132,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
                 }
             }];
         }
-        if (!self.navigationDic[@"needBackDialog"]){
+ 
+        if ([self.navigationDic[@"needBackDialog"] isEqual:@0]){
                 [self toBeforeViewControllerAnimation:true];
                 return;
         }
@@ -407,5 +411,4 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
     [self.manager callHandler:kWebViewWillAppear];
 }
-
 @end

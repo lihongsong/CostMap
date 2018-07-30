@@ -73,9 +73,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.isShowFailToast = false;
     [self setUpSDK];
     [self initData];
+    [self initNavigation];
     [self setUPWKWebView];
     [self registerHander];
-    [self initNavigation];
     [HJJSBridgeManager enableLogging];
     
     NSNotificationCenter *notificatoinCenter = [NSNotificationCenter defaultCenter];
@@ -115,8 +115,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.view addSubview:self.wkWebView];
     WeakObj(self);
     [self.wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
-        StrongObj(self);
-        make.top.mas_equalTo(self.view.mas_top).mas_offset(NavigationHeight);
+        StrongObj(self); make.top.mas_equalTo(self.view.mas_top).mas_offset(NavigationHeight);
         make.center.left.right.mas_equalTo(self.view);
         if (@available(iOS 11.0, *)) {
            self.wkWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever; make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom);
@@ -510,7 +509,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  *  @param error 返回的错误，参考 CLError 。
  */
 - (void)BMKLocationManager:(BMKLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nullable)error{
-   // NSLog(@"locError:{%ld - %@};", (long)error.code, error.localizedDescription);
     self.navigationView.leftLabel.text = @"定位失败";
 }
 
@@ -613,7 +611,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
     if(self.isShowFailToast){
-        [self.wkWebView ln_showToastHUD:@"网络异常~"];
+          [self.wkWebView  ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"网络异常~"];
     }
     self.isShowFailToast = true;
     [self setWkwebviewGesture];
