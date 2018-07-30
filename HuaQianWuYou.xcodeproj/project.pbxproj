@@ -180,13 +180,11 @@
 		59C5711820E5FF7700D54260 /* func.list in Resources */ = {isa = PBXBuildFile; fileRef = 59C5711420E5FF7700D54260 /* func.list */; };
 		59C5713520E600D100D54260 /* UIFont+TargetFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5711920E600C400D54260 /* UIFont+TargetFont.m */; };
 		59C5713620E600D100D54260 /* UIViewController+UIAlertControllerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712020E600C700D54260 /* UIViewController+UIAlertControllerKit.m */; };
-		59C5713820E600D100D54260 /* CALayer+LayerColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712320E600C900D54260 /* CALayer+LayerColor.m */; };
 		59C5713920E600D100D54260 /* UILabel+LabelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712420E600C900D54260 /* UILabel+LabelKit.m */; };
 		59C5713A20E600D100D54260 /* UIColor+AddColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712620E600CA00D54260 /* UIColor+AddColor.m */; };
 		59C5713B20E600D100D54260 /* NSString+LabelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712820E600CB00D54260 /* NSString+LabelKit.m */; };
 		59C5713C20E600D100D54260 /* UIView+ViewKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712920E600CC00D54260 /* UIView+ViewKit.m */; };
 		59C5713D20E600D100D54260 /* NSObject+HQIQKeyBoardConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712A20E600CC00D54260 /* NSObject+HQIQKeyBoardConfig.m */; };
-		59C5713E20E600D100D54260 /* UITabBar+badge.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5712D20E600CE00D54260 /* UITabBar+badge.m */; };
 		59C5714020E600D100D54260 /* NSError+CustomError.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713220E600D000D54260 /* NSError+CustomError.m */; };
 		59C5714120E600D100D54260 /* ZYZControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713320E600D100D54260 /* ZYZControl.m */; };
 		59C5714220E600D100D54260 /* AppDelegate+SDKRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */; };
@@ -573,19 +571,15 @@
 		59C5711F20E600C700D54260 /* UIViewController+UIAlertControllerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+UIAlertControllerKit.h"; sourceTree = "<group>"; };
 		59C5712020E600C700D54260 /* UIViewController+UIAlertControllerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+UIAlertControllerKit.m"; sourceTree = "<group>"; };
 		59C5712220E600C800D54260 /* UIView+ViewKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ViewKit.h"; sourceTree = "<group>"; };
-		59C5712320E600C900D54260 /* CALayer+LayerColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+LayerColor.m"; sourceTree = "<group>"; };
 		59C5712420E600C900D54260 /* UILabel+LabelKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelKit.m"; sourceTree = "<group>"; };
 		59C5712620E600CA00D54260 /* UIColor+AddColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+AddColor.m"; sourceTree = "<group>"; };
-		59C5712720E600CB00D54260 /* UITabBar+badge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBar+badge.h"; sourceTree = "<group>"; };
 		59C5712820E600CB00D54260 /* NSString+LabelKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LabelKit.m"; sourceTree = "<group>"; };
 		59C5712920E600CC00D54260 /* UIView+ViewKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ViewKit.m"; sourceTree = "<group>"; };
 		59C5712A20E600CC00D54260 /* NSObject+HQIQKeyBoardConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQIQKeyBoardConfig.m"; sourceTree = "<group>"; };
 		59C5712B20E600CD00D54260 /* ZYZControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZYZControl.h; sourceTree = "<group>"; };
 		59C5712C20E600CD00D54260 /* AppDelegate+SDKRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+SDKRegister.h"; sourceTree = "<group>"; };
-		59C5712D20E600CE00D54260 /* UITabBar+badge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBar+badge.m"; sourceTree = "<group>"; };
 		59C5712E20E600CE00D54260 /* NSError+CustomError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+CustomError.h"; sourceTree = "<group>"; };
 		59C5712F20E600CF00D54260 /* UIFont+TargetFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+TargetFont.h"; sourceTree = "<group>"; };
-		59C5713020E600CF00D54260 /* CALayer+LayerColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+LayerColor.h"; sourceTree = "<group>"; };
 		59C5713220E600D000D54260 /* NSError+CustomError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+CustomError.m"; sourceTree = "<group>"; };
 		59C5713320E600D100D54260 /* ZYZControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZYZControl.m; sourceTree = "<group>"; };
 		59C5713420E600D100D54260 /* AppDelegate+SDKRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+SDKRegister.m"; sourceTree = "<group>"; };
@@ -968,8 +962,6 @@
 				59C5712A20E600CC00D54260 /* NSObject+HQIQKeyBoardConfig.m */,
 				592FE24320EA32560052E60E /* NSObject+event.h */,
 				592FE24420EA32570052E60E /* NSObject+event.m */,
-				59C5712720E600CB00D54260 /* UITabBar+badge.h */,
-				59C5712D20E600CE00D54260 /* UITabBar+badge.m */,
 				59C5712B20E600CD00D54260 /* ZYZControl.h */,
 				59C5713320E600D100D54260 /* ZYZControl.m */,
 				A8F1288320F75D4300907FC6 /* NSString+cityInfos.h */,
@@ -1236,8 +1228,6 @@
 		5965CBBD20F4B2CC0009DB84 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
-				59C5713020E600CF00D54260 /* CALayer+LayerColor.h */,
-				59C5712320E600C900D54260 /* CALayer+LayerColor.m */,
 				59C5712220E600C800D54260 /* UIView+ViewKit.h */,
 				59C5712920E600CC00D54260 /* UIView+ViewKit.m */,
 			);
@@ -2138,7 +2128,6 @@
 				591D95FB20ABDE6E00193B09 /* AAYAxis.m in Sources */,
 				59C570B020E5F9C100D54260 /* CInvestigationViewController.m in Sources */,
 				59C570C720E5FADC00D54260 /* CreditInvestigationSMSModel.m in Sources */,
-				59C5713E20E600D100D54260 /* UITabBar+badge.m in Sources */,
 				591D95F220ABDE6E00193B09 /* AALine.m in Sources */,
 				59C5710B20E5FB8200D54260 /* BaseChartView.m in Sources */,
 				591D961F20ABDE6E00193B09 /* AASpline.m in Sources */,
@@ -2202,7 +2191,6 @@
 				5977034320F7254600F29F33 /* HQWYActionHandler.m in Sources */,
 				59C570AA20E5F9C100D54260 /* TouchIDViewController.m in Sources */,
 				597C73CD20E9C8D40090960B /* BasicDataModel+Service.m in Sources */,
-				59C5713820E600D100D54260 /* CALayer+LayerColor.m in Sources */,
 				A8F8DFEE20B4384D00DB9A6A /* ResetPasswordModel+Service.m in Sources */,
 				597E863320FC7C7C0018DA54 /* ImageCodeModel+Service.m in Sources */,
 				591D95E620ABDE6E00193B09 /* AASeries.m in Sources */,

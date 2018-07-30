@@ -34,6 +34,7 @@
 #import "HQWYUser+Service.h"
 #import "LoginOut.h"
 #import "HQWYJavaScriptMonitorHandler.h"
+#import "FBManager.h"
 
 #import <HJ_UIKit/HJAlertView.h>
 #import <CoreLocation/CLLocationManager.h>
@@ -70,19 +71,34 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.isShowFailToast = false;
+    [self setUpSDK];
     [self initData];
     [self setUPWKWebView];
     [self registerHander];
     [self initNavigation];
     [HJJSBridgeManager enableLogging];
-    //发送设备信息采集
-    [DeviceManager sendDeviceinfo];
+    
     NSNotificationCenter *notificatoinCenter = [NSNotificationCenter defaultCenter];
     [notificatoinCenter addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
     
     [notificatoinCenter addObserver:self selector:@selector(topPreRecommend:) name:@"kAppClickTopPreRecommend" object:nil];
 }
 
+- (instancetype)init{
+    if (self = [super init]) {
+        [self loadURLString:Active_Path];
+    }
+    return self;
+}
+
+- (void)setUpSDK{
+    //设置意见反馈
+    [FBManager configFB];
+    //发送设备信息采集
+    [DeviceManager sendDeviceinfo];
+}
+
+// 精准推*荐
 - (void)topPreRecommend:(NSNotification *)notification{
     self.getH5Dic = notification.userInfo;
     [self rightButtonItemClick];
@@ -94,10 +110,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma mark webview 配置
 - (void)setUPWKWebView{
-    self.wkWebView = [[WKWebView alloc]initWithFrame:CGRectZero];
     [self setWKWebViewInit];
     [self.wkWebView ln_showLoadingHUDMoney];
-    [self loadURLString:Active_Path];
     [self.view addSubview:self.wkWebView];
     WeakObj(self);
     [self.wkWebView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -470,16 +484,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             NSString *locationStr = [NSString stringWithFormat:@"%f,%f", location.location.coordinate.latitude, location.location.coordinate.longitude];
             UserDefaultSetObj(locationStr, @"LocationLatitudeLongitude");
         }
+        
         if (location.rgcData) {
               NSString *cityString = location.rgcData.city;
             if ([location.rgcData.country containsString:@"中国"]) {
                 if([cityString containsString:@"香港"] || [cityString containsString:@"澳门"] || [location.rgcData.province containsString:@"台湾"]){
-                    self.navigationView.leftLabel.text = @"未知城市";
+                    self.navigationView.leftLabel.text = @"未知位置";
                 }else{
                    self.navigationView.leftLabel.text = cityString;
                 }
             }else{
-                self.navigationView.leftLabel.text = @"未知城市";
+                self.navigationView.leftLabel.text = @"未知位置";
             }
             self.locatedCity[@"country"] = location.rgcData.country;
             self.locatedCity[@"city"] = cityString;
@@ -572,6 +587,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         
         if (error) {
             if(error.hqwy_respCode == HQWYRESPONSECODE_UN_AUTHORIZATION){//这种退出登录成功处理
+                [HQWYUserSharedManager deleteUserInfo];
                 outBlock(true);
             }else{
                 outBlock(false);

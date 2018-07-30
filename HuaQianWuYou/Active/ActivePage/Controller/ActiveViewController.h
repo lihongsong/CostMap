@@ -8,7 +8,9 @@
 
 #import "HQWYBaseWebViewController.h"
 
-@interface ActiveViewController : HQWYBaseWebViewController 
+@interface ActiveViewController : HQWYBaseWebViewController
+
+- (void)setUPWKWebView;
 
 /** 给JS发送通用数据 */
 - (void)sendMessageToJS:(id)message;

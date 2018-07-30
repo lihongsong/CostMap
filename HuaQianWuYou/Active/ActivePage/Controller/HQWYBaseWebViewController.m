@@ -39,7 +39,7 @@
     self.backButtonItem = nil;
     self.closeButtonItem = nil;
     self.customHeaderView = nil;
-    self.view.backgroundColor = [UIColor backgroundGrayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self initRefreshView];
     //[self registerStaticHander];
 }
