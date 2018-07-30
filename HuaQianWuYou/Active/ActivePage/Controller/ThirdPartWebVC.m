@@ -123,6 +123,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma leftItemDelegate
 - (void)webGoBack{
+    self.navigationView.backButton.enabled = false;
     [self eventId:HQWY_ThirdPart_Back_click];
     if (self.isShowAlertOrBack) {
         if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
@@ -132,7 +133,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
                 }
             }];
         }
- 
+      
         if ([self.navigationDic[@"needBackDialog"] isEqual:@0]){
                 [self toBeforeViewControllerAnimation:true];
                 return;
@@ -155,6 +156,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }else{
         if(self.wkWebView.canGoBack){
             [self.wkWebView goBack];
+            self.navigationView.backButton.enabled = true;
         }else{
             [self toBeforeViewControllerAnimation:true];
         }
@@ -163,10 +165,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)toBeforeViewControllerAnimation:(BOOL) animate{
     if (self.navigationController != nil) {
+        self.navigationView.backButton.enabled = true;
         [self.navigationController popViewControllerAnimated:animate];
     }else{
         [self dismissViewControllerAnimated:animate completion:^{
-            
+            self.navigationView.backButton.enabled = true;
         }];
     }
 }
@@ -181,6 +184,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         [self.wkWebView ln_showLoadingHUDMoney];
         [self initDataCompletion:^(id _Nullable result, NSError * _Nullable error) {
             if (error) {
+                self.navigationView.backButton.enabled = true;
                 [self.wkWebView ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.hqwy_errorMessage];
                 return;
             }
@@ -191,6 +195,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
                 self.isProductFirstPage = true;
                 [self loadURLString:product[@"address"]];
                 [self.navigationView.titleButton setTitle:product[@"name"] forState:UIControlStateNormal];
+            }else{
+                self.navigationView.backButton.enabled = true;
             }
         }];
     }else{
@@ -358,6 +364,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL{
+    self.navigationView.backButton.enabled = true;
     if (self.isProductFirstPage) {
         self.productUrl = URL;
     }
@@ -375,6 +382,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
+    self.navigationView.backButton.enabled = true;
     if (self.isProductFirstPage) {
         self.productUrl = URL;
     }

@@ -335,15 +335,6 @@
     return;
 }
 
-- (NSDictionary *)jsonDicFromString:(NSString *)string {
-    
-    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-    
-    return dic;
-}
-
 - (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL {
     NSSet *validSchemes = [NSSet setWithArray:@[ @"http", @"https" ]];
     return ![validSchemes containsObject:URL.scheme];

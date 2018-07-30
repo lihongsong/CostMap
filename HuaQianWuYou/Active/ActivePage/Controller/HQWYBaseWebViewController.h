@@ -30,6 +30,5 @@ typedef void (^SignFinishBlock)(void);
 - (void)presentNative:(loginFinshBlock)block;
 - (void)registerStaticHander;
     
-- (NSDictionary *)jsonDicFromString:(NSString *)string;
 - (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL;
 @end

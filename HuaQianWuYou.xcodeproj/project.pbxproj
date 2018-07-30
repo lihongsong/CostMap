@@ -63,6 +63,14 @@
 		5935907120A154280057C0F4 /* ReleaseApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935907020A154270057C0F4 /* ReleaseApi.plist */; };
 		59435A7E20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59435A7D20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m */; };
 		59435A8120EE0A20007D9A4D /* LeftItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59435A8020EE0A20007D9A4D /* LeftItemView.m */; };
+		594D69A1210F1D4500C65786 /* HQWYJavaScriptSourceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D69A0210F1D4500C65786 /* HQWYJavaScriptSourceHandler.m */; };
+		594D69A9210F234800C65786 /* NSObject+JsonToDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D69A8210F234800C65786 /* NSObject+JsonToDictionary.m */; };
+		594D69AC210F2E2300C65786 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D69AB210F2E2300C65786 /* banner.png */; };
+		594D69AE210F2E2800C65786 /* default.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D69AD210F2E2800C65786 /* default.png */; };
+		594D69B0210F2E3000C65786 /* defaultban.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D69AF210F2E3000C65786 /* defaultban.png */; };
+		594D69B2210F2E3B00C65786 /* loggedin.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D69B1210F2E3B00C65786 /* loggedin.png */; };
+		594D69B4210F2E4900C65786 /* nodata.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D69B3210F2E4900C65786 /* nodata.png */; };
+		594D69B6210F2E5100C65786 /* notloggedin.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D69B5210F2E5100C65786 /* notloggedin.png */; };
 		595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595752FE209AA1CC00F602EB /* MainTabBarViewController.m */; };
 		595754C4209B191D00F602EB /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595754C3209B191D00F602EB /* BaseNavigationController.m */; };
 		59575507209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
@@ -347,6 +355,16 @@
 		59435A8020EE0A20007D9A4D /* LeftItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LeftItemView.m; sourceTree = "<group>"; };
 		594A2BE220A3EE570041E518 /* HuaQianWuYou-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HuaQianWuYou-Bridging-Header.h"; sourceTree = "<group>"; };
 		594A2C0D20A3F3880041E518 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		594D699F210F1D4500C65786 /* HQWYJavaScriptSourceHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptSourceHandler.h; sourceTree = "<group>"; };
+		594D69A0210F1D4500C65786 /* HQWYJavaScriptSourceHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptSourceHandler.m; sourceTree = "<group>"; };
+		594D69A7210F234800C65786 /* NSObject+JsonToDictionary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+JsonToDictionary.h"; sourceTree = "<group>"; };
+		594D69A8210F234800C65786 /* NSObject+JsonToDictionary.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JsonToDictionary.m"; sourceTree = "<group>"; };
+		594D69AB210F2E2300C65786 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		594D69AD210F2E2800C65786 /* default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default.png; sourceTree = "<group>"; };
+		594D69AF210F2E3000C65786 /* defaultban.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultban.png; sourceTree = "<group>"; };
+		594D69B1210F2E3B00C65786 /* loggedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loggedin.png; sourceTree = "<group>"; };
+		594D69B3210F2E4900C65786 /* nodata.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nodata.png; sourceTree = "<group>"; };
+		594D69B5210F2E5100C65786 /* notloggedin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notloggedin.png; sourceTree = "<group>"; };
 		5952DEE820B3B6F30058A57D /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		595752FD209AA1CC00F602EB /* MainTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		595752FE209AA1CC00F602EB /* MainTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
@@ -746,6 +764,7 @@
 				597C73B620E9AF210090960B /* Active */,
 				595E7DD320EC6214001D65B6 /* Login */,
 				59023BF0209A9B35004B9134 /* Assets.xcassets */,
+				594D69AA210F2E0400C65786 /* ImageSource */,
 				59023BF5209A9B35004B9134 /* Info.plist */,
 				59023BF6209A9B35004B9134 /* main.m */,
 				5957530B209AB42D00F602EB /* PrefixHeader.pch */,
@@ -938,6 +957,32 @@
 			path = AdTracking_V4.0.16;
 			sourceTree = "<group>";
 		};
+		594D69A6210F232F00C65786 /* NSObject */ = {
+			isa = PBXGroup;
+			children = (
+				59C5711E20E600C600D54260 /* NSObject+HQIQKeyBoardConfig.h */,
+				59C5712A20E600CC00D54260 /* NSObject+HQIQKeyBoardConfig.m */,
+				592FE24320EA32560052E60E /* NSObject+event.h */,
+				592FE24420EA32570052E60E /* NSObject+event.m */,
+				594D69A7210F234800C65786 /* NSObject+JsonToDictionary.h */,
+				594D69A8210F234800C65786 /* NSObject+JsonToDictionary.m */,
+			);
+			path = NSObject;
+			sourceTree = "<group>";
+		};
+		594D69AA210F2E0400C65786 /* ImageSource */ = {
+			isa = PBXGroup;
+			children = (
+				594D69B5210F2E5100C65786 /* notloggedin.png */,
+				594D69B3210F2E4900C65786 /* nodata.png */,
+				594D69B1210F2E3B00C65786 /* loggedin.png */,
+				594D69AF210F2E3000C65786 /* defaultban.png */,
+				594D69AD210F2E2800C65786 /* default.png */,
+				594D69AB210F2E2300C65786 /* banner.png */,
+			);
+			path = ImageSource;
+			sourceTree = "<group>";
+		};
 		595752FC209AA15100F602EB /* Basic */ = {
 			isa = PBXGroup;
 			children = (
@@ -951,6 +996,7 @@
 		5957530F209AD8EF00F602EB /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				594D69A6210F232F00C65786 /* NSObject */,
 				5965CBBF20F4B3370009DB84 /* AppDelegate */,
 				5965CBBE20F4B30B0009DB84 /* ColorFont */,
 				5965CBBD20F4B2CC0009DB84 /* UIView */,
@@ -958,10 +1004,6 @@
 				5965CBBA20F4B2760009DB84 /* UILabel */,
 				5965CBB620F4B22E0009DB84 /* UIAlertView */,
 				595808A020F2F945002A6F0C /* UIButton */,
-				59C5711E20E600C600D54260 /* NSObject+HQIQKeyBoardConfig.h */,
-				59C5712A20E600CC00D54260 /* NSObject+HQIQKeyBoardConfig.m */,
-				592FE24320EA32560052E60E /* NSObject+event.h */,
-				592FE24420EA32570052E60E /* NSObject+event.m */,
 				59C5712B20E600CD00D54260 /* ZYZControl.h */,
 				59C5713320E600D100D54260 /* ZYZControl.m */,
 				A8F1288320F75D4300907FC6 /* NSString+cityInfos.h */,
@@ -1581,6 +1623,8 @@
 				5964A87420F6E99C004C2629 /* HQWYJavaScriptOpenSDKHandler.m */,
 				59078EFE2100BFE90077814B /* HQWYJavaScriptMonitorHandler.h */,
 				59078EFF2100BFE90077814B /* HQWYJavaScriptMonitorHandler.m */,
+				594D699F210F1D4500C65786 /* HQWYJavaScriptSourceHandler.h */,
+				594D69A0210F1D4500C65786 /* HQWYJavaScriptSourceHandler.m */,
 			);
 			path = HQWYJSHandler;
 			sourceTree = "<group>";
@@ -1950,6 +1994,7 @@
 				59023BF1209A9B35004B9134 /* Assets.xcassets in Resources */,
 				5935906D20A134AD0057C0F4 /* ReleaseTestApi.plist in Resources */,
 				5935907120A154280057C0F4 /* ReleaseApi.plist in Resources */,
+				594D69B2210F2E3B00C65786 /* loggedin.png in Resources */,
 				59698BFC209FE973000E37AA /* TestApi.plist in Resources */,
 				59037726209C0985004CEBD8 /* BaseTableViewController.xib in Resources */,
 				591D95D720ABDE6E00193B09 /* AAFunnel.js in Resources */,
@@ -1957,6 +2002,7 @@
 				591D95D120ABDE6E00193B09 /* AAHighchartsLib.js in Resources */,
 				59C5711820E5FF7700D54260 /* func.list in Resources */,
 				5965CBAE20F4AF320009DB84 /* testResponse.json in Resources */,
+				594D69B0210F2E3000C65786 /* defaultban.png in Resources */,
 				591D95DA20ABDE6E00193B09 /* AAHighcharts-3d.js in Resources */,
 				A8F1288720F75E4F00907FC6 /* cityInfo.json in Resources */,
 				59C5710420E5FB8200D54260 /* HomeBaseTableViewCell.xib in Resources */,
@@ -1965,7 +2011,11 @@
 				82E7103A2101A14A008FCFE3 /* Settings.bundle in Resources */,
 				59BE198A20EC9F3C00704B2C /* SuspendView.xib in Resources */,
 				A8F8DFB320B3AB3300DB9A6A /* AgreementViewController.xib in Resources */,
+				594D69B4210F2E4900C65786 /* nodata.png in Resources */,
+				594D69B6210F2E5100C65786 /* notloggedin.png in Resources */,
+				594D69AC210F2E2300C65786 /* banner.png in Resources */,
 				5958089F20F2F53A002A6F0C /* PasswordInputView.xib in Resources */,
+				594D69AE210F2E2800C65786 /* default.png in Resources */,
 				591D95D420ABDE6E00193B09 /* AAHighchartsMore.js in Resources */,
 				5977034620F7451A00F29F33 /* MBProgressloading.gif in Resources */,
 				59575507209B33DE00F602EB /* ColorFont.plist in Resources */,
@@ -2155,6 +2205,7 @@
 				59C5710020E5FB8200D54260 /* ProgressView.m in Sources */,
 				59C570AF20E5F9C100D54260 /* CInvestigationResultViewController.m in Sources */,
 				A8F8DFD920B3B91700DB9A6A /* LoginInfoModel+Service.m in Sources */,
+				594D69A1210F1D4500C65786 /* HQWYJavaScriptSourceHandler.m in Sources */,
 				A8F8DFDF20B3F07800DB9A6A /* DiscoverDetailModel+Service.m in Sources */,
 				A8118BDB20B2968D0046099D /* HQWYProgressHUD.m in Sources */,
 				59435A7E20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m in Sources */,
@@ -2169,6 +2220,7 @@
 				5958089A20F2F53A002A6F0C /* ImageCodeViewController.m in Sources */,
 				595754C4209B191D00F602EB /* BaseNavigationController.m in Sources */,
 				A8F8E00B20B50A6100DB9A6A /* DefaultView.m in Sources */,
+				594D69A9210F234800C65786 /* NSObject+JsonToDictionary.m in Sources */,
 				591D960D20ABDE6E00193B09 /* AABar.m in Sources */,
 				5977034020F71D2700F29F33 /* HQWYLaunchManager.m in Sources */,
 				591D961320ABDE6E00193B09 /* AAArea.m in Sources */,

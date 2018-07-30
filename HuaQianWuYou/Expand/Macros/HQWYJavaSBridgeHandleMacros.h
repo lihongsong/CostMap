@@ -34,6 +34,10 @@ static NSString * const kAppExecBack = @"appExecBack";
  */
 static NSString * const kAppUrlExceptionMonitor = @"appUrlExceptionMonitor";
 
+/*!
+ 图片资源
+ */
+static NSString * const kAppGetImageSource = @"appGetImageSource";
 
 /*!
  获取productID

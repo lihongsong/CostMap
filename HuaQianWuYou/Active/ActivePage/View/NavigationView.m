@@ -10,7 +10,6 @@
 #import "RightItemButton.h"
 
 @interface NavigationView()
-@property (strong, nonatomic)UIButton *backButton;
 @property (strong, nonatomic)UIImageView *arrowImage;
 @property (strong, nonatomic) RightItemButton *rightItemButton;
 

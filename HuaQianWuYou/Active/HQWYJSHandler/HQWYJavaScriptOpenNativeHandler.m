@@ -11,6 +11,8 @@
 #import "LoginAndRegisterViewController.h"
 #import "FBManager.h"
 #import "AuthPhoneNumViewController.h"
+#import "NSObject+JsonToDictionary.h"
+
 @implementation HQWYJavaScriptOpenNativeHandler
 
 - (NSString *)handlerName {
@@ -43,16 +45,6 @@
 
     !hander?:hander([HQWYJavaScriptResponse success]);
 }
-
-- (NSDictionary *)jsonDicFromString:(NSString *)string {
-    
-    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-    
-    return dic;
-}
-
 
 # pragma mark Action
 

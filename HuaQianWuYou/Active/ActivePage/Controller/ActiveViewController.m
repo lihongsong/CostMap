@@ -35,9 +35,10 @@
 #import "LoginOut.h"
 #import "HQWYJavaScriptMonitorHandler.h"
 #import "FBManager.h"
-
+#import "NSObject+JsonToDictionary.h"
 #import <HJ_UIKit/HJAlertView.h>
 #import <CoreLocation/CLLocationManager.h>
+#import "HQWYJavaScriptSourceHandler.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -415,9 +416,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.manager registerHandler:[HQWYJavaScriptMonitorHandler new]];
     
     
-    [self.manager registerHandler:kAppSetBottomStyle handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        ResponseCallback([HQWYJavaScriptResponse result:@"iOS"]);
-    }];
+    /** 注册传图片 */
+    [self.manager registerHandler:[HQWYJavaScriptSourceHandler new]];
 }
 
 #pragma mark - Public Method
