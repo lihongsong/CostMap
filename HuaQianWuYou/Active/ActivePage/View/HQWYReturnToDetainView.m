@@ -48,7 +48,7 @@
     self.hudView.center = center;
     [self setUpHUDUI];
     self.alpha = 1;
-    self.userInteractionEnabled = false;
+    self.userInteractionEnabled = YES;
     self.isAccessibilityElement = YES;
     
     self.overlayView.userInteractionEnabled = YES;
