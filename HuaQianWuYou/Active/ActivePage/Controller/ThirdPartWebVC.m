@@ -359,7 +359,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
     NSString *strUrl = [NSString stringWithFormat:@"%@",URL];
     if(StrIsEmpty(strUrl)){
-        [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
+        [self.wkWebView  ln_hideProgressHUD:LNMBProgressHUDAnimationError message:@"链接地址错误，打开失败"];
         return;
     }
     self.isShowFailToast = false;
@@ -375,15 +375,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.productUrl = URL;
     }
     if (error.code == 101) {
-        [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
+          [self.wkWebView  ln_hideProgressHUD:LNMBProgressHUDAnimationError message:@"链接地址错误，打开失败"];
         [self.refreshView removeFromSuperview];
         return;
     }else if (error.code == 102){
        [self.refreshView removeFromSuperview];
+        [self.wkWebView ln_hideProgressHUD];
         return;
     }else{
         if(self.isShowFailToast){
-            [self.wkWebView ln_showToastHUD:@"网络异常~"];
+            [self.wkWebView  ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"网络异常~"];
         }
     }
     self.isShowFailToast = true;
