@@ -196,10 +196,10 @@
             SetUserDefault(saveDic, ApiList);
         }
             break;
-        case ReleaseApiType:
-        {
-            saveDic = @{ApiSelectType:[NSString stringWithFormat:@"%ld",(long)self.apiType],List:self.releaseConfigArr};
-        }
+//        case ReleaseApiType:
+//        {
+//            saveDic = @{ApiSelectType:[NSString stringWithFormat:@"%ld",(long)self.apiType],List:self.releaseConfigArr};
+//        }
             break;
         default:
             break;

@@ -23,7 +23,7 @@
 !responseCallback?:responseCallback(_value);
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
-@interface ThirdPartWebVC ()<NavigationViewDelegate,WKNavigationDelegate,WKUIDelegate,HJWebViewDelegate>
+@interface ThirdPartWebVC ()<NavigationViewDelegate,WKNavigationDelegate,WKUIDelegate,HJWebViewDelegate,HQWYJavaScriptOpenNativeHandlerDelegate>
 
 @property(nonatomic, strong)NSTimer *timer;
 @property(nonatomic, assign)NSInteger countTime;

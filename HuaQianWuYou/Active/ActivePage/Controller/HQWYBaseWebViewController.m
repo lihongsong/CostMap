@@ -27,7 +27,7 @@
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
-@interface HQWYBaseWebViewController ()<NavigationViewDelegate,HJWebViewDelegate>
+@interface HQWYBaseWebViewController ()<NavigationViewDelegate,HJWebViewDelegate,HQWYJavaScriptOpenNativeHandlerDelegate>
 
 @end
 
@@ -311,27 +311,6 @@
     [alertView show];
     
     return ;
-    
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"您还未开启定位权限" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"去开启" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self eventId:HQWY_Location_Seting_click];
-        NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-        if ([[UIApplication sharedApplication] canOpenURL:url]) {
-            if (@available(iOS 10.0, *)) {
-                [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
-            } else {
-                [[UIApplication sharedApplication] openURL:url];
-            }
-        }
-    }];
-    [alert addAction:ok];
-    UIAlertAction *cancle = [UIAlertAction actionWithTitle:@"不了" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        [self eventId:HQWY_Location_Close_click];
-    }];
-    [alert addAction:cancle];
-    [self presentViewController:alert animated:true completion:^{
-        
-    }];
 }
 
 // 对HJWebViewController 基类方法重写，去除基类定义导航栏
