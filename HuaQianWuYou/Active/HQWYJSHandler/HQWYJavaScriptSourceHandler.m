@@ -40,7 +40,7 @@
 
 - (NSString *)getImageBase64:(NSString *)name withType:(NSString *)type{
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:type]];
-    NSLog(@"_____%@",[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]);
+    //NSLog(@"_____%@",[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]);
     return [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];//base64 等分换行
 }
 
