@@ -154,9 +154,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
         NSLog(@"TenMinutesRefresh");
-        [self.wkWebView reload];
+        [self.wkWebView ln_showLoadingHUDMoney];
+        [self loadURLString:Active_Path];
     }
-    [self.manager callHandler:kWebViewWillAppear];
 }
 
 //弹框代理方法

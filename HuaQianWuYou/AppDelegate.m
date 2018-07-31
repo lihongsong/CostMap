@@ -208,9 +208,8 @@
     NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithDictionary:@{@"TenMinutesRefresh" : @"0"}];
     if ([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"].integerValue - [GetUserDefault(@"TenMinutesRefresh") integerValue] > 10) {
         [dic setObject:@"1" forKey:@"TenMinutesRefresh"];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppWillEnterForeground" object:nil userInfo:dic];
     }
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppWillEnterForeground" object:nil userInfo:dic];
 }
 
 
