@@ -40,13 +40,35 @@
 
 - (NSString *)getImageBase64:(NSString *)name withType:(NSString *)type{
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:type]];
+    
+    
     NSLog(@"2222222%@",name);
-//    if ([type isEqualToString:@"gif"]) {
-//        for (int i = 1; i < 3; i++) {
-//            NSLog(@"_____%@",[[data subdataWithRange:NSMakeRange([data length]/2 * i, [data length]/2)] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed]);
-//        }
-//    }
+    if ([type isEqualToString:@"gif"]) {
+        NSString *str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+        NSLog(@"__12121212__%@",str);
+        NSString *path = [[self tempUnzipPathInDoc] stringByAppendingPathComponent:@"baseConfig"];
+        [str writeToFile:path atomically:true];
+        NSLog(@"_____%d",[str writeToFile:path atomically:true]);
+    }
     return [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];//base64 等分换行
 }
+
+- (NSString *)tempUnzipPathInDoc
+{
+    NSString *path = [NSString stringWithFormat:@"%@",
+                      NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
+    NSURL *url = [NSURL fileURLWithPath:path];
+    NSError *error = nil;
+    [[NSFileManager defaultManager] createDirectoryAtURL:url
+                             withIntermediateDirectories:YES
+                                              attributes:nil
+                                                   error:&error];
+    if (error) {
+        return nil;
+    }
+    NSLog(@"____%@",url.path);
+    return url.path;
+}
+
 
 @end
