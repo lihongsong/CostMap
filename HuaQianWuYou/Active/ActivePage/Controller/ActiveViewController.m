@@ -40,6 +40,11 @@
 #import <CoreLocation/CLLocationManager.h>
 #import "HQWYJavaScriptSourceHandler.h"
 
+typedef NS_ENUM(NSInteger,leftNavigationItemType) {
+    leftNavigationItemTypeLocation = 0,
+    leftNavigationItemTypeBack = 1
+};
+
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
 
@@ -83,6 +88,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [notificatoinCenter addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
     
     [notificatoinCenter addObserver:self selector:@selector(topPreRecommend:) name:@"kAppClickTopPreRecommend" object:nil];
+    //[[HQWYJavaScriptSourceHandler new] didReceiveMessage:nil hander:nil];
 }
 
 - (instancetype)init{
@@ -101,7 +107,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 // 精准推*荐
 - (void)topPreRecommend:(NSNotification *)notification{
-    NSLog(@"notification_____%@",notification.userInfo);
+   // NSLog(@"notification_____%@",notification.userInfo);
     self.getH5Dic = notification.userInfo;
     [self rightButtonItemClick];
 }
@@ -300,8 +306,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.getH5Dic = [[self jsonDicFromString:data] objectForKey:@"nav"];
         [self setNavigationStyle:self.getH5Dic];
         if ([(NSString *)data containsString:@"location:"]) {
-            self.selectedLocation = self.getH5Dic[@"left"][@"text"];
-            //NSLog(@"-----> %@",self.selectedLocation);
+            if ([self.getH5Dic[@"left"] isKindOfClass:[NSDictionary class]]) {
+                self.selectedLocation = self.getH5Dic[@"left"][@"text"];
+            }
         }
     }];
     
@@ -449,7 +456,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
              self.navigationView.hidden = false;
         }];
         [self.navigationView changeNavigationType:typeDic];
-        NSString *title = [[typeDic objectForKey:@"title"] objectForKey:@"text"];
+        NSString *title = @"";
+        if([[typeDic objectForKey:@"title"] isKindOfClass:[NSDictionary class]]){
+            title = [[typeDic objectForKey:@"title"] objectForKey:@"text"];
+        }
         if ([title isEqualToString:@"首页"] || [title isEqualToString:@"贷款大全"] ||[title isEqualToString:@"猜你可贷"] || [title length] < 2) {
             self.bottomView.backgroundColor = [UIColor whiteColor];
         }else{
@@ -459,14 +469,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 -(void)rightButtonItemClick{
-    if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
-        [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-            if (!error) { // 成功
-                NSLog(@"____sucess____%@",response);
-            } else { // 失败
-                NSLog(@"__right____%@",error.localizedDescription);
-            }
-        }];
+    if ([[self.getH5Dic objectForKey:@"right"] isKindOfClass:[NSDictionary class]]) {
+        if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
+            [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                if (!error) { // 成功
+                    NSLog(@"____sucess____%@",response);
+                } else { // 失败
+                    NSLog(@"__right____%@",error.localizedDescription);
+                }
+            }];
+        }
     }
 }
 
@@ -535,29 +547,39 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma leftItemDelegate
 - (void)locationButtonClick {
-    [self leftClick];
+    [self leftClick:leftNavigationItemTypeLocation];
 }
 
 #pragma leftItemDelegate
 - (void)webGoBack{
-    if (StrIsEmpty([[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"])) {
-        if ([self.wkWebView canGoBack]){
-            [self.wkWebView goBack];
-        }
-    }else{
-        [self leftClick];
-    }
+    [self leftClick:leftNavigationItemTypeBack];
 }
 
-- (void)leftClick{
-    if (!StrIsEmpty([[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"])) {
-        [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-            if (!error) { // 成功
-                NSLog(@"%@",response);
-            } else { // 失败
+- (void)leftClick:(leftNavigationItemType)type{
+    if (![[self.getH5Dic objectForKey:@"left"] isKindOfClass:[NSDictionary class]]) {
+        if (type == leftNavigationItemTypeBack) {
+            if ([self.wkWebView canGoBack]){
+                [self.wkWebView goBack];
             }
-        }];
+        }
+        return;
     }
+    
+    if (StrIsEmpty([[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"])) {
+        if (type == leftNavigationItemTypeBack) {
+            if ([self.wkWebView canGoBack]){
+                [self.wkWebView goBack];
+            }
+        }
+        return;
+    }
+    
+    [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+        if (!error) { // 成功
+            NSLog(@"%@",response);
+        } else { // 失败
+        }
+    }];
 }
 
 #pragma mark 登录

@@ -127,12 +127,14 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.navigationView.backButton.enabled = false;
     [self eventId:HQWY_ThirdPart_Back_click];
     if (self.isShowAlertOrBack) {
-        if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
-            [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-                if (!error) { // 成功
-                } else { // 失败
-                }
-            }];
+        if ([[self.navigationDic objectForKey:@"left"] isKindOfClass:[NSDictionary class]]) {
+            if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
+                [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                    if (!error) { // 成功
+                    } else { // 失败
+                    }
+                }];
+            }
         }
       
         if ([self.navigationDic[@"needBackDialog"] isEqual:@0]){

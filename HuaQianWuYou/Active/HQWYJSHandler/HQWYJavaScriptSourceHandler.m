@@ -30,7 +30,7 @@
      [param setValue:logoDefault forKey:@"productIcon"];
     [param setValue:middleBanner forKey:@"middleBannerIcon"];
     [param setValue:loadfail forKey:@"loadFailIcon"];
-    [param setValue:loading forKey:@"loadingIcon"];
+    [param setValue:@"" forKey:@"loadingIcon"];
     [param setValue: loginAvatar forKey:@" loginAvatar"];
     [param setValue:nodata forKey:@"noDataIcon"];
     [param setValue: logoutAvatar forKey:@"logoutAvatar"];
@@ -41,7 +41,11 @@
 - (NSString *)getImageBase64:(NSString *)name withType:(NSString *)type{
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:type]];
     NSLog(@"2222222%@",name);
-    NSLog(@"_____%@",[data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength]);
+//    if ([type isEqualToString:@"gif"]) {
+//        for (int i = 1; i < 3; i++) {
+//            NSLog(@"_____%@",[[data subdataWithRange:NSMakeRange([data length]/2 * i, [data length]/2)] base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed]);
+//        }
+//    }
     return [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];//base64 等分换行
 }
 
