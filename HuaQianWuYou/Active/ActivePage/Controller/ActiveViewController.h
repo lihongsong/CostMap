@@ -7,8 +7,10 @@
 //
 
 #import "HQWYBaseWebViewController.h"
-typedef void (^SignFinishBlock)(void);
-@interface ActiveViewController : HQWYBaseWebViewController 
+
+@interface ActiveViewController : HQWYBaseWebViewController
+
+- (void)setUPWKWebView;
 
 /** 给JS发送通用数据 */
 - (void)sendMessageToJS:(id)message;

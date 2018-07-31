@@ -22,7 +22,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (second > 0) {
                 
-                [self setTitle:[NSString stringWithFormat:@"%lds%@",second,waitingtitle] forState:UIControlStateNormal];
+                [self setTitle:[NSString stringWithFormat:@"%lds%@",(long)second,waitingtitle] forState:UIControlStateNormal];
                 [self setTitleColor:[UIColor loginGrayColor] forState:UIControlStateNormal];
                 second--;
                 self.enabled = NO;

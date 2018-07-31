@@ -59,14 +59,11 @@
     WeakObj(self);
     [BasicConfigModel requestBasicConfigCompletion:^(BasicConfigModel *_Nullable result, NSError *_Nullable error) {
         StrongObj(self);
-        NSLog(@"____%@___",error);
+        //NSLog(@"____%@___",error);
         if (error) {
             
-            if (error.code == kCFURLErrorNotConnectedToInternet && !
-                self.defaultView.hidden) {
-                [self.defaultView ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"网络异常~"];
-            }else{
-              [self.defaultView ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:error.userInfo[@"msg"]];
+            if (!self.defaultView.hidden) {
+               [self.defaultView ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:error.userInfo[@"msg"]];
             }
             self.defaultView.hidden = NO;
             return;
@@ -95,7 +92,7 @@
     } else {
         viewOrientation = @"Landscape";
     }
-    NSString *launchImage = nil;
+    NSString *launchImage = @"";
     
     NSArray* imagesDict = [[[NSBundle mainBundle] infoDictionary] valueForKey:@"UILaunchImages"];
     for (NSDictionary* dict in imagesDict)

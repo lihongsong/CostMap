@@ -279,7 +279,7 @@
         UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightItemView];
         self.navigationItem.rightBarButtonItem = barButtonItem;
     } else {
-        NSLog(@"地理位置反编码出错 ---> %@",[NSString stringWithFormat:@"%d", error.code]);
+        NSLog(@"地理位置反编码出错 ---> %@",[NSString stringWithFormat:@"%ld", error.code]);
     }
 }
 

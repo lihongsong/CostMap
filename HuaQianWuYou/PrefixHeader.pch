@@ -37,6 +37,8 @@ typedef void (^loginFinshBlock)(void);
 #import "HQWYUser.h"
 #import "HQWYUserManager.h"
 
+#import "DeviceTypes.h"
+
 #pragma mark    Category  类别
 #import "UIColor+AddColor.h"
 #import "UIFont+TargetFont.h"

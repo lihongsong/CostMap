@@ -101,7 +101,7 @@
     
     NSString *launchSystemTime = [NSString stringWithFormat:@"%f", [LNRiskDeviceHelp getLaunchSystemTime]]; //系统启动时间
     
-    NSString *lnRiskSdkVersion = [LNRiskDeviceHelp sdkVersion]; // SDK 的版本号
+   // NSString *lnRiskSdkVersion = [LNRiskDeviceHelp sdkVersion]; // SDK 的版本号
     NSString *appVersion       = [LNRiskDeviceHelp appVersion]; //App的版本号
     NSString *appBundleId      = [LNRiskDeviceHelp appBundleId]; // App的bundleID
     NSString *appBuildNum      = [LNRiskDeviceHelp buildNumber]; //App的build号

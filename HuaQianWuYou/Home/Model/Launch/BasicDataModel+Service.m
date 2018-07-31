@@ -18,8 +18,8 @@
         
         NSMutableDictionary *dict = [NSMutableDictionary dictionary];
         [dict setValue:[NSNumber numberWithInt:type] forKey:@"category"];
-        [dict setValue:productId ? productId : @0 forKey:@"pId"];
-        [dict setValue:sort ? sort : @0 forKey:@"sort"];
+        [dict setValue:productId forKey:@"pId"];
+        [dict setValue:sort forKey:@"sort"];
         NSURLSessionDataTask *task = [self ln_requestModelAPI:AdvertisingInfo
                                                        method:HTTP_POST
                                                    parameters:dict
@@ -28,7 +28,7 @@
                                                        BasicDataModel *_Nullable dataModel = (BasicDataModel *_Nullable)responseObject;
                                                        if (ObjIsNilOrNull(dataModel)) {
                                                        }else{
-                                                           NSLog(@"_______%ld",(long)type);
+                                                           //NSLog(@"_______%ld",(long)type);
                                                            if (type == AdvertisingTypeAlert) {
                                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                                    [BasicDataModel cacheToLoacl:dataModel withType:type];

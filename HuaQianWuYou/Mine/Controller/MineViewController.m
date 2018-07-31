@@ -347,10 +347,10 @@
         UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
           // 无权限 引导去开启
           NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-          if ( [UIDevice currentDevice].systemVersion.integerValue >= 10.0) {
-            [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
-              
-            }];
+              if (@available(iOS 10.0, *)) {
+                  [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
+                      
+                  }];
           }else{
             if ([[UIApplication sharedApplication]canOpenURL:url]) {
               [[UIApplication sharedApplication]openURL:url];

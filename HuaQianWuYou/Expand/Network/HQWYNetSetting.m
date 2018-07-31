@@ -15,6 +15,7 @@ static NSString * const memberDefaultPath = @"http://t1-static.huaqianwy.com/mem
 static NSString * const productDefaultPath = @"http://t1-static.huaqianwy.com/api";
 static NSString * const hqwyV1DefaultPath = @"http://appjieqian.2345.com/index.php";
 static NSString * const activeDefaultPath = @"http://t1-static.huaqianwy.com/hqwy/dist/#/home";
+//static NSString * const activeDefaultPath = @"http://172.17.106.138:8088/#/home";
 static NSString * const aggrementDefaultPath = @"http://t1-static.huaqianwy.com/hqwy/dist/#/userServiceAgreement";
 
 @implementation HQWYNetSetting

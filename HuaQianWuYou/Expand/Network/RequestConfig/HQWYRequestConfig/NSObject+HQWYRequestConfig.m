@@ -115,8 +115,8 @@ static NSString *const kHQWYBodyKey         = @"body";
                            error:(NSError *)error
                          success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                          failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    NSLog(@"______%ld",(long)error.code);
-    NSLog(@"____%@",error.description);
+    //NSLog(@"______%ld",(long)error.code);
+    //NSLog(@"____%@",error.description);
     
     if ([GetUserDefault(KExample_Credit_Score) isEqualToString:CONFIG_SCORE]) {
         [self ln_receiveV2ResponseObject:responseObject task:task error:error success:(void (^)(NSURLSessionDataTask *task, id responseObject))success failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure];
@@ -133,11 +133,8 @@ static NSString *const kHQWYBodyKey         = @"body";
                          failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
     if (error) {
         if (failure) {
-            failure(task, error);
-            if (!error) {
-                NSString *errMsg = [responseObject objectForKey:@"msg"];
-                [KeyWindow ln_showToastHUD:errMsg];
-            }
+            NSError *customError = [NSError custom_systemErrorCodeString:error.code];
+                failure(task, customError);
         }
         return;
     }
@@ -182,7 +179,7 @@ static NSString *const kHQWYBodyKey         = @"body";
         return;
     }
     
-    NSLog(@"task.currentRequest.URL=======%@", task.currentRequest.URL);
+   // NSLog(@"task.currentRequest.URL=======%@", task.currentRequest.URL);
     
     NSString *respCode = [responseObject objectForKey:kHQWYRespCodeKey];
     NSLog(@"____%@",respCode);

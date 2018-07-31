@@ -16,7 +16,7 @@
 
 //待账号
 // jpush key值
-#define JPush_AppKey              @"d13190ffaafa7ef2a730cac8"
+//#define JPush_AppKey              @"d13190ffaafa7ef2a730cac8"
 // jpush 应用程序下载渠道，为方便分渠道统计，具体值由你自行定义
 
 //(默认值)表示采用的是开发证书，1 表示采用生产证书发布应用。

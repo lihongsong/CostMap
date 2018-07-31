@@ -8,6 +8,7 @@
 
 #import "HJWebViewController.h"
 #import "NavigationView.h"
+typedef void (^SignFinishBlock)(void);
 
 @interface HQWYBaseWebViewController : HJWebViewController
 /**
@@ -25,6 +26,9 @@
 - (void)setWKWebViewInit;
 - (void)openTheAuthorizationOfLocation;
 - (void)getResoponseCode:(NSURL *)URL;
-- (NSDictionary *)jsonDicFromString:(NSString *)string;
+#pragma mark 登录
+- (void)presentNative:(loginFinshBlock)block;
+- (void)registerStaticHander;
+    
 - (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL;
 @end

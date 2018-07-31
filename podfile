@@ -3,7 +3,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 source 'http://172.16.0.245:2345/Apple_SDK/iOS_Specs.git'
 
-# 公司内部源
+# 内部源
 source 'git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git'
 
 platform :ios, '8.0'

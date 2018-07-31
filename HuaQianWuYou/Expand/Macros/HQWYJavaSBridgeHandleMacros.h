@@ -34,6 +34,10 @@ static NSString * const kAppExecBack = @"appExecBack";
  */
 static NSString * const kAppUrlExceptionMonitor = @"appUrlExceptionMonitor";
 
+/*!
+ 图片资源
+ */
+static NSString * const kAppGetImageSource = @"appGetImageSource";
 
 /*!
  获取productID
@@ -181,5 +185,14 @@ static NSString * const kAppClearUser = @"appClearUser";
  h5调用原生toast
  */
 static NSString * const kAppToastMessage = @"appToastMessage";
+/*
+ 退出web
+ */
+static NSString * const kAppCloseWebview = @"appCloseWebview";
+
+/*!
+ 设置底部颜色
+ */
+static NSString * const kAppSetBottomStyle = @"appSetBottomStyle";
 
 #endif /* HQWYJavaSBridgeHandleMacros_h */

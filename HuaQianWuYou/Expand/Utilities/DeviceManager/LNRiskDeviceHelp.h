@@ -32,7 +32,7 @@
 + (NSString *)getcurrentDeviceTelephoneInformation;
 
 // 网络环境
-+ (NSString *)networkEnvironment;
+//+ (NSString *)networkEnvironment;
 
 //屏幕亮度 0-1
 + (CGFloat)screenLight;

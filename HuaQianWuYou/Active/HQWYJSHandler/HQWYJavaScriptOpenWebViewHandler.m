@@ -12,7 +12,7 @@
 #import "LoginAndRegisterViewController.h"
 #import "ThirdPartWebVC.h"
 #import "AuthPhoneNumViewController.h"
-
+#import "NSObject+JsonToDictionary.h"
 
 @implementation HQWYJavaScriptOpenWebViewHandler
 - (NSString *)handlerName {
@@ -25,8 +25,7 @@
         !hander?:hander([HQWYJavaScriptResponse success]);
         return ;
     }
-    NSData *jsonData = [message dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSDictionary *dic = [self jsonDicFromString:message];
     BOOL needLogin = [dic[@"needLogin"] boolValue];
     
     UIViewController *rootVC = [UIApplication sharedApplication].keyWindow.rootViewController;

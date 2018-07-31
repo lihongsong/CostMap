@@ -7,6 +7,7 @@
 //
 
 #import "HQWYReturnToDetainView.h"
+#import "ThirdPartWebVC.h"
 
 @interface HQWYReturnToDetainView()
 
@@ -27,7 +28,7 @@
 }
 #pragma mark - Show Methods
 
-+ (void)showController:(UIViewController *)vc {
++ (void)showController:(ThirdPartWebVC *)vc {
     [self sharedView];
     [self sharedView].delegate = vc;
     [[self sharedView] updatePosition];
@@ -47,7 +48,7 @@
     self.hudView.center = center;
     [self setUpHUDUI];
     self.alpha = 1;
-    self.userInteractionEnabled = true;
+    self.userInteractionEnabled = YES;
     self.isAccessibilityElement = YES;
     
     self.overlayView.userInteractionEnabled = YES;

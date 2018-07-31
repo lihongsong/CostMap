@@ -9,6 +9,8 @@
 #import "HQWYJavaScriptMonitorHandler.h"
 #import "HQWYJavaSBridgeHandleMacros.h"
 #import "NSObject+HQWYSendNetworkError.h"
+#import "NSObject+JsonToDictionary.h"
+
 @implementation HQWYJavaScriptMonitorHandler
 - (NSString *)handlerName {
     return kAppUrlExceptionMonitor;
@@ -22,15 +24,6 @@
     NSDictionary *dic = [self jsonDicFromString:message];
     [HQWYJavaScriptMonitorHandler sendNetworkErrorDic:dic];
      !hander?:hander([HQWYJavaScriptResponse success]);
-}
-
-- (NSDictionary *)jsonDicFromString:(NSString *)string {
-    
-    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-    
-    return dic;
 }
 
 @end

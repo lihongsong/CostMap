@@ -362,7 +362,7 @@
     layer.mask = [self maskLayerForLayer3];
 }
 
-- (void)shineWithTimeInterval:(NSTimeInterval)timeInterval pauseDuration:(NSTimeInterval)pauseDuration finalValue:(NSUInteger)finalValue finishBlock:(void(^)())finishBlock {
+- (void)shineWithTimeInterval:(NSTimeInterval)timeInterval pauseDuration:(NSTimeInterval)pauseDuration finalValue:(NSUInteger)finalValue finishBlock:(void(^)(void))finishBlock {
     
     [self.queue cancelAllOperations];
     

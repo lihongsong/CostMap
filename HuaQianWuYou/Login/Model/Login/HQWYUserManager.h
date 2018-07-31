@@ -58,6 +58,6 @@ typedef void(^LNUserManegerCallBack)(HQWYUser *userInfo);
 @property (nonatomic, assign) BOOL showingTokenValidateAlertView;//是否弹出token失效的弹框
 
 
-+ (void)handleInvalidateToken:(NSDictionary *)dict;
+//+ (void)handleInvalidateToken:(NSDictionary *)dict;
 
 @end

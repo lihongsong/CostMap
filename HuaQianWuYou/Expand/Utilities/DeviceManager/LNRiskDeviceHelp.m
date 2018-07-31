@@ -187,30 +187,31 @@ char *LNRiskPrintEnv(void) {
 }
 
 // 网络环境
-+ (NSString *)networkEnvironment {
+//+ (NSString *)networkEnvironment {
+//
+//    LNRiskReachabilityStatus status = [LNRiskNetReachability sharedManager].networkReachabilityStatus;
+//    NSString *networkENV        = nil;
+//    switch (status) {
+//        case LNRiskReachabilityStatusUnknown:
+//            networkENV = @"UNKNOWN";
+//            break;
+//        case LNRiskReachabilityStatusReachableVia2G:
+//            networkENV = @"2G";
+//            break;
+//        case LNRiskReachabilityStatusReachableVia3G:
+//            networkENV = @"3G";
+//            break;
+//        case LNRiskReachabilityStatusReachableViaWiFi:
+//            networkENV = [LNRiskDeviceHelp GetWifiName];
+//            break;
+//
+//        default:
+//            break;
+//    }
+//
+//    return nil;
+//}
 
-    LNRiskReachabilityStatus status = [LNRiskNetReachability sharedManager].networkReachabilityStatus;
-    NSString *networkENV        = nil;
-    switch (status) {
-        case LNRiskReachabilityStatusUnknown:
-            networkENV = @"UNKNOWN";
-            break;
-        case LNRiskReachabilityStatusReachableVia2G:
-            networkENV = @"2G";
-            break;
-        case LNRiskReachabilityStatusReachableVia3G:
-            networkENV = @"3G";
-            break;
-        case LNRiskReachabilityStatusReachableViaWiFi:
-            networkENV = [LNRiskDeviceHelp GetWifiName];
-            break;
-
-        default:
-            break;
-    }
-
-    return nil;
-}
 + (NSString *)GetWifiName {
 
     NSString *wifiName = @"Not Found";
@@ -227,7 +228,9 @@ char *LNRiskPrintEnv(void) {
 
             wifiName = [dict valueForKey:@"SSID"];
         }
+        CFRelease(myArray);
     }
+    
     return wifiName.length > 0 ? wifiName : @"";
 }
 
@@ -294,7 +297,6 @@ char *LNRiskPrintEnv(void) {
 /**
  获取设备的音量信息
  iOS 只可以获取系统音量，如果在设置中设置了，可以通过监听的的方法获取铃声相关的信息
- @return
  */
 + (NSDictionary *)getDeviceSound {
 

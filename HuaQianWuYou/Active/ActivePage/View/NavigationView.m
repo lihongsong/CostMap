@@ -10,7 +10,6 @@
 #import "RightItemButton.h"
 
 @interface NavigationView()
-@property (strong, nonatomic)UIButton *backButton;
 @property (strong, nonatomic)UIImageView *arrowImage;
 @property (strong, nonatomic) RightItemButton *rightItemButton;
 
@@ -38,12 +37,8 @@
             NSString *leftTitle = [[leftDic objectForKey:@"text"] stringByReplacingOccurrencesOfString:@"location:" withString:@""];
             if (leftTitle.length > 0) {
                 self.leftLabel.text = leftTitle;
-//                [self.leftItemButton setTitle:leftTitle forState:UIControlStateNormal];
-            }else{
-                leftTitle = self.leftItemButton.titleLabel.text;
             }
             if (!StrIsEmpty([leftDic objectForKey:@"textColor"])) {
-//                [self.leftItemButton setTitleColor:[UIColor hj_colorWithHexString:[leftDic objectForKey:@"textColor"]] forState:UIControlStateNormal];
                 self.leftLabel.textColor = [UIColor hj_colorWithHexString:[leftDic objectForKey:@"textColor"]];
             }
         }else{

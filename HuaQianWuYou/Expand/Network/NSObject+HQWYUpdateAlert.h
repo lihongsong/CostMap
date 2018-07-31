@@ -12,7 +12,7 @@
 /**
  强制升级弹层服务端控制
  
- @param messageDic url , content
+// @param messageDic url , content
  */
-- (void)HQWY_showUpdateAlert:(NSDictionary *)dict;
+//- (void)HQWY_showUpdateAlert:(NSDictionary *)dict;
 @end

@@ -17,6 +17,7 @@
 @end
 
 @interface NavigationView : UIView
+@property (strong, nonatomic)UIButton *backButton;
 @property (strong, nonatomic)LeftItemButton *leftItemButton;
 @property(nonatomic,strong)id<NavigationViewDelegate>delegate;
 @property(nonatomic,strong) UILabel *leftLabel;

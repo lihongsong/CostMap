@@ -16,7 +16,6 @@
 #import "AppDelegate+SDKRegister.h"
 #import "ActiveViewController.h"
 #import "AppDelegate+APNS.h"
-#import "FBManager.h"
 #import "TalkingData.h"
 #import "TalkingDataAppCpa.h"
 #import <Bugly/Bugly.h>
@@ -35,60 +34,24 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [self setUpSDKs];
-
-    // 百度定位 3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB
-    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:Baidu_AppKey authDelegate:self];
-    //FIXME:review 在这里weakSelf 最好放在block上面吧
-    WeakObj(self);
-
-    //FIXME:review 注册三方SDK相关的，统一放到一个方法里吧
-    [self registerAppUpdate];
     //    /** 通过通知栏调起APP处理通知信息 */
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-    
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     LaunchViewController *launchVC = [LaunchViewController new];
     self.window.rootViewController = launchVC;
     [self.window makeKeyAndVisible];
+     WeakObj(self);
     launchVC.accomplishBlock = ^(NSString *exampleCreditScore) {
         StrongObj(self);
         if (![exampleCreditScore isEqualToString:@"88"]) {
+            [self setUpSDKs];
             [self setupLaunchViewControllerWithRemoteNotification:remoteNotification];
             [self checkUpdate];
         }else{
             [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
         }
     };
-
-    //开始检测网络状态(主要针对IOS10以后的网络需要授权问题)
-    //如果还没有网络授权,则在用户选择后再发送一些API
-    __block NSString *networkenv = @""; // 网络环境 3G Wi-Fi
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-            switch (status) {
-                case AFNetworkReachabilityStatusUnknown:
-                    networkenv = @"UNKNOWN";
-                    break;
-                case AFNetworkReachabilityStatusNotReachable:
-                    networkenv = @"NONET";
-                    break;
-                case AFNetworkReachabilityStatusReachableViaWWAN:
-                    networkenv = @"WWAN";
-                    break;
-                case AFNetworkReachabilityStatusReachableViaWiFi:
-                    networkenv = @"WiFi";
-                    break;
-                default:
-                    break;
-            }
-        SetUserDefault(networkenv, @"networkEnvironment")
-    }];
-    
-    /** 注册小米推送,启动APNs */
-    [MiPushSDK registerMiPush:self];
-    
     /** APP未启动 通知栏调起APP 处理通知信息 */
     if (remoteNotification) {
         [self handleRemoteNotificationFromLaunchingWith:remoteNotification];
@@ -97,24 +60,49 @@
     return YES;
 }
 
+// 网络环境
+- (void)getNetWorkEnvironment{
+    //开始检测网络状态(主要针对IOS10以后的网络需要授权问题)
+    //如果还没有网络授权,则在用户选择后再发送一些API
+    __block NSString *networkenv = @""; // 网络环境 3G Wi-Fi
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusUnknown:
+                networkenv = @"UNKNOWN";
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+                networkenv = @"NONET";
+                break;
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                networkenv = @"WWAN";
+                break;
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                networkenv = @"WiFi";
+                break;
+            default:
+                break;
+        }
+        SetUserDefault(networkenv, @"networkEnvironment")
+    }];
+}
+
 - (void)setUpViewControllerWithHighScoreWithRemoteNotificaton:(NSDictionary *)remoteNotification launchOptions:(NSDictionary *)launchOptions {
+    [self getNetWorkEnvironment];
     ActiveViewController *activeVC = [[ActiveViewController alloc]init];
     BaseNavigationController *hNC = [[BaseNavigationController alloc]initWithRootViewController:activeVC];
     self.window.rootViewController = hNC;
     UIWindow *oldWindow = self.window;
-    
+
     __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
    WeakObj(self)
     HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         StrongObj(self)
-        // 1秒 网络加载  3秒图片加载
         make.setTimer(0, 3, nil,YES);
         make.setAnimateFinishedBlock(^(id info) {
-            
             self.window = oldWindow;
             [self loadActiveViewController:hNC];
             [self.window makeKeyWindow];
-            
             [self checkUpdate];
             
             [activeVC showPopView];
@@ -131,15 +119,14 @@
             CGFloat y = SHeight - kLaunchSkipButtonSpace - h;
             
             btn.frame = CGRectMake(x, y, w, h);
-            [btn setTitleColor:HJHexColor(0x666666) forState:UIControlStateNormal];
+            [btn setTitleColor:[UIColor stateLittleGrayColor] forState:UIControlStateNormal];
             [btn.layer setCornerRadius:15];
             [btn setBackgroundColor:[UIColor clearColor]];
-            [btn.titleLabel setFont:[UIFont systemFontOfSize:13]];
-            [btn.layer setBorderColor:HJHexColor(0xbbbbbb).CGColor];
+            [btn.titleLabel setFont:[UIFont stateLabelFont]];
+            [btn.layer setBorderColor:[UIColor loginGrayColor].CGColor];
             [btn.layer setBorderWidth:1.0f];
     
             [btn addTarget:self action:@selector(launchButtonClick) forControlEvents:UIControlEventTouchUpInside];
-        // 点击跳过，埋点
         });
     }];
     
@@ -148,7 +135,7 @@
     launchManager.guideVC = launchVC;
     launchManager.rootViewController = hNC;
     [launchManager showLanuchPageModel];
-
+    [self setUpSDKs];//2.优化启动时间，1.必要，2延后，3VC注册
 }
 
 - (void)launchButtonClick {
@@ -239,14 +226,22 @@
 #pragma 三方SDK设置
 
 - (void)setUpSDKs{
+    
+    /** 注册小米推送,启动APNs */
+    [MiPushSDK registerMiPush:self];
+    
     //移动武林榜
     [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
+    
     /** TalkingData */
     [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
-
-    //设置意见反馈
-    [FBManager configFB];
+    
+    [self registerAppUpdate];
+    
     [self setUpBugly];
+    
+    // 百度定位 3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB
+    [[BMKLocationAuth sharedInstance] checkPermisionWithKey:Baidu_AppKey authDelegate:self];
 }
 
 - (void)setUpBugly {

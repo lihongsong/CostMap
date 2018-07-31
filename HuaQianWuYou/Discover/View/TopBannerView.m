@@ -141,9 +141,9 @@
 }
 
 - (void)carouselDidDisplayItemAtIndex:(NSInteger)index {
-    NSInteger bannerInde = index < 0 ? self.modelArray.count - 1 : index;
+    NSUInteger bannerInde = index < 0 ? self.modelArray.count - 1 : index;
     self.tipLabel1.text = self.modelArray[bannerInde].title;
-    self.tipLabel2.text = [NSString stringWithFormat:@"%ld/%ld",bannerInde + 1,self.modelArray.count];
+    self.tipLabel2.text = [NSString stringWithFormat:@"%lu/%lu",(unsigned long)bannerInde + 1,(unsigned long)self.modelArray.count];
     self.tipBgView.tag = bannerInde;
 }
 

@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 //错误定义
 #define CustomErrorDomain   @"Custom.hqwy.error.domain"
+#define SystemErrorDomain   @"System.hqwy.error.domain"
 
 @interface NSError (CustomError)
 + (NSError *)custom_errorWithDomain:(NSString *)errorDomain
                          codeString:(NSString *)codeString
                           errorInfo:(NSDictionary *)errorInfo;
+
++ (NSError *)custom_systemErrorCodeString:(NSInteger)codeString;
 @end

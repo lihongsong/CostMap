@@ -67,8 +67,6 @@
 
 //获取DeviceToken成功
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    NSString *token = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-    token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     // 小米推送注册APNS成功, 注册deviceToken
     [MiPushSDK bindDeviceToken:deviceToken];
 }

@@ -78,8 +78,8 @@
 
 #pragma mark - ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬ end ▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-@property (nonatomic, copy) void(^minusBlock)();
-@property (nonatomic, copy) void(^addBlock)();
+@property (nonatomic, copy) void(^minusBlock)(void);
+@property (nonatomic, copy) void(^addBlock)(void);
 
 /**
  开始闪动
@@ -89,7 +89,7 @@
  @param finalValue 第三次滚动的结束值
  @param finishBlock 滚动完成之后的回调
  */
-- (void)shineWithTimeInterval:(NSTimeInterval)timeInterval pauseDuration:(NSTimeInterval)pauseDuration finalValue:(NSUInteger)finalValue finishBlock:(void(^)())finishBlock;
+- (void)shineWithTimeInterval:(NSTimeInterval)timeInterval pauseDuration:(NSTimeInterval)pauseDuration finalValue:(NSUInteger)finalValue finishBlock:(void(^)(void))finishBlock;
 
 /// 清空彩色条，不带动画
 - (void)clearIndicatorValue;
