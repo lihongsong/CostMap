@@ -417,7 +417,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
         NSLog(@"appWillEnterForeground222");
-        [self.wkWebView reload];
+    [self loadURLString:self.navigationDic[@"url"]];
     }
     [self.manager callHandler:kWebViewWillAppear];
 }
