@@ -362,8 +362,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取H5调用原生toast */
     [self.manager registerHandler:kAppToastMessage handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        if ([data isKindOfClass:[NSString class]]) {
-            [self.wkWebView  ln_showToastHUD:data];
+        NSDictionary *dataDic = [[NSDictionary alloc]initWithDictionary:data];
+        if (dataDic[@"message"]) {
+            [self.wkWebView  ln_showToastHUD:dataDic[@"message"]];
         }
     }];
     
