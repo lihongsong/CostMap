@@ -28,7 +28,7 @@
                                                        BasicDataModel *_Nullable dataModel = (BasicDataModel *_Nullable)responseObject;
                                                        if (ObjIsNilOrNull(dataModel)) {
                                                        }else{
-                                                           NSLog(@"_______%ld",(long)type);
+                                                           //NSLog(@"_______%ld",(long)type);
                                                            if (type == AdvertisingTypeAlert) {
                                                                dispatch_async(dispatch_get_main_queue(), ^{
                                                                    [BasicDataModel cacheToLoacl:dataModel withType:type];

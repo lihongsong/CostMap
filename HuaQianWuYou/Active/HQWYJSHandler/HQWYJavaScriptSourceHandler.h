@@ -9,5 +9,5 @@
 #import "HQWYJavaScriptBaseHandler.h"
 
 @interface HQWYJavaScriptSourceHandler : HQWYJavaScriptBaseHandler
-
+- (void)didReceiveMessage:(id)message hander:(HJResponseCallback)hander;
 @end

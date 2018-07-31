@@ -101,6 +101,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 // 精准推*荐
 - (void)topPreRecommend:(NSNotification *)notification{
+    NSLog(@"notification_____%@",notification.userInfo);
     self.getH5Dic = notification.userInfo;
     [self rightButtonItemClick];
 }
@@ -152,6 +153,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
+        NSLog(@"TenMinutesRefresh");
         [self.wkWebView reload];
     }
     [self.manager callHandler:kWebViewWillAppear];
@@ -415,7 +417,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     /** 注册异常监控事件 */
     [self.manager registerHandler:[HQWYJavaScriptMonitorHandler new]];
     
-    
     /** 注册传图片 */
     [self.manager registerHandler:[HQWYJavaScriptSourceHandler new]];
 }
@@ -453,9 +454,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (!StrIsEmpty([[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"])) {
         [self.wkWebView evaluateJavaScript:[[self.getH5Dic objectForKey:@"right"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
             if (!error) { // 成功
-                NSLog(@"%@",response);
+                NSLog(@"____sucess____%@",response);
             } else { // 失败
-                NSLog(@"%@",error.localizedDescription);
+                NSLog(@"__right____%@",error.localizedDescription);
             }
         }];
     }

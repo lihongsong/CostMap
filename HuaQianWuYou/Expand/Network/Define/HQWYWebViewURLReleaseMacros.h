@@ -11,6 +11,6 @@
 
 #define Active_Path             @"https://static.huaqianwy.com/hqwy/dist/#/home"
 
-#define Agreement_Path          @"http://static.huaqianwy.com/hqwy/dist/#/userServiceAgreement"
+#define Agreement_Path          @"https://static.huaqianwy.com/hqwy/dist/#/userServiceAgreement"
 
 #endif /* HQWYWebViewURLReleaseMacros_h */

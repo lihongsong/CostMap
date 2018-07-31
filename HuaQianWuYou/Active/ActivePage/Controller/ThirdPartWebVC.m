@@ -117,6 +117,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark 右边精准推荐
 -(void)rightButtonItemClick{
     [self eventId:HQWY_ThirdPart_Right_click];
+    NSLog(@"______右边精准推荐");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppClickTopPreRecommend" object:nil userInfo:[self.navigationDic objectForKey:@"nav"]];
     [self toBeforeViewControllerAnimation:false];
 }
@@ -415,6 +416,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
+        NSLog(@"appWillEnterForeground222");
         [self.wkWebView reload];
     }
     [self.manager callHandler:kWebViewWillAppear];
