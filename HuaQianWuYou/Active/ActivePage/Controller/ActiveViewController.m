@@ -88,7 +88,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [notificatoinCenter addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
     
     [notificatoinCenter addObserver:self selector:@selector(topPreRecommend:) name:@"kAppClickTopPreRecommend" object:nil];
-   // [[HQWYJavaScriptSourceHandler new] didReceiveMessage:nil hander:nil];
 }
 
 - (instancetype)init{
