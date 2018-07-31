@@ -26,20 +26,25 @@
 
 - (void)changeNavigationType:(NSDictionary *)typeDic{
     if(!StrIsEmpty([typeDic objectForKey:@"bgColor"])){
-        self.backgroundColor = [UIColor hj_colorWithHexString:[typeDic objectForKey:@"bgColor"]];
+        self.backgroundColor = [UIColor hj_colorWithHexString:typeDic[@"bgColor"]];
     }
     if ([[typeDic objectForKey:@"backKeyHide"] integerValue]) {
-        NSDictionary *leftDic = [typeDic objectForKey:@"left"];
         self.backButton.hidden = true;
-        if(leftDic != nil && !StrIsEmpty([leftDic objectForKey:@"text"])){
-            self.leftItemButton.hidden = false;
-            self.arrowImage.hidden = false;
-            NSString *leftTitle = [[leftDic objectForKey:@"text"] stringByReplacingOccurrencesOfString:@"location:" withString:@""];
-            if (leftTitle.length > 0) {
-                self.leftLabel.text = leftTitle;
-            }
-            if (!StrIsEmpty([leftDic objectForKey:@"textColor"])) {
-                self.leftLabel.textColor = [UIColor hj_colorWithHexString:[leftDic objectForKey:@"textColor"]];
+        if ([[typeDic objectForKey:@"left"] isKindOfClass:[NSDictionary class]]) {
+             NSDictionary *leftDic = [typeDic objectForKey:@"left"];
+            if(!StrIsEmpty(leftDic[@"text"])){
+                self.leftItemButton.hidden = false;
+                self.arrowImage.hidden = false;
+                NSString *leftTitle = [leftDic[@"text"] stringByReplacingOccurrencesOfString:@"location:" withString:@""];
+                if (leftTitle.length > 0) {
+                    self.leftLabel.text = leftTitle;
+                }
+                if (!StrIsEmpty(leftDic[@"textColor"])) {
+                    self.leftLabel.textColor = [UIColor hj_colorWithHexString:leftDic[@"textColor"]];
+                }
+            }else{
+                self.leftItemButton.hidden = true;
+                self.arrowImage.hidden = true;
             }
         }else{
             self.leftItemButton.hidden = true;
@@ -51,25 +56,31 @@
         self.backButton.hidden = false;
     }
     
-    NSDictionary *rightDic = [typeDic objectForKey:@"right"];
-    if (rightDic != nil && !StrIsEmpty([rightDic objectForKey:@"text"])) {
-        self.rightItemButton.hidden = false;
-        [self.rightItemButton setTitle:[rightDic objectForKey:@"text"] forState:UIControlStateNormal];
-        if (![[rightDic objectForKey:@"text"] isEqualToString:@"精准推荐"]){
-            [self.rightItemButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-        }
-        if (!StrIsEmpty([rightDic objectForKey:@"textColor"])) {
-            [self.rightItemButton setTitleColor:[UIColor hj_colorWithHexString:[rightDic objectForKey:@"textColor"]] forState:UIControlStateNormal];
+    if ([[typeDic objectForKey:@"right"] isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *rightDic = typeDic[@"right"];
+        if (!StrIsEmpty([rightDic objectForKey:@"text"])) {
+            self.rightItemButton.hidden = false;
+            [self.rightItemButton setTitle:rightDic[@"text"] forState:UIControlStateNormal];
+            if (![[rightDic objectForKey:@"text"] isEqualToString:@"精准推荐"]){
+                [self.rightItemButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
+            }
+            if (!StrIsEmpty([rightDic objectForKey:@"textColor"])) {
+                [self.rightItemButton setTitleColor:[UIColor hj_colorWithHexString:rightDic[@"textColor"]] forState:UIControlStateNormal];
+            }
+        }else{
+            self.rightItemButton.hidden = true;
         }
     }else{
         self.rightItemButton.hidden = true;
     }
     
-    NSDictionary *titleDic = [typeDic objectForKey:@"title"];
-    if(titleDic != nil && !StrIsEmpty([titleDic objectForKey:@"text"])){
-        [self.titleButton setTitle:[titleDic objectForKey:@"text"] forState:UIControlStateNormal];
-        if (!StrIsEmpty([titleDic objectForKey:@"textColor"])) {
-            [self.titleButton setTitleColor:[UIColor hj_colorWithHexString:[titleDic objectForKey:@"textColor"]] forState:UIControlStateNormal];
+    if ([typeDic isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *titleDic = [typeDic objectForKey:@"title"];
+        if(!StrIsEmpty([titleDic objectForKey:@"text"])){
+            [self.titleButton setTitle:titleDic[@"text"] forState:UIControlStateNormal];
+            if (!StrIsEmpty([titleDic objectForKey:@"textColor"])) {
+                [self.titleButton setTitleColor:[UIColor hj_colorWithHexString:titleDic[@"textColor"]] forState:UIControlStateNormal];
+            }
         }
     }
 }
