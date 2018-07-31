@@ -117,6 +117,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark 右边精准推荐
 -(void)rightButtonItemClick{
     [self eventId:HQWY_ThirdPart_Right_click];
+    NSLog(@"______右边精准推荐");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppClickTopPreRecommend" object:nil userInfo:[self.navigationDic objectForKey:@"nav"]];
     [self toBeforeViewControllerAnimation:false];
 }
@@ -126,12 +127,14 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.navigationView.backButton.enabled = false;
     [self eventId:HQWY_ThirdPart_Back_click];
     if (self.isShowAlertOrBack) {
-        if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
-            [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-                if (!error) { // 成功
-                } else { // 失败
-                }
-            }];
+        if ([[self.navigationDic objectForKey:@"left"] isKindOfClass:[NSDictionary class]]) {
+            if (!StrIsEmpty([[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"])) {
+                [self.wkWebView evaluateJavaScript:[[self.navigationDic objectForKey:@"left"] objectForKey:@"callback"] completionHandler:^(id _Nullable response, NSError * _Nullable error) {
+                    if (!error) { // 成功
+                    } else { // 失败
+                    }
+                }];
+            }
         }
       
         if ([self.navigationDic[@"needBackDialog"] isEqual:@0]){
@@ -415,8 +418,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
-        [self.wkWebView reload];
+        NSLog(@"appWillEnterForeground222");
+        [self.wkWebView ln_showLoadingHUDMoney];
+        [self loadURLString:self.navigationDic[@"url"]];
     }
-    [self.manager callHandler:kWebViewWillAppear];
 }
 @end

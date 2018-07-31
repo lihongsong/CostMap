@@ -28,7 +28,7 @@ static NSString *const kCLErrorMessageKey = @"msg";
 //封装error信息到error对象，返回error
 + (NSError *)custom_systemErrorCodeString:(NSInteger)code{
     NSError *aError = nil;
-  NSDictionary *dic = @{kCLErrorMessageKey : @"网络异常"};
+  NSDictionary *dic = @{kCLErrorMessageKey : @"网络异常~"};
         aError = [NSError errorWithDomain:SystemErrorDomain code:code userInfo:dic];
     return aError;
 }

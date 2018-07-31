@@ -59,7 +59,7 @@
     WeakObj(self);
     [BasicConfigModel requestBasicConfigCompletion:^(BasicConfigModel *_Nullable result, NSError *_Nullable error) {
         StrongObj(self);
-        NSLog(@"____%@___",error);
+        //NSLog(@"____%@___",error);
         if (error) {
             
             if (!self.defaultView.hidden) {

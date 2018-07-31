@@ -367,6 +367,10 @@
 }
 
 - (void)reloadWebview {
+    if (self.failUrl == nil) {
+        [self.wkWebView  ln_showToastHUD:@"网络异常~"];
+        return;
+    }
     if (![self externalAppRequiredToOpenURL:self.failUrl]) {
         [self.wkWebView ln_showLoadingHUDMoney];
     }
