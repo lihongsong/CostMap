@@ -517,6 +517,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             self.locatedCity[@"country"] = location.rgcData.country;
             self.locatedCity[@"city"] = cityString;
             self.locatedCity[@"province"] = location.rgcData.province;
+            self.selectedLocation = [cityString stringByReplacingOccurrencesOfString:@"市" withString:@""];
             [self.locationManager stopUpdatingLocation];
         }
     }
