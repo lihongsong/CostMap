@@ -88,7 +88,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [notificatoinCenter addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
     
     [notificatoinCenter addObserver:self selector:@selector(topPreRecommend:) name:@"kAppClickTopPreRecommend" object:nil];
-   // [[HQWYJavaScriptSourceHandler new] didReceiveMessage:nil hander:nil];
 }
 
 - (instancetype)init{
@@ -128,7 +127,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         if (@available(iOS 11.0, *)) {
            self.wkWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever; make.bottom.mas_equalTo(self.view.mas_safeAreaLayoutGuideBottom);
         } else {
-            // Fallback on earlier versions
             make.bottom.mas_equalTo(self.view.mas_bottom);
         }
     }];
@@ -519,6 +517,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             self.locatedCity[@"country"] = location.rgcData.country;
             self.locatedCity[@"city"] = cityString;
             self.locatedCity[@"province"] = location.rgcData.province;
+            self.selectedLocation = [cityString stringByReplacingOccurrencesOfString:@"市" withString:@""];
             [self.locationManager stopUpdatingLocation];
         }
     }

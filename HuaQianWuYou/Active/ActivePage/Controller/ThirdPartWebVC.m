@@ -51,8 +51,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
          [self.wkWebView ln_showLoadingHUDMoney];
     }
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
-    
-    [self.wkWebView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:0 context:HJWebContext];
 }
 
 #pragma mark webview 配置
@@ -117,7 +115,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark 右边精准推荐
 -(void)rightButtonItemClick{
     [self eventId:HQWY_ThirdPart_Right_click];
-    NSLog(@"______右边精准推荐");
+   // NSLog(@"______右边精准推荐");
     [[NSNotificationCenter defaultCenter] postNotificationName:@"kAppClickTopPreRecommend" object:nil userInfo:[self.navigationDic objectForKey:@"nav"]];
     [self toBeforeViewControllerAnimation:false];
 }
@@ -418,7 +416,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
-        NSLog(@"appWillEnterForeground222");
+        //NSLog(@"appWillEnterForeground222");
         [self.wkWebView ln_showLoadingHUDMoney];
         [self loadURLString:self.navigationDic[@"url"]];
     }

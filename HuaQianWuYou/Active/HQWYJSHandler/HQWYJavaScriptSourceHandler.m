@@ -20,7 +20,7 @@
     NSString *logoDefault = [self getImageBase64:@"productIcon" withType:@"png"];
     NSString *middleBanner = [self getImageBase64:@"middleBannerIcon" withType:@"png"];
     NSString *loadfail = [self getImageBase64:@"loadFailIcon" withType:@"png"];
-    NSString *loading = [self getImageBase64:@"MBProgressloading" withType:@"gif"];
+    //NSString *loading = [self getImageBase64:@"MBProgressloading" withType:@"gif"];
     NSString *loginAvatar = [self getImageBase64:@"loginAvatar" withType:@"png"];
     NSString *nodata = [self getImageBase64:@"noDataIcon" withType:@"png"];
     NSString *logoutAvatar = [self getImageBase64:@"logoutAvatar" withType:@"png"];
@@ -40,35 +40,7 @@
 
 - (NSString *)getImageBase64:(NSString *)name withType:(NSString *)type{
     NSData *data = [NSData dataWithContentsOfFile:[[NSBundle mainBundle] pathForResource:name ofType:type]];
-    
-    
-    NSLog(@"2222222%@",name);
-    if ([type isEqualToString:@"gif"]) {
-        NSString *str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-        NSLog(@"__12121212__%@",str);
-        NSString *path = [[self tempUnzipPathInDoc] stringByAppendingPathComponent:@"baseConfig"];
-        [str writeToFile:path atomically:true];
-        NSLog(@"_____%d",[str writeToFile:path atomically:true]);
-    }
     return [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];//base64 等分换行
 }
-
-- (NSString *)tempUnzipPathInDoc
-{
-    NSString *path = [NSString stringWithFormat:@"%@",
-                      NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0]];
-    NSURL *url = [NSURL fileURLWithPath:path];
-    NSError *error = nil;
-    [[NSFileManager defaultManager] createDirectoryAtURL:url
-                             withIntermediateDirectories:YES
-                                              attributes:nil
-                                                   error:&error];
-    if (error) {
-        return nil;
-    }
-    NSLog(@"____%@",url.path);
-    return url.path;
-}
-
 
 @end
