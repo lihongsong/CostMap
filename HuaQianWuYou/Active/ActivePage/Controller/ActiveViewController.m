@@ -157,7 +157,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
-        NSLog(@"TenMinutesRefresh");
+        NSLog(@"activeTenMinutesRefresh");
         [self.wkWebView ln_showLoadingHUDMoney];
         [self loadURLString:Active_Path];
     }
@@ -229,6 +229,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = true;
+    if (StrIsEmpty(self.wkWebView.title)) {
+        [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
+    }
     [self.manager callHandler:kWebViewWillAppear];
 }
 
@@ -653,6 +656,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     NSLog(@"______******Received memory warning*****______");
     [self.wkWebView ln_showLoadingHUDMoney];
     [self loadURLString:Active_Path];
+}
+
+// 此方法适用iOS9.0以上     iOS8用监听另行处理
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView NS_AVAILABLE(10_11, 9_0){
+    
+    NSLog(@"进程被终止");
+    
+    NSLog(@"%@",webView.URL);
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
+    
 }
 
 @end

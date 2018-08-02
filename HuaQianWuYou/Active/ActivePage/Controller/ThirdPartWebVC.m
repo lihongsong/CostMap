@@ -60,6 +60,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (StrIsEmpty(self.wkWebView.title)) {
+        [self.wkWebView reload];
+    }
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.wkWebView ln_hideProgressHUD];
@@ -416,7 +423,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
-        //NSLog(@"appWillEnterForeground222");
+        NSLog(@"appWillEnterForeground222");
         [self.wkWebView ln_showLoadingHUDMoney];
         [self loadURLString:self.navigationDic[@"url"]];
     }
