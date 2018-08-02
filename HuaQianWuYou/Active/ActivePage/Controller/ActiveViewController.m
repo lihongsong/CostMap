@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger,leftNavigationItemType) {
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
-@interface ActiveViewController ()<BMKLocationManagerDelegate,NavigationViewDelegate,PopViewManagerDelegate,HQWYJavaScriptOpenNativeHandlerDelegate>
+@interface ActiveViewController ()<BMKLocationManagerDelegate,NavigationViewDelegate,PopViewManagerDelegate,HQWYJavaScriptOpenNativeHandlerDelegate,WKNavigationDelegate>
 @property(nonatomic,strong)BMKLocationManager *locationManager;
 
 @property(strong,nonatomic)NavigationView *navigationView;
@@ -117,6 +117,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma mark webview 配置
 - (void)setUPWKWebView{
+    self.wkWebView.navigationDelegate = self;
+    self.wkWebView.UIDelegate = self;
     [self setWKWebViewInit];
     [self.wkWebView ln_showLoadingHUDMoney];
     [self.view addSubview:self.wkWebView];
@@ -230,9 +232,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = true;
     if (StrIsEmpty(self.wkWebView.title)) {
+        NSLog(@"__ 白屏__reload");
         [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
     }
-    [self.manager callHandler:kWebViewWillAppear];
+//    [self.manager callHandler:kWebViewWillAppear];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -667,5 +670,4 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
     
 }
-
 @end
