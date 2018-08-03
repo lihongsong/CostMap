@@ -165,15 +165,13 @@ static NSString *const kHQWYBodyKey         = @"body";
                                  error:(NSError *)error
                                success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
-    NSDictionary *allHeader = task.currentRequest.allHTTPHeaderFields;
-    NSString *requestTime = allHeader[@"requestTime"];
-    NSLog(@"11111111___%@",requestTime);
-
+   
     if (error) {
         
         // 断网不发送
         if (error.code != kCFURLErrorNotConnectedToInternet) {
             //发送移动武林榜接口异常监测
+             NSLog(@"11111111___%@",responseObject);
             if (task != nil) {
                 [self sendNetworkError:error ofObject:task];
             }else{
