@@ -48,7 +48,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self registerHander];
     [self isUploadData];
     if (![self externalAppRequiredToOpenURL:self.wkWebView.URL]) {
-         [self.wkWebView ln_showLoadingHUDMoney];
     }
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground:) name:@"kAppWillEnterForeground" object:nil];
 }
@@ -92,6 +91,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.view addSubview:self.navigationView];
     self.navigationView.delegate = self;
     [self.navigationView changeNavigationType:self.navigationDic[@"nav"]];
+}
+
+#pragma mark - ProgressView
+//重写父类方法
+- (void)addProgressView {
+    self.progressView.progressTintColor = [UIColor skinColor];
+    [self.navigationView addSubview:self.progressView];
 }
 
 - (void)initDataCompletion:(nullable void (^)(id _Nullable, NSError * _Nullable))completion{
@@ -182,14 +188,12 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.countTime = 3;
         [self.timer invalidate];
         self.timer = nil;
-        [self.wkWebView ln_showLoadingHUDMoney];
         [self initDataCompletion:^(id _Nullable result, NSError * _Nullable error) {
             if (error) {
                 self.navigationView.backButton.enabled = true;
-                [self.wkWebView ln_hideProgressHUD:LNMBProgressHUDAnimationError message:error.hqwy_errorMessage];
+                [self.wkWebView ln_showToastHUD:error.hqwy_errorMessage];
                 return;
             }
-            [self.wkWebView ln_hideProgressHUD];
             if (self.listArr.count > 0) {
                 NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[0]];
                 [self uploadData:product[@"id"]];
@@ -371,7 +375,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
     NSString *strUrl = [NSString stringWithFormat:@"%@",URL];
     if(StrIsEmpty(strUrl)){
-        [self.wkWebView  ln_hideProgressHUD:LNMBProgressHUDAnimationError message:@"链接地址错误，打开失败"];
+        [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
         return;
     }
     self.isShowFailToast = false;
@@ -379,7 +383,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self checkIsShowAlertOrBack:URL];
     [self setWkwebviewGesture];
     self.isProductFirstPage = false;
-    [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
@@ -388,22 +391,20 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.productUrl = URL;
     }
     if (error.code == 101) {
-          [self.wkWebView  ln_hideProgressHUD:LNMBProgressHUDAnimationError message:@"链接地址错误，打开失败"];
+         [self.wkWebView ln_showToastHUD:@"链接地址错误，打开失败"];
         [self.refreshView removeFromSuperview];
         return;
     }else if (error.code == 102){
        [self.refreshView removeFromSuperview];
-        [self.wkWebView ln_hideProgressHUD];
         return;
     }else{
         if(self.isShowFailToast){
-            [self.wkWebView  ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"网络异常~"];
+            [self.wkWebView ln_showToastHUD:@"网络异常~"];
         }
     }
     self.isShowFailToast = true;
     [self checkIsShowAlertOrBack:URL];
     [self setWkwebviewGesture];
-    [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)checkIsShowAlertOrBack:(NSURL *)webViewURL{
@@ -417,7 +418,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
         //NSLog(@"appWillEnterForeground222");
-        [self.wkWebView ln_showLoadingHUDMoney];
         [self loadURLString:self.navigationDic[@"url"]];
     }
 }
