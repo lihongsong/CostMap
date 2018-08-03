@@ -83,7 +83,7 @@ static NSString *const kHQWYBodyKey         = @"body";
     //客户端统一使用小写，服务端不区分大小写
     [requestSerializer setValue:@"hqwyios" forHTTPHeaderField:@"terminalId"];
     [requestSerializer setValue:[RCBaseCommon getBundleIdentifier] forHTTPHeaderField:@"packageName"];
-
+    
     //移动武林榜接口异常监控请求时间
     [requestSerializer setValue:[NSString stringWithFormat:@"%f",[[NSDate date] timeIntervalSince1970]] forHTTPHeaderField:@"requestTime"];
 }
@@ -165,12 +165,20 @@ static NSString *const kHQWYBodyKey         = @"body";
                                  error:(NSError *)error
                                success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                                failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure {
+    NSDictionary *allHeader = task.currentRequest.allHTTPHeaderFields;
+    NSString *requestTime = allHeader[@"requestTime"];
+    NSLog(@"11111111___%@",requestTime);
+
     if (error) {
         
         // 断网不发送
         if (error.code != kCFURLErrorNotConnectedToInternet) {
             //发送移动武林榜接口异常监测
-            [self sendNetworkError:error ofTask:task];
+            if (task != nil) {
+                [self sendNetworkError:error ofObject:task];
+            }else{
+                [self sendNetworkError:error ofObject:responseObject];
+            }
         }
         
         if (failure) {
@@ -208,7 +216,11 @@ static NSString *const kHQWYBodyKey         = @"body";
         && [respCode isKindOfClass:[NSString class]]
         && respCode.integerValue == HQWYRESPONSECODE_FAIL) {
         //服务端异常，上传移动武林榜接口异常监测
-        [self sendNetworkError:nil ofTask:task];
+        if (task != nil) {
+            [self sendNetworkError:error ofObject:task];
+        }else{
+            [self sendNetworkError:error ofObject:responseObject];
+        }
     }
     
     //业务异常

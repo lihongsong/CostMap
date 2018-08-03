@@ -56,7 +56,7 @@
 
 #define APPGetConfig @"/config/getConfig"
 
-#define Device_info @"/collect/deviceInfo"
+#define Device_info @"/collect/deviceInfoggg"
 
 //广告信息
 #define AdvertisingInfo @"/product/advertising/search"

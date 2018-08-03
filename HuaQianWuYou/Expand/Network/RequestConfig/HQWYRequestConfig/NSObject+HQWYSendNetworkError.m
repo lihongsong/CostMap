@@ -28,35 +28,41 @@
 }
 
 
-+ (void)sendNetworkError:(NSError *)error ofTask:(NSURLSessionDataTask *)task{
- 
-    NSDictionary *allHeader = task.currentRequest.allHTTPHeaderFields;
-    NSString *requestTime = allHeader[@"requestTime"];
-    NSTimeInterval duration = ([[NSDate date] timeIntervalSince1970] - requestTime.doubleValue) * 1000.0;
- 
-    __block NSString *failingURLString = task.currentRequest.URL.absoluteString;
++ (void)sendNetworkError:(NSError *)error ofObject:(id)object{
+    NSString *requestTime = @"";
+    __block NSString *failingURLString = @"";
+    if ([object isKindOfClass:[NSDictionary class]]) {
+        NSDictionary *dic = (NSDictionary *)object;
+          requestTime = [NSString stringWithFormat:@"%@", dic[@"timestamp"]];//13位毫秒级时间戳
+        failingURLString = dic[@"path"];
+    }else if ([object isKindOfClass:[NSURLSessionDataTask class]]){
+        NSURLSessionDataTask *task = (NSURLSessionDataTask *)object;
+        NSDictionary *allHeader = task.currentRequest.allHTTPHeaderFields;
+        requestTime = allHeader[@"requestTime"];//10位秒级时间戳
+        failingURLString = task.currentRequest.URL.absoluteString;
+    }
+    NSTimeInterval duration = 0;
+    if ([requestTime length] == 13) {//统一毫秒计算结果
+        duration = [[NSDate date] timeIntervalSince1970] * 1000.0 - requestTime.doubleValue;
+    }else{
+        duration = ([[NSDate date] timeIntervalSince1970] - requestTime.doubleValue) * 1000.0;
+    }
+    NSTimeInterval interval    =[requestTime doubleValue] / 1000.0;
+    NSDate *datesss = [NSDate dateWithTimeIntervalSince1970:interval];
+    NSLog(@"_____%@",datesss);
+    NSLog(@"___%@",[NSDate date]);
+    NSLog(@"_____%f",duration/1000.0);
+    NSDate *datenow = [NSDate date];
+    NSTimeZone *zone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    NSInteger intervalsss = [zone secondsFromGMTForDate:datenow];
+    NSDate *localeDate = [datenow  dateByAddingTimeInterval: intervalsss];
+    NSLog(@"_____%@",localeDate);
     if (!failingURLString) {
         NSURL *failedURL = error.userInfo[@"NSErrorFailingURLKey"];
         if (failedURL && [failedURL isKindOfClass:[NSURL class]]) {
             failingURLString = failedURL.absoluteString;
         }
     }
-
-//    __block BOOL shouldReport = NO;
-//
-//    NSArray *urls = [self mapInterfaceFunctions].allKeys;
-//    [urls enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        if([failingURLString rangeOfString:obj].location != NSNotFound){
-//            shouldReport = YES;
-//            failingURLString = obj;
-//            *stop = YES;
-//        }
-//    }];
-//
-//    if (!shouldReport) {
-//        return;
-//    }
- 
     RCNetworkError *networkerror = [[RCNetworkError alloc] init];
     
     //FIXME:v2.0 手机号获取
