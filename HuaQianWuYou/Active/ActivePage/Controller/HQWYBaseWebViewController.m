@@ -67,6 +67,12 @@
     navigationView.delegate = self;
 }
 
+//自定义进度条
+- (void)initProgressView{
+    self.progressBar = [[UNProgressBar alloc] initWithFrame:CGRectMake(0, 41, CGRectGetWidth(self.view.frame), 2)];
+    [self.progressBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
+}
+
 - (void)initRefreshView {
     UIView *customeDefaultView = [UIView new];
     customeDefaultView.frame = self.view.frame;

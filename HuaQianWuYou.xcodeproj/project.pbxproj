@@ -61,6 +61,7 @@
 		592FE24520EA32570052E60E /* NSObject+event.m in Sources */ = {isa = PBXBuildFile; fileRef = 592FE24420EA32570052E60E /* NSObject+event.m */; };
 		5935906D20A134AD0057C0F4 /* ReleaseTestApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935906C20A134AD0057C0F4 /* ReleaseTestApi.plist */; };
 		5935907120A154280057C0F4 /* ReleaseApi.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5935907020A154270057C0F4 /* ReleaseApi.plist */; };
+		594076152117F14400685FED /* UNProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 594076142117F14400685FED /* UNProgressBar.m */; };
 		59435A7E20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59435A7D20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m */; };
 		59435A8120EE0A20007D9A4D /* LeftItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 59435A8020EE0A20007D9A4D /* LeftItemView.m */; };
 		594D69A1210F1D4500C65786 /* HQWYJavaScriptSourceHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 594D69A0210F1D4500C65786 /* HQWYJavaScriptSourceHandler.m */; };
@@ -350,6 +351,8 @@
 		5935907020A154270057C0F4 /* ReleaseApi.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ReleaseApi.plist; sourceTree = "<group>"; };
 		5935907420A17DC50057C0F4 /* ApiConfigDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ApiConfigDefine.h; sourceTree = "<group>"; };
 		5935907A20A1A9BB0057C0F4 /* HQWYThirdPartKeyDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYThirdPartKeyDefine.h; sourceTree = "<group>"; };
+		594076132117F14400685FED /* UNProgressBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UNProgressBar.h; sourceTree = "<group>"; };
+		594076142117F14400685FED /* UNProgressBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UNProgressBar.m; sourceTree = "<group>"; };
 		59435A7C20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HQWYJavaScriptGetAjaxHeaderHandler.h; sourceTree = "<group>"; };
 		59435A7D20EDE136007D9A4D /* HQWYJavaScriptGetAjaxHeaderHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HQWYJavaScriptGetAjaxHeaderHandler.m; sourceTree = "<group>"; };
 		59435A7F20EE0A20007D9A4D /* LeftItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LeftItemView.h; sourceTree = "<group>"; };
@@ -1413,6 +1416,8 @@
 		597C73B920E9AF4F0090960B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				594076132117F14400685FED /* UNProgressBar.h */,
+				594076142117F14400685FED /* UNProgressBar.m */,
 				59435A7F20EE0A20007D9A4D /* LeftItemView.h */,
 				59435A8020EE0A20007D9A4D /* LeftItemView.m */,
 				595AE2CC20EF78610031A2F3 /* NavigationView.h */,
@@ -2321,6 +2326,7 @@
 				9CA9292520F6164200F65941 /* NSError+HQWYError.m in Sources */,
 				59C570A720E5F9C100D54260 /* CInvestigationFiveViewController.m in Sources */,
 				591D95FE20ABDE6E00193B09 /* AACrosshair.m in Sources */,
+				594076152117F14400685FED /* UNProgressBar.m in Sources */,
 				59C5713D20E600D100D54260 /* NSObject+HQIQKeyBoardConfig.m in Sources */,
 				59C5713920E600D100D54260 /* UILabel+LabelKit.m in Sources */,
 				59023BE9209A9B33004B9134 /* AppDelegate.m in Sources */,
