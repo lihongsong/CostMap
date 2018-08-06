@@ -171,7 +171,6 @@ static NSString *const kHQWYBodyKey         = @"body";
         // 断网不发送
         if (error.code != kCFURLErrorNotConnectedToInternet) {
             //发送移动武林榜接口异常监测
-             NSLog(@"11111111___%@",responseObject);
             if (task != nil) {
                 [self sendNetworkError:error ofObject:task];
             }else{

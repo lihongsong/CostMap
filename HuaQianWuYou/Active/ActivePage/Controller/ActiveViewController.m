@@ -101,7 +101,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     //设置意见反馈
     [FBManager configFB];
     //发送设备信息采集
-    NSLog(@"11111____%@",[NSDate date]);
     [DeviceManager sendDeviceinfo];
 }
 

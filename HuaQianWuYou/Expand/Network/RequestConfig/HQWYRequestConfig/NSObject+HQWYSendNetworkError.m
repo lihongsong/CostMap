@@ -47,16 +47,7 @@
     }else{
         duration = ([[NSDate date] timeIntervalSince1970] - requestTime.doubleValue) * 1000.0;
     }
-    NSTimeInterval interval    =[requestTime doubleValue] / 1000.0;
-    NSDate *datesss = [NSDate dateWithTimeIntervalSince1970:interval];
-    NSLog(@"_____%@",datesss);
-    NSLog(@"___%@",[NSDate date]);
-    NSLog(@"_____%f",duration/1000.0);
-    NSDate *datenow = [NSDate date];
-    NSTimeZone *zone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
-    NSInteger intervalsss = [zone secondsFromGMTForDate:datenow];
-    NSDate *localeDate = [datenow  dateByAddingTimeInterval: intervalsss];
-    NSLog(@"_____%@",localeDate);
+    
     if (!failingURLString) {
         NSURL *failedURL = error.userInfo[@"NSErrorFailingURLKey"];
         if (failedURL && [failedURL isKindOfClass:[NSURL class]]) {
