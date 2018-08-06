@@ -232,10 +232,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = true;
     if (StrIsEmpty(self.wkWebView.title)) {
-        NSLog(@"__ 白屏__reload");
         [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
     }
-//    [self.manager callHandler:kWebViewWillAppear];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -663,11 +661,25 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 // 此方法适用iOS9.0以上     iOS8用监听另行处理
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView NS_AVAILABLE(10_11, 9_0){
-    
     NSLog(@"进程被终止");
-    
     NSLog(@"%@",webView.URL);
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
+    [self loadURLString:Active_Path];
     
 }
+
+#pragma mark - KVO
+
+// 防止白屏，单web应用，后面路由切换不会加载
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (object == self.wkWebView && [keyPath isEqualToString:@"URL"])
+    {
+        NSURL *newUrl = [change objectForKey:NSKeyValueChangeNewKey];
+        NSURL *oldUrl = [change objectForKey:NSKeyValueChangeOldKey];
+        
+        if (ObjIsNilOrNull(newUrl) && !ObjIsNilOrNull(oldUrl)) {
+            [self loadURLString:Active_Path];
+        }
+    }
+}
+
 @end
