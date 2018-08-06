@@ -66,7 +66,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if (StrIsEmpty(self.wkWebView.title)) {
-        [self.wkWebView reload];
+        [self loadURLString:self.navigationDic[@"url"]];
     }
 }
 
@@ -102,13 +102,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.navigationView changeNavigationType:self.navigationDic[@"nav"]];
     [self.navigationView addSubview:self.progressBar];
 }
-
-//#pragma mark - ProgressView
-////重写父类方法
-//- (void)addProgressView {
-//    self.progressView.progressTintColor = [UIColor skinColor];
-//    [self.navigationView addSubview:self.progressView];
-//}
 
 - (void)initDataCompletion:(nullable void (^)(id _Nullable, NSError * _Nullable))completion{
     if (self.navigationDic[@"needBackDialog"]) {
