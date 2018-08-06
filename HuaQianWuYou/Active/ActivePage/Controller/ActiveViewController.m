@@ -50,7 +50,7 @@ typedef NS_ENUM(NSInteger,leftNavigationItemType) {
 
 static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
-@interface ActiveViewController ()<BMKLocationManagerDelegate,NavigationViewDelegate,PopViewManagerDelegate,HQWYJavaScriptOpenNativeHandlerDelegate>
+@interface ActiveViewController ()<BMKLocationManagerDelegate,NavigationViewDelegate,PopViewManagerDelegate,HQWYJavaScriptOpenNativeHandlerDelegate,WKNavigationDelegate>
 @property(nonatomic,strong)BMKLocationManager *locationManager;
 
 @property(strong,nonatomic)NavigationView *navigationView;
@@ -117,6 +117,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 #pragma mark webview 配置
 - (void)setUPWKWebView{
+    self.wkWebView.navigationDelegate = self;
+    self.wkWebView.UIDelegate = self;
     [self setWKWebViewInit];
     [self.wkWebView ln_showLoadingHUDMoney];
     [self.view addSubview:self.wkWebView];
@@ -157,7 +159,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)appWillEnterForeground:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
-        NSLog(@"TenMinutesRefresh");
+        NSLog(@"activeTenMinutesRefresh");
         [self.wkWebView ln_showLoadingHUDMoney];
         [self loadURLString:Active_Path];
     }
@@ -229,7 +231,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = true;
-    [self.manager callHandler:kWebViewWillAppear];
+    if (StrIsEmpty(self.wkWebView.title)) {
+        [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -653,6 +657,29 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     NSLog(@"______******Received memory warning*****______");
     [self.wkWebView ln_showLoadingHUDMoney];
     [self loadURLString:Active_Path];
+}
+
+// 此方法适用iOS9.0以上     iOS8用监听另行处理
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView NS_AVAILABLE(10_11, 9_0){
+    NSLog(@"进程被终止");
+    NSLog(@"%@",webView.URL);
+    [self loadURLString:Active_Path];
+    
+}
+
+#pragma mark - KVO
+
+// 防止白屏，单web应用，后面路由切换不会加载
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (object == self.wkWebView && [keyPath isEqualToString:@"URL"])
+    {
+        NSURL *newUrl = [change objectForKey:NSKeyValueChangeNewKey];
+        NSURL *oldUrl = [change objectForKey:NSKeyValueChangeOldKey];
+        
+        if (ObjIsNilOrNull(newUrl) && !ObjIsNilOrNull(oldUrl)) {
+            [self loadURLString:Active_Path];
+        }
+    }
 }
 
 @end

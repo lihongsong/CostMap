@@ -57,8 +57,17 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 #pragma mark webview 配置
 - (void)setUPWKWebView{
     [self setWKWebViewInit];
+    self.wkWebView.navigationDelegate = self;
+    self.wkWebView.UIDelegate = self;
     self.wkWebView.scrollView.bounces = true;
     self.wkWebView.frame = CGRectMake(0,NavigationHeight, SWidth, SHeight - NavigationHeight + TabBarHeight - 49);
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (StrIsEmpty(self.wkWebView.title)) {
+        [self.wkWebView reload];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -68,11 +77,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)isUploadData{
-    if (self.navigationDic != nil && self.navigationDic[@"productId"] != nil && !StrIsEmpty([HQWYUserManager loginMobilePhone])) {
-        NSString *productID = [NSString stringWithFormat:@"%@",self.navigationDic[@"productId"]];
-        if(!StrIsEmpty(productID)){
+    if (!ObjIsNilOrNull(self.navigationDic) && !ObjIsNilOrNull(self.navigationDic[@"productId"]) && !StrIsEmpty([HQWYUserManager loginMobilePhone])) {
             [self uploadData:self.navigationDic[@"productId"]];
-        }
     }
 }
 
@@ -436,10 +442,25 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         double estimatedProgress = [change[@"new"] doubleValue];
         
         [self.progressBar progressUpdate:estimatedProgress];
-    }
-    else {
+    }else if (object == self.wkWebView && [keyPath isEqualToString:@"URL"])
+    {// 防止白屏
+        NSURL *newUrl = [change objectForKey:NSKeyValueChangeNewKey];
+        NSURL *oldUrl = [change objectForKey:NSKeyValueChangeOldKey];
+        
+        if (ObjIsNilOrNull(newUrl) && !ObjIsNilOrNull(oldUrl)) {
+            [self loadURLString:self.navigationDic[@"url"]];
+        }
+    }else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
+}
+
+// 此方法适用iOS9.0以上防止白屏     iOS8用监听另行处理
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView NS_AVAILABLE(10_11, 9_0){
+    NSLog(@"进程被终止");
+    NSLog(@"%@",webView.URL);
+    [self loadURLString:self.navigationDic[@"url"]];
+    
 }
 
 - (void)appWillEnterForeground:(NSNotification *)noti {
