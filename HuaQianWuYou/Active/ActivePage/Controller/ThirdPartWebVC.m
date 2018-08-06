@@ -33,6 +33,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 @property(nonatomic, assign)BOOL isProductFirstPage;
 @property(nonatomic, strong)NavigationView *navigationView;
 @property(nonatomic, assign)BOOL isShowAlertOrBack;//是否弹挽留或者回列表
+
 @end
 
 @implementation ThirdPartWebVC
@@ -43,8 +44,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.isProductFirstPage = true;
     self.listArr = [[NSArray alloc]init];
     self.isShowAlertOrBack = true;
-    [self setUPWKWebView];
+    [self initProgressView];
     [self initNavigation];
+    [self setUPWKWebView];
     [self registerHander];
     [self isUploadData];
     if (![self externalAppRequiredToOpenURL:self.wkWebView.URL]) {
@@ -62,6 +64,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self.wkWebView ln_hideProgressHUD];
+    [self.progressBar removeFromSuperview];
 }
 
 - (void)isUploadData{
@@ -91,14 +94,15 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.view addSubview:self.navigationView];
     self.navigationView.delegate = self;
     [self.navigationView changeNavigationType:self.navigationDic[@"nav"]];
+    [self.navigationView addSubview:self.progressBar];
 }
 
-#pragma mark - ProgressView
-//重写父类方法
-- (void)addProgressView {
-    self.progressView.progressTintColor = [UIColor skinColor];
-    [self.navigationView addSubview:self.progressView];
-}
+//#pragma mark - ProgressView
+////重写父类方法
+//- (void)addProgressView {
+//    self.progressView.progressTintColor = [UIColor skinColor];
+//    [self.navigationView addSubview:self.progressView];
+//}
 
 - (void)initDataCompletion:(nullable void (^)(id _Nullable, NSError * _Nullable))completion{
     if (self.navigationDic[@"needBackDialog"]) {
@@ -211,6 +215,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.wkWebView setNavigationDelegate:nil];
     self.manager = nil;
     [self.timer invalidate];
     self.timer = nil;
@@ -368,7 +373,13 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     return [NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"];
 }
 
+-(void)webView:(HJWebViewController *)webViewController didStartLoadingURL:(NSURL *)URL{
+    self.progressBar.isLoading = YES;
+    [self.progressBar progressUpdate:.05];
+}
+
 - (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL{
+    self.progressBar.isLoading = NO;
     self.navigationView.backButton.enabled = true;
     if (self.isProductFirstPage) {
         self.productUrl = URL;
@@ -386,6 +397,8 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
+    self.progressBar.isLoading = NO;
+    [self.progressBar updateProgress:0.0];
     self.navigationView.backButton.enabled = true;
     if (self.isProductFirstPage) {
         self.productUrl = URL;
@@ -412,6 +425,20 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         self.isShowAlertOrBack = true;
     }else{
          self.isShowAlertOrBack = false;
+    }
+}
+
+#pragma mark - Estimated Progress KVO (WKWebView)
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(estimatedProgress))] && object == self.wkWebView) {
+        
+        double estimatedProgress = [change[@"new"] doubleValue];
+        
+        [self.progressBar progressUpdate:estimatedProgress];
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
 

@@ -8,9 +8,15 @@
 
 #import "HJWebViewController.h"
 #import "NavigationView.h"
+#import "UNProgressBar.h"
+
 typedef void (^SignFinishBlock)(void);
 
 @interface HQWYBaseWebViewController : HJWebViewController
+/**
+ 进度条
+ */
+@property (nonatomic, strong) UNProgressBar *progressBar;
 /**
  桥接管理器
  */
@@ -21,6 +27,7 @@ typedef void (^SignFinishBlock)(void);
 @property(nonatomic,assign) BOOL isShowFailToast;
 
 - (void)initNavigation;
+- (void)initProgressView;
 - (void)initRefreshView;
 - (void)setWkwebviewGesture;
 - (void)setWKWebViewInit;
