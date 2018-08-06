@@ -173,7 +173,8 @@ static NSString *const kHQWYBodyKey         = @"body";
             //发送移动武林榜接口异常监测
             if (task != nil) {
                 [self sendNetworkError:error ofObject:task];
-            }else{
+            }else{//jsonmodel 请求头方式task返回nil
+                //需要通过responseObject拿请求时间
                 [self sendNetworkError:error ofObject:responseObject];
             }
         }
