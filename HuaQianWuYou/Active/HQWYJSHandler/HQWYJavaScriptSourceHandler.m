@@ -31,7 +31,7 @@
     [param setValue:middleBanner forKey:@"middleBannerIcon"];
     [param setValue:loadfail forKey:@"loadFailIcon"];
     [param setValue:@"" forKey:@"loadingIcon"];
-    [param setValue: loginAvatar forKey:@" loginAvatar"];
+    [param setValue: loginAvatar forKey:@"loginAvatar"];
     [param setValue:nodata forKey:@"noDataIcon"];
     [param setValue: logoutAvatar forKey:@"logoutAvatar"];
 
