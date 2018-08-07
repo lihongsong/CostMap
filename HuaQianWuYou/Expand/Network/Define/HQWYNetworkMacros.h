@@ -59,7 +59,7 @@
 #define Device_info @"/collect/deviceInfo"
 
 //广告信息
-#define AdvertisingInfo @"/product/advertising/search"
+#define AdvertisingInfo @"/product/advertising/searchfgggg"
 
 //修改密码
 #define ChangePassword @"/user/pwdchg"

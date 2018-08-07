@@ -230,9 +230,13 @@
     /** 注册小米推送,启动APNs */
     [MiPushSDK registerMiPush:self];
     
+#if defined (Release)
     //移动武林榜
     [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
-    
+#else
+    //移动武林榜
+    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
+#endif
     /** TalkingData */
     [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
     
