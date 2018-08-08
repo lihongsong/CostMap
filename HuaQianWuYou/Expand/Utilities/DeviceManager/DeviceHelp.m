@@ -100,7 +100,7 @@
     NSString *screenLight = [NSString stringWithFormat:@"%f", [LNRiskDeviceHelp screenLight]]; //屏幕亮度
     
     NSString *launchSystemTime = [NSString stringWithFormat:@"%f", [LNRiskDeviceHelp getLaunchSystemTime]]; //系统启动时间
-    
+    NSLog(@"______%@",launchSystemTime);
    // NSString *lnRiskSdkVersion = [LNRiskDeviceHelp sdkVersion]; // SDK 的版本号
     NSString *appVersion       = [LNRiskDeviceHelp appVersion]; //App的版本号
     NSString *appBundleId      = [LNRiskDeviceHelp appBundleId]; // App的bundleID
