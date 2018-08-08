@@ -619,6 +619,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         
         if (error) {
             if(error.hqwy_respCode == HQWYRESPONSECODE_UN_AUTHORIZATION){//这种退出登录成功处理
+                [KeyWindow ln_hideProgressHUD];
                 [HQWYUserSharedManager deleteUserInfo];
                 outBlock(true);
             }else{
