@@ -30,6 +30,8 @@ DerivedData
 *.xcscmblueprint
 *.xcbkptlist
 
+*.funcDefine.h
+
 project.xcworkspace
 *ios/symbols
 */xcschememanagement.plist

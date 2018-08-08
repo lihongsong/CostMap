@@ -67,6 +67,12 @@
     navigationView.delegate = self;
 }
 
+//自定义进度条
+- (void)initProgressView{
+    self.progressBar = [[UNProgressBar alloc] initWithFrame:CGRectMake(0, 41, CGRectGetWidth(self.view.frame), 2)];
+    [self.progressBar setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
+}
+
 - (void)initRefreshView {
     UIView *customeDefaultView = [UIView new];
     customeDefaultView.frame = self.view.frame;
@@ -438,6 +444,14 @@
         fixBlock();
     };
     [self.navigationController pushViewController:authPhoneNumVC animated:true];
+}
+
+// 此方法适用iOS9.0以上     iOS8用监听另行处理
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView NS_AVAILABLE(10_11, 9_0){
+    NSLog(@"进程被终止");
+    NSLog(@"%@",webView.URL);
+    [self loadURLString:Active_Path];
+
 }
 
 @end
