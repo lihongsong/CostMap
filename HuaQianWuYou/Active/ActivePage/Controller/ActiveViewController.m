@@ -413,9 +413,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self.manager registerHandler:kAppUploadException handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         NSDictionary *dataDic = [[NSDictionary alloc]initWithDictionary:[self jsonDicFromString:data]];
         if (dataDic[@"error"]) {
-            NSString *errorString = dataDic[@"error"];
             // 上报异常信息
-//            NSArray *callStackSymbols = [NSThread callStackSymbols];
             /**
              *    @brief 上报自定义错误
              *
@@ -426,7 +424,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
              *    @param info        附加数据
              *    @param terminate   上报后是否退出应用进程
              */
-            [Bugly reportExceptionWithCategory:5 name:@"全局H5异常捕获" reason:@"" callStack:[NSArray arrayWithObjects:errorString, nil] extraInfo:@{} terminateApp:NO];
+            [Bugly reportExceptionWithCategory:5 name:@"全局H5异常捕获" reason:@"" callStack:[NSArray arrayWithObjects:dataDic[@"error"], nil] extraInfo:@{} terminateApp:NO];
         }
     }];
 
