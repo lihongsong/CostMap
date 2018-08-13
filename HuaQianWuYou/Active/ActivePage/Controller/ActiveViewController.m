@@ -234,6 +234,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     if (StrIsEmpty(self.wkWebView.title)) {
         [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
     }
+    [self.manager callHandler:kWebViewWillAppear];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

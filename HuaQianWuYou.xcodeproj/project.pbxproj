@@ -1377,7 +1377,6 @@
 			children = (
 				59BE197D20EC8A0C00704B2C /* HomePopout */,
 				59FD9E7B20EA1EBF008C98DE /* HQWYJSHandler */,
-				597C73BD20E9BD070090960B /* FeedBack */,
 				597C73BB20E9BC180090960B /* ActivePage */,
 			);
 			path = Active;
@@ -1436,37 +1435,6 @@
 				597C73B920E9AF4F0090960B /* View */,
 			);
 			path = ActivePage;
-			sourceTree = "<group>";
-		};
-		597C73BD20E9BD070090960B /* FeedBack */ = {
-			isa = PBXGroup;
-			children = (
-				597C73C020E9BD830090960B /* View */,
-				597C73BF20E9BD7C0090960B /* Model */,
-				597C73BE20E9BD730090960B /* Controller */,
-			);
-			path = FeedBack;
-			sourceTree = "<group>";
-		};
-		597C73BE20E9BD730090960B /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		597C73BF20E9BD7C0090960B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		597C73C020E9BD830090960B /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		59BE197D20EC8A0C00704B2C /* HomePopout */ = {

@@ -17,7 +17,6 @@
 #import "ActiveViewController.h"
 #import "AppDelegate+APNS.h"
 #import "TalkingData.h"
-#import "TalkingDataAppCpa.h"
 #import <Bugly/Bugly.h>
 #import "HQWYLaunchManager.h"
 #import "HJGuidePageWindow.h"
