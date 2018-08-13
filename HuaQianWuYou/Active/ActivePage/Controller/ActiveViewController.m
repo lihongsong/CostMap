@@ -39,6 +39,7 @@
 #import <HJ_UIKit/HJAlertView.h>
 #import <CoreLocation/CLLocationManager.h>
 #import "HQWYJavaScriptSourceHandler.h"
+#import <Bugly/Bugly.h>
 
 typedef NS_ENUM(NSInteger,leftNavigationItemType) {
     leftNavigationItemTypeLocation = 0,
@@ -407,7 +408,29 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             [self.locationManager startUpdatingLocation];
         }
     }];
-    
+
+    /** 上传H5 异常信息*/
+    [self.manager registerHandler:kAppUploadException handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSDictionary *dataDic = [[NSDictionary alloc]initWithDictionary:[self jsonDicFromString:data]];
+        if (dataDic[@"error"]) {
+            NSString *errorString = dataDic[@"error"];
+            // 上报异常信息
+//            NSArray *callStackSymbols = [NSThread callStackSymbols];
+            /**
+             *    @brief 上报自定义错误
+             *
+             *    @param category    类型(Cocoa=3,CSharp=4,JS=5,Lua=6)
+             *    @param aName       名称
+             *    @param aReason     错误原因
+             *    @param aStackArray 堆栈
+             *    @param info        附加数据
+             *    @param terminate   上报后是否退出应用进程
+             */
+            [Bugly reportExceptionWithCategory:5 name:@"全局H5异常捕获" reason:@"" callStack:[NSArray arrayWithObjects:errorString, nil] extraInfo:@{} terminateApp:NO];
+        }
+    }];
+
+
     /** 注册获取H5调用原生toast */
     [self.manager registerHandler:kAppToastMessage handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         NSDictionary *dataDic = [[NSDictionary alloc]initWithDictionary:[self jsonDicFromString:data]];

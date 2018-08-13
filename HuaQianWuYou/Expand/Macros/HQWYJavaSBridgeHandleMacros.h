@@ -195,4 +195,10 @@ static NSString * const kAppCloseWebview = @"appCloseWebview";
  */
 static NSString * const kAppSetBottomStyle = @"appSetBottomStyle";
 
+/*
+ H5 异常上报
+ */
+static NSString * const kAppUploadException = @"appUploadException";
+
+
 #endif /* HQWYJavaSBridgeHandleMacros_h */
