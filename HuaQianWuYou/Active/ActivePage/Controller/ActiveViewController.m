@@ -39,6 +39,7 @@
 #import <HJ_UIKit/HJAlertView.h>
 #import <CoreLocation/CLLocationManager.h>
 #import "HQWYJavaScriptSourceHandler.h"
+#import "TalkingData.h"
 
 typedef NS_ENUM(NSInteger,leftNavigationItemType) {
     leftNavigationItemTypeLocation = 0,
@@ -415,6 +416,20 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
         if (dataDic[@"message"]) {
             [self.wkWebView  ln_showToastHUD:[dataDic objectForKey:@"message"]];
         }
+    }];
+    
+    /** 注册h5离开页面统计事件 */
+    [self.manager registerHandler:kAppOnPageEnd handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [TalkingData trackPageEnd:dic[@"pageName"]];
+    }];
+    
+    /** 注册h5进入页面事件统计 */
+    [self.manager registerHandler:kAppOnPageBegin handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [TalkingData trackPageBegin:dic[@"pageName"]];
     }];
     
     /** 注册打开webView事件 */
