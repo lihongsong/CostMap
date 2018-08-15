@@ -26,8 +26,13 @@
 #define Baidu_AppKey @"3nOIiqTdyBEQycGng1zhUzzgU6xRWNrB"
 
 // 移动武林绑
+#if defined (Release)
 #define MobClick_ProjectName  @"jieqian_ios"
 #define MobClick_AppKey   @"8289c4204c5e7cddb30a14a4d2f7c72d"
+#else// 通用武林绑测试key
+#define MobClick_ProjectName  @"test"
+#define MobClick_AppKey   @"471a61bba9792ae138ece4c69668e90a"
+#endif
 
 // TalkingData
 #if defined (DEBUG)
