@@ -139,6 +139,10 @@ static NSString * const kWebViewDidDisappear = @"webViewDidDisappear";
  */
 static NSString * const kAppGetLocationCity = @"appGetLocationCity";
 
+/*!
+ 显示首页弹窗广告
+ */
+static NSString * const kAppShowHomeAdvertiseAlert = @"appShowHomeAdvertiseAlert";
 
 /*!
  H5调用定位

@@ -47,7 +47,7 @@
     NSDictionary *dic = @{@"nav" :@{@"title" : @{@"text" : launchModel.productName},
                                      @"backKeyHide" : @"0", @"right" : @{@"text":@"精准推荐",@"callback" : @"topPreRecommend()"}},
                           @"url" : launchModel.address,
-                          @"productId" : launchModel.productId,@"category" : @"18"};
+                          @"productId" : launchModel.productId,@"category" : @"18",@"needBackDialog" : @0};
     [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_StartApp_Advertisement_click,launchModel.productId]];
     if ([HQWYUserManager hasAlreadyLoggedIn] == NO) {
         [self presentNative:dic];

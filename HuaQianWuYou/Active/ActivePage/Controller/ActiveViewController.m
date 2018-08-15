@@ -26,7 +26,6 @@
 #import <AppUpdate/XZYAppUpdate.h>
 #import "ThirdPartWebVC.h"
 #import "AuthPhoneNumViewController.h"
-#import "ThirdPartWebVC.h"
 #import "HQWYJavaScriptOpenSDKHandler.h"
 #import "HJUIKit.h"
 #import "NSString+cityInfos.h"
@@ -68,6 +67,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  用户选择的城市
  */
 @property(copy,nonatomic) NSString *selectedLocation;
+
+/**
+ 首页弹窗进三方页是否挽留
+ */
+@property(nonatomic,assign) NSNumber* needBackDialog;
 
 @end
 
@@ -146,6 +150,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)showPopView{
     [PopViewManager sharedInstance].delegate = self;
     [PopViewManager showType:AdvertisingTypeAlert fromVC:self];
+    [PopViewManager isHiddenCustomView:true withType:AdvertisingTypeAlert];
 }
 
 - (void )setSelectedLocation:(NSString *)selectedLocation{
@@ -168,15 +173,19 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 //弹框代理方法
 - (void)didSelectedContent:(BasicDataModel *)dataModel popType:(AdvertisingType)type{
     if ([HQWYUserManager hasAlreadyLoggedIn]) {
-        ThirdPartWebVC *webView = [ThirdPartWebVC new];
-        webView.navigationDic = @{@"nav" : @{@"title" : @{@"text" : dataModel.productName}, @"backKeyHide":@"0", @"right" : @{@"text" : @"精准推荐", @"callback" : @"topPreRecommend()"}}, @"category" : [NSString stringWithFormat:@"%ld",(long)type], @"needBackDialog" : @"0", @"productId" : dataModel.productId, @"url" : dataModel.address};
-        [webView loadURLString:dataModel.address];
-        [self.navigationController pushViewController:webView animated:true];
+        [self toThirdWeb:dataModel popType:type];
     }else{
         [self presentNative:^{
-            
+           [self toThirdWeb:dataModel popType:type];
         }];
     }
+}
+
+- (void)toThirdWeb:(BasicDataModel *)dataModel popType:(AdvertisingType)type{
+    ThirdPartWebVC *webView = [ThirdPartWebVC new];
+    webView.navigationDic = @{@"nav" : @{@"title" : @{@"text" : dataModel.productName}, @"backKeyHide":@"0", @"right" : @{@"text" : @"精准推荐", @"callback" : @"topPreRecommend()"}}, @"category" : [NSString stringWithFormat:@"%ld",(long)type], @"needBackDialog" : self.needBackDialog, @"productId" : dataModel.productId, @"url" : dataModel.address};
+    [webView loadURLString:dataModel.address];
+    [self.navigationController pushViewController:webView animated:true];
 }
 
 //自定义导航栏
@@ -306,6 +315,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 导航栏样式事件 */
     [self.manager registerHandler:kAppGetNavigationBarStatus handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            self.needBackDialog = [[self jsonDicFromString:data] objectForKey:@"needBackDialog"];
+        });
         self.getH5Dic = [[self jsonDicFromString:data] objectForKey:@"nav"];
         [self setNavigationStyle:self.getH5Dic];
         if ([(NSString *)data containsString:@"location:"]) {
@@ -390,6 +403,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     /** 注册获取H5获取原生定位城市 */
     [self.manager registerHandler:kAppGetLocationCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([HQWYJavaScriptResponse result:self.locatedCity]);
+    }];
+    
+    /** 首页弹窗显示 */
+    [self.manager registerHandler:kAppShowHomeAdvertiseAlert handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        [PopViewManager isHiddenCustomView:false withType:AdvertisingTypeAlert];
     }];
     
     /** 注册获取H5获取原生定位城市 */

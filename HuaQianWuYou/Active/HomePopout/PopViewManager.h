@@ -18,7 +18,6 @@
 
 @property (nonatomic, strong) id<PopViewManagerDelegate>  delegate;
 
-
 + (nonnull instancetype)sharedInstance;
 
 /**
@@ -28,5 +27,7 @@
  @param controller 显示的Controller
  */
 + (void)showType:(AdvertisingType)type fromVC:(UIViewController *)controller;
+
++ (void)isHiddenCustomView:(BOOL)isHidden withType:(AdvertisingType)type;
     
 @end

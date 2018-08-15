@@ -23,8 +23,9 @@
 /* 悬浮广告 */
 @property (nonatomic, strong) SuspendView  *suspendView;
 
-
-
+@property (nonatomic,strong) BasicDataModel *resultModel;
+@property (nonatomic,assign) BOOL isFinish;//加载这个弹窗页面是否loading完
+@property (nonatomic,assign) BOOL urlLodingFinish;//图片加载完成
 @end
 
 @implementation PopViewManager
@@ -34,16 +35,27 @@
     static PopViewManager *singleton;
     dispatch_once(&onceToken, ^{
         singleton = [[[self class] alloc] init];
+        singleton.urlLodingFinish = false;
+        singleton.isFinish = false;
     });
     return singleton;
 }
 
-
 + (void)showType:(AdvertisingType)type fromVC:(UIViewController *)controller{
-   
     [PopViewManager requstDataType:type fromVC:controller];
 }
 
++ (void)isHiddenCustomView:(BOOL)isHidden withType:(AdvertisingType)type{
+    PopViewManager *manage = [PopViewManager sharedInstance];
+    manage.isFinish = !isHidden;
+    if(isHidden || manage.urlLodingFinish){
+        if (type == AdvertisingTypeAlert){
+            manage.popView.hidden = isHidden;
+        }else if (type ==AdvertisingTypeSuspensionWindow){
+            manage.suspendView.hidden = isHidden;
+        }
+    }
+}
 
 + (void)showType:(AdvertisingType)type contentModel:(BasicDataModel*)model fromVC:(UIViewController *)controller{
     PopViewManager *manage = [PopViewManager sharedInstance];
@@ -54,7 +66,13 @@
         case AdvertisingTypeAlert:
             if (controller) {
                 manage.popView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.5f];
-                [manage.popView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:nil];
+                [manage.popView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                    manage.urlLodingFinish = true;
+                    if (manage.isFinish)
+                    {
+                        manage.popView.hidden = false;
+                    }
+                }];
                 WeakObj(manage);
                 manage.popView.block = ^(BOOL isClose){
                     if (isClose) {
@@ -68,30 +86,6 @@
                     }
                 };
                 
-            }
-            break;
-        case AdvertisingTypeSuspensionWindow:
-            if (controller) {
-                [controller.view addSubview:manage.suspendView];
-                [manage.suspendView mas_makeConstraints:^(MASConstraintMaker *make) {
-                    make.bottom.mas_equalTo(-30);
-                    make.right.mas_equalTo(-10);
-                    make.height.mas_equalTo(80);
-                    make.width.mas_equalTo(80);
-                }];
-                [manage.suspendView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:nil];
-                WeakObj(manage);
-                manage.suspendView.block = ^(BOOL isClose){
-                    if (isClose) {
-                        [self eventId:HQWY_Home_AdverAlertClose_click];
-                    }else{
-                    StrongObj(manage);
-                    [self eventId:[NSString stringWithFormat:@"%@%@", HQWY_Home_AdverAlert_click,model.productId]];
-                    if (manage.delegate && [manage.delegate respondsToSelector:@selector(didSelectedContent:popType:)]) {
-                        [manage.delegate didSelectedContent:model popType:type];
-                    }
-                    }
-                };
             }
             break;
         default:
@@ -118,9 +112,11 @@
     }
     [BasicDataModel requestBasicData:type productId:model.productId sort:model.sort Completion:^(BasicDataModel * _Nullable result, NSError * _Nullable error) {
         if (error) {
+            [PopViewManager sharedInstance].resultModel = nil;
             return;
         }
         if (result) {
+            [PopViewManager sharedInstance].resultModel = result;
              [PopViewManager showType:type contentModel:result fromVC:controller];
         }
     }];
