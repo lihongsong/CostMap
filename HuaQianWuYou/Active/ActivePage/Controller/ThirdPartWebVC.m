@@ -65,9 +65,32 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    NSString *pageName = [self getTakingDataPageName];
+    if(!StrIsEmpty(pageName)){
+        [TalkingData trackPageBegin:pageName];
+    }
     if (StrIsEmpty(self.wkWebView.title)) {
         [self loadURLString:self.navigationDic[@"url"]];
     }
+}
+
+- (NSString *)getTakingDataPageName{
+    if (![self.navigationDic[@"nav"] isKindOfClass:[NSDictionary class]]) {
+        return @"";
+    }
+    
+    if (![[self.navigationDic[@"nav"] objectForKey:@"title"] isKindOfClass:[NSDictionary class]]) {
+        return @"";
+    }
+    NSDictionary *titleDic = [self.navigationDic[@"nav"] objectForKey:@"title"];
+    if(StrIsEmpty([titleDic objectForKey:@"text"])){
+        return @"";
+    }
+    
+    if([[titleDic objectForKey:@"text"] isEqualToString:@"用户服务协议"]){
+        return @"";
+    }
+    return titleDic[@"text"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -382,6 +405,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.navigationView.backButton.enabled = true;
     if (self.isProductFirstPage) {
         self.productUrl = URL;
+    }else{
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [TalkingData trackPageEnd:[self getTakingDataPageName]];
+        });
     }
     NSString *strUrl = [NSString stringWithFormat:@"%@",URL];
     if(StrIsEmpty(strUrl)){

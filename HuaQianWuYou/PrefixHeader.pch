@@ -59,7 +59,8 @@ typedef void (^loginFinshBlock)(void);
 #import <HJCategories/HJFoundation.h>
 #import <HJCategories/HJUIKit.h>
 #import <HJ_UIKit/HJGuidePage.h>
-#import "LNMBProgressHUD.h"
+#import "TalkingData.h"
+
 
 #pragma mark JsBridge
 #import <HJJavascriptBridge/HJJSBridgeManager.h>
