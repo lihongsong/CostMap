@@ -17,7 +17,6 @@
 #import "ActiveViewController.h"
 #import "AppDelegate+APNS.h"
 #import "TalkingData.h"
-#import "TalkingDataAppCpa.h"
 #import <Bugly/Bugly.h>
 #import "HQWYLaunchManager.h"
 #import "HJGuidePageWindow.h"
@@ -230,9 +229,13 @@
     /** 注册小米推送,启动APNs */
     [MiPushSDK registerMiPush:self];
     
+#if defined (Release)
     //移动武林榜
     [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
-    
+#else
+    //移动武林榜
+    [RCMobClick startWithAppkey:MobClick_AppKey projectName:MobClick_ProjectName channelId:APP_ChannelId isIntegral:YES];
+#endif
     /** TalkingData */
     [TalkingData sessionStarted:TalkingData_AppId withChannelId:APP_ChannelId];
     
