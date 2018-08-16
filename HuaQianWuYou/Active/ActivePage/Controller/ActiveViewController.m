@@ -73,6 +73,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  */
 @property(nonatomic,assign) NSNumber* needBackDialog;
 
+/**
+ 是否第一次加载
+ */
+@property(nonatomic,assign) BOOL isFirstLoad;
+
 @end
 
 @implementation ActiveViewController
@@ -96,6 +101,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (instancetype)init{
     if (self = [super init]) {
+        self.isFirstLoad = YES;
         [self loadURLString:Active_Path];
     }
     return self;
@@ -240,7 +246,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = true;
-    if (StrIsEmpty(self.wkWebView.title)) {
+    if (!self.isFirstLoad && StrIsEmpty(self.wkWebView.title)) {
         [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
     }
     [self.manager callHandler:kWebViewWillAppear];
@@ -656,14 +662,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }];
 }
 
-- (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL{
+- (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL {
     self.isShowFailToast = false;
     [self getResoponseCode:URL];
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
+    self.isFirstLoad = NO;
 }
 
-- (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
+- (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error {
+    self.isFirstLoad = NO;
     if(self.isShowFailToast){
           [self.wkWebView  ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"网络异常~"];
     }
