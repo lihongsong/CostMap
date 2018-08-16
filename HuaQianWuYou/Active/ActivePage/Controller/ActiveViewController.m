@@ -38,6 +38,8 @@
 #import <HJ_UIKit/HJAlertView.h>
 #import <CoreLocation/CLLocationManager.h>
 #import "HQWYJavaScriptSourceHandler.h"
+#import "TalkingData.h"
+#import <Bugly/Bugly.h>
 
 typedef NS_ENUM(NSInteger,leftNavigationItemType) {
     leftNavigationItemTypeLocation = 0,
@@ -73,6 +75,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
  */
 @property(nonatomic,assign) NSNumber* needBackDialog;
 
+/**
+ 是否第一次加载
+ */
+@property(nonatomic,assign) BOOL isFirstLoad;
+
 @end
 
 @implementation ActiveViewController
@@ -96,6 +103,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (instancetype)init{
     if (self = [super init]) {
+        self.isFirstLoad = YES;
         [self loadURLString:Active_Path];
     }
     return self;
@@ -240,7 +248,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBar.hidden = true;
-    if (StrIsEmpty(self.wkWebView.title)) {
+    if (!self.isFirstLoad && StrIsEmpty(self.wkWebView.title)) {
         [self.wkWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:Active_Path]]];
     }
     [self.manager callHandler:kWebViewWillAppear];
@@ -439,13 +447,47 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
             [self.locationManager startUpdatingLocation];
         }
     }];
-    
+
+    /** 上传H5 异常信息*/
+    [self.manager registerHandler:kAppUploadException handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSDictionary *dataDic = [[NSDictionary alloc]initWithDictionary:[self jsonDicFromString:data]];
+        if (dataDic[@"error"]) {
+            // 上报异常信息
+            /**
+             *    @brief 上报自定义错误
+             *
+             *    @param category    类型(Cocoa=3,CSharp=4,JS=5,Lua=6)
+             *    @param aName       名称
+             *    @param aReason     错误原因
+             *    @param aStackArray 堆栈
+             *    @param info        附加数据
+             *    @param terminate   上报后是否退出应用进程
+             */
+            [Bugly reportExceptionWithCategory:5 name:@"全局H5异常捕获" reason:@"" callStack:[NSArray arrayWithObjects:dataDic[@"error"], nil] extraInfo:@{} terminateApp:NO];
+        }
+    }];
+
+
     /** 注册获取H5调用原生toast */
     [self.manager registerHandler:kAppToastMessage handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         NSDictionary *dataDic = [[NSDictionary alloc]initWithDictionary:[self jsonDicFromString:data]];
         if (dataDic[@"message"]) {
             [self.wkWebView  ln_showToastHUD:[dataDic objectForKey:@"message"]];
         }
+    }];
+    
+    /** 注册h5离开页面统计事件 */
+    [self.manager registerHandler:kAppOnPageEnd handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [TalkingData trackPageEnd:dic[@"pageName"]];
+    }];
+    
+    /** 注册h5进入页面事件统计 */
+    [self.manager registerHandler:kAppOnPageBegin handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [TalkingData trackPageBegin:dic[@"pageName"]];
     }];
     
     /** 注册打开webView事件 */
@@ -669,14 +711,16 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }];
 }
 
-- (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL{
+- (void)webView:(HJWebViewController *)webViewController didFinishLoadingURL:(NSURL *)URL {
     self.isShowFailToast = false;
     [self getResoponseCode:URL];
     [self setWkwebviewGesture];
     [self.wkWebView ln_hideProgressHUD];
+    self.isFirstLoad = NO;
 }
 
-- (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
+- (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error {
+    self.isFirstLoad = NO;
     if(self.isShowFailToast){
           [self.wkWebView  ln_hideProgressHUD:LNMBProgressHUDAnimationToast message:@"网络异常~"];
     }

@@ -199,4 +199,19 @@ static NSString * const kAppCloseWebview = @"appCloseWebview";
  */
 static NSString * const kAppSetBottomStyle = @"appSetBottomStyle";
 
+/*
+ h5页面进入
+ */
+static NSString * const kAppOnPageBegin = @"appOnPageBegin";
+
+/*!
+ h5页面退出
+ */
+static NSString * const kAppOnPageEnd = @"appOnPageEnd";
+/*!
+ H5 异常上报
+ */
+static NSString * const kAppUploadException = @"appUploadException";
+
+
 #endif /* HQWYJavaSBridgeHandleMacros_h */
