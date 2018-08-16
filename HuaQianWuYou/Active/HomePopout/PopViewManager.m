@@ -49,6 +49,7 @@
     PopViewManager *manage = [PopViewManager sharedInstance];
     manage.isFinish = !isHidden;
     if(isHidden || manage.urlLodingFinish){
+        manage.urlLodingFinish = false;
         if (type == AdvertisingTypeAlert){
             manage.popView.hidden = isHidden;
         }else if (type ==AdvertisingTypeSuspensionWindow){
@@ -96,7 +97,6 @@
 # pragma mark 弹框数据显示逻辑
 + (void)requstDataType:(AdvertisingType)type fromVC:(UIViewController *)controller{
     BasicDataModel *model = [BasicDataModel getCacheModel:type];
-
     if (type == AdvertisingTypeAlert) {
         if (![GetUserDefault(@"advertisementDate") isEqualToString:[NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMdd"]]){
             model.sort = @0;

@@ -403,6 +403,18 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     /** 注册获取H5获取原生定位城市 */
     [self.manager registerHandler:kAppGetLocationCity handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([HQWYJavaScriptResponse result:self.locatedCity]);
+        if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
+            
+        } else {
+            if ([self.navigationView.leftLabel.text containsString:@"定位"]) {
+                //这种场景说明没有定位成功，需要刷新在定位时候显示定位中
+                self.navigationView.leftLabel.text = @"定位中...";
+            }
+            self.locatedCity[@"country"] = @"";
+            self.locatedCity[@"city"] = @"定位中...";
+            self.locatedCity[@"province"] = @"";
+            [self.locationManager startUpdatingLocation];
+        } 
     }];
     
     /** 首页弹窗显示 */
@@ -412,6 +424,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 注册获取H5获取原生定位城市 */
     [self.manager registerHandler:kAppExecLocation handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([HQWYJavaScriptResponse result:self.locatedCity]);
         if ([CLLocationManager authorizationStatus] ==kCLAuthorizationStatusDenied){
             [self openTheAuthorizationOfLocation];
             

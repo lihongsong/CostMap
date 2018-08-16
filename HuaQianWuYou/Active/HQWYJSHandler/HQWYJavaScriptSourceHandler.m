@@ -20,7 +20,7 @@
     NSString *logoDefault = [self getImageBase64:@"productIcon" withType:@"png"];
     NSString *middleBanner = [self getImageBase64:@"middleBannerIcon" withType:@"png"];
     NSString *loadfail = [self getImageBase64:@"loadFailIcon" withType:@"png"];
-    //NSString *loading = [self getImageBase64:@"MBProgressloading" withType:@"gif"];
+    NSString *loading = [self getImageBase64:@"MBProgressloading" withType:@"gif"];
     NSString *loginAvatar = [self getImageBase64:@"loginAvatar" withType:@"png"];
     NSString *nodata = [self getImageBase64:@"noDataIcon" withType:@"png"];
     NSString *logoutAvatar = [self getImageBase64:@"logoutAvatar" withType:@"png"];
@@ -30,7 +30,7 @@
      [param setValue:logoDefault forKey:@"productIcon"];
     [param setValue:middleBanner forKey:@"middleBannerIcon"];
     [param setValue:loadfail forKey:@"loadFailIcon"];
-    [param setValue:@"" forKey:@"loadingIcon"];
+    [param setValue:loading forKey:@"loadingIcon"];
     [param setValue: loginAvatar forKey:@"loginAvatar"];
     [param setValue:nodata forKey:@"noDataIcon"];
     [param setValue: logoutAvatar forKey:@"logoutAvatar"];

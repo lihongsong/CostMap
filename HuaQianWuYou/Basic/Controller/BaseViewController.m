@@ -16,8 +16,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-   // self.view.backgroundColor = AllBackLightGratColor;
+    
  [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor whiteColor]}];
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -76,7 +75,6 @@
     [super viewWillDisappear:animated];
     [self.view endEditing:YES];
 }
-
 
 -(void)backPage {
     [self.navigationController popViewControllerAnimated:YES];

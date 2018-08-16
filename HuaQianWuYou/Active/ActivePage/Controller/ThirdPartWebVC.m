@@ -30,6 +30,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 @property(nonatomic, assign)NSInteger countTime;
 @property(nonatomic, strong)NSArray *listArr;//后台返的产*品list
 @property(nonatomic, strong)NSURL *productUrl;//每一个产*品第一个页面url
+@property(nonatomic, strong)NSString *productName;//当前展示产*品名称
 @property(nonatomic, assign)BOOL isProductFirstPage;
 @property(nonatomic, strong)NavigationView *navigationView;
 @property(nonatomic, assign)BOOL isShowAlertOrBack;//是否弹挽留或者回列表
@@ -65,36 +66,37 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    NSString *pageName = [self getTakingDataPageName];
-    if(!StrIsEmpty(pageName)){
-        [TalkingData trackPageBegin:pageName];
+    if(!StrIsEmpty(self.navigationView.titleButton.titleLabel.text)){
+        self.productName = self.navigationView.titleButton.titleLabel.text;
+        [TalkingData trackPageBegin:self.navigationView.titleButton.titleLabel.text];
     }
     if (StrIsEmpty(self.wkWebView.title)) {
         [self loadURLString:self.navigationDic[@"url"]];
     }
 }
 
-- (NSString *)getTakingDataPageName{
-    if (![self.navigationDic[@"nav"] isKindOfClass:[NSDictionary class]]) {
-        return @"";
-    }
-    
-    if (![[self.navigationDic[@"nav"] objectForKey:@"title"] isKindOfClass:[NSDictionary class]]) {
-        return @"";
-    }
-    NSDictionary *titleDic = [self.navigationDic[@"nav"] objectForKey:@"title"];
-    if(StrIsEmpty([titleDic objectForKey:@"text"])){
-        return @"";
-    }
-    
-    if([[titleDic objectForKey:@"text"] isEqualToString:@"用户服务协议"]){
-        return @"";
-    }
-    return titleDic[@"text"];
-}
+//- (NSString *)getTakingDataPageName{
+//    if (![self.navigationDic[@"nav"] isKindOfClass:[NSDictionary class]]) {
+//        return @"";
+//    }
+//
+//    if (![[self.navigationDic[@"nav"] objectForKey:@"title"] isKindOfClass:[NSDictionary class]]) {
+//        return @"";
+//    }
+//    NSDictionary *titleDic = [self.navigationDic[@"nav"] objectForKey:@"title"];
+//    if(StrIsEmpty([titleDic objectForKey:@"text"])){
+//        return @"";
+//    }
+//
+//    if([[titleDic objectForKey:@"text"] isEqualToString:@"用户服务协议"]){
+//        return @"";
+//    }
+//    return titleDic[@"text"];
+//}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+     [TalkingData trackPageEnd:self.productName];
     [self.wkWebView ln_hideProgressHUD];
     [self.progressBar removeFromSuperview];
 }
@@ -189,7 +191,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }else{
         if(self.wkWebView.canGoBack){
             [self.wkWebView goBack];
-            self.navigationView.backButton.enabled = true;
+        self.navigationView.backButton.enabled = true;
         }else{
             [self toBeforeViewControllerAnimation:true];
         }
@@ -224,6 +226,9 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
                 NSDictionary *product = [[NSDictionary alloc]initWithDictionary:self.listArr[0]];
                 [self uploadData:product[@"id"]];
                 self.isProductFirstPage = true;
+                [TalkingData trackPageEnd:self.productName];
+                    [TalkingData trackPageBegin:product[@"name"]];
+                self.productName = product[@"name"];
                 [self loadURLString:product[@"address"]];
                 [self.navigationView.titleButton setTitle:product[@"name"] forState:UIControlStateNormal];
             }else{
@@ -405,11 +410,6 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.navigationView.backButton.enabled = true;
     if (self.isProductFirstPage) {
         self.productUrl = URL;
-    }else{
-        static dispatch_once_t onceToken;
-        dispatch_once(&onceToken, ^{
-            [TalkingData trackPageEnd:[self getTakingDataPageName]];
-        });
     }
     NSString *strUrl = [NSString stringWithFormat:@"%@",URL];
     if(StrIsEmpty(strUrl)){
@@ -421,6 +421,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     [self checkIsShowAlertOrBack:URL];
     [self setWkwebviewGesture];
     self.isProductFirstPage = false;
+    [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)webView:(HJWebViewController *)webViewController didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
@@ -445,6 +446,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     self.isShowFailToast = true;
     [self checkIsShowAlertOrBack:URL];
     [self setWkwebviewGesture];
+    [self.wkWebView ln_hideProgressHUD];
 }
 
 - (void)checkIsShowAlertOrBack:(NSURL *)webViewURL{
