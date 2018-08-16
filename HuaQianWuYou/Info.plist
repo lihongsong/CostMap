@@ -81,10 +81,6 @@
 	<string>我们需要获取你的定位信息，提供对应城市的公积金和社保查询服务给您</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>我们需要打开您的相册选取照片，然后自定义您的个人头像</string>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>remote-notification</string>
-	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
