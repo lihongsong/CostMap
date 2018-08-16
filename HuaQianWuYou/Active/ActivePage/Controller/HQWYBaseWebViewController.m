@@ -22,7 +22,7 @@
 #import "HQWYJavaScriptMonitorHandler.h"
 #import "LoginAndRegisterViewController.h"
 #import "AuthPhoneNumViewController.h"
-
+#import "NSObject+JsonToDictionary.h"
 
 #define ResponseCallback(_value) \
 !responseCallback?:responseCallback(_value);
@@ -134,8 +134,7 @@
     /** 注册埋点事件 */
     [self.manager registerHandler:kAppExecStatistic handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         StrongObj(self)
-        NSData *jsonData = [data dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        NSDictionary *dic = [self jsonDicFromString:data];
         [self eventId:dic[@"eventId"]];
         ResponseCallback([HQWYJavaScriptResponse success]);
     }];
