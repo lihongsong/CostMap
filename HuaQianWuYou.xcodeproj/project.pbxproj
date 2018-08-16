@@ -73,6 +73,7 @@
 		594D69B4210F2E4900C65786 /* noDataIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D69B3210F2E4900C65786 /* noDataIcon.png */; };
 		594D69B6210F2E5100C65786 /* logoutAvatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D69B5210F2E5100C65786 /* logoutAvatar.png */; };
 		594D69B8210F590F00C65786 /* loadFailIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 594D69B7210F590F00C65786 /* loadFailIcon.png */; };
+		594FFDE62125616600E71103 /* H5MBProgressloading.gif in Resources */ = {isa = PBXBuildFile; fileRef = 594FFDE52125616500E71103 /* H5MBProgressloading.gif */; };
 		595752FF209AA1CC00F602EB /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595752FE209AA1CC00F602EB /* MainTabBarViewController.m */; };
 		595754C4209B191D00F602EB /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 595754C3209B191D00F602EB /* BaseNavigationController.m */; };
 		59575507209B33DE00F602EB /* ColorFont.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59575506209B33DE00F602EB /* ColorFont.plist */; };
@@ -370,6 +371,7 @@
 		594D69B3210F2E4900C65786 /* noDataIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noDataIcon.png; sourceTree = "<group>"; };
 		594D69B5210F2E5100C65786 /* logoutAvatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoutAvatar.png; sourceTree = "<group>"; };
 		594D69B7210F590F00C65786 /* loadFailIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loadFailIcon.png; sourceTree = "<group>"; };
+		594FFDE52125616500E71103 /* H5MBProgressloading.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = H5MBProgressloading.gif; sourceTree = "<group>"; };
 		5952DEE820B3B6F30058A57D /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		595752FD209AA1CC00F602EB /* MainTabBarViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		595752FE209AA1CC00F602EB /* MainTabBarViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
@@ -978,6 +980,7 @@
 		594D69AA210F2E0400C65786 /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				594FFDE52125616500E71103 /* H5MBProgressloading.gif */,
 				594D69B7210F590F00C65786 /* loadFailIcon.png */,
 				594D69B5210F2E5100C65786 /* logoutAvatar.png */,
 				594D69B3210F2E4900C65786 /* noDataIcon.png */,
@@ -1992,6 +1995,7 @@
 				594D69B6210F2E5100C65786 /* logoutAvatar.png in Resources */,
 				594D69AC210F2E2300C65786 /* bannerIcon.png in Resources */,
 				5958089F20F2F53A002A6F0C /* PasswordInputView.xib in Resources */,
+				594FFDE62125616600E71103 /* H5MBProgressloading.gif in Resources */,
 				594D69AE210F2E2800C65786 /* productIcon.png in Resources */,
 				591D95D420ABDE6E00193B09 /* AAHighchartsMore.js in Resources */,
 				5977034620F7451A00F29F33 /* MBProgressloading.gif in Resources */,

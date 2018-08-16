@@ -20,7 +20,7 @@
     NSString *logoDefault = [self getImageBase64:@"productIcon" withType:@"png"];
     NSString *middleBanner = [self getImageBase64:@"middleBannerIcon" withType:@"png"];
     NSString *loadfail = [self getImageBase64:@"loadFailIcon" withType:@"png"];
-    NSString *loading = [self getImageBase64:@"MBProgressloading" withType:@"gif"];
+    NSString *loading = [self getImageBase64:@"H5MBProgressloading" withType:@"gif"];
     NSString *loginAvatar = [self getImageBase64:@"loginAvatar" withType:@"png"];
     NSString *nodata = [self getImageBase64:@"noDataIcon" withType:@"png"];
     NSString *logoutAvatar = [self getImageBase64:@"logoutAvatar" withType:@"png"];

@@ -66,7 +66,7 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if(!StrIsEmpty(self.navigationView.titleButton.titleLabel.text)){
+    if(!StrIsEmpty(self.navigationView.titleButton.titleLabel.text) && ![self.navigationView.titleButton.titleLabel.text isEqualToString:@"用户服务协议"]){
         self.productName = self.navigationView.titleButton.titleLabel.text;
         [TalkingData trackPageBegin:self.navigationView.titleButton.titleLabel.text];
     }
@@ -75,28 +75,11 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     }
 }
 
-//- (NSString *)getTakingDataPageName{
-//    if (![self.navigationDic[@"nav"] isKindOfClass:[NSDictionary class]]) {
-//        return @"";
-//    }
-//
-//    if (![[self.navigationDic[@"nav"] objectForKey:@"title"] isKindOfClass:[NSDictionary class]]) {
-//        return @"";
-//    }
-//    NSDictionary *titleDic = [self.navigationDic[@"nav"] objectForKey:@"title"];
-//    if(StrIsEmpty([titleDic objectForKey:@"text"])){
-//        return @"";
-//    }
-//
-//    if([[titleDic objectForKey:@"text"] isEqualToString:@"用户服务协议"]){
-//        return @"";
-//    }
-//    return titleDic[@"text"];
-//}
-
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-     [TalkingData trackPageEnd:self.productName];
+    if(!StrIsEmpty(self.productName) && ![self.productName isEqualToString:@"用户服务协议"]){
+        [TalkingData trackPageEnd:self.productName];
+    }
     [self.wkWebView ln_hideProgressHUD];
     [self.progressBar removeFromSuperview];
 }
