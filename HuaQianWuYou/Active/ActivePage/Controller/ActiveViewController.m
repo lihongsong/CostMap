@@ -426,7 +426,10 @@ static NSString * const kJSSetUpName = @"javascriptSetUp.js";
     
     /** 首页弹窗显示 */
     [self.manager registerHandler:kAppShowHomeAdvertiseAlert handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        [PopViewManager isHiddenCustomView:false withType:AdvertisingTypeAlert];
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            [PopViewManager isHiddenCustomView:false withType:AdvertisingTypeAlert];
+        });
     }];
     
     /** 注册获取H5获取原生定位城市 */

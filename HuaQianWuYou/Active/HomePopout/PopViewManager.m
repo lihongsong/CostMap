@@ -68,10 +68,15 @@
             if (controller) {
                 manage.popView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:.5f];
                 [manage.popView.contentImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                    manage.urlLodingFinish = true;
-                    if (manage.isFinish)
-                    {
-                        manage.popView.hidden = false;
+                    if( error != nil || image == nil){
+                        [manage.popView removeFromSuperview];
+                        manage.urlLodingFinish = false;
+                    }else{
+                        manage.urlLodingFinish = true;
+                        if (manage.isFinish)
+                        {
+                            manage.popView.hidden = false;
+                        }
                     }
                 }];
                 WeakObj(manage);
