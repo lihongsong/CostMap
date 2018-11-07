@@ -14,6 +14,9 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
   - GTMBase64 (1.0.1)
   - HJ_UIKit/HJAlertView (2.2.6):
     - Masonry
@@ -24,13 +27,13 @@ PODS:
     - SDWebImage
   - HJ_UIKit/HJProgressHUD (2.2.6):
     - MBProgressHUD
-  - HJCategories (1.0.7):
-    - HJCategories/CoreFoundation (= 1.0.7)
-    - HJCategories/Foundation (= 1.0.7)
-    - HJCategories/UIKit (= 1.0.7)
-  - HJCategories/CoreFoundation (1.0.7)
-  - HJCategories/Foundation (1.0.7)
-  - HJCategories/UIKit (1.0.7)
+  - HJCategories (1.1.2):
+    - HJCategories/CoreFoundation (= 1.1.2)
+    - HJCategories/Foundation (= 1.1.2)
+    - HJCategories/UIKit (= 1.1.2)
+  - HJCategories/CoreFoundation (1.1.2)
+  - HJCategories/Foundation (1.1.2)
+  - HJCategories/UIKit (1.1.2)
   - HJJavascriptBridge (0.3.2):
     - HJJavascriptBridge/HJBridge (= 0.3.2)
     - HJJavascriptBridge/HJWebView (= 0.3.2)
@@ -51,12 +54,13 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (= 3.1.0)
+  - FMDB
   - GTMBase64 (= 1.0.1)
   - HJ_UIKit/HJAlertView (= 2.2.6)
   - HJ_UIKit/HJCarousel (= 2.2.6)
   - HJ_UIKit/HJGuidePage (= 2.2.6)
   - HJ_UIKit/HJProgressHUD (= 2.2.6)
-  - HJCategories (= 1.0.7)
+  - HJCategories (= 1.1.2)
   - HJJavascriptBridge (= 0.3.2)
   - IQKeyboardManager (= 5.0.6)
   - Masonry (= 1.1.0)
@@ -75,6 +79,7 @@ SPEC REPOS:
     - RCMobClick
   https://github.com/CocoaPods/Specs.git:
     - AFNetworking
+    - FMDB
     - GTMBase64
     - IQKeyboardManager
     - Masonry
@@ -87,9 +92,10 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
   HJ_UIKit: f159662789059d290bbef7e18d8bbe1af377be59
-  HJCategories: bf9f92ef8ffa78ddf1e3e59a16f50a74a8cec822
+  HJCategories: 62e906815cb8c858c4a49b965d8434dec67bad43
   HJJavascriptBridge: 4386eda84b91f27aeb4a829d4d486bd825878b63
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -101,6 +107,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: 9ee8041ed89a694fefdf473a078a91837e5f4f5c
+PODFILE CHECKSUM: fedb82ad4832b962d7b8a0f9ab29d228535d4466
 
 COCOAPODS: 1.5.0

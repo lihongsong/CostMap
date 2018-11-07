@@ -8,16 +8,18 @@ source 'git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git'
 
 platform :ios, '8.0'
 
-target 'HJHQWY' do
+target 'Wuyouhuaqian' do
     
     pod 'AFNetworking', '3.1.0'
     pod 'SDWebImage'
-    pod 'HJCategories', '1.0.7'
+    pod 'FMDB'
+    pod 'HJCategories', '1.1.2'
     pod 'Masonry','1.1.0'
     pod 'HJ_UIKit/HJCarousel', '2.2.6'
     pod 'HJ_UIKit/HJGuidePage', '2.2.6'
     pod 'HJ_UIKit/HJAlertView', '2.2.6'
     pod 'HJ_UIKit/HJProgressHUD', '2.2.6'
+    pod 'HJWebView',
     pod 'IQKeyboardManager', '5.0.6'
     pod 'GTMBase64', '1.0.1'
     pod 'YYText', '1.0.4'
