@@ -714,8 +714,7 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
 
 - (void)showWithAnimation:(BOOL)animation {
     //1. 获取当前应用的主窗口
-    UIWindow *keyWindow = [[UIApplication sharedApplication] keyWindow];
-    [keyWindow addSubview:self];
+    [KeyWindow addSubview:self];
     if (animation) {
         // 动画前初始位置
         CGRect rect = self.alertView.frame;

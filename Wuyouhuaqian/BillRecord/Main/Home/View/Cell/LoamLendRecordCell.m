@@ -96,14 +96,14 @@
 }
  
 
--(GradientCompareBarView *)barView{
+-(GradientCompareBarView *)barView {
     if (_barView == nil) {
         _barView = [[GradientCompareBarView alloc] init];
     }
     return _barView;
 }
 
--(void)config:(HomeDataModel *)model example:(BOOL)isExample withType:(cellType)type{
+- (void)config:(HomeDataModel *)model example:(BOOL)isExample withType:(cellType)type{
     
     if (isExample == false) {
         [self addSubview:self.exampleImage];

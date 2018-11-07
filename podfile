@@ -11,6 +11,7 @@ platform :ios, '8.0'
 target 'Wuyouhuaqian' do
     
     pod 'AFNetworking', '3.1.0'
+    pod 'HJMediator'
     pod 'SDWebImage'
     pod 'FMDB'
     pod 'HJCategories', '1.1.2'
@@ -19,12 +20,12 @@ target 'Wuyouhuaqian' do
     pod 'HJ_UIKit/HJGuidePage', '2.2.6'
     pod 'HJ_UIKit/HJAlertView', '2.2.6'
     pod 'HJ_UIKit/HJProgressHUD', '2.2.6'
-    pod 'HJWebView',
+    pod 'HJWebView'
     pod 'IQKeyboardManager', '5.0.6'
     pod 'GTMBase64', '1.0.1'
     pod 'YYText', '1.0.4'
     pod 'YYModel', '1.0.4'
-    pod 'HJJavascriptBridge', '0.3.2'
+#    pod 'HJJavascriptBridge', '0.3.2'
     pod 'UICKeyChainStore','2.1.1'
     pod 'RCMobClick', '2.0.9'
 

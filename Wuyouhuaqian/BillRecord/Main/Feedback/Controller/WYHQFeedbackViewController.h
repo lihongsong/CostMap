@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "WYHQBaseViewController.h"
 
-@interface QBFeedbackViewController : WYHQBaseViewController
+@interface WYHQFeedbackViewController : WYHQBaseViewController
 
 @end

@@ -103,9 +103,10 @@
 		82DC65F72192F7DC007421DE /* NSDate+CLAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65F42192F7DC007421DE /* NSDate+CLAdd.m */; };
 		82DC65FE21930163007421DE /* WYHQLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65FD21930163007421DE /* WYHQLocation.m */; };
 		82DC660421930827007421DE /* WYHQPhotoPickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660321930827007421DE /* WYHQPhotoPickerManager.m */; };
-		82DC660921930E18007421DE /* QBFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660821930E18007421DE /* QBFeedbackViewController.m */; };
-		82DC660F21930E25007421DE /* QBFeedbackModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660B21930E25007421DE /* QBFeedbackModel+Service.m */; };
-		82DC661021930E25007421DE /* QBFeedbackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660E21930E25007421DE /* QBFeedbackModel.m */; };
+		82DC660921930E18007421DE /* WYHQFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660821930E18007421DE /* WYHQFeedbackViewController.m */; };
+		82DC660F21930E25007421DE /* WYHQFeedbackModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660B21930E25007421DE /* WYHQFeedbackModel+Service.m */; };
+		82DC661021930E25007421DE /* WYHQFeedbackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660E21930E25007421DE /* WYHQFeedbackModel.m */; };
+		82DC66172193110B007421DE /* WYHQBillListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC66162193110B007421DE /* WYHQBillListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -318,12 +319,14 @@
 		82DC65FD21930163007421DE /* WYHQLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQLocation.m; sourceTree = "<group>"; };
 		82DC660221930827007421DE /* WYHQPhotoPickerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQPhotoPickerManager.h; sourceTree = "<group>"; };
 		82DC660321930827007421DE /* WYHQPhotoPickerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQPhotoPickerManager.m; sourceTree = "<group>"; };
-		82DC660721930E18007421DE /* QBFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBFeedbackViewController.h; sourceTree = "<group>"; };
-		82DC660821930E18007421DE /* QBFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBFeedbackViewController.m; sourceTree = "<group>"; };
-		82DC660B21930E25007421DE /* QBFeedbackModel+Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QBFeedbackModel+Service.m"; sourceTree = "<group>"; };
-		82DC660C21930E25007421DE /* QBFeedbackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBFeedbackModel.h; sourceTree = "<group>"; };
-		82DC660D21930E25007421DE /* QBFeedbackModel+Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QBFeedbackModel+Service.h"; sourceTree = "<group>"; };
-		82DC660E21930E25007421DE /* QBFeedbackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBFeedbackModel.m; sourceTree = "<group>"; };
+		82DC660721930E18007421DE /* WYHQFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQFeedbackViewController.h; sourceTree = "<group>"; };
+		82DC660821930E18007421DE /* WYHQFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQFeedbackViewController.m; sourceTree = "<group>"; };
+		82DC660B21930E25007421DE /* WYHQFeedbackModel+Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WYHQFeedbackModel+Service.m"; sourceTree = "<group>"; };
+		82DC660C21930E25007421DE /* WYHQFeedbackModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQFeedbackModel.h; sourceTree = "<group>"; };
+		82DC660D21930E25007421DE /* WYHQFeedbackModel+Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WYHQFeedbackModel+Service.h"; sourceTree = "<group>"; };
+		82DC660E21930E25007421DE /* WYHQFeedbackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQFeedbackModel.m; sourceTree = "<group>"; };
+		82DC66152193110B007421DE /* WYHQBillListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillListViewController.h; sourceTree = "<group>"; };
+		82DC66162193110B007421DE /* WYHQBillListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillListViewController.m; sourceTree = "<group>"; };
 		9BEF51BEE2E08CC83CA42644 /* Pods-Wuyouhuaqian.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wuyouhuaqian.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wuyouhuaqian/Pods-Wuyouhuaqian.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -455,8 +458,8 @@
 		82DC64C92192E275007421DE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				82DC64CA2192E275007421DE /* WYHQHomeViewController.m */,
 				82DC64CB2192E275007421DE /* WYHQHomeViewController.h */,
+				82DC64CA2192E275007421DE /* WYHQHomeViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -473,15 +476,11 @@
 		82DC64CF2192E275007421DE /* View */ = {
 			isa = PBXGroup;
 			children = (
-				82DC64D02192E275007421DE /* ZYZButton.h */,
-				82DC64D12192E275007421DE /* RightItemButton.m */,
-				82DC64D22192E275007421DE /* LeftItemButton.m */,
+				82DC66192193170B007421DE /* ItemButton */,
+				82DC6618219316FC007421DE /* ZYZButton */,
 				82DC64D32192E275007421DE /* Cell */,
-				82DC64DE2192E275007421DE /* RightItemButton.h */,
-				82DC64DF2192E275007421DE /* ZYZButton.m */,
 				82DC64E02192E275007421DE /* Header */,
 				82DC64F52192E275007421DE /* AAChartView */,
-				82DC64FE2192E275007421DE /* LeftItemButton.h */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -534,13 +533,13 @@
 			isa = PBXGroup;
 			children = (
 				82DC64F62192E275007421DE /* BaseChartView.h */,
-				82DC64F72192E275007421DE /* AreaSplineCompareView.m */,
-				82DC64F82192E275007421DE /* AreaSplineChartView.m */,
-				82DC64F92192E275007421DE /* GradientCompareBarView.h */,
 				82DC64FA2192E275007421DE /* BaseChartView.m */,
-				82DC64FB2192E275007421DE /* AreaSplineChartView.h */,
-				82DC64FC2192E275007421DE /* AreaSplineCompareView.h */,
+				82DC64F92192E275007421DE /* GradientCompareBarView.h */,
 				82DC64FD2192E275007421DE /* GradientCompareBarView.m */,
+				82DC64FB2192E275007421DE /* AreaSplineChartView.h */,
+				82DC64F82192E275007421DE /* AreaSplineChartView.m */,
+				82DC64FC2192E275007421DE /* AreaSplineCompareView.h */,
+				82DC64F72192E275007421DE /* AreaSplineCompareView.m */,
 			);
 			path = AAChartView;
 			sourceTree = "<group>";
@@ -730,6 +729,7 @@
 		82DC653E2192E275007421DE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				82DC661121931041007421DE /* Bill */,
 				82DC660521930DFF007421DE /* Feedback */,
 				82DC64C82192E275007421DE /* Home */,
 			);
@@ -933,8 +933,8 @@
 		82DC660621930E0E007421DE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				82DC660721930E18007421DE /* QBFeedbackViewController.h */,
-				82DC660821930E18007421DE /* QBFeedbackViewController.m */,
+				82DC660721930E18007421DE /* WYHQFeedbackViewController.h */,
+				82DC660821930E18007421DE /* WYHQFeedbackViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -942,12 +942,65 @@
 		82DC660A21930E1B007421DE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				82DC660C21930E25007421DE /* QBFeedbackModel.h */,
-				82DC660E21930E25007421DE /* QBFeedbackModel.m */,
-				82DC660D21930E25007421DE /* QBFeedbackModel+Service.h */,
-				82DC660B21930E25007421DE /* QBFeedbackModel+Service.m */,
+				82DC660C21930E25007421DE /* WYHQFeedbackModel.h */,
+				82DC660E21930E25007421DE /* WYHQFeedbackModel.m */,
+				82DC660D21930E25007421DE /* WYHQFeedbackModel+Service.h */,
+				82DC660B21930E25007421DE /* WYHQFeedbackModel+Service.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		82DC661121931041007421DE /* Bill */ = {
+			isa = PBXGroup;
+			children = (
+				82DC661421931078007421DE /* Model */,
+				82DC661321931072007421DE /* View */,
+				82DC661221931068007421DE /* Controller */,
+			);
+			path = Bill;
+			sourceTree = "<group>";
+		};
+		82DC661221931068007421DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				82DC66152193110B007421DE /* WYHQBillListViewController.h */,
+				82DC66162193110B007421DE /* WYHQBillListViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		82DC661321931072007421DE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		82DC661421931078007421DE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		82DC6618219316FC007421DE /* ZYZButton */ = {
+			isa = PBXGroup;
+			children = (
+				82DC64D02192E275007421DE /* ZYZButton.h */,
+				82DC64DF2192E275007421DE /* ZYZButton.m */,
+			);
+			path = ZYZButton;
+			sourceTree = "<group>";
+		};
+		82DC66192193170B007421DE /* ItemButton */ = {
+			isa = PBXGroup;
+			children = (
+				82DC64DE2192E275007421DE /* RightItemButton.h */,
+				82DC64D12192E275007421DE /* RightItemButton.m */,
+				82DC64FE2192E275007421DE /* LeftItemButton.h */,
+				82DC64D22192E275007421DE /* LeftItemButton.m */,
+			);
+			path = ItemButton;
 			sourceTree = "<group>";
 		};
 		BD20D73E4E1A29CA8864267D /* Frameworks */ = {
@@ -1101,7 +1154,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Wuyouhuaqian/Pods-Wuyouhuaqian-resources.sh",
-				"${PODS_ROOT}/HJJavascriptBridge/HJJavascriptBridge/HJWebView/HJWebView.bundle",
+				"${PODS_ROOT}/HJWebView/HJWebView/Assets/HJWebViewController/HJWebView.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/HJ_UIKit/HJAlertView.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 			);
@@ -1145,8 +1198,9 @@
 				82DC65D52192E275007421DE /* AAYAxis.m in Sources */,
 				82DC65E22192E275007421DE /* AAItemStyle.m in Sources */,
 				82DC65CF2192E275007421DE /* AAXAxis.m in Sources */,
+				82DC66172193110B007421DE /* WYHQBillListViewController.m in Sources */,
 				82DC65BB2192E275007421DE /* DeviceHelp.m in Sources */,
-				82DC660F21930E25007421DE /* QBFeedbackModel+Service.m in Sources */,
+				82DC660F21930E25007421DE /* WYHQFeedbackModel+Service.m in Sources */,
 				82DC65A32192E275007421DE /* ScoreProgressView.m in Sources */,
 				82DC65DA2192E275007421DE /* AAStyle.m in Sources */,
 				82DC65AB2192E275007421DE /* AreaSplineChartView.m in Sources */,
@@ -1197,7 +1251,7 @@
 				82DC65BE2192E275007421DE /* DeviceTypes.m in Sources */,
 				82DC65D42192E275007421DE /* AASubtitle.m in Sources */,
 				82DC65B22192E275007421DE /* UIFont+TargetFont.m in Sources */,
-				82DC661021930E25007421DE /* QBFeedbackModel.m in Sources */,
+				82DC661021930E25007421DE /* WYHQFeedbackModel.m in Sources */,
 				82DC65F62192F7DC007421DE /* CLCustomDatePickerBaseView.m in Sources */,
 				82DC65CD2192E275007421DE /* AALabels.m in Sources */,
 				82DC65BF2192E275007421DE /* LNRiskDeviceHelp.m in Sources */,
@@ -1217,7 +1271,7 @@
 				82DC65B12192E275007421DE /* UIViewController+UIAlertControllerKit.m in Sources */,
 				82DC65E02192E275007421DE /* AAMarker.m in Sources */,
 				82DC659C2192E275007421DE /* CredictUsingRateCell.m in Sources */,
-				82DC660921930E18007421DE /* QBFeedbackViewController.m in Sources */,
+				82DC660921930E18007421DE /* WYHQFeedbackViewController.m in Sources */,
 				82DC65F52192F7DC007421DE /* CLCustomDatePickerView.m in Sources */,
 				82DC65D72192E275007421DE /* AAColumn.m in Sources */,
 				82DC65C02192E275007421DE /* GetImagePath.m in Sources */,

@@ -7,8 +7,11 @@
 //
 
 #import "WYHQHomeViewController.h"
+#import "GradientCompareBarView.h"
 
 @interface WYHQHomeViewController ()
+
+@property (strong, nonatomic) GradientCompareBarView *chartView;
 
 @end
 
@@ -20,7 +23,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor redColor];
+    self.view.backgroundColor = [UIColor orangeColor];
+
+    _chartView = [[GradientCompareBarView alloc] init];
+    _chartView.frame = self.view.bounds;
+    [self.view addSubview:_chartView];
+    
+    _chartView.lendArr = @[@3,@2,@5,@3,@9,@5];
+    _chartView.repayArr = @[@1,@4,@7,@6,@8,@4];
+    [_chartView refreshData];
+
 }
 
 #pragma mark - Getter & Setter Methods
@@ -45,14 +57,13 @@
 
 #pragma mark - Event & Target Methods
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)skipDayBillListViewController {
+    [[HJMediator shared] routeToURL:HJAPPURL(@"BillList") withParameters:nil, nil];
 }
-*/
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    [self skipDayBillListViewController];
+}
 
 @end

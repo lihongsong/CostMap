@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class WYHQBaseNavigationController;
 
-@protocol LNNavigationControllerShouldPopDelegate<NSObject>
+@protocol WYHQNavigationControllerShouldPopDelegate<NSObject>
 
 @optional
 - (BOOL)navigationControllerShouldPopViewController;

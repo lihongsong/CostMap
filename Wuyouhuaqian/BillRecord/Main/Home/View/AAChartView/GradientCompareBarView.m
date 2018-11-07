@@ -21,7 +21,7 @@
     return _barChartView;
 }
 
--(void)refreshData{
+-(void)refreshData {
     [self addSubview:self.barChartView];
     
     //设置 barChartView 的背景色是否为透明
@@ -31,7 +31,7 @@
     [self.barChartView aa_drawChartWithChartModel:self.barChartModel];
 }
 
--(AAChartModel *)configureTheChartModel{
+-(AAChartModel *)configureTheChartModel {
     AAChartModel *aaChartModel = AAObject(AAChartModel)
     .tooltipEnabledSet(false) 
     .chartTypeSet(AAChartTypeColumn)

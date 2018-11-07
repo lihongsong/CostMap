@@ -12,6 +12,8 @@
 
 @interface AppDelegate ()
 
+@property (strong, nonatomic) WYHQBaseNavigationController *homeNav;
+
 @end
 
 @implementation AppDelegate
@@ -23,6 +25,15 @@
     NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    WYHQHomeViewController *homeViewController = [WYHQHomeViewController new];
+    _homeNav = [[WYHQBaseNavigationController alloc] initWithRootViewController:homeViewController];
+    
+    self.window.rootViewController = _homeNav;
+    
+    [self.window makeKeyAndVisible];
+    
+    [self setUpSDK];
     
     // 启动图
     [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
@@ -61,19 +72,18 @@
     
     [self getNetWorkEnvironment];
     
-    WYHQHomeViewController *homeViewController = [WYHQHomeViewController new];
-    WYHQBaseNavigationController *homeNav = [[WYHQBaseNavigationController alloc] initWithRootViewController:homeViewController];
     UIWindow *oldWindow = self.window;
     
     __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
+    guideWindow.backgroundColor = [UIColor whiteColor];
     WEAK_SELF
     __unused HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
         STRONG_SELF
         make.setTimer(0, 3, nil,YES);
         make.setAnimateFinishedBlock(^(id info) {
             self.window = oldWindow;
-            [self loadActiveViewController:homeNav];
-            [self.window makeKeyAndVisible];
+            [self loadActiveViewController:self.homeNav];
+            [self.window makeKeyWindow];
             
             guideWindow.hidden = YES;
             [guideWindow removeFromSuperview];
@@ -127,6 +137,16 @@
                         [UIView setAnimationsEnabled:oldState];
                     }
                     completion:nil];
+}
+
+- (void)setUpSDK {
+    
+    HJMediatorConfig *config = [HJMediatorConfig new];
+    config.prefixString = @"WYHQ";
+    config.suffixString = @"ViewController";
+    
+    [[HJMediator shared] setUpConfig:config];
+    [[HJMediator shared] setUpRootViewController:_homeNav];
 }
 
 

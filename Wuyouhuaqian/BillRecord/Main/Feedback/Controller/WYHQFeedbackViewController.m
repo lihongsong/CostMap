@@ -6,17 +6,17 @@
 //  Copyright © 2018年 jasonzhang. All rights reserved.
 //
 
-#import "QBFeedbackViewController.h"
+#import "WYHQFeedbackViewController.h"
 #import "UITextView+HJPlaceHolder.h"
-#import "QBFeedbackModel.h"
-#import "QBFeedbackModel+Service.h"
+#import "WYHQFeedbackModel.h"
+#import "WYHQFeedbackModel+Service.h"
 
-@interface QBFeedbackViewController ()
+@interface WYHQFeedbackViewController ()
 @property(nonatomic, strong) YYTextView *feedbackTextView;
 @property(nonatomic,strong)UITapGestureRecognizer *tap;
 @end
 
-@implementation QBFeedbackViewController
+@implementation WYHQFeedbackViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -89,9 +89,9 @@
         return;
     }
     [KeyWindow hj_showLoadingHUD];
-    [QBFeedbackModel requestFeedbackWithAccount:@"15618775597"
+    [WYHQFeedbackModel requestFeedbackWithAccount:@"15618775597"
                                  adviceString:self.feedbackTextView.text
-                                   Completion:^(QBFeedbackModel * _Nullable result, NSError * _Nullable error) {
+                                   Completion:^(WYHQFeedbackModel * _Nullable result, NSError * _Nullable error) {
                                        STRONG_SELF
                                        if (error) {
                                            [KeyWindow hj_hideProgressHUD:HJProgressHUDAnimationError

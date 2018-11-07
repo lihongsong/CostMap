@@ -34,12 +34,26 @@ PODS:
   - HJCategories/CoreFoundation (1.1.2)
   - HJCategories/Foundation (1.1.2)
   - HJCategories/UIKit (1.1.2)
-  - HJJavascriptBridge (0.3.2):
-    - HJJavascriptBridge/HJBridge (= 0.3.2)
-    - HJJavascriptBridge/HJWebView (= 0.3.2)
-  - HJJavascriptBridge/HJBridge (0.3.2):
+  - HJMediator (0.2.0)
+  - HJWebView (1.0.11):
+    - HJWebView/HJJSBridge (= 1.0.11)
+    - HJWebView/HJJSPlugin (= 1.0.11)
+    - HJWebView/HJPrivacyPolicy (= 1.0.11)
+    - HJWebView/HJUniversalWebViewController (= 1.0.11)
+    - HJWebView/HJWebViewCache (= 1.0.11)
+    - HJWebView/HJWebViewController (= 1.0.11)
+  - HJWebView/HJJSBridge (1.0.11):
     - WebViewJavascriptBridge
-  - HJJavascriptBridge/HJWebView (0.3.2)
+  - HJWebView/HJJSPlugin (1.0.11)
+  - HJWebView/HJPrivacyPolicy (1.0.11):
+    - HJWebView/HJWebViewController
+  - HJWebView/HJUniversalWebViewController (1.0.11):
+    - HJWebView/HJJSBridge
+    - HJWebView/HJJSPlugin
+    - HJWebView/HJWebViewCache
+    - HJWebView/HJWebViewController
+  - HJWebView/HJWebViewCache (1.0.11)
+  - HJWebView/HJWebViewController (1.0.11)
   - IQKeyboardManager (5.0.6)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
@@ -61,7 +75,8 @@ DEPENDENCIES:
   - HJ_UIKit/HJGuidePage (= 2.2.6)
   - HJ_UIKit/HJProgressHUD (= 2.2.6)
   - HJCategories (= 1.1.2)
-  - HJJavascriptBridge (= 0.3.2)
+  - HJMediator
+  - HJWebView
   - IQKeyboardManager (= 5.0.6)
   - Masonry (= 1.1.0)
   - RCMobClick (= 2.0.9)
@@ -74,7 +89,8 @@ SPEC REPOS:
   "git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git":
     - HJ_UIKit
     - HJCategories
-    - HJJavascriptBridge
+    - HJMediator
+    - HJWebView
   http://172.16.0.245:2345/Apple_SDK/iOS_Specs.git:
     - RCMobClick
   https://github.com/CocoaPods/Specs.git:
@@ -96,7 +112,8 @@ SPEC CHECKSUMS:
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
   HJ_UIKit: f159662789059d290bbef7e18d8bbe1af377be59
   HJCategories: 62e906815cb8c858c4a49b965d8434dec67bad43
-  HJJavascriptBridge: 4386eda84b91f27aeb4a829d4d486bd825878b63
+  HJMediator: 381890d07324a962f6c84c782d98c3be8d3d931a
+  HJWebView: d7a67f357742e380c6215017d133b535ae762b73
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
@@ -107,6 +124,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: fedb82ad4832b962d7b8a0f9ab29d228535d4466
+PODFILE CHECKSUM: 34c2ff8580009670d221a1596037e43ad3497e0a
 
 COCOAPODS: 1.5.0

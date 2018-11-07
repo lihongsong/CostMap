@@ -1,5 +1,5 @@
 //
-//  QBFeedbackModel.h
+//  WYHQFeedbackModel.h
 //  WuYouQianBao
 //
 //  Created by jasonzhang on 2018/5/30.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface QBFeedbackModel : NSObject
+@interface WYHQFeedbackModel : NSObject
 
 @property (nonatomic, copy) NSString *message;
 

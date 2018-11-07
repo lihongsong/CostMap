@@ -83,9 +83,9 @@
 
     if (gestureRecognizer == self.interactivePopGestureRecognizer) {
         if (self.viewControllers.count > 1) {
-            if ([self.topViewController conformsToProtocol:@protocol(LNNavigationControllerShouldPopDelegate)]) {
+            if ([self.topViewController conformsToProtocol:@protocol(WYHQNavigationControllerShouldPopDelegate)]) {
                 if ([self.topViewController respondsToSelector:@selector(navigationControllerShouldPopViewController)]) {
-                    return [(id<LNNavigationControllerShouldPopDelegate>)self.topViewController navigationControllerShouldPopViewController];
+                    return [(id<WYHQNavigationControllerShouldPopDelegate>)self.topViewController navigationControllerShouldPopViewController];
                 }
             }
             return YES;
@@ -103,9 +103,9 @@
         return [super navigationBar:navigationBar shouldPopItem:item];
     }
 
-    if ([self.topViewController conformsToProtocol:@protocol(LNNavigationControllerShouldPopDelegate)]) {
+    if ([self.topViewController conformsToProtocol:@protocol(WYHQNavigationControllerShouldPopDelegate)]) {
         if ([self.topViewController respondsToSelector:@selector(navigationControllerShouldPopViewController)]) {
-            if (![(id<LNNavigationControllerShouldPopDelegate>)self.topViewController navigationControllerShouldPopViewController]) {
+            if (![(id<WYHQNavigationControllerShouldPopDelegate>)self.topViewController navigationControllerShouldPopViewController]) {
                 return NO;
             }
         }
