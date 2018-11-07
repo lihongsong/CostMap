@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 #import "WYHQHomeViewController.h"
+#import "WYHQIntroduceViewController.h"
+#import "WYHQTouchIDViewController.h"
 
 @interface AppDelegate ()
 
@@ -35,9 +37,13 @@
     
     [self setUpSDK];
     
-    // 启动图
-    [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
+    // 引导页
+    BOOL needIntroduce = [self setupIntroduceWithRemoteNotification:launchOptions];
     
+    if (!needIntroduce) {
+        // 启动图
+        [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
+    }
     return YES;
 }
 
@@ -137,6 +143,45 @@
                         [UIView setAnimationsEnabled:oldState];
                     }
                     completion:nil];
+}
+
+
+- (void)setRootViewController {
+    [self restoreRootViewController:_homeNav];
+}
+
+#pragma mark - 引导页设置
+- (BOOL)setupIntroduceWithRemoteNotification:(NSDictionary *)remoteNotification {
+    
+    NSString *isInstallApp = UserDefaultGetObj(kHasInstallApp);
+    
+    // 是否安装过 APP
+    if (!isInstallApp.integerValue) {
+        WYHQIntroduceViewController *introduceVC = [[WYHQIntroduceViewController alloc] init];
+        UserDefaultSetObj(@"1", kHasInstallApp);
+        // FIXME: 是否需要记录第一次安装时间
+//        UserDefaultSetObj([NSDate date], @"firstDay");
+        introduceVC.rootStartVC = ^{
+            [self setRootViewController];
+        };
+        self.window.rootViewController = introduceVC;
+        return YES;
+    } else {
+        return NO;
+//        NSUserDefaults *userDefault =  [NSUserDefaults standardUserDefaults];
+//
+//        if (![userDefault boolForKey:kCachedTouchIdStatus]) {
+//            [self setRootViewController];
+//        } else {
+//            WEAK_SELF
+//            WYHQTouchIDViewController *touchIDVC = [[WYHQTouchIDViewController alloc]init];
+//            self.window.rootViewController = touchIDVC;
+//            touchIDVC.rootStartVC = ^(BOOL isCheckPass){
+//                STRONG_SELF
+//                [self setRootViewController];
+//            };
+//        }
+    }
 }
 
 - (void)setUpSDK {

@@ -107,6 +107,11 @@
 		82DC660F21930E25007421DE /* WYHQFeedbackModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660B21930E25007421DE /* WYHQFeedbackModel+Service.m */; };
 		82DC661021930E25007421DE /* WYHQFeedbackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660E21930E25007421DE /* WYHQFeedbackModel.m */; };
 		82DC66172193110B007421DE /* WYHQBillListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC66162193110B007421DE /* WYHQBillListViewController.m */; };
+		82DC661F219320E0007421DE /* WYHQTouchIDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC661E219320E0007421DE /* WYHQTouchIDViewController.m */; };
+		82DC662A21932267007421DE /* WYHQScrollDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662321932267007421DE /* WYHQScrollDisplayViewController.m */; };
+		82DC662B21932267007421DE /* WYHQIntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662421932267007421DE /* WYHQIntroduceViewController.m */; };
+		82DC662C21932267007421DE /* WYHQPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82DC662621932267007421DE /* WYHQPageViewController.xib */; };
+		82DC662D21932267007421DE /* WYHQPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662921932267007421DE /* WYHQPageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -327,6 +332,15 @@
 		82DC660E21930E25007421DE /* WYHQFeedbackModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQFeedbackModel.m; sourceTree = "<group>"; };
 		82DC66152193110B007421DE /* WYHQBillListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillListViewController.h; sourceTree = "<group>"; };
 		82DC66162193110B007421DE /* WYHQBillListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillListViewController.m; sourceTree = "<group>"; };
+		82DC661D219320E0007421DE /* WYHQTouchIDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQTouchIDViewController.h; sourceTree = "<group>"; };
+		82DC661E219320E0007421DE /* WYHQTouchIDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQTouchIDViewController.m; sourceTree = "<group>"; };
+		82DC662321932267007421DE /* WYHQScrollDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQScrollDisplayViewController.m; sourceTree = "<group>"; };
+		82DC662421932267007421DE /* WYHQIntroduceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQIntroduceViewController.m; sourceTree = "<group>"; };
+		82DC662521932267007421DE /* WYHQPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQPageViewController.h; sourceTree = "<group>"; };
+		82DC662621932267007421DE /* WYHQPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYHQPageViewController.xib; sourceTree = "<group>"; };
+		82DC662721932267007421DE /* WYHQIntroduceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQIntroduceViewController.h; sourceTree = "<group>"; };
+		82DC662821932267007421DE /* WYHQScrollDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQScrollDisplayViewController.h; sourceTree = "<group>"; };
+		82DC662921932267007421DE /* WYHQPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQPageViewController.m; sourceTree = "<group>"; };
 		9BEF51BEE2E08CC83CA42644 /* Pods-Wuyouhuaqian.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wuyouhuaqian.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wuyouhuaqian/Pods-Wuyouhuaqian.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -729,6 +743,7 @@
 		82DC653E2192E275007421DE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				82DC661A219320C0007421DE /* Account */,
 				82DC661121931041007421DE /* Bill */,
 				82DC660521930DFF007421DE /* Feedback */,
 				82DC64C82192E275007421DE /* Home */,
@@ -739,11 +754,9 @@
 		82DC653F2192E275007421DE /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				82DC65402192E275007421DE /* WYHQBaseViewController.m */,
-				82DC65412192E275007421DE /* WYHQBaseNavigationController.h */,
-				82DC65422192E275007421DE /* WYHQBaseViewController.h */,
+				82DC662221932267007421DE /* Introducer(引导页) */,
+				82DC662121932250007421DE /* Controller */,
 				82DC65432192E275007421DE /* Model */,
-				82DC65462192E275007421DE /* WYHQBaseNavigationController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1003,6 +1016,56 @@
 			path = ItemButton;
 			sourceTree = "<group>";
 		};
+		82DC661A219320C0007421DE /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				82DC661B219320CD007421DE /* FaceID */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		82DC661B219320CD007421DE /* FaceID */ = {
+			isa = PBXGroup;
+			children = (
+				82DC661C219320D7007421DE /* Controller */,
+			);
+			path = FaceID;
+			sourceTree = "<group>";
+		};
+		82DC661C219320D7007421DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				82DC661D219320E0007421DE /* WYHQTouchIDViewController.h */,
+				82DC661E219320E0007421DE /* WYHQTouchIDViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		82DC662121932250007421DE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				82DC65412192E275007421DE /* WYHQBaseNavigationController.h */,
+				82DC65462192E275007421DE /* WYHQBaseNavigationController.m */,
+				82DC65402192E275007421DE /* WYHQBaseViewController.m */,
+				82DC65422192E275007421DE /* WYHQBaseViewController.h */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		82DC662221932267007421DE /* Introducer(引导页) */ = {
+			isa = PBXGroup;
+			children = (
+				82DC662321932267007421DE /* WYHQScrollDisplayViewController.m */,
+				82DC662421932267007421DE /* WYHQIntroduceViewController.m */,
+				82DC662521932267007421DE /* WYHQPageViewController.h */,
+				82DC662621932267007421DE /* WYHQPageViewController.xib */,
+				82DC662721932267007421DE /* WYHQIntroduceViewController.h */,
+				82DC662821932267007421DE /* WYHQScrollDisplayViewController.h */,
+				82DC662921932267007421DE /* WYHQPageViewController.m */,
+			);
+			path = "Introducer(引导页)";
+			sourceTree = "<group>";
+		};
 		BD20D73E4E1A29CA8864267D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1120,6 +1183,7 @@
 				82DC65CA2192E275007421DE /* AAHighcharts-3d.js in Resources */,
 				82DC65CB2192E275007421DE /* AAChartView.html in Resources */,
 				82DC65EA2192E275007421DE /* LaunchScreen.storyboard in Resources */,
+				82DC662C21932267007421DE /* WYHQPageViewController.xib in Resources */,
 				82DC659A2192E275007421DE /* HomeBaseTableViewCell.xib in Resources */,
 				82DC65EB2192E275007421DE /* Main.storyboard in Resources */,
 				82DC65C12192E275007421DE /* func.list in Resources */,
@@ -1198,6 +1262,7 @@
 				82DC65D52192E275007421DE /* AAYAxis.m in Sources */,
 				82DC65E22192E275007421DE /* AAItemStyle.m in Sources */,
 				82DC65CF2192E275007421DE /* AAXAxis.m in Sources */,
+				82DC662B21932267007421DE /* WYHQIntroduceViewController.m in Sources */,
 				82DC66172193110B007421DE /* WYHQBillListViewController.m in Sources */,
 				82DC65BB2192E275007421DE /* DeviceHelp.m in Sources */,
 				82DC660F21930E25007421DE /* WYHQFeedbackModel+Service.m in Sources */,
@@ -1219,6 +1284,7 @@
 				82DC65B02192E275007421DE /* UIAlertView+Block.m in Sources */,
 				82DC65C22192E275007421DE /* WYHQBillModel.m in Sources */,
 				82DC65D92192E275007421DE /* AAOptions3d.m in Sources */,
+				82DC662A21932267007421DE /* WYHQScrollDisplayViewController.m in Sources */,
 				82DC65BD2192E275007421DE /* LNRiskNetReachability.m in Sources */,
 				82DC65E62192E275007421DE /* AAChartModel.m in Sources */,
 				82DC659D2192E275007421DE /* HomeBaseTableViewCell.m in Sources */,
@@ -1236,6 +1302,7 @@
 				82DC65C42192E275007421DE /* WYHQBaseViewController.m in Sources */,
 				82DC65E12192E275007421DE /* AASpline.m in Sources */,
 				82DC65E72192E275007421DE /* AAOptions.m in Sources */,
+				82DC661F219320E0007421DE /* WYHQTouchIDViewController.m in Sources */,
 				82DC659B2192E275007421DE /* LoamLendRecordCell.m in Sources */,
 				82DC65D32192E275007421DE /* AATooltip.m in Sources */,
 				82DC65CE2192E275007421DE /* AASeries.m in Sources */,
@@ -1255,6 +1322,7 @@
 				82DC65F62192F7DC007421DE /* CLCustomDatePickerBaseView.m in Sources */,
 				82DC65CD2192E275007421DE /* AALabels.m in Sources */,
 				82DC65BF2192E275007421DE /* LNRiskDeviceHelp.m in Sources */,
+				82DC662D21932267007421DE /* WYHQPageViewController.m in Sources */,
 				82DC65952192E275007421DE /* AppDelegate.m in Sources */,
 				82DC65DD2192E275007421DE /* AAArea.m in Sources */,
 				82DC65D02192E275007421DE /* AAPlotOptions.m in Sources */,

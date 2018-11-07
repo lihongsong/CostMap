@@ -18,6 +18,8 @@
 //***********归档**************//
 //用户model归档key值
 #define kUserArchiverKey @"userInfoModel"
+#define kHasInstallApp @"kHasInstallApp"
+#define kCachedTouchIdStatus @"kCachedTouchIdStatus"
 //用户model写入沙盒的文件名
 #define kUserArchiverFileName @"userInfoFile"
 //用户基本信息归档key值
