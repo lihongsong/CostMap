@@ -11,6 +11,7 @@
 #import "AreaSplineChartView.h"
 #import "GradientCompareBarView.h"
 #import "CircleProgressView.h"
+#import "ZYZControl.h"
 
 @interface HomeBaseTableViewCell()
 @property(nonatomic,strong)UIView *bgView;

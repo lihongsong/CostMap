@@ -6,7 +6,7 @@
 //  Copyright © 2018年 jason. All rights reserved.
 //
 
-#import "BaseModel.h"
+#import "WYHQBaseModel.h"
 
 @class CommunicationActiveModel,CredictCheckRecondModel,CredictLendRecord;
 @interface HomeDataModel : NSObject

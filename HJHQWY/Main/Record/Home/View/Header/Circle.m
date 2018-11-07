@@ -7,6 +7,7 @@
 //
 
 #import "Circle.h"
+#import "ZYZControl.h"
 
 @implementation Circle
 
@@ -106,7 +107,7 @@
 {
     if (_stateLabel  == nil) {
         _stateLabel = [ZYZControl createLabelWithFrame:CGRectMake(0, self.bounds.size.height/2.0-20, self.bounds.size.width, 40) Font:[UIFont BigTitleFont] Text:self.centerState];
-        if (iPhone5) {
+        if (UIDevice.hj_isIPhone5SizedDevice) {
             _stateLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:14.0];
         }
 //        if (IPAD) {

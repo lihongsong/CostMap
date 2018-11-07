@@ -8,7 +8,7 @@
 
 #import "HomeScoreHeaderView.h"
 #import "ScoreProgressView.h"
-
+#import "ZYZControl.h"
 
 @interface HomeScoreHeaderView()
 @property(nonatomic,strong)ScoreProgressView *scoreProgress;

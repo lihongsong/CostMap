@@ -8,6 +8,8 @@
 #define LeftSpace 15
 #import "CredictUsingRateCell.h"
 #import "AreaSplineChartView.h"
+#import "ZYZControl.h"
+
 @interface CredictUsingRateCell()
 @property(nonatomic,strong)UIView *bgView;
 @property(nonatomic,strong)UILabel *titleLabel;

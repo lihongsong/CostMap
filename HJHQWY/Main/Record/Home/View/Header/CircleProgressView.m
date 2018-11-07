@@ -8,7 +8,7 @@
 #define CircleSpace 27
 #import "CircleProgressView.h"
 #import "Circle.h"
-
+#import "ZYZControl.h"
 
 @interface CircleProgressView()
 @property(nonatomic,strong)UILabel *titleLabel;

@@ -8,6 +8,9 @@
 
 #import "ApplyRecordCell.h"
 #import "CircleProgressView.h"
+#import "ZYZControl.h"
+
+#define LeftSpace 15
 
 @interface ApplyRecordCell()
 @property(nonatomic,strong)UIView *bgView;

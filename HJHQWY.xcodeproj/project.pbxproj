@@ -95,6 +95,7 @@
 		824910662192D6D5005F65B8 /* AAOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = 824910422192D6D5005F65B8 /* AAOptions.m */; };
 		824910672192D6D5005F65B8 /* AASeriesElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 824910432192D6D5005F65B8 /* AASeriesElement.m */; };
 		8249106A2192D799005F65B8 /* HomeDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 824910692192D799005F65B8 /* HomeDataModel.m */; };
+		8249106E2192D966005F65B8 /* WYHQBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8249106C2192D966005F65B8 /* WYHQBaseModel.m */; };
 		EC082016CFCD48EFEA689BC9 /* libPods-HJHQWY.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E51E9A99DD58200C24223C61 /* libPods-HJHQWY.a */; };
 /* End PBXBuildFile section */
 
@@ -293,6 +294,8 @@
 		824910452192D6D5005F65B8 /* AAChartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAChartModel.h; sourceTree = "<group>"; };
 		824910682192D798005F65B8 /* HomeDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDataModel.h; sourceTree = "<group>"; };
 		824910692192D799005F65B8 /* HomeDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDataModel.m; sourceTree = "<group>"; };
+		8249106C2192D966005F65B8 /* WYHQBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQBaseModel.m; sourceTree = "<group>"; };
+		8249106D2192D966005F65B8 /* WYHQBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQBaseModel.h; sourceTree = "<group>"; };
 		E51E9A99DD58200C24223C61 /* libPods-HJHQWY.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HJHQWY.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2ACC3138ECFDA68C2277793 /* Pods-HJHQWY.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HJHQWY.release.xcconfig"; path = "Pods/Target Support Files/Pods-HJHQWY/Pods-HJHQWY.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -604,6 +607,7 @@
 		82490FAC2192CC62005F65B8 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				8249106B2192D95A005F65B8 /* Model */,
 				82490FAF2192CCF5005F65B8 /* WYHQBaseNavigationController.h */,
 				82490FAE2192CCF4005F65B8 /* WYHQBaseNavigationController.m */,
 				82490FB02192CCF6005F65B8 /* WYHQBaseViewController.h */,
@@ -809,6 +813,15 @@
 				824910452192D6D5005F65B8 /* AAChartModel.h */,
 			);
 			path = AAChartConfiger;
+			sourceTree = "<group>";
+		};
+		8249106B2192D95A005F65B8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8249106D2192D966005F65B8 /* WYHQBaseModel.h */,
+				8249106C2192D966005F65B8 /* WYHQBaseModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		8F3E04C99FFCBF00F828861B /* Pods */ = {
@@ -1077,6 +1090,7 @@
 				8249104C2192D6D5005F65B8 /* AALabels.m in Sources */,
 				82490FEB2192D69B005F65B8 /* RightItemButton.m in Sources */,
 				82490F112192C3BB005F65B8 /* AppDelegate.m in Sources */,
+				8249106E2192D966005F65B8 /* WYHQBaseModel.m in Sources */,
 				82490FFD2192D69B005F65B8 /* CredictUsingRateCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1249,8 +1263,8 @@
 			baseConfigurationReference = 1DD05428ABAF25C6075602EF /* Pods-HJHQWY.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3285T8BP88;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 69C2M2FU4A;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HJHQWY/Expand/Macros/WYHQ-Prefix.pch";
@@ -1259,8 +1273,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.2345.HJHQWY;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = wuyou_dev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1270,8 +1285,9 @@
 			baseConfigurationReference = F2ACC3138ECFDA68C2277793 /* Pods-HJHQWY.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3285T8BP88;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 69C2M2FU4A;
 				EXECUTABLE_PREFIX = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HJHQWY/Expand/Macros/WYHQ-Prefix.pch";
@@ -1280,8 +1296,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.2345.HJHQWY;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = wuyou_adhoc;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

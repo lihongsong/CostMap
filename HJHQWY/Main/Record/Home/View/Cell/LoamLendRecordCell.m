@@ -8,6 +8,7 @@
 #define LeftSpace 15
 #import "LoamLendRecordCell.h"
 #import "GradientCompareBarView.h"
+#import "ZYZControl.h"
 
 @interface LoamLendRecordCell()
 @property(nonatomic,strong)UIView *bgView;
