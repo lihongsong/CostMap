@@ -63,6 +63,8 @@
     
     self.navigationItem.title = @"花钱无忧";
     
+    self.edgesForExtendedLayout = UIRectEdgeAll;
+    
     [self setUpUI];
     
     [self requestData];
@@ -76,8 +78,8 @@
 - (void)setpNavBarWhenViewWillAppear {
     
     // 设置背景颜色
-    [self cfy_setNavigationBarBackgroundImage:[UIImage hj_imageWithColor:[UIColor blueColor]]];
-    
+    [self cfy_setNavigationBarBackgroundColor:[UIColor blueColor]];
+    [self cfy_setNavigationBarBackgroundImage:nil];
     // 设置ShadowImage
     [self cfy_setNavigationBarShadowImageBackgroundColor:[UIColor clearColor]];
 }
