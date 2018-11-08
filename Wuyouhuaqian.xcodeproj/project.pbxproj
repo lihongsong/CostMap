@@ -10,6 +10,10 @@
 		5915180B2193D719004B5B32 /* WYHQSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915180A2193D719004B5B32 /* WYHQSettingView.m */; };
 		5915180D2193D724004B5B32 /* WYHQSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915180C2193D724004B5B32 /* WYHQSettingView.xib */; };
 		5915180F2193DCAA004B5B32 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5915180E2193DCAA004B5B32 /* AVFoundation.framework */; };
+		591518122193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 591518112193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m */; };
+		59151819219400D3004B5B32 /* WYHQAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59151817219400D3004B5B32 /* WYHQAboutViewController.m */; };
+		5915181A219400D3004B5B32 /* WYHQAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59151818219400D3004B5B32 /* WYHQAboutViewController.xib */; };
+		5915181C219403D4004B5B32 /* PrivateAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 5915181B219403D4004B5B32 /* PrivateAgreement.html */; };
 		6AB857D036ADDB2C2A9E4FD3 /* libPods-Wuyouhuaqian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */; };
 		82DC63812192E15F007421DE /* WuyouhuaqianTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC63802192E15F007421DE /* WuyouhuaqianTests.m */; };
 		82DC638C2192E15F007421DE /* WuyouhuaqianUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC638B2192E15F007421DE /* WuyouhuaqianUITests.m */; };
@@ -141,6 +145,12 @@
 		5915180A2193D719004B5B32 /* WYHQSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQSettingView.m; sourceTree = "<group>"; };
 		5915180C2193D724004B5B32 /* WYHQSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQSettingView.xib; sourceTree = "<group>"; };
 		5915180E2193DCAA004B5B32 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		591518102193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQPrivacyAgreementViewController.h; sourceTree = "<group>"; };
+		591518112193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQPrivacyAgreementViewController.m; sourceTree = "<group>"; };
+		59151816219400D3004B5B32 /* WYHQAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQAboutViewController.h; sourceTree = "<group>"; };
+		59151817219400D3004B5B32 /* WYHQAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQAboutViewController.m; sourceTree = "<group>"; };
+		59151818219400D3004B5B32 /* WYHQAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQAboutViewController.xib; sourceTree = "<group>"; };
+		5915181B219403D4004B5B32 /* PrivateAgreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PrivateAgreement.html; sourceTree = "<group>"; };
 		82DC63642192E15E007421DE /* Wuyouhuaqian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wuyouhuaqian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DC63752192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DC637C2192E15F007421DE /* WuyouhuaqianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WuyouhuaqianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -409,6 +419,11 @@
 		591518082193D6F9004B5B32 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				591518102193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.h */,
+				591518112193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m */,
+				59151816219400D3004B5B32 /* WYHQAboutViewController.h */,
+				59151817219400D3004B5B32 /* WYHQAboutViewController.m */,
+				59151818219400D3004B5B32 /* WYHQAboutViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -770,6 +785,7 @@
 		82DC653D2192E275007421DE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5915181B219403D4004B5B32 /* PrivateAgreement.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1220,11 +1236,13 @@
 				82DC65CA2192E275007421DE /* AAHighcharts-3d.js in Resources */,
 				82DC65CB2192E275007421DE /* AAChartView.html in Resources */,
 				82DC65EA2192E275007421DE /* LaunchScreen.storyboard in Resources */,
+				5915181C219403D4004B5B32 /* PrivateAgreement.html in Resources */,
 				82DC662C21932267007421DE /* WYHQPageViewController.xib in Resources */,
 				82DC659A2192E275007421DE /* HomeBaseTableViewCell.xib in Resources */,
 				82DC65EB2192E275007421DE /* Main.storyboard in Resources */,
 				5915180D2193D724004B5B32 /* WYHQSettingView.xib in Resources */,
 				82DC65C12192E275007421DE /* func.list in Resources */,
+				5915181A219400D3004B5B32 /* WYHQAboutViewController.xib in Resources */,
 				82DC65C72192E275007421DE /* AAHighchartsLib.js in Resources */,
 				82DC65C92192E275007421DE /* AAFunnel.js in Resources */,
 				82DC65E92192E275007421DE /* Assets.xcassets in Resources */,
@@ -1305,6 +1323,7 @@
 				82DC65BB2192E275007421DE /* DeviceHelp.m in Sources */,
 				82DC660F21930E25007421DE /* WYHQFeedbackModel+Service.m in Sources */,
 				82DC65A32192E275007421DE /* ScoreProgressView.m in Sources */,
+				591518122193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m in Sources */,
 				82DC65DA2192E275007421DE /* AAStyle.m in Sources */,
 				82DC65AB2192E275007421DE /* AreaSplineChartView.m in Sources */,
 				82DC65A22192E275007421DE /* NameHeaderView.m in Sources */,
@@ -1358,6 +1377,7 @@
 				82DC65D42192E275007421DE /* AASubtitle.m in Sources */,
 				82DC65B22192E275007421DE /* UIFont+TargetFont.m in Sources */,
 				82DC661021930E25007421DE /* WYHQFeedbackModel.m in Sources */,
+				59151819219400D3004B5B32 /* WYHQAboutViewController.m in Sources */,
 				82DC65F62192F7DC007421DE /* CLCustomDatePickerBaseView.m in Sources */,
 				82DC65CD2192E275007421DE /* AALabels.m in Sources */,
 				82DC65BF2192E275007421DE /* LNRiskDeviceHelp.m in Sources */,

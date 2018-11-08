@@ -7,9 +7,14 @@
 //
 
 #import "WYHQSettingView.h"
+
 #import <AVFoundation/AVCaptureDevice.h>
 #import <AVFoundation/AVMediaFormat.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+
+#import "WYHQPrivacyAgreementViewController.h"
+#import "WYHQFeedbackViewController.h"
+#import "WYHQAboutViewController.h"
 
 static NSString *const mineHeader = @"com.wyhq.setting.mineHeader";
 static CGFloat settingViewWidth = 200;
@@ -76,9 +81,18 @@ static CGFloat settingViewWidth = 200;
 - (IBAction)buttonClick:(UIButton *)sender {
     NSInteger type = sender.tag - 100;
     if (self.gotoViewContoller) {
-        UIViewController *vc = [[UIViewController alloc] init];
-        vc.view.backgroundColor = [UIColor cyanColor];
+        
+        UIViewController *vc;
+        if (type == 1) {
+            vc = [[WYHQPrivacyAgreementViewController alloc] init];
+        } else if (type == 2) {
+            vc = [[WYHQFeedbackViewController alloc] init];
+        } else if (type == 3) {
+            vc = [[WYHQAboutViewController alloc] init];
+        }
+        
         self.gotoViewContoller(vc);
+        
         [self hideSettingView];
     }
 }
