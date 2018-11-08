@@ -16,13 +16,18 @@
 #import "WYHQFeedbackViewController.h"
 #import "WYHQAboutViewController.h"
 
+#import <NSDate+HJNormalExtension.h>
+
 static NSString *const mineHeader = @"com.wyhq.setting.mineHeader";
 static CGFloat settingViewWidth = 200;
 
 @interface WYHQSettingView ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
-@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *safeSwitch;
+@property (weak, nonatomic) IBOutlet UILabel *safeSwitchTipLabel;
 
 @end
 
@@ -56,17 +61,6 @@ static CGFloat settingViewWidth = 200;
     [bgView addGestureRecognizer:tap];
 }
 
-- (void)hideSettingView {
-    UIView *superView = self.superview;
-    CGFloat height = self.bounds.size.height;
-    [UIView animateWithDuration:0.3 animations:^{
-        superView.alpha = 0;
-        self.frame = CGRectMake(0 - settingViewWidth, 0, settingViewWidth, height);
-    } completion:^(BOOL finished) {
-        [superView removeFromSuperview];
-    }];
-}
-
 - (void)awakeFromNib {
     [super awakeFromNib];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectHeadeImage)];
@@ -76,6 +70,15 @@ static CGFloat settingViewWidth = 200;
     if (imageData) {
         self.headImageView.image = [UIImage imageWithData:imageData];
     }
+    
+    NSDate *firstDate = UserDefaultGetObj(@"firstDay");
+    NSInteger date = [NSDate hj_daysAgo:firstDate];
+    self.titleLabel.text = [NSString stringWithFormat:@"您已坚持记账%ld天",date + 1];
+    
+    UITapGestureRecognizer *tmpTap = [[UITapGestureRecognizer alloc] init];
+    [self addGestureRecognizer:tmpTap];
+    
+    self.safeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:kCachedTouchIdStatus];
 }
 
 - (IBAction)buttonClick:(UIButton *)sender {
@@ -91,10 +94,32 @@ static CGFloat settingViewWidth = 200;
             vc = [[WYHQAboutViewController alloc] init];
         }
         
-        self.gotoViewContoller(vc);
-        
-        [self hideSettingView];
+        [self hideSettingView:^{
+            self.gotoViewContoller(vc);
+        }];
     }
+}
+
+- (IBAction)switchAction:(UISwitch *)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:sender.on forKey:kCachedTouchIdStatus];
+}
+
+- (void)hideSettingView {
+    [self hideSettingView:nil];
+}
+
+- (void)hideSettingView:(void (^)(void))completion {
+    UIView *superView = self.superview;
+    CGFloat height = self.bounds.size.height;
+    [UIView animateWithDuration:0.3 animations:^{
+        superView.alpha = 0;
+        self.frame = CGRectMake(0 - settingViewWidth, 0, settingViewWidth, height);
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion();
+        }
+        [superView removeFromSuperview];
+    }];
 }
 
 - (void)selectHeadeImage {
@@ -115,7 +140,7 @@ static CGFloat settingViewWidth = 200;
     [self.superViewController presentViewController:sheetController animated:YES completion:nil];
 }
 
-- (void)actionSheetClickedButtonAtIndex:(NSInteger)buttonIndex{
+- (void)actionSheetClickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == 0) {
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
@@ -183,11 +208,12 @@ static CGFloat settingViewWidth = 200;
         }
     }
 }
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image;
     if (picker.allowsEditing) {
         image = info[UIImagePickerControllerEditedImage];
