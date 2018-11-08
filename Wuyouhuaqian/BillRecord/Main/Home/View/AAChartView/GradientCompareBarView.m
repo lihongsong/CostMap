@@ -44,34 +44,21 @@
     .yAxisLineWidthSet(@0)
     .yAxisMaxSet(@(10))//Y轴最大值
     .yAxisTickPositionsSet(@[@(0),@(2),@(4),@(6),@(8),@(10)])//指定y轴坐标
-    .categoriesSet(@[@"00:00-03:59", @"04:00-07:59", @"08:00-11:59", @"12:00-15:59", @"16:00-19:59", @"20:00-23:59"])
+    .categoriesSet(@[@"衣", @"食", @"住", @"行", @"A", @"B"])
     .seriesSet(@[
                  AAObject(AASeriesElement)
-                 .nameSet(@"主叫")
+                 .nameSet(@"")
                  .dataSet(self.lendArr)
-                 .colorSet((id)@{
-                                 @"linearGradient": @{
-                                         @"x1": @0,
-                                         @"y1": @0,
-                                         @"x2": @0,
-                                         @"y2": @1
-                                         },
-                                 @"stops": @[@[@0,@"#FAD961 "],
-                                             @[@1,@"#F76B1C"]]//颜色字符串设置支持十六进制类型和 rgba 类型
-                                 }),
-                 AAObject(AASeriesElement)
-                 .nameSet(@"被叫")
-                 .dataSet(self.repayArr)
-                 .colorSet((id)@{
-                                 @"linearGradient": @{
-                                         @"x1": @0,
-                                         @"y1": @1,
-                                         @"x2": @0,
-                                         @"y2": @0
-                                         },
-                                 @"stops": @[@[@0,@"#3389FF"],
-                                             @[@1,@"#30BEF8"]]//颜色字符串设置支持十六进制类型和 rgba 类型
-                                 }),
+//                 .colorSet((id)@{
+//                                 @"linearGradient": @{
+//                                         @"x1": @0,
+//                                         @"y1": @0,
+//                                         @"x2": @0,
+//                                         @"y2": @1
+//                                         },
+//                                 @"stops": @[@[@0,@"#FAD961 "],
+//                                             @[@1,@"#F76B1C"]]//颜色字符串设置支持十六进制类型和 rgba 类型
+//                                 })
                  ]
                );
     

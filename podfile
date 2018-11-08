@@ -25,7 +25,8 @@ target 'Wuyouhuaqian' do
     pod 'GTMBase64', '1.0.1'
     pod 'YYText', '1.0.4'
     pod 'YYModel', '1.0.4'
-#    pod 'HJJavascriptBridge', '0.3.2'
+    pod 'Charts'
+    pod 'CFYNavigationBarTransition', '1.3.0'
     pod 'UICKeyChainStore','2.1.1'
     pod 'RCMobClick', '2.0.9'
 

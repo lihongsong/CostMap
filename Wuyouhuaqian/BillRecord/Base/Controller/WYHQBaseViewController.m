@@ -38,7 +38,6 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self adjustsScrollViewInsets];
     [self setNeedsStatusBarAppearanceUpdate];
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -48,6 +47,11 @@
 }
 
 - (void)setpNavBarWhenViewWillAppear {
+    // 设置背景图
+    [self cfy_setNavigationBarBackgroundColor:[UIColor whiteColor]];
+    [self cfy_setNavigationBarBackgroundImage:nil];
+    // 设置ShadowImage
+    [self cfy_setNavigationBarShadowImageBackgroundColor:[UIColor clearColor]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -28,7 +28,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    WYHQHomeViewController *homeViewController = [WYHQHomeViewController new];
+    WYHQHomeViewController *homeViewController = [WYHQHomeViewController instance];
     _homeNav = [[WYHQBaseNavigationController alloc] initWithRootViewController:homeViewController];
     
     self.window.rootViewController = _homeNav;

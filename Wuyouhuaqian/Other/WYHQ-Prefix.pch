@@ -17,6 +17,7 @@
 #import "WYHQConstantMacros.h"
 #import "WYHQUtilitiesDefine.h"
 #import "WYHQConst.h"
+#import "WYHQTypeDefine.h"
 
 // HJ SDK
 #import <HJCategories/HJUIKit.h>
@@ -36,6 +37,7 @@
 #import "UIFont+TargetFont.h"
 #import "AAGlobalMacro.h"
 #import "WYHQSQLManager.h"
+
 
 
 #endif /* HQWY_Prefix_h */

@@ -65,7 +65,7 @@ static const NSInteger k0x3f4344 = 0x3f4344;
 static const NSInteger k0xff4f64 = 0xff4f64;
 static const NSInteger k0x333333 = 0x333333;
 static const NSInteger k0xf8f8f8 = 0xf8f8f8;
-static const NSInteger kHex00CB95 = 0x00CB95;
+static const NSInteger k0x00CB95 = 0x00CB95;
 static const NSInteger k0xededed = 0xededed;
 
 

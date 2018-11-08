@@ -7,7 +7,9 @@
 //
 
 #import "WYHQBaseNavigationController.h"
+
 #import <AddressBookUI/AddressBookUI.h>
+#import <CFYNavigationBarTransition/CFYNavigationBarTransition.h>
 
 @interface UINavigationController (UINavigationControllerNeedShouldPopItem) <UINavigationBarDelegate>
 @end

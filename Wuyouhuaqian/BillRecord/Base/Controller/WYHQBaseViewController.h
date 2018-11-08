@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class LNImageInfo;
+#import <CFYNavigationBarTransition/CFYNavigationBarTransition.h>
 
 @interface WYHQBaseViewController : UIViewController
 

@@ -11,7 +11,7 @@
 @interface GradientCompareBarView : BaseChartView<AAChartViewDidFinishLoadDelegate>
 @property (nonatomic, strong) AAChartModel *barChartModel;
 @property (nonatomic, strong) AAChartView  *barChartView;
-@property(nonatomic,strong)NSArray *lendArr;//  
-@property(nonatomic,strong)NSArray *repayArr; //  
+@property (nonatomic,strong) NSArray *lendArr;//
+@property (nonatomic,strong) NSArray *repayArr; //
 -(void)refreshData;
 @end
