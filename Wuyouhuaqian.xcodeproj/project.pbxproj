@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5915180B2193D719004B5B32 /* WYHQSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915180A2193D719004B5B32 /* WYHQSettingView.m */; };
+		5915180D2193D724004B5B32 /* WYHQSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915180C2193D724004B5B32 /* WYHQSettingView.xib */; };
+		5915180F2193DCAA004B5B32 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5915180E2193DCAA004B5B32 /* AVFoundation.framework */; };
 		6AB857D036ADDB2C2A9E4FD3 /* libPods-Wuyouhuaqian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */; };
 		82DC63812192E15F007421DE /* WuyouhuaqianTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC63802192E15F007421DE /* WuyouhuaqianTests.m */; };
 		82DC638C2192E15F007421DE /* WuyouhuaqianUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC638B2192E15F007421DE /* WuyouhuaqianUITests.m */; };
@@ -134,6 +137,10 @@
 /* Begin PBXFileReference section */
 		3BB36807C91790CCF1732377 /* Pods-Wuyouhuaqian.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wuyouhuaqian.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wuyouhuaqian/Pods-Wuyouhuaqian.release.xcconfig"; sourceTree = "<group>"; };
 		4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wuyouhuaqian.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		591518092193D719004B5B32 /* WYHQSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQSettingView.h; sourceTree = "<group>"; };
+		5915180A2193D719004B5B32 /* WYHQSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQSettingView.m; sourceTree = "<group>"; };
+		5915180C2193D724004B5B32 /* WYHQSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQSettingView.xib; sourceTree = "<group>"; };
+		5915180E2193DCAA004B5B32 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		82DC63642192E15E007421DE /* Wuyouhuaqian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wuyouhuaqian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DC63752192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DC637C2192E15F007421DE /* WuyouhuaqianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WuyouhuaqianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -349,6 +356,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5915180F2193DCAA004B5B32 /* AVFoundation.framework in Frameworks */,
 				6AB857D036ADDB2C2A9E4FD3 /* libPods-Wuyouhuaqian.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,6 +385,32 @@
 				3BB36807C91790CCF1732377 /* Pods-Wuyouhuaqian.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		591518062193D6EA004B5B32 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				591518082193D6F9004B5B32 /* ViewControllers */,
+				591518072193D6F5004B5B32 /* Views */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		591518072193D6F5004B5B32 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				591518092193D719004B5B32 /* WYHQSettingView.h */,
+				5915180A2193D719004B5B32 /* WYHQSettingView.m */,
+				5915180C2193D724004B5B32 /* WYHQSettingView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		591518082193D6F9004B5B32 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		82DC635B2192E15E007421DE = {
@@ -743,6 +777,7 @@
 		82DC653E2192E275007421DE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				591518062193D6EA004B5B32 /* Setting */,
 				82DC661A219320C0007421DE /* Account */,
 				82DC661121931041007421DE /* Bill */,
 				82DC660521930DFF007421DE /* Feedback */,
@@ -1069,6 +1104,7 @@
 		BD20D73E4E1A29CA8864267D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5915180E2193DCAA004B5B32 /* AVFoundation.framework */,
 				4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */,
 			);
 			name = Frameworks;
@@ -1138,6 +1174,7 @@
 		82DC635C2192E15E007421DE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WYHQ;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = yoser;
 				TargetAttributes = {
@@ -1186,6 +1223,7 @@
 				82DC662C21932267007421DE /* WYHQPageViewController.xib in Resources */,
 				82DC659A2192E275007421DE /* HomeBaseTableViewCell.xib in Resources */,
 				82DC65EB2192E275007421DE /* Main.storyboard in Resources */,
+				5915180D2193D724004B5B32 /* WYHQSettingView.xib in Resources */,
 				82DC65C12192E275007421DE /* func.list in Resources */,
 				82DC65C72192E275007421DE /* AAHighchartsLib.js in Resources */,
 				82DC65C92192E275007421DE /* AAFunnel.js in Resources */,
@@ -1316,6 +1354,7 @@
 				82DC65D12192E275007421DE /* AADataLabels.m in Sources */,
 				82DC65DE2192E275007421DE /* AAAnimation.m in Sources */,
 				82DC65BE2192E275007421DE /* DeviceTypes.m in Sources */,
+				5915180B2193D719004B5B32 /* WYHQSettingView.m in Sources */,
 				82DC65D42192E275007421DE /* AASubtitle.m in Sources */,
 				82DC65B22192E275007421DE /* UIFont+TargetFont.m in Sources */,
 				82DC661021930E25007421DE /* WYHQFeedbackModel.m in Sources */,
@@ -1524,6 +1563,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1546,6 +1586,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
