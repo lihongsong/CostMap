@@ -39,13 +39,8 @@
     
     [self setUpFMDB];
     
-    // 引导页
-    BOOL needIntroduce = [self setupIntroduceWithRemoteNotification:launchOptions];
+    [self setupIntroduceWithRemoteNotification:launchOptions];
     
-    if (!needIntroduce) {
-        // 启动图
-        [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:launchOptions];
-    }
     return YES;
 }
 
@@ -161,28 +156,29 @@
     if (!isInstallApp.integerValue) {
         WYHQIntroduceViewController *introduceVC = [[WYHQIntroduceViewController alloc] init];
         UserDefaultSetObj(@"1", kHasInstallApp);
-        // FIXME: 是否需要记录第一次安装时间
-//        UserDefaultSetObj([NSDate date], @"firstDay");
+        UserDefaultSetObj([NSDate date], @"firstDay");
         introduceVC.rootStartVC = ^{
             [self setRootViewController];
         };
         self.window.rootViewController = introduceVC;
         return YES;
     } else {
+        
+        NSUserDefaults *userDefault =  [NSUserDefaults standardUserDefaults];
+        
+        if (![userDefault boolForKey:kCachedTouchIdStatus]) {
+            [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:remoteNotification];
+        } else {
+            WEAK_SELF
+            WYHQTouchIDViewController *touchIDVC = [[WYHQTouchIDViewController alloc]init];
+            self.window.rootViewController = touchIDVC;
+            touchIDVC.rootStartVC = ^(BOOL isCheckPass){
+                STRONG_SELF
+                [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:remoteNotification];
+            };
+        }
+        
         return NO;
-//        NSUserDefaults *userDefault =  [NSUserDefaults standardUserDefaults];
-//
-//        if (![userDefault boolForKey:kCachedTouchIdStatus]) {
-//            [self setRootViewController];
-//        } else {
-//            WEAK_SELF
-//            WYHQTouchIDViewController *touchIDVC = [[WYHQTouchIDViewController alloc]init];
-//            self.window.rootViewController = touchIDVC;
-//            touchIDVC.rootStartVC = ^(BOOL isCheckPass){
-//                STRONG_SELF
-//                [self setRootViewController];
-//            };
-//        }
     }
 }
 

@@ -11,6 +11,7 @@
 
 @implementation NSObject (HQIQKeyBoardConfig)
 + (void)load {
-    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = NO;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
 }
 @end

@@ -13,6 +13,7 @@
 #import "WYHQChartLineView.h"
 #import "WYHQChartPieView.h"
 #import "WYHQLeapButton.h"
+#import "WYHQSettingView.h"
 
 #import "CLCustomDatePickerView.h"
 
@@ -75,7 +76,8 @@
 - (void)setpNavBarWhenViewWillAppear {
     
     // 设置背景颜色
-    [self cfy_setNavigationBarBackgroundColor:[UIColor blueColor]];
+    [self cfy_setNavigationBarBackgroundImage:[UIImage hj_imageWithColor:[UIColor blueColor]]];
+    
     // 设置ShadowImage
     [self cfy_setNavigationBarShadowImageBackgroundColor:[UIColor clearColor]];
 }
@@ -137,6 +139,17 @@
 }
 
 - (void)setUpUI {
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                                      NSFontAttributeName: [UIFont systemFontOfSize:18]}];
+    
+    UIBarButtonItem *setItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_set"]
+                                                                style:UIBarButtonItemStylePlain
+                                                               target:self
+                                                               action:@selector(setBtnClick)];
+    
+    self.navigationItem.leftBarButtonItem = setItem;
     
     [_chartBaseVw addSubview:self.lineView];
     [_chartBaseVw addSubview:self.pieView];
@@ -215,8 +228,19 @@
 
 #pragma mark - Event & Target Methods
 
+- (void)setBtnClick {
+    // 跳转设置
+        WEAK_SELF
+        [WYHQSettingView showSettingViewOnSuperViewController:self.navigationController
+                                                gotoVCHandler:^(UIViewController * _Nonnull viewController) {
+                                                    STRONG_SELF
+                                                    [self.navigationController pushViewController:viewController animated:YES];
+                                                }];
+}
+
 - (IBAction)addBillClick:(WYHQLeapButton *)sender {
     // 跳转新建
+    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
 }
 
 - (IBAction)moreBtnClick:(UIButton *)sender {

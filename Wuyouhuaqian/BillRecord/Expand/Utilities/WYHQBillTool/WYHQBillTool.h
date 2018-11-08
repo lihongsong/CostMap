@@ -14,6 +14,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)colorWithType:(WYHQBillType)billType;
 
++ (WYHQBillType)indexWithClassify:(NSString *)classify;
+
++ (NSString *)classifyWithIndex:(WYHQBillType)index;
+
++ (NSString *)getTypeImage:(NSString *)billType;
+
++ (NSString *)getTypePressedImage:(NSString *)type;
+
 @end
 
 NS_ASSUME_NONNULL_END

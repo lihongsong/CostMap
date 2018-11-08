@@ -19,7 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.context = [[LAContext alloc] init];
+    
     [self initUi];
 }
 
@@ -28,10 +29,31 @@
     logoImage.layer.cornerRadius = 8.0;
     [self.view addSubview:logoImage];
     
-    UIImageView *fingerImage = [ZYZControl createImageViewFrame:CGRectMake(self.view.hj_width/2.0 - 31.5, self.view.hj_height/2.0 - 31.5, 63, 63) imageName:@"home_ic_TouchID"];
+    BOOL isFaceID = NO;
+    if (@available(iOS 11.0, *)) {
+        if (self.context.biometryType == LABiometryTypeFaceID) {
+            isFaceID = YES;
+        }
+    }
+    
+    NSString *fingerImageName;
+    if (isFaceID) {
+        fingerImageName = @"home_ic_FaceID";
+    } else {
+        fingerImageName = @"home_ic_TouchID";
+    }
+    
+    UIImageView *fingerImage = [ZYZControl createImageViewFrame:CGRectMake(self.view.hj_width/2.0 - 31.5, self.view.hj_height/2.0 - 31.5, 63, 63) imageName:fingerImageName];
     [self.view addSubview:fingerImage];
     
-    UIButton *startButton = [ZYZControl createButtonWithFrame:CGRectMake(fingerImage.center.x - 75, CGRectGetMaxY(fingerImage.frame), 150, 60) target:self SEL:@selector(startButtonClick) title:@"点击进行指纹解锁"];
+    NSString *title;
+    if (isFaceID) {
+        title = @"点击进行人脸解锁";
+    } else {
+        title = @"点击进行指纹解锁";
+    }
+    
+    UIButton *startButton = [ZYZControl createButtonWithFrame:CGRectMake(fingerImage.center.x - 75, CGRectGetMaxY(fingerImage.frame), 150, 60) target:self SEL:@selector(startButtonClick) title:title];
     [startButton setTitleColor:[UIColor skinColor] forState:UIControlStateNormal];
     [self.view addSubview:startButton];
     
@@ -42,15 +64,13 @@
 #pragma mark 清除登录信息
 -(void)loginOUT{
     dispatch_async(dispatch_get_main_queue(), ^{
-    [self setSwitchOff];
-    self.rootStartVC(false);
+        [self setSwitchOff];
+        self.rootStartVC(false);
     });
 }
 
 #pragma mark 开启指纹识别
 - (void)startButtonClick{
-    self.context = [[LAContext alloc] init];
-    //self.context.localizedFallbackTitle = @"输入登陆密码";
     NSError *error;
     
     if (@available(iOS 9.0, *)) {
@@ -77,7 +97,7 @@
                          case LAErrorUserCancel:
                              //认证被用户取消.例如点击了 cancel 按钮.
                              NSLog(@"密码取消");
-                                 [self loginOUT];
+                             [self loginOUT];
                              break;
                              
                          case LAErrorAuthenticationFailed:
@@ -149,9 +169,9 @@
                  {
                      NSLog(@"验证通过");
                      dispatch_async(dispatch_get_main_queue(), ^{
-                       
+                         
                          //[KeyWindow ln_showToastHUD:@"验证通过"];
-                           self.rootStartVC(true);
+                         self.rootStartVC(true);
                      });
                      
                  }
@@ -273,13 +293,13 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

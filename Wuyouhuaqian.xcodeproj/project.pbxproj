@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5915180B2193D719004B5B32 /* WYHQSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915180A2193D719004B5B32 /* WYHQSettingView.m */; };
+		5915180D2193D724004B5B32 /* WYHQSettingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915180C2193D724004B5B32 /* WYHQSettingView.xib */; };
+		5915180F2193DCAA004B5B32 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5915180E2193DCAA004B5B32 /* AVFoundation.framework */; };
+		591518122193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 591518112193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m */; };
+		59151819219400D3004B5B32 /* WYHQAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 59151817219400D3004B5B32 /* WYHQAboutViewController.m */; };
+		5915181A219400D3004B5B32 /* WYHQAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59151818219400D3004B5B32 /* WYHQAboutViewController.xib */; };
+		5915181C219403D4004B5B32 /* PrivateAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 5915181B219403D4004B5B32 /* PrivateAgreement.html */; };
+		5915182221942423004B5B32 /* WYHQEditBillViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182021942423004B5B32 /* WYHQEditBillViewController.m */; };
+		5915182321942423004B5B32 /* WYHQEditBillViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182121942423004B5B32 /* WYHQEditBillViewController.xib */; };
+		5915182821943737004B5B32 /* WYHQEditBillToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182721943737004B5B32 /* WYHQEditBillToolBar.m */; };
+		5915182A21943746004B5B32 /* WYHQEditBillToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182921943746004B5B32 /* WYHQEditBillToolBar.xib */; };
+		5915182E2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182C2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m */; };
+		5915182F2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */; };
 		6AB857D036ADDB2C2A9E4FD3 /* libPods-Wuyouhuaqian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */; };
 		82B309DB2194045B00284246 /* WYHQLeapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B309DA2194045B00284246 /* WYHQLeapButton.m */; };
 		82B309E22194098800284246 /* WYHQChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B309E12194098800284246 /* WYHQChartLineView.m */; };
@@ -161,6 +174,25 @@
 		82B4B7022193EB13009A4B62 /* WYHQBillTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTableView.m; sourceTree = "<group>"; };
 		82B4B7052193F33D009A4B62 /* WYHQBillTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillTool.h; sourceTree = "<group>"; };
 		82B4B7062193F33D009A4B62 /* WYHQBillTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTool.m; sourceTree = "<group>"; };
+		591518092193D719004B5B32 /* WYHQSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQSettingView.h; sourceTree = "<group>"; };
+		5915180A2193D719004B5B32 /* WYHQSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQSettingView.m; sourceTree = "<group>"; };
+		5915180C2193D724004B5B32 /* WYHQSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQSettingView.xib; sourceTree = "<group>"; };
+		5915180E2193DCAA004B5B32 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		591518102193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQPrivacyAgreementViewController.h; sourceTree = "<group>"; };
+		591518112193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQPrivacyAgreementViewController.m; sourceTree = "<group>"; };
+		59151816219400D3004B5B32 /* WYHQAboutViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQAboutViewController.h; sourceTree = "<group>"; };
+		59151817219400D3004B5B32 /* WYHQAboutViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQAboutViewController.m; sourceTree = "<group>"; };
+		59151818219400D3004B5B32 /* WYHQAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQAboutViewController.xib; sourceTree = "<group>"; };
+		5915181B219403D4004B5B32 /* PrivateAgreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PrivateAgreement.html; sourceTree = "<group>"; };
+		5915181F21942423004B5B32 /* WYHQEditBillViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQEditBillViewController.h; sourceTree = "<group>"; };
+		5915182021942423004B5B32 /* WYHQEditBillViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQEditBillViewController.m; sourceTree = "<group>"; };
+		5915182121942423004B5B32 /* WYHQEditBillViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQEditBillViewController.xib; sourceTree = "<group>"; };
+		5915182621943737004B5B32 /* WYHQEditBillToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQEditBillToolBar.h; sourceTree = "<group>"; };
+		5915182721943737004B5B32 /* WYHQEditBillToolBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQEditBillToolBar.m; sourceTree = "<group>"; };
+		5915182921943746004B5B32 /* WYHQEditBillToolBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQEditBillToolBar.xib; sourceTree = "<group>"; };
+		5915182B2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQWYHQEditBillToolBarCell.h; sourceTree = "<group>"; };
+		5915182C2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQWYHQEditBillToolBarCell.m; sourceTree = "<group>"; };
+		5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQWYHQEditBillToolBarCell.xib; sourceTree = "<group>"; };
 		82DC63642192E15E007421DE /* Wuyouhuaqian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wuyouhuaqian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DC63752192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DC637C2192E15F007421DE /* WuyouhuaqianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WuyouhuaqianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -382,6 +414,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5915180F2193DCAA004B5B32 /* AVFoundation.framework in Frameworks */,
 				6AB857D036ADDB2C2A9E4FD3 /* libPods-Wuyouhuaqian.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -455,6 +488,69 @@
 				82B4B7062193F33D009A4B62 /* WYHQBillTool.m */,
 			);
 			path = WYHQBillTool;
+			sourceTree = "<group>";
+		};
+		591518062193D6EA004B5B32 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				591518082193D6F9004B5B32 /* ViewControllers */,
+				591518072193D6F5004B5B32 /* Views */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		591518072193D6F5004B5B32 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				591518092193D719004B5B32 /* WYHQSettingView.h */,
+				5915180A2193D719004B5B32 /* WYHQSettingView.m */,
+				5915180C2193D724004B5B32 /* WYHQSettingView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		591518082193D6F9004B5B32 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				591518102193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.h */,
+				591518112193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m */,
+				59151816219400D3004B5B32 /* WYHQAboutViewController.h */,
+				59151817219400D3004B5B32 /* WYHQAboutViewController.m */,
+				59151818219400D3004B5B32 /* WYHQAboutViewController.xib */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5915181D219423C4004B5B32 /* EditBill */ = {
+			isa = PBXGroup;
+			children = (
+				5915182521943721004B5B32 /* View */,
+				5915181E219423CC004B5B32 /* ViewController */,
+			);
+			path = EditBill;
+			sourceTree = "<group>";
+		};
+		5915181E219423CC004B5B32 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5915181F21942423004B5B32 /* WYHQEditBillViewController.h */,
+				5915182021942423004B5B32 /* WYHQEditBillViewController.m */,
+				5915182121942423004B5B32 /* WYHQEditBillViewController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5915182521943721004B5B32 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5915182621943737004B5B32 /* WYHQEditBillToolBar.h */,
+				5915182721943737004B5B32 /* WYHQEditBillToolBar.m */,
+				5915182921943746004B5B32 /* WYHQEditBillToolBar.xib */,
+				5915182B2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.h */,
+				5915182C2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m */,
+				5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		82DC635B2192E15E007421DE = {
@@ -824,6 +920,7 @@
 		82DC653D2192E275007421DE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5915181B219403D4004B5B32 /* PrivateAgreement.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -831,6 +928,8 @@
 		82DC653E2192E275007421DE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				5915181D219423C4004B5B32 /* EditBill */,
+				591518062193D6EA004B5B32 /* Setting */,
 				82DC661A219320C0007421DE /* Account */,
 				82DC661121931041007421DE /* Bill */,
 				82DC660521930DFF007421DE /* Feedback */,
@@ -1147,13 +1246,13 @@
 		82DC662221932267007421DE /* Introducer(引导页) */ = {
 			isa = PBXGroup;
 			children = (
-				82DC662321932267007421DE /* WYHQScrollDisplayViewController.m */,
+				82DC662721932267007421DE /* WYHQIntroduceViewController.h */,
 				82DC662421932267007421DE /* WYHQIntroduceViewController.m */,
 				82DC662521932267007421DE /* WYHQPageViewController.h */,
-				82DC662621932267007421DE /* WYHQPageViewController.xib */,
-				82DC662721932267007421DE /* WYHQIntroduceViewController.h */,
-				82DC662821932267007421DE /* WYHQScrollDisplayViewController.h */,
 				82DC662921932267007421DE /* WYHQPageViewController.m */,
+				82DC662621932267007421DE /* WYHQPageViewController.xib */,
+				82DC662821932267007421DE /* WYHQScrollDisplayViewController.h */,
+				82DC662321932267007421DE /* WYHQScrollDisplayViewController.m */,
 			);
 			path = "Introducer(引导页)";
 			sourceTree = "<group>";
@@ -1171,6 +1270,7 @@
 		BD20D73E4E1A29CA8864267D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5915180E2193DCAA004B5B32 /* AVFoundation.framework */,
 				4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */,
 			);
 			name = Frameworks;
@@ -1240,6 +1340,7 @@
 		82DC635C2192E15E007421DE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = WYHQ;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = yoser;
 				TargetAttributes = {
@@ -1288,13 +1389,19 @@
 				82B309EA219439E800284246 /* WYHQDaySelectedView.xib in Resources */,
 				82DC66382193E132007421DE /* WYHQBillTableViewCell.xib in Resources */,
 				82DC65EA2192E275007421DE /* LaunchScreen.storyboard in Resources */,
+				5915181C219403D4004B5B32 /* PrivateAgreement.html in Resources */,
 				82DC662C21932267007421DE /* WYHQPageViewController.xib in Resources */,
 				82B309E821942FAB00284246 /* BillList.storyboard in Resources */,
+				5915182F2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib in Resources */,
 				82DC659A2192E275007421DE /* HomeBaseTableViewCell.xib in Resources */,
 				82DC65EB2192E275007421DE /* Main.storyboard in Resources */,
+				5915180D2193D724004B5B32 /* WYHQSettingView.xib in Resources */,
+				5915182321942423004B5B32 /* WYHQEditBillViewController.xib in Resources */,
 				82DC65C12192E275007421DE /* func.list in Resources */,
+				5915181A219400D3004B5B32 /* WYHQAboutViewController.xib in Resources */,
 				82DC65C72192E275007421DE /* AAHighchartsLib.js in Resources */,
 				82DC65C92192E275007421DE /* AAFunnel.js in Resources */,
+				5915182A21943746004B5B32 /* WYHQEditBillToolBar.xib in Resources */,
 				82DC65E92192E275007421DE /* Assets.xcassets in Resources */,
 				82DC65C82192E275007421DE /* AAHighchartsMore.js in Resources */,
 				82DC66322193D76C007421DE /* BillHome.storyboard in Resources */,
@@ -1371,9 +1478,11 @@
 				82DC65CF2192E275007421DE /* AAXAxis.m in Sources */,
 				82DC662B21932267007421DE /* WYHQIntroduceViewController.m in Sources */,
 				82DC66172193110B007421DE /* WYHQBillListViewController.m in Sources */,
+				5915182E2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m in Sources */,
 				82DC65BB2192E275007421DE /* DeviceHelp.m in Sources */,
 				82DC660F21930E25007421DE /* WYHQFeedbackModel+Service.m in Sources */,
 				82DC65A32192E275007421DE /* ScoreProgressView.m in Sources */,
+				591518122193FEE0004B5B32 /* WYHQPrivacyAgreementViewController.m in Sources */,
 				82DC65DA2192E275007421DE /* AAStyle.m in Sources */,
 				82DC65AB2192E275007421DE /* AreaSplineChartView.m in Sources */,
 				82DC65A22192E275007421DE /* NameHeaderView.m in Sources */,
@@ -1382,11 +1491,13 @@
 				82DC65B82192E275007421DE /* NSString+cityInfos.m in Sources */,
 				82DC659F2192E275007421DE /* ZYZButton.m in Sources */,
 				82DC65FE21930163007421DE /* WYHQLocation.m in Sources */,
+				5915182221942423004B5B32 /* WYHQEditBillViewController.m in Sources */,
 				82DC65B92192E275007421DE /* NSObject+HQIQKeyBoardConfig.m in Sources */,
 				82DC65A92192E275007421DE /* waveAnimationView.m in Sources */,
 				82DC660421930827007421DE /* WYHQPhotoPickerManager.m in Sources */,
 				82B309E52194099A00284246 /* WYHQChartPieView.m in Sources */,
 				82DC65BA2192E275007421DE /* PlistManager.m in Sources */,
+				5915182821943737004B5B32 /* WYHQEditBillToolBar.m in Sources */,
 				82DC65D82192E275007421DE /* AAPlotLinesElement.m in Sources */,
 				82DC65E42192E275007421DE /* AAChart.m in Sources */,
 				82DC65DB2192E275007421DE /* AABar.m in Sources */,
@@ -1430,9 +1541,11 @@
 				82DC65D12192E275007421DE /* AADataLabels.m in Sources */,
 				82DC65DE2192E275007421DE /* AAAnimation.m in Sources */,
 				82DC65BE2192E275007421DE /* DeviceTypes.m in Sources */,
+				5915180B2193D719004B5B32 /* WYHQSettingView.m in Sources */,
 				82DC65D42192E275007421DE /* AASubtitle.m in Sources */,
 				82DC65B22192E275007421DE /* UIFont+TargetFont.m in Sources */,
 				82DC661021930E25007421DE /* WYHQFeedbackModel.m in Sources */,
+				59151819219400D3004B5B32 /* WYHQAboutViewController.m in Sources */,
 				82DC65F62192F7DC007421DE /* CLCustomDatePickerBaseView.m in Sources */,
 				82DC65CD2192E275007421DE /* AALabels.m in Sources */,
 				82DC65BF2192E275007421DE /* LNRiskDeviceHelp.m in Sources */,
@@ -1636,7 +1749,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 69C2M2FU4A;
+				DEVELOPMENT_TEAM = W8H3Q8T6FG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
@@ -1645,7 +1758,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ll.wyqb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = wuyou_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wuyouhuaqian/BillRecord/Expand/Macros/Wuyouhuaqian-Bridging-Header.h";
@@ -1663,7 +1776,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 69C2M2FU4A;
+				DEVELOPMENT_TEAM = W8H3Q8T6FG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
@@ -1672,7 +1785,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ll.wyqb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = wuyou_adhoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wuyouhuaqian/BillRecord/Expand/Macros/Wuyouhuaqian-Bridging-Header.h";

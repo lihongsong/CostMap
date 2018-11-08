@@ -23,6 +23,11 @@
     [self setUpUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
 - (void)setUpUI {
     
     self.title = @"意见反馈";

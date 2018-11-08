@@ -63,6 +63,8 @@
     }
     
     self.interactivePopGestureRecognizer.delegate = self;
+    
+    [self closeCFYNavigationBarFunction:NO];
 }
 
 #pragma mark - overwrite
