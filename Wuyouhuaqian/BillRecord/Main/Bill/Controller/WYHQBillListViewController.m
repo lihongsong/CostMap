@@ -74,8 +74,8 @@
 
 - (void)setUpUI {
     
+//    self.daySelectView
     [[self navigationItem] setTitleView:self.daySelectView];
-    
 }
 
 - (void)requestData {
@@ -145,7 +145,7 @@
     
     WEAK_SELF
     [CLCustomDatePickerView showDatePickerWithTitle:@"选择时间"
-                                           dateType:CLCustomDatePickerModeYM
+                                           dateType:CLCustomDatePickerModeYMD
                                     defaultSelValue:[self dateString]
                                         resultBlock:^(NSString *selectValue) {
                                             STRONG_SELF
