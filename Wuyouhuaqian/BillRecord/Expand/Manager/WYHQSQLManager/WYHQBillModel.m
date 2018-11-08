@@ -43,4 +43,28 @@
     };
 }
 
++ (NSString *)getTypeImage:(NSString*)type {
+    if ([type isEqualToString:@"餐饮"]) {
+        return @"restaurant_ic";
+    } else if ([type isEqualToString:@"购物"]) {
+        return @"shop_ic";
+    } else if ([type isEqualToString:@"交友"]) {
+        return @"friend_ic";
+    } else if ([type isEqualToString:@"游玩"]) {
+        return @"play_ic";
+    } else if ([type isEqualToString:@"居家"]) {
+        return @"home_ic";
+    } else if ([type isEqualToString:@"教育"]) {
+        return @"education_ic";
+    } else if ([type isEqualToString:@"医疗"]) {
+        return @"medical_ic";
+    } else {//其他
+        return @"more_ic";
+    };
+}
+
++ (NSString *)getTypePressedImage:(NSString*)type {
+    return [NSString stringWithFormat:@"%@_pressed", [self getTypeImage:type]];
+}
+
 @end

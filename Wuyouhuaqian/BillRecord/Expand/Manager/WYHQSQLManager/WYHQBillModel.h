@@ -45,4 +45,8 @@
 #pragma mark 生成 typeid 用于 sTypeID
 - (NSString *)getTypeID:(NSString*)type;
 
+#pragma mark 生成 类别图片
++ (NSString *)getTypeImage:(NSString*)type;
++ (NSString *)getTypePressedImage:(NSString*)type;
+
 @end
