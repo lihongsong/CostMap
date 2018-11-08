@@ -12,7 +12,7 @@
 
 typedef void(^DBResultBlock)(NSMutableArray <WYHQBillModel *> *result, NSError *error);
 
-@interface WYHQSQLDataManager : NSObject
+@interface WYHQSQLManager : NSObject
 /*
  初始化
  */
@@ -23,7 +23,10 @@ typedef void(^DBResultBlock)(NSMutableArray <WYHQBillModel *> *result, NSError *
  */
 - (BOOL)isTableExist:(NSString *)tableName;
 
-// 创建新表
+
+/**
+ 创建新表
+ */
 - (void)creatNewDataBase:(NSString *)name;
 
 /**

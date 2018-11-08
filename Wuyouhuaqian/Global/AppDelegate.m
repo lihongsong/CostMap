@@ -37,6 +37,8 @@
     
     [self setUpSDK];
     
+    [self setUpFMDB];
+    
     // 引导页
     BOOL needIntroduce = [self setupIntroduceWithRemoteNotification:launchOptions];
     
@@ -192,6 +194,13 @@
     
     [[HJMediator shared] setUpConfig:config];
     [[HJMediator shared] setUpRootViewController:_homeNav];
+}
+
+- (void)setUpFMDB {
+    
+    if (![[WYHQSQLManager share] isTableExist:kSQLTableName]) {
+        [[WYHQSQLManager share] creatNewDataBase:kSQLTableName];
+    }
 }
 
 

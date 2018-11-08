@@ -12,12 +12,12 @@
 #import <YYModel/YYModel.h>
 
 
-@interface WYHQSQLDataManager()
+@interface WYHQSQLManager()
 @property(nonatomic, strong) FMDatabase *fmdb;
 @property(nonatomic, strong) FMDatabaseQueue *queue;
 @end
 
-@implementation WYHQSQLDataManager
+@implementation WYHQSQLManager
 
 - (instancetype)initWithPrivate
 {
@@ -29,11 +29,11 @@
 
 + (instancetype)share
 {
-    static WYHQSQLDataManager *manager = nil;
+    static WYHQSQLManager *manager = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (!manager) {
-            manager =[[WYHQSQLDataManager alloc] initWithPrivate];
+            manager =[[WYHQSQLManager alloc] initWithPrivate];
         }
     });
     return manager;

@@ -15,6 +15,8 @@
 
 #define LNAOPSAFESTRING(str) ((((str) != nil) && ![(str) isKindOfClass:[NSNull class]]) ? [NSString stringWithFormat:@"%@", (str)] : @"")
 
+#define kSQLTableName @"WYHQBillRecordTable"
+
 //***********归档**************//
 //用户model归档key值
 #define kUserArchiverKey @"userInfoModel"
