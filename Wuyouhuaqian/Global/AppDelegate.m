@@ -22,9 +22,8 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    //    /** 通过通知栏调起APP处理通知信息 */
-    NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
+    // 通过通知栏调起APP处理通知信息
+    // NSDictionary *remoteNotification = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -163,7 +162,6 @@
         self.window.rootViewController = introduceVC;
         return YES;
     } else {
-        
         NSUserDefaults *userDefault =  [NSUserDefaults standardUserDefaults];
         
         if (![userDefault boolForKey:kCachedTouchIdStatus]) {
@@ -174,6 +172,7 @@
             self.window.rootViewController = touchIDVC;
             touchIDVC.rootStartVC = ^(BOOL isCheckPass){
                 STRONG_SELF
+                self.window.rootViewController = nil;
                 [self setUpViewControllerWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:remoteNotification];
             };
         }
