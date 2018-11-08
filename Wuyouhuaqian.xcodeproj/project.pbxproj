@@ -1106,13 +1106,13 @@
 		82DC662221932267007421DE /* Introducer(引导页) */ = {
 			isa = PBXGroup;
 			children = (
-				82DC662321932267007421DE /* WYHQScrollDisplayViewController.m */,
+				82DC662721932267007421DE /* WYHQIntroduceViewController.h */,
 				82DC662421932267007421DE /* WYHQIntroduceViewController.m */,
 				82DC662521932267007421DE /* WYHQPageViewController.h */,
-				82DC662621932267007421DE /* WYHQPageViewController.xib */,
-				82DC662721932267007421DE /* WYHQIntroduceViewController.h */,
-				82DC662821932267007421DE /* WYHQScrollDisplayViewController.h */,
 				82DC662921932267007421DE /* WYHQPageViewController.m */,
+				82DC662621932267007421DE /* WYHQPageViewController.xib */,
+				82DC662821932267007421DE /* WYHQScrollDisplayViewController.h */,
+				82DC662321932267007421DE /* WYHQScrollDisplayViewController.m */,
 			);
 			path = "Introducer(引导页)";
 			sourceTree = "<group>";
@@ -1579,7 +1579,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 69C2M2FU4A;
+				DEVELOPMENT_TEAM = W8H3Q8T6FG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
@@ -1588,9 +1588,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ll.wyqb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = wuyou_dev;
+				PROVISIONING_PROFILE_SPECIFIER = sj_wyqb_dev;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1602,7 +1602,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 69C2M2FU4A;
+				DEVELOPMENT_TEAM = W8H3Q8T6FG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
@@ -1611,9 +1611,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hj.wuyou;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ll.wyqb;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = wuyou_adhoc;
+				PROVISIONING_PROFILE_SPECIFIER = sj_wyqb_adhoc;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

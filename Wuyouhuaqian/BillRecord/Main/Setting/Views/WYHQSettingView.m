@@ -11,6 +11,7 @@
 #import <AVFoundation/AVCaptureDevice.h>
 #import <AVFoundation/AVMediaFormat.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <LocalAuthentication/LocalAuthentication.h>
 
 #import "WYHQPrivacyAgreementViewController.h"
 #import "WYHQFeedbackViewController.h"
@@ -63,6 +64,20 @@ static CGFloat settingViewWidth = 200;
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    static NSString *safeSwitchTip;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (@available(iOS 11.0, *)) {
+            if ([LAContext new].biometryType == LABiometryTypeFaceID) {
+                safeSwitchTip = @"开启后可以使用人脸打开应用";
+            } else {
+                safeSwitchTip = @"开启后可以使用指纹打开应用";
+            }
+        } else {
+            safeSwitchTip = @"开启后可以使用指纹打开应用";
+        }
+    });
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectHeadeImage)];
     [self.headImageView addGestureRecognizer:tap];
     
@@ -79,6 +94,8 @@ static CGFloat settingViewWidth = 200;
     [self addGestureRecognizer:tmpTap];
     
     self.safeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:kCachedTouchIdStatus];
+    
+    self.safeSwitchTipLabel.text = safeSwitchTip;
 }
 
 - (IBAction)buttonClick:(UIButton *)sender {
@@ -136,6 +153,14 @@ static CGFloat settingViewWidth = 200;
     
     [sheetController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }]];
+    
+    if (UIDevice.hj_deviceType == HJDeviceIPad) {
+        UIPopoverPresentationController *popoverPresentationController = [sheetController popoverPresentationController];
+        if (popoverPresentationController) {
+            popoverPresentationController.sourceRect = self.headImageView.bounds;
+            popoverPresentationController.sourceView = self.headImageView;
+        }
+    }
     
     [self.superViewController presentViewController:sheetController animated:YES completion:nil];
 }
