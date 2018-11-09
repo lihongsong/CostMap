@@ -69,7 +69,10 @@
 
 - (void)setpNavBarWhenViewWillAppear {
     // 设置背景图
-    [self cfy_setNavigationBarBackgroundColor:[WYHQBillTool colorWithType:self.billType]];
+    UIColor *color = [WYHQBillTool colorWithType:self.billType];
+    [self cfy_setNavigationBarBackgroundColor:color];
+    self.conentView.backgroundColor = color;
+    
     [self cfy_setNavigationBarBackgroundImage:nil];
     // 设置ShadowImage
     [self cfy_setNavigationBarShadowImageBackgroundColor:[UIColor clearColor]];
