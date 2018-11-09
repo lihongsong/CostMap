@@ -11,6 +11,7 @@
 #import "WYHQLocation.h"
 #import "WYHQBillTool.h"
 #import "WYHQTranstionAnimationPop.h"
+#import "WYHQHomeViewController.h"
 
 @interface WYHQEditBillViewController () <UITextFieldDelegate, UINavigationControllerDelegate>
 
@@ -252,10 +253,13 @@
 }
 #pragma mark -- UINavigationControllerDelegate --
 
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
-    if (operation == UINavigationControllerOperationPop) {
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
+    
+    if ([fromVC isKindOfClass:[WYHQEditBillViewController class]] &&
+        [toVC isKindOfClass:[WYHQHomeViewController class]] &&
+        operation == UINavigationControllerOperationPop) {
         return [WYHQTranstionAnimationPop new];
-    }else{
+    } else {
         return nil;
     }
 }

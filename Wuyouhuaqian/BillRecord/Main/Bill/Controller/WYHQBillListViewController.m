@@ -41,12 +41,11 @@
     self.view.backgroundColor = [UIColor yellowColor];
     
     [self setUpUI];
-    
-    [self requestData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self requestData];
 }
 
 #pragma mark - Getter & Setter Methods

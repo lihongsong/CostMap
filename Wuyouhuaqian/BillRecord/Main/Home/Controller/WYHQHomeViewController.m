@@ -18,7 +18,7 @@
 #import "WYHQHomeDateSelectButton.h"
 #import "WYHQBillModel+WYHQService.h"
 #import "UIViewController+Push.h"
-
+#import "WYHQEditBillViewController.h"
 #import "WYHQTranstionAnimationPush.h"
 #import "CLCustomDatePickerView.h"
 
@@ -236,13 +236,12 @@
                                     if (allBillArray.count == 0) {
                                         self.tableView.models = @[];
                                         [self.tableView cyl_reloadData];
-                                        [self.addBillBtn startLeapAnimation];
-                                        [self.addBillBtn stopShakeAnimation];
+//                                        [self.addBillBtn startLeapAnimation];
+//                                        [self.addBillBtn stopShakeAnimation];
                                         return ;
                                     }
-                                    
-                                    [self.addBillBtn startShakeAnimation];
-                                    [self.addBillBtn stopLeapAnimation];
+//                                    [self.addBillBtn startShakeAnimation];
+//                                    [self.addBillBtn stopLeapAnimation];
                                 
                                     double sum;
                                     NSArray *tempArray = [WYHQBillModel templateBillArrayWithBills:result sumMoney:&sum];
@@ -334,9 +333,11 @@
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC {
     
-    if (operation == UINavigationControllerOperationPush) {
+    if ([fromVC isKindOfClass:[WYHQHomeViewController class]] &&
+        [toVC isKindOfClass:[WYHQEditBillViewController class]] &&
+        operation == UINavigationControllerOperationPush) {
         return [WYHQTranstionAnimationPush new];
-    }else{
+    } else {
         return nil;
     }
 }
