@@ -33,6 +33,8 @@
 		82B309ED219439FC00284246 /* WYHQDaySelectedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B309EC219439FC00284246 /* WYHQDaySelectedView.m */; };
 		82B4B7032193EB13009A4B62 /* WYHQBillTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B4B7022193EB13009A4B62 /* WYHQBillTableView.m */; };
 		82B4B7072193F33D009A4B62 /* WYHQBillTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B4B7062193F33D009A4B62 /* WYHQBillTool.m */; };
+		82CD2BDE219588EE00E86371 /* A.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BDD219588EE00E86371 /* A.swift */; };
+		82CD2BE221958BD400E86371 /* WYHQHomeDateSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BE121958BD400E86371 /* WYHQHomeDateSelectButton.m */; };
 		82DC63812192E15F007421DE /* WuyouhuaqianTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC63802192E15F007421DE /* WuyouhuaqianTests.m */; };
 		82DC638C2192E15F007421DE /* WuyouhuaqianUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC638B2192E15F007421DE /* WuyouhuaqianUITests.m */; };
 		82DC65952192E275007421DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64C52192E275007421DE /* AppDelegate.m */; };
@@ -205,6 +207,9 @@
 		82B4B7022193EB13009A4B62 /* WYHQBillTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTableView.m; sourceTree = "<group>"; };
 		82B4B7052193F33D009A4B62 /* WYHQBillTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillTool.h; sourceTree = "<group>"; };
 		82B4B7062193F33D009A4B62 /* WYHQBillTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTool.m; sourceTree = "<group>"; };
+		82CD2BDD219588EE00E86371 /* A.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = A.swift; sourceTree = "<group>"; };
+		82CD2BE021958BD400E86371 /* WYHQHomeDateSelectButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQHomeDateSelectButton.h; sourceTree = "<group>"; };
+		82CD2BE121958BD400E86371 /* WYHQHomeDateSelectButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQHomeDateSelectButton.m; sourceTree = "<group>"; };
 		82DC63642192E15E007421DE /* Wuyouhuaqian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wuyouhuaqian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DC63752192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DC637C2192E15F007421DE /* WuyouhuaqianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WuyouhuaqianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -577,6 +582,15 @@
 			path = WYHQBillTool;
 			sourceTree = "<group>";
 		};
+		82CD2BDF21958BAD00E86371 /* DateSelectButton */ = {
+			isa = PBXGroup;
+			children = (
+				82CD2BE021958BD400E86371 /* WYHQHomeDateSelectButton.h */,
+				82CD2BE121958BD400E86371 /* WYHQHomeDateSelectButton.m */,
+			);
+			path = DateSelectButton;
+			sourceTree = "<group>";
+		};
 		82DC635B2192E15E007421DE = {
 			isa = PBXGroup;
 			children = (
@@ -689,6 +703,7 @@
 		82DC64CF2192E275007421DE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				82CD2BDF21958BAD00E86371 /* DateSelectButton */,
 				82B309DF2194096700284246 /* LineView */,
 				82B309DE2194095D00284246 /* PieView */,
 				82B309D8219403E400284246 /* LeapButton */,
@@ -933,10 +948,10 @@
 		82DC65392192E275007421DE /* Macros */ = {
 			isa = PBXGroup;
 			children = (
+				82CD2BDD219588EE00E86371 /* A.swift */,
 				82DC653A2192E275007421DE /* WYHQUtilitiesDefine.h */,
 				82DC653B2192E275007421DE /* WYHQConstantMacros.h */,
 				82DC653C2192E275007421DE /* WYHQConst.h */,
-				594B0EEF21957BB0008585F5 /* A.swift */,
 				82DC662E2193CE33007421DE /* Wuyouhuaqian-Bridging-Header.h */,
 				82B4B6FF2193E9CA009A4B62 /* WYHQTypeDefine.h */,
 			);
@@ -1560,7 +1575,8 @@
 				82B309DB2194045B00284246 /* WYHQLeapButton.m in Sources */,
 				82DC65CE2192E275007421DE /* AASeries.m in Sources */,
 				82DC65AE2192E275007421DE /* UILabel+LabelKit.m in Sources */,
-				594B0EF021957BB0008585F5 /* A.swift in Sources */,
+				82CD2BE221958BD400E86371 /* WYHQHomeDateSelectButton.m in Sources */,
+				82CD2BDE219588EE00E86371 /* A.swift in Sources */,
 				82DC65E32192E275007421DE /* AAPie.m in Sources */,
 				82DC65B52192E275007421DE /* ZYZControl.m in Sources */,
 				82DC65B42192E275007421DE /* UIView+ViewKit.m in Sources */,

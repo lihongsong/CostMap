@@ -14,6 +14,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (copy, nonatomic) NSArray<WYHQBillModel *> *models;
 
+/**
+ 中间圆圈的占比
+ */
+@property (assign, nonatomic) CGFloat holeRadiusPercent;
+
+/**
+ 是否显示中间空心
+ */
+@property (assign, nonatomic) BOOL drawHoleEnabled;
+
 - (void)animate;
 
 @end

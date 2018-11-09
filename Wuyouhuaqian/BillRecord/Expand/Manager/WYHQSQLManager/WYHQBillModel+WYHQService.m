@@ -11,11 +11,13 @@
 
 @implementation WYHQBillModel (WYHQService)
 
-+ (NSArray *)templateBillArrayWithBills:(NSArray *)bills {
++ (NSArray *)templateBillArrayWithBills:(NSArray *)bills sumMoney:(double * _Nullable)sumMoney {
     
     NSArray *billTypes = [WYHQBillTool allBillTypes];
     
     NSMutableArray *tempArray = [NSMutableArray array];
+    
+    __block double tempSum;
     
     [billTypes enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         WYHQBillModel *model = [WYHQBillModel new];
@@ -33,9 +35,18 @@
         
         WYHQBillModel *sumModel = tempArray[index];
         sumModel.s_money = [NSString stringWithFormat:@"%.2f", ([sumModel.s_money floatValue] + [model.s_money floatValue])];
+        
+        tempSum += [model.s_money doubleValue];
     }];
     
+    *sumMoney = tempSum;
+    
     return tempArray;
+}
+
++ (NSArray *)templateBillArrayWithBills:(NSArray *)bills {
+    __unused double temp;
+    return [self templateBillArrayWithBills:bills sumMoney:&temp];
 }
 
 @end

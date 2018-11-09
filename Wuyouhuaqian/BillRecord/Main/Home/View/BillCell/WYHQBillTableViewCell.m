@@ -18,6 +18,12 @@
 
 @property (weak, nonatomic) IBOutlet UIView *themeLineVw;
 
+@property (weak, nonatomic) IBOutlet UIImageView *iconIV;
+
+@property (weak, nonatomic) IBOutlet UIView *bigTitleBaseVw;
+
+@property (weak, nonatomic) IBOutlet UILabel *bigTitleLb;
+
 @end
 
 @implementation WYHQBillTableViewCell
@@ -39,6 +45,15 @@
     
     _titleLb.text = model.s_type_name;
     _moneyLb.text = model.s_money ?: @"-0.00";
+    _themeLineVw.backgroundColor = [WYHQBillTool colorWithType:model.s_type_id.integerValue];
+    _iconIV.image = [UIImage imageNamed:[WYHQBillTool typePressedImage:[model.s_type_id integerValue]]];
+    _bigTitleLb.text = model.s_type_name;
+}
+
+- (void)setTableType:(WYHQBillTableType)tableType {
+    _tableType = tableType;
+    
+    self.bigTitleBaseVw.hidden = tableType != WYHQBillTableTypeHome;
 }
 
 #pragma mark - Public Method

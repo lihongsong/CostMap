@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSInteger, WYHQBillTableType) {
+    WYHQBillTableTypeHome = 0,
+    WYHQBillTableTypeDay = 1,
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @class WYHQBillModel;
@@ -15,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface WYHQBillTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) WYHQBillModel *model;
+
+@property (assign, nonatomic) WYHQBillTableType tableType;
 
 + (NSString *)cellID;
 

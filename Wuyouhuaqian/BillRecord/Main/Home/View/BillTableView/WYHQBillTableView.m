@@ -64,6 +64,11 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        if (indexPath.row >= self.models.count) {
+            return;
+        }
+        
         WYHQBillModel *model = self.models[indexPath.row];
         !_deleteAction?:_deleteAction(editingStyle, model);
     }
@@ -74,7 +79,18 @@
     WYHQBillTableViewCell *cell = [WYHQBillTableViewCell cellWithTableView:tableView
                                                                  indexPath:indexPath];
     cell.model = _models[indexPath.row];
+    cell.tableType = _tableType;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (indexPath.row >= self.models.count) {
+        return;
+    }
+    
+    WYHQBillModel *model = self.models[indexPath.row];
+    !_selectAction?:_selectAction(model);
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

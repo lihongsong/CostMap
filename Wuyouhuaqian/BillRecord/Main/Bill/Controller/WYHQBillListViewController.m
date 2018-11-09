@@ -75,7 +75,10 @@
 
 - (void)setUpUI {
     
+    self.pieView.holeRadiusPercent = 0.8;
+    self.pieView.drawHoleEnabled = YES;
     self.tableView.enableDelete = YES;
+    self.tableView.tableType = WYHQBillTableTypeDay;
     
     WEAK_SELF
     self.tableView.deleteAction = ^(UITableViewCellEditingStyle editingStyle, WYHQBillModel * _Nonnull model) {
@@ -92,6 +95,10 @@
         [self.tableView reloadData];
         NSArray *pieData = [WYHQBillModel templateBillArrayWithBills:tempArray];
         self.pieView.models = pieData;
+    };
+    
+    self.tableView.selectAction = ^(WYHQBillModel * _Nonnull model) {
+        [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:@{@"billModel": model}, nil];
     };
     
     [[self navigationItem] setTitleView:self.daySelectView];

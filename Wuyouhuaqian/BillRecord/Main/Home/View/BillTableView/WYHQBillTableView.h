@@ -8,19 +8,27 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
+#import "WYHQBillTableViewCell.h"
 
 @class WYHQBillModel;
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef void (^WYHQBillDeleteAction) (UITableViewCellEditingStyle editingStyle, WYHQBillModel *model);
 
+typedef void (^WYHQBillSelectAction) (WYHQBillModel *model);
+
 @interface WYHQBillTableView : UITableView
+
+@property (assign, nonatomic) WYHQBillTableType tableType;
 
 @property (assign, nonatomic) BOOL enableDelete;
 
 @property (strong, nonatomic) NSArray <WYHQBillModel *> *models;
 
 @property (copy, nonatomic) WYHQBillDeleteAction deleteAction;
+
+@property (copy, nonatomic) WYHQBillSelectAction selectAction;
 
 @end
 

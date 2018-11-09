@@ -9,6 +9,8 @@
 #ifndef UtilitiesDefine_h
 #define UtilitiesDefine_h
 
+#define WYHQThemeColor HJHexColor(0xeb344a)
+
 /****** 安全文字 ******/
 #define SafeStr(_str) StrIsEmpty(_str) ? @"" : _str
 /****** 安全文字 ******/
