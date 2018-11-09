@@ -134,6 +134,7 @@
                         <outlet property="changeBt" destination="ui7-Dn-sI1" id="r9U-BF-Dft"/>
                         <outlet property="chartBaseVw" destination="iHs-7U-rIR" id="NRb-L2-COd"/>
                         <outlet property="headerView" destination="Yxe-MP-ab2" id="VeH-4Q-9MT"/>
+                        <outlet property="moneyLb" destination="nJs-b8-dX8" id="q7A-p9-wVG"/>
                         <outlet property="moreBt" destination="Jjf-Ad-U7a" id="bj2-qI-imj"/>
                         <outlet property="tableView" destination="BCg-yc-DHn" id="NGh-yJ-xBW"/>
                     </connections>

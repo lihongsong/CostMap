@@ -38,6 +38,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *moreBt;
 
+@property (weak, nonatomic) IBOutlet UILabel *moneyLb;
+
 /**
  头部视图
  */
@@ -216,6 +218,8 @@
                                     
                                     NSMutableArray *tempArray = [NSMutableArray array];
                                     
+                                    __block double sumCount = 0.0f;
+                                    
                                     [billTypes enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                         WYHQBillModel *model = [WYHQBillModel new];
                                         model.s_type_id = [obj stringValue];
@@ -231,7 +235,9 @@
                                         }
                                         
                                         WYHQBillModel *sumModel = tempArray[index];
-                                        sumModel.s_money = [NSString stringWithFormat:@"%.2f", ([sumModel.s_money floatValue] + [model.s_money floatValue])];
+                                        sumModel.s_money = [NSString stringWithFormat:@"%.2f", ([sumModel.s_money doubleValue] + [model.s_money doubleValue])];
+                                        
+                                        sumCount += [model.s_money doubleValue];
                                     }];
                                     
                                     // 设置图表的数据
@@ -244,6 +250,7 @@
                                     
                                     // 设置总额数据
                                     // FIXME 设置总额
+                                    self.moneyLb.text = [NSString stringWithFormat:@"%.2f", sumCount];
                                 }];
 }
 
