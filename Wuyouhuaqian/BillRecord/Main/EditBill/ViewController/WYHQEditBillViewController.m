@@ -12,15 +12,17 @@
 #import "WYHQBillTool.h"
 
 
-@interface WYHQEditBillViewController ()<UITextFieldDelegate, UITextViewDelegate>
+@interface WYHQEditBillViewController ()<UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *momeyTextField;
-@property (weak, nonatomic) IBOutlet UITextView *noteTextView;
+@property (weak, nonatomic) IBOutlet UITextField *noteTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *classifyImageView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeLabelRight;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIView *conentView;
+@property (weak, nonatomic) IBOutlet UIButton *saveBillButton;
 
 /** 键盘消失时，正在编辑的输入框，用来在选择日期后恢复焦点 */
 @property (weak, nonatomic) UIView *curruntInputView;
@@ -49,8 +51,9 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
-- (void)endEditing {
-    [self.view endEditing:YES];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.momeyTextField becomeFirstResponder];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -58,20 +61,39 @@
     [WYHQEditBillToolBar hideEditBillToolBar];
 }
 
+- (void)endEditing {
+    [self.view endEditing:YES];
+}
+
+- (void)setpNavBarWhenViewWillAppear {
+    // 设置背景图
+    [self cfy_setNavigationBarBackgroundColor:[WYHQBillTool colorWithType:self.billType]];
+    [self cfy_setNavigationBarBackgroundImage:nil];
+    // 设置ShadowImage
+    [self cfy_setNavigationBarShadowImageBackgroundColor:[UIColor clearColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+}
+
 - (void)setupUI {
     self.momeyTextField.hj_maxLength = 10;
-    self.momeyTextField.delegate = self;
-    [self.noteTextView hj_addPlaceHolder:@"备注"];
-    self.noteTextView.hj_placeHolderTextView.textColor = [UIColor colorWithWhite:0.5 alpha:1];
+    self.noteTextField.hj_maxLength = 30;
+    
+    self.momeyTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"¥ 0.00" attributes:@{NSForegroundColorAttributeName:UIColor.whiteColor, NSFontAttributeName: [UIFont boldSystemFontOfSize:25]}];
+    self.noteTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"备注" attributes:@{NSForegroundColorAttributeName:UIColor.whiteColor, NSFontAttributeName: [UIFont boldSystemFontOfSize:20]}];
+    
     self.timeLabelRight.constant = 0;
     
     self.momeyTextField.delegate = self;
-    self.noteTextView.delegate = self;
-    
-    [self setupCustomRightWithImage:[UIImage imageNamed:@"nav_btn_save_default"] target:self action:@selector(saveBill)];
+    self.noteTextField.delegate = self;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
-    [self.bottomView addGestureRecognizer:tap];
+    [self.conentView addGestureRecognizer:tap];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = self.title;
+    titleLabel.font = [UIFont systemFontOfSize:18];
+    titleLabel.textColor = UIColor.whiteColor;
+    self.navigationItem.titleView = titleLabel;
 }
 
 - (void)updateUI {
@@ -84,7 +106,7 @@
         NSString *money = [self.billModel.s_money stringByReplacingOccurrencesOfString:@"-" withString:@""];
         self.momeyTextField.text = [NSString stringWithFormat:@"￥%@",[money moneyStyle]];
         
-        self.noteTextView.text = self.billModel.s_desc;
+        self.noteTextField.text = self.billModel.s_desc;
         
         NSTimeInterval time = self.billModel.s_time.doubleValue;
         if (time > 0) {
@@ -131,15 +153,18 @@
     } selectedClassifyHandler:^(WYHQBillType billType) {
         STRONG_SELF
         self.billType = billType;
+        [UIView animateWithDuration:0.5 animations:^{
+            UIColor *color = [WYHQBillTool colorWithType:billType];
+            [self cfy_setNavigationBarBackgroundColor:color];
+            self.conentView.backgroundColor = color;
+        }];
         self.classifyImageView.image = [UIImage imageNamed:[WYHQBillTool typePressedImage:billType]];
     }];
 }
-
-- (void)saveBill {
+- (IBAction)saveBillButtonClick:(id)sender {
     if (StrIsEmpty(self.momeyTextField.text)) {
         return;
     }
-    
     
     NSString *memey = [[self.momeyTextField.text stringByReplacingOccurrencesOfString:@"￥" withString:@""] cleanMoneyStyle];
     if (StrIsEmpty(memey)) {
@@ -166,7 +191,7 @@
     model.s_month = @(self.billTime.hj_month).stringValue;
     model.s_day = @(self.billTime.hj_day).stringValue;
     model.s_time = @(self.billTime.timeIntervalSince1970).stringValue;
-    model.s_desc = self.noteTextView.text;
+    model.s_desc = self.noteTextField.text;
     model.s_city = self.billCity;
     
     if (newBill) {
@@ -177,20 +202,45 @@
         [[WYHQSQLManager share] updateData:model tableName:kSQLTableName];
     }
     
-    [self.navigationController popViewControllerAnimated:YES];
+    [self saveBillDone];
+}
+
+- (void)saveBillDone {
+    
+    UIColor *color = [WYHQBillTool colorWithType:self.billType];
+    UIImage *image = [UIImage imageNamed:[WYHQBillTool typePressedImage:self.billType]];
+    [self.saveBillButton setTitle:@"" forState:UIControlStateNormal];
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.momeyTextField.textColor = color;
+        self.noteTextField.textColor = color;
+        self.momeyTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"¥ 0.00" attributes:@{NSForegroundColorAttributeName:color, NSFontAttributeName: [UIFont boldSystemFontOfSize:25]}];
+        self.noteTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"备注" attributes:@{NSForegroundColorAttributeName:color, NSFontAttributeName: [UIFont boldSystemFontOfSize:20]}];
+        self.timeLabel.textColor = color;
+        self.addressLabel.textColor = color;
+        self.saveBillButton.layer.borderColor = color.CGColor;
+        [self.saveBillButton setImage:image forState:UIControlStateNormal];
+        
+        [self cfy_setNavigationBarBackgroundColor:UIColor.whiteColor];
+        self.conentView.backgroundColor = UIColor.whiteColor;
+    } completion:^(BOOL finished) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    NSString *tfString = textField.text;
-    if (!StrIsEmpty(tfString)) {
-        if ([tfString containsString:@"￥"]) {
-            tfString = [tfString stringByReplacingOccurrencesOfString:@"￥" withString:@""];
-            tfString = [tfString stringByReplacingOccurrencesOfString:@"," withString:@""];
+    if (textField == self.momeyTextField) {
+        NSString *tfString = textField.text;
+        if (!StrIsEmpty(tfString)) {
+            if ([tfString containsString:@"￥"]) {
+                tfString = [tfString stringByReplacingOccurrencesOfString:@"￥" withString:@""];
+                tfString = [tfString stringByReplacingOccurrencesOfString:@"," withString:@""];
+            }
+            tfString = [NSString stringWithFormat:@"￥%@",[tfString moneyStyle]];
+            textField.text = tfString;
+        } else {
+            self.momeyTextField.text = @"";
         }
-        tfString = [NSString stringWithFormat:@"￥%@",[tfString moneyStyle]];
-        textField.text = tfString;
-    } else {
-        self.momeyTextField.text = @"";
     }
     return YES;
 }
@@ -198,9 +248,4 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     self.curruntInputView = textField;
 }
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
-    self.curruntInputView = textView;
-}
-
 @end
