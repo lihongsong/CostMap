@@ -79,6 +79,19 @@
              ];
 }
 
++ (NSArray *)allBillTypesColor {
+    
+    return @[[self colorWithType:WYHQBillTypeFood],
+             [self colorWithType:WYHQBillTypeBuy],
+             [self colorWithType:WYHQBillTypeFriend],
+             [self colorWithType:WYHQBillTypePlay],
+             [self colorWithType:WYHQBillTypeHome],
+             [self colorWithType:WYHQBillTypeEduca],
+             [self colorWithType:WYHQBillTypeMedic],
+             [self colorWithType:WYHQBillTypeOther]
+             ];
+}
+
 + (NSArray *)allBillTypes {
     
     return @[@(WYHQBillTypeFood),

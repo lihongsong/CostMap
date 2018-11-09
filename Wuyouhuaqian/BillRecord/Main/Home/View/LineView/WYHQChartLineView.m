@@ -7,6 +7,7 @@
 //
 
 #import "WYHQChartLineView.h"
+#import "WYHQBillTool.h"
 @import Charts;
 
 @interface WYHQChartLineView() <ChartViewDelegate>
@@ -73,6 +74,8 @@
     _chartView.pinchZoomEnabled = NO;
     _chartView.drawBarShadowEnabled = NO;
     _chartView.drawGridBackgroundEnabled = NO;
+    _chartView.rightAxis.drawAxisLineEnabled = NO;
+    _chartView.rightAxis.drawLabelsEnabled = NO;
     
     ChartXAxis *xAxis = _chartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
@@ -82,6 +85,7 @@
     _chartView.rightAxis.drawGridLinesEnabled = NO;
     
     _chartView.legend.enabled = NO;
+    _chartView.xAxis.labelTextColor = [UIColor clearColor];
     
     [self updateChartData];
 }
@@ -104,7 +108,7 @@
         [_chartView notifyDataSetChanged];
     } else {
         set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"DataSet"];
-        set1.colors = ChartColorTemplates.vordiplom;
+        set1.colors = [WYHQBillTool allBillTypesColor];// ChartColorTemplates.vordiplom;
         set1.drawValuesEnabled = NO;
         
         NSMutableArray *dataSets = [[NSMutableArray alloc] init];
@@ -118,7 +122,7 @@
     
     [_chartView setNeedsDisplay];
     
-    [_chartView animateWithYAxisDuration:3.0];
+    [_chartView animateWithYAxisDuration:0.5];
     
 }
 

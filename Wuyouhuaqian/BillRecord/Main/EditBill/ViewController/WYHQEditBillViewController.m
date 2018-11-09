@@ -10,9 +10,9 @@
 #import "WYHQEditBillToolBar.h"
 #import "WYHQLocation.h"
 #import "WYHQBillTool.h"
+#import "WYHQTranstionAnimationPop.h"
 
-
-@interface WYHQEditBillViewController ()<UITextFieldDelegate, UITextViewDelegate>
+@interface WYHQEditBillViewController () <UITextFieldDelegate, UITextViewDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *momeyTextField;
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
@@ -47,6 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [[self navigationController] setDelegate:self];
 }
 
 - (void)endEditing {
@@ -59,6 +60,7 @@
 }
 
 - (void)setupUI {
+    
     self.momeyTextField.hj_maxLength = 10;
     self.momeyTextField.delegate = self;
     [self.noteTextView hj_addPlaceHolder:@"备注"];
@@ -201,6 +203,16 @@
 
 - (void)textViewDidEndEditing:(UITextView *)textView {
     self.curruntInputView = textView;
+}
+
+#pragma mark -- UINavigationControllerDelegate --
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC{
+    if (operation == UINavigationControllerOperationPop) {
+        return [WYHQTranstionAnimationPop new];
+    }else{
+        return nil;
+    }
 }
 
 @end

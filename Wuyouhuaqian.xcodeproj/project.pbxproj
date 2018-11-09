@@ -20,7 +20,6 @@
 		5915182A21943746004B5B32 /* WYHQEditBillToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182921943746004B5B32 /* WYHQEditBillToolBar.xib */; };
 		5915182E2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182C2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m */; };
 		5915182F2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */; };
-		594B0EF021957BB0008585F5 /* A.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B0EEF21957BB0008585F5 /* A.swift */; };
 		6AB857D036ADDB2C2A9E4FD3 /* libPods-Wuyouhuaqian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */; };
 		82181665219518D900521E75 /* UNNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218165F219518D900521E75 /* UNNoDataView.m */; };
 		82181666219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 82181660219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m */; };
@@ -35,6 +34,11 @@
 		82B4B7072193F33D009A4B62 /* WYHQBillTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B4B7062193F33D009A4B62 /* WYHQBillTool.m */; };
 		82CD2BDE219588EE00E86371 /* A.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BDD219588EE00E86371 /* A.swift */; };
 		82CD2BE221958BD400E86371 /* WYHQHomeDateSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BE121958BD400E86371 /* WYHQHomeDateSelectButton.m */; };
+		82CD2BE62195A38A00E86371 /* WYHQBillLineTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BE52195A38A00E86371 /* WYHQBillLineTypeView.m */; };
+		82CD2BE82195A39500E86371 /* WYHQBillLineTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82CD2BE72195A39500E86371 /* WYHQBillLineTypeView.xib */; };
+		82CD2BEF2195AD9000E86371 /* WYHQTranstionAnimationPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BEE2195AD9000E86371 /* WYHQTranstionAnimationPush.m */; };
+		82CD2BF52195B00500E86371 /* UIViewController+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BF42195B00500E86371 /* UIViewController+Push.m */; };
+		82CD2BF82195B17200E86371 /* WYHQTranstionAnimationPop.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BF72195B17200E86371 /* WYHQTranstionAnimationPop.m */; };
 		82DC63812192E15F007421DE /* WuyouhuaqianTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC63802192E15F007421DE /* WuyouhuaqianTests.m */; };
 		82DC638C2192E15F007421DE /* WuyouhuaqianUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC638B2192E15F007421DE /* WuyouhuaqianUITests.m */; };
 		82DC65952192E275007421DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64C52192E275007421DE /* AppDelegate.m */; };
@@ -183,7 +187,6 @@
 		5915182B2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQWYHQEditBillToolBarCell.h; sourceTree = "<group>"; };
 		5915182C2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQWYHQEditBillToolBarCell.m; sourceTree = "<group>"; };
 		5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQWYHQEditBillToolBarCell.xib; sourceTree = "<group>"; };
-		594B0EEF21957BB0008585F5 /* A.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = A.swift; sourceTree = "<group>"; };
 		8218165F219518D900521E75 /* UNNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNNoDataView.m; sourceTree = "<group>"; };
 		82181660219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CYLTableViewPlaceHolder.m"; sourceTree = "<group>"; };
 		82181661219518D900521E75 /* UNNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNNoDataView.h; sourceTree = "<group>"; };
@@ -210,6 +213,15 @@
 		82CD2BDD219588EE00E86371 /* A.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = A.swift; sourceTree = "<group>"; };
 		82CD2BE021958BD400E86371 /* WYHQHomeDateSelectButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQHomeDateSelectButton.h; sourceTree = "<group>"; };
 		82CD2BE121958BD400E86371 /* WYHQHomeDateSelectButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQHomeDateSelectButton.m; sourceTree = "<group>"; };
+		82CD2BE42195A38A00E86371 /* WYHQBillLineTypeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillLineTypeView.h; sourceTree = "<group>"; };
+		82CD2BE52195A38A00E86371 /* WYHQBillLineTypeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillLineTypeView.m; sourceTree = "<group>"; };
+		82CD2BE72195A39500E86371 /* WYHQBillLineTypeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQBillLineTypeView.xib; sourceTree = "<group>"; };
+		82CD2BED2195AD8F00E86371 /* WYHQTranstionAnimationPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQTranstionAnimationPush.h; sourceTree = "<group>"; };
+		82CD2BEE2195AD9000E86371 /* WYHQTranstionAnimationPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQTranstionAnimationPush.m; sourceTree = "<group>"; };
+		82CD2BF32195B00500E86371 /* UIViewController+Push.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Push.h"; sourceTree = "<group>"; };
+		82CD2BF42195B00500E86371 /* UIViewController+Push.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Push.m"; sourceTree = "<group>"; };
+		82CD2BF62195B17200E86371 /* WYHQTranstionAnimationPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQTranstionAnimationPop.h; sourceTree = "<group>"; };
+		82CD2BF72195B17200E86371 /* WYHQTranstionAnimationPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQTranstionAnimationPop.m; sourceTree = "<group>"; };
 		82DC63642192E15E007421DE /* Wuyouhuaqian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wuyouhuaqian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DC63752192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DC637C2192E15F007421DE /* WuyouhuaqianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WuyouhuaqianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -591,6 +603,29 @@
 			path = DateSelectButton;
 			sourceTree = "<group>";
 		};
+		82CD2BE32195A35800E86371 /* BillLineTypeView */ = {
+			isa = PBXGroup;
+			children = (
+				82CD2BE42195A38A00E86371 /* WYHQBillLineTypeView.h */,
+				82CD2BE52195A38A00E86371 /* WYHQBillLineTypeView.m */,
+				82CD2BE72195A39500E86371 /* WYHQBillLineTypeView.xib */,
+			);
+			path = BillLineTypeView;
+			sourceTree = "<group>";
+		};
+		82CD2BE92195AB9C00E86371 /* Push&PopAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				82CD2BF62195B17200E86371 /* WYHQTranstionAnimationPop.h */,
+				82CD2BF72195B17200E86371 /* WYHQTranstionAnimationPop.m */,
+				82CD2BED2195AD8F00E86371 /* WYHQTranstionAnimationPush.h */,
+				82CD2BEE2195AD9000E86371 /* WYHQTranstionAnimationPush.m */,
+				82CD2BF32195B00500E86371 /* UIViewController+Push.h */,
+				82CD2BF42195B00500E86371 /* UIViewController+Push.m */,
+			);
+			path = "Push&PopAnimation";
+			sourceTree = "<group>";
+		};
 		82DC635B2192E15E007421DE = {
 			isa = PBXGroup;
 			children = (
@@ -703,6 +738,7 @@
 		82DC64CF2192E275007421DE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				82CD2BE32195A35800E86371 /* BillLineTypeView */,
 				82CD2BDF21958BAD00E86371 /* DateSelectButton */,
 				82B309DF2194096700284246 /* LineView */,
 				82B309DE2194095D00284246 /* PieView */,
@@ -877,6 +913,7 @@
 		82DC651F2192E275007421DE /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				82CD2BE92195AB9C00E86371 /* Push&PopAnimation */,
 				82B4B7042193F312009A4B62 /* WYHQBillTool */,
 				82DC660021930764007421DE /* PhotoManager */,
 				82DC65F92192FDDB007421DE /* PlistManager */,
@@ -1434,6 +1471,7 @@
 				5915181C219403D4004B5B32 /* PrivateAgreement.html in Resources */,
 				82DC662C21932267007421DE /* WYHQPageViewController.xib in Resources */,
 				82B309E821942FAB00284246 /* BillList.storyboard in Resources */,
+				82CD2BE82195A39500E86371 /* WYHQBillLineTypeView.xib in Resources */,
 				5915182F2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib in Resources */,
 				82DC659A2192E275007421DE /* HomeBaseTableViewCell.xib in Resources */,
 				82DC65EB2192E275007421DE /* Main.storyboard in Resources */,
@@ -1519,6 +1557,7 @@
 				82DC65E22192E275007421DE /* AAItemStyle.m in Sources */,
 				82DC65CF2192E275007421DE /* AAXAxis.m in Sources */,
 				82DC662B21932267007421DE /* WYHQIntroduceViewController.m in Sources */,
+				82CD2BEF2195AD9000E86371 /* WYHQTranstionAnimationPush.m in Sources */,
 				82DC66172193110B007421DE /* WYHQBillListViewController.m in Sources */,
 				5915182E2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m in Sources */,
 				82DC65BB2192E275007421DE /* DeviceHelp.m in Sources */,
@@ -1548,6 +1587,7 @@
 				82DC65DB2192E275007421DE /* AABar.m in Sources */,
 				82DC65B02192E275007421DE /* UIAlertView+Block.m in Sources */,
 				82DC65C22192E275007421DE /* WYHQBillModel.m in Sources */,
+				82CD2BF82195B17200E86371 /* WYHQTranstionAnimationPop.m in Sources */,
 				82DC65D92192E275007421DE /* AAOptions3d.m in Sources */,
 				82DC662A21932267007421DE /* WYHQScrollDisplayViewController.m in Sources */,
 				82DC65BD2192E275007421DE /* LNRiskNetReachability.m in Sources */,
@@ -1586,6 +1626,7 @@
 				82B309ED219439FC00284246 /* WYHQDaySelectedView.m in Sources */,
 				82DC65D12192E275007421DE /* AADataLabels.m in Sources */,
 				82DC65DE2192E275007421DE /* AAAnimation.m in Sources */,
+				82CD2BF52195B00500E86371 /* UIViewController+Push.m in Sources */,
 				82DC65BE2192E275007421DE /* DeviceTypes.m in Sources */,
 				5915180B2193D719004B5B32 /* WYHQSettingView.m in Sources */,
 				82DC65D42192E275007421DE /* AASubtitle.m in Sources */,
@@ -1617,6 +1658,7 @@
 				82DC65D72192E275007421DE /* AAColumn.m in Sources */,
 				82DC65C02192E275007421DE /* GetImagePath.m in Sources */,
 				82DC65A82192E275007421DE /* CircleIndicatorView.m in Sources */,
+				82CD2BE62195A38A00E86371 /* WYHQBillLineTypeView.m in Sources */,
 				82B4B7072193F33D009A4B62 /* WYHQBillTool.m in Sources */,
 				82DC65AF2192E275007421DE /* UIButton+Count.m in Sources */,
 				82DC65C62192E275007421DE /* WYHQBaseNavigationController.m in Sources */,

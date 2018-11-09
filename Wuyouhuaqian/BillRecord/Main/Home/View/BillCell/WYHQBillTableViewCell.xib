@@ -119,6 +119,8 @@
             <connections>
                 <outlet property="bigTitleBaseVw" destination="rzO-Ga-chJ" id="RMA-cg-R5S"/>
                 <outlet property="bigTitleLb" destination="rPP-mX-j8O" id="7yj-EU-14W"/>
+                <outlet property="cityLb" destination="d2J-hv-yLe" id="oZn-va-x2y"/>
+                <outlet property="dateLb" destination="LBv-W0-YW3" id="9Oj-33-5au"/>
                 <outlet property="iconIV" destination="9Kw-nU-pRn" id="iVs-xG-0an"/>
                 <outlet property="moneyLb" destination="Yxr-kA-DCs" id="2RX-bY-DKY"/>
                 <outlet property="themeLineVw" destination="ATR-pX-X4Y" id="Rf0-66-Kyc"/>

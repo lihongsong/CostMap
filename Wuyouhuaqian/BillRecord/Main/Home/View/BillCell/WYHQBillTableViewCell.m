@@ -24,6 +24,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *bigTitleLb;
 
+@property (weak, nonatomic) IBOutlet UILabel *cityLb;
+
+@property (weak, nonatomic) IBOutlet UILabel *dateLb;
+
 @end
 
 @implementation WYHQBillTableViewCell
@@ -48,6 +52,9 @@
     _themeLineVw.backgroundColor = [WYHQBillTool colorWithType:model.s_type_id.integerValue];
     _iconIV.image = [UIImage imageNamed:[WYHQBillTool typePressedImage:[model.s_type_id integerValue]]];
     _bigTitleLb.text = model.s_type_name;
+    _cityLb.text = model.s_city;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[model.s_time doubleValue]];
+    _dateLb.text = [NSDate hj_stringWithDate:date format:@"HH:mm"];
 }
 
 - (void)setTableType:(WYHQBillTableType)tableType {

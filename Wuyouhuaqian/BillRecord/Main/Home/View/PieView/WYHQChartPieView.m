@@ -54,16 +54,29 @@
 - (void)setModels:(NSArray<WYHQBillModel *> *)models {
     _models = models;
     
+    // 总金额
+    __block double sum = 0.0f;
+    [self.models enumerateObjectsUsingBlock:^(WYHQBillModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        sum += [obj.s_money doubleValue];
+    }];
+    
     NSMutableArray *values = [[NSMutableArray alloc] init];
     
     for (int i = 0; i < models.count; i++) {
         
         WYHQBillModel *model = models[i];
         CGFloat money = fabs([model.s_money doubleValue]);
-        [values addObject:[[PieChartDataEntry alloc] initWithValue:money label:parties[i % parties.count] icon: [UIImage imageNamed:@"icon"]]];
+        NSString *percentStr;
+        if (sum == 0.0f) {
+            percentStr = @"0%";
+        } else {
+            percentStr = [NSString stringWithFormat:@"%.2f%@",fabs([model.s_money doubleValue] / sum * 100), @"%"];
+        }
+        NSString *titleStr = [NSString stringWithFormat:@"%@    %@",parties[i % parties.count], percentStr];
+        [values addObject:[[PieChartDataEntry alloc] initWithValue:money label:titleStr icon: [UIImage imageNamed:@"icon"]]];
     }
     
-    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@"分 类"];
+    PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:nil];
     
     dataSet.sliceSpace = 2;
     
@@ -74,15 +87,7 @@
     
     // add a lot of colors
     
-    NSMutableArray *colors = [[NSMutableArray alloc] init];
-    [colors addObjectsFromArray:ChartColorTemplates.vordiplom];
-    [colors addObjectsFromArray:ChartColorTemplates.joyful];
-    [colors addObjectsFromArray:ChartColorTemplates.colorful];
-    [colors addObjectsFromArray:ChartColorTemplates.liberty];
-    [colors addObjectsFromArray:ChartColorTemplates.pastel];
-    [colors addObject:[UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]];
-    
-    dataSet.colors = colors;
+    dataSet.colors = [WYHQBillTool allBillTypesColor];
     
     PieChartData *data = [[PieChartData alloc] initWithDataSet:dataSet];
     
@@ -94,11 +99,6 @@
     [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:pFormatter]];
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
     [data setValueTextColor:UIColor.whiteColor];
-    
-    __block double sum = 0.0f;
-    [self.models enumerateObjectsUsingBlock:^(WYHQBillModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        sum += [obj.s_money doubleValue];
-    }];
     
     NSString *specialMoney = [NSString stringWithFormat:@"¥%.2f", fabs(sum)];
     
@@ -162,6 +162,9 @@
     l.verticalAlignment = ChartLegendVerticalAlignmentTop;
     l.orientation = ChartLegendOrientationVertical;
     l.drawInside = NO;
+    l.font = [UIFont systemFontOfSize:9.f];
+    l.textColor = HJHexColor(0x666666);
+    
     l.xEntrySpace = 10.0;
     l.yEntrySpace = 12.0;
     l.yOffset = 20.0;
@@ -210,5 +213,28 @@
 
 
 #pragma mark - Event & Target Methods
+
+#pragma mark - Super Method
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGFloat totalHeight = self.hj_height;
+    
+    CGFloat fontSize = totalHeight * 9 / 200.0;
+    
+    CGFloat ySpace = totalHeight * 12.0 / 260.0;
+    
+    ChartLegend *l = _chartView.legend;
+    l.font = [UIFont systemFontOfSize:fontSize];
+    l.textColor = HJHexColor(0x666666);
+    
+    l.xEntrySpace = 10.0;
+    l.yEntrySpace = ySpace;
+    l.yOffset = 20.0;
+    l.xOffset = 20.0;
+    
+    [_chartView setNeedsDisplay];
+}
 
 @end

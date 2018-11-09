@@ -54,7 +54,7 @@
 
 - (void)setUpUI {
     
-    NSDate *today = [NSDate hj_getToday];
+    NSDate *today = [NSDate date];
     [self setCurrentDate:today];
 }
 

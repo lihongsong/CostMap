@@ -42,6 +42,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray *)allBillTypesName;
 
++ (NSArray *)allBillTypesColor;
+
 + (NSString *)billTimeStringWithBillTime:(NSDate *)billTime;
 
 + (NSDate *)billTimeWithBillTimeString:(NSString *)billTime;

@@ -25,12 +25,16 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  开始跳动动画
  */
-- (void)startLeapAnimate;
+- (void)startLeapAnimation;
 
 /**
  结束跳动动画
  */
-- (void)stopLeapAnimate;
+- (void)stopLeapAnimation;
+
+- (void)startShakeAnimation;
+
+- (void)stopShakeAnimation;
 
 @end
 

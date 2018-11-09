@@ -11,6 +11,7 @@
 #import "WYHQBillTool.h"
 
 @interface WYHQWYHQEditBillToolBarCell()
+
 @property (weak, nonatomic) IBOutlet UIImageView *typeImageView;
 
 @end

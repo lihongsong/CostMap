@@ -147,6 +147,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addBillBtn" destination="sD4-tL-BuQ" id="uTC-XZ-ZTF"/>
                         <outlet property="arrowBt" destination="83f-JK-mcO" id="PHt-hA-gG8"/>
                         <outlet property="changeBt" destination="ui7-Dn-sI1" id="r9U-BF-Dft"/>
                         <outlet property="chartBaseVw" destination="iHs-7U-rIR" id="NRb-L2-COd"/>

@@ -17,16 +17,20 @@
 #import "UNNoDataView.h"
 #import "WYHQHomeDateSelectButton.h"
 #import "WYHQBillModel+WYHQService.h"
+#import "UIViewController+Push.h"
 
+#import "WYHQTranstionAnimationPush.h"
 #import "CLCustomDatePickerView.h"
 
-@interface WYHQHomeViewController ()
+@interface WYHQHomeViewController () <UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
 
 @property (strong, nonatomic) WYHQChartLineView *lineView;
 
 @property (nonatomic, strong) WYHQHomeDateSelectButton *dateSelectBtn;
+
+@property (weak, nonatomic) IBOutlet WYHQLeapButton *addBillBtn;
 
 @property (strong, nonatomic) WYHQChartPieView *pieView;
 
@@ -86,6 +90,8 @@
     [self requestData];
     
     [self setUpNavColor];
+    
+    [[self navigationController] setDelegate:self];
 }
 
 - (void)setpNavBarWhenViewWillAppear {
@@ -163,6 +169,10 @@
 
 - (void)setUpUI {
     
+    self.animateRect = _addBillBtn.frame;
+    
+    self.navigationController.delegate = self;
+    
     self.tableHeaderView.backgroundColor = WYHQThemeColor;
     
     [self setUpNavColor];
@@ -227,8 +237,13 @@
                                     if (allBillArray.count == 0) {
                                         self.tableView.models = @[];
                                         [self.tableView cyl_reloadData];
+                                        [self.addBillBtn startLeapAnimation];
+                                        [self.addBillBtn stopShakeAnimation];
                                         return ;
                                     }
+                                    
+                                    [self.addBillBtn startShakeAnimation];
+                                    [self.addBillBtn stopLeapAnimation];
                                 
                                     double sum;
                                     NSArray *tempArray = [WYHQBillModel templateBillArrayWithBills:result sumMoney:&sum];
@@ -311,6 +326,20 @@
             [self.pieView animate];
         }
     }];
+}
+
+#pragma mark -- UINavigationControllerDelegate
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    
+    if (operation == UINavigationControllerOperationPush) {
+        return [WYHQTranstionAnimationPush new];
+    }else{
+        return nil;
+    }
 }
 
 @end
