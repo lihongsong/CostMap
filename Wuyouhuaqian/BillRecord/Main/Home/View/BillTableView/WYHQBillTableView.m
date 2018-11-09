@@ -9,6 +9,7 @@
 #import "WYHQBillTableView.h"
 #import "WYHQBillModel.h"
 #import "WYHQBillTableViewCell.h"
+#import "UNNoDataView.h"
 
 @interface WYHQBillTableView()<UITableViewDataSource, UITableViewDelegate>
 
@@ -53,6 +54,21 @@
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return self.enableDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        WYHQBillModel *model = self.models[indexPath.row];
+        !_deleteAction?:_deleteAction(editingStyle, model);
+    }
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     WYHQBillTableViewCell *cell = [WYHQBillTableViewCell cellWithTableView:tableView
@@ -71,6 +87,18 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80.f;
+}
+
+#pragma mark - CYLTableViewPlaceHolderDelegate
+
+/**
+ *  无数据时的占位视图
+ */
+- (UIView *)makePlaceHolderView {
+    
+    return [UNNoDataView viewAddedTo:self
+                           imageName:@"bill_icon_nodata"
+                               title:@"您还没有任何账单"];
 }
 
 @end

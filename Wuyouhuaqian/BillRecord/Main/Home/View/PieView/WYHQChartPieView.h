@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WYHQChartPieView : UIView
 
-@property (copy, nonatomic) NSString *money;
+@property (copy, nonatomic) NSArray<WYHQBillModel *> *models;
 
 - (void)animate;
 

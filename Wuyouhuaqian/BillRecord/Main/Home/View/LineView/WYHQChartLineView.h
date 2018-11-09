@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WYHQChartLineView : UIView
 
+@property (copy, nonatomic) NSArray<WYHQBillModel *> *models;
+
 - (void)animate;
 
 @end

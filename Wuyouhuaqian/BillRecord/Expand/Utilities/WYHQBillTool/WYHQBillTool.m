@@ -13,22 +13,22 @@
 + (UIColor *)colorWithType:(WYHQBillType)billType {
     
     switch (billType) {
-        case WYHQBillTypeCloth:
+        case WYHQBillTypeFood:
             return [UIColor orangeColor];
             break;
-        case WYHQBillTypeFood:
+        case WYHQBillTypeBuy:
             return [UIColor redColor];
             break;
-        case WYHQBillTypeHome:
+        case WYHQBillTypeFriend:
             return [UIColor yellowColor];
             break;
-        case WYHQBillTypeVehicles:
+        case WYHQBillTypeHome:
             return [UIColor purpleColor];
             break;
-        case WYHQBillTypeBuy:
+        case WYHQBillTypeEduca:
             return [UIColor grayColor];
             break;
-        case WYHQBillTypeG:
+        case WYHQBillTypeMedic:
             return [UIColor blueColor];
             break;
             
@@ -43,32 +43,58 @@
 + (NSString *)classifyWithIndex:(WYHQBillType)index {
     
     switch (index) {
-        case 0: return  @"餐饮";
-        case 1: return  @"购物";
-        case 2: return  @"交友";
-        case 3: return  @"游玩";
-        case 4: return  @"居家";
-        case 5: return  @"教育";
-        case 6: return  @"医疗";
-        default: return @"其他";
+        case 0: return  WYHQBillTypeFoodName;
+        case 1: return  WYHQBillTypeBuyName;
+        case 2: return  WYHQBillTypeFriendName;
+        case 3: return  WYHQBillTypePlayName;
+        case 4: return  WYHQBillTypeHomeName;
+        case 5: return  WYHQBillTypeEducaName;
+        case 6: return  WYHQBillTypeMedicName;
+        default: return WYHQBillTypeOtherName;
     }
 }
 
-+ (NSInteger)indexWithClassify:(NSString *)classify {
++ (NSArray *)allBillTypesName {
     
-    if ([classify isEqualToString:@"餐饮"]) {
+    return @[WYHQBillTypeFoodName,
+             WYHQBillTypeBuyName,
+             WYHQBillTypeFriendName,
+             WYHQBillTypePlayName,
+             WYHQBillTypeHomeName,
+             WYHQBillTypeEducaName,
+             WYHQBillTypeMedicName,
+             WYHQBillTypeOtherName
+             ];
+}
+
++ (NSArray *)allBillTypes {
+    
+    return @[@(WYHQBillTypeFood),
+             @(WYHQBillTypeBuy),
+             @(WYHQBillTypeFriend),
+             @(WYHQBillTypePlay),
+             @(WYHQBillTypeHome),
+             @(WYHQBillTypeEduca),
+             @(WYHQBillTypeMedic),
+             @(WYHQBillTypeOther)
+             ];
+}
+
++ (WYHQBillType)indexWithClassify:(NSString *)classify {
+    
+    if ([classify isEqualToString:WYHQBillTypeFoodName]) {
         return 0;
-    } else if ([classify isEqualToString:@"购物"]) {
+    } else if ([classify isEqualToString:WYHQBillTypeBuyName]) {
         return 1;
-    } else if ([classify isEqualToString:@"交友"]) {
+    } else if ([classify isEqualToString:WYHQBillTypeFriendName]) {
         return 2;
-    } else if ([classify isEqualToString:@"游玩"]) {
+    } else if ([classify isEqualToString:WYHQBillTypePlayName]) {
         return 3;
-    } else if ([classify isEqualToString:@"居家"]) {
+    } else if ([classify isEqualToString:WYHQBillTypeHomeName]) {
         return 4;
-    } else if ([classify isEqualToString:@"教育"]) {
+    } else if ([classify isEqualToString:WYHQBillTypeEducaName]) {
         return 5;
-    } else if ([classify isEqualToString:@"医疗"]) {
+    } else if ([classify isEqualToString:WYHQBillTypeMedicName]) {
         return 6;
     } else {
         //其他
@@ -77,19 +103,19 @@
 }
 
 + (NSString *)getTypeImage:(NSString *)type {
-    if ([type isEqualToString:@"餐饮"]) {
+    if ([type isEqualToString:WYHQBillTypeFoodName]) {
         return @"restaurant_ic";
-    } else if ([type isEqualToString:@"购物"]) {
+    } else if ([type isEqualToString:WYHQBillTypeBuyName]) {
         return @"shop_ic";
-    } else if ([type isEqualToString:@"交友"]) {
+    } else if ([type isEqualToString:WYHQBillTypeFriendName]) {
         return @"friend_ic";
-    } else if ([type isEqualToString:@"游玩"]) {
+    } else if ([type isEqualToString:WYHQBillTypePlayName]) {
         return @"play_ic";
-    } else if ([type isEqualToString:@"居家"]) {
+    } else if ([type isEqualToString:WYHQBillTypeHomeName]) {
         return @"home_ic";
-    } else if ([type isEqualToString:@"教育"]) {
+    } else if ([type isEqualToString:WYHQBillTypeEducaName]) {
         return @"education_ic";
-    } else if ([type isEqualToString:@"医疗"]) {
+    } else if ([type isEqualToString:WYHQBillTypeMedicName]) {
         return @"medical_ic";
     } else {//其他
         return @"more_ic";

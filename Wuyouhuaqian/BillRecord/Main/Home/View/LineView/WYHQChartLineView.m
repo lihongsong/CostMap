@@ -37,7 +37,11 @@
 
 #pragma mark - Getter & Setter Methods
 
-
+- (void)setModels:(NSArray<WYHQBillModel *> *)models {
+    _models = models;
+    
+    [self updateChartData];
+}
 
 #pragma mark - Public Method
 
@@ -50,13 +54,7 @@
 
 - (void)setUp {
     
-    parties = @[
-                @"衣", @"食", @"住", @"行", @"Party E", @"Party F",
-                @"Party G", @"Party H", @"Party I", @"Party J", @"Party K", @"Party L",
-                @"Party M", @"Party N", @"Party O", @"Party P", @"Party Q", @"Party R",
-                @"Party S", @"Party T", @"Party U", @"Party V", @"Party W", @"Party X",
-                @"Party Y", @"Party Z"
-                ];
+    parties = [WYHQBillTool allBillTypesName];
     
     _chartView = [BarChartView new];
     
@@ -70,6 +68,7 @@
     
     _chartView.chartDescription.enabled = NO;
     
+    _chartView.userInteractionEnabled = NO;
     _chartView.maxVisibleCount = 60;
     _chartView.pinchZoomEnabled = NO;
     _chartView.drawBarShadowEnabled = NO;
@@ -89,30 +88,21 @@
 
 - (void)updateChartData {
     
-    [self setDataCount:8 range:100];
-}
-
-- (void)setDataCount:(int)count range:(double)range
-{
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < count; i++)
-    {
-        double mult = (range + 1);
-        double val = (double) (arc4random_uniform(mult)) + mult / 3.0;
+    for (int i = 0; i < _models.count; i++) {
+        WYHQBillModel *model = _models[i];
+        double val = fabs([model.s_money floatValue]);
         [yVals addObject:[[BarChartDataEntry alloc] initWithX:i y:val]];
     }
     
     BarChartDataSet *set1 = nil;
-    if (_chartView.data.dataSetCount > 0)
-    {
+    if (_chartView.data.dataSetCount > 0) {
         set1 = (BarChartDataSet *)_chartView.data.dataSets[0];
         set1.values = yVals;
         [_chartView.data notifyDataChanged];
         [_chartView notifyDataSetChanged];
-    }
-    else
-    {
+    } else {
         set1 = [[BarChartDataSet alloc] initWithValues:yVals label:@"DataSet"];
         set1.colors = ChartColorTemplates.vordiplom;
         set1.drawValuesEnabled = NO;
@@ -129,7 +119,9 @@
     [_chartView setNeedsDisplay];
     
     [_chartView animateWithYAxisDuration:3.0];
+    
 }
+
 
 
 #pragma mark - Notification Method

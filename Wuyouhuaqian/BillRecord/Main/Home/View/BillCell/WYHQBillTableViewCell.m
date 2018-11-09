@@ -38,7 +38,7 @@
     _themeLineVw.backgroundColor = [WYHQBillTool colorWithType:model.s_type_id.integerValue];
     
     _titleLb.text = model.s_type_name;
-    _moneyLb.text = model.s_money;
+    _moneyLb.text = model.s_money ?: @"-0.00";
 }
 
 #pragma mark - Public Method

@@ -49,26 +49,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1l-Th-psP">
-                                <rect key="frame" x="80" y="11" width="27" height="16"/>
+                                <rect key="frame" x="80" y="9" width="27" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="11:24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LBv-W0-YW3">
-                                <rect key="frame" x="98" y="31.5" width="32" height="16"/>
+                                <rect key="frame" x="98" y="33.5" width="32" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bill_time" translatesAutoresizingMaskIntoConstraints="NO" id="7em-iW-sWr">
-                                <rect key="frame" x="80" y="33" width="13" height="13"/>
+                                <rect key="frame" x="80" y="35" width="13" height="13"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="13" id="N82-9M-m90"/>
                                     <constraint firstAttribute="width" constant="13" id="Yrz-Hp-8yP"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上海" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2J-hv-yLe">
-                                <rect key="frame" x="150" y="31.5" width="27" height="16"/>
+                                <rect key="frame" x="150" y="33.5" width="27" height="16"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -87,11 +87,11 @@
                             <constraint firstItem="LBv-W0-YW3" firstAttribute="leading" secondItem="7em-iW-sWr" secondAttribute="trailing" constant="5" id="QZG-Vr-3JK"/>
                             <constraint firstAttribute="bottom" secondItem="qYL-g9-68x" secondAttribute="bottom" constant="8" id="X7Q-GC-GBI"/>
                             <constraint firstItem="qYL-g9-68x" firstAttribute="leading" secondItem="9Kw-nU-pRn" secondAttribute="trailing" constant="12" id="Xac-JP-ami"/>
-                            <constraint firstItem="7em-iW-sWr" firstAttribute="top" secondItem="x6j-6n-ej4" secondAttribute="centerY" constant="3" id="YQb-y1-bJc"/>
+                            <constraint firstItem="7em-iW-sWr" firstAttribute="top" secondItem="x6j-6n-ej4" secondAttribute="centerY" constant="5" id="YQb-y1-bJc"/>
                             <constraint firstItem="w1l-Th-psP" firstAttribute="leading" secondItem="qYL-g9-68x" secondAttribute="trailing" constant="12" id="f77-Vc-0pP"/>
                             <constraint firstItem="7em-iW-sWr" firstAttribute="leading" secondItem="w1l-Th-psP" secondAttribute="leading" id="fE0-Ul-SaR"/>
                             <constraint firstItem="d2J-hv-yLe" firstAttribute="centerY" secondItem="LBv-W0-YW3" secondAttribute="centerY" id="lcH-bn-XDw"/>
-                            <constraint firstItem="w1l-Th-psP" firstAttribute="bottom" secondItem="x6j-6n-ej4" secondAttribute="centerY" constant="-3" id="oBX-an-8SF"/>
+                            <constraint firstItem="w1l-Th-psP" firstAttribute="bottom" secondItem="x6j-6n-ej4" secondAttribute="centerY" constant="-5" id="oBX-an-8SF"/>
                             <constraint firstItem="9Kw-nU-pRn" firstAttribute="centerY" secondItem="x6j-6n-ej4" secondAttribute="centerY" id="qOt-vn-LBw"/>
                             <constraint firstItem="9Kw-nU-pRn" firstAttribute="leading" secondItem="ATR-pX-X4Y" secondAttribute="trailing" constant="12" id="vv1-9W-5pD"/>
                         </constraints>
@@ -111,7 +111,7 @@
                 <outlet property="themeLineVw" destination="ATR-pX-X4Y" id="Rf0-66-Kyc"/>
                 <outlet property="titleLb" destination="w1l-Th-psP" id="I45-Ug-x83"/>
             </connections>
-            <point key="canvasLocation" x="-63.200000000000003" y="249.1754122938531"/>
+            <point key="canvasLocation" x="-175" y="235"/>
         </tableViewCell>
     </objects>
     <resources>

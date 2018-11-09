@@ -109,8 +109,18 @@
         if (![self isTableExist:tableName]) {
             [self creatNewDataBase:tableName];
         }
-              NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (s_time, s_type_name, s_money, s_type_id, s_desc ,s_year ,s_month, s_day, s_city) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)", [self setTableName:tableName]];
-            [self.fmdb executeUpdate:sql,model.s_time ,model.s_type_name,model.s_money,model.s_type_id,model.s_desc,model.s_year,model.s_month,model.s_day,model.s_city];
+        NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (s_time, s_type_name, s_money, s_type_id, s_desc ,s_year ,s_month, s_day, s_city) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)", [self setTableName:tableName]];
+        __unused BOOL result =
+        [self.fmdb executeUpdate:sql,model.s_time ,
+         model.s_type_name,
+         model.s_money,
+         model.s_type_id,
+         model.s_desc,
+         model.s_year,
+         model.s_month,
+         model.s_day,
+         model.s_city];
+        
         //[self.fmdb close];
     }
 }
@@ -125,11 +135,34 @@
         NSLog(@"打开数据库失败!!!");
         return;
     }
-    NSString *sql;
-    sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE s_year= %@ AND s_month= %@ AND s_day= %@", [self setTableName:tableName], year, month, day];
+    
+    NSMutableString *sqlString = [NSMutableString stringWithFormat:@"SELECT * FROM %@ WHERE ", [self setTableName:tableName]];
+    
+    if (!year && !month && !day) {
+        !resultAction?:resultAction( nil, [NSError errorWithDomain:@"错误" code:0 userInfo:nil]);
+        return ;
+    }
+    
+    if (year) {
+        [sqlString appendString:[NSString stringWithFormat:@"s_year= %@",year]];
+    }
+    
+    if (month) {
+        if (year) {
+            [sqlString appendString:@" AND "];
+        }
+        [sqlString appendString:[NSString stringWithFormat:@"s_month= %@",month]];
+    }
+    
+    if (day) {
+        if (year || month) {
+            [sqlString appendString:@" AND "];
+        }
+        [sqlString appendString:[NSString stringWithFormat:@"s_day= %@",day]];
+    }
     
     // 1.执行查询语句
-    FMResultSet *resultSet = [self.fmdb executeQuery:sql];
+    FMResultSet *resultSet = [self.fmdb executeQuery:sqlString];
     
     // 2.遍历结果
     NSMutableArray *dataArr = [[NSMutableArray alloc]init];
@@ -244,7 +277,7 @@
     return [self searchData:nil tableName:tableName];
 }
 
-- (NSMutableArray *)searchAllData {
+- (NSMutableArray <WYHQBillModel *> *)searchAllData {
     if ([self.fmdb open]) {
         
         // 根据请求参数查询数据

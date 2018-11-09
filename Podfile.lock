@@ -99,7 +99,7 @@ SPEC REPOS:
     - HJWebView
   http://172.16.0.245:2345/Apple_SDK/iOS_Specs.git:
     - RCMobClick
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - AFNetworking
     - CFYNavigationBarTransition
     - Charts
@@ -136,4 +136,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 1a9bb6c52dd93fff19d115546c31b1bfa817f460
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.5.0

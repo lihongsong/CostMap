@@ -38,28 +38,16 @@
 
 #pragma mark - Getter & Setter Methods
 
-
-
-#pragma mark - Public Method
-
-- (void)animate {
-//    [_chartView animateWithXAxisDuration:1.0 yAxisDuration:1.0];
-    [_chartView animateWithXAxisDuration:1.0 easingOption:ChartEasingOptionEaseInOutSine];
-}
-
-#pragma mark - Private Method
-
-
-
-- (void)setDataCount:(int)count range:(double)range
-{
-    double mult = range;
+- (void)setModels:(NSArray<WYHQBillModel *> *)models {
+    _models = models;
     
     NSMutableArray *values = [[NSMutableArray alloc] init];
     
-    for (int i = 0; i < count; i++)
-    {
-        [values addObject:[[PieChartDataEntry alloc] initWithValue:(arc4random_uniform(mult) + mult / 5) label:parties[i % parties.count] icon: [UIImage imageNamed:@"icon"]]];
+    for (int i = 0; i < models.count; i++) {
+        
+        WYHQBillModel *model = models[i];
+        CGFloat money = fabs([model.s_money doubleValue]);
+        [values addObject:[[PieChartDataEntry alloc] initWithValue:money label:parties[i % parties.count] icon: [UIImage imageNamed:@"icon"]]];
     }
     
     PieChartDataSet *dataSet = [[PieChartDataSet alloc] initWithValues:values label:@"分 类"];
@@ -67,6 +55,7 @@
     dataSet.sliceSpace = 2;
     
     dataSet.drawIconsEnabled = NO;
+    dataSet.drawValuesEnabled = NO;
     
     dataSet.iconsOffset = CGPointMake(0, 40);
     
@@ -95,17 +84,21 @@
     
     _chartView.data = data;
     [_chartView highlightValues:nil];
+    
+    [_chartView animateWithXAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
 }
+
+#pragma mark - Public Method
+
+- (void)animate {
+    [_chartView animateWithXAxisDuration:1.0 easingOption:ChartEasingOptionEaseInOutSine];
+}
+
+#pragma mark - Private Method
 
 - (void)setUp {
     
-    parties = @[
-                @"Party A", @"Party B", @"Party C", @"Party D", @"Party E", @"Party F",
-                @"Party G", @"Party H", @"Party I", @"Party J", @"Party K", @"Party L",
-                @"Party M", @"Party N", @"Party O", @"Party P", @"Party Q", @"Party R",
-                @"Party S", @"Party T", @"Party U", @"Party V", @"Party W", @"Party X",
-                @"Party Y", @"Party Z"
-                ];
+    parties = [WYHQBillTool allBillTypesName];
     
     _chartView = [PieChartView new];
     
@@ -132,18 +125,15 @@
     // entry label styling
     _chartView.entryLabelColor = UIColor.whiteColor;
     _chartView.entryLabelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.f];
-    
-    // FIXME
-    // 数量 范围
-    [self setDataCount:8 range:100];
-    
-    [_chartView animateWithXAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
 }
 
 - (void)setupPieChartView:(PieChartView *)chartView {
     
+    // 设置不可交互
+    chartView.userInteractionEnabled = NO;
     chartView.usePercentValuesEnabled = NO;
     chartView.drawSlicesUnderHoleEnabled = NO;
+    chartView.drawEntryLabelsEnabled = NO;
     chartView.holeRadiusPercent = 0.58;
     chartView.transparentCircleRadiusPercent = 0.61;
     chartView.chartDescription.enabled = NO;
@@ -155,7 +145,7 @@
     paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
-    NSString *specialMoney = [NSString stringWithFormat:@"¥%@", self.money ?: @"0"];
+    NSString *specialMoney = [NSString stringWithFormat:@"¥%@", @"0"];
     NSString *enterString = [NSString stringWithFormat:@"支出\n%@", specialMoney];
     
     NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:enterString];

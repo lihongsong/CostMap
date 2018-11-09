@@ -14,13 +14,15 @@
 #import "WYHQChartPieView.h"
 #import "WYHQLeapButton.h"
 #import "WYHQSettingView.h"
+#import "UNNoDataView.h"
 
 #import "CLCustomDatePickerView.h"
 
 @interface WYHQHomeViewController ()
 
 @property (strong, nonatomic) WYHQChartLineView *lineView;
-@property (weak, nonatomic) IBOutlet UILabel *dateLb;
+
+@property (nonatomic, strong) UIButton *dateSelectBtn;
 
 @property (strong, nonatomic) WYHQChartPieView *pieView;
 
@@ -32,11 +34,14 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *arrowBt;
 
-@property (weak, nonatomic) IBOutlet UIImageView *arrowIV;
-
 @property (assign, nonatomic) BOOL isArrowUp;
 
 @property (weak, nonatomic) IBOutlet UIButton *moreBt;
+
+/**
+ 头部视图
+ */
+@property (weak, nonatomic) IBOutlet UIView *headerView;
 
 /**
  年份
@@ -67,12 +72,12 @@
     
     [self setUpUI];
     
-    [self requestData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self requestData];
 }
 
 - (void)setpNavBarWhenViewWillAppear {
@@ -137,7 +142,7 @@
     animation.removedOnCompletion = NO;
     
     // 添加动画
-    [_arrowIV.layer addAnimation:animation forKey:@"rotate-layer"];
+    [_dateSelectBtn.imageView.layer addAnimation:animation forKey:@"rotate-layer"];
 }
 
 - (void)setUpUI {
@@ -151,6 +156,19 @@
                                                                target:self
                                                                action:@selector(setBtnClick)];
     
+    UIView *dateView = [UIView new];
+    dateView.frame = CGRectMake(0, 0, 100, 40);
+    
+    _dateSelectBtn = [UIButton new];
+    [_dateSelectBtn setFrame:CGRectMake(0, 0, 100, 40)];
+    [_dateSelectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_dateSelectBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
+    [_dateSelectBtn setImage:[UIImage imageNamed:@"home_picker_arrow"] forState:UIControlStateNormal];
+    [_dateSelectBtn addTarget:self action:@selector(dateBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *dateItem = [[UIBarButtonItem alloc] initWithCustomView:_dateSelectBtn];
+    
+    self.navigationItem.rightBarButtonItem = dateItem;
     self.navigationItem.leftBarButtonItem = setItem;
     
     [_chartBaseVw addSubview:self.lineView];
@@ -173,55 +191,60 @@
     _year = [today hj_year];
     _month = [today hj_month];
     
-    self.dateLb.text = [self dateString];
+    [_dateSelectBtn setTitle:[self dateString] forState:UIControlStateNormal];
 }
 
 - (void)requestData {
     
-    self.dateLb.text = [self dateString];
+    [_dateSelectBtn setTitle:[self dateString] forState:UIControlStateNormal];
     
-    WYHQBillModel *model = [WYHQBillModel new];
-    model.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model.s_money = @"-9000";
-    model.s_type_name = @"衣服";
-    
-    WYHQBillModel *model1 = [WYHQBillModel new];
-    model1.s_type_id = @(WYHQBillTypeCloth).stringValue;
-    model1.s_money = @"-300";
-    model1.s_type_name = @"衣服";
-    
-    WYHQBillModel *model2 = [WYHQBillModel new];
-    model2.s_type_id = @(WYHQBillTypeVehicles).stringValue;
-    model2.s_money = @"-700";
-    model2.s_type_name = @"衣服";
-    
-    WYHQBillModel *model3 = [WYHQBillModel new];
-    model3.s_type_id = @(WYHQBillTypeHome).stringValue;
-    model3.s_money = @"-20";
-    model3.s_type_name = @"衣服";
-    
-    WYHQBillModel *model4 = [WYHQBillModel new];
-    model4.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model4.s_money = @"-11100";
-    model4.s_type_name = @"衣服";
-    
-    WYHQBillModel *model5 = [WYHQBillModel new];
-    model5.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model5.s_money = @"-11100";
-    model5.s_type_name = @"衣服";
-    
-    WYHQBillModel *model6 = [WYHQBillModel new];
-    model6.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model6.s_money = @"-11100";
-    model6.s_type_name = @"衣服";
-    
-    WYHQBillModel *model7 = [WYHQBillModel new];
-    model7.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model7.s_money = @"-11100";
-    model7.s_type_name = @"衣服";
-    
-    _tableView.models = @[model, model1, model2, model3, model4, model5, model6, model7];
-    [_tableView reloadData];
+    [[WYHQSQLManager share] searchData:kSQLTableName
+                                  year:@(self.year).stringValue
+                                 month:@(self.month).stringValue
+                                   day:nil
+                                result:^(NSMutableArray<WYHQBillModel *> *result, NSError *error) {
+                                    
+                                    NSArray *allBillArray = result;
+                                    // 无数据
+                                    if (allBillArray.count == 0) {
+                                        self.tableView.models = @[];
+                                        [self.tableView cyl_reloadData];
+                                        return ;
+                                    }
+                                    
+                                    NSArray *billTypes = [WYHQBillTool allBillTypes];
+                                    
+                                    NSMutableArray *tempArray = [NSMutableArray array];
+                                    
+                                    [billTypes enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                                        WYHQBillModel *model = [WYHQBillModel new];
+                                        model.s_type_id = [obj stringValue];
+                                        model.s_type_name = [WYHQBillTool classifyWithIndex:[obj integerValue]];
+                                        [tempArray addObject:model];
+                                    }];
+                                    
+                                    [allBillArray enumerateObjectsUsingBlock:^(WYHQBillModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
+                                        NSInteger index = [model.s_type_id integerValue];
+                                        
+                                        if (index >= tempArray.count) {
+                                            return ;
+                                        }
+                                        
+                                        WYHQBillModel *sumModel = tempArray[index];
+                                        sumModel.s_money = [NSString stringWithFormat:@"%.2f", ([sumModel.s_money floatValue] + [model.s_money floatValue])];
+                                    }];
+                                    
+                                    // 设置图表的数据
+                                    self.pieView.models = tempArray;
+                                    self.lineView.models = tempArray;
+                                    
+                                    // 设置列表的数据
+                                    self.tableView.models = tempArray;
+                                    [self.tableView cyl_reloadData];
+                                    
+                                    // 设置总额数据
+                                    // FIXME 设置总额
+                                }];
 }
 
 #pragma mark - Notification Method
@@ -241,15 +264,28 @@
 }
 
 - (IBAction)addBillClick:(WYHQLeapButton *)sender {
-    // 跳转新建
-    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
+    // 跳转新建 FIXME:
+//    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
+    
+    WYHQBillModel *model = [WYHQBillModel new];
+    model.s_money = @"-300";
+    model.s_type_name = WYHQBillTypeBuyName;
+    model.s_type_id = @(WYHQBillTypeBuy).stringValue;
+    model.s_year = @"2018";
+    model.s_month = @"11";
+    model.s_day = @"9";
+    
+    // 存入数据
+    [[WYHQSQLManager share] insertData:model tableName:kSQLTableName];
+    
+    [self requestData];
 }
 
 - (IBAction)moreBtnClick:(UIButton *)sender {
     [[HJMediator shared] routeToURL:HJAPPURL(@"BillList") withParameters:nil, nil];
 }
 
-- (IBAction)datePickerClick:(UIButton *)sender {
+- (void)dateBtnClick {
     
     [self arrowAnimate];
     
@@ -257,12 +293,19 @@
     [CLCustomDatePickerView showDatePickerWithTitle:@"选择时间"
                                            dateType:CLCustomDatePickerModeYM
                                     defaultSelValue:[self dateString]
+                                            minDate:nil
+                                            maxDate:nil
+                                       isAutoSelect:NO
+                                         themeColor:nil
                                         resultBlock:^(NSString *selectValue) {
                                             STRONG_SELF
                                             self.year = [[[selectValue componentsSeparatedByString:@"-"] firstObject] integerValue];
                                             self.month = [[[selectValue componentsSeparatedByString:@"-"] lastObject] integerValue];
                                             [self arrowAnimate];
                                             [self requestData];
+                                        }
+                                        cancelBlock:^{
+                                            [self arrowAnimate];
                                         }];
 }
 
@@ -284,6 +327,5 @@
         }
     }];
 }
-
 
 @end

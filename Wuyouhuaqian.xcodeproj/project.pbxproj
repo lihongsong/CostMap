@@ -21,6 +21,9 @@
 		5915182E2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182C2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m */; };
 		5915182F2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */; };
 		6AB857D036ADDB2C2A9E4FD3 /* libPods-Wuyouhuaqian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */; };
+		82181665219518D900521E75 /* UNNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218165F219518D900521E75 /* UNNoDataView.m */; };
+		82181666219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 82181660219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m */; };
+		821816692195303B00521E75 /* WYHQBillModel+WYHQService.m in Sources */ = {isa = PBXBuildFile; fileRef = 821816682195303B00521E75 /* WYHQBillModel+WYHQService.m */; };
 		82B309DB2194045B00284246 /* WYHQLeapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B309DA2194045B00284246 /* WYHQLeapButton.m */; };
 		82B309E22194098800284246 /* WYHQChartLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B309E12194098800284246 /* WYHQChartLineView.m */; };
 		82B309E52194099A00284246 /* WYHQChartPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82B309E42194099A00284246 /* WYHQChartPieView.m */; };
@@ -159,21 +162,6 @@
 /* Begin PBXFileReference section */
 		3BB36807C91790CCF1732377 /* Pods-Wuyouhuaqian.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wuyouhuaqian.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wuyouhuaqian/Pods-Wuyouhuaqian.release.xcconfig"; sourceTree = "<group>"; };
 		4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Wuyouhuaqian.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		82B309D92194045B00284246 /* WYHQLeapButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQLeapButton.h; sourceTree = "<group>"; };
-		82B309DA2194045B00284246 /* WYHQLeapButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQLeapButton.m; sourceTree = "<group>"; };
-		82B309E02194098800284246 /* WYHQChartLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQChartLineView.h; sourceTree = "<group>"; };
-		82B309E12194098800284246 /* WYHQChartLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQChartLineView.m; sourceTree = "<group>"; };
-		82B309E32194099A00284246 /* WYHQChartPieView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQChartPieView.h; sourceTree = "<group>"; };
-		82B309E42194099A00284246 /* WYHQChartPieView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQChartPieView.m; sourceTree = "<group>"; };
-		82B309E721942FAB00284246 /* BillList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BillList.storyboard; sourceTree = "<group>"; };
-		82B309E9219439E800284246 /* WYHQDaySelectedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQDaySelectedView.xib; sourceTree = "<group>"; };
-		82B309EB219439FC00284246 /* WYHQDaySelectedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQDaySelectedView.h; sourceTree = "<group>"; };
-		82B309EC219439FC00284246 /* WYHQDaySelectedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQDaySelectedView.m; sourceTree = "<group>"; };
-		82B4B6FF2193E9CA009A4B62 /* WYHQTypeDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQTypeDefine.h; sourceTree = "<group>"; };
-		82B4B7012193EB13009A4B62 /* WYHQBillTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillTableView.h; sourceTree = "<group>"; };
-		82B4B7022193EB13009A4B62 /* WYHQBillTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTableView.m; sourceTree = "<group>"; };
-		82B4B7052193F33D009A4B62 /* WYHQBillTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillTool.h; sourceTree = "<group>"; };
-		82B4B7062193F33D009A4B62 /* WYHQBillTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTool.m; sourceTree = "<group>"; };
 		591518092193D719004B5B32 /* WYHQSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQSettingView.h; sourceTree = "<group>"; };
 		5915180A2193D719004B5B32 /* WYHQSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQSettingView.m; sourceTree = "<group>"; };
 		5915180C2193D724004B5B32 /* WYHQSettingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQSettingView.xib; sourceTree = "<group>"; };
@@ -193,6 +181,29 @@
 		5915182B2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQWYHQEditBillToolBarCell.h; sourceTree = "<group>"; };
 		5915182C2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQWYHQEditBillToolBarCell.m; sourceTree = "<group>"; };
 		5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQWYHQEditBillToolBarCell.xib; sourceTree = "<group>"; };
+		8218165F219518D900521E75 /* UNNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNNoDataView.m; sourceTree = "<group>"; };
+		82181660219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CYLTableViewPlaceHolder.m"; sourceTree = "<group>"; };
+		82181661219518D900521E75 /* UNNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNNoDataView.h; sourceTree = "<group>"; };
+		82181662219518D900521E75 /* CYLTableViewPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYLTableViewPlaceHolder.h; sourceTree = "<group>"; };
+		82181663219518D900521E75 /* CYLTableViewPlaceHolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYLTableViewPlaceHolderDelegate.h; sourceTree = "<group>"; };
+		82181664219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CYLTableViewPlaceHolder.h"; sourceTree = "<group>"; };
+		821816672195303B00521E75 /* WYHQBillModel+WYHQService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WYHQBillModel+WYHQService.h"; sourceTree = "<group>"; };
+		821816682195303B00521E75 /* WYHQBillModel+WYHQService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WYHQBillModel+WYHQService.m"; sourceTree = "<group>"; };
+		82B309D92194045B00284246 /* WYHQLeapButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQLeapButton.h; sourceTree = "<group>"; };
+		82B309DA2194045B00284246 /* WYHQLeapButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQLeapButton.m; sourceTree = "<group>"; };
+		82B309E02194098800284246 /* WYHQChartLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQChartLineView.h; sourceTree = "<group>"; };
+		82B309E12194098800284246 /* WYHQChartLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQChartLineView.m; sourceTree = "<group>"; };
+		82B309E32194099A00284246 /* WYHQChartPieView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQChartPieView.h; sourceTree = "<group>"; };
+		82B309E42194099A00284246 /* WYHQChartPieView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQChartPieView.m; sourceTree = "<group>"; };
+		82B309E721942FAB00284246 /* BillList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BillList.storyboard; sourceTree = "<group>"; };
+		82B309E9219439E800284246 /* WYHQDaySelectedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQDaySelectedView.xib; sourceTree = "<group>"; };
+		82B309EB219439FC00284246 /* WYHQDaySelectedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQDaySelectedView.h; sourceTree = "<group>"; };
+		82B309EC219439FC00284246 /* WYHQDaySelectedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQDaySelectedView.m; sourceTree = "<group>"; };
+		82B4B6FF2193E9CA009A4B62 /* WYHQTypeDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQTypeDefine.h; sourceTree = "<group>"; };
+		82B4B7012193EB13009A4B62 /* WYHQBillTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillTableView.h; sourceTree = "<group>"; };
+		82B4B7022193EB13009A4B62 /* WYHQBillTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTableView.m; sourceTree = "<group>"; };
+		82B4B7052193F33D009A4B62 /* WYHQBillTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillTool.h; sourceTree = "<group>"; };
+		82B4B7062193F33D009A4B62 /* WYHQBillTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTool.m; sourceTree = "<group>"; };
 		82DC63642192E15E007421DE /* Wuyouhuaqian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wuyouhuaqian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DC63752192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DC637C2192E15F007421DE /* WuyouhuaqianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WuyouhuaqianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,51 +456,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		82B309D8219403E400284246 /* LeapButton */ = {
-			isa = PBXGroup;
-			children = (
-				82B309D92194045B00284246 /* WYHQLeapButton.h */,
-				82B309DA2194045B00284246 /* WYHQLeapButton.m */,
-			);
-			path = LeapButton;
-			sourceTree = "<group>";
-		};
-		82B309DE2194095D00284246 /* PieView */ = {
-			isa = PBXGroup;
-			children = (
-				82B309E32194099A00284246 /* WYHQChartPieView.h */,
-				82B309E42194099A00284246 /* WYHQChartPieView.m */,
-			);
-			path = PieView;
-			sourceTree = "<group>";
-		};
-		82B309DF2194096700284246 /* LineView */ = {
-			isa = PBXGroup;
-			children = (
-				82B309E02194098800284246 /* WYHQChartLineView.h */,
-				82B309E12194098800284246 /* WYHQChartLineView.m */,
-			);
-			path = LineView;
-			sourceTree = "<group>";
-		};
-		82B4B7002193EAF3009A4B62 /* BillTableView */ = {
-			isa = PBXGroup;
-			children = (
-				82B4B7012193EB13009A4B62 /* WYHQBillTableView.h */,
-				82B4B7022193EB13009A4B62 /* WYHQBillTableView.m */,
-			);
-			path = BillTableView;
-			sourceTree = "<group>";
-		};
-		82B4B7042193F312009A4B62 /* WYHQBillTool */ = {
-			isa = PBXGroup;
-			children = (
-				82B4B7052193F33D009A4B62 /* WYHQBillTool.h */,
-				82B4B7062193F33D009A4B62 /* WYHQBillTool.m */,
-			);
-			path = WYHQBillTool;
-			sourceTree = "<group>";
-		};
 		591518062193D6EA004B5B32 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
@@ -551,6 +517,64 @@
 				5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		8218165E219518D900521E75 /* CYLTableViewPlaceHolder */ = {
+			isa = PBXGroup;
+			children = (
+				82181662219518D900521E75 /* CYLTableViewPlaceHolder.h */,
+				82181661219518D900521E75 /* UNNoDataView.h */,
+				8218165F219518D900521E75 /* UNNoDataView.m */,
+				82181663219518D900521E75 /* CYLTableViewPlaceHolderDelegate.h */,
+				82181664219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.h */,
+				82181660219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m */,
+			);
+			path = CYLTableViewPlaceHolder;
+			sourceTree = "<group>";
+		};
+		82B309D8219403E400284246 /* LeapButton */ = {
+			isa = PBXGroup;
+			children = (
+				82B309D92194045B00284246 /* WYHQLeapButton.h */,
+				82B309DA2194045B00284246 /* WYHQLeapButton.m */,
+			);
+			path = LeapButton;
+			sourceTree = "<group>";
+		};
+		82B309DE2194095D00284246 /* PieView */ = {
+			isa = PBXGroup;
+			children = (
+				82B309E32194099A00284246 /* WYHQChartPieView.h */,
+				82B309E42194099A00284246 /* WYHQChartPieView.m */,
+			);
+			path = PieView;
+			sourceTree = "<group>";
+		};
+		82B309DF2194096700284246 /* LineView */ = {
+			isa = PBXGroup;
+			children = (
+				82B309E02194098800284246 /* WYHQChartLineView.h */,
+				82B309E12194098800284246 /* WYHQChartLineView.m */,
+			);
+			path = LineView;
+			sourceTree = "<group>";
+		};
+		82B4B7002193EAF3009A4B62 /* BillTableView */ = {
+			isa = PBXGroup;
+			children = (
+				82B4B7012193EB13009A4B62 /* WYHQBillTableView.h */,
+				82B4B7022193EB13009A4B62 /* WYHQBillTableView.m */,
+			);
+			path = BillTableView;
+			sourceTree = "<group>";
+		};
+		82B4B7042193F312009A4B62 /* WYHQBillTool */ = {
+			isa = PBXGroup;
+			children = (
+				82B4B7052193F33D009A4B62 /* WYHQBillTool.h */,
+				82B4B7062193F33D009A4B62 /* WYHQBillTool.m */,
+			);
+			path = WYHQBillTool;
 			sourceTree = "<group>";
 		};
 		82DC635B2192E15E007421DE = {
@@ -900,6 +924,8 @@
 				82DC65342192E275007421DE /* WYHQBillModel.m */,
 				82DC65362192E275007421DE /* WYHQSQLManager.h */,
 				82DC65382192E275007421DE /* WYHQSQLManager.m */,
+				821816672195303B00521E75 /* WYHQBillModel+WYHQService.h */,
+				821816682195303B00521E75 /* WYHQBillModel+WYHQService.m */,
 			);
 			path = WYHQSQLManager;
 			sourceTree = "<group>";
@@ -960,6 +986,7 @@
 		82DC65472192E275007421DE /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				8218165E219518D900521E75 /* CYLTableViewPlaceHolder */,
 				82DC65EE2192F7DC007421DE /* CLCustomDatePicker */,
 				82DC65482192E275007421DE /* AAChartKitLib */,
 			);
@@ -1496,6 +1523,9 @@
 				82DC65A92192E275007421DE /* waveAnimationView.m in Sources */,
 				82DC660421930827007421DE /* WYHQPhotoPickerManager.m in Sources */,
 				82B309E52194099A00284246 /* WYHQChartPieView.m in Sources */,
+				821816692195303B00521E75 /* WYHQBillModel+WYHQService.m in Sources */,
+				82181666219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m in Sources */,
+				82181665219518D900521E75 /* UNNoDataView.m in Sources */,
 				82DC65BA2192E275007421DE /* PlistManager.m in Sources */,
 				5915182821943737004B5B32 /* WYHQEditBillToolBar.m in Sources */,
 				82DC65D82192E275007421DE /* AAPlotLinesElement.m in Sources */,

@@ -11,6 +11,7 @@
 #import "WYHQChartPieView.h"
 #import "WYHQDaySelectedView.h"
 #import "CLCustomDatePickerView.h"
+#import "WYHQBillModel+WYHQService.h"
 
 @interface WYHQBillListViewController ()<HJMediatorTargetInstance, WYHQDaySelectedViewDelegate>
 
@@ -74,7 +75,25 @@
 
 - (void)setUpUI {
     
-//    self.daySelectView
+    self.tableView.enableDelete = YES;
+    
+    WEAK_SELF
+    self.tableView.deleteAction = ^(UITableViewCellEditingStyle editingStyle, WYHQBillModel * _Nonnull model) {
+        STRONG_SELF
+        // 删除数据库
+        [[WYHQSQLManager share] deleteData:kSQLTableName s_id:model.s_id];
+        
+        // 删除数据源
+        NSMutableArray *tempArray = [self.tableView.models mutableCopy];
+        [tempArray removeObject:model];
+        self.tableView.models = tempArray;
+
+        // 更新 UI
+        [self.tableView reloadData];
+        NSArray *pieData = [WYHQBillModel templateBillArrayWithBills:tempArray];
+        self.pieView.models = pieData;
+    };
+    
     [[self navigationItem] setTitleView:self.daySelectView];
 }
 
@@ -82,55 +101,24 @@
     
     [KeyWindow hj_showLoadingHUD];
     
-    WYHQBillModel *model = [WYHQBillModel new];
-    model.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model.s_money = @"-9000";
-    model.s_type_name = @"衣服";
-    
-    WYHQBillModel *model1 = [WYHQBillModel new];
-    model1.s_type_id = @(WYHQBillTypeCloth).stringValue;
-    model1.s_money = @"-300";
-    model1.s_type_name = @"衣服";
-    
-    WYHQBillModel *model2 = [WYHQBillModel new];
-    model2.s_type_id = @(WYHQBillTypeVehicles).stringValue;
-    model2.s_money = @"-700";
-    model2.s_type_name = @"衣服";
-    
-    WYHQBillModel *model3 = [WYHQBillModel new];
-    model3.s_type_id = @(WYHQBillTypeHome).stringValue;
-    model3.s_money = @"-20";
-    model3.s_type_name = @"衣服";
-    
-    WYHQBillModel *model4 = [WYHQBillModel new];
-    model4.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model4.s_money = @"-11100";
-    model4.s_type_name = @"衣服";
-    
-    WYHQBillModel *model5 = [WYHQBillModel new];
-    model5.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model5.s_money = @"-11100";
-    model5.s_type_name = @"衣服";
-    
-    WYHQBillModel *model6 = [WYHQBillModel new];
-    model6.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model6.s_money = @"-11100";
-    model6.s_type_name = @"衣服";
-    
-    WYHQBillModel *model7 = [WYHQBillModel new];
-    model7.s_type_id = @(WYHQBillTypeFood).stringValue;
-    model7.s_money = @"-11100";
-    model7.s_type_name = @"衣服";
+    NSString *year = @([self.daySelectView.currentDate hj_year]).stringValue;
+    NSString *month = @([self.daySelectView.currentDate hj_month]).stringValue;
+    NSString *day = @([self.daySelectView.currentDate hj_day]).stringValue;
     
     WEAK_SELF
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        STRONG_SELF
-        [KeyWindow hj_hideProgressHUD];
-        self.tableView.models = @[model, model1, model2, model3, model4, model5, model6, model7];
-        [self.tableView reloadData];
-    });
-    
-    
+    [[WYHQSQLManager share] searchData:kSQLTableName
+                                  year:year
+                                 month:month
+                                   day:day
+                                result:^(NSMutableArray<WYHQBillModel *> *result, NSError *error) {
+                                    STRONG_SELF
+                                    [KeyWindow hj_hideProgressHUD];
+                                    NSArray *pieData = [WYHQBillModel templateBillArrayWithBills:result];
+                                    self.pieView.models = pieData;
+                                    
+                                    self.tableView.models = result;
+                                    [self.tableView reloadData];
+                                }];
 }
 
 #pragma mark - Notification Method
@@ -138,6 +126,7 @@
 
 
 #pragma mark - Event & Target Methods
+
 
 #pragma mark - WYHQDaySelectedViewDelegate
 
