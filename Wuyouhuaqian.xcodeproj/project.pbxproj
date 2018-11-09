@@ -1316,8 +1316,8 @@
 			children = (
 				82DC65412192E275007421DE /* WYHQBaseNavigationController.h */,
 				82DC65462192E275007421DE /* WYHQBaseNavigationController.m */,
-				82DC65402192E275007421DE /* WYHQBaseViewController.m */,
 				82DC65422192E275007421DE /* WYHQBaseViewController.h */,
+				82DC65402192E275007421DE /* WYHQBaseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

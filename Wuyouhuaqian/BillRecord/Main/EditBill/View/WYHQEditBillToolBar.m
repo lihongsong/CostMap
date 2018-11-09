@@ -121,7 +121,7 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
                                             minDate:nil
                                             maxDate:nil
                                        isAutoSelect:NO
-                                         themeColor:nil
+                                         themeColor:[WYHQBillTool colorWithType:self.billType]
                                         resultBlock:^(NSString *selectValue) {
                                             STRONG_SELF
                                             self.billTime = [WYHQBillTool billTimeWithBillTimeString:selectValue];
@@ -151,7 +151,8 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.selectedClassifyHandler) {
-        self.selectedClassifyHandler((WYHQBillType)indexPath.row);
+        self.billType = (WYHQBillType)indexPath.row;
+        self.selectedClassifyHandler(self.billType);
     }
 }
 
