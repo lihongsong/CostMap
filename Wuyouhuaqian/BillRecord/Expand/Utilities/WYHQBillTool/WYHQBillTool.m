@@ -52,7 +52,7 @@
 
 
 
-+ (NSString *)classifyWithIndex:(WYHQBillType)index {
++ (NSString *)typeNameWithIndex:(WYHQBillType)index {
     
     switch (index) {
         case 0: return  WYHQBillTypeFoodName;
@@ -92,51 +92,63 @@
              ];
 }
 
-+ (WYHQBillType)indexWithClassify:(NSString *)classify {
++ (WYHQBillType)typeWithTypeName:(NSString *)typeName {
     
-    if ([classify isEqualToString:WYHQBillTypeFoodName]) {
-        return 0;
-    } else if ([classify isEqualToString:WYHQBillTypeBuyName]) {
-        return 1;
-    } else if ([classify isEqualToString:WYHQBillTypeFriendName]) {
-        return 2;
-    } else if ([classify isEqualToString:WYHQBillTypePlayName]) {
-        return 3;
-    } else if ([classify isEqualToString:WYHQBillTypeHomeName]) {
-        return 4;
-    } else if ([classify isEqualToString:WYHQBillTypeEducaName]) {
-        return 5;
-    } else if ([classify isEqualToString:WYHQBillTypeMedicName]) {
-        return 6;
+    if ([typeName isEqualToString:WYHQBillTypeFoodName]) {
+        return WYHQBillTypeFood;
+    } else if ([typeName isEqualToString:WYHQBillTypeBuyName]) {
+        return WYHQBillTypeBuy;
+    } else if ([typeName isEqualToString:WYHQBillTypeFriendName]) {
+        return WYHQBillTypeFriend;
+    } else if ([typeName isEqualToString:WYHQBillTypePlayName]) {
+        return WYHQBillTypePlay;
+    } else if ([typeName isEqualToString:WYHQBillTypeHomeName]) {
+        return WYHQBillTypeHome;
+    } else if ([typeName isEqualToString:WYHQBillTypeEducaName]) {
+        return WYHQBillTypeEduca;
+    } else if ([typeName isEqualToString:WYHQBillTypeMedicName]) {
+        return WYHQBillTypeMedic;
     } else {
         //其他
-        return 7;
+        return WYHQBillTypeOther;
     };
 }
 
-+ (NSString *)getTypeImage:(NSString *)type {
-    if ([type isEqualToString:WYHQBillTypeFoodName]) {
-        return @"restaurant_ic";
-    } else if ([type isEqualToString:WYHQBillTypeBuyName]) {
-        return @"shop_ic";
-    } else if ([type isEqualToString:WYHQBillTypeFriendName]) {
-        return @"friend_ic";
-    } else if ([type isEqualToString:WYHQBillTypePlayName]) {
-        return @"play_ic";
-    } else if ([type isEqualToString:WYHQBillTypeHomeName]) {
-        return @"home_ic";
-    } else if ([type isEqualToString:WYHQBillTypeEducaName]) {
-        return @"education_ic";
-    } else if ([type isEqualToString:WYHQBillTypeMedicName]) {
-        return @"medical_ic";
-    } else {//其他
-        return @"more_ic";
-    };
++ (NSString *)typeImage:(WYHQBillType)type {
+    
+    switch (type) {
+        case WYHQBillTypeFood: return @"restaurant_ic";
+        case WYHQBillTypeBuy: return @"shop_ic";
+        case WYHQBillTypeFriend: return @"friend_ic";
+        case WYHQBillTypePlay: return @"play_ic";
+        case WYHQBillTypeHome: return @"home_ic";
+        case WYHQBillTypeEduca: return @"education_ic";
+        case WYHQBillTypeMedic: return @"medical_ic";
+        default: return @"more_ic";
+    }
 }
 
-+ (NSString *)getTypePressedImage:(NSString *)type {
-    return [NSString stringWithFormat:@"%@_pressed", [self getTypeImage:type]];
++ (NSString *)typePressedImage:(WYHQBillType)type {
+    return [NSString stringWithFormat:@"%@_pressed", [self typeImage:type]];
 }
 
++ (NSDateFormatter *)billTimeDateFormatter {
+    static NSDateFormatter *dateFormatter;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        dateFormatter.timeZone = [NSTimeZone systemTimeZone];
+    });
+    return dateFormatter;
+}
+
++ (NSString *)billTimeStringWithBillTime:(NSDate *)billTime {
+    return [[self billTimeDateFormatter] stringFromDate:billTime];
+}
+
++ (NSDate *)billTimeWithBillTimeString:(NSString *)billTime {
+    return [[self billTimeDateFormatter] dateFromString:billTime];
+}
 
 @end

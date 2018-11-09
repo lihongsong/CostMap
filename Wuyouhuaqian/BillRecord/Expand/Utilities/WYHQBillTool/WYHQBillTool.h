@@ -30,17 +30,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIColor *)colorWithType:(WYHQBillType)billType;
 
-+ (WYHQBillType)indexWithClassify:(NSString *)classify;
++ (WYHQBillType)typeWithTypeName:(NSString *)typeName;
 
-+ (NSString *)classifyWithIndex:(WYHQBillType)index;
++ (NSString *)typeNameWithIndex:(WYHQBillType)index;
 
-+ (NSString *)getTypeImage:(NSString *)billType;
++ (NSString *)typeImage:(WYHQBillType)billType;
 
-+ (NSString *)getTypePressedImage:(NSString *)type;
++ (NSString *)typePressedImage:(WYHQBillType)type;
 
 + (NSArray *)allBillTypes;
 
 + (NSArray *)allBillTypesName;
+
++ (NSString *)billTimeStringWithBillTime:(NSDate *)billTime;
+
++ (NSDate *)billTimeWithBillTimeString:(NSString *)billTime;
 
 @end
 

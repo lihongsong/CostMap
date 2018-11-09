@@ -12,7 +12,7 @@
 #import "WYHQBillTool.h"
 
 
-@interface WYHQEditBillViewController ()<UITextFieldDelegate>
+@interface WYHQEditBillViewController ()<UITextFieldDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *momeyTextField;
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
@@ -22,6 +22,15 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *timeLabelRight;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 
+/** 键盘消失时，正在编辑的输入框，用来在选择日期后恢复焦点 */
+@property (weak, nonatomic) UIView *curruntInputView;
+
+/** 账单类型 */
+@property (nonatomic, assign) WYHQBillType billType;
+/** 账单创建时间 */
+@property (nonatomic, strong) NSDate *billTime;
+/** 账单所在地点 */
+@property (nonatomic, copy) NSString *billCity;
 @end
 
 @implementation WYHQEditBillViewController
@@ -32,17 +41,12 @@
     
     [self setupUI];
     [self updateUI];
-    
-    WEAK_SELF
-    [WYHQEditBillToolBar showEditBillToolBarOnSuperVC:self classify:@"医疗" selectedTimeHandler:^(NSString * _Nonnull timeStr) {
-        
-    } selectedClassifyHandler:^(NSString * _Nonnull typeStr) {
-        STRONG_SELF
-        self.classifyImageView.image = [UIImage imageNamed:[WYHQBillTool getTypePressedImage:typeStr]];
-    }];
-    
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
-    [self.bottomView addGestureRecognizer:tap];
+    [self addEditBillToolBar];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
 }
 
 - (void)endEditing {
@@ -60,25 +64,49 @@
     [self.noteTextView hj_addPlaceHolder:@"备注"];
     self.noteTextView.hj_placeHolderTextView.textColor = [UIColor colorWithWhite:0.5 alpha:1];
     self.timeLabelRight.constant = 0;
+    
+    self.momeyTextField.delegate = self;
+    self.noteTextView.delegate = self;
+    
+    [self setupCustomRightWithImage:[UIImage imageNamed:@"nav_btn_save_default"] target:self action:@selector(saveBill)];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
+    [self.bottomView addGestureRecognizer:tap];
 }
 
 - (void)updateUI {
     if (self.billModel) {
-        self.classifyImageView.image = [UIImage imageNamed:[WYHQBillTool getTypePressedImage:self.billModel.s_type_name]];
-        self.momeyTextField.text = [NSString stringWithFormat:@"￥%@",[self.billModel.s_money moneyStyle]];
+        WYHQBillType billType = self.billModel.s_type_id.integerValue;
+        self.billType = billType;
+        
+        self.classifyImageView.image = [UIImage imageNamed:[WYHQBillTool typePressedImage:billType]];
+        
+        NSString *money = [self.billModel.s_money stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        self.momeyTextField.text = [NSString stringWithFormat:@"￥%@",[money moneyStyle]];
+        
         self.noteTextView.text = self.billModel.s_desc;
+        
+        NSTimeInterval time = self.billModel.s_time.doubleValue;
+        if (time > 0) {
+            self.billTime = [NSDate dateWithTimeIntervalSince1970:time];
+        } else {
+            self.billTime = [NSDate date];
+        }
+        self.timeLabel.text = [WYHQBillTool billTimeStringWithBillTime:self.billTime];
+        
         self.addressLabel.text = self.billModel.s_city;
-        self.timeLabel.text = self.billModel.s_time;
         if (StrIsEmpty(self.billModel.s_city)) {
             self.timeLabelRight.constant = 0;
         } else {
             self.timeLabelRight.constant = 30;
         }
     } else {
-        self.timeLabel.text = [[NSDate date] hj_stringWithFormat:@"yyyy年MM月dd日 HH:mm"];
+        self.billTime = [NSDate date];
+        self.timeLabel.text = [WYHQBillTool billTimeStringWithBillTime:self.billTime];
         WEAK_SELF
         [[WYHQLocation sharedInstance] location:^(NSString * _Nonnull city) {
             STRONG_SELF
+            self.billCity = city;
             self.addressLabel.text = city;
             if (city) {
                 self.timeLabelRight.constant = 0;
@@ -89,9 +117,67 @@
     }
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:animated];
+- (void)addEditBillToolBar {
+    WEAK_SELF
+    [WYHQEditBillToolBar showEditBillToolBarOnSuperVC:self billType:self.billType billTime:self.billTime selectedTimeHandler:^(NSDate * _Nullable billTime) {
+        STRONG_SELF
+        if (billTime) {
+            self.billTime = billTime;
+            self.timeLabel.text = [WYHQBillTool billTimeStringWithBillTime:billTime];
+        }
+        if (self.curruntInputView) {
+            [self.curruntInputView becomeFirstResponder];
+        }
+    } selectedClassifyHandler:^(WYHQBillType billType) {
+        STRONG_SELF
+        self.billType = billType;
+        self.classifyImageView.image = [UIImage imageNamed:[WYHQBillTool typePressedImage:billType]];
+    }];
+}
+
+- (void)saveBill {
+    if (StrIsEmpty(self.momeyTextField.text)) {
+        return;
+    }
+    
+    
+    NSString *memey = [[self.momeyTextField.text stringByReplacingOccurrencesOfString:@"￥" withString:@""] cleanMoneyStyle];
+    if (StrIsEmpty(memey)) {
+        return;
+    }
+    
+    if (memey.integerValue == 0) {
+        return;
+    }
+    
+    [self.view endEditing:YES];
+    
+    WYHQBillModel *model = self.billModel;
+    BOOL newBill = NO;
+    if (!model) {
+        model = [WYHQBillModel new];
+        newBill = YES;
+    }
+    
+    model.s_money = [NSString stringWithFormat:@"-%@", memey];
+    model.s_type_name = [WYHQBillTool typeNameWithIndex:self.billType];
+    model.s_type_id = @(self.billType).stringValue;
+    model.s_year = @(self.billTime.hj_year).stringValue;
+    model.s_month = @(self.billTime.hj_month).stringValue;
+    model.s_day = @(self.billTime.hj_day).stringValue;
+    model.s_time = @(self.billTime.timeIntervalSince1970).stringValue;
+    model.s_desc = self.noteTextView.text;
+    model.s_city = self.billCity;
+    
+    if (newBill) {
+        // 存入数据
+        [[WYHQSQLManager share] insertData:model tableName:kSQLTableName];
+    } else {
+        // 更新
+        [[WYHQSQLManager share] updateData:model tableName:kSQLTableName];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
@@ -108,4 +194,13 @@
     }
     return YES;
 }
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.curruntInputView = textField;
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    self.curruntInputView = textView;
+}
+
 @end

@@ -8,7 +8,7 @@
 
 #import "WYHQEditBillToolBar.h"
 #import "WYHQWYHQEditBillToolBarCell.h"
-#import "WYHQBillTool.h"
+#import "CLCustomDatePickerView.h"
 
 #define kWYHQEditBillToolBarHeight 50.0
 
@@ -21,7 +21,8 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
 @property (nonatomic, copy) WYHQEditBillToolBarSelectedTime selectedTimeHandler;
 @property (nonatomic, copy) WYHQEditBillToolBarSelectedClassify selectedClassifyHandler;
 @property (nonatomic, weak) UIViewController *superVC;
-@property (nonatomic, copy) NSString *classify;
+@property (nonatomic, assign) WYHQBillType billType;
+@property (nonatomic, strong) NSDate *billTime;
 
 @end
 
@@ -33,7 +34,8 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
 }
 
 + (void)showEditBillToolBarOnSuperVC:(UIViewController *)superVC
-                            classify:(NSString * _Nullable)classify
+                            billType:(WYHQBillType)billType
+                            billTime:(NSDate *)billTime
                  selectedTimeHandler:(WYHQEditBillToolBarSelectedTime)selectedTimeHandler
              selectedClassifyHandler:(WYHQEditBillToolBarSelectedClassify)selectedClassifyHandler {
     if (shareWYHQEditBillToolBar) {
@@ -44,6 +46,8 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
     shareWYHQEditBillToolBar.selectedTimeHandler = selectedTimeHandler;
     shareWYHQEditBillToolBar.selectedClassifyHandler = selectedClassifyHandler;
     shareWYHQEditBillToolBar.superVC = superVC;
+    shareWYHQEditBillToolBar.billTime = billTime;
+    shareWYHQEditBillToolBar.billType = billType;
     [superVC.view addSubview:shareWYHQEditBillToolBar];
     CGFloat y = SHeight;
     CGFloat width = SWidth;
@@ -52,15 +56,6 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
     
     [[NSNotificationCenter defaultCenter] addObserver:shareWYHQEditBillToolBar selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:shareWYHQEditBillToolBar selector:@selector(keyboardWillHideNotification:) name:UIKeyboardWillHideNotification object:nil];
-    
-    if (classify) {
-        shareWYHQEditBillToolBar.classify = classify;
-    } else {
-        shareWYHQEditBillToolBar.classify = @"餐饮";
-        if (selectedClassifyHandler) {
-            selectedClassifyHandler(shareWYHQEditBillToolBar.classify);
-        }
-    }
 }
 
 + (void)hideEditBillToolBar {
@@ -81,13 +76,11 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
     [self.collectionView reloadData];
 }
 
-- (void)setClassify:(NSString *)classify {
-    _classify = classify.copy;
-    if (classify) {
-        NSInteger index = [WYHQBillTool indexWithClassify:classify];
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-        [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionRight];
-    }
+- (void)setBillType:(WYHQBillType)billType {
+    _billType = billType;
+    NSInteger index = (NSInteger)billType;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+    [self.collectionView selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionRight];
 }
 
 - (void)keyboardWillShowNotification:(NSNotification *)noti {
@@ -118,7 +111,30 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
 }
 
 - (IBAction)selectTimeAction:(UIButton *)sender {
+    [KeyWindow endEditing:YES];
     
+    NSString *time = [WYHQBillTool billTimeStringWithBillTime:self.billTime];
+    WEAK_SELF
+    [CLCustomDatePickerView showDatePickerWithTitle:@"选择时间"
+                                           dateType:CLCustomDatePickerModeYMDHM
+                                    defaultSelValue:time
+                                            minDate:nil
+                                            maxDate:nil
+                                       isAutoSelect:NO
+                                         themeColor:nil
+                                        resultBlock:^(NSString *selectValue) {
+                                            STRONG_SELF
+                                            self.billTime = [WYHQBillTool billTimeWithBillTimeString:selectValue];
+                                            if (self.selectedTimeHandler) {
+                                                self.selectedTimeHandler(self.billTime);
+                                            }
+                                        }
+                                        cancelBlock:^{
+                                            STRONG_SELF
+                                            if (self.selectedTimeHandler) {
+                                                self.selectedTimeHandler(nil);
+                                            }
+                                        }];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -128,15 +144,14 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     WYHQWYHQEditBillToolBarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"WYHQWYHQEditBillToolBarCell" forIndexPath:indexPath];
     
-    cell.typeStr = [WYHQBillTool classifyWithIndex:indexPath.row];
+    cell.billType = (WYHQBillType)indexPath.row;
     
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.selectedClassifyHandler) {
-        NSString *type = [WYHQBillTool classifyWithIndex:indexPath.row];
-        self.selectedClassifyHandler(type);
+        self.selectedClassifyHandler((WYHQBillType)indexPath.row);
     }
 }
 

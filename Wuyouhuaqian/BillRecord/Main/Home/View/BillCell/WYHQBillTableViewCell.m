@@ -46,7 +46,7 @@
     _titleLb.text = model.s_type_name;
     _moneyLb.text = model.s_money ?: @"-0.00";
     _themeLineVw.backgroundColor = [WYHQBillTool colorWithType:model.s_type_id.integerValue];
-    _iconIV.image = [UIImage imageNamed:[WYHQBillTool getTypePressedImage:model.s_type_name]];
+    _iconIV.image = [UIImage imageNamed:[WYHQBillTool typePressedImage:[model.s_type_id integerValue]]];
     _bigTitleLb.text = model.s_type_name;
 }
 

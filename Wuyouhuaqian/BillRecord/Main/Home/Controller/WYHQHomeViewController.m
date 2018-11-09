@@ -229,7 +229,7 @@
                                         [self.tableView cyl_reloadData];
                                         return ;
                                     }
-                                    
+                                
                                     double sum;
                                     NSArray *tempArray = [WYHQBillModel templateBillArrayWithBills:result sumMoney:&sum];
                                     
@@ -263,21 +263,7 @@
 }
 
 - (IBAction)addBillClick:(WYHQLeapButton *)sender {
-    // 跳转新建 FIXME:
     [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
-    return ;
-    WYHQBillModel *model = [WYHQBillModel new];
-    model.s_money = @"-300";
-    model.s_type_name = WYHQBillTypeBuyName;
-    model.s_type_id = @(WYHQBillTypeBuy).stringValue;
-    model.s_year = @"2018";
-    model.s_month = @"11";
-    model.s_day = @"9";
-    
-    // 存入数据
-    [[WYHQSQLManager share] insertData:model tableName:kSQLTableName];
-    
-    [self requestData];
 }
 
 - (IBAction)moreBtnClick:(UIButton *)sender {
