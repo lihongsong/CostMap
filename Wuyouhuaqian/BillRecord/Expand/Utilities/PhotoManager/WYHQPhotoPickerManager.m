@@ -187,6 +187,7 @@ static WYHQPhotoPickerManager *manager;
     _photoBlock = nil;
 }
 
+// FIXME:
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey,id> *)info {
     
