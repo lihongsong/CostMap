@@ -90,7 +90,7 @@ static WYHQEditBillToolBar *shareWYHQEditBillToolBar;
     
     CGFloat width = SWidth;
     
-    CGRect frame = CGRectMake(0, endRect.origin.y - kWYHQEditBillToolBarHeight - HJ_NavigationH, width, kWYHQEditBillToolBarHeight);
+    CGRect frame = CGRectMake(0, endRect.origin.y - kWYHQEditBillToolBarHeight, width, kWYHQEditBillToolBarHeight);
     
     [UIView animateWithDuration:animationDuration.doubleValue animations:^{
         self.frame = frame;
