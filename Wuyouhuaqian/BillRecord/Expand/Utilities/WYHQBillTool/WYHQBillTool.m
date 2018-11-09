@@ -12,28 +12,40 @@
 
 + (UIColor *)colorWithType:(WYHQBillType)billType {
     
+//    education   f76d9c
+//    friend      f7756d
+//    home        7da0eb
+//    medical     7672d3
+//    more        f18b58
+//    play        f7756d
+//    restaurant  c07fd6
+//    shop        48c1e3
+    
     switch (billType) {
         case WYHQBillTypeFood:
-            return [UIColor orangeColor];
+            return HJHexColor(0xc07fd6);
             break;
         case WYHQBillTypeBuy:
-            return [UIColor redColor];
+            return HJHexColor(0x48c1e3);
             break;
         case WYHQBillTypeFriend:
-            return [UIColor yellowColor];
+            return HJHexColor(0xf7756d);
             break;
         case WYHQBillTypeHome:
-            return [UIColor purpleColor];
+            return HJHexColor(0x7da0eb);
             break;
         case WYHQBillTypeEduca:
-            return [UIColor grayColor];
+            return HJHexColor(0xf76d9c);
             break;
         case WYHQBillTypeMedic:
-            return [UIColor blueColor];
+            return HJHexColor(0x7672d3);
+            break;
+        case WYHQBillTypePlay:
+            return HJHexColor(0xf7756d);
             break;
             
         default:
-            return [UIColor orangeColor];
+            return HJHexColor(0xf18b58);
             break;
     }
 }

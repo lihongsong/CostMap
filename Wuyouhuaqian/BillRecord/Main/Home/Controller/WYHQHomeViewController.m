@@ -15,14 +15,18 @@
 #import "WYHQLeapButton.h"
 #import "WYHQSettingView.h"
 #import "UNNoDataView.h"
+#import "WYHQHomeDateSelectButton.h"
+#import "WYHQBillModel+WYHQService.h"
 
 #import "CLCustomDatePickerView.h"
 
 @interface WYHQHomeViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
+
 @property (strong, nonatomic) WYHQChartLineView *lineView;
 
-@property (nonatomic, strong) UIButton *dateSelectBtn;
+@property (nonatomic, strong) WYHQHomeDateSelectButton *dateSelectBtn;
 
 @property (strong, nonatomic) WYHQChartPieView *pieView;
 
@@ -80,12 +84,14 @@
     [super viewWillAppear:animated];
     
     [self requestData];
+    
+    [self setUpNavColor];
 }
 
 - (void)setpNavBarWhenViewWillAppear {
     
     // 设置背景颜色
-    [self cfy_setNavigationBarBackgroundColor:[UIColor blueColor]];
+    [self cfy_setNavigationBarBackgroundColor:WYHQThemeColor];
     [self cfy_setNavigationBarBackgroundImage:nil];
     // 设置ShadowImage
     [self cfy_setNavigationBarShadowImageBackgroundColor:[UIColor clearColor]];
@@ -96,6 +102,7 @@
 - (WYHQChartPieView *)pieView {
     if (!_pieView) {
         _pieView = [WYHQChartPieView new];
+        _pieView.drawHoleEnabled = NO;
     }
     return _pieView;
 }
@@ -116,6 +123,13 @@
 
 
 #pragma mark - Private Method
+
+- (void)setUpNavColor {
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
+                                                                      NSFontAttributeName: [UIFont systemFontOfSize:18]}];
+}
 
 - (NSString *)dateString {
     return [NSString stringWithFormat:@"%04ld-%02ld",(long)_year, (long)_month];
@@ -149,9 +163,11 @@
 
 - (void)setUpUI {
     
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                                      NSFontAttributeName: [UIFont systemFontOfSize:18]}];
+    self.tableHeaderView.backgroundColor = WYHQThemeColor;
+    
+    [self setUpNavColor];
+    
+    self.tableView.tableType = WYHQBillTableTypeHome;
     
     UIBarButtonItem *setItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_set"]
                                                                 style:UIBarButtonItemStylePlain
@@ -161,7 +177,7 @@
     UIView *dateView = [UIView new];
     dateView.frame = CGRectMake(0, 0, 100, 40);
     
-    _dateSelectBtn = [UIButton new];
+    _dateSelectBtn = [WYHQHomeDateSelectButton new];
     [_dateSelectBtn setFrame:CGRectMake(0, 0, 100, 40)];
     [_dateSelectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_dateSelectBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
@@ -214,31 +230,8 @@
                                         return ;
                                     }
                                     
-                                    NSArray *billTypes = [WYHQBillTool allBillTypes];
-                                    
-                                    NSMutableArray *tempArray = [NSMutableArray array];
-                                    
-                                    __block double sumCount = 0.0f;
-                                    
-                                    [billTypes enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                                        WYHQBillModel *model = [WYHQBillModel new];
-                                        model.s_type_id = [obj stringValue];
-                                        model.s_type_name = [WYHQBillTool classifyWithIndex:[obj integerValue]];
-                                        [tempArray addObject:model];
-                                    }];
-                                    
-                                    [allBillArray enumerateObjectsUsingBlock:^(WYHQBillModel * _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
-                                        NSInteger index = [model.s_type_id integerValue];
-                                        
-                                        if (index >= tempArray.count) {
-                                            return ;
-                                        }
-                                        
-                                        WYHQBillModel *sumModel = tempArray[index];
-                                        sumModel.s_money = [NSString stringWithFormat:@"%.2f", ([sumModel.s_money doubleValue] + [model.s_money doubleValue])];
-                                        
-                                        sumCount += [model.s_money doubleValue];
-                                    }];
+                                    double sum;
+                                    NSArray *tempArray = [WYHQBillModel templateBillArrayWithBills:result sumMoney:&sum];
                                     
                                     // 设置图表的数据
                                     self.pieView.models = tempArray;
@@ -249,8 +242,7 @@
                                     [self.tableView cyl_reloadData];
                                     
                                     // 设置总额数据
-                                    // FIXME 设置总额
-                                    self.moneyLb.text = [NSString stringWithFormat:@"%.2f", sumCount];
+                                    self.moneyLb.text = [NSString stringWithFormat:@"%.2f", sum];
                                 }];
 }
 
@@ -272,8 +264,8 @@
 
 - (IBAction)addBillClick:(WYHQLeapButton *)sender {
     // 跳转新建 FIXME:
-//    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
-    
+    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
+    return ;
     WYHQBillModel *model = [WYHQBillModel new];
     model.s_money = @"-300";
     model.s_type_name = WYHQBillTypeBuyName;

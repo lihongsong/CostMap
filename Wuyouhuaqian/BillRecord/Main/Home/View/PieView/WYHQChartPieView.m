@@ -38,6 +38,19 @@
 
 #pragma mark - Getter & Setter Methods
 
+- (void)setHoleRadiusPercent:(CGFloat)holeRadiusPercent {
+    _holeRadiusPercent = holeRadiusPercent;
+    self.chartView.holeRadiusPercent = holeRadiusPercent;
+    [self.chartView setNeedsDisplay];
+}
+
+- (void)setDrawHoleEnabled:(BOOL)drawHoleEnabled {
+    _drawHoleEnabled = drawHoleEnabled;
+    self.chartView.drawHoleEnabled = drawHoleEnabled;
+    self.chartView.drawCenterTextEnabled = drawHoleEnabled;
+    [self.chartView setNeedsDisplay];
+}
+
 - (void)setModels:(NSArray<WYHQBillModel *> *)models {
     _models = models;
     
@@ -82,6 +95,36 @@
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
     [data setValueTextColor:UIColor.whiteColor];
     
+    __block double sum = 0.0f;
+    [self.models enumerateObjectsUsingBlock:^(WYHQBillModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        sum += [obj.s_money doubleValue];
+    }];
+    
+    NSString *specialMoney = [NSString stringWithFormat:@"¥%.2f", fabs(sum)];
+    
+    NSString *enterString = [NSString stringWithFormat:@"支出\n%@", specialMoney];
+    
+    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:enterString];
+    
+    [centerText addAttributes:@{
+                                NSFontAttributeName: [UIFont systemFontOfSize:15],
+                                NSForegroundColorAttributeName: HJHexColor(0x666666)
+                                } range:NSMakeRange(0, 2)];
+    
+    [centerText addAttributes:@{
+                                NSFontAttributeName: [UIFont systemFontOfSize:20],
+                                NSForegroundColorAttributeName: WYHQThemeColor
+                                } range:NSMakeRange(centerText.length - specialMoney.length, specialMoney.length)];
+    
+    NSMutableParagraphStyle *style = [NSMutableParagraphStyle new];
+    [style setAlignment:NSTextAlignmentCenter];
+    
+    [centerText addAttributes:@{
+                                NSParagraphStyleAttributeName: style
+                                } range:NSMakeRange(0, enterString.length)];
+    
+    _chartView.centerAttributedText = centerText;
+    
     _chartView.data = data;
     [_chartView highlightValues:nil];
     
@@ -97,6 +140,8 @@
 #pragma mark - Private Method
 
 - (void)setUp {
+    
+    _holeRadiusPercent = 0.58;
     
     parties = [WYHQBillTool allBillTypesName];
     
@@ -134,28 +179,18 @@
     chartView.usePercentValuesEnabled = NO;
     chartView.drawSlicesUnderHoleEnabled = NO;
     chartView.drawEntryLabelsEnabled = NO;
-    chartView.holeRadiusPercent = 0.58;
+    chartView.holeRadiusPercent = _holeRadiusPercent;
+    chartView.drawHoleEnabled = _drawHoleEnabled;
     chartView.transparentCircleRadiusPercent = 0.61;
     chartView.chartDescription.enabled = NO;
     [chartView setExtraOffsetsWithLeft:-100.f top:10.f right:100.f bottom:5.f];
     
-    chartView.drawCenterTextEnabled = YES;
+    chartView.drawCenterTextEnabled = _drawHoleEnabled;
     
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     paragraphStyle.lineBreakMode = NSLineBreakByTruncatingTail;
     paragraphStyle.alignment = NSTextAlignmentCenter;
     
-    NSString *specialMoney = [NSString stringWithFormat:@"¥%@", @"0"];
-    NSString *enterString = [NSString stringWithFormat:@"支出\n%@", specialMoney];
-    
-    NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:enterString];
-    [centerText addAttributes:@{
-                                NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue-LightItalic" size:11.f],
-                                NSForegroundColorAttributeName: [UIColor colorWithRed:51/255.f green:181/255.f blue:229/255.f alpha:1.f]
-                                } range:NSMakeRange(centerText.length - specialMoney.length, specialMoney.length)];
-    chartView.centerAttributedText = centerText;
-    
-    chartView.drawHoleEnabled = YES;
     chartView.rotationAngle = 0.0;
     chartView.rotationEnabled = YES;
     chartView.highlightPerTapEnabled = YES;
