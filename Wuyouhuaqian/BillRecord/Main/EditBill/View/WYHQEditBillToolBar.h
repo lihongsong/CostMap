@@ -7,16 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WYHQBillTool.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef void(^WYHQEditBillToolBarSelectedTime)(NSString *timeStr);
-typedef void(^WYHQEditBillToolBarSelectedClassify)(NSString *typeStr);
+typedef void(^WYHQEditBillToolBarSelectedTime)(NSDate * _Nullable billTime);
+typedef void(^WYHQEditBillToolBarSelectedClassify)(WYHQBillType billType);
 
 @interface WYHQEditBillToolBar : UIView
 
 + (void)showEditBillToolBarOnSuperVC:(UIViewController *)superVC
-                            classify:(NSString * _Nullable)classify
+                            billType:(WYHQBillType)billType
+                            billTime:(NSDate *)billTime
                  selectedTimeHandler:(WYHQEditBillToolBarSelectedTime)selectedTimeHandler
              selectedClassifyHandler:(WYHQEditBillToolBarSelectedClassify)selectedClassifyHandler;
 

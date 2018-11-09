@@ -45,7 +45,7 @@
                             </constraints>
                             <color key="textColor" red="1" green="0.37647058820000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                         </textField>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -89,7 +89,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wj3-qH-Z54">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mEy-J4-gBP">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="restaurant_ic_pressed" translatesAutoresizingMaskIntoConstraints="NO" id="mEy-J4-gBP">
                                     <rect key="frame" x="20" y="15" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="mEy-J4-gBP" secondAttribute="height" multiplier="1:1" id="8Ma-Cb-0eg"/>
@@ -157,5 +157,6 @@
     </objects>
     <resources>
         <image name="edit_bill_time" width="18" height="18"/>
+        <image name="restaurant_ic_pressed" width="55" height="55"/>
     </resources>
 </document>

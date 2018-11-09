@@ -21,8 +21,8 @@
     [super awakeFromNib];
 }
 
-- (void)setTypeStr:(NSString *)typeStr {
-    _typeStr = typeStr.copy;
+- (void)setBillType:(WYHQBillType)billType {
+    _billType = billType;
     [self updateImage];
 }
 
@@ -34,9 +34,9 @@
 - (void)updateImage {
     NSString *image;
     if (self.selected) {
-        image = [WYHQBillTool getTypePressedImage:self.typeStr];
+        image = [WYHQBillTool typePressedImage:self.billType];
     } else {
-        image = [WYHQBillTool getTypeImage:self.typeStr];
+        image = [WYHQBillTool typeImage:self.billType];
     }
     
     self.typeImageView.image = [UIImage imageNamed:image];

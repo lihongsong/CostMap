@@ -223,7 +223,7 @@
                                     [billTypes enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
                                         WYHQBillModel *model = [WYHQBillModel new];
                                         model.s_type_id = [obj stringValue];
-                                        model.s_type_name = [WYHQBillTool classifyWithIndex:[obj integerValue]];
+                                        model.s_type_name = [WYHQBillTool typeNameWithIndex:[obj integerValue]];
                                         [tempArray addObject:model];
                                     }];
                                     
@@ -271,21 +271,7 @@
 }
 
 - (IBAction)addBillClick:(WYHQLeapButton *)sender {
-    // 跳转新建 FIXME:
-//    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
-    
-    WYHQBillModel *model = [WYHQBillModel new];
-    model.s_money = @"-300";
-    model.s_type_name = WYHQBillTypeBuyName;
-    model.s_type_id = @(WYHQBillTypeBuy).stringValue;
-    model.s_year = @"2018";
-    model.s_month = @"11";
-    model.s_day = @"9";
-    
-    // 存入数据
-    [[WYHQSQLManager share] insertData:model tableName:kSQLTableName];
-    
-    [self requestData];
+    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
 }
 
 - (IBAction)moreBtnClick:(UIButton *)sender {

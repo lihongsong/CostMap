@@ -20,6 +20,7 @@
 		5915182A21943746004B5B32 /* WYHQEditBillToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182921943746004B5B32 /* WYHQEditBillToolBar.xib */; };
 		5915182E2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182C2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m */; };
 		5915182F2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */; };
+		594B0EF021957BB0008585F5 /* A.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594B0EEF21957BB0008585F5 /* A.swift */; };
 		6AB857D036ADDB2C2A9E4FD3 /* libPods-Wuyouhuaqian.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4864E808461ACA2401DB6E /* libPods-Wuyouhuaqian.a */; };
 		82181665219518D900521E75 /* UNNoDataView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218165F219518D900521E75 /* UNNoDataView.m */; };
 		82181666219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 82181660219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m */; };
@@ -136,7 +137,6 @@
 		82DC662B21932267007421DE /* WYHQIntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662421932267007421DE /* WYHQIntroduceViewController.m */; };
 		82DC662C21932267007421DE /* WYHQPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82DC662621932267007421DE /* WYHQPageViewController.xib */; };
 		82DC662D21932267007421DE /* WYHQPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662921932267007421DE /* WYHQPageViewController.m */; };
-		82DC66302193CE34007421DE /* A.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662F2193CE34007421DE /* A.swift */; };
 		82DC66322193D76C007421DE /* BillHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DC66312193D76C007421DE /* BillHome.storyboard */; };
 		82DC66372193E132007421DE /* WYHQBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC66352193E132007421DE /* WYHQBillTableViewCell.m */; };
 		82DC66382193E132007421DE /* WYHQBillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82DC66362193E132007421DE /* WYHQBillTableViewCell.xib */; };
@@ -181,6 +181,7 @@
 		5915182B2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQWYHQEditBillToolBarCell.h; sourceTree = "<group>"; };
 		5915182C2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQWYHQEditBillToolBarCell.m; sourceTree = "<group>"; };
 		5915182D2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQWYHQEditBillToolBarCell.xib; sourceTree = "<group>"; };
+		594B0EEF21957BB0008585F5 /* A.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = A.swift; sourceTree = "<group>"; };
 		8218165F219518D900521E75 /* UNNoDataView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNNoDataView.m; sourceTree = "<group>"; };
 		82181660219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CYLTableViewPlaceHolder.m"; sourceTree = "<group>"; };
 		82181661219518D900521E75 /* UNNoDataView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNNoDataView.h; sourceTree = "<group>"; };
@@ -412,7 +413,6 @@
 		82DC662821932267007421DE /* WYHQScrollDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQScrollDisplayViewController.h; sourceTree = "<group>"; };
 		82DC662921932267007421DE /* WYHQPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQPageViewController.m; sourceTree = "<group>"; };
 		82DC662E2193CE33007421DE /* Wuyouhuaqian-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wuyouhuaqian-Bridging-Header.h"; sourceTree = "<group>"; };
-		82DC662F2193CE34007421DE /* A.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = A.swift; sourceTree = "<group>"; };
 		82DC66312193D76C007421DE /* BillHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BillHome.storyboard; sourceTree = "<group>"; };
 		82DC66342193E132007421DE /* WYHQBillTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillTableViewCell.h; sourceTree = "<group>"; };
 		82DC66352193E132007421DE /* WYHQBillTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTableViewCell.m; sourceTree = "<group>"; };
@@ -936,7 +936,7 @@
 				82DC653A2192E275007421DE /* WYHQUtilitiesDefine.h */,
 				82DC653B2192E275007421DE /* WYHQConstantMacros.h */,
 				82DC653C2192E275007421DE /* WYHQConst.h */,
-				82DC662F2193CE34007421DE /* A.swift */,
+				594B0EEF21957BB0008585F5 /* A.swift */,
 				82DC662E2193CE33007421DE /* Wuyouhuaqian-Bridging-Header.h */,
 				82B4B6FF2193E9CA009A4B62 /* WYHQTypeDefine.h */,
 			);
@@ -1550,7 +1550,6 @@
 				82DC659E2192E275007421DE /* ApplyRecordCell.m in Sources */,
 				82DC65A72192E275007421DE /* UICountingLabel.m in Sources */,
 				82DC66372193E132007421DE /* WYHQBillTableViewCell.m in Sources */,
-				82DC66302193CE34007421DE /* A.swift in Sources */,
 				82DC65C42192E275007421DE /* WYHQBaseViewController.m in Sources */,
 				82DC65E12192E275007421DE /* AASpline.m in Sources */,
 				82DC65E72192E275007421DE /* AAOptions.m in Sources */,
@@ -1561,6 +1560,7 @@
 				82B309DB2194045B00284246 /* WYHQLeapButton.m in Sources */,
 				82DC65CE2192E275007421DE /* AASeries.m in Sources */,
 				82DC65AE2192E275007421DE /* UILabel+LabelKit.m in Sources */,
+				594B0EF021957BB0008585F5 /* A.swift in Sources */,
 				82DC65E32192E275007421DE /* AAPie.m in Sources */,
 				82DC65B52192E275007421DE /* ZYZControl.m in Sources */,
 				82DC65B42192E275007421DE /* UIView+ViewKit.m in Sources */,

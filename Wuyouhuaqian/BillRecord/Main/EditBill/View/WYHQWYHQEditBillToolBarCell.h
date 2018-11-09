@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WYHQBillTool.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WYHQWYHQEditBillToolBarCell : UICollectionViewCell
 
-@property (nonatomic, copy) NSString *typeStr;
+@property (nonatomic, assign) WYHQBillType billType;
 
 @end
 

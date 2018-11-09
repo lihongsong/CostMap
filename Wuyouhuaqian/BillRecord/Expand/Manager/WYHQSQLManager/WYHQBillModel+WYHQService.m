@@ -20,7 +20,7 @@
     [billTypes enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         WYHQBillModel *model = [WYHQBillModel new];
         model.s_type_id = [obj stringValue];
-        model.s_type_name = [WYHQBillTool classifyWithIndex:[obj integerValue]];
+        model.s_type_name = [WYHQBillTool typeNameWithIndex:[obj integerValue]];
         [tempArray addObject:model];
     }];
     
