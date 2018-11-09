@@ -189,6 +189,9 @@
     
     [[HJMediator shared] setUpConfig:config];
     [[HJMediator shared] setUpRootViewController:_homeNav];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:HJHexColor(0x666666),
+                                                           NSFontAttributeName: [UIFont systemFontOfSize:18]}];
 }
 
 - (void)setUpFMDB {

@@ -72,7 +72,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"花钱无忧";
+    self.title = @"花钱无忧";
     
     self.edgesForExtendedLayout = UIRectEdgeAll;
     
@@ -82,10 +82,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self requestData];
-    
-    [self setUpNavColor];
 }
 
 - (void)setpNavBarWhenViewWillAppear {
@@ -95,6 +93,8 @@
     [self cfy_setNavigationBarBackgroundImage:nil];
     // 设置ShadowImage
     [self cfy_setNavigationBarShadowImageBackgroundColor:[UIColor clearColor]];
+    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
 
 #pragma mark - Getter & Setter Methods
@@ -124,12 +124,6 @@
 
 #pragma mark - Private Method
 
-- (void)setUpNavColor {
-    
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor],
-                                                                      NSFontAttributeName: [UIFont systemFontOfSize:18]}];
-}
 
 - (NSString *)dateString {
     return [NSString stringWithFormat:@"%04ld-%02ld",(long)_year, (long)_month];
@@ -165,8 +159,6 @@
     
     self.tableHeaderView.backgroundColor = WYHQThemeColor;
     
-    [self setUpNavColor];
-    
     self.tableView.tableType = WYHQBillTableTypeHome;
     
     UIBarButtonItem *setItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_set"]
@@ -188,6 +180,13 @@
     
     self.navigationItem.rightBarButtonItem = dateItem;
     self.navigationItem.leftBarButtonItem = setItem;
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.text = self.title;
+    titleLabel.font = [UIFont systemFontOfSize:18];
+    titleLabel.textColor = UIColor.whiteColor;
+    
+    self.navigationItem.titleView = titleLabel;
     
     [_chartBaseVw addSubview:self.lineView];
     [_chartBaseVw addSubview:self.pieView];

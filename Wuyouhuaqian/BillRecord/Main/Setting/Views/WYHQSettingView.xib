@@ -18,6 +18,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tmd-zm-dsO">
                     <rect key="frame" x="0.0" y="0.0" width="200" height="480"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKp-Bq-22e">
+                            <rect key="frame" x="-30" y="0.0" width="30" height="480"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="LCg-Gy-dzJ"/>
+                            </constraints>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lm-ut-umF">
                             <rect key="frame" x="0.0" y="44" width="200" height="150"/>
                             <subviews>
@@ -192,6 +199,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="CKp-Bq-22e" firstAttribute="height" secondItem="Tmd-zm-dsO" secondAttribute="height" id="9V7-6k-Fdn"/>
                         <constraint firstItem="aKU-sQ-DBY" firstAttribute="leading" secondItem="TEx-9p-NEP" secondAttribute="leading" id="E0k-VT-mIh"/>
                         <constraint firstItem="0lm-ut-umF" firstAttribute="leading" secondItem="Tmd-zm-dsO" secondAttribute="leading" id="Gd8-YJ-iad"/>
                         <constraint firstItem="NmT-h7-3JZ" firstAttribute="top" secondItem="TEx-9p-NEP" secondAttribute="bottom" id="HBu-ai-S2q"/>
@@ -200,11 +208,14 @@
                         <constraint firstItem="aKU-sQ-DBY" firstAttribute="top" secondItem="NmT-h7-3JZ" secondAttribute="bottom" id="Mts-tB-45k"/>
                         <constraint firstAttribute="trailing" secondItem="TEx-9p-NEP" secondAttribute="trailing" constant="15" id="N3T-qN-3hJ"/>
                         <constraint firstItem="TEx-9p-NEP" firstAttribute="top" secondItem="o98-9X-vLH" secondAttribute="bottom" constant="30" id="QFV-tM-eG4"/>
+                        <constraint firstItem="CKp-Bq-22e" firstAttribute="trailing" secondItem="Tmd-zm-dsO" secondAttribute="leading" id="T2K-WS-pod"/>
                         <constraint firstItem="NmT-h7-3JZ" firstAttribute="leading" secondItem="TEx-9p-NEP" secondAttribute="leading" id="Xjf-yG-Xgu"/>
                         <constraint firstItem="TEx-9p-NEP" firstAttribute="leading" secondItem="Tmd-zm-dsO" secondAttribute="leading" constant="15" id="YI4-je-sqy"/>
                         <constraint firstItem="NmT-h7-3JZ" firstAttribute="trailing" secondItem="TEx-9p-NEP" secondAttribute="trailing" id="Z1n-Dw-tMP"/>
                         <constraint firstItem="o98-9X-vLH" firstAttribute="leading" secondItem="Tmd-zm-dsO" secondAttribute="leading" constant="15" id="ZHF-6v-hqV"/>
                         <constraint firstAttribute="trailing" secondItem="o98-9X-vLH" secondAttribute="trailing" constant="15" id="d0E-YJ-IDK"/>
+                        <constraint firstAttribute="bottom" secondItem="CKp-Bq-22e" secondAttribute="bottom" id="eFD-7e-rPL"/>
+                        <constraint firstItem="CKp-Bq-22e" firstAttribute="top" secondItem="Tmd-zm-dsO" secondAttribute="top" id="huo-Yv-C7f"/>
                         <constraint firstItem="aKU-sQ-DBY" firstAttribute="trailing" secondItem="TEx-9p-NEP" secondAttribute="trailing" id="q8g-5h-Xc8"/>
                         <constraint firstAttribute="trailing" secondItem="0lm-ut-umF" secondAttribute="trailing" id="r02-Wy-Rn3"/>
                     </constraints>
@@ -225,7 +236,7 @@
                 <outlet property="subtitleLabel" destination="aCr-I2-Ezh" id="iNV-eg-FBW"/>
                 <outlet property="titleLabel" destination="573-S4-hr0" id="acd-hz-s27"/>
             </connections>
-            <point key="canvasLocation" x="-8" y="154.27286356821591"/>
+            <point key="canvasLocation" x="-8" y="153.82308845577214"/>
         </view>
     </objects>
     <resources>
