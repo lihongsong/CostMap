@@ -35,7 +35,7 @@
 }
 
 - (UIView *)cyl_placeHolderView {
-    return objc_getAssociatedObject(self, @selector(placeHolderView));
+    return [self placeHolderView];
 }
 
 - (void)setPlaceHolderView:(UIView *)placeHolderView {
