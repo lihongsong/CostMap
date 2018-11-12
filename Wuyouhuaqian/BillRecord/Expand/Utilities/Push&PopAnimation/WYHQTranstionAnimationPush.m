@@ -21,7 +21,7 @@
 #pragma mark -- UIViewControllerAnimatedTransitioning --
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{
-    return 0.7;
+    return 0.4;
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
@@ -40,6 +40,8 @@
     [containView addSubview:toVc.view];
     
     CGRect animateRect = fromVc.animateRect;
+    
+    animateRect = [fromVc.view convertRect:animateRect toView:toVc.view];
     
     //绘制圆形
     UIBezierPath *startPath = [UIBezierPath bezierPathWithOvalInRect:animateRect];

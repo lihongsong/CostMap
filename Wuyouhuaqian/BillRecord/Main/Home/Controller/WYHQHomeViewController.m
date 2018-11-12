@@ -21,6 +21,7 @@
 #import "WYHQEditBillViewController.h"
 #import "WYHQTranstionAnimationPush.h"
 #import "CLCustomDatePickerView.h"
+#import "WYHQCountingLabel.h"
 
 @interface WYHQHomeViewController () <UINavigationControllerDelegate>
 
@@ -28,7 +29,7 @@
 
 @property (strong, nonatomic) WYHQChartLineView *lineView;
 
-@property (nonatomic, strong) WYHQHomeDateSelectButton *dateSelectBtn;
+@property (weak, nonatomic) IBOutlet WYHQHomeDateSelectButton *dateSelectBtn;
 
 @property (weak, nonatomic) IBOutlet WYHQLeapButton *addBillBtn;
 
@@ -46,7 +47,13 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *moreBt;
 
-@property (weak, nonatomic) IBOutlet UILabel *moneyLb;
+@property (weak, nonatomic) IBOutlet WYHQCountingLabel *moneyLb;
+
+@property (weak, nonatomic) IBOutlet UIView *headerBackView;
+
+@property (assign, nonatomic) CGFloat totalMoney;
+
+@property (weak, nonatomic) IBOutlet UIView *navbar;
 
 /**
  头部视图
@@ -89,7 +96,12 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     [self requestData];
     [[self navigationController] setDelegate:self];
+    [[self navigationController] setNavigationBarHidden:YES animated:YES];
 
+    // 钱动画
+    if (_totalMoney > 0) {
+        [self doMoneyAnimation];
+    }
 }
 
 - (void)setpNavBarWhenViewWillAppear {
@@ -120,6 +132,14 @@
     return _lineView;
 }
 
+#pragma mark - Super Method
+
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    self.animateRect = self.addBillBtn.frame;
+}
+
 #pragma mark - Network Method
 
 
@@ -130,6 +150,15 @@
 
 #pragma mark - Private Method
 
+- (void)doMoneyAnimation {
+    
+    CGFloat money = fabs(_totalMoney);
+    
+    //设置变化范围及动画时间
+    [_moneyLb countFrom:0.00
+                     to:money
+           withDuration:1.0f];
+}
 
 - (NSString *)dateString {
     return [NSString stringWithFormat:@"%04ld-%02ld",(long)_year, (long)_month];
@@ -163,6 +192,25 @@
 
 - (void)setUpUI {
     
+    _lineView.alpha = 1.0f;
+    _pieView.alpha = 0.0f;
+    
+    _moneyLb.textAlignment = NSTextAlignmentCenter;
+    _moneyLb.font = [UIFont fontWithName:@"Avenir Next" size:27];
+    _moneyLb.textColor = [UIColor whiteColor];
+    _moneyLb.formatBlock = ^NSString *(CGFloat value) {
+        return [@(value).stringValue moneyStyle];
+    };
+    
+    //设置格式
+    _moneyLb.format = @"%.2f";
+    
+    self.navbar.backgroundColor = WYHQThemeColor;
+    self.view.backgroundColor = WYHQThemeColor;
+    self.headerBackView.backgroundColor = WYHQThemeColor;
+    [self.changeBt setTitleColor:WYHQThemeColor forState:UIControlStateNormal];
+    [self.changeBt setTitleColor:WYHQThemeColor forState:UIControlStateHighlighted];
+    
     self.animateRect = _addBillBtn.frame;
     
     self.navigationController.delegate = self;
@@ -170,33 +218,6 @@
     self.tableHeaderView.backgroundColor = WYHQThemeColor;
     
     self.tableView.tableType = WYHQBillTableTypeHome;
-    
-    UIBarButtonItem *setItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"home_set"]
-                                                                style:UIBarButtonItemStylePlain
-                                                               target:self
-                                                               action:@selector(setBtnClick)];
-    
-    UIView *dateView = [UIView new];
-    dateView.frame = CGRectMake(0, 0, 100, 40);
-    
-    _dateSelectBtn = [WYHQHomeDateSelectButton new];
-    [_dateSelectBtn setFrame:CGRectMake(0, 0, 100, 40)];
-    [_dateSelectBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    [_dateSelectBtn.titleLabel setFont:[UIFont systemFontOfSize:12]];
-    [_dateSelectBtn setImage:[UIImage imageNamed:@"home_picker_arrow"] forState:UIControlStateNormal];
-    [_dateSelectBtn addTarget:self action:@selector(dateBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    
-    UIBarButtonItem *dateItem = [[UIBarButtonItem alloc] initWithCustomView:_dateSelectBtn];
-    
-    self.navigationItem.rightBarButtonItem = dateItem;
-    self.navigationItem.leftBarButtonItem = setItem;
-    
-    UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = self.title;
-    titleLabel.font = [UIFont systemFontOfSize:18];
-    titleLabel.textColor = UIColor.whiteColor;
-    
-    self.navigationItem.titleView = titleLabel;
     
     [_chartBaseVw addSubview:self.lineView];
     [_chartBaseVw addSubview:self.pieView];
@@ -211,8 +232,8 @@
         make.edges.mas_equalTo(self.chartBaseVw);
     }];
     
-    _lineView.hidden = NO;
-    _pieView.hidden = YES;
+    _lineView.alpha = 1.0f;
+    _pieView.alpha = 0.0f;
     
     NSDate *today = [NSDate hj_getToday];
     _year = [today hj_year];
@@ -255,7 +276,8 @@
                                     [self.tableView cyl_reloadData];
                                     
                                     // 设置总额数据
-                                    self.moneyLb.text = [NSString stringWithFormat:@"%.2f", sum];
+                                    self.totalMoney = sum;
+                                    [self doMoneyAnimation];
                                 }];
 }
 
@@ -265,7 +287,7 @@
 
 #pragma mark - Event & Target Methods
 
-- (void)setBtnClick {
+- (IBAction)setBtnClick {
     // 跳转设置
         WEAK_SELF
         [WYHQSettingView showSettingViewOnSuperViewController:self.navigationController
@@ -283,7 +305,7 @@
     [[HJMediator shared] routeToURL:HJAPPURL(@"BillList") withParameters:nil, nil];
 }
 
-- (void)dateBtnClick {
+- (IBAction)dateBtnClick {
     
     [self arrowAnimate];
     
@@ -307,22 +329,54 @@
                                         }];
 }
 
+// ******** 修改点 ********
 - (IBAction)changeType:(UIButton *)sender {
     
-    [UIView animateWithDuration:0.5 animations:^{
-        if (self.lineView.hidden == YES) {
-            self.lineView.hidden = NO;
-            self.pieView.hidden = YES;
+    UIView *fakeButton = [sender snapshotViewAfterScreenUpdates:NO];
+    fakeButton.frame = sender.frame;
+    [sender.superview addSubview:fakeButton];
+    
+    sender.hidden = YES;
+    
+    sender.userInteractionEnabled = NO;
+    
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         CGPoint center = fakeButton.center;
+                         fakeButton.bounds = CGRectMake(center.x, center.y, 0, 0);
+                     } completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.5
+                                               delay:0
+                              usingSpringWithDamping:0.2
+                               initialSpringVelocity:5.0
+                                             options:UIViewAnimationOptionCurveEaseInOut animations:^{
+                                                 fakeButton.frame = sender.frame;
+                                             }
+                                          completion:^(BOOL finished) {
+                                              [fakeButton removeFromSuperview];
+                                              sender.hidden = NO;
+                                              sender.userInteractionEnabled = YES;
+                                          }];
+                         
+                     }];
+    
+    [UIView animateWithDuration:0.7 animations:^{
+        if (self.lineView.alpha == 0.0f) {
+            self.lineView.alpha = 1.0f;
+            self.pieView.alpha = 0.0f;
         } else {
-            self.lineView.hidden = YES;
-            self.pieView.hidden = NO;
+            self.lineView.alpha = 0.0f;
+            self.pieView.alpha = 1.0f;
         }
-    } completion:^(BOOL finished) {
-        if (self.lineView.hidden == NO) {
+        
+        if (self.lineView.alpha == 1.0f) {
             [self.lineView animate];
         } else {
             [self.pieView animate];
         }
+        
+    } completion:^(BOOL finished) {
+        
     }];
 }
 
