@@ -32,13 +32,13 @@ PODS:
     - SDWebImage
   - HJ_UIKit/HJProgressHUD (2.2.6):
     - MBProgressHUD
-  - HJCategories (1.1.2):
-    - HJCategories/CoreFoundation (= 1.1.2)
-    - HJCategories/Foundation (= 1.1.2)
-    - HJCategories/UIKit (= 1.1.2)
-  - HJCategories/CoreFoundation (1.1.2)
-  - HJCategories/Foundation (1.1.2)
-  - HJCategories/UIKit (1.1.2)
+  - HJCategories (1.1.3):
+    - HJCategories/CoreFoundation (= 1.1.3)
+    - HJCategories/Foundation (= 1.1.3)
+    - HJCategories/UIKit (= 1.1.3)
+  - HJCategories/CoreFoundation (1.1.3)
+  - HJCategories/Foundation (1.1.3)
+  - HJCategories/UIKit (1.1.3)
   - HJMediator (0.2.0)
   - HJWebView (1.0.11):
     - HJWebView/HJJSBridge (= 1.0.11)
@@ -82,7 +82,7 @@ DEPENDENCIES:
   - HJ_UIKit/HJCityPickerManager (= 2.2.6)
   - HJ_UIKit/HJGuidePage (= 2.2.6)
   - HJ_UIKit/HJProgressHUD (= 2.2.6)
-  - HJCategories (= 1.1.2)
+  - HJCategories (= 1.1.3)
   - HJMediator
   - HJWebView
   - IQKeyboardManager (= 5.0.6)
@@ -123,7 +123,7 @@ SPEC CHECKSUMS:
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
   HJ_UIKit: f159662789059d290bbef7e18d8bbe1af377be59
-  HJCategories: 62e906815cb8c858c4a49b965d8434dec67bad43
+  HJCategories: eb50c3d9495bbe0bb0c7f67012d8c9e1e07ae37b
   HJMediator: 381890d07324a962f6c84c782d98c3be8d3d931a
   HJWebView: d7a67f357742e380c6215017d133b535ae762b73
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
@@ -136,6 +136,6 @@ SPEC CHECKSUMS:
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: ccbf264f5dab7f20d052e164db8147290cff6691
+PODFILE CHECKSUM: 44375398cc6473d5c45988f9c187c768ea9b60c9
 
 COCOAPODS: 1.5.3

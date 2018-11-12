@@ -14,7 +14,7 @@ target 'Wuyouhuaqian' do
     pod 'HJMediator'
     pod 'SDWebImage'
     pod 'FMDB'
-    pod 'HJCategories', '1.1.2'
+    pod 'HJCategories', '1.1.3'
     pod 'Masonry','1.1.0'
     pod 'HJ_UIKit/HJCarousel', '2.2.6'
     pod 'HJ_UIKit/HJGuidePage', '2.2.6'
