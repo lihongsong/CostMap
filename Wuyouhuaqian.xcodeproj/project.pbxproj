@@ -1903,7 +1903,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = W8H3Q8T6FG;
+				DEVELOPMENT_TEAM = 4FYS54XBTW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
@@ -1914,7 +1914,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.ImmediatelyLoan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = wuyou_adhoc;
+				PROVISIONING_PROFILE_SPECIFIER = immediatelyLoan_adhoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wuyouhuaqian/BillRecord/Expand/Macros/Wuyouhuaqian-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -60,6 +60,12 @@
 
 - (void)setUpUI {
     
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"]
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(addBillBtnClick)];
+    
     self.tableView.enableDelete = YES;
     self.tableView.tableType = WYHQBillTableTypeMonth_Type;
     
@@ -85,6 +91,8 @@
     UILabel *titleLb = [UILabel new];
     titleLb.textColor = HJHexColor(k0x666666);
     titleLb.font = [UIFont boldSystemFontOfSize:18];
+    titleLb.frame = CGRectMake(0, 0, 100, 40);
+    titleLb.textAlignment = NSTextAlignmentCenter;
     titleLb.text = [NSString stringWithFormat:@"%@-%@",self.year, self.month];
     
     [[self navigationItem] setTitleView:titleLb];
@@ -113,6 +121,10 @@
 
 
 #pragma mark - Event & Target Methods
+
+- (void)addBillBtnClick {
+    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
+}
 
 
 #pragma mark - WYHQDaySelectedViewDelegate
