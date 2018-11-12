@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WYHQEditBillViewController : WYHQBaseViewController
+@interface WYHQEditBillViewController : WYHQBaseViewController<HJMediatorTargetInstance>
 
 @property (nonatomic, strong, nullable) WYHQBillModel *billModel;
 
