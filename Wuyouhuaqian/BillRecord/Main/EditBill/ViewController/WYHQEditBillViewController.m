@@ -82,8 +82,8 @@
     self.momeyTextField.hj_maxLength = 10;
     self.noteTextField.hj_maxLength = 30;
     
-    self.momeyTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"¥ 0.00" attributes:@{NSForegroundColorAttributeName:HJHexColor(k0xcccccc), NSFontAttributeName: [UIFont boldSystemFontOfSize:30]}];
-    self.noteTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"备注" attributes:@{NSForegroundColorAttributeName:HJHexColor(k0xcccccc), NSFontAttributeName: [UIFont boldSystemFontOfSize:18]}];
+    self.momeyTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"¥ 0.00" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.7], NSFontAttributeName: [UIFont boldSystemFontOfSize:30]}];
+    self.noteTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"备注" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.6], NSFontAttributeName: [UIFont boldSystemFontOfSize:18]}];
     
     self.momeyTextField.delegate = self;
     self.noteTextField.delegate = self;
