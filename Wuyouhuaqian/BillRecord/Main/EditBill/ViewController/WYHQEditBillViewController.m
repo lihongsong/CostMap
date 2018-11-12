@@ -33,8 +33,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *customNavHeight;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
-/** 城市选择器 */
-@property (nonatomic, strong) HJCityPickerManager *cityPicker;
 /** 选择的省 */
 @property (nonatomic, assign) NSInteger pIndex;
 /** 选择的市 */
@@ -323,8 +321,7 @@
     cityPicker.titleLabel.textColor = color;
     cityPicker.pickerViewRowSelectedTextColor = color;
     [cityPicker selecteCityWithProvinceIndex:self.pIndex cityIndex:self.cIndex districtIndex:self.dIndex animated:YES];
-    [self presentViewController:cityPicker.pickerController animated:YES completion:nil];
-    self.cityPicker = cityPicker;
+    [cityPicker showPickerFromController:self];
 }
 
 - (void)keyboardWillShowNotification:(NSNotification *)noti {
