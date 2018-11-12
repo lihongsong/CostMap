@@ -88,6 +88,7 @@ static CGFloat settingViewWidth = 200;
     
     NSDate *firstDate = UserDefaultGetObj(@"firstDay");
     NSInteger date = [NSDate hj_daysAgo:firstDate];
+    date = date < 0 ? 0 : date;
     self.titleLabel.text = [NSString stringWithFormat:@"您已坚持记账%ld天",date + 1];
     
     UITapGestureRecognizer *tmpTap = [[UITapGestureRecognizer alloc] init];
