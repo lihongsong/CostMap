@@ -231,7 +231,7 @@
     _changeBt.tag = kLineButtonTag;
     
     _moneyLb.textAlignment = NSTextAlignmentCenter;
-    _moneyLb.font = [UIFont fontWithName:@"Avenir Next" size:27];
+    _moneyLb.font = [UIFont fontWithName:@"AvenirNextCondensed-Bold" size:28];
     _moneyLb.textColor = [UIColor whiteColor];
     _moneyLb.formatBlock = ^NSString *(CGFloat value) {
         return [NSString stringWithFormat:@"¥%@",[@(value).stringValue moneyStyle]];

@@ -124,7 +124,7 @@
                                     self.pieView.models = pieData;
                                     
                                     self.tableView.models = result;
-                                    [self.tableView reloadData];
+                                    [self.tableView cyl_reloadData];
                                 }];
 }
 

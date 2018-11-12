@@ -41,7 +41,7 @@
             return HJHexColor(0x7672d3);
             break;
         case WYHQBillTypePlay:
-            return HJHexColor(0x78CD74);  //7ED274
+            return HJHexColor(0x78cd65);
             break;
             
         default:

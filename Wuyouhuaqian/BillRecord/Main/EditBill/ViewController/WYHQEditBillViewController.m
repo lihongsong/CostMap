@@ -19,6 +19,8 @@
 
 @interface WYHQEditBillViewController () <UITextFieldDelegate, UINavigationControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *billTypeLb;
+
 @property (weak, nonatomic) IBOutlet UITextField *momeyTextField;
 @property (weak, nonatomic) IBOutlet UITextField *noteTextField;
 @property (weak, nonatomic) IBOutlet UIButton *timeButton;
@@ -164,6 +166,11 @@
     if ([self.cityButton.currentTitle isEqualToString:@"选择城市"]) {
         [self.cityButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
     }
+}
+
+- (void)setBillType:(WYHQBillType)billType {
+    _billType = billType;
+    self.billTypeLb.text = [WYHQBillTool typeNameWithIndex:billType];
 }
 
 - (void)addEditBillToolBar {
@@ -348,6 +355,7 @@
         self.backButton.tintColor = color;
         self.deleteButton.tintColor = color;
         self.titleLabel.textColor = color;
+        self.billTypeLb.textColor = color;
         
         [self setContentColor:UIColor.whiteColor];
     } completion:^(BOOL finished) {

@@ -54,6 +54,14 @@
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate
 
+- (CGFloat)sectionHeaderHeight {
+    return 5.0f;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [UIView new];
+}
+
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleDelete;
 }

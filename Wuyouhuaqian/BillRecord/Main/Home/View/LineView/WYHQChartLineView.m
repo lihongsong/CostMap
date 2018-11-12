@@ -90,7 +90,9 @@
     
     _chartView.legend.enabled = NO;
     _chartView.xAxis.labelTextColor = HJHexColor(k0x666666);
+    _chartView.leftAxis.labelTextColor = HJHexColor(k0x666666);
     _chartView.xAxis.yOffset = 5;
+    _chartView.leftAxis.xOffset = 5;
     
     [self updateChartData];
 }
