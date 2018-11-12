@@ -53,7 +53,7 @@ static CGFloat settingViewWidth = 200;
     settingView.gotoViewContoller = gotoVC;
     [bgView addSubview:settingView];
     
-    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.7 initialSpringVelocity:1 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         bgView.alpha = 1;
         settingView.frame = CGRectMake(0, 0, settingViewWidth, height);
     } completion:nil];
@@ -128,7 +128,7 @@ static CGFloat settingViewWidth = 200;
 - (void)hideSettingView:(void (^)(void))completion {
     UIView *superView = self.superview;
     CGFloat height = self.bounds.size.height;
-    [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.3 initialSpringVelocity:3 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         superView.alpha = 0;
         self.frame = CGRectMake(0 - settingViewWidth, 0, settingViewWidth, height);
     } completion:^(BOOL finished) {

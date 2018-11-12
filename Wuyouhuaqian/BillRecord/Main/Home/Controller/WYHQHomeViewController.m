@@ -234,7 +234,7 @@
     _moneyLb.font = [UIFont fontWithName:@"Avenir Next" size:27];
     _moneyLb.textColor = [UIColor whiteColor];
     _moneyLb.formatBlock = ^NSString *(CGFloat value) {
-        return [@(value).stringValue moneyStyle];
+        return [NSString stringWithFormat:@"¥%@",[@(value).stringValue moneyStyle]];
     };
     
     //设置格式
