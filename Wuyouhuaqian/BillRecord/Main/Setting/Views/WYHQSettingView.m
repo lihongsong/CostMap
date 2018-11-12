@@ -20,7 +20,7 @@
 #import <NSDate+HJNormalExtension.h>
 
 static NSString *const mineHeader = @"com.wyhq.setting.mineHeader";
-static CGFloat settingViewWidth = 200;
+static CGFloat settingViewWidth = 260;
 
 @interface WYHQSettingView ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 

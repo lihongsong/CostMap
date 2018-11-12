@@ -60,7 +60,12 @@
     _bigTitleLb.text = model.s_type_name;
     _cityLb.text = model.s_city;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[model.s_time doubleValue]];
-    _dateLb.text = [NSDate hj_stringWithDate:date format:@"HH:mm"];
+    
+    if (_tableType == WYHQBillTableTypeDay) {
+        _dateLb.text = [NSDate hj_stringWithDate:date format:@"HH:mm"];
+    } else if (_tableType == WYHQBillTableTypeMonth_Type) {
+        _dateLb.text = [NSDate hj_stringWithDate:date format:@"dd日 HH:mm"];
+    }
 }
 
 - (void)setTableType:(WYHQBillTableType)tableType {

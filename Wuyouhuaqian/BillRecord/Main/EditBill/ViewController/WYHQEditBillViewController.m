@@ -206,7 +206,9 @@
         return;
     }
     
-    NSString *memey = [[self.momeyTextField.text stringByReplacingOccurrencesOfString:@"￥" withString:@""] cleanMoneyStyle];
+    NSString *memeyStr = [self.momeyTextField.text stringByReplacingOccurrencesOfString:@"￥" withString:@""];
+    memeyStr = [memeyStr stringByReplacingOccurrencesOfString:@"," withString:@""];
+    NSString *memey = [memeyStr cleanMoneyStyle];
     if (StrIsEmpty(memey)) {
         [KeyWindow hj_showToastHUD:@"请输入账单金额"];
         return;
@@ -349,13 +351,15 @@
         self.momeyTextField.textColor = color;
         self.noteTextField.textColor = color;
         [self.timeButton setTitleColor:color forState:UIControlStateNormal];
-        [self.cityButton setTitleColor:color forState:UIControlStateNormal];
         self.saveBillButton.layer.borderColor = color.CGColor;
         [self.saveBillButton setImage:image forState:UIControlStateNormal];
         self.backButton.tintColor = color;
         self.deleteButton.tintColor = color;
         self.titleLabel.textColor = color;
         self.billTypeLb.textColor = color;
+        if (self.billCity) {
+            [self.cityButton setTitleColor:color forState:UIControlStateNormal];
+        }
         
         [self setContentColor:UIColor.whiteColor];
     } completion:^(BOOL finished) {
