@@ -316,7 +316,7 @@
                                             minDate:nil
                                             maxDate:nil
                                        isAutoSelect:NO
-                                         themeColor:nil
+                                         themeColor:WYHQThemeColor
                                         resultBlock:^(NSString *selectValue) {
                                             STRONG_SELF
                                             self.year = [[[selectValue componentsSeparatedByString:@"-"] firstObject] integerValue];

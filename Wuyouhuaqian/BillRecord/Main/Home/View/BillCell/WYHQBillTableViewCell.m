@@ -70,7 +70,7 @@
     
     self.bigTitleBaseVw.hidden = tableType != WYHQBillTableTypeHome;
     
-    _arrowWidth.constant = tableType != WYHQBillTableTypeHome ? 8 : 0 ;
+    _arrowWidth.constant = tableType != WYHQBillTableTypeHome ? 6 : 0 ;
     _arrowLeading.constant = tableType != WYHQBillTableTypeHome ? 8 : 0 ;
     _arrowIV.hidden = tableType == WYHQBillTableTypeHome;
 }
