@@ -27,7 +27,13 @@
 @property (weak, nonatomic) IBOutlet UILabel *cityLb;
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLb;
-
+    
+@property (weak, nonatomic) IBOutlet UIImageView *arrowIV;
+    
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *arrowLeading;
+    
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *arrowWidth;
+    
 @end
 
 @implementation WYHQBillTableViewCell
@@ -55,12 +61,18 @@
     _cityLb.text = model.s_city;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[model.s_time doubleValue]];
     _dateLb.text = [NSDate hj_stringWithDate:date format:@"HH:mm"];
+    
+    
 }
 
 - (void)setTableType:(WYHQBillTableType)tableType {
     _tableType = tableType;
     
     self.bigTitleBaseVw.hidden = tableType != WYHQBillTableTypeHome;
+    
+    _arrowWidth.constant = tableType != WYHQBillTableTypeHome ? 6 : 0 ;
+    _arrowLeading.constant = tableType != WYHQBillTableTypeHome ? 8 : 0 ;
+    _arrowIV.hidden = tableType == WYHQBillTableTypeHome;
 }
 
 #pragma mark - Public Method
@@ -76,8 +88,9 @@
 + (WYHQBillTableViewCell *)cellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
     
     NSString *cellID = [WYHQBillTableViewCell cellID];
-    WYHQBillTableViewCell *cell = (WYHQBillTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellID
-                                                                                           forIndexPath:indexPath];
+    WYHQBillTableViewCell *cell =
+    (WYHQBillTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellID
+                                                             forIndexPath:indexPath];
     return cell;
 }
 

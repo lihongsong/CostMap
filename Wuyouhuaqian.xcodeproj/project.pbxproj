@@ -39,6 +39,9 @@
 		82CD2BEF2195AD9000E86371 /* WYHQTranstionAnimationPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BEE2195AD9000E86371 /* WYHQTranstionAnimationPush.m */; };
 		82CD2BF52195B00500E86371 /* UIViewController+Push.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BF42195B00500E86371 /* UIViewController+Push.m */; };
 		82CD2BF82195B17200E86371 /* WYHQTranstionAnimationPop.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BF72195B17200E86371 /* WYHQTranstionAnimationPop.m */; };
+		82CD2BFE21990A7D00E86371 /* WYHQCountingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BFC21990A7D00E86371 /* WYHQCountingLabel.m */; };
+		82CD2C0221990A9E00E86371 /* WYHQBillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82CD2BFF21990A9D00E86371 /* WYHQBillTableViewCell.xib */; };
+		82CD2C0321990A9E00E86371 /* WYHQBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2C0121990A9E00E86371 /* WYHQBillTableViewCell.m */; };
 		82DC63812192E15F007421DE /* WuyouhuaqianTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC63802192E15F007421DE /* WuyouhuaqianTests.m */; };
 		82DC638C2192E15F007421DE /* WuyouhuaqianUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC638B2192E15F007421DE /* WuyouhuaqianUITests.m */; };
 		82DC65952192E275007421DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64C52192E275007421DE /* AppDelegate.m */; };
@@ -144,8 +147,6 @@
 		82DC662C21932267007421DE /* WYHQPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82DC662621932267007421DE /* WYHQPageViewController.xib */; };
 		82DC662D21932267007421DE /* WYHQPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662921932267007421DE /* WYHQPageViewController.m */; };
 		82DC66322193D76C007421DE /* BillHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DC66312193D76C007421DE /* BillHome.storyboard */; };
-		82DC66372193E132007421DE /* WYHQBillTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC66352193E132007421DE /* WYHQBillTableViewCell.m */; };
-		82DC66382193E132007421DE /* WYHQBillTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82DC66362193E132007421DE /* WYHQBillTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +223,11 @@
 		82CD2BF42195B00500E86371 /* UIViewController+Push.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Push.m"; sourceTree = "<group>"; };
 		82CD2BF62195B17200E86371 /* WYHQTranstionAnimationPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQTranstionAnimationPop.h; sourceTree = "<group>"; };
 		82CD2BF72195B17200E86371 /* WYHQTranstionAnimationPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQTranstionAnimationPop.m; sourceTree = "<group>"; };
+		82CD2BFC21990A7D00E86371 /* WYHQCountingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQCountingLabel.m; sourceTree = "<group>"; };
+		82CD2BFD21990A7D00E86371 /* WYHQCountingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQCountingLabel.h; sourceTree = "<group>"; };
+		82CD2BFF21990A9D00E86371 /* WYHQBillTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WYHQBillTableViewCell.xib; sourceTree = "<group>"; };
+		82CD2C0021990A9D00E86371 /* WYHQBillTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQBillTableViewCell.h; sourceTree = "<group>"; };
+		82CD2C0121990A9E00E86371 /* WYHQBillTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTableViewCell.m; sourceTree = "<group>"; };
 		82DC63642192E15E007421DE /* Wuyouhuaqian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wuyouhuaqian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DC63752192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DC637C2192E15F007421DE /* WuyouhuaqianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WuyouhuaqianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -431,9 +437,6 @@
 		82DC662921932267007421DE /* WYHQPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQPageViewController.m; sourceTree = "<group>"; };
 		82DC662E2193CE33007421DE /* Wuyouhuaqian-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Wuyouhuaqian-Bridging-Header.h"; sourceTree = "<group>"; };
 		82DC66312193D76C007421DE /* BillHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BillHome.storyboard; sourceTree = "<group>"; };
-		82DC66342193E132007421DE /* WYHQBillTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQBillTableViewCell.h; sourceTree = "<group>"; };
-		82DC66352193E132007421DE /* WYHQBillTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQBillTableViewCell.m; sourceTree = "<group>"; };
-		82DC66362193E132007421DE /* WYHQBillTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WYHQBillTableViewCell.xib; sourceTree = "<group>"; };
 		9BEF51BEE2E08CC83CA42644 /* Pods-Wuyouhuaqian.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wuyouhuaqian.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wuyouhuaqian/Pods-Wuyouhuaqian.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -626,6 +629,15 @@
 			path = "Push&PopAnimation";
 			sourceTree = "<group>";
 		};
+		82CD2BFB21990A7D00E86371 /* CountingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				82CD2BFC21990A7D00E86371 /* WYHQCountingLabel.m */,
+				82CD2BFD21990A7D00E86371 /* WYHQCountingLabel.h */,
+			);
+			path = CountingLabel;
+			sourceTree = "<group>";
+		};
 		82DC635B2192E15E007421DE = {
 			isa = PBXGroup;
 			children = (
@@ -738,6 +750,7 @@
 		82DC64CF2192E275007421DE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				82CD2BFB21990A7D00E86371 /* CountingLabel */,
 				82CD2BE32195A35800E86371 /* BillLineTypeView */,
 				82CD2BDF21958BAD00E86371 /* DateSelectButton */,
 				82B309DF2194096700284246 /* LineView */,
@@ -1339,9 +1352,9 @@
 		82DC66332193E0E2007421DE /* BillCell */ = {
 			isa = PBXGroup;
 			children = (
-				82DC66342193E132007421DE /* WYHQBillTableViewCell.h */,
-				82DC66352193E132007421DE /* WYHQBillTableViewCell.m */,
-				82DC66362193E132007421DE /* WYHQBillTableViewCell.xib */,
+				82CD2C0021990A9D00E86371 /* WYHQBillTableViewCell.h */,
+				82CD2C0121990A9E00E86371 /* WYHQBillTableViewCell.m */,
+				82CD2BFF21990A9D00E86371 /* WYHQBillTableViewCell.xib */,
 			);
 			path = BillCell;
 			sourceTree = "<group>";
@@ -1462,11 +1475,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82CD2C0221990A9E00E86371 /* WYHQBillTableViewCell.xib in Resources */,
 				82DC65B62192E275007421DE /* cityInfo.json in Resources */,
 				82DC65CA2192E275007421DE /* AAHighcharts-3d.js in Resources */,
 				82DC65CB2192E275007421DE /* AAChartView.html in Resources */,
 				82B309EA219439E800284246 /* WYHQDaySelectedView.xib in Resources */,
-				82DC66382193E132007421DE /* WYHQBillTableViewCell.xib in Resources */,
 				82DC65EA2192E275007421DE /* LaunchScreen.storyboard in Resources */,
 				5915181C219403D4004B5B32 /* PrivateAgreement.html in Resources */,
 				82DC662C21932267007421DE /* WYHQPageViewController.xib in Resources */,
@@ -1557,6 +1570,7 @@
 				82DC65E22192E275007421DE /* AAItemStyle.m in Sources */,
 				82DC65CF2192E275007421DE /* AAXAxis.m in Sources */,
 				82DC662B21932267007421DE /* WYHQIntroduceViewController.m in Sources */,
+				82CD2C0321990A9E00E86371 /* WYHQBillTableViewCell.m in Sources */,
 				82CD2BEF2195AD9000E86371 /* WYHQTranstionAnimationPush.m in Sources */,
 				82DC66172193110B007421DE /* WYHQBillListViewController.m in Sources */,
 				5915182E2194388A004B5B32 /* WYHQWYHQEditBillToolBarCell.m in Sources */,
@@ -1604,7 +1618,6 @@
 				82DC65982192E275007421DE /* RightItemButton.m in Sources */,
 				82DC659E2192E275007421DE /* ApplyRecordCell.m in Sources */,
 				82DC65A72192E275007421DE /* UICountingLabel.m in Sources */,
-				82DC66372193E132007421DE /* WYHQBillTableViewCell.m in Sources */,
 				82DC65C42192E275007421DE /* WYHQBaseViewController.m in Sources */,
 				82DC65E12192E275007421DE /* AASpline.m in Sources */,
 				82DC65E72192E275007421DE /* AAOptions.m in Sources */,
@@ -1651,6 +1664,7 @@
 				82DC65D62192E275007421DE /* AACrosshair.m in Sources */,
 				82DC65D22192E275007421DE /* AALine.m in Sources */,
 				82DC65B12192E275007421DE /* UIViewController+UIAlertControllerKit.m in Sources */,
+				82CD2BFE21990A7D00E86371 /* WYHQCountingLabel.m in Sources */,
 				82DC65E02192E275007421DE /* AAMarker.m in Sources */,
 				82DC659C2192E275007421DE /* CredictUsingRateCell.m in Sources */,
 				82DC660921930E18007421DE /* WYHQFeedbackViewController.m in Sources */,
@@ -1836,6 +1850,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = W8H3Q8T6FG;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
