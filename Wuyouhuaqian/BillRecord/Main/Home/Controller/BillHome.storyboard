@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0aI-X9-Y02">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0aI-X9-Y02">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -133,10 +133,9 @@
                                                                 <action selector="moreBtnClick:" destination="0aI-X9-Y02" eventType="touchUpInside" id="kdL-sy-f4d"/>
                                                             </connections>
                                                         </button>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="statistics_public_arrow_right_" translatesAutoresizingMaskIntoConstraints="NO" id="9rG-Pv-ZZR">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="9rG-Pv-ZZR">
                                                             <rect key="frame" x="354" y="15" width="6" height="10"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="10" id="ftS-0i-Grl"/>
                                                                 <constraint firstAttribute="width" constant="6" id="hdp-mw-1iG"/>
@@ -300,10 +299,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow_right" width="6" height="10"/>
         <image name="billAdd" width="48" height="48"/>
         <image name="home_picker_arrow" width="15" height="8"/>
         <image name="home_set" width="19" height="19"/>
         <image name="line_view" width="19" height="19"/>
-        <image name="statistics_public_arrow_right_" width="6" height="10"/>
     </resources>
 </document>

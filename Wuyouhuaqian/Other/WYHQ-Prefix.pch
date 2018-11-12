@@ -26,6 +26,7 @@
 #import <HJ_UIKit/HJGuidePageWindow.h>
 #import <HJ_UIKit/HJProgressHUD.h>
 #import <HJMediator/HJMediator.h>
+#import <AppUpdate/XZYAppUpdate.h>
 
 // Master SDK
 #import <AFNetworking/AFNetworking.h>

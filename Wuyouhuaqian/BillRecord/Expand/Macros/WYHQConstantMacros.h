@@ -9,6 +9,8 @@
 #ifndef WYHQConstantMacros_h
 #define WYHQConstantMacros_h
 
-#define APP_ChannelId @"1"
+#define APP_ChannelId @"test"
+
+#define XZYAppUpdateKey @"test"
 
 #endif /* WYHQConstantMacros_h */

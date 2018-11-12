@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong, nullable) WYHQBillModel *billModel;
 
+/** 账单类型 */
+@property (nonatomic, copy) NSString *billTypeStr;
+
 @end
 
 NS_ASSUME_NONNULL_END

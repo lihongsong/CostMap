@@ -78,7 +78,6 @@
     _chartView.rightAxis.drawLabelsEnabled = NO;
     _chartView.leftAxis.axisLineColor = WYHQThemeColor;
     _chartView.xAxis.axisLineColor = WYHQThemeColor;
-    _chartView.extraBottomOffset = 5;
     
     ChartXAxis *xAxis = _chartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
@@ -92,7 +91,7 @@
     _chartView.xAxis.labelTextColor = HJHexColor(k0x666666);
     _chartView.leftAxis.labelTextColor = HJHexColor(k0x666666);
     _chartView.xAxis.yOffset = 5;
-    _chartView.leftAxis.xOffset = 5;
+    _chartView.extraBottomOffset = 5;
     
     [self updateChartData];
 }

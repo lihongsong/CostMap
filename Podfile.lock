@@ -14,10 +14,12 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - AppUpdate (2.0.0):
+    - Masonry
   - CFYNavigationBarTransition (1.3.0)
-  - Charts (3.0.3):
-    - Charts/Core (= 3.0.3)
-  - Charts/Core (3.0.3)
+  - Charts (3.2.0):
+    - Charts/Core (= 3.2.0)
+  - Charts/Core (3.2.0)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
@@ -73,8 +75,9 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (= 3.1.0)
+  - AppUpdate (= 2.0.0)
   - CFYNavigationBarTransition (= 1.3.0)
-  - Charts (= 3.0.3)
+  - Charts (= 3.2.0)
   - FMDB
   - GTMBase64 (= 1.0.1)
   - HJ_UIKit/HJAlertView (= 2.2.8)
@@ -100,6 +103,7 @@ SPEC REPOS:
     - HJMediator
     - HJWebView
   http://172.16.0.245:2345/Apple_SDK/iOS_Specs.git:
+    - AppUpdate
     - RCMobClick
   https://github.com/cocoapods/specs.git:
     - AFNetworking
@@ -118,8 +122,9 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  AppUpdate: 24943e29e8042d23207bd42c61a2f9c67dc35ad1
   CFYNavigationBarTransition: ecf29e5286a80857fca34c662bf72edef76e4da5
-  Charts: bcde37724c161958c1438dd4883971fcb2d50c06
+  Charts: 680c8328bd5e90cb14f67e00d2176f3113d19141
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
   HJ_UIKit: 068f688a539653c151312a000d85d4113e4d1965
