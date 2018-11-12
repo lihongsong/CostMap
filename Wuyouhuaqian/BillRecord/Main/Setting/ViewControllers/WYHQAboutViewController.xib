@@ -20,29 +20,49 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xpu-Ct-rd8">
-                    <rect key="frame" x="137.5" y="100" width="100" height="100"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PE-Mx-DYm">
+                    <rect key="frame" x="170" y="589.5" width="35" height="13.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="icon_60pt" translatesAutoresizingMaskIntoConstraints="NO" id="xpu-Ct-rd8">
+                    <rect key="frame" x="157.5" y="90" width="60" height="60"/>
                     <color key="backgroundColor" red="1" green="0.37647058820000001" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="100" id="btr-1X-75I"/>
+                        <constraint firstAttribute="width" constant="60" id="btr-1X-75I"/>
                         <constraint firstAttribute="width" secondItem="xpu-Ct-rd8" secondAttribute="height" multiplier="1:1" id="scT-f7-ciZ"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="0.29999999999999999"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="技术支持：http://xxx.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fvh-e5-i7V">
-                    <rect key="frame" x="100" y="324.5" width="175" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUn-Ot-e9e">
+                    <rect key="frame" x="16" y="168" width="343" height="128"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="128" id="2vh-UE-WTB"/>
+                    </constraints>
+                    <string key="text">你会经常忘记你花了多少钱么？
+~花钱无忧帮助你~
+一款简单易用、体验优秀的 app；
+极简的操作流程，让你轻松上手；
+漂亮的操作界面，让你爱不释手；</string>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系方式：xxx@xxx.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cy-gb-uSW">
-                    <rect key="frame" x="103" y="362.5" width="169.5" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="V 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2PE-Mx-DYm">
-                    <rect key="frame" x="167.5" y="587" width="40.5" height="16"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="联系方式&amp;技术支持：xiaogang_wyg@163.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cy-gb-uSW">
+                    <rect key="frame" x="59" y="561" width="257" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -50,14 +70,19 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="xpu-Ct-rd8" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="3J2-vp-tnz"/>
+                <constraint firstAttribute="trailing" secondItem="gUn-Ot-e9e" secondAttribute="trailing" constant="16" id="4q7-DD-Tbz"/>
+                <constraint firstItem="gUn-Ot-e9e" firstAttribute="firstBaseline" secondItem="xpu-Ct-rd8" secondAttribute="baseline" constant="18" symbolType="layoutAnchor" id="ABj-lz-MHF"/>
                 <constraint firstItem="2PE-Mx-DYm" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="H7y-vh-xJL"/>
-                <constraint firstItem="Fvh-e5-i7V" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Igl-D6-IXr"/>
-                <constraint firstItem="xpu-Ct-rd8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="PB8-Wc-zWu"/>
-                <constraint firstItem="Fvh-e5-i7V" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Pkd-MH-Oen"/>
-                <constraint firstItem="2cy-gb-uSW" firstAttribute="top" secondItem="Fvh-e5-i7V" secondAttribute="bottom" constant="20" id="QU6-bL-N8f"/>
+                <constraint firstItem="xpu-Ct-rd8" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="PB8-Wc-zWu"/>
+                <constraint firstItem="2PE-Mx-DYm" firstAttribute="top" secondItem="2cy-gb-uSW" secondAttribute="bottom" constant="14" id="cAE-8A-qFX"/>
                 <constraint firstItem="2cy-gb-uSW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="g0k-2P-z6V"/>
                 <constraint firstAttribute="bottom" secondItem="2PE-Mx-DYm" secondAttribute="bottom" constant="64" id="qwW-th-Wy8"/>
+                <constraint firstItem="gUn-Ot-e9e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="vwN-lc-89A"/>
             </constraints>
+            <point key="canvasLocation" x="53.600000000000001" y="48.125937031484263"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_60pt" width="60" height="60"/>
+    </resources>
 </document>
