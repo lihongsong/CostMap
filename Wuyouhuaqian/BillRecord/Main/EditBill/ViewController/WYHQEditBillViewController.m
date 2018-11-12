@@ -226,8 +226,6 @@
         self.titleLabel.textColor = color;
         
         [self setContentColor:UIColor.whiteColor];
-        self.momeyTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"¥ 0.00" attributes:@{NSForegroundColorAttributeName:UIColor.whiteColor, NSFontAttributeName: [UIFont boldSystemFontOfSize:30]}];
-        self.noteTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"备注" attributes:@{NSForegroundColorAttributeName:UIColor.whiteColor, NSFontAttributeName: [UIFont boldSystemFontOfSize:18]}];
     } completion:^(BOOL finished) {
         [self.navigationController popViewControllerAnimated:YES];
     }];
