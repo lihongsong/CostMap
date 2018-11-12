@@ -60,6 +60,12 @@
 
 - (void)setUpUI {
     
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"]
+                                     style:UIBarButtonItemStylePlain
+                                    target:self
+                                    action:@selector(addBillBtnClick)];
+    
     self.tableView.enableDelete = YES;
     self.tableView.tableType = WYHQBillTableTypeMonth_Type;
     
@@ -115,6 +121,10 @@
 
 
 #pragma mark - Event & Target Methods
+
+- (void)addBillBtnClick {
+    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
+}
 
 
 #pragma mark - WYHQDaySelectedViewDelegate
