@@ -186,7 +186,8 @@
     chartView.drawHoleEnabled = _drawHoleEnabled;
     chartView.transparentCircleRadiusPercent = 0.61;
     chartView.chartDescription.enabled = NO;
-    [chartView setExtraOffsetsWithLeft:-100.f top:10.f right:100.f bottom:5.f];
+    
+    [chartView setExtraOffsetsWithLeft:-100.f top:5.f right:100.f bottom:5.f];
     
     chartView.drawCenterTextEnabled = _drawHoleEnabled;
     
@@ -206,6 +207,7 @@
     l.xEntrySpace = 7.0;
     l.yEntrySpace = 0.0;
     l.yOffset = 0.0;
+    l.maxSizePercent = 0.2;
 }
 
 #pragma mark - Notification Method
@@ -232,7 +234,10 @@
     l.xEntrySpace = 10.0;
     l.yEntrySpace = ySpace;
     l.yOffset = 20.0;
-    l.xOffset = 20.0;
+    l.xOffset = 10.0;
+    
+    // 设置圆圈的大小 
+    [_chartView setExtraOffsetsWithLeft:-120.f top:5.f right:120.f bottom:5.f];
     
     [_chartView setNeedsDisplay];
 }

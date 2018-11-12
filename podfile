@@ -8,6 +8,8 @@ source 'git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git'
 
 platform :ios, '8.0'
 
+inhibit_all_warnings!
+
 target 'Wuyouhuaqian' do
     
     pod 'AFNetworking', '3.1.0'
@@ -26,7 +28,7 @@ target 'Wuyouhuaqian' do
     pod 'GTMBase64', '1.0.1'
     pod 'YYText', '1.0.4'
     pod 'YYModel', '1.0.4'
-    pod 'Charts'
+    pod 'Charts', '3.0.3'
     pod 'CFYNavigationBarTransition', '1.3.0'
     pod 'UICKeyChainStore','2.1.1'
     pod 'RCMobClick', '2.0.9'

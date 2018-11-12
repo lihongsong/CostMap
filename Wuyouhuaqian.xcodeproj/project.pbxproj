@@ -1855,7 +1855,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = W8H3Q8T6FG;
+				DEVELOPMENT_TEAM = 4FYS54XBTW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
@@ -1864,12 +1864,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ll.wyqb;
+				PRODUCT_BUNDLE_IDENTIFIER = me.ImmediatelyLoan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = sj_wyqb_dev;
+				PROVISIONING_PROFILE_SPECIFIER = immediatelyLoan_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wuyouhuaqian/BillRecord/Expand/Macros/Wuyouhuaqian-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1892,11 +1892,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ll.wyqb;
+				PRODUCT_BUNDLE_IDENTIFIER = me.ImmediatelyLoan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = wuyou_adhoc;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wuyouhuaqian/BillRecord/Expand/Macros/Wuyouhuaqian-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

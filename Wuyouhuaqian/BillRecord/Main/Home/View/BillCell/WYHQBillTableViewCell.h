@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, WYHQBillTableType) {
-    WYHQBillTableTypeHome = 0,
+    WYHQBillTableTypeMonth = 0,
     WYHQBillTableTypeDay = 1,
 };
 
