@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.30.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0aI-X9-Y02">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0aI-X9-Y02">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.19.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -118,15 +118,14 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXe-Zz-Kfc">
                                                     <rect key="frame" x="0.0" y="10" width="375" height="40"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pio-OU-fHF">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pio-OU-fHF">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
                                                             <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="40" id="Nvo-W9-Eps"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <inset key="titleEdgeInsets" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                            <state key="normal" title="当天支出">
+                                                            <state key="normal" title="今天支出">
                                                                 <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </state>
                                                             <connections>
@@ -208,10 +207,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wby-i3-l9K">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyd-AQ-XYP">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="花钱无忧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAN-wD-aDe">
                                                 <rect key="frame" x="151" y="11.5" width="73.5" height="21"/>
@@ -236,8 +235,6 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <state key="normal" title="2018-11-20" image="home_picker_arrow"/>
-                                                <state key="selected" image="home_picker_arrow"/>
-                                                <state key="highlighted" image="home_picker_arrow"/>
                                                 <connections>
                                                     <action selector="dateBtnClick" destination="0aI-X9-Y02" eventType="touchUpInside" id="pzD-bS-s7P"/>
                                                 </connections>
@@ -260,7 +257,7 @@
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.20392156859999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="lyd-AQ-XYP" secondAttribute="trailing" id="OZn-JR-5X7"/>
-                                    <constraint firstAttribute="height" constant="64" id="aNs-Yn-6Gk"/>
+                                    <constraint firstAttribute="height" constant="44" id="aNs-Yn-6Gk"/>
                                     <constraint firstItem="lyd-AQ-XYP" firstAttribute="leading" secondItem="wby-i3-l9K" secondAttribute="leading" id="eP7-4O-K7D"/>
                                     <constraint firstAttribute="bottom" secondItem="lyd-AQ-XYP" secondAttribute="bottom" id="f8b-j0-8ml"/>
                                 </constraints>
@@ -274,7 +271,7 @@
                             <constraint firstAttribute="trailing" secondItem="wby-i3-l9K" secondAttribute="trailing" id="8kZ-yN-Ui8"/>
                             <constraint firstItem="CsD-GJ-0k8" firstAttribute="top" secondItem="wby-i3-l9K" secondAttribute="bottom" id="OLl-ZQ-GE3"/>
                             <constraint firstAttribute="trailing" secondItem="COi-27-tCT" secondAttribute="trailing" constant="50" id="ag7-02-7xX"/>
-                            <constraint firstItem="wby-i3-l9K" firstAttribute="top" secondItem="BSe-D5-eyq" secondAttribute="top" id="h17-hy-RyG"/>
+                            <constraint firstItem="wby-i3-l9K" firstAttribute="top" secondItem="yb8-JP-urd" secondAttribute="bottom" id="h17-hy-RyG"/>
                             <constraint firstItem="1o3-vx-AGN" firstAttribute="top" secondItem="COi-27-tCT" secondAttribute="bottom" constant="50" id="hSL-X3-FV2"/>
                             <constraint firstItem="wby-i3-l9K" firstAttribute="leading" secondItem="BSe-D5-eyq" secondAttribute="leading" id="tfa-ZV-vWu"/>
                         </constraints>
@@ -288,7 +285,6 @@
                         <outlet property="headerView" destination="Zxg-oc-1fg" id="FU5-S5-ZPW"/>
                         <outlet property="moneyLb" destination="beM-HD-MJj" id="ypo-hg-qK9"/>
                         <outlet property="moreBt" destination="Pio-OU-fHF" id="ELD-gx-eLs"/>
-                        <outlet property="navHeight" destination="aNs-Yn-6Gk" id="WyI-Cy-X9b"/>
                         <outlet property="navbar" destination="wby-i3-l9K" id="JFI-vK-VIw"/>
                         <outlet property="tableHeaderView" destination="Zxg-oc-1fg" id="L09-5a-g7I"/>
                         <outlet property="tableView" destination="CsD-GJ-0k8" id="6Tl-b8-fHH"/>
@@ -296,14 +292,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJu-X8-fJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-41" y="-266"/>
+            <point key="canvasLocation" x="8.8000000000000007" y="-266.71664167916043"/>
         </scene>
     </scenes>
     <resources>
-        <image name="billAdd" width="48" height="48"/>
-        <image name="home_picker_arrow" width="15" height="8"/>
-        <image name="home_set" width="19" height="19"/>
-        <image name="line_view" width="19" height="19"/>
+        <image name="billAdd" width="96" height="96"/>
+        <image name="home_picker_arrow" width="31" height="16"/>
+        <image name="home_set" width="38" height="38"/>
+        <image name="line_view" width="38" height="38"/>
         <image name="statistics_public_arrow_right_" width="6" height="10"/>
     </resources>
 </document>
