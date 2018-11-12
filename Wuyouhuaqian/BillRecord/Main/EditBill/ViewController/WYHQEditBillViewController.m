@@ -126,6 +126,7 @@
 
 - (void)updateUI {
     if (self.billModel) {
+        
         WYHQBillType billType = self.billModel.s_type_id.integerValue;
         self.billType = billType;
         
@@ -166,6 +167,8 @@
     if ([self.cityButton.currentTitle isEqualToString:@"选择城市"]) {
         [self.cityButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
     }
+    
+    self.billTypeLb.text = [WYHQBillTool typeNameWithIndex:_billType];
 }
 
 - (void)setBillType:(WYHQBillType)billType {
@@ -247,6 +250,12 @@
     }
     
     [self saveBillDone];
+}
+
+- (void)setBillTypeStr:(NSString *)billTypeStr {
+    _billTypeStr = billTypeStr;
+    
+    self.billType = billTypeStr.integerValue;
 }
 
 - (IBAction)backButtonClick:(id)sender {

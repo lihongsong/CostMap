@@ -123,7 +123,7 @@
 #pragma mark - Event & Target Methods
 
 - (void)addBillBtnClick {
-    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:nil, nil];
+    [[HJMediator shared] routeToURL:HJAPPURL(@"EditBill") withParameters:@{@"billTypeStr": _bill_type_id}, nil];
 }
 
 
