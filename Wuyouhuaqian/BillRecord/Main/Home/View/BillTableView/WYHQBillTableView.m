@@ -120,9 +120,16 @@
  */
 - (UIView *)makePlaceHolderView {
     
+    NSString *title;
+    if (_tableType == WYHQBillTableTypeMonth) {
+        title = @"您本月还没有任何支出";
+    } else {
+        title = @"您当日还没有任何支出";
+    }
+    
     return [UNNoDataView viewAddedTo:self
                            imageName:@"bill_icon_nodata"
-                               title:@"您还没有任何账单"];
+                               title:@"您本月还没有任何支出"];
 }
 
 @end

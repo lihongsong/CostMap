@@ -66,11 +66,11 @@
 - (void)setTableType:(WYHQBillTableType)tableType {
     _tableType = tableType;
     
-    self.bigTitleBaseVw.hidden = tableType != WYHQBillTableTypeHome;
+    self.bigTitleBaseVw.hidden = tableType != WYHQBillTableTypeMonth;
     
-    _arrowWidth.constant = tableType != WYHQBillTableTypeHome ? 6 : 0 ;
-    _arrowLeading.constant = tableType != WYHQBillTableTypeHome ? 8 : 0 ;
-    _arrowIV.hidden = tableType == WYHQBillTableTypeHome;
+    _arrowWidth.constant = tableType != WYHQBillTableTypeMonth ? 6 : 0 ;
+    _arrowLeading.constant = tableType != WYHQBillTableTypeMonth ? 8 : 0 ;
+    _arrowIV.hidden = tableType == WYHQBillTableTypeMonth;
 }
 
 #pragma mark - Public Method

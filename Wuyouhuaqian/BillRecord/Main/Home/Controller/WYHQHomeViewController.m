@@ -77,6 +77,8 @@
 
 @property (strong, nonatomic) UIImage *lineBtnImage;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *navHeight;
+
 @end
 
 @implementation WYHQHomeViewController
@@ -223,6 +225,8 @@
 
 - (void)setUpUI {
     
+    _navHeight.constant = HJ_NavigationH;
+    
     _lineView.alpha = 1.0f;
     _pieView.alpha = 0.0f;
     
@@ -241,7 +245,7 @@
     _moneyLb.format = @"%.2f";
     
     self.navbar.backgroundColor = WYHQThemeColor;
-    self.view.backgroundColor = WYHQThemeColor;
+    self.view.backgroundColor = HJHexColor(k0xf5f5f5);
     self.headerBackView.backgroundColor = WYHQThemeColor;
     [self.changeBt setTitleColor:WYHQThemeColor forState:UIControlStateNormal];
     [self.changeBt setTitleColor:WYHQThemeColor forState:UIControlStateHighlighted];
@@ -256,7 +260,7 @@
     
     self.tableHeaderView.backgroundColor = WYHQThemeColor;
     
-    self.tableView.tableType = WYHQBillTableTypeHome;
+    self.tableView.tableType = WYHQBillTableTypeMonth;
     
     [_chartBaseVw addSubview:self.lineView];
     [_chartBaseVw addSubview:self.pieView];
