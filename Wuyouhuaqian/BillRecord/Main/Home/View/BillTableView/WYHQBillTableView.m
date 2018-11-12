@@ -92,8 +92,8 @@
     
     WYHQBillTableViewCell *cell = [WYHQBillTableViewCell cellWithTableView:tableView
                                                                  indexPath:indexPath];
-    cell.model = _models[indexPath.row];
     cell.tableType = _tableType;
+    cell.model = _models[indexPath.row];
     return cell;
 }
 

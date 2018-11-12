@@ -241,7 +241,7 @@
         [searchValue appendString:[NSString stringWithFormat:@"%@= %@",key, value]];
         
         if (i < modelDic.allKeys.count - 1) {
-            [searchValue appendString:@" AND"];
+            [searchValue appendString:@" AND "];
         }
     }
     
