@@ -8,7 +8,7 @@
 
 #import "WYHQDaySelectedView.h"
 
-#define kDaySelectFormat @"yyyy年MM月dd日"
+#define kDaySelectFormat @"yyyy-MM-dd"
 
 @interface WYHQDaySelectedView ()
 

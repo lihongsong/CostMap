@@ -262,6 +262,17 @@
     
     self.tableView.tableType = WYHQBillTableTypeMonth;
     
+    WEAK_SELF
+    self.tableView.selectAction = ^(WYHQBillModel * _Nonnull model) {
+        STRONG_SELF
+        
+        NSDictionary *param = @{@"year": @(self.year).stringValue,
+                                @"month": @(self.month).stringValue,
+                                @"bill_type_id": model.s_type_id};
+        
+        [[HJMediator shared] routeToURL:HJAPPURL(@"BillMonthList") withParameters:param, nil];
+    };
+    
     [_chartBaseVw addSubview:self.lineView];
     [_chartBaseVw addSubview:self.pieView];
     

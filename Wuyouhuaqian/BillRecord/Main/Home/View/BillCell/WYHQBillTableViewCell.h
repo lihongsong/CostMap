@@ -11,6 +11,7 @@
 typedef NS_ENUM(NSInteger, WYHQBillTableType) {
     WYHQBillTableTypeMonth = 0,
     WYHQBillTableTypeDay = 1,
+    WYHQBillTableTypeMonth_Type = 2,
 };
 
 NS_ASSUME_NONNULL_BEGIN
