@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9ra-X6-yyY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="9ra-X6-yyY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -140,7 +140,10 @@
                                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdf-oW-yZV">
-                                                <rect key="frame" x="15" y="11" width="19" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="49" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="49" id="UPD-EA-0dn"/>
+                                                </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="edit_bill_close"/>
                                                 <connections>
@@ -154,7 +157,10 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VxA-E8-qv5">
-                                                <rect key="frame" x="341" y="11" width="19" height="22"/>
+                                                <rect key="frame" x="326" y="0.0" width="49" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="49" id="B6G-Bu-ahd"/>
+                                                </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" image="edit_bill_delete"/>
                                                 <connections>
@@ -164,12 +170,16 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="tdf-oW-yZV" firstAttribute="leading" secondItem="X0M-5B-kMA" secondAttribute="leading" constant="15" id="00W-Ff-dAv"/>
+                                            <constraint firstItem="tdf-oW-yZV" firstAttribute="leading" secondItem="X0M-5B-kMA" secondAttribute="leading" id="00W-Ff-dAv"/>
                                             <constraint firstItem="tdf-oW-yZV" firstAttribute="centerY" secondItem="X0M-5B-kMA" secondAttribute="centerY" id="GOP-Ix-mzy"/>
                                             <constraint firstAttribute="height" constant="44" id="Itn-rl-w0f"/>
+                                            <constraint firstItem="tdf-oW-yZV" firstAttribute="top" secondItem="X0M-5B-kMA" secondAttribute="top" id="QWc-vB-IQy"/>
                                             <constraint firstItem="U7f-cq-Tez" firstAttribute="centerY" secondItem="X0M-5B-kMA" secondAttribute="centerY" id="cLH-CV-qZo"/>
                                             <constraint firstItem="U7f-cq-Tez" firstAttribute="centerX" secondItem="X0M-5B-kMA" secondAttribute="centerX" id="inc-nM-hZm"/>
-                                            <constraint firstAttribute="trailing" secondItem="VxA-E8-qv5" secondAttribute="trailing" constant="15" id="pz5-Ea-tTH"/>
+                                            <constraint firstAttribute="bottom" secondItem="VxA-E8-qv5" secondAttribute="bottom" id="n0v-XB-sVI"/>
+                                            <constraint firstItem="VxA-E8-qv5" firstAttribute="top" secondItem="X0M-5B-kMA" secondAttribute="top" id="neC-qh-RQh"/>
+                                            <constraint firstAttribute="bottom" secondItem="tdf-oW-yZV" secondAttribute="bottom" id="pal-1y-Wjd"/>
+                                            <constraint firstAttribute="trailing" secondItem="VxA-E8-qv5" secondAttribute="trailing" id="pz5-Ea-tTH"/>
                                             <constraint firstItem="VxA-E8-qv5" firstAttribute="centerY" secondItem="X0M-5B-kMA" secondAttribute="centerY" id="r29-QK-lOk"/>
                                         </constraints>
                                     </view>
