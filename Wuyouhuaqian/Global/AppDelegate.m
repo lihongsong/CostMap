@@ -36,6 +36,8 @@
     
     [self setUpSDK];
     
+    [self setUpUpdate];
+    
     [self setUpFMDB];
     
     [self setupIntroduceWithRemoteNotification:launchOptions];
@@ -192,6 +194,21 @@
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:HJHexColor(0x666666),
                                                            NSFontAttributeName: [UIFont systemFontOfSize:18]}];
+}
+
+/** 升级平台 */
+- (void)setUpUpdate {
+    
+    [XZYAppUpdate startWithAppKey:XZYAppUpdateKey
+                        channelId:APP_ChannelId
+                           config:nil];
+    
+#if defined (DebugNet) || defined (PreNet)
+    [XZYAppUpdate setDebug:YES];
+#else
+    [XZYAppUpdate setDebug:NO];
+#endif
+    [XZYAppUpdate checkUpdateAtLaunch:nil];
 }
 
 - (void)setUpFMDB {

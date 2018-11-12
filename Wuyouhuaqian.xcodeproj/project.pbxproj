@@ -1545,6 +1545,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Wuyouhuaqian/Pods-Wuyouhuaqian-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/AppUpdate/AppUpdate.bundle",
 				"${PODS_ROOT}/HJWebView/HJWebView/Assets/HJWebViewController/HJWebView.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/HJ_UIKit/HJAlertView.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/HJ_UIKit/HJCityPickerManager.bundle",
@@ -1552,6 +1553,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppUpdate.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HJWebView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HJAlertView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HJCityPickerManager.bundle",
@@ -1878,12 +1880,18 @@
 				DEVELOPMENT_TEAM = 4FYS54XBTW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"${NetType}",
+				);
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NetType = DebugNet;
 				PRODUCT_BUNDLE_IDENTIFIER = me.ImmediatelyLoan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = immediatelyLoan_dev;
@@ -1906,12 +1914,18 @@
 				DEVELOPMENT_TEAM = 4FYS54XBTW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"${NetType}",
+				);
 				INFOPLIST_FILE = Wuyouhuaqian/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NetType = ReleaseNet;
 				PRODUCT_BUNDLE_IDENTIFIER = me.ImmediatelyLoan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = immediatelyLoan_adhoc;
