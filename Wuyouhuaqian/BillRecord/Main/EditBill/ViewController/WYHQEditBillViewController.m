@@ -202,18 +202,18 @@
 
 - (IBAction)saveBillButtonClick:(id)sender {
     if (StrIsEmpty(self.momeyTextField.text)) {
-        [KeyWindow hj_showToastHUD:@"请输入输入账单金额"];
+        [KeyWindow hj_showToastHUD:@"请输入账单金额"];
         return;
     }
     
     NSString *memey = [[self.momeyTextField.text stringByReplacingOccurrencesOfString:@"￥" withString:@""] cleanMoneyStyle];
     if (StrIsEmpty(memey)) {
-        [KeyWindow hj_showToastHUD:@"请输入输入账单金额"];
+        [KeyWindow hj_showToastHUD:@"请输入账单金额"];
         return;
     }
     
     if (memey.integerValue == 0) {
-        [KeyWindow hj_showToastHUD:@"请输入输入账单金额"];
+        [KeyWindow hj_showToastHUD:@"请输入账单金额"];
         return;
     }
     
