@@ -14,6 +14,8 @@
 #import "WYHQHomeViewController.h"
 #import "CLCustomDatePickerView.h"
 #import <HJCityPickerManager.h>
+#import <HJAlertView.h>
+#import <HJProgressHUD.h>
 
 @interface WYHQEditBillViewController () <UITextFieldDelegate, UINavigationControllerDelegate>
 
@@ -27,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *customNavHeight;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 /** 城市选择器 */
 @property (nonatomic, strong) HJCityPickerManager *cityPicker;
@@ -113,8 +116,6 @@
     titleLabel.textColor = UIColor.whiteColor;
     self.navigationItem.titleView = titleLabel;
     
-    UIImage *backImage = [[UIImage imageNamed:@"nav_btn_back_default"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-    [self.backButton setImage:backImage forState:UIControlStateNormal];
     self.customNavHeight.constant = HJ_NavigationH;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShowNotification:) name:UIKeyboardWillShowNotification object:nil];
@@ -139,6 +140,8 @@
         }
         self.billCity = self.billModel.s_city;
         [self.cityButton setTitle:self.billCity forState:UIControlStateNormal];
+        
+        self.deleteButton.hidden = NO;
     } else {
         self.billTime = [NSDate date];
         
@@ -151,6 +154,8 @@
                 [self.cityButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             }
         }];
+        
+        self.deleteButton.hidden = YES;
     }
     
     [self.timeButton setTitle:[WYHQBillTool billTimeStringWithBillTime:self.billTime] forState:UIControlStateNormal];
@@ -190,15 +195,18 @@
 
 - (IBAction)saveBillButtonClick:(id)sender {
     if (StrIsEmpty(self.momeyTextField.text)) {
+        [KeyWindow hj_showToastHUD:@"请输入输入账单金额"];
         return;
     }
     
     NSString *memey = [[self.momeyTextField.text stringByReplacingOccurrencesOfString:@"￥" withString:@""] cleanMoneyStyle];
     if (StrIsEmpty(memey)) {
+        [KeyWindow hj_showToastHUD:@"请输入输入账单金额"];
         return;
     }
     
     if (memey.integerValue == 0) {
+        [KeyWindow hj_showToastHUD:@"请输入输入账单金额"];
         return;
     }
     
@@ -234,6 +242,22 @@
 
 - (IBAction)backButtonClick:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (IBAction)deletButtonClick:(id)sender {
+    if (self.billModel) {
+        [self.view endEditing:YES];
+        WEAK_SELF
+        HJAlertView *alertView = [[HJAlertView alloc] initWithTitle:@"确定要删除账单吗" message:nil cancelBlock:^{
+        } confirmBlock:^{
+            STRONG_SELF
+            [[WYHQSQLManager share] deleteData:kSQLTableName s_id:self.billModel.s_id];
+            [KeyWindow hj_showToastHUD:@"账单已删除"];
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        
+        [alertView show];
+    }
 }
 
 - (IBAction)selectBillTime:(id)sender {
@@ -322,6 +346,7 @@
         self.saveBillButton.layer.borderColor = color.CGColor;
         [self.saveBillButton setImage:image forState:UIControlStateNormal];
         self.backButton.tintColor = color;
+        self.deleteButton.tintColor = color;
         self.titleLabel.textColor = color;
         
         [self setContentColor:UIColor.whiteColor];
