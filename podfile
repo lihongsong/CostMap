@@ -20,6 +20,7 @@ target 'Wuyouhuaqian' do
     pod 'HJ_UIKit/HJGuidePage', '2.2.6'
     pod 'HJ_UIKit/HJAlertView', '2.2.6'
     pod 'HJ_UIKit/HJProgressHUD', '2.2.6'
+    pod 'HJ_UIKit/HJCityPickerManager', '2.2.6'
     pod 'HJWebView'
     pod 'IQKeyboardManager', '5.0.6'
     pod 'GTMBase64', '1.0.1'

@@ -34,7 +34,7 @@
                                                     <constraint firstAttribute="height" constant="45" id="Yph-od-AyV"/>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="备注" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7xQ-Fp-Cki">
@@ -48,24 +48,32 @@
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018年11月1日 11:40" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpw-b4-9xx">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kLa-FA-QgK">
                                                 <rect key="frame" x="0.0" y="264" width="375" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="18" id="nnf-5Q-u1c"/>
+                                                    <constraint firstAttribute="height" constant="18" id="A0O-4K-sU7"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvS-3o-6se">
+                                                <state key="normal" title="2018年11月1日 11:40">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectBillTime:" destination="9ra-X6-yyY" eventType="touchUpInside" id="m3y-Ew-gmE"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yQF-IL-ctx">
                                                 <rect key="frame" x="0.0" y="285" width="375" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="18" id="FXb-ly-00d"/>
+                                                    <constraint firstAttribute="height" constant="18" id="Fn7-Th-zEY"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                                <state key="normal" title="选择城市">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="selectBillCity:" destination="9ra-X6-yyY" eventType="touchUpInside" id="j5T-l3-CRx"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9v-Se-PLF">
                                                 <rect key="frame" x="157.5" y="363" width="60" height="60"/>
                                                 <constraints>
@@ -94,19 +102,19 @@
                                         <color key="backgroundColor" red="0.75294117650000003" green="0.49803921569999998" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="GSm-Gl-aCg" firstAttribute="leading" secondItem="wOL-GX-vH4" secondAttribute="leading" id="0g5-HD-TIA"/>
-                                            <constraint firstItem="JvS-3o-6se" firstAttribute="leading" secondItem="wOL-GX-vH4" secondAttribute="leading" id="4p1-ll-ODB"/>
+                                            <constraint firstAttribute="trailing" secondItem="kLa-FA-QgK" secondAttribute="trailing" id="2MY-Mw-3zK"/>
+                                            <constraint firstItem="yQF-IL-ctx" firstAttribute="leading" secondItem="wOL-GX-vH4" secondAttribute="leading" id="E0C-Ff-7qu"/>
                                             <constraint firstAttribute="trailing" secondItem="GSm-Gl-aCg" secondAttribute="trailing" id="GGz-yT-H1b"/>
-                                            <constraint firstItem="kpw-b4-9xx" firstAttribute="top" secondItem="7xQ-Fp-Cki" secondAttribute="bottom" constant="8" id="KUf-gg-qBS"/>
-                                            <constraint firstAttribute="trailing" secondItem="JvS-3o-6se" secondAttribute="trailing" id="Kp9-SU-h04"/>
-                                            <constraint firstItem="kpw-b4-9xx" firstAttribute="leading" secondItem="wOL-GX-vH4" secondAttribute="leading" id="WSx-v4-8eZ"/>
-                                            <constraint firstAttribute="trailing" secondItem="kpw-b4-9xx" secondAttribute="trailing" id="XvD-Qy-s02"/>
                                             <constraint firstAttribute="trailing" secondItem="7xQ-Fp-Cki" secondAttribute="trailing" id="ZiM-oy-XcT"/>
                                             <constraint firstItem="7xQ-Fp-Cki" firstAttribute="top" secondItem="GSm-Gl-aCg" secondAttribute="bottom" id="fnu-Nc-sIn"/>
                                             <constraint firstItem="7xQ-Fp-Cki" firstAttribute="leading" secondItem="wOL-GX-vH4" secondAttribute="leading" id="hDg-D2-7c0"/>
                                             <constraint firstItem="b9v-Se-PLF" firstAttribute="centerX" secondItem="wOL-GX-vH4" secondAttribute="centerX" id="iqr-Fm-c5r"/>
-                                            <constraint firstItem="b9v-Se-PLF" firstAttribute="top" secondItem="JvS-3o-6se" secondAttribute="bottom" constant="60" id="m4F-KX-l2o"/>
+                                            <constraint firstItem="yQF-IL-ctx" firstAttribute="top" secondItem="kLa-FA-QgK" secondAttribute="bottom" constant="3" id="ktL-Cr-Hi8"/>
+                                            <constraint firstItem="kLa-FA-QgK" firstAttribute="top" secondItem="7xQ-Fp-Cki" secondAttribute="bottom" constant="8" id="nIa-H3-e7e"/>
+                                            <constraint firstItem="kLa-FA-QgK" firstAttribute="leading" secondItem="wOL-GX-vH4" secondAttribute="leading" id="onW-bi-4q7"/>
                                             <constraint firstItem="7xQ-Fp-Cki" firstAttribute="centerY" secondItem="wOL-GX-vH4" secondAttribute="centerY" constant="-100" id="sx3-ul-Qbf"/>
-                                            <constraint firstItem="JvS-3o-6se" firstAttribute="top" secondItem="kpw-b4-9xx" secondAttribute="bottom" constant="3" id="w33-3A-RzL"/>
+                                            <constraint firstItem="b9v-Se-PLF" firstAttribute="top" secondItem="yQF-IL-ctx" secondAttribute="bottom" constant="60" id="vcN-uD-fT7"/>
+                                            <constraint firstAttribute="trailing" secondItem="yQF-IL-ctx" secondAttribute="trailing" id="wWU-J1-VH0"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -171,20 +179,21 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="addressLabel" destination="JvS-3o-6se" id="9DC-Fw-WUY"/>
                         <outlet property="backButton" destination="tdf-oW-yZV" id="ag6-Bg-EIB"/>
+                        <outlet property="cityButton" destination="yQF-IL-ctx" id="CDU-XO-C82"/>
                         <outlet property="contentScrollView" destination="bJM-Cj-jxL" id="Riv-4b-AmM"/>
                         <outlet property="contentView" destination="wOL-GX-vH4" id="ks6-5J-Cmc"/>
+                        <outlet property="customNavHeight" destination="JHg-ys-eEr" id="YED-rn-2St"/>
                         <outlet property="momeyTextField" destination="GSm-Gl-aCg" id="zRS-XG-617"/>
                         <outlet property="noteTextField" destination="7xQ-Fp-Cki" id="UsH-wW-MNi"/>
                         <outlet property="saveBillButton" destination="b9v-Se-PLF" id="1LI-y2-5Be"/>
-                        <outlet property="timeLabel" destination="kpw-b4-9xx" id="l9E-ie-Ybi"/>
+                        <outlet property="timeButton" destination="kLa-FA-QgK" id="ndc-N9-p66"/>
                         <outlet property="titleLabel" destination="U7f-cq-Tez" id="PgN-9A-ia6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0SP-5T-54i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2" y="105"/>
+            <point key="canvasLocation" x="0.80000000000000004" y="104.7976011994003"/>
         </scene>
     </scenes>
     <resources>

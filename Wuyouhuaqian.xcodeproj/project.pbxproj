@@ -1527,12 +1527,14 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Wuyouhuaqian/Pods-Wuyouhuaqian-resources.sh",
 				"${PODS_ROOT}/HJWebView/HJWebView/Assets/HJWebViewController/HJWebView.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/HJ_UIKit/HJAlertView.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/HJ_UIKit/HJCityPickerManager.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HJWebView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HJAlertView.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HJCityPickerManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
