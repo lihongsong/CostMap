@@ -69,4 +69,15 @@
     return _noDataLabel;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGPoint center = self.center;
+    center.y -= self.noDataImageView.frame.size.height/2;
+    self.noDataImageView.center = center;
+    
+    center.y = CGRectGetMaxY(self.noDataImageView.frame) + 25;
+    self.noDataLabel.center = center;
+}
+
 @end

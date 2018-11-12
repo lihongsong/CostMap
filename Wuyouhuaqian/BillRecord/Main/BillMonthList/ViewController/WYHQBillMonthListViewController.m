@@ -85,6 +85,8 @@
     UILabel *titleLb = [UILabel new];
     titleLb.textColor = HJHexColor(k0x666666);
     titleLb.font = [UIFont boldSystemFontOfSize:18];
+    titleLb.frame = CGRectMake(0, 0, 100, 40);
+    titleLb.textAlignment = NSTextAlignmentCenter;
     titleLb.text = [NSString stringWithFormat:@"%@-%@",self.year, self.month];
     
     [[self navigationItem] setTitleView:titleLb];
