@@ -23,6 +23,9 @@
 #import "CLCustomDatePickerView.h"
 #import "WYHQCountingLabel.h"
 
+#define kLineButtonTag 1000
+#define kPieButtonTag 2000
+
 @interface WYHQHomeViewController () <UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *tableHeaderView;
@@ -70,6 +73,10 @@
  */
 @property (assign, nonatomic) NSUInteger month;
 
+@property (strong, nonatomic) UIImage *pieBtnImage;
+
+@property (strong, nonatomic) UIImage *lineBtnImage;
+
 @end
 
 @implementation WYHQHomeViewController
@@ -116,6 +123,30 @@
 }
 
 #pragma mark - Getter & Setter Methods
+
+- (UIImage *)pieBtnImage {
+    if (!_pieBtnImage) {
+        UIImage *lineIcon = [UIImage imageNamed:@"pie_view"];
+        
+        UIImage *themeImage = [UIImage hj_imageWithColor:WYHQThemeColor];
+        themeImage = [themeImage hj_imageScaledToSize:lineIcon.size];
+        themeImage = [themeImage hj_imageWithMask:lineIcon];
+        _pieBtnImage = themeImage;
+    }
+    return _pieBtnImage;
+}
+
+- (UIImage *)lineBtnImage {
+    if (!_lineBtnImage) {
+        UIImage *lineIcon = [UIImage imageNamed:@"line_view"];
+        
+        UIImage *themeImage = [UIImage hj_imageWithColor:WYHQThemeColor];
+        themeImage = [themeImage hj_imageScaledToSize:lineIcon.size];
+        themeImage = [themeImage hj_imageWithMask:lineIcon];
+        _lineBtnImage = themeImage;
+    }
+    return _lineBtnImage;
+}
 
 - (WYHQChartPieView *)pieView {
     if (!_pieView) {
@@ -195,6 +226,10 @@
     _lineView.alpha = 1.0f;
     _pieView.alpha = 0.0f;
     
+    [_changeBt setImage:self.pieBtnImage forState:UIControlStateNormal];
+    
+    _changeBt.tag = kLineButtonTag;
+    
     _moneyLb.textAlignment = NSTextAlignmentCenter;
     _moneyLb.font = [UIFont fontWithName:@"Avenir Next" size:27];
     _moneyLb.textColor = [UIColor whiteColor];
@@ -212,6 +247,10 @@
     [self.changeBt setTitleColor:WYHQThemeColor forState:UIControlStateHighlighted];
     
     self.animateRect = _addBillBtn.frame;
+    
+    UIImage *addBtnImage = [UIImage imageNamed:@"billAdd"];
+    [_addBillBtn setImage:[addBtnImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    [_addBillBtn setTintColor:WYHQThemeColor];
     
     self.navigationController.delegate = self;
     
@@ -332,28 +371,51 @@
 // ******** 修改点 ********
 - (IBAction)changeType:(UIButton *)sender {
     
-    UIView *fakeButton = [sender snapshotViewAfterScreenUpdates:NO];
-    fakeButton.frame = sender.frame;
-    [sender.superview addSubview:fakeButton];
+    if (sender.tag == kLineButtonTag) {
+        sender.tag = kPieButtonTag;
+    } else {
+        sender.tag = kLineButtonTag;
+    }
+    
+    UIView *fakeSmallButton = [sender snapshotViewAfterScreenUpdates:NO];
+    fakeSmallButton.frame = sender.frame;
+    [sender.superview addSubview:fakeSmallButton];
+    
+    if (sender.tag == kLineButtonTag) {
+        [sender setImage:self.pieBtnImage forState:UIControlStateNormal];
+    } else {
+        [sender setImage:self.lineBtnImage forState:UIControlStateNormal];
+    }
+    
+    [sender setNeedsDisplay];
+    
+    CGPoint senderCenter = sender.center;
+    
+    UIImage *fakeBigImage = [sender imageForState:UIControlStateNormal];
+    
+    UIImageView *fakeBigButton = [[UIImageView alloc] initWithImage:fakeBigImage];
+    fakeBigButton.frame = CGRectMake(senderCenter.x, senderCenter.y, 0, 0);
+    [sender.superview addSubview:fakeBigButton];
     
     sender.hidden = YES;
-    
     sender.userInteractionEnabled = NO;
     
-    [UIView animateWithDuration:0.5
+    [UIView animateWithDuration:0.3
                      animations:^{
-                         CGPoint center = fakeButton.center;
-                         fakeButton.bounds = CGRectMake(center.x, center.y, 0, 0);
+                         CGPoint center = fakeSmallButton.center;
+                         fakeSmallButton.bounds = CGRectMake(center.x, center.y, 0, 0);
                      } completion:^(BOOL finished) {
-                         [UIView animateWithDuration:0.5
+                         [fakeSmallButton removeFromSuperview];
+                         [UIView animateWithDuration:0.3
                                                delay:0
-                              usingSpringWithDamping:0.2
+                              usingSpringWithDamping:0.3
                                initialSpringVelocity:5.0
                                              options:UIViewAnimationOptionCurveEaseInOut animations:^{
-                                                 fakeButton.frame = sender.frame;
+                                                 fakeBigButton.bounds = CGRectMake(0, 0, fakeBigImage.size.width, fakeBigImage.size.height);
+                                                 fakeBigButton.center = senderCenter;
                                              }
                                           completion:^(BOOL finished) {
-                                              [fakeButton removeFromSuperview];
+                                              [fakeBigButton removeFromSuperview];
                                               sender.hidden = NO;
                                               sender.userInteractionEnabled = YES;
                                           }];

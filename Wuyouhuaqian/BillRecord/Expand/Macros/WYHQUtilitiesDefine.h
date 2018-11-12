@@ -9,7 +9,7 @@
 #ifndef UtilitiesDefine_h
 #define UtilitiesDefine_h
 
-#define WYHQThemeColor HJHexColor(0xeb344a)
+#define WYHQThemeColor HJHexColor(0xFF601A)
 
 /****** 安全文字 ******/
 #define SafeStr(_str) StrIsEmpty(_str) ? @"" : _str

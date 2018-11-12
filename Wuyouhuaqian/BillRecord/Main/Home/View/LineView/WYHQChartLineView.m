@@ -76,16 +76,21 @@
     _chartView.drawGridBackgroundEnabled = NO;
     _chartView.rightAxis.drawAxisLineEnabled = NO;
     _chartView.rightAxis.drawLabelsEnabled = NO;
+    _chartView.leftAxis.axisLineColor = WYHQThemeColor;
+    _chartView.xAxis.axisLineColor = WYHQThemeColor;
+    _chartView.extraBottomOffset = 5;
     
     ChartXAxis *xAxis = _chartView.xAxis;
     xAxis.labelPosition = XAxisLabelPositionBottom;
     xAxis.drawGridLinesEnabled = NO;
+    xAxis.valueFormatter = [[ChartIndexAxisValueFormatter alloc] initWithValues:parties];
     
     _chartView.leftAxis.drawGridLinesEnabled = NO;
     _chartView.rightAxis.drawGridLinesEnabled = NO;
     
     _chartView.legend.enabled = NO;
-    _chartView.xAxis.labelTextColor = [UIColor clearColor];
+    _chartView.xAxis.labelTextColor = HJHexColor(k0x666666);
+    _chartView.xAxis.yOffset = 5;
     
     [self updateChartData];
 }

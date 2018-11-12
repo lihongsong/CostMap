@@ -143,6 +143,10 @@
     [CLCustomDatePickerView showDatePickerWithTitle:@"选择时间"
                                            dateType:CLCustomDatePickerModeYMD
                                     defaultSelValue:[self dateString]
+                                            minDate:nil
+                                            maxDate:nil
+                                       isAutoSelect:NO
+                                         themeColor:WYHQThemeColor
                                         resultBlock:^(NSString *selectValue) {
                                             STRONG_SELF
                                             
@@ -150,7 +154,6 @@
                                             [self.daySelectView refreshDate:date];
                                             [self requestData];
                                         }];
-    
 }
 
 - (void)selectedView:(WYHQDaySelectedView *)selectView didChangeDate:(NSDate *)date {

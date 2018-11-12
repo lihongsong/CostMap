@@ -61,8 +61,6 @@
     _cityLb.text = model.s_city;
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:[model.s_time doubleValue]];
     _dateLb.text = [NSDate hj_stringWithDate:date format:@"HH:mm"];
-    
-    
 }
 
 - (void)setTableType:(WYHQBillTableType)tableType {
