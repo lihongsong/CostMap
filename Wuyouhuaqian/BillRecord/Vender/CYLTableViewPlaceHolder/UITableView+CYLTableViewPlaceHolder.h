@@ -16,4 +16,6 @@
  */
 - (void)cyl_reloadData;
 
+@property (readonly) UIView *cyl_placeHolderView;
+
 @end

@@ -34,6 +34,10 @@
     return objc_getAssociatedObject(self, @selector(placeHolderView));
 }
 
+- (UIView *)cyl_placeHolderView {
+    return objc_getAssociatedObject(self, @selector(placeHolderView));
+}
+
 - (void)setPlaceHolderView:(UIView *)placeHolderView {
     objc_setAssociatedObject(self, @selector(placeHolderView), placeHolderView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }

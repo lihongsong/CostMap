@@ -31,6 +31,12 @@
     [self registerNib:[WYHQBillTableViewCell cellNib] forCellReuseIdentifier:[WYHQBillTableViewCell cellID]];
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (self.cyl_placeHolderView) {
+        self.cyl_placeHolderView.frame = self.bounds;
+    }
+}
 
 #pragma mark - Getter & Setter Methods
 
