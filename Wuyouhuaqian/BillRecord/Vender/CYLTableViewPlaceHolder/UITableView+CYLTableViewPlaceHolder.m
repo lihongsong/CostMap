@@ -116,10 +116,6 @@
         self.placeHolderView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         
         [self addSubview:self.placeHolderView];
-        
-        [self.placeHolderView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.edges.mas_equalTo(self);
-        }];
     }
 }
 
