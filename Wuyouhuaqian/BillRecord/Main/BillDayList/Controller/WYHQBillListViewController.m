@@ -106,8 +106,6 @@
 
 - (void)requestData {
     
-    [KeyWindow hj_showLoadingHUD];
-    
     NSString *year = @([self.daySelectView.currentDate hj_year]).stringValue;
     NSString *month = @([self.daySelectView.currentDate hj_month]).stringValue;
     NSString *day = @([self.daySelectView.currentDate hj_day]).stringValue;
@@ -119,7 +117,6 @@
                                    day:day
                                 result:^(NSMutableArray<WYHQBillModel *> *result, NSError *error) {
                                     STRONG_SELF
-                                    [KeyWindow hj_hideProgressHUD];
                                     NSArray *pieData = [WYHQBillModel templateBillArrayWithBills:result];
                                     self.pieView.models = pieData;
                                     
