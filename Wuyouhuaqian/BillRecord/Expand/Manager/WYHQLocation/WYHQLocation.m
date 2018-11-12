@@ -145,4 +145,10 @@
     }];
 }
 
+- (NSMutableArray<WYHQLocationResult> *)results {
+    if (!_results) {
+        _results = [NSMutableArray array];
+    }
+    return _results;
+}
 @end
