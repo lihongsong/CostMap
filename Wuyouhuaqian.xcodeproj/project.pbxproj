@@ -138,7 +138,6 @@
 		82DC65F62192F7DC007421DE /* CLCustomDatePickerBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65F02192F7DC007421DE /* CLCustomDatePickerBaseView.m */; };
 		82DC65F72192F7DC007421DE /* NSDate+CLAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65F42192F7DC007421DE /* NSDate+CLAdd.m */; };
 		82DC65FE21930163007421DE /* WYHQLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65FD21930163007421DE /* WYHQLocation.m */; };
-		82DC660421930827007421DE /* WYHQPhotoPickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660321930827007421DE /* WYHQPhotoPickerManager.m */; };
 		82DC660921930E18007421DE /* WYHQFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660821930E18007421DE /* WYHQFeedbackViewController.m */; };
 		82DC660F21930E25007421DE /* WYHQFeedbackModel+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660B21930E25007421DE /* WYHQFeedbackModel+Service.m */; };
 		82DC661021930E25007421DE /* WYHQFeedbackModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660E21930E25007421DE /* WYHQFeedbackModel.m */; };
@@ -421,8 +420,6 @@
 		82DC65F42192F7DC007421DE /* NSDate+CLAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+CLAdd.m"; sourceTree = "<group>"; };
 		82DC65FC21930163007421DE /* WYHQLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQLocation.h; sourceTree = "<group>"; };
 		82DC65FD21930163007421DE /* WYHQLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQLocation.m; sourceTree = "<group>"; };
-		82DC660221930827007421DE /* WYHQPhotoPickerManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYHQPhotoPickerManager.h; sourceTree = "<group>"; };
-		82DC660321930827007421DE /* WYHQPhotoPickerManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYHQPhotoPickerManager.m; sourceTree = "<group>"; };
 		82DC660721930E18007421DE /* WYHQFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYHQFeedbackViewController.h; sourceTree = "<group>"; };
 		82DC660821930E18007421DE /* WYHQFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYHQFeedbackViewController.m; sourceTree = "<group>"; };
 		82DC660B21930E25007421DE /* WYHQFeedbackModel+Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WYHQFeedbackModel+Service.m"; sourceTree = "<group>"; };
@@ -959,7 +956,6 @@
 			children = (
 				82CD2BE92195AB9C00E86371 /* Push&PopAnimation */,
 				82B4B7042193F312009A4B62 /* WYHQBillTool */,
-				82DC660021930764007421DE /* PhotoManager */,
 				82DC65F92192FDDB007421DE /* PlistManager */,
 				82DC65F82192FDC5007421DE /* Location */,
 				82DC65212192E275007421DE /* DeviceManager */,
@@ -1234,15 +1230,6 @@
 				82DC65FD21930163007421DE /* WYHQLocation.m */,
 			);
 			path = WYHQLocation;
-			sourceTree = "<group>";
-		};
-		82DC660021930764007421DE /* PhotoManager */ = {
-			isa = PBXGroup;
-			children = (
-				82DC660221930827007421DE /* WYHQPhotoPickerManager.h */,
-				82DC660321930827007421DE /* WYHQPhotoPickerManager.m */,
-			);
-			path = PhotoManager;
 			sourceTree = "<group>";
 		};
 		82DC660521930DFF007421DE /* Feedback */ = {
@@ -1625,7 +1612,6 @@
 				5915182221942423004B5B32 /* WYHQEditBillViewController.m in Sources */,
 				82DC65B92192E275007421DE /* NSObject+HQIQKeyBoardConfig.m in Sources */,
 				82DC65A92192E275007421DE /* waveAnimationView.m in Sources */,
-				82DC660421930827007421DE /* WYHQPhotoPickerManager.m in Sources */,
 				82B309E52194099A00284246 /* WYHQChartPieView.m in Sources */,
 				821816692195303B00521E75 /* WYHQBillModel+WYHQService.m in Sources */,
 				82181666219518D900521E75 /* UITableView+CYLTableViewPlaceHolder.m in Sources */,
