@@ -692,7 +692,6 @@
 			isa = PBXGroup;
 			children = (
 				82DC64C32192E275007421DE /* Global */,
-				82DC64C62192E275007421DE /* LoanMarket */,
 				82DC658D2192E275007421DE /* Other */,
 				82DC64C72192E275007421DE /* BillRecord */,
 				82DC63752192E15F007421DE /* Info.plist */,
@@ -725,13 +724,6 @@
 				82DC64C52192E275007421DE /* AppDelegate.m */,
 			);
 			path = Global;
-			sourceTree = "<group>";
-		};
-		82DC64C62192E275007421DE /* LoanMarket */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoanMarket;
 			sourceTree = "<group>";
 		};
 		82DC64C72192E275007421DE /* BillRecord */ = {
@@ -1877,7 +1869,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4FYS54XBTW;
+				DEVELOPMENT_TEAM = V9TLAX5AAR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1894,10 +1886,11 @@
 				NetType = DebugNet;
 				PRODUCT_BUNDLE_IDENTIFIER = com.terry.hqwy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = immediatelyLoan_dev;
+				PROVISIONING_PROFILE = "caae0713-d0e2-46bd-b4a0-2d70e91871f8";
+				PROVISIONING_PROFILE_SPECIFIER = huaqianwuyou_terry_dev;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wuyouhuaqian/BillRecord/Expand/Macros/Wuyouhuaqian-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1911,7 +1904,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4FYS54XBTW;
+				DEVELOPMENT_TEAM = V9TLAX5AAR;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Wuyouhuaqian/Other/WYHQ-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1928,9 +1921,10 @@
 				NetType = ReleaseNet;
 				PRODUCT_BUNDLE_IDENTIFIER = com.terry.hqwy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = immediatelyLoan_adhoc;
+				PROVISIONING_PROFILE = "f6d46689-e4bf-41ab-bb16-180997bd9fd6";
+				PROVISIONING_PROFILE_SPECIFIER = huaqianwuyou_terry_dis;
 				SWIFT_OBJC_BRIDGING_HEADER = "Wuyouhuaqian/BillRecord/Expand/Macros/Wuyouhuaqian-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
