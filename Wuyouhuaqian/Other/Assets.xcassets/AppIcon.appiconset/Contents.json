@@ -13,9 +13,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "icon_29pt.png",
+      "size" : "29x29",
       "scale" : "1x"
     },
     {
@@ -106,9 +105,8 @@
       "scale" : "1x"
     },
     {
-      "size" : "512x512",
       "idiom" : "mac",
-      "filename" : "512.png",
+      "size" : "512x512",
       "scale" : "1x"
     }
   ],
