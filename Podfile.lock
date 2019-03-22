@@ -68,6 +68,13 @@ PODS:
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - RCMobClick (2.0.9)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
@@ -94,6 +101,7 @@ DEPENDENCIES:
   - IQKeyboardManager (= 5.0.6)
   - Masonry (= 1.1.0)
   - RCMobClick (= 2.0.9)
+  - ReactiveCocoa (= 2.5.0)
   - SDWebImage
   - UICKeyChainStore (= 2.1.1)
   - YYModel (= 1.0.4)
@@ -117,6 +125,7 @@ SPEC REPOS:
     - IQKeyboardManager
     - Masonry
     - MBProgressHUD
+    - ReactiveCocoa
     - SDWebImage
     - UICKeyChainStore
     - WebViewJavascriptBridge
@@ -138,12 +147,13 @@ SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   RCMobClick: 05cdb2fc6ebf656ee690eddece9dce3ec75f3c02
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: b0433728af1a3060fba71d731705e0d7b9123cc6
+PODFILE CHECKSUM: 3d4e39cfd1bd2f237c39b64a430fedb959d2bc41
 
 COCOAPODS: 1.6.0
