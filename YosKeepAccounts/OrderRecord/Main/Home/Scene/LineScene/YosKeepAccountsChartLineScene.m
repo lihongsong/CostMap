@@ -65,7 +65,7 @@
     NSMutableArray *yVals = [[NSMutableArray alloc] init];
     for (int i = 0; i < _entitys.count; i++) {
         YosKeepAccountsOrderEntity *model = _entitys[i];
-        double val = fabs([model.s_wealth floatValue]);
+        double val = fabs([model.yka_wealth floatValue]);
         [yVals addObject:[[BarChartDataEntry alloc] initWithX:i y:val]];
     }
     BarChartDataSet *set1 = nil;

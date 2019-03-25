@@ -2,16 +2,20 @@
 #import "YosKeepAccountsHomePresenter.h"
 #import "YosKeepAccountsIntroducePresenter.h"
 #import "YosKeepAccountsTouchIDPresenter.h"
+#import "YosKeepAccounts-Swift.h"
 @interface AppDelegate ()
-@property (strong, nonatomic) YosKeepAccountsBaseNavigationController *homeNav;
+
+@property (strong, nonatomic) YosKeepAccountsTabBarPresenter *rootTabBar;
+
 @end
 @implementation AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
-    YosKeepAccountsHomePresenter *homePresenter = [YosKeepAccountsHomePresenter instance];
-    _homeNav = [[YosKeepAccountsBaseNavigationController alloc] initWithRootViewController:homePresenter];
-    self.window.rootViewController = _homeNav;
+    
+    _rootTabBar = [YosKeepAccountsTabBarPresenter createRootViewController];
+    
+    self.window.rootViewController = _rootTabBar;
     [self.window makeKeyAndVisible];
     [self setUpSDK];
     [self setUpUpdate];
@@ -53,7 +57,7 @@
         make.setTimer(0, 3, nil,YES);
         make.setAnimateFinishedBlock(^(id info) {
             self.window = oldWindow;
-            [self loadActivePresenter:self.homeNav];
+            [self loadActivePresenter:self.rootTabBar];
             [self.window makeKeyWindow];
             guideWindow.hidden = YES;
             [guideWindow removeFromSuperview];
@@ -101,7 +105,7 @@
                     completion:nil];
 }
 - (void)setRootPresenter {
-    [self restoreRootPresenter:_homeNav];
+    [self restoreRootPresenter:self.rootTabBar];
 }
 #pragma mark - 引导页设置
 - (BOOL)setupIntroduceWithRemoteNotification:(NSDictionary *)remoteNotification {
@@ -137,7 +141,7 @@
     config.prefixString = @"YosKeepAccounts";
     config.suffixString = @"Presenter";
     [[HJMediator shared] setUpConfig:config];
-    [[HJMediator shared] setUpRootViewController:_homeNav];
+    [[HJMediator shared] setUpRootViewController:self.rootTabBar];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:HJHexColor(0x666666),
                                                            NSFontAttributeName: [UIFont systemFontOfSize:18]}];
 }

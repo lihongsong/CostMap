@@ -44,7 +44,7 @@
     return NO;
 }
 - (void)defaultData:(NSString *)name {
-    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (s_id integer primary key AUTOINCREMENT,s_time Text, s_type_name Text, s_wealth Text, s_type_id Text, s_desc Text, s_year Text,s_month Text, s_day Text, s_city Text);", [self setTableName:name]];
+    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (yka_id integer primary key AUTOINCREMENT,yka_time Text, yka_type_name Text, yka_wealth Text, yka_type_id Text, yka_desc Text, yka_year Text,yka_month Text, yka_day Text, yka_city Text);", [self setTableName:name]];
     [self.fmdb executeUpdate:sql];
 }
 - (void)creatNewDataBase:(NSString *)name{
@@ -64,7 +64,7 @@
     if (![self isTableExist:tableName]) {
         [self creatNewDataBase:tableName];
     }
-    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET s_time = '%@', s_type_name = '%@' ,s_wealth = '%@', s_type_id = '%@', s_desc = '%@', s_year = '%@', s_month = '%@', s_day = '%@', s_city = '%@' WHERE s_id = %@;", [self setTableName:tableName], model.s_time , model.s_type_name, model.s_wealth, model.s_type_id, model.s_desc , model.s_year, model.s_month, model.s_day, model.s_city, model.s_id];
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET yka_time = '%@', yka_type_name = '%@' ,yka_wealth = '%@', yka_type_id = '%@', yka_desc = '%@', yka_year = '%@', yka_month = '%@', yka_day = '%@', yka_city = '%@' WHERE yka_id = %@;", [self setTableName:tableName], model.yka_time , model.yka_type_name, model.yka_wealth, model.yka_type_id, model.yka_desc , model.yka_year, model.yka_month, model.yka_day, model.yka_city, model.yka_id];
   BOOL updateSucess = [self.fmdb executeUpdate:sql];
     if (!updateSucess) {
         NSLog(@"error = %@", [self.fmdb lastErrorMessage]);
@@ -75,17 +75,17 @@
         if (![self isTableExist:tableName]) {
             [self creatNewDataBase:tableName];
         }
-        NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (s_time, s_type_name, s_wealth, s_type_id, s_desc ,s_year ,s_month, s_day, s_city) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)", [self setTableName:tableName]];
+        NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (yka_time, yka_type_name, yka_wealth, yka_type_id, yka_desc ,yka_year ,yka_month, yka_day, yka_city) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?)", [self setTableName:tableName]];
         __unused BOOL result =
-        [self.fmdb executeUpdate:sql,model.s_time ,
-         model.s_type_name,
-         model.s_wealth,
-         model.s_type_id,
-         model.s_desc,
-         model.s_year,
-         model.s_month,
-         model.s_day,
-         model.s_city];
+        [self.fmdb executeUpdate:sql,model.yka_time ,
+         model.yka_type_name,
+         model.yka_wealth,
+         model.yka_type_id,
+         model.yka_desc,
+         model.yka_year,
+         model.yka_month,
+         model.yka_day,
+         model.yka_city];
     }
 }
 - (void)searchData:(NSString *)tableName
@@ -103,43 +103,43 @@
         return ;
     }
     if (year) {
-        [sqlString appendString:[NSString stringWithFormat:@"s_year= %@",year]];
+        [sqlString appendString:[NSString stringWithFormat:@"yka_year= %@",year]];
     }
     if (month) {
         if (year) {
             [sqlString appendString:@" AND "];
         }
-        [sqlString appendString:[NSString stringWithFormat:@"s_month= %@",month]];
+        [sqlString appendString:[NSString stringWithFormat:@"yka_month= %@",month]];
     }
     if (day) {
         if (year || month) {
             [sqlString appendString:@" AND "];
         }
-        [sqlString appendString:[NSString stringWithFormat:@"s_day= %@",day]];
+        [sqlString appendString:[NSString stringWithFormat:@"yka_day= %@",day]];
     }
     FMResultSet *resultSet = [self.fmdb executeQuery:sqlString];
     NSMutableArray *dataArr = [[NSMutableArray alloc]init];
     while ([resultSet next]) {
         YosKeepAccountsOrderEntity *model = [[YosKeepAccountsOrderEntity alloc] init];
-        model.s_id =  @([resultSet intForColumn:@"s_id"]).stringValue;
-        model.s_time =  [resultSet stringForColumn:@"s_time"];
-        model.s_type_name =  [resultSet stringForColumn:@"s_type_name"];
-        model.s_wealth =  [resultSet stringForColumn:@"s_wealth"];
-        model.s_type_id =  [resultSet stringForColumn:@"s_type_id"];
-        model.s_desc =  [resultSet stringForColumn:@"s_desc"];
-        model.s_year =  [resultSet stringForColumn:@"s_year"];
-        model.s_month =  [resultSet stringForColumn:@"s_month"];
-        model.s_day =  [resultSet stringForColumn:@"s_day"];
-        model.s_city = [resultSet stringForColumn:@"s_city"];
+        model.yka_id =  @([resultSet intForColumn:@"yka_id"]).stringValue;
+        model.yka_time =  [resultSet stringForColumn:@"yka_time"];
+        model.yka_type_name =  [resultSet stringForColumn:@"yka_type_name"];
+        model.yka_wealth =  [resultSet stringForColumn:@"yka_wealth"];
+        model.yka_type_id =  [resultSet stringForColumn:@"yka_type_id"];
+        model.yka_desc =  [resultSet stringForColumn:@"yka_desc"];
+        model.yka_year =  [resultSet stringForColumn:@"yka_year"];
+        model.yka_month =  [resultSet stringForColumn:@"yka_month"];
+        model.yka_day =  [resultSet stringForColumn:@"yka_day"];
+        model.yka_city = [resultSet stringForColumn:@"yka_city"];
         [dataArr addObject:model];
     }
     if (resultAction) {
         resultAction(dataArr, nil);
     }
 }
-- (void)deleteData:(NSString *)tableName s_id:(NSString *)s_id {
+- (void)deleteData:(NSString *)tableName yka_id:(NSString *)yka_id {
     if ([self.fmdb open]) {
-        NSString *sql = [NSString stringWithFormat:@"delete from %@ where s_id=%@",[self setTableName:tableName],s_id];
+        NSString *sql = [NSString stringWithFormat:@"delete from %@ where yka_id=%@",[self setTableName:tableName],yka_id];
         [self.fmdb stringForQuery:sql];
         [self.fmdb close];
     }
@@ -186,16 +186,16 @@
     NSMutableArray *dataArr = [[NSMutableArray alloc]init];
     while ([resultSet next]) {
         YosKeepAccountsOrderEntity *model = [[YosKeepAccountsOrderEntity alloc] init];
-        model.s_id =  @([resultSet intForColumn:@"s_id"]).stringValue;
-        model.s_time =  [resultSet stringForColumn:@"s_time"];
-        model.s_type_name =  [resultSet stringForColumn:@"s_type_name"];
-        model.s_wealth =  [resultSet stringForColumn:@"s_wealth"];
-        model.s_type_id =  [resultSet stringForColumn:@"s_type_id"];
-        model.s_desc =  [resultSet stringForColumn:@"s_desc"];
-        model.s_year =  [resultSet stringForColumn:@"s_year"];
-        model.s_month =  [resultSet stringForColumn:@"s_month"];
-        model.s_day =  [resultSet stringForColumn:@"s_day"];
-        model.s_city = [resultSet stringForColumn:@"s_city"];
+        model.yka_id =  @([resultSet intForColumn:@"yka_id"]).stringValue;
+        model.yka_time =  [resultSet stringForColumn:@"yka_time"];
+        model.yka_type_name =  [resultSet stringForColumn:@"yka_type_name"];
+        model.yka_wealth =  [resultSet stringForColumn:@"yka_wealth"];
+        model.yka_type_id =  [resultSet stringForColumn:@"yka_type_id"];
+        model.yka_desc =  [resultSet stringForColumn:@"yka_desc"];
+        model.yka_year =  [resultSet stringForColumn:@"yka_year"];
+        model.yka_month =  [resultSet stringForColumn:@"yka_month"];
+        model.yka_day =  [resultSet stringForColumn:@"yka_day"];
+        model.yka_city = [resultSet stringForColumn:@"yka_city"];
         [dataArr addObject:model];
     }
     return dataArr;

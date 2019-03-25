@@ -83,18 +83,18 @@
 }
 - (void)updateUI {
     if (self.orderEntity) {
-        YosKeepAccountsOrderType orderType = self.orderEntity.s_type_id.integerValue;
+        YosKeepAccountsOrderType orderType = self.orderEntity.yka_type_id.integerValue;
         self.orderType = orderType;
-        NSString *wealth = [self.orderEntity.s_wealth stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        NSString *wealth = [self.orderEntity.yka_wealth stringByReplacingOccurrencesOfString:@"-" withString:@""];
         self.momeyTextField.text = [NSString stringWithFormat:@"￥%@",[wealth moneyStyle]];
-        self.noteTextField.text = self.orderEntity.s_desc;
-        NSTimeInterval time = self.orderEntity.s_time.doubleValue;
+        self.noteTextField.text = self.orderEntity.yka_desc;
+        NSTimeInterval time = self.orderEntity.yka_time.doubleValue;
         if (time > 0) {
             self.orderTime = [NSDate dateWithTimeIntervalSince1970:time];
         } else {
             self.orderTime = [NSDate date];
         }
-        self.orderCity = self.orderEntity.s_city;
+        self.orderCity = self.orderEntity.yka_city;
         [self.cityButton setTitle:self.orderCity forState:UIControlStateNormal];
         self.deleteButton.hidden = NO;
     } else {
@@ -170,15 +170,15 @@
         model = [YosKeepAccountsOrderEntity new];
         newOrder = YES;
     }
-    model.s_wealth = [NSString stringWithFormat:@"-%@", memey];
-    model.s_type_name = [YosKeepAccountsOrderTool typeNameWithIndex:self.orderType];
-    model.s_type_id = @(self.orderType).stringValue;
-    model.s_year = @(self.orderTime.hj_year).stringValue;
-    model.s_month = @(self.orderTime.hj_month).stringValue;
-    model.s_day = @(self.orderTime.hj_day).stringValue;
-    model.s_time = @(self.orderTime.timeIntervalSince1970).stringValue;
-    model.s_desc = self.noteTextField.text;
-    model.s_city = self.orderCity ?: @"";
+    model.yka_wealth = [NSString stringWithFormat:@"-%@", memey];
+    model.yka_type_name = [YosKeepAccountsOrderTool typeNameWithIndex:self.orderType];
+    model.yka_type_id = @(self.orderType).stringValue;
+    model.yka_year = @(self.orderTime.hj_year).stringValue;
+    model.yka_month = @(self.orderTime.hj_month).stringValue;
+    model.yka_day = @(self.orderTime.hj_day).stringValue;
+    model.yka_time = @(self.orderTime.timeIntervalSince1970).stringValue;
+    model.yka_desc = self.noteTextField.text;
+    model.yka_city = self.orderCity ?: @"";
     if (newOrder) {
         [[YosKeepAccountsSQLManager share] insertData:model tableName:kSQLTableName];
     } else {
@@ -200,7 +200,7 @@
         HJAlertView *alertScene = [[HJAlertView alloc] initWithTitle:@"确定要删除账单吗" message:nil cancelBlock:^{
         } confirmBlock:^{
             STRONG_SELF
-            [[YosKeepAccountsSQLManager share] deleteData:kSQLTableName s_id:self.orderEntity.s_id];
+            [[YosKeepAccountsSQLManager share] deleteData:kSQLTableName yka_id:self.orderEntity.yka_id];
             [KeyWindow hj_showToastHUD:@"账单已删除"];
             [self.navigationController popViewControllerAnimated:YES];
         }];

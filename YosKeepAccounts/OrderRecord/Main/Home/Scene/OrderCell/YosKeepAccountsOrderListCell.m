@@ -23,14 +23,14 @@
 #pragma mark - Getter & Setter Methods
 - (void)setEntity:(YosKeepAccountsOrderEntity *)entity {
     _entity = entity;
-    _themeLineVw.backgroundColor = [YosKeepAccountsOrderTool colorWithType:entity.s_type_id.integerValue];
-    _titleLb.text = entity.s_type_name;
-    _wealthLb.text = entity.s_wealth ?: @"-0.00";
-    _themeLineVw.backgroundColor = [YosKeepAccountsOrderTool colorWithType:entity.s_type_id.integerValue];
-    _iconIV.image = [UIImage imageNamed:[YosKeepAccountsOrderTool typePressedImage:[entity.s_type_id integerValue]]];
-    _bigTitleLb.text = entity.s_type_name;
-    _cityLb.text = entity.s_city;
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[entity.s_time doubleValue]];
+    _themeLineVw.backgroundColor = [YosKeepAccountsOrderTool colorWithType:entity.yka_type_id.integerValue];
+    _titleLb.text = entity.yka_type_name;
+    _wealthLb.text = entity.yka_wealth ?: @"-0.00";
+    _themeLineVw.backgroundColor = [YosKeepAccountsOrderTool colorWithType:entity.yka_type_id.integerValue];
+    _iconIV.image = [UIImage imageNamed:[YosKeepAccountsOrderTool typePressedImage:[entity.yka_type_id integerValue]]];
+    _bigTitleLb.text = entity.yka_type_name;
+    _cityLb.text = entity.yka_city;
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[entity.yka_time doubleValue]];
     if (_tableType == YosKeepAccountsOrderTableTypeDay) {
         _dateLb.text = [NSDate hj_stringWithDate:date format:@"HH:mm"];
     } else if (_tableType == YosKeepAccountsOrderTableTypeMonth_Type) {

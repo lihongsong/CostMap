@@ -14,6 +14,9 @@
 #import "YosKeepAccountsTranstionAnimationPush.h"
 #import "YosKeepAccountsCustomDatePickerScene.h"
 #import "YosKeepAccountsCountingLabel.h"
+
+#import "YosKeepAccountsSpecialScene.h"
+
 #define kLineButtonTag 1000
 #define kPieButtonTag 2000
 
@@ -52,7 +55,7 @@
     self.title = @"花钱无忧";
     self.edgesForExtendedLayout = UIRectEdgeAll;
     [self setUpUI];
-    [self setUpRAC];
+    [self setUpSpecial];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -65,11 +68,14 @@
     }
 }
 
-- (void)setUpRAC {
+- (void)setUpSpecial {
     
     [RACObserve(self, totalWealth) subscribeNext:^(id x) {
         NSLog(@"totalWealth: %@", x);
     }];
+    
+    YosKeepAccountsSpecialScene *special = [YosKeepAccountsSpecialScene new];
+    [self.view addSubview:special];
 }
 
 - (void)setpNavBarWhenSceneWillAppear {
@@ -175,7 +181,7 @@
         STRONG_SELF
         NSDictionary *param = @{@"year": @(self.year).stringValue,
                                 @"month": @(self.month).stringValue,
-                                @"order_type_id": model.s_type_id};
+                                @"order_type_id": model.yka_type_id};
         [[HJMediator shared] routeToURL:HJAPPURL(@"OrderMonthList") withParameters:param, nil];
     };
     [_chartBaseVw addSubview:self.lineScene];
@@ -220,12 +226,12 @@
 #pragma mark - Notification Method
 #pragma mark - Event & Target Methods
 - (IBAction)setBtnClick {
-        WEAK_SELF
-        [YosKeepAccountsSettingScene showSettingSceneOnSuperPresenter:self.navigationController
-                                                gotoVCHandler:^(UIViewController * _Nonnull viewController) {
-                                                    STRONG_SELF
-                                                    [self.navigationController pushViewController:viewController animated:YES];
-                                                }];
+//        WEAK_SELF
+//        [YosKeepAccountsSettingScene showSettingSceneOnSuperPresenter:self.navigationController
+//                                                gotoVCHandler:^(UIViewController * _Nonnull viewController) {
+//                                                    STRONG_SELF
+//                                                    [self.navigationController pushViewController:viewController animated:YES];
+//                                                }];
 }
 - (IBAction)addOrderClick:(YosKeepAccountsLeapButton *)sender {
     [[HJMediator shared] routeToURL:HJAPPURL(@"EditOrder") withParameters:nil, nil];

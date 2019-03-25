@@ -16,5 +16,5 @@ typedef void(^DBResultBlock)(NSMutableArray <YosKeepAccountsOrderEntity *> *resu
             result:(DBResultBlock)resultAction;
 - (void)clearData:(NSString *)tableName;
 - (NSMutableArray <YosKeepAccountsOrderEntity *> *)searchAllData;
-- (void)deleteData:(NSString*)tableName s_id:(NSString *)s_id;
+- (void)deleteData:(NSString*)tableName yka_id:(NSString *)yka_id;
 @end

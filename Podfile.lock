@@ -20,10 +20,12 @@ PODS:
   - Charts (3.2.0):
     - Charts/Core (= 3.2.0)
   - Charts/Core (3.2.0)
+  - ESTabBarController-swift (2.6.4)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - GTMBase64 (1.0.1)
+  - Hero (1.4.0)
   - HJ_UIKit/HJAlertView (2.2.8):
     - Masonry
     - YYText
@@ -78,6 +80,7 @@ PODS:
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
+  - Spring (1.0.6)
   - UICKeyChainStore (2.1.1)
   - WebViewJavascriptBridge (6.0.3)
   - YYModel (1.0.4)
@@ -88,8 +91,10 @@ DEPENDENCIES:
   - AppUpdate (= 2.0.0)
   - CFYNavigationBarTransition (= 1.3.0)
   - Charts (= 3.2.0)
+  - ESTabBarController-swift
   - FMDB
   - GTMBase64 (= 1.0.1)
+  - Hero
   - HJ_UIKit/HJAlertView (= 2.2.8)
   - HJ_UIKit/HJCarousel (= 2.2.8)
   - HJ_UIKit/HJCityPickerManager (= 2.2.8)
@@ -103,6 +108,7 @@ DEPENDENCIES:
   - RCMobClick (= 2.0.9)
   - ReactiveCocoa (= 2.5.0)
   - SDWebImage
+  - Spring (from `https://github.com/MengTo/Spring.git`)
   - UICKeyChainStore (= 2.1.1)
   - YYModel (= 1.0.4)
   - YYText (= 1.0.4)
@@ -120,8 +126,10 @@ SPEC REPOS:
     - AFNetworking
     - CFYNavigationBarTransition
     - Charts
+    - ESTabBarController-swift
     - FMDB
     - GTMBase64
+    - Hero
     - IQKeyboardManager
     - Masonry
     - MBProgressHUD
@@ -132,13 +140,24 @@ SPEC REPOS:
     - YYModel
     - YYText
 
+EXTERNAL SOURCES:
+  Spring:
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: fafd0b2e8d4d46405bd86fa7ba84bb7f73a20b13
+    :git: https://github.com/MengTo/Spring.git
+
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppUpdate: 24943e29e8042d23207bd42c61a2f9c67dc35ad1
   CFYNavigationBarTransition: ecf29e5286a80857fca34c662bf72edef76e4da5
   Charts: 680c8328bd5e90cb14f67e00d2176f3113d19141
+  ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
+  Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   HJ_UIKit: 068f688a539653c151312a000d85d4113e4d1965
   HJCategories: eb50c3d9495bbe0bb0c7f67012d8c9e1e07ae37b
   HJMediator: 381890d07324a962f6c84c782d98c3be8d3d931a
@@ -149,11 +168,12 @@ SPEC CHECKSUMS:
   RCMobClick: 05cdb2fc6ebf656ee690eddece9dce3ec75f3c02
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
 
-PODFILE CHECKSUM: 3d4e39cfd1bd2f237c39b64a430fedb959d2bc41
+PODFILE CHECKSUM: 1cd445cbe77b9df56be0daf0d9cd417f50c0fe98
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.6.1

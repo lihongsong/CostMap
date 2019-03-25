@@ -1,0 +1,3 @@
+#import "YosKeepAccountsAreaSplineChartScene.h"
+@interface YosKeepAccountsAreaSplineCompareScene : YosKeepAccountsAreaSplineChartScene
+@end

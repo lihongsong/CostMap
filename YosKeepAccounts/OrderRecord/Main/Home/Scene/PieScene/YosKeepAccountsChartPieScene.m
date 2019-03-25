@@ -35,17 +35,17 @@
     _entitys = entitys;
     __block double sum = 0.0f;
     [self.entitys enumerateObjectsUsingBlock:^(YosKeepAccountsOrderEntity * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        sum += [obj.s_wealth doubleValue];
+        sum += [obj.yka_wealth doubleValue];
     }];
     NSMutableArray *values = [[NSMutableArray alloc] init];
     for (int i = 0; i < entitys.count; i++) {
         YosKeepAccountsOrderEntity *model = entitys[i];
-        CGFloat wealth = fabs([model.s_wealth doubleValue]);
+        CGFloat wealth = fabs([model.yka_wealth doubleValue]);
         NSString *percentStr;
         if (sum == 0.0f) {
             percentStr = @"0%";
         } else {
-            percentStr = [NSString stringWithFormat:@"%.2f%@",fabs([model.s_wealth doubleValue] / sum * 100), @"%"];
+            percentStr = [NSString stringWithFormat:@"%.2f%@",fabs([model.yka_wealth doubleValue] / sum * 100), @"%"];
         }
         NSString *titleStr = [NSString stringWithFormat:@"%@    %@",parties[i % parties.count], percentStr];
         [values addObject:[[PieChartDataEntry alloc] initWithValue:wealth label:titleStr icon: [UIImage imageNamed:@"icon"]]];

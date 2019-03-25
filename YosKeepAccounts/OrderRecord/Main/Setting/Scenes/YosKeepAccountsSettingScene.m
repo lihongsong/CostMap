@@ -79,9 +79,7 @@ static CGFloat settingSceneWidth = 260;
         } else if (type == 3) {
             vc = [[YosKeepAccountsAboutPresenter alloc] init];
         }
-        [self hideSettingScene:^{
-            self.gotoSceneContoller(vc);
-        }];
+        self.gotoSceneContoller(vc);
     }
 }
 - (IBAction)switchAction:(UISwitch *)sender {

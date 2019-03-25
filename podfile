@@ -34,5 +34,8 @@ target 'YosKeepAccounts' do
     pod 'UICKeyChainStore','2.1.1'
     pod 'RCMobClick', '2.0.9'
     pod 'ReactiveCocoa', '2.5.0'
+    pod 'Spring', :git => 'https://github.com/MengTo/Spring.git'
+    pod 'Hero'
+    pod 'ESTabBarController-swift'
 
 end

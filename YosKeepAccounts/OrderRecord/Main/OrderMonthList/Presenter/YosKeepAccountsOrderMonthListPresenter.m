@@ -37,7 +37,7 @@
     WEAK_SELF
     self.tableScene.deleteAction = ^(UITableViewCellEditingStyle editingStyle, YosKeepAccountsOrderEntity * _Nonnull model) {
         STRONG_SELF
-        [[YosKeepAccountsSQLManager share] deleteData:kSQLTableName s_id:model.s_id];
+        [[YosKeepAccountsSQLManager share] deleteData:kSQLTableName yka_id:model.yka_id];
         NSMutableArray *tempArray = [self.tableScene.entitys mutableCopy];
         [tempArray removeObject:model];
         self.tableScene.entitys = tempArray;
@@ -56,13 +56,13 @@
 }
 - (void)requestData {
     YosKeepAccountsOrderEntity *model = [YosKeepAccountsOrderEntity new];
-    model.s_year = self.year;
-    model.s_month = self.month;
-    model.s_type_id = self.order_type_id;
+    model.yka_year = self.year;
+    model.yka_month = self.month;
+    model.yka_type_id = self.order_type_id;
     NSArray *result =
     [[YosKeepAccountsSQLManager share] searchData:model
                              tableName:kSQLTableName];
-    NSSortDescriptor *sortDes = [NSSortDescriptor sortDescriptorWithKey:@"s_time" ascending:NO];
+    NSSortDescriptor *sortDes = [NSSortDescriptor sortDescriptorWithKey:@"yka_time" ascending:NO];
     result = [result sortedArrayUsingDescriptors:@[sortDes]];
     self.tableScene.entitys = result;
     [self.tableScene cyl_reloadData];

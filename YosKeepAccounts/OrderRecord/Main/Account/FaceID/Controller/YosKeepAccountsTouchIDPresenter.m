@@ -1,5 +1,5 @@
 #import "YosKeepAccountsTouchIDPresenter.h"
-#import "ZYZControl.h"
+#import "YosKeepAccountsControl.h"
 #import <LocalAuthentication/LocalAuthentication.h>
 @interface YosKeepAccountsTouchIDPresenter ()<UIAlertViewDelegate>
 @property(nonatomic,strong)LAContext *context;
@@ -11,7 +11,7 @@
     [self initUi];
 }
 - (void)initUi{
-    UIImageView *logoImage = [ZYZControl createImageSceneFrame:CGRectMake(self.view.hj_width/2.0 - 40, 105, 80, 80) imageName:@"corner_logo"];
+    UIImageView *logoImage = [YosKeepAccountsControl yka_createImageSceneFrame:CGRectMake(self.view.hj_width/2.0 - 40, 105, 80, 80) imageName:@"corner_logo"];
     logoImage.layer.cornerRadius = 8.0;
     [self.view addSubview:logoImage];
     BOOL isFaceID = NO;
@@ -26,7 +26,7 @@
     } else {
         fingerImageName = @"home_ic_TouchID";
     }
-    UIImageView *fingerImage = [ZYZControl createImageSceneFrame:CGRectMake(self.view.hj_width/2.0 - 31.5, self.view.hj_height/2.0 - 31.5, 63, 63) imageName:fingerImageName];
+    UIImageView *fingerImage = [YosKeepAccountsControl yka_createImageSceneFrame:CGRectMake(self.view.hj_width/2.0 - 31.5, self.view.hj_height/2.0 - 31.5, 63, 63) imageName:fingerImageName];
     [self.view addSubview:fingerImage];
     NSString *title;
     if (isFaceID) {
@@ -34,10 +34,10 @@
     } else {
         title = @"点击进行指纹解锁";
     }
-    UIButton *startButton = [ZYZControl createButtonWithFrame:CGRectMake(fingerImage.center.x - 75, CGRectGetMaxY(fingerImage.frame), 150, 60) target:self SEL:@selector(startButtonClick) title:title];
+    UIButton *startButton = [YosKeepAccountsControl yka_createButtonWithFrame:CGRectMake(fingerImage.center.x - 75, CGRectGetMaxY(fingerImage.frame), 150, 60) target:self SEL:@selector(startButtonClick) title:title];
     [startButton setTitleColor:[UIColor skinColor] forState:UIControlStateNormal];
     [self.view addSubview:startButton];
-    UIButton *bigButton = [ZYZControl createButtonWithFrame:CGRectMake(fingerImage.center.x - 75, fingerImage.frame.origin.y, 150, 123) target:self SEL:@selector(startButtonClick) title:@""];
+    UIButton *bigButton = [YosKeepAccountsControl yka_createButtonWithFrame:CGRectMake(fingerImage.center.x - 75, fingerImage.frame.origin.y, 150, 123) target:self SEL:@selector(startButtonClick) title:@""];
     [self.view addSubview:bigButton];
 }
 #pragma mark 清除登录信息

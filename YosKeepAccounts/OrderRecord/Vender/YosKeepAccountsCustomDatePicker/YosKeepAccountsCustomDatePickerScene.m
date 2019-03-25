@@ -376,7 +376,7 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     return [rowsArr[component] integerValue];
 }
 #pragma mark - UIPickerViewDelegate
-- (UIView *)pickerView:(UIPickerView *)pickerScene viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingScene:(nullable UIView *)view {
+- (UIView *)pickerView:(UIPickerView *)pickerScene viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view {
     ((UIView *) [pickerScene.subviews objectAtIndex:1]).backgroundColor = [UIColor colorWithRed:195 / 255.0 green:195 / 255.0 blue:195 / 255.0 alpha:1.0f];
     ((UIView *) [pickerScene.subviews objectAtIndex:2]).backgroundColor = [UIColor colorWithRed:195 / 255.0 green:195 / 255.0 blue:195 / 255.0 alpha:1.0f];
     UILabel *label = (UILabel *) view;

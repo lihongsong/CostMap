@@ -49,7 +49,7 @@
     WEAK_SELF
     self.tableScene.deleteAction = ^(UITableViewCellEditingStyle editingStyle, YosKeepAccountsOrderEntity * _Nonnull model) {
         STRONG_SELF
-        [[YosKeepAccountsSQLManager share] deleteData:kSQLTableName s_id:model.s_id];
+        [[YosKeepAccountsSQLManager share] deleteData:kSQLTableName yka_id:model.yka_id];
         NSMutableArray *tempArray = [self.tableScene.entitys mutableCopy];
         [tempArray removeObject:model];
         self.tableScene.entitys = tempArray;

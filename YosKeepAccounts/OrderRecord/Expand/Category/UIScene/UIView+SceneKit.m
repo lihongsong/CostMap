@@ -1,6 +1,6 @@
 #import "UIView+SceneKit.h"
-#import "UILabel+LabelKit.h"
-#import "GetImagePath.h"
+#import "UILabel+YKALabelKit.h"
+#import "YosKeepAccountsGetImagePath.h"
 @implementation UIView (SceneKit)
 #pragma mark - getter
 - (CGFloat)minX{
@@ -254,7 +254,7 @@
     UIView *sepa3 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, .5, self.height)];
     UIImageView *sepa4 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.width, 1.5)];
     sepa1.backgroundColor = sepa2.backgroundColor = sepa3.backgroundColor = sepaColor;
-    sepa4.image = [GetImagePath getImagePath:@"bottomShadow"];
+    sepa4.image = [YosKeepAccountsGetImagePath YosKeepAccountsGetImagePath:@"bottomShadow"];
     [sepa3 setMaxX:self.width];
     [sepa4 setMinY:self.height];
     [self addSubview:sepa1];

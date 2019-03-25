@@ -1,5 +1,5 @@
 #import "YosKeepAccountsPagePresenter.h"
-#import "ZYZControl.h"
+#import "YosKeepAccountsControl.h"
 @interface YosKeepAccountsPagePresenter ()
 @property (strong, nonatomic)UIImageView *pageImageScene;
 @property (strong, nonatomic)UIButton *startButton;
@@ -12,14 +12,14 @@
 -(UIImageView *)pageImageScene
 {
     if (_pageImageScene == nil) {
-        _pageImageScene = [ZYZControl createImageSceneFrame:CGRectMake(0, 0, SWidth, SHeight) imageName:@"introduce_LaunchImage_01"];
+        _pageImageScene = [YosKeepAccountsControl yka_createImageSceneFrame:CGRectMake(0, 0, SWidth, SHeight) imageName:@"introduce_LaunchImage_01"];
     }
     return _pageImageScene;
 }
 -(UIButton *)startButton
 {
     if (_startButton == nil) {
-        _startButton = [ZYZControl createButtonWithFrame:CGRectMake(SWidth/2.0 - 90,SHeight - 100 - 40, 180, 40) target:self SEL:@selector(startButtonClick) title:@"开启旅程"];
+        _startButton = [YosKeepAccountsControl yka_createButtonWithFrame:CGRectMake(SWidth/2.0 - 90,SHeight - 100 - 40, 180, 40) target:self SEL:@selector(startButtonClick) title:@"开启旅程"];
         [_startButton setImage:[UIImage imageNamed:@"introduce_LaunchImage_Button"] forState:UIControlStateNormal];
         [_startButton setImage:[UIImage imageNamed:@"introduce_LaunchImage_Button"] forState:UIControlStateHighlighted];
     }

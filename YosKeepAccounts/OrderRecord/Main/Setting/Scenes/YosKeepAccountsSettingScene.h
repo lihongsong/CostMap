@@ -5,5 +5,7 @@ typedef void (^YosKeepAccountsSettingSceneGotoVC)(UIViewController *);
 + (void)showSettingSceneOnSuperPresenter:(UIViewController *)superVC gotoVCHandler:(YosKeepAccountsSettingSceneGotoVC)gotoVC;
 @property (nonatomic, copy, nullable) YosKeepAccountsSettingSceneGotoVC gotoSceneContoller;
 @property (nonatomic, weak) UIViewController *superPresenter;
+
++ (instancetype)settingScene;
 @end
 NS_ASSUME_NONNULL_END
