@@ -12,10 +12,11 @@
 
 @class RACSubject;
 
-typedef NS_ENUM(NSInteger, YosKeepAccountsChartLineType) {
-    YosKeepAccountsChartLineUnknow = 0,
-    YosKeepAccountsChartLineMonth = 1,
-    YosKeepAccountsChartLineYear = 2,
+typedef NS_ENUM(NSInteger, YosKeepAccountsChartType) {
+    YosKeepAccountsChartUnknow = 0,
+    YosKeepAccountsChartDay = 1,
+    YosKeepAccountsChartMonth = 2,
+    YosKeepAccountsChartYear = 3,
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -24,11 +25,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (assign, nonatomic) CGFloat totalAccount;
 
-@property (strong, nonatomic) NSArray <YosKeepAccountsChartLineEntity *> *lineEntitys;
+@property (assign, nonatomic) YosKeepAccountsChartType type;
 
-@property (assign, nonatomic) YosKeepAccountsChartLineType type;
-
-- (RACSubject *)yka_requestLineDataWithType:(YosKeepAccountsChartLineType)type;
+- (RACSubject *)yka_requestLineDataWithType:(YosKeepAccountsChartType)type;
 
 @end
 

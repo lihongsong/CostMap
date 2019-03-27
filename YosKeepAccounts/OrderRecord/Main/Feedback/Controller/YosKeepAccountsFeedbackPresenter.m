@@ -18,10 +18,6 @@
 - (void)setUpUI {
     self.title = @"意见反馈";
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
-    [self.navigationController.navigationBar addGestureRecognizer:self.tap]; self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont NavigationTitleFont],NSForegroundColorAttributeName:[UIColor blackColor]}];
     self.view.backgroundColor = HJHexColor(0xf2f2f2);
     UILabel *tipLabel = [UILabel new];
     [self.view addSubview:tipLabel];
@@ -56,7 +52,8 @@
     }];
     [commitBtn setTitle:@"提交反馈" forState:UIControlStateNormal];
     CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-    gradientLayer.colors = @[(__bridge id) [UIColor colorWithRed:255 / 255.0 green:96 / 255.0 blue:26 / 255.0 alpha:1].CGColor, (__bridge id) [UIColor colorWithRed:255 / 255.0 green:143 / 255.0 blue:0 alpha:1].CGColor];
+    gradientLayer.colors = @[(__bridge id) YosKeepAccountsThemeColor.CGColor,
+                             (__bridge id) [YosKeepAccountsThemeColor colorWithAlphaComponent:0.7].CGColor];
     gradientLayer.locations = @[@0, @1.0];
     gradientLayer.startPoint = CGPointMake(0, 0);
     gradientLayer.endPoint = CGPointMake(1, 0);

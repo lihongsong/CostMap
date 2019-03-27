@@ -26,10 +26,17 @@
     [self setpNavBarWhenSceneWillAppear];
 }
 - (void)setpNavBarWhenSceneWillAppear {
-    [self cfy_setNavigationBarBackgroundColor:[UIColor whiteColor]];
-    [self cfy_setNavigationBarBackgroundImage:nil];
-    [self cfy_setNavigationBarShadowImageBackgroundColor:[UIColor clearColor]];
-    [self.navigationController.navigationBar setTintColor:HJHexColor(0x666666)];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : YosKeepAccountsThemeTitleColor}];
+    [self.navigationController.navigationBar setTintColor:YosKeepAccountsThemeTitleColor];
+    [self.navigationController.navigationBar setBarTintColor:YosKeepAccountsThemeColor];
+    [self.navigationController.navigationBar setBackgroundColor:YosKeepAccountsThemeColor];
+    [self.navigationController.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"yka_navbar_back_02"]];
+    [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"yka_navbar_back_02"]];
+    [self.navigationController.navigationBar setTranslucent:NO];
+    [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage hj_imageWithColor:[UIColor clearColor]]];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : YosKeepAccountsThemeTitleColor } forState:UIControlStateNormal];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

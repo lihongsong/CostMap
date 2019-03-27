@@ -5,6 +5,8 @@
 #import "YosKeepAccountsTranstionAnimationPop.h"
 #import "YosKeepAccountsHomePresenter.h"
 #import "YosKeepAccountsCustomDatePickerScene.h"
+#import "YosKeepAccountsUserManager.h"
+#import "YosKeepAccountsMePresenter.h"
 #import <HJCityPickerManager.h>
 #import <HJAlertView.h>
 #import <HJProgressHUD.h>
@@ -179,6 +181,7 @@
     model.yka_time = @(self.orderTime.timeIntervalSince1970).stringValue;
     model.yka_desc = self.noteTextField.text;
     model.yka_city = self.orderCity ?: @"";
+    model.yka_username = [YosKeepAccountsUserManager shareInstance].phone;
     if (newOrder) {
         [[YosKeepAccountsSQLManager share] insertData:model tableName:kSQLTableName];
     } else {
@@ -197,16 +200,18 @@
     if (self.orderEntity) {
         [self.view endEditing:YES];
         WEAK_SELF
-        HJAlertView *alertScene = [[HJAlertView alloc] initWithTitle:@"确定要删除账单吗" message:nil cancelBlock:^{
+        HJAlertView *alertScene = [[HJAlertView alloc] initWithTitle:@"温馨提示" message:@"确定要删除账单吗？" cancelBlock:^{
         } confirmBlock:^{
             STRONG_SELF
             [[YosKeepAccountsSQLManager share] deleteData:kSQLTableName yka_id:self.orderEntity.yka_id];
             [KeyWindow hj_showToastHUD:@"账单已删除"];
             [self.navigationController popViewControllerAnimated:YES];
         }];
+        alertScene.confirmColor = YosKeepAccountsThemeColor;
         [alertScene show];
     }
 }
+
 - (IBAction)selectOrderTime:(id)sender {
     if (self.noteTextField.isFirstResponder || self.momeyTextField.isFirstResponder) {
         [self.view endEditing:YES];
@@ -313,7 +318,7 @@
 #pragma mark -- UINavigationControllerDelegate --
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
     if ([fromVC isKindOfClass:[YosKeepAccountsEditOrderPresenter class]] &&
-        [toVC isKindOfClass:[YosKeepAccountsHomePresenter class]] &&
+        ([toVC isKindOfClass:[YosKeepAccountsHomePresenter class]] || [toVC isKindOfClass:[YosKeepAccountsMePresenter class]]) &&
         operation == UINavigationControllerOperationPop) {
         return [YosKeepAccountsTranstionAnimationPop new];
     } else {

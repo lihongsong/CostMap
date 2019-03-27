@@ -12,21 +12,21 @@
 #pragma mark 生成typeid用于sTypeID
 - (NSString *)getTypeID:(NSString*)type {
     if ([type isEqualToString:@"餐饮"]) {
-        return @"1234";
+        return @"00000001";
     } else if ([type isEqualToString:@"购物"]) {
-        return @"1235";
-    } else if ([type isEqualToString:@"交友"]) {
-        return @"1236";
+        return @"00000010";
+    } else if ([type isEqualToString:@"社交"]) {
+        return @"00000100";
     } else if ([type isEqualToString:@"游玩"]) {
-        return @"1237";
+        return @"00001000";
     } else if ([type isEqualToString:@"居家"]) {
-        return @"1238";
+        return @"00010000";
     } else if ([type isEqualToString:@"教育"]) {
-        return @"1239";
+        return @"00100000";
     } else if ([type isEqualToString:@"医疗"]) {
-        return @"1240";
+        return @"01000000";
     } else {
-        return @"1241";
+        return @"10000000";
     };
 }
 @end

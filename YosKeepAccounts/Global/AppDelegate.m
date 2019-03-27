@@ -2,6 +2,7 @@
 #import "YosKeepAccountsHomePresenter.h"
 #import "YosKeepAccountsIntroducePresenter.h"
 #import "YosKeepAccountsTouchIDPresenter.h"
+#import "AppDelegate+YKAUserCenter.h"
 #import "YosKeepAccounts-Swift.h"
 @interface AppDelegate ()
 
@@ -137,6 +138,9 @@
     }
 }
 - (void)setUpSDK {
+    
+    [self registerUserCenter];
+    
     HJMediatorConfig *config = [HJMediatorConfig new];
     config.prefixString = @"YosKeepAccounts";
     config.suffixString = @"Presenter";

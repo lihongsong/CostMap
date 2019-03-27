@@ -1,5 +1,5 @@
 //
-//  YosKeepAccountsChartLineSceneModel.m
+//  YosKeepAccountsChartSceneModel.m
 //  YosKeepAccounts
 //
 //  Created by yoser on 2019/3/25.
@@ -11,7 +11,7 @@
 
 @implementation YosKeepAccountsChartLineSceneModel
 
-- (RACSubject *)yka_requestLineDataWithType:(YosKeepAccountsChartLineType)type {
+- (RACSubject *)yka_requestLineDataWithType:(YosKeepAccountsChartType)type {
     
     RACReplaySubject *subject = [RACReplaySubject new];
     
@@ -21,7 +21,7 @@
     [[YosKeepAccountsSQLManager share]
      searchData:kSQLTableName
      year:year
-     month:type == YosKeepAccountsChartLineYear ? nil : month
+     month:type == YosKeepAccountsChartYear ? nil : month
      day:nil
      result:^(NSMutableArray<YosKeepAccountsOrderEntity *> *result, NSError *error) {
          if (error) {

@@ -31,7 +31,10 @@
     _currentPage = currentPage;
 }
 #pragma mark - UIPageViewController
-- (void)pagePresenter:(UIPageViewController *)pagePresenter didFinishAnimating:(BOOL)finished previousPresenters:(NSArray<UIViewController *> *)previousPresenters transitionCompleted:(BOOL)completed{
+- (void)pageViewController:(UIPageViewController *)pagePresenter
+        didFinishAnimating:(BOOL)finished
+    previousViewController:(NSArray<UIViewController *> *)previousPresenters
+       transitionCompleted:(BOOL)completed{
     if (completed && finished) {
         NSInteger index=[_controllers indexOfObject: pagePresenter.viewControllers.firstObject];
         if ([self.delegate respondsToSelector:@selector(scrollDisplayPresenter:currentIndex:)] ) {
@@ -40,7 +43,8 @@
         }
     }
 }
-- (nullable UIViewController *)pagePresenter:(UIPageViewController *)pagePresenter viewControllerBeforePresenter:(UIViewController *)viewController{
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+               viewControllerBeforeViewController:(UIViewController *)viewController{
     NSInteger index=[_controllers indexOfObject:viewController];
     if (index > 0){
         return _controllers[index -1];
@@ -48,7 +52,8 @@
         return nil;
     }
 }
-- (nullable UIViewController *)pagePresenter:(UIPageViewController *)pagePresenter viewControllerAfterPresenter:(UIViewController *)viewController{
+- (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController
+                viewControllerAfterViewController:(UIViewController *)viewController {
     NSInteger index=[_controllers indexOfObject:viewController];
     if (index < _controllers.count - 1) {
         return _controllers[index +1];

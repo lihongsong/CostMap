@@ -1,6 +1,7 @@
 #ifndef UtilitiesDefine_h
 #define UtilitiesDefine_h
-#define YosKeepAccountsThemeColor HJHexColor(0xFF601A)
+#define YosKeepAccountsThemeColor HJHexColor(0x56CF9A)
+#define YosKeepAccountsThemeTitleColor HJHexColor(0xFFFFFF)
 #define SafeStr(_str) StrIsEmpty(_str) ? @"" : _str
 #define LNAOPSAFESTRING(str) ((((str) != nil) && ![(str) isKindOfClass:[NSNull class]]) ? [NSString stringWithFormat:@"%@", (str)] : @"")
 #define kSQLTableName @"YosKeepAccountsOrderRecordTable"

@@ -12,25 +12,22 @@ import ESTabBarController_swift;
     
     @objc public static func createRootViewController() -> YosKeepAccountsTabBarPresenter {
         
-        //        首页
-        let homeImg = UIImage(named: "1")
-        let homeSelectedImg = UIImage(named: "1")
+        //  首页
+        let homeImg = UIImage(named: "账单_tab")
+        let homeSelectedImg = UIImage(named: "账单_tab")
         let homeVC = childViewController(viewController: YosKeepAccountsHomePresenter.instance(),
                                          title: "首页",
                                          image: homeImg,
                                          selectedImage: homeSelectedImg,
                                          tag: 0)
         
-        let otherImg = UIImage(named: "1")
-        let otherSelectedImg = UIImage(named: "1")
-        let otherVC = childViewController(viewController: YosKeepAccountsBasePresenter(),
-                                          title: "其他",
-                                          image: otherImg,
-                                          selectedImage: otherSelectedImg,
-                                          tag: 1)
+        //  中间按钮
+        let midVC = YosKeepAccountsBasePresenter()
+        midVC.tabBarItem = ESTabBarItem.init(YosKeepAccountsIrregularityContentView(), title: nil, image: UIImage(named: "yka_orderAdd"), selectedImage: UIImage(named: "yka_orderAdd"))
         
-        let meImg = UIImage(named: "1")
-        let meSelectedImg = UIImage(named: "1")
+        //  我的
+        let meImg = UIImage(named: "我的_tab")
+        let meSelectedImg = UIImage(named: "我的_tab")
         let meVC = childViewController(viewController: YosKeepAccountsMePresenter(),
                                        title: "我的",
                                        image: meImg,
@@ -38,8 +35,26 @@ import ESTabBarController_swift;
                                        tag: 2)
         
         let tabBarVC = YosKeepAccountsTabBarPresenter()
-        tabBarVC.viewControllers = [homeVC, otherVC, meVC]
+        tabBarVC.shouldHijackHandler = {
+            tabbarController, viewController, index in
+            if index == 1 {
+                return true
+            }
+            return false
+        }
+        tabBarVC.didHijackHandler = { tabBarViewController, viewController, index in
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                let editOrderVC = YosKeepAccountsEditOrderPresenter.instance()
+                guard let nav = tabBarViewController.selectedViewController else {
+                    return
+                }
+                (nav as! UINavigationController).pushViewController(editOrderVC, animated: true)
+            }
+        }
         
+        
+        tabBarVC.viewControllers = [homeVC, midVC, meVC]
         return tabBarVC
     }
     
@@ -51,8 +66,12 @@ import ESTabBarController_swift;
         
         let childVC = YosKeepAccountsBaseNavigationController(rootViewController: viewController)
         
+        let itemContentScene = YosKeepAccountsTabBarItemContentScene(frame: .zero)
+        itemContentScene.highlightIconColor = UIColor.yka_main()
+        itemContentScene.iconColor = UIColor.yka_unselected()
+        
         let childItem =
-            YosKeepAccountsTabBarItem(YosKeepAccountsTabBarItemContentScene(frame: .zero),
+            YosKeepAccountsTabBarItem(itemContentScene,
                                       title: title,
                                       image: image,
                                       selectedImage: selectedImage,
@@ -73,8 +92,6 @@ import ESTabBarController_swift;
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        delegate = self
-        // Do any additional setup after loading the view.
     }
     
 }

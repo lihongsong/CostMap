@@ -1,6 +1,6 @@
 #import "YosKeepAccountsBaseNavigationController.h"
 #import <AddressBookUI/AddressBookUI.h>
-#import <CFYNavigationBarTransition/CFYNavigationBarTransition.h>
+
 @interface UINavigationController (UINavigationControllerNeedShouldPopItem) <UINavigationBarDelegate>
 @end
 @implementation UINavigationController (UINavigationControllerNeedShouldPopItem)
@@ -10,25 +10,25 @@
 @implementation YosKeepAccountsBaseNavigationController
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : HJHexColor(k0x444444)}];
-    [self.navigationBar setTintColor:HJHexColor(k0x444444)];
-    [self.navigationBar setBarTintColor:HJHexColor(k0xffffff)];
-    [self.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"nav_btn_back_default"]];
-    [self.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"nav_btn_back_default"]];
-    [self.navigationBar setTranslucent:YES];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : YosKeepAccountsThemeTitleColor}];
+    [self.navigationBar setTintColor:YosKeepAccountsThemeTitleColor];
+    [self.navigationBar setBarTintColor:YosKeepAccountsThemeColor];
+    [self.navigationBar setBackgroundColor:YosKeepAccountsThemeColor];
+    [self.navigationBar setBackIndicatorImage:[UIImage imageNamed:@"yka_navbar_back_02"]];
+    [self.navigationBar setBackIndicatorTransitionMaskImage:[UIImage imageNamed:@"yka_navbar_back_02"]];
+    [self.navigationBar setTranslucent:NO];
     [self.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [self.navigationBar setShadowImage:[UIImage hj_imageWithColor:[UIColor clearColor]]];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : HJHexColor(k0x444444) } forState:UIControlStateNormal];
+    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : YosKeepAccountsThemeTitleColor } forState:UIControlStateNormal];
     if (IOS_VERSION_9_OR_ABOVE) {
-        [[UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[ABPeoplePickerNavigationController class], [UIImagePickerController class]]] setBarTintColor:HJHexColor(k0x444444)];
+        [[UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[ABPeoplePickerNavigationController class], [UIImagePickerController class]]] setBarTintColor:YosKeepAccountsThemeColor];
     }else{
-       [[UINavigationBar appearanceWhenContainedIn:[ABPeoplePickerNavigationController class], [UIImagePickerController class], nil] setBarTintColor:HJHexColor(k0x444444)];
+       [[UINavigationBar appearanceWhenContainedIn:[ABPeoplePickerNavigationController class], [UIImagePickerController class], nil] setBarTintColor:YosKeepAccountsThemeColor];
     }
     self.interactivePopGestureRecognizer.delegate = self;
-    [self closeCFYNavigationBarFunction:NO];
 }
 #pragma mark - overwrite
-- (void)pushPresenter:(UIViewController *)viewController animated:(BOOL)animated {
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     viewController.hidesBottomBarWhenPushed =(self.childViewControllers.count > 0)?YES:NO;
     [super pushViewController:viewController animated:animated];
 }

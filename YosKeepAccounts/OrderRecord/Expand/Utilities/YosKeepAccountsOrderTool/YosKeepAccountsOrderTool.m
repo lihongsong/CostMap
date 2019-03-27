@@ -94,18 +94,18 @@
 }
 + (NSString *)typeImage:(YosKeepAccountsOrderType)type {
     switch (type) {
-        case YosKeepAccountsOrderTypeFood: return @"restaurant_ic";
-        case YosKeepAccountsOrderTypeBuy: return @"shop_ic";
-        case YosKeepAccountsOrderTypeFriend: return @"friend_ic";
-        case YosKeepAccountsOrderTypePlay: return @"play_ic";
-        case YosKeepAccountsOrderTypeHome: return @"home_ic";
-        case YosKeepAccountsOrderTypeEduca: return @"education_ic";
-        case YosKeepAccountsOrderTypeMedic: return @"medical_ic";
-        default: return @"more_ic";
+        case YosKeepAccountsOrderTypeFood: return @"餐饮_ic";
+        case YosKeepAccountsOrderTypeBuy: return @"购物_ic";
+        case YosKeepAccountsOrderTypeFriend: return @"社交_ic";
+        case YosKeepAccountsOrderTypePlay: return @"游玩_ic";
+        case YosKeepAccountsOrderTypeHome: return @"居家_ic";
+        case YosKeepAccountsOrderTypeEduca: return @"教育_ic";
+        case YosKeepAccountsOrderTypeMedic: return @"医疗_ic";
+        default: return @"其他_ic";
     }
 }
 + (NSString *)typePressedImage:(YosKeepAccountsOrderType)type {
-    return [NSString stringWithFormat:@"%@_pressed", [self typeImage:type]];
+    return [NSString stringWithFormat:@"%@", [self typeImage:type]];
 }
 + (NSDateFormatter *)orderTimeDateFormatter {
     static NSDateFormatter *dateFormatter;

@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #define YosKeepAccountsOrderTypeFoodName   @"餐饮"
 #define YosKeepAccountsOrderTypeBuyName    @"购物"
-#define YosKeepAccountsOrderTypeFriendName @"交友"
+#define YosKeepAccountsOrderTypeFriendName @"社交"
 #define YosKeepAccountsOrderTypePlayName   @"游玩"
 #define YosKeepAccountsOrderTypeHomeName   @"居家"
 #define YosKeepAccountsOrderTypeEducaName  @"教育"

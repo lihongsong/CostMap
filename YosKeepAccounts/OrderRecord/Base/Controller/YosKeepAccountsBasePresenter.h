@@ -1,5 +1,4 @@
 #import <UIKit/UIKit.h>
-#import <CFYNavigationBarTransition/CFYNavigationBarTransition.h>
 @interface YosKeepAccountsBasePresenter : UIViewController
 - (void)setupCustomLeftWithImage:(UIImage *)image target:(id)tar action:(SEL)act;
 - (void)setupCustomRightWithImage:(UIImage *)image target:(id)tar action:(SEL)act;

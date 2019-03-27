@@ -19,6 +19,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
+    _wealthLb.textColor = YosKeepAccountsThemeColor;
+    _titleLb.textColor = YosKeepAccountsThemeColor;
+    _iconIV.tintColor = YosKeepAccountsThemeColor;
 }
 #pragma mark - Getter & Setter Methods
 - (void)setEntity:(YosKeepAccountsOrderEntity *)entity {

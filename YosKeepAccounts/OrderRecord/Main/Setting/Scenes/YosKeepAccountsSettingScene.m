@@ -7,14 +7,32 @@
 #import "YosKeepAccountsFeedbackPresenter.h"
 #import "YosKeepAccountsAboutPresenter.h"
 #import <NSDate+HJNormalExtension.h>
-static NSString *const mineHeader = @"com.wyhq.setting.mineHeader";
+#import <UserCenter/XZYUserCenterUIHeader.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import "YosKeepAccountsUserManager.h"
+#import <HJ_UIKit/HJAlertView.h>
+#import "UIColor+YKATheme.h"
+
+
+static NSString *const mineHeader = @"com.setting.mineHeader";
 static CGFloat settingSceneWidth = 260;
-@interface YosKeepAccountsSettingScene ()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface YosKeepAccountsSettingScene ()
+<
+UIActionSheetDelegate,
+UIImagePickerControllerDelegate,
+UINavigationControllerDelegate,
+XZYUserCenterProtocol
+>
+@property (weak, nonatomic) IBOutlet UIButton *logoutBtn;
+@property (weak, nonatomic) IBOutlet UIView *logoutScene;
+@property (weak, nonatomic) IBOutlet UIView *aboutMeSeparatorLine;
+@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLb;
 @property (weak, nonatomic) IBOutlet UIImageView *headImageScene;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *safeSwitch;
 @property (weak, nonatomic) IBOutlet UILabel *safeSwitchTipLabel;
+@property (weak, nonatomic) IBOutlet UIView *meHeadScene;
 @end
 @implementation YosKeepAccountsSettingScene
 + (instancetype)settingScene {
@@ -55,10 +73,9 @@ static CGFloat settingSceneWidth = 260;
     });
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectHeadeImage)];
     [self.headImageScene addGestureRecognizer:tap];
-    NSData *imageData = [[NSUserDefaults standardUserDefaults] valueForKey:mineHeader];
-    if (imageData) {
-        self.headImageScene.image = [UIImage imageWithData:imageData];
-    }
+    [self updateHeadIcon];
+    self.headImageScene.tintColor = UIColor.yka_unselected;
+    
     NSDate *firstDate = UserDefaultGetObj(@"firstDay");
     NSInteger date = [NSDate hj_daysAgo:firstDate];
     date = date < 0 ? 0 : date;
@@ -67,7 +84,66 @@ static CGFloat settingSceneWidth = 260;
     [self addGestureRecognizer:tmpTap];
     self.safeSwitch.on = [[NSUserDefaults standardUserDefaults] boolForKey:kCachedTouchIdStatus];
     self.safeSwitchTipLabel.text = safeSwitchTip;
+    
+    [self.loginBtn addTarget:self
+                      action:@selector(headerSceneTap:)
+            forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.logoutBtn setTitleColor:YosKeepAccountsThemeColor forState:UIControlStateNormal];
+    
+    [self setUpRAC];
 }
+
+- (void)setUpRAC {
+    
+    WEAK_SELF
+    [RACObserve([YosKeepAccountsUserManager shareInstance], logined) subscribeNext:^(NSNumber *login) {
+        STRONG_SELF
+        BOOL aleadyLogin = [login boolValue];
+        self.loginBtn.hidden = aleadyLogin;
+        self.userNameLb.hidden = !aleadyLogin;
+        self.titleLabel.hidden = !aleadyLogin;
+        self.aboutMeSeparatorLine.hidden = !aleadyLogin;
+        self.logoutScene.hidden = !aleadyLogin;
+        [self updateHeadIcon];
+    }];
+    
+    RAC(self.userNameLb, text) = RACObserve([YosKeepAccountsUserManager shareInstance], phone);
+}
+
+- (void)updateHeadIcon {
+    
+    if ([YosKeepAccountsUserManager shareInstance].logined) {
+        NSString *headerCacheKey = [mineHeader stringByAppendingString:[YosKeepAccountsUserManager shareInstance].phone ?: @""];
+        NSData *imageData = [[NSUserDefaults standardUserDefaults] valueForKey:headerCacheKey];
+        if (imageData) {
+            self.headImageScene.image = [UIImage imageWithData:imageData];
+        } else {
+            self.headImageScene.image = [UIImage imageNamed:@"默认头像"];
+        }
+    } else {
+        self.headImageScene.image = [UIImage imageNamed:@"默认头像"];
+    }
+}
+
+- (IBAction)logoutBtnClick:(id)sender {
+    
+    HJAlertView *alert = [[HJAlertView alloc] initWithTitle:@"温馨提示" message:@"确定要退出登录么？" cancelBlock:nil confirmBlock:^{
+        [[YosKeepAccountsUserManager shareInstance] logout];
+    }];
+    alert.messageLabel.textAlignment = NSTextAlignmentCenter;
+    alert.confirmColor = YosKeepAccountsThemeColor;
+    
+    [alert show];
+}
+
+- (void)headerSceneTap:(UIButton *)tap {
+    XZYLoginViewController *controller = [[XZYLoginViewController alloc] init];
+    controller.delegate = self;
+    XZYConfigInstance.registerType = RegisterTypeQuick;
+    self.gotoSceneContoller(controller);
+}
+
 - (IBAction)buttonClick:(UIButton *)sender {
     NSInteger type = sender.tag - 100;
     if (self.gotoSceneContoller) {
@@ -102,6 +178,15 @@ static CGFloat settingSceneWidth = 260;
     }];
 }
 - (void)selectHeadeImage {
+    
+    if (![YosKeepAccountsUserManager shareInstance].logined) {
+        XZYLoginViewController *controller = [[XZYLoginViewController alloc] init];
+        controller.delegate = self;
+        XZYConfigInstance.registerType = RegisterTypeQuick;
+        self.gotoSceneContoller(controller);
+        return ;
+    }
+    
     UIAlertController *sheetController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     [sheetController addAction:[UIAlertAction actionWithTitle:@"拍照上传" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self actionSheetClickedButtonAtIndex:0];
@@ -125,7 +210,7 @@ static CGFloat settingSceneWidth = 260;
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
             if (authStatus ==AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"请在设备的\"设置-隐私-相机\"选项中，允许花钱无忧访问你的手机相机" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"请在设备的\"设置-隐私-相机\"选项中，允许章鱼记账访问你的手机相机" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     [self openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
                 }];
@@ -149,7 +234,7 @@ static CGFloat settingSceneWidth = 260;
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
             ALAuthorizationStatus author = [ALAssetsLibrary authorizationStatus];
             if (author ==ALAuthorizationStatusRestricted || author ==ALAuthorizationStatusDenied) {
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"请在设备的\"设置-隐私-相册\"选项中，允许花钱无忧访问你的手机相册" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"请在设备的\"设置-隐私-相册\"选项中，允许章鱼记账访问你的手机相册" preferredStyle:UIAlertControllerStyleAlert];
                 UIAlertAction *ok = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                     [self openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
                 }];
@@ -184,7 +269,8 @@ static CGFloat settingSceneWidth = 260;
     }
     [self.headImageScene setImage:image];
     NSData *data = UIImageJPEGRepresentation(image, 1.0);
-    [[NSUserDefaults standardUserDefaults] setValue:data forKey:mineHeader];
+    NSString *headerCacheKey = [mineHeader stringByAppendingString:[YosKeepAccountsUserManager shareInstance].phone];
+    [[NSUserDefaults standardUserDefaults] setValue:data forKey:headerCacheKey];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)openURL:(NSURL *)url {
@@ -196,4 +282,33 @@ static CGFloat settingSceneWidth = 260;
         }
     }
 }
+
+- (void)loginFinished:(NSDictionary *)statusDict {
+    NSString *statusString = statusDict[@"code"];
+    switch (statusString.integerValue) {
+        case LoginStatusFailed: {
+            
+        }
+            break;
+            
+        case LoginStatusSuccess: {
+            [self.superPresenter.navigationController popToRootViewControllerAnimated:YES];
+            
+            // 避免接口返回的字典解析各字段为空对象，赋值时发生crash
+            NSDictionary *userInfo = @{@"passid":XZYUserInfoInstance.passid ? XZYUserInfoInstance.passid : @"" ,
+                                       @"username":XZYUserInfoInstance.username ? XZYUserInfoInstance.username : @"",
+                                       @"phone":XZYUserInfoInstance.phone ? XZYUserInfoInstance.phone : @"" ,
+                                       @"email":XZYUserInfoInstance.email ? XZYUserInfoInstance.email : @"",
+                                       @"cookie":XZYUserInfoInstance.cookie ? XZYUserInfoInstance.cookie : @""};
+            [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:@"userInfo"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            [[YosKeepAccountsUserManager shareInstance] refresh];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 @end
