@@ -44,6 +44,11 @@ import ESTabBarController_swift;
         }
         tabBarVC.didHijackHandler = { tabBarViewController, viewController, index in
             
+            if (YosKeepAccountsUserManager.shareInstance()!.logined == false) {
+                // 跳转登录
+                return
+            }
+            
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let editOrderVC = YosKeepAccountsEditOrderPresenter.instance()
                 guard let nav = tabBarViewController.selectedViewController else {
