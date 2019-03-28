@@ -12,7 +12,7 @@
 -(UIImageView *)pageImageScene
 {
     if (_pageImageScene == nil) {
-        _pageImageScene = [YosKeepAccountsControl yka_createImageSceneFrame:CGRectMake(0, 0, SWidth, SHeight) imageName:@"introduce_LaunchImage_01"];
+        _pageImageScene = [YosKeepAccountsControl yka_createImageSceneFrame:CGRectMake(0, 0, SWidth, SHeight) imageName:@"yka_Introducer_01"];
     }
     return _pageImageScene;
 }
@@ -30,27 +30,27 @@
         case PageOneType:
         {
             if ([UIDevice hj_isIPhoneXSizedDevice]) {
-                 self.pageImageScene.image = [UIImage imageNamed:@"LaunchImage_01_iphonex"];
+                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_01"];
             }else{
-                 self.pageImageScene.image = [UIImage imageNamed:@"introduce_LaunchImage_01"];
+                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_01"];
             }
         }
             break;
         case PageTwoType:
         {
             if ([UIDevice hj_isIPhoneXSizedDevice]) {
-                 self.pageImageScene.image = [UIImage imageNamed:@"LaunchImage_02_iphonex"];
+                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_02"];
             }else{
-                 self.pageImageScene.image = [UIImage imageNamed:@"introduce_LaunchImage_02"];
+                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_02"];
             }
         }
             break;
         case PageThreeType:
         {
             if ([UIDevice hj_isIPhoneXSizedDevice]) {
-                 self.pageImageScene.image = [UIImage imageNamed:@"LaunchImage_03_iphonex"];
+                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_03"];
             }else{
-                 self.pageImageScene.image = [UIImage imageNamed:@"introduce_LaunchImage_03"];
+                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_03"];
             }
             [self.view addSubview:self.startButton];
             if ([UIDevice hj_isIPhone6SizedDevice]) {
