@@ -46,21 +46,31 @@ import ESTabBarController_swift;
             
             if (YosKeepAccountsUserManager.shareInstance()!.logined == false) {
                 // 跳转登录
+                let controller = XZYLoginViewController()
+                controller.delegate = tabBarViewController as! YosKeepAccountsTabBarPresenter
+                curNav(tabBarViewController)?.pushViewController(controller, animated: true)
                 return
             }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let editOrderVC = YosKeepAccountsEditOrderPresenter.instance()
-                guard let nav = tabBarViewController.selectedViewController else {
-                    return
-                }
-                (nav as! UINavigationController).pushViewController(editOrderVC, animated: true)
+                curNav(tabBarViewController)?.pushViewController(editOrderVC, animated: true)
             }
         }
         
         
         tabBarVC.viewControllers = [homeVC, midVC, meVC]
         return tabBarVC
+    }
+    
+    static func curNav (_ tabBarViewController: UITabBarController) -> UINavigationController? {
+        guard let nav = tabBarViewController.selectedViewController else {
+            return nil
+        }
+        guard let tempNav = nav as? UINavigationController else {
+            return nil
+        }
+        return tempNav
     }
     
     static func childViewController(viewController: YosKeepAccountsBasePresenter,
@@ -99,4 +109,35 @@ import ESTabBarController_swift;
         
     }
     
+}
+
+//MARK: XZYUserCenterProtocol
+extension YosKeepAccountsTabBarPresenter: XZYUserCenterProtocol {
+    
+    /// 登录成功回调
+    func loginFinished(_ statusDict: [AnyHashable : Any]!) {
+        
+        guard let status = statusDict!["code"] else {
+            return
+        }
+        let statusValue = (status as! NSNumber).intValue
+        switch LoginStatus(rawValue: statusValue)! {
+        case LoginStatus.failed:
+            return
+        case LoginStatus.success:
+            YosKeepAccountsTabBarPresenter.curNav(self)?.popToRootViewController(animated: true)
+            let userInfo = [
+                "passid": XZYUserInfo.sharedInstance()?.passid,
+                "username": XZYUserInfo.sharedInstance()?.username,
+                "phone": XZYUserInfo.sharedInstance()?.phone,
+                "email": XZYUserInfo.sharedInstance()?.email,
+                "cookie": XZYUserInfo.sharedInstance()?.cookie
+            ]
+            UserDefaults.standard.set(userInfo, forKey: "userInfo")
+            UserDefaults.standard.synchronize()
+            YosKeepAccountsUserManager.shareInstance()?.refresh()
+        default:
+            return
+        }
+    }
 }

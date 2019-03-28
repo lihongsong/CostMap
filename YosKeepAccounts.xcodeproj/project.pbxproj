@@ -103,7 +103,6 @@
 		82DC65BD2192E275007421DE /* YosKeepAccountsNetReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65242192E275007421DE /* YosKeepAccountsNetReachability.m */; };
 		82DC65BE2192E275007421DE /* YosKeepAccountsDeviceTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65262192E275007421DE /* YosKeepAccountsDeviceTypes.m */; };
 		82DC65C02192E275007421DE /* YosKeepAccountsGetImagePath.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC652D2192E275007421DE /* YosKeepAccountsGetImagePath.m */; };
-		82DC65C12192E275007421DE /* func.list in Resources */ = {isa = PBXBuildFile; fileRef = 82DC65302192E275007421DE /* func.list */; };
 		82DC65C22192E275007421DE /* YosKeepAccountsOrderEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65342192E275007421DE /* YosKeepAccountsOrderEntity.m */; };
 		82DC65C32192E275007421DE /* YosKeepAccountsSQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65382192E275007421DE /* YosKeepAccountsSQLManager.m */; };
 		82DC65C42192E275007421DE /* YosKeepAccountsBasePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65402192E275007421DE /* YosKeepAccountsBasePresenter.m */; };
@@ -360,8 +359,6 @@
 		82DC652B2192E275007421DE /* YosKeepAccountsNetReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsNetReachability.h; sourceTree = "<group>"; };
 		82DC652D2192E275007421DE /* YosKeepAccountsGetImagePath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsGetImagePath.m; sourceTree = "<group>"; };
 		82DC652E2192E275007421DE /* YosKeepAccountsGetImagePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsGetImagePath.h; sourceTree = "<group>"; };
-		82DC65302192E275007421DE /* func.list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = func.list; sourceTree = "<group>"; };
-		82DC65312192E275007421DE /* funcDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = funcDefine.h; sourceTree = "<group>"; };
 		82DC65322192E275007421DE /* YosKeepAccountsPlistManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsPlistManager.h; sourceTree = "<group>"; };
 		82DC65342192E275007421DE /* YosKeepAccountsOrderEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsOrderEntity.m; sourceTree = "<group>"; };
 		82DC65362192E275007421DE /* YosKeepAccountsSQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsSQLManager.h; sourceTree = "<group>"; };
@@ -1116,10 +1113,8 @@
 				82CD2BE92195AB9C00E86371 /* Push&PopAnimation */,
 				82B4B7042193F312009A4B62 /* YosKeepAccountsOrderTool */,
 				82DC65F92192FDDB007421DE /* PlistManager */,
-				82DC65F82192FDC5007421DE /* Location */,
 				82DC65212192E275007421DE /* DeviceManager */,
 				82DC652C2192E275007421DE /* GetImagePath */,
-				82DC652F2192E275007421DE /* FixConfusion */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1144,15 +1139,6 @@
 				82DC652D2192E275007421DE /* YosKeepAccountsGetImagePath.m */,
 			);
 			path = GetImagePath;
-			sourceTree = "<group>";
-		};
-		82DC652F2192E275007421DE /* FixConfusion */ = {
-			isa = PBXGroup;
-			children = (
-				82DC65302192E275007421DE /* func.list */,
-				82DC65312192E275007421DE /* funcDefine.h */,
-			);
-			path = FixConfusion;
 			sourceTree = "<group>";
 		};
 		82DC65332192E275007421DE /* Manager */ = {
@@ -1217,7 +1203,7 @@
 		82DC653F2192E275007421DE /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				82DC662221932267007421DE /* Introducer(引导页) */,
+				82DC662221932267007421DE /* Introducer */,
 				82DC662121932250007421DE /* Controller */,
 				82DC65432192E275007421DE /* Entity */,
 			);
@@ -1364,13 +1350,6 @@
 			path = YosKeepAccountsCustomDatePicker;
 			sourceTree = "<group>";
 		};
-		82DC65F82192FDC5007421DE /* Location */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Location;
-			sourceTree = "<group>";
-		};
 		82DC65F92192FDDB007421DE /* PlistManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1512,7 +1491,7 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		82DC662221932267007421DE /* Introducer(引导页) */ = {
+		82DC662221932267007421DE /* Introducer */ = {
 			isa = PBXGroup;
 			children = (
 				82DC662721932267007421DE /* YosKeepAccountsIntroducePresenter.h */,
@@ -1523,7 +1502,7 @@
 				82DC662821932267007421DE /* YosKeepAccountsScrollDisplayPresenter.h */,
 				82DC662321932267007421DE /* YosKeepAccountsScrollDisplayPresenter.m */,
 			);
-			path = "Introducer(引导页)";
+			path = Introducer;
 			sourceTree = "<group>";
 		};
 		82DC66332193E0E2007421DE /* OrderCell */ = {
@@ -1667,7 +1646,6 @@
 				82DC659A2192E275007421DE /* HomeBaseListCell.xib in Resources */,
 				82DC65EB2192E275007421DE /* Main.storyboard in Resources */,
 				5915180D2193D724004B5B32 /* YosKeepAccountsSettingScene.xib in Resources */,
-				82DC65C12192E275007421DE /* func.list in Resources */,
 				5915181A219400D3004B5B32 /* YosKeepAccountsAboutPresenter.xib in Resources */,
 				82DC65C72192E275007421DE /* YosHighchartsLib.js in Resources */,
 				82DC65C92192E275007421DE /* YosFunnel.js in Resources */,
@@ -2067,7 +2045,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4FYS54XBTW;
+				DEVELOPMENT_TEAM = 8Y9S3L42QY;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YosKeepAccounts/Other/YosKeepAccounts-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2082,10 +2060,10 @@
 					"@executable_path/Frameworks",
 				);
 				NetType = DebugNet;
-				PRODUCT_BUNDLE_IDENTIFIER = com.boccfc.loan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "caae0713-d0e2-46bd-b4a0-2d70e91871f8";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development com.boccfc.loan";
+				PROVISIONING_PROFILE_SPECIFIER = any;
 				SWIFT_OBJC_BRIDGING_HEADER = "YosKeepAccounts/OrderRecord/Expand/Macros/YosKeepAccounts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -2103,9 +2081,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4FYS54XBTW;
+				DEVELOPMENT_TEAM = 8Y9S3L42QY;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YosKeepAccounts/Other/YosKeepAccounts-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2120,10 +2098,10 @@
 					"@executable_path/Frameworks",
 				);
 				NetType = ReleaseNet;
-				PRODUCT_BUNDLE_IDENTIFIER = com.boccfc.loan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f6d46689-e4bf-41ab-bb16-180997bd9fd6";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.boccfc.loan";
+				PROVISIONING_PROFILE_SPECIFIER = any;
 				SWIFT_OBJC_BRIDGING_HEADER = "YosKeepAccounts/OrderRecord/Expand/Macros/YosKeepAccounts-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2136,16 +2114,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3285T8BP88;
-				INFOPLIST_FILE = WuyouhuaqianTests/Info.plist;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = YosKeepAccountsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.2345.WuyouhuaqianTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopusTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YosKeepAccounts.app/YosKeepAccounts";
 			};
@@ -2156,16 +2135,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3285T8BP88;
-				INFOPLIST_FILE = WuyouhuaqianTests/Info.plist;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = YosKeepAccountsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.2345.WuyouhuaqianTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopusTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YosKeepAccounts.app/YosKeepAccounts";
 			};
@@ -2175,16 +2155,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3285T8BP88;
-				INFOPLIST_FILE = WuyouhuaqianUITests/Info.plist;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = YosKeepAccountsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.2345.WuyouhuaqianUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopusUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = YosKeepAccounts;
 			};
@@ -2194,16 +2175,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3285T8BP88;
-				INFOPLIST_FILE = WuyouhuaqianUITests/Info.plist;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = YosKeepAccountsUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.2345.WuyouhuaqianUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopusUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = YosKeepAccounts;
 			};
