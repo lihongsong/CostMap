@@ -30,7 +30,7 @@
         case PageOneType:
         {
             if ([UIDevice hj_isIPhoneXSizedDevice]) {
-                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_01"];
+                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_01_iphonex"];
             }else{
                  self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_01"];
             }
@@ -39,7 +39,7 @@
         case PageTwoType:
         {
             if ([UIDevice hj_isIPhoneXSizedDevice]) {
-                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_02"];
+                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_02_iphonex"];
             }else{
                  self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_02"];
             }
@@ -48,7 +48,7 @@
         case PageThreeType:
         {
             if ([UIDevice hj_isIPhoneXSizedDevice]) {
-                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_03"];
+                 self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_03_iphonex"];
             }else{
                  self.pageImageScene.image = [UIImage imageNamed:@"yka_Introducer_03"];
             }
