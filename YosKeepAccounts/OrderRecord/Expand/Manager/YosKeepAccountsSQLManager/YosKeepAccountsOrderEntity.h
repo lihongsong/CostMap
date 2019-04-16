@@ -12,6 +12,9 @@
 @property (nonatomic, copy) NSString *yka_day;
 @property (nonatomic, copy) NSString *yka_city;
 @property (nonatomic, copy) NSString *yka_username;
+@property (nonatomic, copy) NSString *yka_firend_name;
+@property (nonatomic, copy) NSString *yka_firend_phone;
+
 
 - (NSString *)description;
 #pragma mark 生成 typeid 用于 sTypeID

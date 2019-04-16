@@ -19,6 +19,7 @@
 		5915182A21943746004B5B32 /* YosKeepAccountsEditOrderToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182921943746004B5B32 /* YosKeepAccountsEditOrderToolBar.xib */; };
 		5915182E2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182C2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m */; };
 		5915182F2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182D2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib */; };
+		5990B9012265CCBC0053397E /* libTalkingData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5990B9002265CCBB0053397E /* libTalkingData.a */; };
 		59D9F611226587F600FA6E64 /* VoicePermissionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F610226587F600FA6E64 /* VoicePermissionManager.m */; };
 		59D9F6162265890500FA6E64 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9F6152265890500FA6E64 /* Speech.framework */; };
 		59D9F61C2265BA7400FA6E64 /* ContactHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F61A2265BA7300FA6E64 /* ContactHandler.m */; };
@@ -206,6 +207,8 @@
 		5915182B2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsEditOrderToolBarCell.h; sourceTree = "<group>"; };
 		5915182C2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsEditOrderToolBarCell.m; sourceTree = "<group>"; };
 		5915182D2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YosKeepAccountsEditOrderToolBarCell.xib; sourceTree = "<group>"; };
+		5990B8FF2265CCBB0053397E /* TalkingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingData.h; sourceTree = "<group>"; };
+		5990B9002265CCBB0053397E /* libTalkingData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingData.a; sourceTree = "<group>"; };
 		59D9F60F226587F600FA6E64 /* VoicePermissionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoicePermissionManager.h; sourceTree = "<group>"; };
 		59D9F610226587F600FA6E64 /* VoicePermissionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoicePermissionManager.m; sourceTree = "<group>"; };
 		59D9F6152265890500FA6E64 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
@@ -494,6 +497,7 @@
 			files = (
 				59D9F6162265890500FA6E64 /* Speech.framework in Frameworks */,
 				5915180F2193DCYos004B5B32 /* AVFoundation.framework in Frameworks */,
+				5990B9012265CCBC0053397E /* libTalkingData.a in Frameworks */,
 				6AB857D036ADDB2C2A9E4FD3 /* libPods-YosKeepAccounts.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -587,6 +591,15 @@
 				5915182D2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib */,
 			);
 			path = Scene;
+			sourceTree = "<group>";
+		};
+		5990B8FE2265CCBB0053397E /* AppAnalytics_V4.0.27 */ = {
+			isa = PBXGroup;
+			children = (
+				5990B8FF2265CCBB0053397E /* TalkingData.h */,
+				5990B9002265CCBB0053397E /* libTalkingData.a */,
+			);
+			path = AppAnalytics_V4.0.27;
 			sourceTree = "<group>";
 		};
 		59D9F60B226580CD00FA6E64 /* PermissionKit */ = {
@@ -1261,6 +1274,7 @@
 		82DC65472192E275007421DE /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				5990B8FE2265CCBB0053397E /* AppAnalytics_V4.0.27 */,
 				8218165E219518D900521E75 /* YosKeepAccountsListPlaceHolder */,
 				82DC65EE2192F7DC007421DE /* YosKeepAccountsCustomDatePicker */,
 				82DC65482192E275007421DE /* YosChartKitLib */,
@@ -2103,6 +2117,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YosKeepAccounts/OrderRecord/Vender/AppAnalytics_V4.0.27",
+				);
 				NetType = DebugNet;
 				PRODUCT_BUNDLE_IDENTIFIER = me.ImmediatelyLoan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2140,6 +2158,10 @@
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/YosKeepAccounts/OrderRecord/Vender/AppAnalytics_V4.0.27",
 				);
 				NetType = ReleaseNet;
 				PRODUCT_BUNDLE_IDENTIFIER = me.ImmediatelyLoan.app;

@@ -3,11 +3,11 @@
 typedef NS_ENUM(NSInteger, YosKeepAccountsOrderType) {
     YosKeepAccountsOrderTypeFood = 0,
     YosKeepAccountsOrderTypeBuy,
-    YosKeepAccountsOrderTypeFriend,
+    YosKeepAccountsOrderTypeMedic,
     YosKeepAccountsOrderTypePlay,
     YosKeepAccountsOrderTypeHome,
     YosKeepAccountsOrderTypeEduca,
-    YosKeepAccountsOrderTypeMedic,
+    YosKeepAccountsOrderTypeFriend,
     YosKeepAccountsOrderTypeOther
 };
 #endif 

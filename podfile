@@ -36,5 +36,6 @@ target 'YosKeepAccounts' do
     pod 'HMSegmentedControl'
     pod 'UserCenter'
     pod 'pop'
+    pod 'Bugly', '2.5.0'
 
 end

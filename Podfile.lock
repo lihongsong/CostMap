@@ -16,6 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - AppUpdate (2.0.0):
     - Masonry
+  - Bugly (2.5.0)
   - Charts (3.2.0):
     - Charts/Core (= 3.2.0)
   - Charts/Core (3.2.0)
@@ -103,6 +104,7 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (= 3.1.0)
   - AppUpdate (= 2.0.0)
+  - Bugly (= 2.5.0)
   - Charts (= 3.2.0)
   - ESTabBarController-swift
   - FMDB
@@ -139,6 +141,7 @@ SPEC REPOS:
     - XZYNetwork
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - Bugly
     - Charts
     - ESTabBarController-swift
     - FMDB
@@ -161,6 +164,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AppUpdate: 24943e29e8042d23207bd42c61a2f9c67dc35ad1
+  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   Charts: 680c8328bd5e90cb14f67e00d2176f3113d19141
   ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
@@ -187,6 +191,6 @@ SPEC CHECKSUMS:
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   zxcvbn-ios: fef98b7c80f1512ff0eec47ac1fa399fc00f7e3c
 
-PODFILE CHECKSUM: 0b60542865dacc7e530bf6e5bccf8e9ca137a8da
+PODFILE CHECKSUM: eabbd56ad8e182f145772c2f0127db02a82cff01
 
 COCOAPODS: 1.5.3

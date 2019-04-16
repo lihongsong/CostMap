@@ -38,6 +38,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextf;
 
+@property (weak, nonatomic) IBOutlet UIButton *voiceButton;
 
 @end
 @implementation YosKeepAccountsEditOrderPresenter
@@ -56,7 +57,9 @@
     self.addAddressButton.layer.borderColor = [UIColor whiteColor].CGColor;
     [[VoicePermissionManager sharedInstance] speechPermission];
     [VoicePermissionManager sharedInstance].speechCallBack = ^(NSString *voiceString, NSInteger code) {
-        self.noteTextField.text = voiceString;
+        if (voiceString) {
+            self.noteTextField.text = voiceString;
+        }
     };
 }
 - (void)viewWillAppear:(BOOL)animated {
@@ -83,8 +86,8 @@
     self.momeyTextField.hj_maxLength = 10;
     self.noteTextField.hj_maxLength = 30;
     self.momeyTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"¥ 0.00" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:35]}];
-    self.nameTF.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"张三" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
-    self.phoneTextf.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"手机号" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
+    self.nameTF.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"相关友人" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
+    self.phoneTextf.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"友人手机号" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
     self.noteTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"备注" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:18]}];
     self.momeyTextField.delegate = self;
     self.noteTextField.delegate = self;
@@ -115,6 +118,9 @@
         self.orderCity = self.orderEntity.yka_city;
         [self.cityButton setTitle:self.orderCity forState:UIControlStateNormal];
         self.deleteButton.hidden = NO;
+        self.nameTF.text = self.orderEntity.yka_firend_name?:@"";
+        self.phoneTextf.text = self.orderEntity.yka_firend_phone?:@"";
+
     } else {
         self.orderTime = [NSDate date];
         WEAK_SELF
@@ -139,6 +145,10 @@
 - (void)setOrderType:(YosKeepAccountsOrderType)orderType {
     _orderType = orderType;
     self.orderTypeLb.text = [YosKeepAccountsOrderTool typeNameWithIndex:orderType];
+    
+    if (orderType == YosKeepAccountsOrderTypeFriend) {
+        [self addPeopleFunction:nil];
+    }
 }
 - (void)addEditOrderToolBar {
     WEAK_SELF
@@ -165,6 +175,8 @@
     self.contentView.backgroundColor = color;
     self.contentScrollScene.backgroundColor = color;
 }
+
+/** 保存 */
 - (IBAction)saveOrderButtonClick:(id)sender {
     if (StrIsEmpty(self.momeyTextField.text)) {
         [KeyWindow hj_showToastHUD:@"请输入账单金额"];
@@ -198,6 +210,9 @@
     model.yka_desc = self.noteTextField.text;
     model.yka_city = self.orderCity ?: @"";
     model.yka_username = [YosKeepAccountsUserManager shareInstance].phone;
+    model.yka_firend_name = self.nameTF.text?:@"";
+    model.yka_firend_phone = self.phoneTextf.text?:@"";
+
     if (newOrder) {
         [[YosKeepAccountsSQLManager share] insertData:model tableName:kSQLTableName];
     } else {
@@ -349,10 +364,10 @@
     
     if([[VoicePermissionManager sharedInstance].audioEngine isRunning]) {
        [[VoicePermissionManager sharedInstance] endRecording];
-//       [_swicthBut setTitle:@"开始录音" forState:UIControlStateNormal];
+        [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"timg"] forState: UIControlStateNormal];
     }else{
        [[VoicePermissionManager sharedInstance] startRecording];
-//       [_swicthBut setTitle:@"关闭" forState:UIControlStateNormal];
+        [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"stimg"] forState: UIControlStateNormal];
     }
 }
 
@@ -367,15 +382,14 @@
                                               if (!StrIsEmpty(errorMessage)) {
                                                  
                                               }
-                                              
                                               NSString *phone = [contactModel.phones firstObject];
-                                              NSMutableDictionary *params = [NSMutableDictionary dictionary];
-                                              [params setValue:contactModel.name forKey:@"name"];
-                                              [params setValue:phone forKey:@"phone"];
-                                              
+                                              self.nameTF.text = contactModel.name;
+                                              self.phoneTextf.text = phone;
                                               
                                           }];
     
 }
+
+
 
 @end

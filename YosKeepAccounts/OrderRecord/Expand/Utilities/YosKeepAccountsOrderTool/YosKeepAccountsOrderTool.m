@@ -32,44 +32,44 @@
     switch (index) {
         case 0: return  YosKeepAccountsOrderTypeFoodName;
         case 1: return  YosKeepAccountsOrderTypeBuyName;
-        case 2: return  YosKeepAccountsOrderTypeFriendName;
+        case 2: return  YosKeepAccountsOrderTypeMedicName;
         case 3: return  YosKeepAccountsOrderTypePlayName;
         case 4: return  YosKeepAccountsOrderTypeHomeName;
         case 5: return  YosKeepAccountsOrderTypeEducaName;
-        case 6: return  YosKeepAccountsOrderTypeMedicName;
+        case 6: return  YosKeepAccountsOrderTypeFriendName;
         default: return YosKeepAccountsOrderTypeOtherName;
     }
 }
 + (NSArray *)allOrderTypesName {
     return @[YosKeepAccountsOrderTypeFoodName,
              YosKeepAccountsOrderTypeBuyName,
-             YosKeepAccountsOrderTypeFriendName,
+             YosKeepAccountsOrderTypeMedicName,
              YosKeepAccountsOrderTypePlayName,
              YosKeepAccountsOrderTypeHomeName,
              YosKeepAccountsOrderTypeEducaName,
-             YosKeepAccountsOrderTypeMedicName,
+             YosKeepAccountsOrderTypeFriendName,
              YosKeepAccountsOrderTypeOtherName
              ];
 }
 + (NSArray *)allOrderTypesColor {
     return @[[self colorWithType:YosKeepAccountsOrderTypeFood],
              [self colorWithType:YosKeepAccountsOrderTypeBuy],
-             [self colorWithType:YosKeepAccountsOrderTypeFriend],
+             [self colorWithType:YosKeepAccountsOrderTypeMedic],
              [self colorWithType:YosKeepAccountsOrderTypePlay],
              [self colorWithType:YosKeepAccountsOrderTypeHome],
              [self colorWithType:YosKeepAccountsOrderTypeEduca],
-             [self colorWithType:YosKeepAccountsOrderTypeMedic],
+             [self colorWithType:YosKeepAccountsOrderTypeFriend],
              [self colorWithType:YosKeepAccountsOrderTypeOther]
              ];
 }
 + (NSArray *)allOrderTypes {
     return @[@(YosKeepAccountsOrderTypeFood),
              @(YosKeepAccountsOrderTypeBuy),
-             @(YosKeepAccountsOrderTypeFriend),
+             @(YosKeepAccountsOrderTypeMedic),
              @(YosKeepAccountsOrderTypePlay),
              @(YosKeepAccountsOrderTypeHome),
              @(YosKeepAccountsOrderTypeEduca),
-             @(YosKeepAccountsOrderTypeMedic),
+             @(YosKeepAccountsOrderTypeFriend),
              @(YosKeepAccountsOrderTypeOther)
              ];
 }
@@ -96,11 +96,11 @@
     switch (type) {
         case YosKeepAccountsOrderTypeFood: return @"餐饮_ic";
         case YosKeepAccountsOrderTypeBuy: return @"购物_ic";
-        case YosKeepAccountsOrderTypeFriend: return @"社交_ic";
         case YosKeepAccountsOrderTypePlay: return @"游玩_ic";
         case YosKeepAccountsOrderTypeHome: return @"居家_ic";
         case YosKeepAccountsOrderTypeEduca: return @"教育_ic";
         case YosKeepAccountsOrderTypeMedic: return @"医疗_ic";
+        case YosKeepAccountsOrderTypeFriend: return @"社交_ic";
         default: return @"其他_ic";
     }
 }

@@ -4,7 +4,24 @@
 #import "YosKeepAccountsTouchIDPresenter.h"
 #import "AppDelegate+YKAUserCenter.h"
 #import "YosKeepAccounts-Swift.h"
-@interface AppDelegate ()
+#import "TalkingData.h"
+#import <Bugly/Bugly.h>
+
+// TalkingData
+#if defined (DebugNet) || defined (PreNet)
+#define TalkingData_AppId       @"4E5FCA0A91FD46D0AFD7EAE94A2A3198"
+#else
+#define TalkingData_AppId       @"4E5FCA0A91FD46D0AFD7EAE94A2A3198"
+#endif
+
+//Bugly相关
+#define Bugly_AppId                 @"e27cc1d32e"
+#define Bugly_AppKey                @"a8bfb74f-4f48-4806-9883-b2d78ce2be62"
+// 测试环境的Debug统计
+#define Bugly_AppIdDebug            @"f7636a4e4d"
+#define Bugly_AppKeyDebug           @"b0078657-3839-4f3d-93fc-66d930544f14"
+
+@interface AppDelegate ()<BuglyDelegate>
 
 @property (strong, nonatomic) YosKeepAccountsTabBarPresenter *rootTabBar;
 
@@ -148,6 +165,25 @@
     [[HJMediator shared] setUpRootViewController:self.rootTabBar];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:HJHexColor(0x666666),
                                                            NSFontAttributeName: [UIFont systemFontOfSize:18]}];
+    
+    /** TalkingData */
+    [TalkingData sessionStarted:TalkingData_AppId withChannelId:@"zyjz"];
+    /** bugly */
+    BuglyConfig *buglyConfig = [[BuglyConfig alloc] init];
+    buglyConfig.blockMonitorEnable = YES;
+    buglyConfig.reportLogLevel = BuglyLogLevelError;
+    buglyConfig.delegate = self;
+#if defined(ReleaseNet)
+    [Bugly startWithAppId:Bugly_AppId
+                   config:buglyConfig];
+#elif defined(PreNet)
+    [Bugly startWithAppId:Bugly_AppIdDebug
+                   config:buglyConfig];
+#else
+    [Bugly startWithAppId:Bugly_AppIdDebug
+        developmentDevice:YES
+                   config:buglyConfig];
+#endif
 }
 - (void)setUpUpdate {
     [XZYAppUpdate startWithAppKey:XZYAppUpdateProductKey
@@ -174,5 +210,16 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 }
 - (void)applicationWillTerminate:(UIApplication *)application {
+}
+
+#pragma mark - BuglyDelegate
+
+- (NSString * BLY_NULLABLE)attachmentForException:(NSException *)exception {
+    /** app状态 */
+    UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
+    /** app当前的keywindow */
+    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+    
+    return [NSString stringWithFormat:@"---%@\n---applicationState:%d\n---keyWindow:%@",exception.description,(int)applicationState,keyWindow];
 }
 @end
