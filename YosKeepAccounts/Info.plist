@@ -37,6 +37,8 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSContactsUsageDescription</key>
+	<string>我们需要打开您的通讯录，用于添加人情消费联系人</string>
 	<key>NSCameraUsageDescription</key>
 	<string>我们需要打开您的相机拍照，然后自定义您的个人头像</string>
 	<key>NSFaceIDUsageDescription</key>

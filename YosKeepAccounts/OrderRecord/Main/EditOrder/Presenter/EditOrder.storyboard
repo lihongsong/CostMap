@@ -115,9 +115,8 @@
                                                     <action selector="voiceFunction:" destination="9ra-X6-yyY" eventType="touchUpInside" id="Sl5-k0-aI3"/>
                                                 </connections>
                                             </button>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nv2-EG-Yc2">
-                                                <rect key="frame" x="43" y="318" width="288" height="65"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nv2-EG-Yc2">
+                                                <rect key="frame" x="43.5" y="318" width="288" height="65"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vwd-Nu-4ex">
                                                         <rect key="frame" x="184" y="8" width="22" height="22"/>
@@ -157,12 +156,17 @@
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="288" id="mcx-a8-Wnc"/>
+                                                    <constraint firstAttribute="height" constant="65" id="zDF-yM-4T1"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.75294117650000003" green="0.49803921569999998" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="GSm-Gl-aCg" firstAttribute="leading" secondItem="wOL-GX-vH4" secondAttribute="leading" id="0g5-HD-TIA"/>
                                             <constraint firstAttribute="trailing" secondItem="kLa-FA-QgK" secondAttribute="trailing" id="2MY-Mw-3zK"/>
+                                            <constraint firstItem="Nv2-EG-Yc2" firstAttribute="top" secondItem="yQF-IL-ctx" secondAttribute="bottom" constant="8" id="Dh0-AM-9rO"/>
                                             <constraint firstItem="yQF-IL-ctx" firstAttribute="leading" secondItem="wOL-GX-vH4" secondAttribute="leading" id="E0C-Ff-7qu"/>
                                             <constraint firstItem="19D-C8-lur" firstAttribute="centerX" secondItem="wOL-GX-vH4" secondAttribute="centerX" id="FTh-zK-jkt"/>
                                             <constraint firstAttribute="trailing" secondItem="GSm-Gl-aCg" secondAttribute="trailing" id="GGz-yT-H1b"/>
@@ -179,6 +183,7 @@
                                             <constraint firstItem="7xQ-Fp-Cki" firstAttribute="centerY" secondItem="wOL-GX-vH4" secondAttribute="centerY" constant="-130" id="sx3-ul-Qbf"/>
                                             <constraint firstItem="b9v-Se-PLF" firstAttribute="top" secondItem="yQF-IL-ctx" secondAttribute="bottom" constant="120" id="vcN-uD-fT7"/>
                                             <constraint firstAttribute="trailing" secondItem="yQF-IL-ctx" secondAttribute="trailing" id="wWU-J1-VH0"/>
+                                            <constraint firstItem="Nv2-EG-Yc2" firstAttribute="centerX" secondItem="wOL-GX-vH4" secondAttribute="centerX" id="z1x-gn-fcs"/>
                                         </constraints>
                                     </view>
                                 </subviews>

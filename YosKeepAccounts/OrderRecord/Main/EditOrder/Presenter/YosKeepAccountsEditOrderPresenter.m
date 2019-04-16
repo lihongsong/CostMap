@@ -39,6 +39,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextf;
 
 @property (weak, nonatomic) IBOutlet UIButton *voiceButton;
+@property (assign, nonatomic) BOOL friendShipSelected;
 
 @end
 @implementation YosKeepAccountsEditOrderPresenter
@@ -54,6 +55,10 @@
     [self setupUI];
     [self updateUI];
     [self addEditOrderToolBar];
+    // 键盘出现的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
+    // 键盘消失的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHiden:) name:UIKeyboardWillHideNotification object:nil];
     self.addAddressButton.layer.borderColor = [UIColor whiteColor].CGColor;
     [[VoicePermissionManager sharedInstance] speechPermission];
     [VoicePermissionManager sharedInstance].speechCallBack = ^(NSString *voiceString, NSInteger code) {
@@ -75,6 +80,17 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [YosKeepAccountsEditOrderToolBar hideEditOrderToolBar];
+}
+#pragma mark -键盘监听方法
+- (void)keyboardWasShown:(NSNotification *)notification
+{
+    self.orderTypeLb.hidden = YES;
+    self.title = self.orderTypeLb.text;
+}
+- (void)keyboardWillBeHiden:(NSNotification *)notification
+{
+    self.orderTypeLb.hidden = NO;
+    self.title = @"记一比";
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -146,9 +162,10 @@
     _orderType = orderType;
     self.orderTypeLb.text = [YosKeepAccountsOrderTool typeNameWithIndex:orderType];
     
-    if (orderType == YosKeepAccountsOrderTypeFriend) {
+    if (orderType == YosKeepAccountsOrderTypeFriend && !self.orderEntity) {
         [self addPeopleFunction:nil];
     }
+//    _friendShipSelected = YES;
 }
 - (void)addEditOrderToolBar {
     WEAK_SELF
@@ -194,6 +211,10 @@
         return;
     }
     [self.view endEditing:YES];
+    
+    //  如果未关闭录音则关闭
+    [self closeVoiceFunction];
+    
     YosKeepAccountsOrderEntity *model = self.orderEntity;
     BOOL newOrder = NO;
     if (!model) {
@@ -365,9 +386,17 @@
     if([[VoicePermissionManager sharedInstance].audioEngine isRunning]) {
        [[VoicePermissionManager sharedInstance] endRecording];
         [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"timg"] forState: UIControlStateNormal];
+        [self performSelector:@selector(closeVoiceFunction) withObject:nil afterDelay:15];
     }else{
        [[VoicePermissionManager sharedInstance] startRecording];
         [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"stimg"] forState: UIControlStateNormal];
+    }
+}
+
+- (void)closeVoiceFunction{
+    if([[VoicePermissionManager sharedInstance].audioEngine isRunning]) {
+        [[VoicePermissionManager sharedInstance] endRecording];
+        [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"timg"] forState: UIControlStateNormal];
     }
 }
 
@@ -380,7 +409,8 @@
                                               
                                               NSLog(@"model ==== %@, errorMessage=%@", contactModel, errorMessage);
                                               if (!StrIsEmpty(errorMessage)) {
-                                                 
+                                                  [KeyWindow hj_showToastHUD:errorMessage];
+                                                  return ;
                                               }
                                               NSString *phone = [contactModel.phones firstObject];
                                               self.nameTF.text = contactModel.name;

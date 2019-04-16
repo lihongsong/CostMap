@@ -44,7 +44,7 @@
     return NO;
 }
 - (void)defaultData:(NSString *)name {
-    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (yka_id integer primary key AUTOINCREMENT,yka_time Text, yka_type_name Text, yka_wealth Text, yka_type_id Text, yka_desc Text, yka_year Text,yka_month Text, yka_day Text, yka_city Text, yka_username Text);", [self setTableName:name]];
+    NSString *sql = [NSString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (yka_id integer primary key AUTOINCREMENT,yka_time Text, yka_type_name Text, yka_wealth Text, yka_type_id Text, yka_desc Text, yka_year Text,yka_month Text, yka_day Text, yka_city Text, yka_username Text,yka_firend_name Text,yka_firend_phone Text);", [self setTableName:name]];
     [self.fmdb executeUpdate:sql];
 }
 - (void)creatNewDataBase:(NSString *)name{
@@ -64,7 +64,7 @@
     if (![self isTableExist:tableName]) {
         [self creatNewDataBase:tableName];
     }
-    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET yka_time = '%@', yka_type_name = '%@' ,yka_wealth = '%@', yka_type_id = '%@', yka_desc = '%@', yka_year = '%@', yka_month = '%@', yka_day = '%@', yka_city = '%@', yka_username = '%@' WHERE yka_id = %@;", [self setTableName:tableName],
+    NSString *sql = [NSString stringWithFormat:@"UPDATE %@ SET yka_time = '%@', yka_type_name = '%@' ,yka_wealth = '%@', yka_type_id = '%@', yka_desc = '%@', yka_year = '%@', yka_month = '%@', yka_day = '%@', yka_city = '%@', yka_username = '%@', yka_firend_name = '%@', yka_firend_phone = '%@' WHERE yka_id = %@", [self setTableName:tableName],
                      model.yka_time ,
                      model.yka_type_name,
                      model.yka_wealth,
@@ -75,6 +75,8 @@
                      model.yka_day,
                      model.yka_city,
                      model.yka_username,
+                     model.yka_firend_name,
+                     model.yka_firend_phone,
                      model.yka_id];
   BOOL updateSucess = [self.fmdb executeUpdate:sql];
     if (!updateSucess) {
@@ -91,7 +93,7 @@
         if (![self isTableExist:tableName]) {
             [self creatNewDataBase:tableName];
         }
-        NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (yka_time, yka_type_name, yka_wealth, yka_type_id, yka_desc ,yka_year ,yka_month, yka_day, yka_city, yka_username) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [self setTableName:tableName]];
+        NSString *sql = [NSString stringWithFormat:@"INSERT INTO %@ (yka_time, yka_type_name, yka_wealth, yka_type_id, yka_desc ,yka_year ,yka_month, yka_day, yka_city, yka_username, yka_firend_name, yka_firend_phone) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [self setTableName:tableName]];
         __unused BOOL result =
         [self.fmdb executeUpdate:sql,model.yka_time ,
          model.yka_type_name,
@@ -102,7 +104,9 @@
          model.yka_month,
          model.yka_day,
          model.yka_city,
-         model.yka_username];
+         model.yka_username,
+         model.yka_firend_name,
+         model.yka_firend_phone];
     }
 }
 - (void)searchData:(NSString *)tableName
@@ -149,6 +153,8 @@
         model.yka_day =  [resultSet stringForColumn:@"yka_day"];
         model.yka_city = [resultSet stringForColumn:@"yka_city"];
         model.yka_username = [resultSet stringForColumn:@"yka_username"];
+        model.yka_firend_name = [resultSet stringForColumn:@"yka_firend_name"];
+        model.yka_firend_phone = [resultSet stringForColumn:@"yka_firend_phone"];
         [dataArr addObject:model];
     }
     if (resultAction) {
@@ -226,6 +232,8 @@
         model.yka_day =  [resultSet stringForColumn:@"yka_day"];
         model.yka_city = [resultSet stringForColumn:@"yka_city"];
         model.yka_username = [resultSet stringForColumn:@"yka_username"];
+        model.yka_firend_name = [resultSet stringForColumn:@"yka_firend_name"];
+        model.yka_firend_phone = [resultSet stringForColumn:@"yka_firend_phone"];
         [dataArr addObject:model];
     }
     return dataArr;
