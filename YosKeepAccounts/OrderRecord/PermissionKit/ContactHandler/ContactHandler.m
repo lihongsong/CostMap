@@ -3,7 +3,7 @@
 //  Loan
 //
 //  Created by terrywang on 2018/12/16.
-//  Copyright © 2018 2345. All rights reserved.
+//  Copyright © 2018 . All rights reserved.
 //
 #define RGBCOLORV(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
