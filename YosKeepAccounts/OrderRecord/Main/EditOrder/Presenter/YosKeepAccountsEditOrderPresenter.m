@@ -161,7 +161,12 @@
 
 - (void)setOrderType:(YosKeepAccountsOrderType)orderType {
     _orderType = orderType;
+    
     self.orderTypeLb.text = [YosKeepAccountsOrderTool typeNameWithIndex:orderType];
+    
+    if (self.orderTypeLb.hidden) {
+        self.titleLabel.text = [YosKeepAccountsOrderTool typeNameWithIndex:orderType];
+    }
     
     self.friendView.hidden = (orderType == YosKeepAccountsOrderTypeFriend)?NO:YES;
     
