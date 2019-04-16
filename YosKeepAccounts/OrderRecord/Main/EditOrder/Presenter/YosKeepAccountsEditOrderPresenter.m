@@ -41,6 +41,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *voiceButton;
 @property (assign, nonatomic) BOOL friendShipSelected;
 @property (weak, nonatomic) IBOutlet UIView *friendView;
+@property (weak, nonatomic) IBOutlet UILabel *voiceTips;
 
 @end
 @implementation YosKeepAccountsEditOrderPresenter
@@ -393,16 +394,19 @@
     
     [[VoicePermissionManager sharedInstance] speechPermission];
     if([[VoicePermissionManager sharedInstance].audioEngine isRunning]) {
+        self.voiceTips.hidden = YES;
         [[VoicePermissionManager sharedInstance] endRecording];
         [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"timg"] forState: UIControlStateNormal];
         [self performSelector:@selector(closeVoiceFunction) withObject:nil afterDelay:15];
     }else{
+        self.voiceTips.hidden = NO;
         [[VoicePermissionManager sharedInstance] startRecording];
         [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"stimg"] forState: UIControlStateNormal];
     }
 }
 
 - (void)closeVoiceFunction{
+    self.voiceTips.hidden = YES;
     if([[VoicePermissionManager sharedInstance].audioEngine isRunning]) {
         [[VoicePermissionManager sharedInstance] endRecording];
         [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"timg"] forState: UIControlStateNormal];
