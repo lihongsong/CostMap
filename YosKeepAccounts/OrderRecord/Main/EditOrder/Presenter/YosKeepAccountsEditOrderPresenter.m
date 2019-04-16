@@ -11,7 +11,7 @@
 #import <HJAlertView.h>
 #import <HJProgressHUD.h>
 #import "VoicePermissionManager.h"
-#import "AddressPermissionManager.h"
+#import "ContactHandler.h"
 
 @interface YosKeepAccountsEditOrderPresenter () <UITextFieldDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *orderTypeLb;
@@ -34,6 +34,10 @@
 @property (nonatomic, strong) NSDate *orderTime;
 @property (nonatomic, copy) NSString *orderCity;
 @property (weak, nonatomic) IBOutlet UIButton *addAddressButton;
+@property (nonatomic, strong) ContactHandler *contactHandler;
+@property (weak, nonatomic) IBOutlet UITextField *nameTF;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextf;
+
 
 @end
 @implementation YosKeepAccountsEditOrderPresenter
@@ -79,6 +83,8 @@
     self.momeyTextField.hj_maxLength = 10;
     self.noteTextField.hj_maxLength = 30;
     self.momeyTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"¥ 0.00" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:35]}];
+    self.nameTF.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"张三" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
+    self.phoneTextf.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"手机号" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
     self.noteTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"备注" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:18]}];
     self.momeyTextField.delegate = self;
     self.noteTextField.delegate = self;
@@ -351,7 +357,24 @@
 }
 
 - (IBAction)addPeopleFunction:(id)sender {
-    [[AddressPermissionManager sharedInstance] requestContactPermission];
+    if (!_contactHandler) {
+        _contactHandler = [[ContactHandler alloc] init];
+    }
+    [_contactHandler contactSelectWithViewController:[UIApplication sharedApplication].delegate.window.rootViewController
+                                          completion:^(ContactsModel * _Nullable contactModel, NSString * _Nullable errorMessage) {
+                                              
+                                              NSLog(@"model ==== %@, errorMessage=%@", contactModel, errorMessage);
+                                              if (!StrIsEmpty(errorMessage)) {
+                                                 
+                                              }
+                                              
+                                              NSString *phone = [contactModel.phones firstObject];
+                                              NSMutableDictionary *params = [NSMutableDictionary dictionary];
+                                              [params setValue:contactModel.name forKey:@"name"];
+                                              [params setValue:phone forKey:@"phone"];
+                                              
+                                              
+                                          }];
     
 }
 

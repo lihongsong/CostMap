@@ -285,8 +285,10 @@
                         <outlet property="customNavHeight" destination="JHg-ys-eEr" id="YED-rn-2St"/>
                         <outlet property="deleteButton" destination="VxA-E8-qv5" id="UJx-zV-E4l"/>
                         <outlet property="momeyTextField" destination="GSm-Gl-aCg" id="zRS-XG-617"/>
+                        <outlet property="nameTF" destination="YDO-eu-k8R" id="XsC-S1-PjL"/>
                         <outlet property="noteTextField" destination="7xQ-Fp-Cki" id="UsH-wW-MNi"/>
                         <outlet property="orderTypeLb" destination="cOS-an-QTM" id="f1K-5c-Hy0"/>
+                        <outlet property="phoneTextf" destination="bqm-Gt-W6K" id="gYN-DY-fpL"/>
                         <outlet property="saveOrderButton" destination="b9v-Se-PLF" id="1LI-y2-5Be"/>
                         <outlet property="timeButton" destination="kLa-FA-QgK" id="ndc-N9-p66"/>
                         <outlet property="titleLabel" destination="U7f-cq-Tez" id="PgN-9A-ia6"/>

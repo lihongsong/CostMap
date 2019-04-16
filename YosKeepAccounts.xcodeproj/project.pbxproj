@@ -19,9 +19,11 @@
 		5915182A21943746004B5B32 /* YosKeepAccountsEditOrderToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182921943746004B5B32 /* YosKeepAccountsEditOrderToolBar.xib */; };
 		5915182E2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182C2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m */; };
 		5915182F2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182D2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib */; };
-		59D9F60E226581EB00FA6E64 /* AddressPermissionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F60D226581EB00FA6E64 /* AddressPermissionManager.m */; };
 		59D9F611226587F600FA6E64 /* VoicePermissionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F610226587F600FA6E64 /* VoicePermissionManager.m */; };
 		59D9F6162265890500FA6E64 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9F6152265890500FA6E64 /* Speech.framework */; };
+		59D9F61C2265BA7400FA6E64 /* ContactHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F61A2265BA7300FA6E64 /* ContactHandler.m */; };
+		59D9F61D2265BA7400FA6E64 /* ContactsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F61B2265BA7300FA6E64 /* ContactsModel.m */; };
+		59D9F6202265BB8C00FA6E64 /* PermissionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F61E2265BB8B00FA6E64 /* PermissionManager.m */; };
 		6AB857D036ADDB2C2A9E4FD3 /* libPods-YosKeepAccounts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4864E808461ACA2401DB6E /* libPods-YosKeepAccounts.a */; };
 		82181665219518D900521E75 /* UNNoDataScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218165F219518D900521E75 /* UNNoDataScene.m */; };
 		82181666219518D900521E75 /* UITableView+YosKeepAccountsListPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = 82181660219518D900521E75 /* UITableView+YosKeepAccountsListPlaceHolder.m */; };
@@ -204,11 +206,15 @@
 		5915182B2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsEditOrderToolBarCell.h; sourceTree = "<group>"; };
 		5915182C2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsEditOrderToolBarCell.m; sourceTree = "<group>"; };
 		5915182D2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YosKeepAccountsEditOrderToolBarCell.xib; sourceTree = "<group>"; };
-		59D9F60C226581EB00FA6E64 /* AddressPermissionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressPermissionManager.h; sourceTree = "<group>"; };
-		59D9F60D226581EB00FA6E64 /* AddressPermissionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressPermissionManager.m; sourceTree = "<group>"; };
 		59D9F60F226587F600FA6E64 /* VoicePermissionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoicePermissionManager.h; sourceTree = "<group>"; };
 		59D9F610226587F600FA6E64 /* VoicePermissionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoicePermissionManager.m; sourceTree = "<group>"; };
 		59D9F6152265890500FA6E64 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
+		59D9F6182265BA7300FA6E64 /* ContactHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactHandler.h; sourceTree = "<group>"; };
+		59D9F6192265BA7300FA6E64 /* ContactsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsModel.h; sourceTree = "<group>"; };
+		59D9F61A2265BA7300FA6E64 /* ContactHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactHandler.m; sourceTree = "<group>"; };
+		59D9F61B2265BA7300FA6E64 /* ContactsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsModel.m; sourceTree = "<group>"; };
+		59D9F61E2265BB8B00FA6E64 /* PermissionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissionManager.m; sourceTree = "<group>"; };
+		59D9F61F2265BB8C00FA6E64 /* PermissionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionManager.h; sourceTree = "<group>"; };
 		8218165F219518D900521E75 /* UNNoDataScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNNoDataScene.m; sourceTree = "<group>"; };
 		82181660219518D900521E75 /* UITableView+YosKeepAccountsListPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+YosKeepAccountsListPlaceHolder.m"; sourceTree = "<group>"; };
 		82181661219518D900521E75 /* UNNoDataScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UNNoDataScene.h; sourceTree = "<group>"; };
@@ -586,12 +592,24 @@
 		59D9F60B226580CD00FA6E64 /* PermissionKit */ = {
 			isa = PBXGroup;
 			children = (
-				59D9F60C226581EB00FA6E64 /* AddressPermissionManager.h */,
-				59D9F60D226581EB00FA6E64 /* AddressPermissionManager.m */,
+				59D9F6172265BA7300FA6E64 /* ContactHandler */,
 				59D9F60F226587F600FA6E64 /* VoicePermissionManager.h */,
 				59D9F610226587F600FA6E64 /* VoicePermissionManager.m */,
 			);
 			path = PermissionKit;
+			sourceTree = "<group>";
+		};
+		59D9F6172265BA7300FA6E64 /* ContactHandler */ = {
+			isa = PBXGroup;
+			children = (
+				59D9F61F2265BB8C00FA6E64 /* PermissionManager.h */,
+				59D9F61E2265BB8B00FA6E64 /* PermissionManager.m */,
+				59D9F6182265BA7300FA6E64 /* ContactHandler.h */,
+				59D9F6192265BA7300FA6E64 /* ContactsModel.h */,
+				59D9F61A2265BA7300FA6E64 /* ContactHandler.m */,
+				59D9F61B2265BA7300FA6E64 /* ContactsModel.m */,
+			);
+			path = ContactHandler;
 			sourceTree = "<group>";
 		};
 		8218165E219518D900521E75 /* YosKeepAccountsListPlaceHolder */ = {
@@ -1800,7 +1818,9 @@
 				82CA0F90224885E800E8A711 /* YosKeepAccountsTabBarItem.swift in Sources */,
 				82CA0FB42248F87D00E8A711 /* YosKeepAccountsChartLineEntity.m in Sources */,
 				821816692195303B00521E75 /* YosKeepAccountsOrderEntity+YosKeepAccountsService.m in Sources */,
+				59D9F61D2265BA7400FA6E64 /* ContactsModel.m in Sources */,
 				82181666219518D900521E75 /* UITableView+YosKeepAccountsListPlaceHolder.m in Sources */,
+				59D9F61C2265BA7400FA6E64 /* ContactHandler.m in Sources */,
 				82181665219518D900521E75 /* UNNoDataScene.m in Sources */,
 				82DC65BA2192E275007421DE /* YosKeepAccountsPlistManager.m in Sources */,
 				5915182821943737004B5B32 /* YosKeepAccountsEditOrderToolBar.m in Sources */,
@@ -1858,6 +1878,7 @@
 				82CA0FA02248C15700E8A711 /* YosKeepAccountsSpecialScene.m in Sources */,
 				82DC65CD2192E275007421DE /* YosLabels.m in Sources */,
 				82CA0FB02248F80D00E8A711 /* YosKeepAccountsChartLineSceneModel.m in Sources */,
+				59D9F6202265BB8C00FA6E64 /* PermissionManager.m in Sources */,
 				82DC662D21932267007421DE /* YosKeepAccountsPagePresenter.m in Sources */,
 				82DC65952192E275007421DE /* AppDelegate.m in Sources */,
 				82DC65DD2192E275007421DE /* YosArea.m in Sources */,
@@ -1879,7 +1900,6 @@
 				82DC65E02192E275007421DE /* YosMarker.m in Sources */,
 				82DC659C2192E275007421DE /* YosKeepAccountsCredictUsingRateCell.m in Sources */,
 				82CA0FA92248F74A00E8A711 /* YosKeepAccountsChartPresenter.m in Sources */,
-				59D9F60E226581EB00FA6E64 /* AddressPermissionManager.m in Sources */,
 				82DC660921930E18007421DE /* YosKeepAccountsFeedbackPresenter.m in Sources */,
 				82A9CF93224BA5AE00D9397F /* YosKeepAccountsBouncesContentView.swift in Sources */,
 				82DC65F52192F7DC007421DE /* YosKeepAccountsCustomDatePickerScene.m in Sources */,
