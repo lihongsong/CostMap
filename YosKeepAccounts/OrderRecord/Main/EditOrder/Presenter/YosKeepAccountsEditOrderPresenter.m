@@ -40,6 +40,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *voiceButton;
 @property (assign, nonatomic) BOOL friendShipSelected;
+@property (weak, nonatomic) IBOutlet UIView *friendView;
 
 @end
 @implementation YosKeepAccountsEditOrderPresenter
@@ -60,7 +61,6 @@
     // 键盘消失的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHiden:) name:UIKeyboardWillHideNotification object:nil];
     self.addAddressButton.layer.borderColor = [UIColor whiteColor].CGColor;
-    [[VoicePermissionManager sharedInstance] speechPermission];
     [VoicePermissionManager sharedInstance].speechCallBack = ^(NSString *voiceString, NSInteger code) {
         if (voiceString) {
             self.noteTextField.text = voiceString;
@@ -85,12 +85,12 @@
 - (void)keyboardWasShown:(NSNotification *)notification
 {
     self.orderTypeLb.hidden = YES;
-    self.title = self.orderTypeLb.text;
+    self.titleLabel.text = self.orderTypeLb.text;
 }
 - (void)keyboardWillBeHiden:(NSNotification *)notification
 {
     self.orderTypeLb.hidden = NO;
-    self.title = @"记一比";
+    self.titleLabel.text = @"记一笔";
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -158,9 +158,12 @@
     }
     self.orderTypeLb.text = [YosKeepAccountsOrderTool typeNameWithIndex:_orderType];
 }
+
 - (void)setOrderType:(YosKeepAccountsOrderType)orderType {
     _orderType = orderType;
     self.orderTypeLb.text = [YosKeepAccountsOrderTool typeNameWithIndex:orderType];
+    
+    self.friendView.hidden = (orderType == YosKeepAccountsOrderTypeFriend)?NO:YES;
     
     if (orderType == YosKeepAccountsOrderTypeFriend && !self.orderEntity) {
         [self addPeopleFunction:nil];
@@ -383,12 +386,13 @@
 
 - (IBAction)voiceFunction:(id)sender {
     
+    [[VoicePermissionManager sharedInstance] speechPermission];
     if([[VoicePermissionManager sharedInstance].audioEngine isRunning]) {
-       [[VoicePermissionManager sharedInstance] endRecording];
+        [[VoicePermissionManager sharedInstance] endRecording];
         [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"timg"] forState: UIControlStateNormal];
         [self performSelector:@selector(closeVoiceFunction) withObject:nil afterDelay:15];
     }else{
-       [[VoicePermissionManager sharedInstance] startRecording];
+        [[VoicePermissionManager sharedInstance] startRecording];
         [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"stimg"] forState: UIControlStateNormal];
     }
 }

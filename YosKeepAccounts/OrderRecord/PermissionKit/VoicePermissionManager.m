@@ -7,7 +7,7 @@
 //
 
 #import "VoicePermissionManager.h"
-
+#import "PermissionManager.h"
 @implementation VoicePermissionManager
 
 + (instancetype)sharedInstance {
@@ -31,6 +31,11 @@
             case SFSpeechRecognizerAuthorizationStatusDenied:
                 isButtonEnabled = false;
                 NSLog(@"用户未授权使用语音识别");
+                [PermissionManager showVoiceGuideAlertConfirmClick:^{
+                    
+                } cancelClick:^{
+                    
+                }];
             break;
             case SFSpeechRecognizerAuthorizationStatusRestricted:
                 isButtonEnabled =false;
@@ -39,10 +44,14 @@
             case SFSpeechRecognizerAuthorizationStatusNotDetermined:
                 isButtonEnabled =false;
             NSLog(@"语音识别未授权");
+                [PermissionManager showVoiceGuideAlertConfirmClick:^{
+                    
+                } cancelClick:^{
+                    
+                }];
             break;
             default:
             break;
-                
         }}];
 }
 

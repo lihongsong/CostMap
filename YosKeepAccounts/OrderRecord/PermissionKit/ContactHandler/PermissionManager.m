@@ -221,6 +221,27 @@ static PermissionManager *sharedInstance;
                           }];
     });
 }
+
+//获取录音权限
++ (void)showVoiceGuideAlertConfirmClick:(void (^) (void))confirmClick
+                              cancelClick:(void (^) (void))cancelClick {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self showGuideAlertWithTitle:@"请允许获取录音权限"
+                           topContent:@"当前操作需要录音权限，请打开权限"
+                        bottomContent:@"\n \n设置路径：设置->隐私->录音"
+                              confirm:@"去设置"
+                         confirmClick:^{
+                             // 跳转去设置
+                             [self skipToSetting];
+                             !confirmClick?:confirmClick();
+                         }
+                          cancelClick:^{
+                              !cancelClick?:cancelClick();
+                          }];
+    });
+}
+
 + (void)skipToSetting {
     
     NSURL * url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];

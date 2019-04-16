@@ -36,4 +36,8 @@ typedef NS_ENUM(NSInteger, LNPermissionType) {
  @param showAlert <#showAlert description#>
  */
 + (void)checkContactPermissionWithResult:(void (^) (BOOL allow))result showAlert:(BOOL)showAlert;
+
+//获取录音权限
++ (void)showVoiceGuideAlertConfirmClick:(void (^) (void))confirmClick
+                            cancelClick:(void (^) (void))cancelClick;
 @end
