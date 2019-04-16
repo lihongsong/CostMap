@@ -40,28 +40,28 @@ PODS:
   - HJCategories/Foundation (1.1.3)
   - HJCategories/UIKit (1.1.3)
   - HJMediator (0.2.0)
-  - HJWebView (1.1.3):
-    - HJWebView/HJCarrierWebview (= 1.1.3)
-    - HJWebView/HJJSBridge (= 1.1.3)
-    - HJWebView/HJJSPlugin (= 1.1.3)
-    - HJWebView/HJPrivacyPolicy (= 1.1.3)
-    - HJWebView/HJUniversalWebViewController (= 1.1.3)
-    - HJWebView/HJWebViewCache (= 1.1.3)
-    - HJWebView/HJWebViewController (= 1.1.3)
-  - HJWebView/HJCarrierWebview (1.1.3):
+  - HJWebView (1.1.4):
+    - HJWebView/HJCarrierWebview (= 1.1.4)
+    - HJWebView/HJJSBridge (= 1.1.4)
+    - HJWebView/HJJSPlugin (= 1.1.4)
+    - HJWebView/HJPrivacyPolicy (= 1.1.4)
+    - HJWebView/HJUniversalWebViewController (= 1.1.4)
+    - HJWebView/HJWebViewCache (= 1.1.4)
+    - HJWebView/HJWebViewController (= 1.1.4)
+  - HJWebView/HJCarrierWebview (1.1.4):
     - HJWebView/HJUniversalWebViewController
-  - HJWebView/HJJSBridge (1.1.3):
+  - HJWebView/HJJSBridge (1.1.4):
     - WebViewJavascriptBridge
-  - HJWebView/HJJSPlugin (1.1.3)
-  - HJWebView/HJPrivacyPolicy (1.1.3):
+  - HJWebView/HJJSPlugin (1.1.4)
+  - HJWebView/HJPrivacyPolicy (1.1.4):
     - HJWebView/HJWebViewController
-  - HJWebView/HJUniversalWebViewController (1.1.3):
+  - HJWebView/HJUniversalWebViewController (1.1.4):
     - HJWebView/HJJSBridge
     - HJWebView/HJJSPlugin
     - HJWebView/HJWebViewCache
     - HJWebView/HJWebViewController
-  - HJWebView/HJWebViewCache (1.1.3)
-  - HJWebView/HJWebViewController (1.1.3)
+  - HJWebView/HJWebViewCache (1.1.4)
+  - HJWebView/HJWebViewController (1.1.4)
   - HMSegmentedControl (1.5.5)
   - IQKeyboardManager (5.0.6)
   - Masonry (1.1.0)
@@ -75,9 +75,9 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (4.4.6):
-    - SDWebImage/Core (= 4.4.6)
-  - SDWebImage/Core (4.4.6)
+  - SDWebImage (4.4.5):
+    - SDWebImage/Core (= 4.4.5)
+  - SDWebImage/Core (4.4.5)
   - TTTAttributedLabel (2.0.0)
   - UICKeyChainStore (2.1.1)
   - UMengUShare/Core (6.4.8.2):
@@ -97,7 +97,7 @@ PODS:
   - WebViewJavascriptBridge (6.0.3)
   - XZYNetwork (1.0.1)
   - YYModel (1.0.4)
-  - YYText (1.0.4)
+  - YYText (1.0.7)
   - zxcvbn-ios (1.0.4)
 
 DEPENDENCIES:
@@ -124,7 +124,7 @@ DEPENDENCIES:
   - UICKeyChainStore (= 2.1.1)
   - UserCenter
   - YYModel (= 1.0.4)
-  - YYText (= 1.0.4)
+  - YYText (= 1.0.7)
 
 SPEC REPOS:
   "git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git":
@@ -168,7 +168,7 @@ SPEC CHECKSUMS:
   HJ_UIKit: 068f688a539653c151312a000d85d4113e4d1965
   HJCategories: eb50c3d9495bbe0bb0c7f67012d8c9e1e07ae37b
   HJMediator: 381890d07324a962f6c84c782d98c3be8d3d931a
-  HJWebView: 13e35534d0d69ff6c27570fca292e97a60da351d
+  HJWebView: 55d5f3a8f4483be69b37d18a7a0ee74038f1bbb9
   HMSegmentedControl: f514c6dad47aa3065e0ed2e8046b73efc71221b9
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
@@ -176,7 +176,7 @@ SPEC CHECKSUMS:
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
   RCMobClick: 05cdb2fc6ebf656ee690eddece9dce3ec75f3c02
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
   UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
@@ -184,9 +184,9 @@ SPEC CHECKSUMS:
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
   XZYNetwork: eaffc9ed91f7458cfa6f951b59685298373d8c4a
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
-  YYText: 41761822986179828a27ccf82aa97c7b5483c2e2
+  YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
   zxcvbn-ios: fef98b7c80f1512ff0eec47ac1fa399fc00f7e3c
 
-PODFILE CHECKSUM: d7d3264830e0c5b21e2a8255784831d2f8a1c3cb
+PODFILE CHECKSUM: 0b60542865dacc7e530bf6e5bccf8e9ca137a8da
 
-COCOAPODS: 1.6.0
+COCOAPODS: 1.5.3

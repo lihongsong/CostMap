@@ -10,6 +10,9 @@
 #import <HJCityPickerManager.h>
 #import <HJAlertView.h>
 #import <HJProgressHUD.h>
+#import "VoicePermissionManager.h"
+#import "AddressPermissionManager.h"
+
 @interface YosKeepAccountsEditOrderPresenter () <UITextFieldDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *orderTypeLb;
 @property (weak, nonatomic) IBOutlet UITextField *momeyTextField;
@@ -30,6 +33,8 @@
 @property (nonatomic, assign) YosKeepAccountsOrderType orderType;
 @property (nonatomic, strong) NSDate *orderTime;
 @property (nonatomic, copy) NSString *orderCity;
+@property (weak, nonatomic) IBOutlet UIButton *addAddressButton;
+
 @end
 @implementation YosKeepAccountsEditOrderPresenter
 + (id)targetInstance {
@@ -44,6 +49,11 @@
     [self setupUI];
     [self updateUI];
     [self addEditOrderToolBar];
+    self.addAddressButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    [[VoicePermissionManager sharedInstance] speechPermission];
+    [VoicePermissionManager sharedInstance].speechCallBack = ^(NSString *voiceString, NSInteger code) {
+        self.noteTextField.text = voiceString;
+    };
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -325,4 +335,24 @@
         return nil;
     }
 }
+
+
+#pragma mark - 语音功能
+
+- (IBAction)voiceFunction:(id)sender {
+    
+    if([[VoicePermissionManager sharedInstance].audioEngine isRunning]) {
+       [[VoicePermissionManager sharedInstance] endRecording];
+//       [_swicthBut setTitle:@"开始录音" forState:UIControlStateNormal];
+    }else{
+       [[VoicePermissionManager sharedInstance] startRecording];
+//       [_swicthBut setTitle:@"关闭" forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)addPeopleFunction:(id)sender {
+    [[AddressPermissionManager sharedInstance] requestContactPermission];
+    
+}
+
 @end

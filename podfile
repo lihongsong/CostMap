@@ -26,7 +26,7 @@ target 'YosKeepAccounts' do
     pod 'HJWebView'
     pod 'IQKeyboardManager', '5.0.6'
     pod 'GTMBase64', '1.0.1'
-    pod 'YYText', '1.0.4'
+    pod 'YYText', '1.0.7'
     pod 'YYModel', '1.0.4'
     pod 'Charts', '3.2.0'
     pod 'UICKeyChainStore','2.1.1'
