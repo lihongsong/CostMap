@@ -18,8 +18,11 @@
 
 - (void)registerUserCenter {
     XZYConfigInstance.projectionID = APP_PROJECTION_ID;
-    XZYConfigInstance.protocol = @"用户协议";
-    XZYConfigInstance.statement = @"应用声明";
+    XZYConfigInstance.protocol = [self privateProtocol];
+    XZYConfigInstance.protocolName = @"章鱼记账隐私协议";
+    XZYConfigInstance.statementName = @"章鱼记账用户服务协议";
+    XZYConfigInstance.statement = [self serviceProtocol];
+    XZYConfigInstance.showBondTipsLable = NO;
     XZYConfigInstance.showNavBackTitle = NO;
     XZYConfigInstance.navBackImage = [UIImage imageNamed:@"back"];
     XZYConfigInstance.allowTouristMode = YES;
@@ -33,12 +36,35 @@
     XZYConfigInstance.navBarTintColor = YosKeepAccountsThemeColor;
     XZYConfigInstance.navBackImage = [UIImage imageNamed:@"yka_navbar_back_02"];
     XZYConfigInstance.navBackHighlightImage = [UIImage imageNamed:@"yka_navbar_back_02"];
+    XZYConfigInstance.navItemTitleHighlightColor = YosKeepAccountsThemeTitleColor;
     XZYConfigInstance.showNavBackTitle = NO;
     XZYConfigInstance.navItemTitleColor = YosKeepAccountsThemeTitleColor;
-    XZYConfigInstance.navItemTitleHighlightColor = YosKeepAccountsThemeTitleColor;
     [XZYUserCenter startWithConfigure:XZYConfigInstance];
     [YosKeepAccountsUserManager autoLogin];
+}
+
+- (NSString *)serviceProtocol {
+    return [self localProtocolWithFileName:@"服务条款协议.txt"];
+}
+
+- (NSString *)privateProtocol {
+    return [self localProtocolWithFileName:@"隐私协议.txt"];
+}
+
+- (NSString *)localProtocolWithFileName:(NSString *)fileName {
     
+    NSError *error;
+    
+    NSString *protocolPath = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
+    
+    NSString *protocol = [NSString stringWithContentsOfFile:protocolPath
+                                                   encoding:NSUTF8StringEncoding
+                                                      error:&error];
+    if (error) {
+        return @"";
+    }
+    
+    return protocol;
 }
 
 @end

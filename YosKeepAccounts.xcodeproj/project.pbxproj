@@ -33,6 +33,8 @@
 		823758B72199AB420065D56B /* OrderMonthList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 823758B62199AB420065D56B /* OrderMonthList.storyboard */; };
 		823A36B02243429E000D1D2A /* YosKeepAccountsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 823A36AC22433E49000D1D2A /* YosKeepAccountsUITests.m */; };
 		823A36B222448AB1000D1D2A /* EditOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 823A36B122448AB1000D1D2A /* EditOrder.storyboard */; };
+		828296052269FEDA00228069 /* 服务条款协议.txt in Resources */ = {isa = PBXBuildFile; fileRef = 828296032269FED900228069 /* 服务条款协议.txt */; };
+		828296062269FEDA00228069 /* 隐私协议.txt in Resources */ = {isa = PBXBuildFile; fileRef = 828296042269FEDA00228069 /* 隐私协议.txt */; };
 		82A9CF91224B84CA00D9397F /* YosKeepAccountsIrregularityContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9CF90224B84CA00D9397F /* YosKeepAccountsIrregularityContentView.swift */; };
 		82A9CF93224BA5AE00D9397F /* YosKeepAccountsBouncesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9CF92224BA5AE00D9397F /* YosKeepAccountsBouncesContentView.swift */; };
 		82A9CF95224BA5DF00D9397F /* YosKeepAccountsBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9CF94224BA5DF00D9397F /* YosKeepAccountsBasicContentView.swift */; };
@@ -232,6 +234,8 @@
 		823A36AC22433E49000D1D2A /* YosKeepAccountsUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsUITests.m; sourceTree = "<group>"; };
 		823A36AD22433E49000D1D2A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		823A36B122448AB1000D1D2A /* EditOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditOrder.storyboard; sourceTree = "<group>"; };
+		828296032269FED900228069 /* 服务条款协议.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "服务条款协议.txt"; sourceTree = "<group>"; };
+		828296042269FEDA00228069 /* 隐私协议.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "隐私协议.txt"; sourceTree = "<group>"; };
 		82A9CF90224B84CA00D9397F /* YosKeepAccountsIrregularityContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YosKeepAccountsIrregularityContentView.swift; sourceTree = "<group>"; };
 		82A9CF92224BA5AE00D9397F /* YosKeepAccountsBouncesContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YosKeepAccountsBouncesContentView.swift; sourceTree = "<group>"; };
 		82A9CF94224BA5DF00D9397F /* YosKeepAccountsBasicContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YosKeepAccountsBasicContentView.swift; sourceTree = "<group>"; };
@@ -1231,6 +1235,8 @@
 		82DC653D2192E275007421DE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				828296032269FED900228069 /* 服务条款协议.txt */,
+				828296042269FEDA00228069 /* 隐私协议.txt */,
 				5915181B219403D4004B5B32 /* PrivateAgreement.html */,
 			);
 			path = Resources;
@@ -1695,6 +1701,7 @@
 				5915181C219403D4004B5B32 /* PrivateAgreement.html in Resources */,
 				82DC662C21932267007421DE /* YosKeepAccountsPagePresenter.xib in Resources */,
 				82B309E821942FAB00284246 /* OrderList.storyboard in Resources */,
+				828296062269FEDA00228069 /* 隐私协议.txt in Resources */,
 				82CD2BE82195A39500E86371 /* YosKeepAccountsOrderLineTypeScene.xib in Resources */,
 				5915182F2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib in Resources */,
 				82DC659A2192E275007421DE /* HomeBaseListCell.xib in Resources */,
@@ -1703,6 +1710,7 @@
 				5915181A219400D3004B5B32 /* YosKeepAccountsAboutPresenter.xib in Resources */,
 				82DC65C72192E275007421DE /* YosHighchartsLib.js in Resources */,
 				82DC65C92192E275007421DE /* YosFunnel.js in Resources */,
+				828296052269FEDA00228069 /* 服务条款协议.txt in Resources */,
 				5915182A21943746004B5B32 /* YosKeepAccountsEditOrderToolBar.xib in Resources */,
 				82DC65E92192E275007421DE /* Assets.xcassets in Resources */,
 				82DC65C82192E275007421DE /* YosHighchartsMore.js in Resources */,
@@ -2103,7 +2111,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 4FYS54XBTW;
+				DEVELOPMENT_TEAM = 29P3XXDB6H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YosKeepAccounts/Other/YosKeepAccounts-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2125,7 +2133,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "caae0713-d0e2-46bd-b4a0-2d70e91871f8";
-				PROVISIONING_PROFILE_SPECIFIER = "match Development me.ImmediatelyLoan.app";
+				PROVISIONING_PROFILE_SPECIFIER = "Development com.yoskeepaccounts.octopus";
 				SWIFT_OBJC_BRIDGING_HEADER = "YosKeepAccounts/OrderRecord/Expand/Macros/YosKeepAccounts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -2143,9 +2151,9 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 8Y9S3L42QY;
+				DEVELOPMENT_TEAM = 29P3XXDB6H;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YosKeepAccounts/Other/YosKeepAccounts-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2167,7 +2175,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f6d46689-e4bf-41ab-bb16-180997bd9fd6";
-				PROVISIONING_PROFILE_SPECIFIER = any;
+				PROVISIONING_PROFILE_SPECIFIER = "AppStore com.yoskeepaccounts.octopus";
 				SWIFT_OBJC_BRIDGING_HEADER = "YosKeepAccounts/OrderRecord/Expand/Macros/YosKeepAccounts-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -252,12 +252,6 @@ typedef enum {
  */
 + (void)onPlaceOrder:(NSString *)accountId order:(TalkingDataOrder *)order;
 
-/**
- *  @method onOrderPaySucc  支付
- *  @param  accountId       账户ID          类型:NSString
- *  @param  payType         支付类型         类型:NSString
- *  @param  order           订单详情         类型:TalkingDataOrder
- */
 + (void)onOrderPaySucc:(NSString *)accountId payType:(NSString *)payType order:(TalkingDataOrder *)order;
 
 /**

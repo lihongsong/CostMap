@@ -1,6 +1,6 @@
 //
 //  PermissionManager.m
-//  JiKeLoan
+//  
 //
 //  Created by wanglili on 16/6/13.
 //
