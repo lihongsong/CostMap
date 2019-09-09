@@ -16,7 +16,6 @@
 + (instancetype)instance {
     return StoryBoardLoaderRoot(@"OrderList");
 }
-#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = HJHexColor(k0xf5f5f5);
@@ -27,7 +26,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self requestData];
 }
-#pragma mark - Getter & Setter Methods
+
 - (YosKeepAccountsDaySelectedScene *)daySelectScene {
     if (!_daySelectScene) {
         _daySelectScene = [YosKeepAccountsDaySelectedScene instance];
@@ -35,9 +34,6 @@
     }
     return _daySelectScene;
 }
-#pragma mark - Network Method
-#pragma mark - Public Method
-#pragma mark - Private Method
 - (NSString *)dateString {
     return [_daySelectScene.currentDate hj_stringWithFormat:@"yyyy-MM-dd"];
 }
@@ -79,12 +75,10 @@
                                     [self.tableScene cyl_reloadData];
                                 }];
 }
-#pragma mark - Notification Method
-#pragma mark - Event & Target Methods
-#pragma mark - YosKeepAccountsDaySelectedSceneDelegate
+
 - (void)selectedScene:(YosKeepAccountsDaySelectedScene *)selectScene didClickDate:(NSDate *)date {
     WEAK_SELF
-    [YosKeepAccountsCustomDatePickerScene showDatePickerWithTitle:@"选择时间"
+    [YosKeepAccountsCustomDatePickerScene showDatePickerWithTitle:@"Choose Time"
                                            dateType:YosKeepAccountsCustomDatePickerModeYMD
                                     defaultSelValue:[self dateString]
                                             minDate:nil

@@ -1,27 +1,8 @@
 #import "AppDelegate.h"
 #import "YosKeepAccountsHomePresenter.h"
-#import "YosKeepAccountsIntroducePresenter.h"
-#import "YosKeepAccountsTouchIDPresenter.h"
-#import "AppDelegate+YKAUserCenter.h"
 #import "YosKeepAccounts-Swift.h"
-#import "TalkingData.h"
-#import <Bugly/Bugly.h>
 
-// TalkingData
-#if defined (DebugNet) || defined (PreNet)
-#define TalkingData_AppId       @"4E5FCA0A91FD46D0AFD7EAE94A2A3198"
-#else
-#define TalkingData_AppId       @"4E5FCA0A91FD46D0AFD7EAE94A2A3198"
-#endif
-
-//Bugly相关
-#define Bugly_AppId                 @"e27cc1d32e"
-#define Bugly_AppKey                @"a8bfb74f-4f48-4806-9883-b2d78ce2be62"
-// 测试环境的Debug统计
-#define Bugly_AppIdDebug            @"f7636a4e4d"
-#define Bugly_AppKeyDebug           @"b0078657-3839-4f3d-93fc-66d930544f14"
-
-@interface AppDelegate ()<BuglyDelegate>
+@interface AppDelegate ()
 
 @property (strong, nonatomic) YosKeepAccountsTabBarPresenter *rootTabBar;
 
@@ -36,7 +17,6 @@
     self.window.rootViewController = _rootTabBar;
     [self.window makeKeyAndVisible];
     [self setUpSDK];
-    [self setUpUpdate];
     [self setUpFMDB];
     [self setupIntroduceWithRemoteNotification:launchOptions];
     return YES;
@@ -96,7 +76,6 @@
     }];
     [HJGuidePageWindow show];
 }
-#pragma mark - 渐变动画更换RootVC
 - (void)restoreRootPresenter:(UIViewController *)rootPresenter {
     [UIView transitionWithView:self.window
                       duration:0.25f
@@ -109,7 +88,6 @@
                     }
                     completion:nil];
 }
-#pragma mark - 渐变动画更换RootVC
 - (void)loadActivePresenter:(UIViewController *)rootPresenter {
     [UIView transitionWithView:self.window
                       duration:0.25f
@@ -125,38 +103,12 @@
 - (void)setRootPresenter {
     [self restoreRootPresenter:self.rootTabBar];
 }
-#pragma mark - 引导页设置
 - (BOOL)setupIntroduceWithRemoteNotification:(NSDictionary *)remoteNotification {
-    NSString *isInstallApp = UserDefaultGetObj(kHasInstallApp);
-    if (!isInstallApp.integerValue) {
-        YosKeepAccountsIntroducePresenter *introduceVC = [[YosKeepAccountsIntroducePresenter alloc] init];
-        UserDefaultSetObj(@"1", kHasInstallApp);
-        UserDefaultSetObj([NSDate date], @"firstDay");
-        introduceVC.rootStartVC = ^{
-            [self setRootPresenter];
-        };
-        self.window.rootViewController = introduceVC;
-        return YES;
-    } else {
-        NSUserDefaults *userDefault =  [NSUserDefaults standardUserDefaults];
-        if (![userDefault boolForKey:kCachedTouchIdStatus]) {
-            [self setUpPresenterWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:remoteNotification];
-        } else {
-            WEAK_SELF
-            YosKeepAccountsTouchIDPresenter *touchIDVC = [[YosKeepAccountsTouchIDPresenter alloc]init];
-            self.window.rootViewController = touchIDVC;
-            touchIDVC.rootStartVC = ^(BOOL isCheckPass){
-                STRONG_SELF
-                self.window.rootViewController = nil;
-                [self setUpPresenterWithHighScoreWithRemoteNotificaton:remoteNotification launchOptions:remoteNotification];
-            };
-        }
-        return NO;
-    }
+    
+    [self setRootPresenter];
+    return YES;
 }
 - (void)setUpSDK {
-    
-    [self registerUserCenter];
     
     HJMediatorConfig *config = [HJMediatorConfig new];
     config.prefixString = @"YosKeepAccounts";
@@ -165,36 +117,6 @@
     [[HJMediator shared] setUpRootViewController:self.rootTabBar];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:HJHexColor(0x666666),
                                                            NSFontAttributeName: [UIFont systemFontOfSize:18]}];
-    
-    /** TalkingData */
-    [TalkingData sessionStarted:TalkingData_AppId withChannelId:@"zyjz"];
-    /** bugly */
-    BuglyConfig *buglyConfig = [[BuglyConfig alloc] init];
-    buglyConfig.blockMonitorEnable = YES;
-    buglyConfig.reportLogLevel = BuglyLogLevelError;
-    buglyConfig.delegate = self;
-#if defined(ReleaseNet)
-    [Bugly startWithAppId:Bugly_AppId
-                   config:buglyConfig];
-#elif defined(PreNet)
-    [Bugly startWithAppId:Bugly_AppIdDebug
-                   config:buglyConfig];
-#else
-    [Bugly startWithAppId:Bugly_AppIdDebug
-        developmentDevice:YES
-                   config:buglyConfig];
-#endif
-}
-- (void)setUpUpdate {
-    [XZYAppUpdate startWithAppKey:XZYAppUpdateProductKey
-                        channelId:APP_ChannelId
-                           config:nil];
-#if defined (DebugNet) || defined (PreNet)
-    [XZYAppUpdate setDebug:YES];
-#else
-    [XZYAppUpdate setDebug:NO];
-#endif
-    [XZYAppUpdate checkUpdateAtLaunch:nil];
 }
 - (void)setUpFMDB {
     if (![[YosKeepAccountsSQLManager share] isTableExist:kSQLTableName]) {
@@ -210,16 +132,5 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application {
 }
 - (void)applicationWillTerminate:(UIApplication *)application {
-}
-
-#pragma mark - BuglyDelegate
-
-- (NSString * BLY_NULLABLE)attachmentForException:(NSException *)exception {
-    /** app状态 */
-    UIApplicationState applicationState = [UIApplication sharedApplication].applicationState;
-    /** app当前的keywindow */
-    UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    
-    return [NSString stringWithFormat:@"---%@\n---applicationState:%d\n---keyWindow:%@",exception.description,(int)applicationState,keyWindow];
 }
 @end

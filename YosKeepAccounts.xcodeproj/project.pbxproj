@@ -7,23 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5915180B2193D719004B5B32 /* YosKeepAccountsSettingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915180A2193D719004B5B32 /* YosKeepAccountsSettingScene.m */; };
-		5915180D2193D724004B5B32 /* YosKeepAccountsSettingScene.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915180C2193D724004B5B32 /* YosKeepAccountsSettingScene.xib */; };
-		5915180F2193DCYos004B5B32 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5915180E2193DCYos004B5B32 /* AVFoundation.framework */; };
-		591518122193FEE0004B5B32 /* YosKeepAccountsPrivacyAgreementPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 591518112193FEE0004B5B32 /* YosKeepAccountsPrivacyAgreementPresenter.m */; };
-		59151819219400D3004B5B32 /* YosKeepAccountsAboutPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 59151817219400D3004B5B32 /* YosKeepAccountsAboutPresenter.m */; };
-		5915181A219400D3004B5B32 /* YosKeepAccountsAboutPresenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59151818219400D3004B5B32 /* YosKeepAccountsAboutPresenter.xib */; };
-		5915181C219403D4004B5B32 /* PrivateAgreement.html in Resources */ = {isa = PBXBuildFile; fileRef = 5915181B219403D4004B5B32 /* PrivateAgreement.html */; };
+		1FF614322320FB3A00588D78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FF6142E2320F52B00588D78 /* InfoPlist.strings */; };
 		5915182221942423004B5B32 /* YosKeepAccountsEditOrderPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182021942423004B5B32 /* YosKeepAccountsEditOrderPresenter.m */; };
 		5915182821943737004B5B32 /* YosKeepAccountsEditOrderToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182721943737004B5B32 /* YosKeepAccountsEditOrderToolBar.m */; };
 		5915182A21943746004B5B32 /* YosKeepAccountsEditOrderToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182921943746004B5B32 /* YosKeepAccountsEditOrderToolBar.xib */; };
 		5915182E2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182C2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m */; };
 		5915182F2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5915182D2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib */; };
-		5990B9012265CCBC0053397E /* libTalkingData.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5990B9002265CCBB0053397E /* libTalkingData.a */; };
-		59D9F611226587F600FA6E64 /* VoicePermissionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F610226587F600FA6E64 /* VoicePermissionManager.m */; };
-		59D9F6162265890500FA6E64 /* Speech.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59D9F6152265890500FA6E64 /* Speech.framework */; };
-		59D9F61C2265BA7400FA6E64 /* ContactHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F61A2265BA7300FA6E64 /* ContactHandler.m */; };
-		59D9F61D2265BA7400FA6E64 /* ContactsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F61B2265BA7300FA6E64 /* ContactsModel.m */; };
 		59D9F6202265BB8C00FA6E64 /* PermissionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 59D9F61E2265BB8B00FA6E64 /* PermissionManager.m */; };
 		6AB857D036ADDB2C2A9E4FD3 /* libPods-YosKeepAccounts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E4864E808461ACA2401DB6E /* libPods-YosKeepAccounts.a */; };
 		82181665219518D900521E75 /* UNNoDataScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 8218165F219518D900521E75 /* UNNoDataScene.m */; };
@@ -33,8 +22,6 @@
 		823758B72199AB420065D56B /* OrderMonthList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 823758B62199AB420065D56B /* OrderMonthList.storyboard */; };
 		823A36B02243429E000D1D2A /* YosKeepAccountsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 823A36AC22433E49000D1D2A /* YosKeepAccountsUITests.m */; };
 		823A36B222448AB1000D1D2A /* EditOrder.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 823A36B122448AB1000D1D2A /* EditOrder.storyboard */; };
-		828296052269FEDA00228069 /* 服务条款协议.txt in Resources */ = {isa = PBXBuildFile; fileRef = 828296032269FED900228069 /* 服务条款协议.txt */; };
-		828296062269FEDA00228069 /* 隐私协议.txt in Resources */ = {isa = PBXBuildFile; fileRef = 828296042269FEDA00228069 /* 隐私协议.txt */; };
 		82A9CF91224B84CA00D9397F /* YosKeepAccountsIrregularityContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9CF90224B84CA00D9397F /* YosKeepAccountsIrregularityContentView.swift */; };
 		82A9CF93224BA5AE00D9397F /* YosKeepAccountsBouncesContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9CF92224BA5AE00D9397F /* YosKeepAccountsBouncesContentView.swift */; };
 		82A9CF95224BA5DF00D9397F /* YosKeepAccountsBasicContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A9CF94224BA5DF00D9397F /* YosKeepAccountsBasicContentView.swift */; };
@@ -50,8 +37,6 @@
 		82CA0F90224885E800E8A711 /* YosKeepAccountsTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0F8F224885E800E8A711 /* YosKeepAccountsTabBarItem.swift */; };
 		82CA0F922248864F00E8A711 /* YosKeepAccountsTabBarItemContentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0F912248864F00E8A711 /* YosKeepAccountsTabBarItemContentScene.swift */; };
 		82CA0F9A22489C7F00E8A711 /* UIColor+YKATheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0F9922489C7F00E8A711 /* UIColor+YKATheme.m */; };
-		82CA0FA02248C15700E8A711 /* YosKeepAccountsSpecialScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0F9F2248C15700E8A711 /* YosKeepAccountsSpecialScene.m */; };
-		82CA0FA32248DA7D00E8A711 /* YosKeepAccountsMePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0FA22248DA7D00E8A711 /* YosKeepAccountsMePresenter.m */; };
 		82CA0FA92248F74A00E8A711 /* YosKeepAccountsChartPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0FA82248F74A00E8A711 /* YosKeepAccountsChartPresenter.m */; };
 		82CA0FAC2248F75500E8A711 /* YosKeepAccountsChartBrokenLineScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0FAB2248F75500E8A711 /* YosKeepAccountsChartBrokenLineScene.m */; };
 		82CA0FB02248F80D00E8A711 /* YosKeepAccountsChartLineSceneModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0FAF2248F80D00E8A711 /* YosKeepAccountsChartLineSceneModel.m */; };
@@ -59,8 +44,6 @@
 		82CA0FB72249F37F00E8A711 /* Chart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82CA0FB62249F37E00E8A711 /* Chart.storyboard */; };
 		82CA0FBD2249F7B800E8A711 /* YosKeepAccountsWaterWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0FBB2249F7B800E8A711 /* YosKeepAccountsWaterWeakProxy.m */; };
 		82CA0FBE2249F7B800E8A711 /* YosKeepAccountsWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0FBC2249F7B800E8A711 /* YosKeepAccountsWaterWaveView.m */; };
-		82CA0FC1224B0F3800E8A711 /* AppDelegate+YKAUserCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0FC0224B0F3800E8A711 /* AppDelegate+YKAUserCenter.m */; };
-		82CA0FC5224B105400E8A711 /* YosKeepAccountsUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CA0FC4224B105400E8A711 /* YosKeepAccountsUserManager.m */; };
 		82CD2BDE219588EE00E86371 /* A.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BDD219588EE00E86371 /* A.swift */; };
 		82CD2BE221958BD400E86371 /* YosKeepAccountsHomeDateSelectButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BE121958BD400E86371 /* YosKeepAccountsHomeDateSelectButton.m */; };
 		82CD2BE62195A38A00E86371 /* YosKeepAccountsOrderLineTypeScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2BE52195A38A00E86371 /* YosKeepAccountsOrderLineTypeScene.m */; };
@@ -75,24 +58,6 @@
 		82DC65952192E275007421DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64C52192E275007421DE /* AppDelegate.m */; };
 		82DC65962192E275007421DE /* YosKeepAccountsHomePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64CA2192E275007421DE /* YosKeepAccountsHomePresenter.m */; };
 		82DC65972192E275007421DE /* HomeDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64CD2192E275007421DE /* HomeDataEntity.m */; };
-		82DC65982192E275007421DE /* YosKeepAccountsRightItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64D12192E275007421DE /* YosKeepAccountsRightItemButton.m */; };
-		82DC65992192E275007421DE /* YosKeepAccountsLeftItemButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64D22192E275007421DE /* YosKeepAccountsLeftItemButton.m */; };
-		82DC659A2192E275007421DE /* HomeBaseListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82DC64D42192E275007421DE /* HomeBaseListCell.xib */; };
-		82DC659C2192E275007421DE /* YosKeepAccountsCredictUsingRateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64D72192E275007421DE /* YosKeepAccountsCredictUsingRateCell.m */; };
-		82DC659D2192E275007421DE /* YosKeepAccountsHomeBaseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64D82192E275007421DE /* YosKeepAccountsHomeBaseListCell.m */; };
-		82DC659E2192E275007421DE /* YosKeepAccountsApplyRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64DA2192E275007421DE /* YosKeepAccountsApplyRecordCell.m */; };
-		82DC659F2192E275007421DE /* YosKeepAccountsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64DF2192E275007421DE /* YosKeepAccountsButton.m */; };
-		82DC65A12192E275007421DE /* YosKeepAccountsWangYiWave.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64E62192E275007421DE /* YosKeepAccountsWangYiWave.m */; };
-		82DC65A22192E275007421DE /* YosKeepAccountsNameHeaderScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64E92192E275007421DE /* YosKeepAccountsNameHeaderScene.m */; };
-		82DC65A32192E275007421DE /* YosKeepAccountsScoreProgressScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64EA2192E275007421DE /* YosKeepAccountsScoreProgressScene.m */; };
-		82DC65A42192E275007421DE /* YosKeepAccountsCircleProgressScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64EB2192E275007421DE /* YosKeepAccountsCircleProgressScene.m */; };
-		82DC65A52192E275007421DE /* YosKeepAccountsCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64ED2192E275007421DE /* YosKeepAccountsCircle.m */; };
-		82DC65A62192E275007421DE /* YosKeepAccountsProgressScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64EE2192E275007421DE /* YosKeepAccountsProgressScene.m */; };
-		82DC65A82192E275007421DE /* YosKeepAccountsCircleIndicatorScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64F12192E275007421DE /* YosKeepAccountsCircleIndicatorScene.m */; };
-		82DC65A92192E275007421DE /* YosKeepAccountsWaveAnimationScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64F22192E275007421DE /* YosKeepAccountsWaveAnimationScene.m */; };
-		82DC65AB2192E275007421DE /* YosKeepAccountsAreaSplineChartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64F82192E275007421DE /* YosKeepAccountsAreaSplineChartScene.m */; };
-		82DC65AC2192E275007421DE /* YosKeepAccountsBaseChartScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64FA2192E275007421DE /* YosKeepAccountsBaseChartScene.m */; };
-		82DC65AD2192E275007421DE /* YosKeepAccountsGradientCompareBarScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64FD2192E275007421DE /* YosKeepAccountsGradientCompareBarScene.m */; };
 		82DC65AE2192E275007421DE /* UILabel+YKALabelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65022192E275007421DE /* UILabel+YKALabelKit.m */; };
 		82DC65AF2192E275007421DE /* UIButton+Count.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65062192E275007421DE /* UIButton+Count.m */; };
 		82DC65B02192E275007421DE /* UIAlertView+Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65082192E275007421DE /* UIAlertView+Block.m */; };
@@ -101,9 +66,7 @@
 		82DC65B32192E275007421DE /* UIColor+YKAAddColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65102192E275007421DE /* UIColor+YKAAddColor.m */; };
 		82DC65B42192E275007421DE /* UIView+SceneKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65122192E275007421DE /* UIView+SceneKit.m */; };
 		82DC65B52192E275007421DE /* YosKeepAccountsControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65142192E275007421DE /* YosKeepAccountsControl.m */; };
-		82DC65B62192E275007421DE /* cityInfo.json in Resources */ = {isa = PBXBuildFile; fileRef = 82DC65152192E275007421DE /* cityInfo.json */; };
 		82DC65B72192E275007421DE /* NSString+LabelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65192192E275007421DE /* NSString+LabelKit.m */; };
-		82DC65B82192E275007421DE /* NSString+cityInfos.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC651A2192E275007421DE /* NSString+cityInfos.m */; };
 		82DC65B92192E275007421DE /* NSObject+HQIQKeyBoardConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC651E2192E275007421DE /* NSObject+HQIQKeyBoardConfig.m */; };
 		82DC65BA2192E275007421DE /* YosKeepAccountsPlistManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65202192E275007421DE /* YosKeepAccountsPlistManager.m */; };
 		82DC65BB2192E275007421DE /* YosKeepAccountsDeviceHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65222192E275007421DE /* YosKeepAccountsDeviceHelp.m */; };
@@ -158,16 +121,7 @@
 		82DC65F62192F7DC007421DE /* YosKeepAccountsCustomDatePickerBaseScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65F02192F7DC007421DE /* YosKeepAccountsCustomDatePickerBaseScene.m */; };
 		82DC65F72192F7DC007421DE /* NSDate+YosKeepAccountsAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65F42192F7DC007421DE /* NSDate+YosKeepAccountsAdd.m */; };
 		82DC65FE21930163007421DE /* YosKeepAccountsLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65FD21930163007421DE /* YosKeepAccountsLocation.m */; };
-		82DC65Yos2192E275007421DE /* YosKeepAccountsAreaSplineCompareScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64F72192E275007421DE /* YosKeepAccountsAreaSplineCompareScene.m */; };
-		82DC660921930E18007421DE /* YosKeepAccountsFeedbackPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660821930E18007421DE /* YosKeepAccountsFeedbackPresenter.m */; };
-		82DC660F21930E25007421DE /* YosKeepAccountsFeedbackEntity+Service.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660B21930E25007421DE /* YosKeepAccountsFeedbackEntity+Service.m */; };
-		82DC661021930E25007421DE /* YosKeepAccountsFeedbackEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC660E21930E25007421DE /* YosKeepAccountsFeedbackEntity.m */; };
 		82DC66172193110B007421DE /* YosKeepAccountsOrderListPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC66162193110B007421DE /* YosKeepAccountsOrderListPresenter.m */; };
-		82DC661F219320E0007421DE /* YosKeepAccountsTouchIDPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC661E219320E0007421DE /* YosKeepAccountsTouchIDPresenter.m */; };
-		82DC662A21932267007421DE /* YosKeepAccountsScrollDisplayPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662321932267007421DE /* YosKeepAccountsScrollDisplayPresenter.m */; };
-		82DC662B21932267007421DE /* YosKeepAccountsIntroducePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662421932267007421DE /* YosKeepAccountsIntroducePresenter.m */; };
-		82DC662C21932267007421DE /* YosKeepAccountsPagePresenter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82DC662621932267007421DE /* YosKeepAccountsPagePresenter.xib */; };
-		82DC662D21932267007421DE /* YosKeepAccountsPagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC662921932267007421DE /* YosKeepAccountsPagePresenter.m */; };
 		82DC66322193D76C007421DE /* OrderHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DC66312193D76C007421DE /* OrderHome.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -189,18 +143,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1FF614282320F01700588D78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FF6142D2320F52B00588D78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3BB36807C91790CCF1732377 /* Pods-YosKeepAccounts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YosKeepAccounts.release.xcconfig"; path = "Pods/Target Support Files/Pods-YosKeepAccounts/Pods-YosKeepAccounts.release.xcconfig"; sourceTree = "<group>"; };
 		4E4864E808461ACA2401DB6E /* libPods-YosKeepAccounts.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YosKeepAccounts.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		591518092193D719004B5B32 /* YosKeepAccountsSettingScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsSettingScene.h; sourceTree = "<group>"; };
-		5915180A2193D719004B5B32 /* YosKeepAccountsSettingScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsSettingScene.m; sourceTree = "<group>"; };
-		5915180C2193D724004B5B32 /* YosKeepAccountsSettingScene.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YosKeepAccountsSettingScene.xib; sourceTree = "<group>"; };
 		5915180E2193DCYos004B5B32 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		591518102193FEE0004B5B32 /* YosKeepAccountsPrivacyAgreementPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsPrivacyAgreementPresenter.h; sourceTree = "<group>"; };
-		591518112193FEE0004B5B32 /* YosKeepAccountsPrivacyAgreementPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsPrivacyAgreementPresenter.m; sourceTree = "<group>"; };
-		59151816219400D3004B5B32 /* YosKeepAccountsAboutPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsAboutPresenter.h; sourceTree = "<group>"; };
-		59151817219400D3004B5B32 /* YosKeepAccountsAboutPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsAboutPresenter.m; sourceTree = "<group>"; };
-		59151818219400D3004B5B32 /* YosKeepAccountsAboutPresenter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YosKeepAccountsAboutPresenter.xib; sourceTree = "<group>"; };
-		5915181B219403D4004B5B32 /* PrivateAgreement.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = PrivateAgreement.html; sourceTree = "<group>"; };
 		5915181F21942423004B5B32 /* YosKeepAccountsEditOrderPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsEditOrderPresenter.h; sourceTree = "<group>"; };
 		5915182021942423004B5B32 /* YosKeepAccountsEditOrderPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsEditOrderPresenter.m; sourceTree = "<group>"; };
 		5915182621943737004B5B32 /* YosKeepAccountsEditOrderToolBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsEditOrderToolBar.h; sourceTree = "<group>"; };
@@ -209,15 +156,7 @@
 		5915182B2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsEditOrderToolBarCell.h; sourceTree = "<group>"; };
 		5915182C2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsEditOrderToolBarCell.m; sourceTree = "<group>"; };
 		5915182D2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YosKeepAccountsEditOrderToolBarCell.xib; sourceTree = "<group>"; };
-		5990B8FF2265CCBB0053397E /* TalkingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TalkingData.h; sourceTree = "<group>"; };
-		5990B9002265CCBB0053397E /* libTalkingData.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTalkingData.a; sourceTree = "<group>"; };
-		59D9F60F226587F600FA6E64 /* VoicePermissionManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoicePermissionManager.h; sourceTree = "<group>"; };
-		59D9F610226587F600FA6E64 /* VoicePermissionManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoicePermissionManager.m; sourceTree = "<group>"; };
 		59D9F6152265890500FA6E64 /* Speech.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Speech.framework; path = System/Library/Frameworks/Speech.framework; sourceTree = SDKROOT; };
-		59D9F6182265BA7300FA6E64 /* ContactHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactHandler.h; sourceTree = "<group>"; };
-		59D9F6192265BA7300FA6E64 /* ContactsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsModel.h; sourceTree = "<group>"; };
-		59D9F61A2265BA7300FA6E64 /* ContactHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactHandler.m; sourceTree = "<group>"; };
-		59D9F61B2265BA7300FA6E64 /* ContactsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsModel.m; sourceTree = "<group>"; };
 		59D9F61E2265BB8B00FA6E64 /* PermissionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PermissionManager.m; sourceTree = "<group>"; };
 		59D9F61F2265BB8C00FA6E64 /* PermissionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PermissionManager.h; sourceTree = "<group>"; };
 		8218165F219518D900521E75 /* UNNoDataScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UNNoDataScene.m; sourceTree = "<group>"; };
@@ -234,8 +173,6 @@
 		823A36AC22433E49000D1D2A /* YosKeepAccountsUITests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsUITests.m; sourceTree = "<group>"; };
 		823A36AD22433E49000D1D2A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		823A36B122448AB1000D1D2A /* EditOrder.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditOrder.storyboard; sourceTree = "<group>"; };
-		828296032269FED900228069 /* 服务条款协议.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "服务条款协议.txt"; sourceTree = "<group>"; };
-		828296042269FEDA00228069 /* 隐私协议.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "隐私协议.txt"; sourceTree = "<group>"; };
 		82A9CF90224B84CA00D9397F /* YosKeepAccountsIrregularityContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YosKeepAccountsIrregularityContentView.swift; sourceTree = "<group>"; };
 		82A9CF92224BA5AE00D9397F /* YosKeepAccountsBouncesContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YosKeepAccountsBouncesContentView.swift; sourceTree = "<group>"; };
 		82A9CF94224BA5DF00D9397F /* YosKeepAccountsBasicContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YosKeepAccountsBasicContentView.swift; sourceTree = "<group>"; };
@@ -259,10 +196,6 @@
 		82CA0F912248864F00E8A711 /* YosKeepAccountsTabBarItemContentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YosKeepAccountsTabBarItemContentScene.swift; sourceTree = "<group>"; };
 		82CA0F9822489C7F00E8A711 /* UIColor+YKATheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+YKATheme.h"; sourceTree = "<group>"; };
 		82CA0F9922489C7F00E8A711 /* UIColor+YKATheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+YKATheme.m"; sourceTree = "<group>"; };
-		82CA0F9E2248C15700E8A711 /* YosKeepAccountsSpecialScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsSpecialScene.h; sourceTree = "<group>"; };
-		82CA0F9F2248C15700E8A711 /* YosKeepAccountsSpecialScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsSpecialScene.m; sourceTree = "<group>"; };
-		82CA0FA12248DA7D00E8A711 /* YosKeepAccountsMePresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsMePresenter.h; sourceTree = "<group>"; };
-		82CA0FA22248DA7D00E8A711 /* YosKeepAccountsMePresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsMePresenter.m; sourceTree = "<group>"; };
 		82CA0FA72248F74A00E8A711 /* YosKeepAccountsChartPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsChartPresenter.h; sourceTree = "<group>"; };
 		82CA0FA82248F74A00E8A711 /* YosKeepAccountsChartPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsChartPresenter.m; sourceTree = "<group>"; };
 		82CA0FAA2248F75400E8A711 /* YosKeepAccountsChartBrokenLineScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsChartBrokenLineScene.h; sourceTree = "<group>"; };
@@ -276,10 +209,6 @@
 		82CA0FBA2249F7B800E8A711 /* YosKeepAccountsWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsWaterWaveView.h; sourceTree = "<group>"; };
 		82CA0FBB2249F7B800E8A711 /* YosKeepAccountsWaterWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsWaterWeakProxy.m; sourceTree = "<group>"; };
 		82CA0FBC2249F7B800E8A711 /* YosKeepAccountsWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsWaterWaveView.m; sourceTree = "<group>"; };
-		82CA0FBF224B0F3800E8A711 /* AppDelegate+YKAUserCenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+YKAUserCenter.h"; sourceTree = "<group>"; };
-		82CA0FC0224B0F3800E8A711 /* AppDelegate+YKAUserCenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+YKAUserCenter.m"; sourceTree = "<group>"; };
-		82CA0FC3224B105400E8A711 /* YosKeepAccountsUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsUserManager.h; sourceTree = "<group>"; };
-		82CA0FC4224B105400E8A711 /* YosKeepAccountsUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsUserManager.m; sourceTree = "<group>"; };
 		82CD2BDD219588EE00E86371 /* A.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = A.swift; sourceTree = "<group>"; };
 		82CD2BE021958BD400E86371 /* YosKeepAccountsHomeDateSelectButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsHomeDateSelectButton.h; sourceTree = "<group>"; };
 		82CD2BE121958BD400E86371 /* YosKeepAccountsHomeDateSelectButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsHomeDateSelectButton.m; sourceTree = "<group>"; };
@@ -298,7 +227,6 @@
 		82CD2C0021990A9D00E86371 /* YosKeepAccountsOrderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsOrderListCell.h; sourceTree = "<group>"; };
 		82CD2C0121990A9E00E86371 /* YosKeepAccountsOrderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsOrderListCell.m; sourceTree = "<group>"; };
 		82DC63642192E15E007421DE /* YosKeepAccounts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YosKeepAccounts.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		82DC63752192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DC637C2192E15F007421DE /* YosKeepAccountsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YosKeepAccountsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DC63802192E15F007421DE /* YosKeepAccountsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsTests.m; sourceTree = "<group>"; };
 		82DC63822192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -309,43 +237,6 @@
 		82DC64CB2192E275007421DE /* YosKeepAccountsHomePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsHomePresenter.h; sourceTree = "<group>"; };
 		82DC64CD2192E275007421DE /* HomeDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDataEntity.m; sourceTree = "<group>"; };
 		82DC64CE2192E275007421DE /* HomeDataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeDataEntity.h; sourceTree = "<group>"; };
-		82DC64D02192E275007421DE /* YosKeepAccountsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsButton.h; sourceTree = "<group>"; };
-		82DC64D12192E275007421DE /* YosKeepAccountsRightItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsRightItemButton.m; sourceTree = "<group>"; };
-		82DC64D22192E275007421DE /* YosKeepAccountsLeftItemButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsLeftItemButton.m; sourceTree = "<group>"; };
-		82DC64D42192E275007421DE /* HomeBaseListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeBaseListCell.xib; sourceTree = "<group>"; };
-		82DC64D62192E275007421DE /* YosKeepAccountsApplyRecordCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsApplyRecordCell.h; sourceTree = "<group>"; };
-		82DC64D72192E275007421DE /* YosKeepAccountsCredictUsingRateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsCredictUsingRateCell.m; sourceTree = "<group>"; };
-		82DC64D82192E275007421DE /* YosKeepAccountsHomeBaseListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsHomeBaseListCell.m; sourceTree = "<group>"; };
-		82DC64DA2192E275007421DE /* YosKeepAccountsApplyRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsApplyRecordCell.m; sourceTree = "<group>"; };
-		82DC64DC2192E275007421DE /* YosKeepAccountsHomeBaseListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsHomeBaseListCell.h; sourceTree = "<group>"; };
-		82DC64DD2192E275007421DE /* YosKeepAccountsCredictUsingRateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsCredictUsingRateCell.h; sourceTree = "<group>"; };
-		82DC64DE2192E275007421DE /* YosKeepAccountsRightItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsRightItemButton.h; sourceTree = "<group>"; };
-		82DC64DF2192E275007421DE /* YosKeepAccountsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsButton.m; sourceTree = "<group>"; };
-		82DC64E12192E275007421DE /* YosKeepAccountsCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsCircle.h; sourceTree = "<group>"; };
-		82DC64E32192E275007421DE /* YosKeepAccountsCircleProgressScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsCircleProgressScene.h; sourceTree = "<group>"; };
-		82DC64E42192E275007421DE /* YosKeepAccountsWaveAnimationScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsWaveAnimationScene.h; sourceTree = "<group>"; };
-		82DC64E52192E275007421DE /* YosKeepAccountsCircleIndicatorScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsCircleIndicatorScene.h; sourceTree = "<group>"; };
-		82DC64E62192E275007421DE /* YosKeepAccountsWangYiWave.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsWangYiWave.m; sourceTree = "<group>"; };
-		82DC64E82192E275007421DE /* YosKeepAccountsProgressScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsProgressScene.h; sourceTree = "<group>"; };
-		82DC64E92192E275007421DE /* YosKeepAccountsNameHeaderScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsNameHeaderScene.m; sourceTree = "<group>"; };
-		82DC64EA2192E275007421DE /* YosKeepAccountsScoreProgressScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsScoreProgressScene.m; sourceTree = "<group>"; };
-		82DC64EB2192E275007421DE /* YosKeepAccountsCircleProgressScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsCircleProgressScene.m; sourceTree = "<group>"; };
-		82DC64ED2192E275007421DE /* YosKeepAccountsCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsCircle.m; sourceTree = "<group>"; };
-		82DC64EE2192E275007421DE /* YosKeepAccountsProgressScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsProgressScene.m; sourceTree = "<group>"; };
-		82DC64F02192E275007421DE /* YosKeepAccountsWangYiWave.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsWangYiWave.h; sourceTree = "<group>"; };
-		82DC64F12192E275007421DE /* YosKeepAccountsCircleIndicatorScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsCircleIndicatorScene.m; sourceTree = "<group>"; };
-		82DC64F22192E275007421DE /* YosKeepAccountsWaveAnimationScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsWaveAnimationScene.m; sourceTree = "<group>"; };
-		82DC64F32192E275007421DE /* YosKeepAccountsScoreProgressScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsScoreProgressScene.h; sourceTree = "<group>"; };
-		82DC64F42192E275007421DE /* YosKeepAccountsNameHeaderScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsNameHeaderScene.h; sourceTree = "<group>"; };
-		82DC64F62192E275007421DE /* YosKeepAccountsBaseChartScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsBaseChartScene.h; sourceTree = "<group>"; };
-		82DC64F72192E275007421DE /* YosKeepAccountsAreaSplineCompareScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsAreaSplineCompareScene.m; sourceTree = "<group>"; };
-		82DC64F82192E275007421DE /* YosKeepAccountsAreaSplineChartScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsAreaSplineChartScene.m; sourceTree = "<group>"; };
-		82DC64F92192E275007421DE /* YosKeepAccountsGradientCompareBarScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsGradientCompareBarScene.h; sourceTree = "<group>"; };
-		82DC64FA2192E275007421DE /* YosKeepAccountsBaseChartScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsBaseChartScene.m; sourceTree = "<group>"; };
-		82DC64FB2192E275007421DE /* YosKeepAccountsAreaSplineChartScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsAreaSplineChartScene.h; sourceTree = "<group>"; };
-		82DC64FC2192E275007421DE /* YosKeepAccountsAreaSplineCompareScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsAreaSplineCompareScene.h; sourceTree = "<group>"; };
-		82DC64FD2192E275007421DE /* YosKeepAccountsGradientCompareBarScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsGradientCompareBarScene.m; sourceTree = "<group>"; };
-		82DC64FE2192E275007421DE /* YosKeepAccountsLeftItemButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsLeftItemButton.h; sourceTree = "<group>"; };
 		82DC65022192E275007421DE /* UILabel+YKALabelKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+YKALabelKit.m"; sourceTree = "<group>"; };
 		82DC65032192E275007421DE /* UILabel+YKALabelKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+YKALabelKit.h"; sourceTree = "<group>"; };
 		82DC65052192E275007421DE /* UIButton+Count.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Count.h"; sourceTree = "<group>"; };
@@ -361,11 +252,8 @@
 		82DC65122192E275007421DE /* UIView+SceneKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SceneKit.m"; sourceTree = "<group>"; };
 		82DC65132192E275007421DE /* UIView+SceneKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SceneKit.h"; sourceTree = "<group>"; };
 		82DC65142192E275007421DE /* YosKeepAccountsControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsControl.m; sourceTree = "<group>"; };
-		82DC65152192E275007421DE /* cityInfo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cityInfo.json; sourceTree = "<group>"; };
 		82DC65172192E275007421DE /* NSString+LabelKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LabelKit.h"; sourceTree = "<group>"; };
-		82DC65182192E275007421DE /* NSString+cityInfos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+cityInfos.h"; sourceTree = "<group>"; };
 		82DC65192192E275007421DE /* NSString+LabelKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LabelKit.m"; sourceTree = "<group>"; };
-		82DC651A2192E275007421DE /* NSString+cityInfos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+cityInfos.m"; sourceTree = "<group>"; };
 		82DC651B2192E275007421DE /* YosKeepAccountsControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsControl.h; sourceTree = "<group>"; };
 		82DC651D2192E275007421DE /* NSObject+HQIQKeyBoardConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HQIQKeyBoardConfig.h"; sourceTree = "<group>"; };
 		82DC651E2192E275007421DE /* NSObject+HQIQKeyBoardConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HQIQKeyBoardConfig.m"; sourceTree = "<group>"; };
@@ -472,23 +360,8 @@
 		82DC65F42192F7DC007421DE /* NSDate+YosKeepAccountsAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+YosKeepAccountsAdd.m"; sourceTree = "<group>"; };
 		82DC65FC21930163007421DE /* YosKeepAccountsLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsLocation.h; sourceTree = "<group>"; };
 		82DC65FD21930163007421DE /* YosKeepAccountsLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsLocation.m; sourceTree = "<group>"; };
-		82DC660721930E18007421DE /* YosKeepAccountsFeedbackPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsFeedbackPresenter.h; sourceTree = "<group>"; };
-		82DC660821930E18007421DE /* YosKeepAccountsFeedbackPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsFeedbackPresenter.m; sourceTree = "<group>"; };
-		82DC660B21930E25007421DE /* YosKeepAccountsFeedbackEntity+Service.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YosKeepAccountsFeedbackEntity+Service.m"; sourceTree = "<group>"; };
-		82DC660C21930E25007421DE /* YosKeepAccountsFeedbackEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsFeedbackEntity.h; sourceTree = "<group>"; };
-		82DC660D21930E25007421DE /* YosKeepAccountsFeedbackEntity+Service.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YosKeepAccountsFeedbackEntity+Service.h"; sourceTree = "<group>"; };
-		82DC660E21930E25007421DE /* YosKeepAccountsFeedbackEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsFeedbackEntity.m; sourceTree = "<group>"; };
 		82DC66152193110B007421DE /* YosKeepAccountsOrderListPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsOrderListPresenter.h; sourceTree = "<group>"; };
 		82DC66162193110B007421DE /* YosKeepAccountsOrderListPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsOrderListPresenter.m; sourceTree = "<group>"; };
-		82DC661D219320E0007421DE /* YosKeepAccountsTouchIDPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsTouchIDPresenter.h; sourceTree = "<group>"; };
-		82DC661E219320E0007421DE /* YosKeepAccountsTouchIDPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsTouchIDPresenter.m; sourceTree = "<group>"; };
-		82DC662321932267007421DE /* YosKeepAccountsScrollDisplayPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsScrollDisplayPresenter.m; sourceTree = "<group>"; };
-		82DC662421932267007421DE /* YosKeepAccountsIntroducePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsIntroducePresenter.m; sourceTree = "<group>"; };
-		82DC662521932267007421DE /* YosKeepAccountsPagePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsPagePresenter.h; sourceTree = "<group>"; };
-		82DC662621932267007421DE /* YosKeepAccountsPagePresenter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YosKeepAccountsPagePresenter.xib; sourceTree = "<group>"; };
-		82DC662721932267007421DE /* YosKeepAccountsIntroducePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsIntroducePresenter.h; sourceTree = "<group>"; };
-		82DC662821932267007421DE /* YosKeepAccountsScrollDisplayPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YosKeepAccountsScrollDisplayPresenter.h; sourceTree = "<group>"; };
-		82DC662921932267007421DE /* YosKeepAccountsPagePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YosKeepAccountsPagePresenter.m; sourceTree = "<group>"; };
 		82DC662E2193CE33007421DE /* YosKeepAccounts-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YosKeepAccounts-Bridging-Header.h"; sourceTree = "<group>"; };
 		82DC66312193D76C007421DE /* OrderHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderHome.storyboard; sourceTree = "<group>"; };
 		9BEF51BEE2E08CC83CA42644 /* Pods-YosKeepAccounts.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YosKeepAccounts.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YosKeepAccounts/Pods-YosKeepAccounts.debug.xcconfig"; sourceTree = "<group>"; };
@@ -499,9 +372,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				59D9F6162265890500FA6E64 /* Speech.framework in Frameworks */,
-				5915180F2193DCYos004B5B32 /* AVFoundation.framework in Frameworks */,
-				5990B9012265CCBC0053397E /* libTalkingData.a in Frameworks */,
 				6AB857D036ADDB2C2A9E4FD3 /* libPods-YosKeepAccounts.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,39 +400,6 @@
 				3BB36807C91790CCF1732377 /* Pods-YosKeepAccounts.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		591518062193D6EA004B5B32 /* Setting */ = {
-			isa = PBXGroup;
-			children = (
-				591518082193D6F9004B5B32 /* Presenters */,
-				591518072193D6F5004B5B32 /* Scenes */,
-			);
-			path = Setting;
-			sourceTree = "<group>";
-		};
-		591518072193D6F5004B5B32 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				591518092193D719004B5B32 /* YosKeepAccountsSettingScene.h */,
-				5915180A2193D719004B5B32 /* YosKeepAccountsSettingScene.m */,
-				5915180C2193D724004B5B32 /* YosKeepAccountsSettingScene.xib */,
-			);
-			path = Scenes;
-			sourceTree = "<group>";
-		};
-		591518082193D6F9004B5B32 /* Presenters */ = {
-			isa = PBXGroup;
-			children = (
-				82CA0FA12248DA7D00E8A711 /* YosKeepAccountsMePresenter.h */,
-				82CA0FA22248DA7D00E8A711 /* YosKeepAccountsMePresenter.m */,
-				591518102193FEE0004B5B32 /* YosKeepAccountsPrivacyAgreementPresenter.h */,
-				591518112193FEE0004B5B32 /* YosKeepAccountsPrivacyAgreementPresenter.m */,
-				59151816219400D3004B5B32 /* YosKeepAccountsAboutPresenter.h */,
-				59151817219400D3004B5B32 /* YosKeepAccountsAboutPresenter.m */,
-				59151818219400D3004B5B32 /* YosKeepAccountsAboutPresenter.xib */,
-			);
-			path = Presenters;
 			sourceTree = "<group>";
 		};
 		5915181D219423C4004B5B32 /* EditOrder */ = {
@@ -597,21 +434,10 @@
 			path = Scene;
 			sourceTree = "<group>";
 		};
-		5990B8FE2265CCBB0053397E /* AppAnalytics_V4.0.27 */ = {
-			isa = PBXGroup;
-			children = (
-				5990B8FF2265CCBB0053397E /* TalkingData.h */,
-				5990B9002265CCBB0053397E /* libTalkingData.a */,
-			);
-			path = AppAnalytics_V4.0.27;
-			sourceTree = "<group>";
-		};
 		59D9F60B226580CD00FA6E64 /* PermissionKit */ = {
 			isa = PBXGroup;
 			children = (
 				59D9F6172265BA7300FA6E64 /* ContactHandler */,
-				59D9F60F226587F600FA6E64 /* VoicePermissionManager.h */,
-				59D9F610226587F600FA6E64 /* VoicePermissionManager.m */,
 			);
 			path = PermissionKit;
 			sourceTree = "<group>";
@@ -621,10 +447,6 @@
 			children = (
 				59D9F61F2265BB8C00FA6E64 /* PermissionManager.h */,
 				59D9F61E2265BB8B00FA6E64 /* PermissionManager.m */,
-				59D9F6182265BA7300FA6E64 /* ContactHandler.h */,
-				59D9F6192265BA7300FA6E64 /* ContactsModel.h */,
-				59D9F61A2265BA7300FA6E64 /* ContactHandler.m */,
-				59D9F61B2265BA7300FA6E64 /* ContactsModel.m */,
 			);
 			path = ContactHandler;
 			sourceTree = "<group>";
@@ -780,15 +602,6 @@
 			path = UIControlCreater;
 			sourceTree = "<group>";
 		};
-		82CA0F9D2248C12100E8A711 /* SpecialScene */ = {
-			isa = PBXGroup;
-			children = (
-				82CA0F9E2248C15700E8A711 /* YosKeepAccountsSpecialScene.h */,
-				82CA0F9F2248C15700E8A711 /* YosKeepAccountsSpecialScene.m */,
-			);
-			path = SpecialScene;
-			sourceTree = "<group>";
-		};
 		82CA0FA42248F70300E8A711 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
@@ -846,15 +659,6 @@
 				82CA0FBB2249F7B800E8A711 /* YosKeepAccountsWaterWeakProxy.m */,
 			);
 			path = WaterWave;
-			sourceTree = "<group>";
-		};
-		82CA0FC2224B103C00E8A711 /* UserManager */ = {
-			isa = PBXGroup;
-			children = (
-				82CA0FC3224B105400E8A711 /* YosKeepAccountsUserManager.h */,
-				82CA0FC4224B105400E8A711 /* YosKeepAccountsUserManager.m */,
-			);
-			path = UserManager;
 			sourceTree = "<group>";
 		};
 		82CD2BDF21958BAD00E86371 /* DateSelectButton */ = {
@@ -926,7 +730,8 @@
 				82DC64C32192E275007421DE /* Global */,
 				82DC658D2192E275007421DE /* Other */,
 				82DC64C72192E275007421DE /* OrderRecord */,
-				82DC63752192E15F007421DE /* Info.plist */,
+				1FF6142E2320F52B00588D78 /* InfoPlist.strings */,
+				1FF614282320F01700588D78 /* Info.plist */,
 			);
 			path = YosKeepAccounts;
 			sourceTree = "<group>";
@@ -945,8 +750,6 @@
 			children = (
 				82DC64C42192E275007421DE /* AppDelegate.h */,
 				82DC64C52192E275007421DE /* AppDelegate.m */,
-				82CA0FBF224B0F3800E8A711 /* AppDelegate+YKAUserCenter.h */,
-				82CA0FC0224B0F3800E8A711 /* AppDelegate+YKAUserCenter.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -956,7 +759,6 @@
 			children = (
 				59D9F60B226580CD00FA6E64 /* PermissionKit */,
 				82DC64FF2192E275007421DE /* Expand */,
-				82DC653D2192E275007421DE /* Resources */,
 				82DC653E2192E275007421DE /* Main */,
 				82DC653F2192E275007421DE /* Base */,
 				82DC65472192E275007421DE /* Vender */,
@@ -987,8 +789,8 @@
 		82DC64CC2192E275007421DE /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				82DC64CD2192E275007421DE /* HomeDataEntity.m */,
 				82DC64CE2192E275007421DE /* HomeDataEntity.h */,
+				82DC64CD2192E275007421DE /* HomeDataEntity.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -997,7 +799,6 @@
 			isa = PBXGroup;
 			children = (
 				82CA0FB82249F7A700E8A711 /* WaterWave */,
-				82CA0F9D2248C12100E8A711 /* SpecialScene */,
 				82CD2BFB21990A7D00E86371 /* CountingLabel */,
 				82CD2BE32195A35800E86371 /* OrderLineTypeScene */,
 				82CD2BDF21958BAD00E86371 /* DateSelectButton */,
@@ -1006,65 +807,8 @@
 				82B309D8219403E400284246 /* LeapButton */,
 				82B4B7002193EAF3009A4B62 /* OrderList */,
 				82DC66332193E0E2007421DE /* OrderCell */,
-				82DC66192193170B007421DE /* ItemButton */,
-				82DC6618219316FC007421DE /* ZYZButton */,
-				82DC64D32192E275007421DE /* Cell */,
-				82DC64E02192E275007421DE /* Header */,
-				82DC64F52192E275007421DE /* YosChartScene */,
 			);
 			path = Scene;
-			sourceTree = "<group>";
-		};
-		82DC64D32192E275007421DE /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				82DC64D42192E275007421DE /* HomeBaseListCell.xib */,
-				82DC64D62192E275007421DE /* YosKeepAccountsApplyRecordCell.h */,
-				82DC64DA2192E275007421DE /* YosKeepAccountsApplyRecordCell.m */,
-				82DC64DD2192E275007421DE /* YosKeepAccountsCredictUsingRateCell.h */,
-				82DC64D72192E275007421DE /* YosKeepAccountsCredictUsingRateCell.m */,
-				82DC64D82192E275007421DE /* YosKeepAccountsHomeBaseListCell.m */,
-				82DC64DC2192E275007421DE /* YosKeepAccountsHomeBaseListCell.h */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
-		82DC64E02192E275007421DE /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				82DC64E12192E275007421DE /* YosKeepAccountsCircle.h */,
-				82DC64ED2192E275007421DE /* YosKeepAccountsCircle.m */,
-				82DC64E32192E275007421DE /* YosKeepAccountsCircleProgressScene.h */,
-				82DC64EB2192E275007421DE /* YosKeepAccountsCircleProgressScene.m */,
-				82DC64E42192E275007421DE /* YosKeepAccountsWaveAnimationScene.h */,
-				82DC64F22192E275007421DE /* YosKeepAccountsWaveAnimationScene.m */,
-				82DC64E52192E275007421DE /* YosKeepAccountsCircleIndicatorScene.h */,
-				82DC64F12192E275007421DE /* YosKeepAccountsCircleIndicatorScene.m */,
-				82DC64F02192E275007421DE /* YosKeepAccountsWangYiWave.h */,
-				82DC64E62192E275007421DE /* YosKeepAccountsWangYiWave.m */,
-				82DC64E82192E275007421DE /* YosKeepAccountsProgressScene.h */,
-				82DC64EE2192E275007421DE /* YosKeepAccountsProgressScene.m */,
-				82DC64F42192E275007421DE /* YosKeepAccountsNameHeaderScene.h */,
-				82DC64E92192E275007421DE /* YosKeepAccountsNameHeaderScene.m */,
-				82DC64F32192E275007421DE /* YosKeepAccountsScoreProgressScene.h */,
-				82DC64EA2192E275007421DE /* YosKeepAccountsScoreProgressScene.m */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		82DC64F52192E275007421DE /* YosChartScene */ = {
-			isa = PBXGroup;
-			children = (
-				82DC64F62192E275007421DE /* YosKeepAccountsBaseChartScene.h */,
-				82DC64FA2192E275007421DE /* YosKeepAccountsBaseChartScene.m */,
-				82DC64F92192E275007421DE /* YosKeepAccountsGradientCompareBarScene.h */,
-				82DC64FD2192E275007421DE /* YosKeepAccountsGradientCompareBarScene.m */,
-				82DC64FB2192E275007421DE /* YosKeepAccountsAreaSplineChartScene.h */,
-				82DC64F82192E275007421DE /* YosKeepAccountsAreaSplineChartScene.m */,
-				82DC64FC2192E275007421DE /* YosKeepAccountsAreaSplineCompareScene.h */,
-				82DC64F72192E275007421DE /* YosKeepAccountsAreaSplineCompareScene.m */,
-			);
-			path = YosChartScene;
 			sourceTree = "<group>";
 		};
 		82DC64FF2192E275007421DE /* Expand */ = {
@@ -1088,7 +832,6 @@
 				82DC65072192E275007421DE /* UIAlertScene */,
 				82DC650C2192E275007421DE /* UIFont */,
 				82DC65112192E275007421DE /* UIScene */,
-				82DC65152192E275007421DE /* cityInfo.json */,
 				82DC65162192E275007421DE /* NSString */,
 				82DC651C2192E275007421DE /* NSObject */,
 			);
@@ -1146,9 +889,7 @@
 			isa = PBXGroup;
 			children = (
 				82DC65172192E275007421DE /* NSString+LabelKit.h */,
-				82DC65182192E275007421DE /* NSString+cityInfos.h */,
 				82DC65192192E275007421DE /* NSString+LabelKit.m */,
-				82DC651A2192E275007421DE /* NSString+cityInfos.m */,
 			);
 			path = NSString;
 			sourceTree = "<group>";
@@ -1232,16 +973,6 @@
 			path = Macros;
 			sourceTree = "<group>";
 		};
-		82DC653D2192E275007421DE /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				828296032269FED900228069 /* 服务条款协议.txt */,
-				828296042269FEDA00228069 /* 隐私协议.txt */,
-				5915181B219403D4004B5B32 /* PrivateAgreement.html */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		82DC653E2192E275007421DE /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -1249,10 +980,7 @@
 				82CA0F87224881DE00E8A711 /* Tab Bar */,
 				823758AF2199A9300065D56B /* OrderMonthList */,
 				5915181D219423C4004B5B32 /* EditOrder */,
-				591518062193D6EA004B5B32 /* Setting */,
-				82DC661A219320C0007421DE /* Account */,
 				82DC661121931041007421DE /* OrderDayList */,
-				82DC660521930DFF007421DE /* Feedback */,
 				82DC64C82192E275007421DE /* Home */,
 			);
 			path = Main;
@@ -1261,7 +989,6 @@
 		82DC653F2192E275007421DE /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				82DC662221932267007421DE /* Introducer */,
 				82DC662121932250007421DE /* Controller */,
 				82DC65432192E275007421DE /* Entity */,
 			);
@@ -1280,7 +1007,6 @@
 		82DC65472192E275007421DE /* Vender */ = {
 			isa = PBXGroup;
 			children = (
-				5990B8FE2265CCBB0053397E /* AppAnalytics_V4.0.27 */,
 				8218165E219518D900521E75 /* YosKeepAccountsListPlaceHolder */,
 				82DC65EE2192F7DC007421DE /* YosKeepAccountsCustomDatePicker */,
 				82DC65482192E275007421DE /* YosChartKitLib */,
@@ -1427,35 +1153,6 @@
 			path = YosKeepAccountsLocation;
 			sourceTree = "<group>";
 		};
-		82DC660521930DFF007421DE /* Feedback */ = {
-			isa = PBXGroup;
-			children = (
-				82DC660A21930E1B007421DE /* Entity */,
-				82DC660621930E0E007421DE /* Controller */,
-			);
-			path = Feedback;
-			sourceTree = "<group>";
-		};
-		82DC660621930E0E007421DE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				82DC660721930E18007421DE /* YosKeepAccountsFeedbackPresenter.h */,
-				82DC660821930E18007421DE /* YosKeepAccountsFeedbackPresenter.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		82DC660A21930E1B007421DE /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-				82DC660C21930E25007421DE /* YosKeepAccountsFeedbackEntity.h */,
-				82DC660E21930E25007421DE /* YosKeepAccountsFeedbackEntity.m */,
-				82DC660D21930E25007421DE /* YosKeepAccountsFeedbackEntity+Service.h */,
-				82DC660B21930E25007421DE /* YosKeepAccountsFeedbackEntity+Service.m */,
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
 		82DC661121931041007421DE /* OrderDayList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1493,52 +1190,6 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		82DC6618219316FC007421DE /* ZYZButton */ = {
-			isa = PBXGroup;
-			children = (
-				82DC64D02192E275007421DE /* YosKeepAccountsButton.h */,
-				82DC64DF2192E275007421DE /* YosKeepAccountsButton.m */,
-			);
-			path = ZYZButton;
-			sourceTree = "<group>";
-		};
-		82DC66192193170B007421DE /* ItemButton */ = {
-			isa = PBXGroup;
-			children = (
-				82DC64DE2192E275007421DE /* YosKeepAccountsRightItemButton.h */,
-				82DC64D12192E275007421DE /* YosKeepAccountsRightItemButton.m */,
-				82DC64FE2192E275007421DE /* YosKeepAccountsLeftItemButton.h */,
-				82DC64D22192E275007421DE /* YosKeepAccountsLeftItemButton.m */,
-			);
-			path = ItemButton;
-			sourceTree = "<group>";
-		};
-		82DC661A219320C0007421DE /* Account */ = {
-			isa = PBXGroup;
-			children = (
-				82CA0FC2224B103C00E8A711 /* UserManager */,
-				82DC661B219320CD007421DE /* FaceID */,
-			);
-			path = Account;
-			sourceTree = "<group>";
-		};
-		82DC661B219320CD007421DE /* FaceID */ = {
-			isa = PBXGroup;
-			children = (
-				82DC661C219320D7007421DE /* Controller */,
-			);
-			path = FaceID;
-			sourceTree = "<group>";
-		};
-		82DC661C219320D7007421DE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				82DC661D219320E0007421DE /* YosKeepAccountsTouchIDPresenter.h */,
-				82DC661E219320E0007421DE /* YosKeepAccountsTouchIDPresenter.m */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
 		82DC662121932250007421DE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1548,20 +1199,6 @@
 				82DC65402192E275007421DE /* YosKeepAccountsBasePresenter.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		82DC662221932267007421DE /* Introducer */ = {
-			isa = PBXGroup;
-			children = (
-				82DC662721932267007421DE /* YosKeepAccountsIntroducePresenter.h */,
-				82DC662421932267007421DE /* YosKeepAccountsIntroducePresenter.m */,
-				82DC662521932267007421DE /* YosKeepAccountsPagePresenter.h */,
-				82DC662921932267007421DE /* YosKeepAccountsPagePresenter.m */,
-				82DC662621932267007421DE /* YosKeepAccountsPagePresenter.xib */,
-				82DC662821932267007421DE /* YosKeepAccountsScrollDisplayPresenter.h */,
-				82DC662321932267007421DE /* YosKeepAccountsScrollDisplayPresenter.m */,
-			);
-			path = Introducer;
 			sourceTree = "<group>";
 		};
 		82DC66332193E0E2007421DE /* OrderCell */ = {
@@ -1692,26 +1329,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				82CD2C0221990A9E00E86371 /* YosKeepAccountsOrderListCell.xib in Resources */,
-				82DC65B62192E275007421DE /* cityInfo.json in Resources */,
 				82DC65CA2192E275007421DE /* YosHighcharts-3d.js in Resources */,
 				823A36B222448AB1000D1D2A /* EditOrder.storyboard in Resources */,
 				82DC65CB2192E275007421DE /* YosChartScene.html in Resources */,
 				82B309EA219439E800284246 /* YosKeepAccountsDaySelectedScene.xib in Resources */,
 				82DC65EA2192E275007421DE /* LaunchScreen.storyboard in Resources */,
-				5915181C219403D4004B5B32 /* PrivateAgreement.html in Resources */,
-				82DC662C21932267007421DE /* YosKeepAccountsPagePresenter.xib in Resources */,
 				82B309E821942FAB00284246 /* OrderList.storyboard in Resources */,
-				828296062269FEDA00228069 /* 隐私协议.txt in Resources */,
 				82CD2BE82195A39500E86371 /* YosKeepAccountsOrderLineTypeScene.xib in Resources */,
 				5915182F2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.xib in Resources */,
-				82DC659A2192E275007421DE /* HomeBaseListCell.xib in Resources */,
 				82DC65EB2192E275007421DE /* Main.storyboard in Resources */,
-				5915180D2193D724004B5B32 /* YosKeepAccountsSettingScene.xib in Resources */,
-				5915181A219400D3004B5B32 /* YosKeepAccountsAboutPresenter.xib in Resources */,
 				82DC65C72192E275007421DE /* YosHighchartsLib.js in Resources */,
 				82DC65C92192E275007421DE /* YosFunnel.js in Resources */,
-				828296052269FEDA00228069 /* 服务条款协议.txt in Resources */,
 				5915182A21943746004B5B32 /* YosKeepAccountsEditOrderToolBar.xib in Resources */,
+				1FF614322320FB3A00588D78 /* InfoPlist.strings in Resources */,
 				82DC65E92192E275007421DE /* Assets.xcassets in Resources */,
 				82DC65C82192E275007421DE /* YosHighchartsMore.js in Resources */,
 				82CA0FB72249F37F00E8A711 /* Chart.storyboard in Resources */,
@@ -1763,38 +1393,26 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-YosKeepAccounts/Pods-YosKeepAccounts-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/AppUpdate/AppUpdate.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-YosKeepAccounts/Pods-YosKeepAccounts-resources.sh",
 				"${PODS_ROOT}/ESTabBarController-swift/Sources/en.lproj",
 				"${PODS_ROOT}/HJWebView/HJWebView/Assets/HJWebViewController/HJWebView.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/HJ_UIKit/HJAlertView.bundle",
 				"${PODS_CONFIGURATION_BUILD_DIR}/HJ_UIKit/HJCityPickerManager.bundle",
 				"${PODS_ROOT}/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle",
-				"${PODS_ROOT}/UMengUShare/UShareSDK/UMSocialSDK/UMSocialSDKPromptResources.bundle",
-				"${PODS_ROOT}/UMengUShare/UShareSDK/SocialLibraries/QQ/QQSDK/TencentOpenApi_IOS_Bundle.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/UserCenter/UserCenter.bundle",
-				"${PODS_ROOT}/zxcvbn-ios/Zxcvbn/generated/adjacency_graphs.json",
-				"${PODS_ROOT}/zxcvbn-ios/Zxcvbn/generated/frequency_lists.json",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppUpdate.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HJWebView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HJAlertView.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/HJCityPickerManager.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKPromptResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TencentOpenApi_IOS_Bundle.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UserCenter.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/adjacency_graphs.json",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/frequency_lists.json",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YosKeepAccounts/Pods-YosKeepAccounts-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YosKeepAccounts/Pods-YosKeepAccounts-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1806,43 +1424,28 @@
 			files = (
 				82DC65BC2192E275007421DE /* UIDevice+YKAHardware.m in Sources */,
 				82DC65D52192E275007421DE /* YosYAxis.m in Sources */,
-				82CA0FC5224B105400E8A711 /* YosKeepAccountsUserManager.m in Sources */,
 				82DC65E22192E275007421DE /* YosItemStyle.m in Sources */,
 				82DC65CF2192E275007421DE /* YosXAxis.m in Sources */,
-				82DC662B21932267007421DE /* YosKeepAccountsIntroducePresenter.m in Sources */,
 				82CD2C0321990A9E00E86371 /* YosKeepAccountsOrderListCell.m in Sources */,
 				82CD2BEF2195AD9000E86371 /* YosKeepAccountsTranstionAnimationPush.m in Sources */,
 				823758B52199AB340065D56B /* YosKeepAccountsOrderMonthListPresenter.m in Sources */,
 				82DC66172193110B007421DE /* YosKeepAccountsOrderListPresenter.m in Sources */,
 				5915182E2194388A004B5B32 /* YosKeepAccountsEditOrderToolBarCell.m in Sources */,
 				82DC65BB2192E275007421DE /* YosKeepAccountsDeviceHelp.m in Sources */,
-				82DC660F21930E25007421DE /* YosKeepAccountsFeedbackEntity+Service.m in Sources */,
-				59D9F611226587F600FA6E64 /* VoicePermissionManager.m in Sources */,
-				82DC65A32192E275007421DE /* YosKeepAccountsScoreProgressScene.m in Sources */,
 				82CA0FAC2248F75500E8A711 /* YosKeepAccountsChartBrokenLineScene.m in Sources */,
-				591518122193FEE0004B5B32 /* YosKeepAccountsPrivacyAgreementPresenter.m in Sources */,
 				82DC65DA2192E275007421DE /* YosStyle.m in Sources */,
-				82CA0FA32248DA7D00E8A711 /* YosKeepAccountsMePresenter.m in Sources */,
-				82DC65AB2192E275007421DE /* YosKeepAccountsAreaSplineChartScene.m in Sources */,
-				82CA0FC1224B0F3800E8A711 /* AppDelegate+YKAUserCenter.m in Sources */,
-				82DC65A22192E275007421DE /* YosKeepAccountsNameHeaderScene.m in Sources */,
 				82B309E22194098800284246 /* YosKeepAccountsChartLineScene.m in Sources */,
 				82DC65962192E275007421DE /* YosKeepAccountsHomePresenter.m in Sources */,
-				82DC65B82192E275007421DE /* NSString+cityInfos.m in Sources */,
 				82CA0F9A22489C7F00E8A711 /* UIColor+YKATheme.m in Sources */,
-				82DC659F2192E275007421DE /* YosKeepAccountsButton.m in Sources */,
 				82DC65FE21930163007421DE /* YosKeepAccountsLocation.m in Sources */,
 				5915182221942423004B5B32 /* YosKeepAccountsEditOrderPresenter.m in Sources */,
 				82CA0FBE2249F7B800E8A711 /* YosKeepAccountsWaterWaveView.m in Sources */,
 				82DC65B92192E275007421DE /* NSObject+HQIQKeyBoardConfig.m in Sources */,
-				82DC65A92192E275007421DE /* YosKeepAccountsWaveAnimationScene.m in Sources */,
 				82B309E52194099A00284246 /* YosKeepAccountsChartPieScene.m in Sources */,
 				82CA0F90224885E800E8A711 /* YosKeepAccountsTabBarItem.swift in Sources */,
 				82CA0FB42248F87D00E8A711 /* YosKeepAccountsChartLineEntity.m in Sources */,
 				821816692195303B00521E75 /* YosKeepAccountsOrderEntity+YosKeepAccountsService.m in Sources */,
-				59D9F61D2265BA7400FA6E64 /* ContactsModel.m in Sources */,
 				82181666219518D900521E75 /* UITableView+YosKeepAccountsListPlaceHolder.m in Sources */,
-				59D9F61C2265BA7400FA6E64 /* ContactHandler.m in Sources */,
 				82181665219518D900521E75 /* UNNoDataScene.m in Sources */,
 				82DC65BA2192E275007421DE /* YosKeepAccountsPlistManager.m in Sources */,
 				5915182821943737004B5B32 /* YosKeepAccountsEditOrderToolBar.m in Sources */,
@@ -1855,24 +1458,13 @@
 				82CD2BF82195B17200E86371 /* YosKeepAccountsTranstionAnimationPop.m in Sources */,
 				82CA0F8D2248825800E8A711 /* YosKeepAccountsTabBarPresenter.swift in Sources */,
 				82DC65D92192E275007421DE /* YosOptions3d.m in Sources */,
-				82DC662A21932267007421DE /* YosKeepAccountsScrollDisplayPresenter.m in Sources */,
 				82DC65BD2192E275007421DE /* YosKeepAccountsNetReachability.m in Sources */,
 				82DC65E62192E275007421DE /* YosChartEntity.m in Sources */,
-				82DC659D2192E275007421DE /* YosKeepAccountsHomeBaseListCell.m in Sources */,
-				82DC65Yos2192E275007421DE /* YosKeepAccountsAreaSplineCompareScene.m in Sources */,
-				82DC65AD2192E275007421DE /* YosKeepAccountsGradientCompareBarScene.m in Sources */,
-				82DC65AC2192E275007421DE /* YosKeepAccountsBaseChartScene.m in Sources */,
 				82DC65B32192E275007421DE /* UIColor+YKAAddColor.m in Sources */,
 				82A9CF95224BA5DF00D9397F /* YosKeepAccountsBasicContentView.swift in Sources */,
-				82DC65A52192E275007421DE /* YosKeepAccountsCircle.m in Sources */,
-				82DC65A62192E275007421DE /* YosKeepAccountsProgressScene.m in Sources */,
-				82DC65A42192E275007421DE /* YosKeepAccountsCircleProgressScene.m in Sources */,
-				82DC65982192E275007421DE /* YosKeepAccountsRightItemButton.m in Sources */,
-				82DC659E2192E275007421DE /* YosKeepAccountsApplyRecordCell.m in Sources */,
 				82DC65C42192E275007421DE /* YosKeepAccountsBasePresenter.m in Sources */,
 				82DC65E12192E275007421DE /* YosSpline.m in Sources */,
 				82DC65E72192E275007421DE /* YosOptions.m in Sources */,
-				82DC661F219320E0007421DE /* YosKeepAccountsTouchIDPresenter.m in Sources */,
 				82B4B7032193EB13009A4B62 /* YosKeepAccountsOrderList.m in Sources */,
 				82DC65D32192E275007421DE /* YosTooltip.m in Sources */,
 				82B309DB2194045B00284246 /* YosKeepAccountsLeapButton.m in Sources */,
@@ -1891,23 +1483,16 @@
 				82DC65DE2192E275007421DE /* YosAnimation.m in Sources */,
 				82CD2BF52195B00500E86371 /* UIViewController+Push.m in Sources */,
 				82DC65BE2192E275007421DE /* YosKeepAccountsDeviceTypes.m in Sources */,
-				5915180B2193D719004B5B32 /* YosKeepAccountsSettingScene.m in Sources */,
 				82DC65D42192E275007421DE /* YosSubtitle.m in Sources */,
 				82DC65B22192E275007421DE /* UIFont+TargetFont.m in Sources */,
-				82DC661021930E25007421DE /* YosKeepAccountsFeedbackEntity.m in Sources */,
-				59151819219400D3004B5B32 /* YosKeepAccountsAboutPresenter.m in Sources */,
 				82DC65F62192F7DC007421DE /* YosKeepAccountsCustomDatePickerBaseScene.m in Sources */,
-				82CA0FA02248C15700E8A711 /* YosKeepAccountsSpecialScene.m in Sources */,
 				82DC65CD2192E275007421DE /* YosLabels.m in Sources */,
 				82CA0FB02248F80D00E8A711 /* YosKeepAccountsChartLineSceneModel.m in Sources */,
 				59D9F6202265BB8C00FA6E64 /* PermissionManager.m in Sources */,
-				82DC662D21932267007421DE /* YosKeepAccountsPagePresenter.m in Sources */,
 				82DC65952192E275007421DE /* AppDelegate.m in Sources */,
 				82DC65DD2192E275007421DE /* YosArea.m in Sources */,
 				82DC65D02192E275007421DE /* YosPlotOptions.m in Sources */,
 				82DC65F72192F7DC007421DE /* NSDate+YosKeepAccountsAdd.m in Sources */,
-				82DC65992192E275007421DE /* YosKeepAccountsLeftItemButton.m in Sources */,
-				82DC65A12192E275007421DE /* YosKeepAccountsWangYiWave.m in Sources */,
 				82DC65B72192E275007421DE /* NSString+LabelKit.m in Sources */,
 				82DC65E52192E275007421DE /* YosChartScene.m in Sources */,
 				82DC65C32192E275007421DE /* YosKeepAccountsSQLManager.m in Sources */,
@@ -1920,14 +1505,11 @@
 				82CD2BFE21990A7D00E86371 /* YosKeepAccountsCountingLabel.m in Sources */,
 				82CA0F922248864F00E8A711 /* YosKeepAccountsTabBarItemContentScene.swift in Sources */,
 				82DC65E02192E275007421DE /* YosMarker.m in Sources */,
-				82DC659C2192E275007421DE /* YosKeepAccountsCredictUsingRateCell.m in Sources */,
 				82CA0FA92248F74A00E8A711 /* YosKeepAccountsChartPresenter.m in Sources */,
-				82DC660921930E18007421DE /* YosKeepAccountsFeedbackPresenter.m in Sources */,
 				82A9CF93224BA5AE00D9397F /* YosKeepAccountsBouncesContentView.swift in Sources */,
 				82DC65F52192F7DC007421DE /* YosKeepAccountsCustomDatePickerScene.m in Sources */,
 				82DC65D72192E275007421DE /* YosColumn.m in Sources */,
 				82DC65C02192E275007421DE /* YosKeepAccountsGetImagePath.m in Sources */,
-				82DC65A82192E275007421DE /* YosKeepAccountsCircleIndicatorScene.m in Sources */,
 				82CD2BE62195A38A00E86371 /* YosKeepAccountsOrderLineTypeScene.m in Sources */,
 				82B4B7072193F33D009A4B62 /* YosKeepAccountsOrderTool.m in Sources */,
 				82DC65AF2192E275007421DE /* UIButton+Count.m in Sources */,
@@ -1969,6 +1551,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1FF6142E2320F52B00588D78 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1FF6142D2320F52B00588D78 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		82DC65902192E275007421DE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1992,6 +1582,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -2051,6 +1642,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -2111,7 +1703,7 @@
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 29P3XXDB6H;
+				DEVELOPMENT_TEAM = 4FYS54XBTW;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "YosKeepAccounts/Other/YosKeepAccounts-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2130,10 +1722,10 @@
 					"$(PROJECT_DIR)/YosKeepAccounts/OrderRecord/Vender/AppAnalytics_V4.0.27",
 				);
 				NetType = DebugNet;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopus;
+				PRODUCT_BUNDLE_IDENTIFIER = me.ImmediatelyLoan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "caae0713-d0e2-46bd-b4a0-2d70e91871f8";
-				PROVISIONING_PROFILE_SPECIFIER = "Development com.yoskeepaccounts.octopus";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development me.ImmediatelyLoan.app";
 				SWIFT_OBJC_BRIDGING_HEADER = "YosKeepAccounts/OrderRecord/Expand/Macros/YosKeepAccounts-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -2172,7 +1764,7 @@
 					"$(PROJECT_DIR)/YosKeepAccounts/OrderRecord/Vender/AppAnalytics_V4.0.27",
 				);
 				NetType = ReleaseNet;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yoskeepaccounts.octopus;
+				PRODUCT_BUNDLE_IDENTIFIER = me.ImmediatelyLoan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f6d46689-e4bf-41ab-bb16-180997bd9fd6";
 				PROVISIONING_PROFILE_SPECIFIER = "AppStore com.yoskeepaccounts.octopus";

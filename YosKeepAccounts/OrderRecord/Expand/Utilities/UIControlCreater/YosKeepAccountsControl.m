@@ -1,13 +1,11 @@
 #import "YosKeepAccountsControl.h"
 #import "UIColor+YKAAddColor.h"
 @implementation YosKeepAccountsControl
-#pragma mark 创建Scene
 +(UIView*)yka_createSceneWithFrame:(CGRect)frame
 {
     UIView*view=[[UIView alloc]initWithFrame:frame];
     return view;
 }
-#pragma mark 创建label
 +(UILabel*)yka_createLabelWithFrame:(CGRect)frame Font:(UIFont *)font Text:(NSString*)text
 {
     UILabel*label=[[UILabel alloc]initWithFrame:frame];
@@ -20,7 +18,6 @@
     label.textColor = [UIColor stateLittleGrayColor];
     return label;
 }
-#pragma mark 创建button
 +(UIButton*)yka_createButtonWithFrame:(CGRect)frame target:(id)target SEL:(SEL)method title:(NSString*)title
 {
     UIButton *button=[UIButton buttonWithType:UIButtonTypeCustom];
@@ -31,14 +28,12 @@
     [button addTarget:target action:method forControlEvents:UIControlEventTouchUpInside];
     return button;
 }
-#pragma mark 创建imageScene
 +(UIImageView*)yka_createImageSceneFrame:(CGRect)frame imageName:(NSString*)imageName{
     UIImageView*imageScene=[[UIImageView alloc]initWithFrame:frame];
     imageScene.image=[UIImage imageNamed:imageName];
     imageScene.userInteractionEnabled=YES;
     return imageScene;
 }
-#pragma mark 创建textField
 +(UITextField*)yka_createTextFieldFrame:(CGRect)frame Font:(UIFont *)font textColor:(UIColor*)color leftImageName:(NSString*)leftImageName rightImageName:(NSString*)rightImageName bgImageName:(NSString*)bgImageName
 {
     UITextField*textField=[[UITextField alloc]initWithFrame:frame];
@@ -66,7 +61,6 @@
     textField.secureTextEntry=isOpen;
     return textField;
 }
-#pragma mark 创建textScene
 +(UITextView*)yka_createTextSceneFrame:(CGRect)frame Font:(UIFont *)font textColor:(UIColor*)color Text:(NSString*)text{
     UITextView *statementTV = [[UITextView alloc]initWithFrame:frame];
     statementTV.text = text;

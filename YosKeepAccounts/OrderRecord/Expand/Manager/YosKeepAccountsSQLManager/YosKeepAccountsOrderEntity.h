@@ -17,6 +17,4 @@
 
 
 - (NSString *)description;
-#pragma mark 生成 typeid 用于 sTypeID
-- (NSString *)getTypeID:(NSString*)type;
 @end

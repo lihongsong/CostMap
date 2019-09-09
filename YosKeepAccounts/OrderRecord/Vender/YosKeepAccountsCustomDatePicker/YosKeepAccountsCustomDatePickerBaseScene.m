@@ -10,7 +10,6 @@
     [self.topScene addSubview:self.titleLabel];
     [self.topScene addSubview:self.lineScene];
 }
-#pragma mark - 背景遮罩图层
 - (UIView *)backgroundScene {
     if (!_backgroundScene) {
         _backgroundScene = [[UIView alloc] initWithFrame:SCREEN_BOUNDS];
@@ -21,7 +20,6 @@
     }
     return _backgroundScene;
 }
-#pragma mark - 弹出视图
 - (UIView *)alertScene {
     if (!_alertScene) {
         _alertScene = [[UIView alloc] initWithFrame:CGRectMake(LEFTRIGHT_MARGIN, SCREEN_HEIGHT - kTopSceneHeight - kPickerHeight - HJ_BottombarH, SCREEN_WIDTH - LEFTRIGHT_MARGIN * 2, kTopSceneHeight + kPickerHeight + HJ_BottombarH)];
@@ -29,7 +27,6 @@
     }
     return _alertScene;
 }
-#pragma mark - 顶部标题栏视图
 - (UIView *)topScene {
     if (!_topScene) {
         _topScene = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.alertScene.frame.size.width, kTopSceneHeight + 0.5)];
@@ -37,7 +34,6 @@
     }
     return _topScene;
 }
-#pragma mark - 左边取消按钮
 - (UIButton *)leftBtn {
     if (!_leftBtn) {
         _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -45,12 +41,11 @@
         _leftBtn.backgroundColor = [UIColor clearColor];
         _leftBtn.titleLabel.font = [UIFont systemFontOfSize:15.0f * kScaleFit];
         [_leftBtn setTitleColor:kLeftBarButtonColor forState:UIControlStateNormal];
-        [_leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+        [_leftBtn setTitle:@"cancel" forState:UIControlStateNormal];
         [_leftBtn addTarget:self action:@selector(clickLeftBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _leftBtn;
 }
-#pragma mark - 右边确定按钮
 - (UIButton *)rightBtn {
     if (!_rightBtn) {
         _rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -58,12 +53,11 @@
         _rightBtn.backgroundColor = [UIColor clearColor];
         _rightBtn.titleLabel.font = [UIFont systemFontOfSize:15.0f * kScaleFit];
         [_rightBtn setTitleColor:kRightBarButtonColor forState:UIControlStateNormal];
-        [_rightBtn setTitle:@"确定" forState:UIControlStateNormal];
+        [_rightBtn setTitle:@"confirm" forState:UIControlStateNormal];
         [_rightBtn addTarget:self action:@selector(clickRightBtn) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightBtn;
 }
-#pragma mark - 中间标题按钮
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 0, self.alertScene.frame.size.width - 130, kTopSceneHeight)];
@@ -74,7 +68,6 @@
     }
     return _titleLabel;
 }
-#pragma mark - 分割线
 - (UIView *)lineScene {
     if (!_lineScene) {
         _lineScene = [[UIView alloc] initWithFrame:CGRectMake(0, kTopSceneHeight, self.alertScene.frame.size.width, 0.5)];
@@ -83,16 +76,12 @@
     }
     return _lineScene;
 }
-#pragma mark - 点击背景遮罩图层事件
 - (void)didTapBackgroundScene:(UITapGestureRecognizer *)sender {
 }
-#pragma mark - 取消按钮的点击事件
 - (void)clickLeftBtn {
 }
-#pragma mark - 确定按钮的点击事件
 - (void)clickRightBtn {
 }
-#pragma mark - 自定义主题颜色
 - (void)setupThemeColor:(UIColor *)themeColor {
     self.leftBtn.layer.cornerRadius = 6.0f;
     self.leftBtn.layer.borderColor = themeColor.CGColor;

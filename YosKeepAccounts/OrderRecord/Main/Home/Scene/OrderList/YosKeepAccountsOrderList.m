@@ -5,7 +5,6 @@
 @interface YosKeepAccountsOrderList()<UITableViewDataSource, UITableViewDelegate>
 @end
 @implementation YosKeepAccountsOrderList
-#pragma mark - Life Cycle
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.delegate = self;
@@ -20,12 +19,9 @@
         self.cyl_placeHolderScene.frame = self.bounds;
     }
 }
-#pragma mark - Getter & Setter Methods
-#pragma mark - Public Method
-#pragma mark - Private Method
-#pragma mark - Notification Method
-#pragma mark - Event & Target Methods
-#pragma mark - UITableViewDataSource & UITableViewDelegate
+
+
+
 - (CGFloat)sectionHeaderHeight {
     return 5.0f;
 }
@@ -70,13 +66,12 @@
 - (CGFloat)tableView:(UITableView *)tableScene heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 80.f;
 }
-#pragma mark - YosKeepAccountsListPlaceHolderDelegate
 - (UIView *)makePlaceHolderScene {
     NSString *title;
     if (_tableType == YosKeepAccountsOrderTableTypeMonth || _tableType == YosKeepAccountsOrderTableTypeMonth_Type) {
-        title = @"您本月还没有任何支出";
+        title = @"You haven't made any payments this month.";
     } else {
-        title = @"您当日还没有任何支出";
+        title = @"You haven't made any payments that day.";
     }
     return [UNNoDataScene viewAddedTo:self
                            imageName:@"order_icon_nodata"

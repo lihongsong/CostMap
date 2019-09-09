@@ -3,7 +3,6 @@
 #import "YosKeepAccountsOrderEntity.h"
 #import "YosKeepAccountsOrderList.h"
 #import "YosKeepAccountsLeapButton.h"
-#import "YosKeepAccountsSettingScene.h"
 #import "UNNoDataScene.h"
 #import "YosKeepAccountsHomeDateSelectButton.h"
 #import "YosKeepAccountsOrderEntity+YosKeepAccountsService.h"
@@ -12,18 +11,13 @@
 #import "YosKeepAccountsTranstionAnimationPush.h"
 #import "YosKeepAccountsCustomDatePickerScene.h"
 #import "YosKeepAccountsCountingLabel.h"
-
-#import "YosKeepAccountsSpecialScene.h"
 #import "YosKeepAccountsWaterWaveView.h"
-#import "YosKeepAccountsUserManager.h"
 
-#import <UserCenter/XZYUserCenterUIHeader.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 @interface YosKeepAccountsHomePresenter ()
 <
-UINavigationControllerDelegate,
-XZYUserCenterProtocol
+UINavigationControllerDelegate
 >
 
 @property (weak, nonatomic) IBOutlet UIView *waterWaveView;
@@ -51,10 +45,9 @@ XZYUserCenterProtocol
 + (instancetype)instance {
     return StoryBoardLoaderRoot(@"OrderHome");
 }
-#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"账单";
+    self.title = @"Bill";
     self.edgesForExtendedLayout = UIRectEdgeAll;
     [self setUpUI];
     [self setUpRAC];
@@ -77,28 +70,17 @@ XZYUserCenterProtocol
 }
 
 - (void)setUpRAC {
-    
-    [RACObserve([YosKeepAccountsUserManager shareInstance], logined) subscribeNext:^(id x) {
-        [self requestData];
-    }];
-    
-    YosKeepAccountsSpecialScene *special = [YosKeepAccountsSpecialScene new];
-    [self.view addSubview:special];
 }
 
 - (void)setpNavBarWhenSceneWillAppear {
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 }
-#pragma mark - Getter & Setter Methods
 
-#pragma mark - Super Method
+
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     self.animateRect = self.addOrderBtn.frame;
 }
-#pragma mark - Network Method
-#pragma mark - Public Method
-#pragma mark - Private Method
 - (void)doWealthAnimation {
     CGFloat wealth = fabs(_totalWealth);
     [_wealthLb countFrom:0.00
@@ -173,7 +155,7 @@ XZYUserCenterProtocol
     _year = [today hj_year];
     _month = [today hj_month];
     
-    _yearLb.text = [NSString stringWithFormat:@"%ld年",_year];
+    _yearLb.text = [NSString stringWithFormat:@"%ld year",_year];
     [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%02ld",_month] forState:UIControlStateNormal];
     
     self.tableScene.enableDelete = YES;
@@ -184,7 +166,7 @@ XZYUserCenterProtocol
         NSMutableArray *tempArray = [self.tableScene.entitys mutableCopy];
         [tempArray removeObject:model];
         self.tableScene.entitys = tempArray;
-        [self.tableScene reloadData];
+        [self.tableScene cyl_reloadData];
     };
     self.tableScene.selectAction = ^(YosKeepAccountsOrderEntity * _Nonnull model) {
         [[HJMediator shared] routeToURL:HJAPPURL(@"EditOrder") withParameters:@{@"orderEntity": model}, nil];
@@ -192,13 +174,13 @@ XZYUserCenterProtocol
 }
 - (void)requestData {
     
-    _yearLb.text = [NSString stringWithFormat:@"%ld年",_year];
+    _yearLb.text = [NSString stringWithFormat:@"%ld year",_year];
     [_dateSelectBtn setTitle:[NSString stringWithFormat:@"%02ld",_month] forState:UIControlStateNormal];
     
     YosKeepAccountsOrderEntity *model = [YosKeepAccountsOrderEntity new];
     model.yka_year = @(self.year).stringValue;
     model.yka_month = @(self.month).stringValue;
-    model.yka_username = [YosKeepAccountsUserManager shareInstance].phone;
+//    model.yka_username = @"nobody";
     NSArray *result =
     [[YosKeepAccountsSQLManager share] searchData:model
                                         tableName:kSQLTableName];
@@ -212,19 +194,9 @@ XZYUserCenterProtocol
     self.totalWealth = sum;
     [self doWealthAnimation];
 }
-#pragma mark - Notification Method
-#pragma mark - Event & Target Methods
+
 
 - (IBAction)chartBtnClick {
-    
-    if (![YosKeepAccountsUserManager shareInstance].logined) {
-        XZYLoginViewController *controller = [[XZYLoginViewController alloc] init];
-        controller.delegate = self;
-        XZYConfigInstance.registerType = RegisterTypeQuick;
-        [self.navigationController pushViewController:controller animated:YES];
-        return ;
-    }
-    
     [[HJMediator shared] routeToURL:HJAPPURL(@"Chart") withParameters:nil, nil];
 }
 
@@ -241,7 +213,7 @@ XZYUserCenterProtocol
     
     NSString *dateString = [NSString stringWithFormat:@"%04ld-%02ld",_year, _month];
     WEAK_SELF
-    [YosKeepAccountsCustomDatePickerScene showDatePickerWithTitle:@"选择时间"
+    [YosKeepAccountsCustomDatePickerScene showDatePickerWithTitle:@"Choose Time"
                                            dateType:YosKeepAccountsCustomDatePickerModeYM
                                     defaultSelValue:dateString
                                             minDate:nil
@@ -260,7 +232,7 @@ XZYUserCenterProtocol
                                         }];
 }
 
-#pragma mark -- UINavigationControllerDelegate
+
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
                                                fromViewController:(UIViewController *)fromVC
@@ -271,36 +243,6 @@ XZYUserCenterProtocol
         return [YosKeepAccountsTranstionAnimationPush new];
     } else {
         return nil;
-    }
-}
-
-
-#pragma mark -- XZYUserCenterProtocol
-- (void)loginFinished:(NSDictionary *)statusDict {
-    NSString *statusString = statusDict[@"code"];
-    switch (statusString.integerValue) {
-        case LoginStatusFailed: {
-            
-        }
-            break;
-            
-        case LoginStatusSuccess: {
-            [self.navigationController popToRootViewControllerAnimated:YES];
-            
-            // 避免接口返回的字典解析各字段为空对象，赋值时发生crash
-            NSDictionary *userInfo = @{@"passid":XZYUserInfoInstance.passid ? XZYUserInfoInstance.passid : @"" ,
-                                       @"username":XZYUserInfoInstance.username ? XZYUserInfoInstance.username : @"",
-                                       @"phone":XZYUserInfoInstance.phone ? XZYUserInfoInstance.phone : @"" ,
-                                       @"email":XZYUserInfoInstance.email ? XZYUserInfoInstance.email : @"",
-                                       @"cookie":XZYUserInfoInstance.cookie ? XZYUserInfoInstance.cookie : @""};
-            [[NSUserDefaults standardUserDefaults] setObject:userInfo forKey:@"userInfo"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-            [[YosKeepAccountsUserManager shareInstance] refresh];
-        }
-            break;
-            
-        default:
-            break;
     }
 }
 

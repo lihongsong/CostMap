@@ -1,8 +1,6 @@
 #import "YosKeepAccountsLeapButton.h"
 @implementation YosKeepAccountsLeapButton
-#pragma mark - Life Cycle
-#pragma mark - Getter & Setter Methods
-#pragma mark - Public Method
+
 - (void)startLeapAnimation {
 }
 - (void)stopLeapAnimation {
@@ -39,7 +37,5 @@
     [self.layer removeAnimationForKey:@"layer-shake-y"];
     [self.layer removeAnimationForKey:@"layer-shake-x"];
 }
-#pragma mark - Private Method
-#pragma mark - Notification Method
-#pragma mark - Event & Target Methods
+
 @end

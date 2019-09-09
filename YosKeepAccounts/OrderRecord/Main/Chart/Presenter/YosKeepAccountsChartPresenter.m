@@ -15,7 +15,6 @@
 #import "YosKeepAccountsOrderEntity+YosKeepAccountsService.h"
 
 #import <HJMediator/HJMediator.h>
-#import "YosKeepAccountsUserManager.h"
 #import <HMSegmentedControl/HMSegmentedControl.h>
 
 #define kLineButtonTag 1000
@@ -70,6 +69,13 @@ HJMediatorTargetInstance
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self requestData];
+}
+
 - (void)setUpRAC {
     
     _viewModel = [YosKeepAccountsChartLineSceneModel new];
@@ -84,7 +90,7 @@ HJMediatorTargetInstance
 
 - (void)setUpUI {
     
-    self.navigationItem.title = @"汇总";
+    self.navigationItem.title = @"Total";
     self.chartScrollView.delegate = self;
     self.chartScrollView.pagingEnabled = YES;
     
@@ -132,7 +138,7 @@ HJMediatorTargetInstance
     [self.charts setValue:chartDic forKey:@(type).stringValue];
 }
 
-#pragma mark - Getter & Setter Methods
+
 
 - (YosKeepAccountsChartLineScene *)lineScene {
     if (!_lineScene) {
@@ -151,7 +157,8 @@ HJMediatorTargetInstance
 - (HMSegmentedControl *)segmentedControl {
     if (!_segmentedControl) {
         _segmentedControl = [HMSegmentedControl new];
-        _segmentedControl.sectionTitles = @[@"柱状图",@"扇形图"];
+        _segmentedControl.sectionTitles = @[@"Histogram",
+                                            @"Sector Diagram"];
         
         _segmentedControl.selectedTitleTextAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:15],
                                                           NSForegroundColorAttributeName: YosKeepAccountsThemeColor};
@@ -198,7 +205,7 @@ HJMediatorTargetInstance
 - (void)requestData {
     
     YosKeepAccountsOrderEntity *model = [YosKeepAccountsOrderEntity new];
-    model.yka_username = [YosKeepAccountsUserManager shareInstance].phone;
+//    model.yka_username = @"nobody";
     
     NSMutableArray<YosKeepAccountsOrderEntity *> *result =
     [[YosKeepAccountsSQLManager share] searchData:model tableName:kSQLTableName];
@@ -282,20 +289,9 @@ HJMediatorTargetInstance
     }];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    [self requestData];
-}
 
-#pragma mark - Getter & Setter Methods
 
-#pragma mark - Super Method
-#pragma mark - Network Method
-#pragma mark - Public Method
-#pragma mark - Private Method
-#pragma mark - Notification Method
-#pragma mark - Event & Target Methods
+
 
 //- (IBAction)addOrderClick:(YosKeepAccountsLeapButton *)sender {
 //    [[HJMediator shared] routeToURL:HJAPPURL(@"EditOrder") withParameters:nil, nil];

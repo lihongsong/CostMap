@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *arrowWidth;
 @end
 @implementation YosKeepAccountsOrderListCell
-#pragma mark - Life Cycle
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -23,7 +22,7 @@
     _titleLb.textColor = YosKeepAccountsThemeColor;
     _iconIV.tintColor = YosKeepAccountsThemeColor;
 }
-#pragma mark - Getter & Setter Methods
+
 - (void)setEntity:(YosKeepAccountsOrderEntity *)entity {
     _entity = entity;
     _themeLineVw.backgroundColor = [YosKeepAccountsOrderTool colorWithType:entity.yka_type_id.integerValue];
@@ -37,7 +36,7 @@
     if (_tableType == YosKeepAccountsOrderTableTypeDay) {
         _dateLb.text = [NSDate hj_stringWithDate:date format:@"HH:mm"];
     } else if (_tableType == YosKeepAccountsOrderTableTypeMonth_Type) {
-        _dateLb.text = [NSDate hj_stringWithDate:date format:@"dd日 HH:mm"];
+        _dateLb.text = [NSDate hj_stringWithDate:date format:@"dd HH:mm"];
     }
 }
 - (void)setTableType:(YosKeepAccountsOrderTableType)tableType {
@@ -47,7 +46,6 @@
     _arrowLeading.constant = tableType != YosKeepAccountsOrderTableTypeMonth ? 8 : 0 ;
     _arrowIV.hidden = tableType == YosKeepAccountsOrderTableTypeMonth;
 }
-#pragma mark - Public Method
 + (NSString *)cellID {
     return @"YosKeepAccountsOrderListCell";
 }
@@ -61,7 +59,5 @@
                                                              forIndexPath:indexPath];
     return cell;
 }
-#pragma mark - Private Method
-#pragma mark - Notification Method
-#pragma mark - Event & Target Methods
+
 @end

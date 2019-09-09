@@ -5,13 +5,9 @@
 #import "YosKeepAccountsTranstionAnimationPop.h"
 #import "YosKeepAccountsHomePresenter.h"
 #import "YosKeepAccountsCustomDatePickerScene.h"
-#import "YosKeepAccountsUserManager.h"
-#import "YosKeepAccountsMePresenter.h"
 #import <HJCityPickerManager.h>
 #import <HJAlertView.h>
 #import <HJProgressHUD.h>
-#import "VoicePermissionManager.h"
-#import "ContactHandler.h"
 
 @interface YosKeepAccountsEditOrderPresenter () <UITextFieldDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *orderTypeLb;
@@ -34,7 +30,6 @@
 @property (nonatomic, strong) NSDate *orderTime;
 @property (nonatomic, copy) NSString *orderCity;
 @property (weak, nonatomic) IBOutlet UIButton *addAddressButton;
-@property (nonatomic, strong) ContactHandler *contactHandler;
 @property (weak, nonatomic) IBOutlet UITextField *nameTF;
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextf;
 
@@ -53,20 +48,13 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"记一笔";
+    self.title = @"Record";
     [self setupUI];
     [self updateUI];
     [self addEditOrderToolBar];
-    // 键盘出现的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWasShown:) name:UIKeyboardDidShowNotification object:nil];
-    // 键盘消失的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHiden:) name:UIKeyboardWillHideNotification object:nil];
     self.addAddressButton.layer.borderColor = [UIColor whiteColor].CGColor;
-    [VoicePermissionManager sharedInstance].speechCallBack = ^(NSString *voiceString, NSInteger code) {
-        if (voiceString) {
-            self.noteTextField.text = voiceString;
-        }
-    };
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -82,7 +70,7 @@
     [super viewDidDisappear:animated];
     [YosKeepAccountsEditOrderToolBar hideEditOrderToolBar];
 }
-#pragma mark -键盘监听方法
+
 - (void)keyboardWasShown:(NSNotification *)notification
 {
     self.orderTypeLb.hidden = YES;
@@ -91,7 +79,7 @@
 - (void)keyboardWillBeHiden:(NSNotification *)notification
 {
     self.orderTypeLb.hidden = NO;
-    self.titleLabel.text = @"记一笔";
+    self.titleLabel.text = @"Record";
 }
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -103,9 +91,8 @@
     self.momeyTextField.hj_maxLength = 10;
     self.noteTextField.hj_maxLength = 30;
     self.momeyTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"¥ 0.00" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:35]}];
-    self.nameTF.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"相关友人" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
-    self.phoneTextf.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"友人手机号" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
-    self.noteTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"备注" attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:18]}];
+    self.noteTextField.attributedPlaceholder =  [[NSAttributedString alloc] initWithString:@"remark"
+                                                                                attributes:@{NSForegroundColorAttributeName:[UIColor colorWithWhite:1 alpha:0.5], NSFontAttributeName: [UIFont boldSystemFontOfSize:18]}];
     self.momeyTextField.delegate = self;
     self.noteTextField.delegate = self;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
@@ -154,7 +141,7 @@
     [self.timeButton setTitle:[YosKeepAccountsOrderTool orderTimeStringWithOrderTime:self.orderTime] forState:UIControlStateNormal];
     UIColor *color = [YosKeepAccountsOrderTool colorWithType:self.orderType];
     [self setContentColor:color];
-    if ([self.cityButton.currentTitle isEqualToString:@"选择城市"]) {
+    if ([self.cityButton.currentTitle isEqualToString:@"choose city"]) {
         [self.cityButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
     }
     self.orderTypeLb.text = [YosKeepAccountsOrderTool typeNameWithIndex:_orderType];
@@ -172,9 +159,8 @@
     self.friendView.hidden = (orderType == YosKeepAccountsOrderTypeFriend)?NO:YES;
     
     if (orderType == YosKeepAccountsOrderTypeFriend && !self.orderEntity) {
-        [self addPeopleFunction:nil];
+      
     }
-//    _friendShipSelected = YES;
 }
 - (void)addEditOrderToolBar {
     WEAK_SELF
@@ -202,27 +188,23 @@
     self.contentScrollScene.backgroundColor = color;
 }
 
-/** 保存 */
 - (IBAction)saveOrderButtonClick:(id)sender {
     if (StrIsEmpty(self.momeyTextField.text)) {
-        [KeyWindow hj_showToastHUD:@"请输入账单金额"];
+        [KeyWindow hj_showToastHUD:@"Please enter the bill amount."];
         return;
     }
     NSString *memeyStr = [self.momeyTextField.text stringByReplacingOccurrencesOfString:@"￥" withString:@""];
     memeyStr = [memeyStr stringByReplacingOccurrencesOfString:@"," withString:@""];
     NSString *memey = [memeyStr cleanMoneyStyle];
     if (StrIsEmpty(memey)) {
-        [KeyWindow hj_showToastHUD:@"请输入账单金额"];
+        [KeyWindow hj_showToastHUD:@"Please enter the bill amount."];
         return;
     }
     if (memey.integerValue == 0) {
-        [KeyWindow hj_showToastHUD:@"请输入账单金额"];
+        [KeyWindow hj_showToastHUD:@"Please enter the bill amount."];
         return;
     }
     [self.view endEditing:YES];
-    
-    //  如果未关闭录音则关闭
-    [self closeVoiceFunction];
     
     YosKeepAccountsOrderEntity *model = self.orderEntity;
     BOOL newOrder = NO;
@@ -239,7 +221,7 @@
     model.yka_time = @(self.orderTime.timeIntervalSince1970).stringValue;
     model.yka_desc = self.noteTextField.text;
     model.yka_city = self.orderCity ?: @"";
-    model.yka_username = [YosKeepAccountsUserManager shareInstance].phone;
+    model.yka_username = @"nobody";
     model.yka_firend_name = self.nameTF.text?:@"";
     model.yka_firend_phone = self.phoneTextf.text?:@"";
 
@@ -261,11 +243,11 @@
     if (self.orderEntity) {
         [self.view endEditing:YES];
         WEAK_SELF
-        HJAlertView *alertScene = [[HJAlertView alloc] initWithTitle:@"温馨提示" message:@"确定要删除账单吗？" cancelBlock:^{
+        HJAlertView *alertScene = [[HJAlertView alloc] initWithTitle:@"Warm Prompt" message:@"Are you sure you want to delete the bill?" cancelBlock:^{
         } confirmBlock:^{
             STRONG_SELF
             [[YosKeepAccountsSQLManager share] deleteData:kSQLTableName yka_id:self.orderEntity.yka_id];
-            [KeyWindow hj_showToastHUD:@"账单已删除"];
+            [KeyWindow hj_showToastHUD:@"The bill has been deleted."];
             [self.navigationController popViewControllerAnimated:YES];
         }];
         alertScene.confirmColor = YosKeepAccountsThemeColor;
@@ -281,7 +263,7 @@
     }
     NSString *time = [YosKeepAccountsOrderTool orderTimeStringWithOrderTime:self.orderTime];
     WEAK_SELF
-    [YosKeepAccountsCustomDatePickerScene showDatePickerWithTitle:@"选择时间"
+    [YosKeepAccountsCustomDatePickerScene showDatePickerWithTitle:@"Choose Time"
                                            dateType:YosKeepAccountsCustomDatePickerModeYMDHM
                                     defaultSelValue:time
                                             minDate:nil
@@ -309,7 +291,7 @@
     } else {
         self.curruntInputScene = nil;
     }
-    HJCityPickerManager *cityPicker = [HJCityPickerManager cityPickerManagerWithTitle:@"选择城市" type:HJCityPickerTypeAll regionList:[HJCPMLocalData provinceArray] cityPickSelected:^(HJCPMProvinceModel * _Nullable selectedProvinceEntity, HJCPMCityModel * _Nullable selectedCityEntity, HJCPMDistrictModel * _Nullable selectedDistrictEntity) {
+    HJCityPickerManager *cityPicker = [HJCityPickerManager cityPickerManagerWithTitle:@"choose city" type:HJCityPickerTypeAll regionList:[HJCPMLocalData provinceArray] cityPickSelected:^(HJCPMProvinceModel * _Nullable selectedProvinceEntity, HJCPMCityModel * _Nullable selectedCityEntity, HJCPMDistrictModel * _Nullable selectedDistrictEntity) {
         self.orderCity = selectedDistrictEntity.name;
         [self.cityButton setTitle:self.orderCity forState:UIControlStateNormal];
         [self.cityButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -376,63 +358,15 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     self.curruntInputScene = textField;
 }
-#pragma mark -- UINavigationControllerDelegate --
+
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC {
     if ([fromVC isKindOfClass:[YosKeepAccountsEditOrderPresenter class]] &&
-        ([toVC isKindOfClass:[YosKeepAccountsHomePresenter class]] || [toVC isKindOfClass:[YosKeepAccountsMePresenter class]]) &&
+        ([toVC isKindOfClass:[YosKeepAccountsHomePresenter class]]) &&
         operation == UINavigationControllerOperationPop) {
         return [YosKeepAccountsTranstionAnimationPop new];
     } else {
         return nil;
     }
 }
-
-
-#pragma mark - 语音功能
-
-- (IBAction)voiceFunction:(id)sender {
-    
-    [[VoicePermissionManager sharedInstance] speechPermission];
-    if([[VoicePermissionManager sharedInstance].audioEngine isRunning]) {
-        self.voiceTips.hidden = YES;
-        [[VoicePermissionManager sharedInstance] endRecording];
-        [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"timg"] forState: UIControlStateNormal];
-        [self performSelector:@selector(closeVoiceFunction) withObject:nil afterDelay:15];
-    }else{
-        self.voiceTips.hidden = NO;
-        [[VoicePermissionManager sharedInstance] startRecording];
-        [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"stimg"] forState: UIControlStateNormal];
-    }
-}
-
-- (void)closeVoiceFunction{
-    self.voiceTips.hidden = YES;
-    if([[VoicePermissionManager sharedInstance].audioEngine isRunning]) {
-        [[VoicePermissionManager sharedInstance] endRecording];
-        [self.voiceButton setBackgroundImage:[UIImage imageNamed:@"timg"] forState: UIControlStateNormal];
-    }
-}
-
-- (IBAction)addPeopleFunction:(id)sender {
-    if (!_contactHandler) {
-        _contactHandler = [[ContactHandler alloc] init];
-    }
-    [_contactHandler contactSelectWithViewController:[UIApplication sharedApplication].delegate.window.rootViewController
-                                          completion:^(ContactsModel * _Nullable contactModel, NSString * _Nullable errorMessage) {
-                                              
-                                              NSLog(@"model ==== %@, errorMessage=%@", contactModel, errorMessage);
-                                              if (!StrIsEmpty(errorMessage)) {
-                                                  [KeyWindow hj_showToastHUD:errorMessage];
-                                                  return ;
-                                              }
-                                              NSString *phone = [contactModel.phones firstObject];
-                                              self.nameTF.text = contactModel.name;
-                                              self.phoneTextf.text = phone;
-                                              
-                                          }];
-    
-}
-
-
 
 @end

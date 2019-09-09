@@ -1,3 +1,0 @@
-#import "YosKeepAccountsAreaSplineCompareScene.h"
-@implementation YosKeepAccountsAreaSplineCompareScene
-@end

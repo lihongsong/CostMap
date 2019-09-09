@@ -2,7 +2,6 @@
 #import "UILabel+YKALabelKit.h"
 #import "YosKeepAccountsGetImagePath.h"
 @implementation UIView (SceneKit)
-#pragma mark - getter
 - (CGFloat)minX{
     return CGRectGetMinX(self.frame);
 }
@@ -42,7 +41,6 @@
 - (CGSize)size{
     return self.frame.size;
 }
-#pragma mark - setter
 - (void)setOrigin:(CGPoint)origin{
     CGRect frame = self.frame;
     frame.origin = origin;
@@ -163,7 +161,7 @@
     self.frame = frame;
     return self.frame;
 }
-#pragma mark - 类方法
+
 + (void)horizontalArrangeScenes:(NSArray*)views distances:(NSArray*)distances alignmentType:(RKSceneArrangeAlignment)alignment direction:(RKSceneArrangeDirection)direction{
     __block UIView* lastScene;
     [views enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL *stop) {
@@ -180,7 +178,7 @@
         lastScene = view;
     }];
 }
-#pragma mark - 对象方法
+
 - (void)addBottomScene:(UIView *)bottomScene {
     bottomScene.origin = CGPointMake(0, self.height);
     [self addSubview:bottomScene];

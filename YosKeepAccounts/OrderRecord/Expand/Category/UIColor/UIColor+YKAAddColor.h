@@ -1,6 +1,5 @@
 #import <UIKit/UIKit.h>
 @interface UIColor (YKAAddColor)
-#pragma mark 将NSString 转为UIColor
 + (UIColor *) colorFromHexCode:(NSString *)hexString;
 + (UIColor *) skinColor;
 + (UIColor *) testSelectColor;

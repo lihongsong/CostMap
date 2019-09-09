@@ -3,7 +3,7 @@
 //  YosKeepAccounts
 //
 //  Created by yoser on 2018/11/15.
-//  Copyright © 2018年 yoser. All rights reserved.
+//  Copyright © 2018 yoser. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

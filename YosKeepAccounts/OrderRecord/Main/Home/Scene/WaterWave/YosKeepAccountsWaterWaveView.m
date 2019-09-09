@@ -1,9 +1,9 @@
 //
 //  SHWWaterView.m
-//  水波
+//  
 //
-//  Created by 孙洪伟 on 16/9/8.
-//  Copyright © 2016年 Caffrey. All rights reserved.
+//  Created by  on 16/9/8.
+//  Copyright © 2016 Caffrey. All rights reserved.
 //
 
 #import "YosKeepAccountsWaterWaveView.h"
@@ -133,7 +133,6 @@
     self.ripple2Layer.colors = @[(__bridge id) _secondWaveColor.CGColor,
             (__bridge id) [[UIColor whiteColor] colorWithAlphaComponent:1.0].CGColor];
 
-    // 颜色分割线
     self.ripple2Layer.locations = @[@(0.5), @(1.0)];
 
     self.ripple2Layer.startPoint = CGPointMake(0, 0.5);
@@ -165,7 +164,6 @@
     self.ripple1Layer.colors = @[(__bridge id) _firstWaveColor.CGColor,
             (__bridge id) [[UIColor whiteColor] colorWithAlphaComponent:0.7].CGColor];
 
-    // 颜色分割线
     self.ripple1Layer.locations = @[@(0.3), @(0.6)];
 
     self.ripple1Layer.startPoint = CGPointMake(0, 0.5);

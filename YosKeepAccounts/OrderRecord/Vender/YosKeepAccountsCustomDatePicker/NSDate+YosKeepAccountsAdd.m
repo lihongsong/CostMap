@@ -1,7 +1,6 @@
 #import "NSDate+YosKeepAccountsAdd.h"
 static const NSCalendarUnit unitFlags = (NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekOfMonth | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond | NSCalendarUnitWeekday | NSCalendarUnitWeekdayOrdinal);
 @implementation NSDate (YosKeepAccountsAdd)
-#pragma mark - 获取日历单例对象
 + (NSCalendar *)calendar {
     static NSCalendar *sharedCalendar = nil;
     if (!sharedCalendar) {
@@ -9,42 +8,34 @@ static const NSCalendarUnit unitFlags = (NSCalendarUnitYear | NSCalendarUnitMont
     }
     return sharedCalendar;
 }
-#pragma mark - 获取指定日期的年份
 - (NSInteger)year {
     NSDateComponents *components = [[NSDate calendar] components:unitFlags fromDate:self];
     return components.year;
 }
-#pragma mark - 获取指定日期的月份
 - (NSInteger)month {
     NSDateComponents *components = [[NSDate calendar] components:unitFlags fromDate:self];
     return components.month;
 }
-#pragma mark - 获取指定日期的天
 - (NSInteger)day {
     NSDateComponents *components = [[NSDate calendar] components:unitFlags fromDate:self];
     return components.day;
 }
-#pragma mark - 获取指定日期的小时
 - (NSInteger)hour {
     NSDateComponents *components = [[NSDate calendar] components:unitFlags fromDate:self];
     return components.hour;
 }
-#pragma mark - 获取指定日期的分钟
 - (NSInteger)minute {
     NSDateComponents *comps = [[NSDate calendar] components:unitFlags fromDate:self];
     return comps.minute;
 }
-#pragma mark - 获取指定日期的秒
 - (NSInteger)second {
     NSDateComponents *components = [[NSDate calendar] components:unitFlags fromDate:self];
     return components.second;
 }
-#pragma mark - 获取指定日期的星期
 - (NSInteger)weekday {
     NSDateComponents *components = [[NSDate calendar] components:unitFlags fromDate:self];
     return components.weekday;
 }
-#pragma mark - 创建date
 + (NSDate *)setYear:(NSInteger)year month:(NSInteger)month day:(NSInteger)day hour:(NSInteger)hour minute:(NSInteger)minute second:(NSInteger)second {
     NSCalendar *calendar = [NSDate calendar];
     NSDateComponents *components = [calendar components:unitFlags fromDate:[NSDate date]];
@@ -90,7 +81,6 @@ static const NSCalendarUnit unitFlags = (NSCalendarUnitYear | NSCalendarUnitMont
 + (NSDate *)setHour:(NSInteger)hour minute:(NSInteger)minute {
     return [self setYear:-1 month:-1 day:-1 hour:hour minute:minute second:-1];
 }
-#pragma mark - 日期和字符串之间的转换：NSDate --> NSString
 + (NSString *)getDateString:(NSDate *)date format:(NSString *)format {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.locale = [NSLocale currentLocale];
@@ -99,7 +89,6 @@ static const NSCalendarUnit unitFlags = (NSCalendarUnitYear | NSCalendarUnitMont
     NSString *destDateString = [dateFormatter stringFromDate:date];
     return destDateString;
 }
-#pragma mark - 日期和字符串之间的转换：NSString --> NSDate
 + (NSDate *)getDate:(NSString *)dateString format:(NSString *)format {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.locale = [NSLocale currentLocale];
@@ -108,7 +97,6 @@ static const NSCalendarUnit unitFlags = (NSCalendarUnitYear | NSCalendarUnitMont
     NSDate *destDate = [dateFormatter dateFromString:dateString];
     return destDate;
 }
-#pragma mark - 算法1：获取某个月的天数（通过年月求每月天数）
 + (NSUInteger)getDaysInYear:(NSInteger)year month:(NSInteger)month {
     BOOL isLeapYear = year % 4 == 0 ? (year % 100 == 0 ? (year % 400 == 0 ? YES : NO) : YES) : NO;
     switch (month) {
@@ -143,25 +131,21 @@ static const NSCalendarUnit unitFlags = (NSCalendarUnitYear | NSCalendarUnitMont
     }
     return 0;
 }
-#pragma mark - 算法2：获取某个月的天数（通过年月求每月天数）
 + (NSUInteger)getDaysInYear2:(NSInteger)year month:(NSInteger)month {
     NSDate *date = [NSDate getDate:[NSString stringWithFormat:@"%zi-%zi", year, month] format:@"yyyy-MM"];
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSRange range = [calendar rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:date];
     return range.length;
 }
-#pragma mark - 获取系统当前的时间戳，即当前时间距1970的秒数（以毫秒为单位）
 + (NSString *)currentTimestamp {
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval interval = [date timeIntervalSince1970] * 1000;
     NSString *timeString = [NSString stringWithFormat:@"%0.f", interval];
     return timeString;
 }
-#pragma mark - 获取当前的时间
 + (NSString *)currentDateString {
     return [self currentDateStringWithFormat:@"yyyy-MM-dd HH:mm:ss"];
 }
-#pragma mark - 按指定格式获取当前的时间
 + (NSString *)currentDateStringWithFormat:(NSString *)formatterStr {
     NSDate *currentDate = [NSDate date];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -169,14 +153,12 @@ static const NSCalendarUnit unitFlags = (NSCalendarUnitYear | NSCalendarUnitMont
     NSString *currentDateStr = [formatter stringFromDate:currentDate];
     return currentDateStr;
 }
-#pragma mark - 返回指定时间差值的日期字符串
 + (NSString *)dateStringWithDelta:(NSTimeInterval)delta {
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:delta];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
     return [formatter stringFromDate:date];
 }
-#pragma mark - 计算两个日期之间的天数
 + (NSInteger)deltaDays:(NSString *)beginDateString endDate:(NSString *)endDateString {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = @"yyyy-MM-dd";
@@ -186,7 +168,6 @@ static const NSCalendarUnit unitFlags = (NSCalendarUnitYear | NSCalendarUnitMont
     NSInteger days = (NSInteger) deltaTime / (24 * 60 * 60);
     return days;
 }
-#pragma mark - 返回 指定时间加指定天数 结果日期字符串
 + (NSString *)date:(NSString *)dateString format:(NSString *)format addDays:(NSInteger)days {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateFormat = format;
@@ -195,7 +176,6 @@ static const NSCalendarUnit unitFlags = (NSCalendarUnitYear | NSCalendarUnitMont
     NSString *newDateString = [dateFormatter stringFromDate:newDate];
     return newDateString;
 }
-#pragma mark - 比较两个时间大小（可以指定比较级数，即按指定格式进行比较）
 - (NSComparisonResult)br_compare:(NSDate *)targetDate format:(NSString *)format {
     NSString *dateString1 = [NSDate getDateString:self format:format];
     NSString *dateString2 = [NSDate getDateString:targetDate format:format];

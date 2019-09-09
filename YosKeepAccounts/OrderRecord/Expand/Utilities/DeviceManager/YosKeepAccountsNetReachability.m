@@ -152,7 +152,7 @@ static void LNRiskNetworkReachabilityReleaseCallback(const void *info) {
         CFRelease(_networkReachability);
     }
 }
-#pragma mark -
+
 - (BOOL)isReachable {
     return [self isReachableViaWWAN] || [self isReachableViaWiFi];
 }
@@ -162,7 +162,7 @@ static void LNRiskNetworkReachabilityReleaseCallback(const void *info) {
 - (BOOL)isReachableViaWiFi {
     return self.networkReachabilityStatus == LNRiskReachabilityStatusReachableViaWiFi;
 }
-#pragma mark -
+
 - (void)startMonitoring {
     [self stopMonitoring];
     if (!self.networkReachability) {
@@ -192,15 +192,14 @@ static void LNRiskNetworkReachabilityReleaseCallback(const void *info) {
     }
     SCNetworkReachabilityUnscheduleFromRunLoop(self.networkReachability, CFRunLoopGetMain(), kCFRunLoopCommonModes);
 }
-#pragma mark -
+
 - (NSString *)localizedNetworkReachabilityStatusString {
     return LNRiksStringFromNetworkReachabilityStatus(self.networkReachabilityStatus);
 }
-#pragma mark -
+
 - (void)setReachabilityStatusChangeBlock:(void (^)(LNRiskReachabilityStatus status))block {
     self.networkReachabilityStatusBlock = block;
 }
-#pragma mark - NSKeyValueObserving
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
     if ([key isEqualToString:@"reachable"] || [key isEqualToString:@"reachableViaWWAN"] || [key isEqualToString:@"reachableViaWiFi"]) {
         return [NSSet setWithObject:@"networkReachabilityStatus"];

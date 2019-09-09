@@ -27,7 +27,6 @@
     }
     self.interactivePopGestureRecognizer.delegate = self;
 }
-#pragma mark - overwrite
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     viewController.hidesBottomBarWhenPushed =(self.childViewControllers.count > 0)?YES:NO;
     [super pushViewController:viewController animated:animated];
@@ -38,7 +37,6 @@
     }
     [super setViewControllers:viewControllers animated:animated];
 }
-#pragma mark - UIGestureRecognizerDelegate
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if (gestureRecognizer == self.interactivePopGestureRecognizer) {
         if (self.viewControllers.count > 1) {
@@ -53,7 +51,6 @@
     }
     return YES;
 }
-#pragma mark - UINavigationBarDelegate
 - (BOOL)navigationBar:(UINavigationBar *)navigationBar shouldPopItem:(UINavigationItem *)item {
     if (item != self.topViewController.navigationItem) {
         return [super navigationBar:navigationBar shouldPopItem:item];

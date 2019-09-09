@@ -3,7 +3,7 @@
 //  YosKeepAccounts
 //
 //  Created by yoser on 2018/11/15.
-//  Copyright © 2018年 yoser. All rights reserved.
+//  Copyright © 2018 yoser. All rights reserved.
 //
 
 #import "YosKeepAccountsChartBrokenLineScene.h"
@@ -19,7 +19,6 @@
 
 @implementation YosKeepAccountsChartBrokenLineScene
 
-#pragma mark - Life Cycle
 
 - (instancetype)init
 {
@@ -35,7 +34,7 @@
     [self setUp];
 }
 
-#pragma mark - Getter & Setter Methods
+
 
 - (void)setEntitys:(NSArray<YosKeepAccountsChartLineEntity *> *)entitys {
     _entitys = entitys;
@@ -43,11 +42,9 @@
 }
 
 
-#pragma mark - Public Method
 
 
 
-#pragma mark - Private Method
 
 - (void)setUp {
     
@@ -133,7 +130,6 @@
         set1.drawValuesEnabled = NO;
         set1.formLineWidth = 0.0;
         
-        // 填充区域颜色
         NSArray *gradientColors = @[
                                     (id)[UIColor whiteColor].CGColor,
                                     (id)YosKeepAccountsThemeColor.CGColor
@@ -155,10 +151,9 @@
     }
 }
 
-#pragma mark - Notification Method
 
 
 
-#pragma mark - Event & Target Methods
+
 
 @end

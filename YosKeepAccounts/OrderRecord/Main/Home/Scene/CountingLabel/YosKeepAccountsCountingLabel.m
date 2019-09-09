@@ -3,7 +3,6 @@
 #if !__has_feature(objc_arc)
 #error YosKeepAccountsCountingLabel is ARC only. Either turn on ARC for the project or use -fobjc-arc flag
 #endif
-#pragma mark - YosKeepAccountsLabelCounter
 #ifndef kYosKeepAccountsLabelCounterRate
 #define kYosKeepAccountsLabelCounterRate 3.0
 #endif
@@ -77,7 +76,6 @@
     return 63.0 / 64.0 + powf(11.0 / 4.0, 2) * powf(t - 21.0 / 22.0, 2);
 }
 @end
-#pragma mark - YosKeepAccountsCountingLabel
 @interface YosKeepAccountsCountingLabel ()
 @property CGFloat startingValue;
 @property CGFloat destinationValue;

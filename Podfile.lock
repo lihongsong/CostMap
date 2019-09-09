@@ -14,61 +14,61 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - AppUpdate (2.0.0):
-    - Masonry
-  - Bugly (2.5.0)
   - Charts (3.2.0):
     - Charts/Core (= 3.2.0)
   - Charts/Core (3.2.0)
-  - ESTabBarController-swift (2.6.4)
+  - ESTabBarController-swift (2.7)
+  - FLAnimatedImage (1.0.12)
   - FMDB (2.7.5):
     - FMDB/standard (= 2.7.5)
   - FMDB/standard (2.7.5)
   - GTMBase64 (1.0.1)
-  - HJ_UIKit/HJAlertView (2.2.8):
+  - HJ_UIKit/HJAlertView (2.7.3):
     - Masonry
     - YYText
-  - HJ_UIKit/HJCityPickerManager (2.2.8)
-  - HJ_UIKit/HJGuidePage (2.2.8):
+  - HJ_UIKit/HJCityPickerManager (2.7.3):
+    - HJ_UIKit/HJPickerViewController
+  - HJ_UIKit/HJGuidePage (2.7.3):
     - SDWebImage
-  - HJ_UIKit/HJProgressHUD (2.2.8):
+    - SDWebImage/GIF
+  - HJ_UIKit/HJPickerViewController (2.7.3)
+  - HJ_UIKit/HJProgressHUD (2.7.3):
     - MBProgressHUD
-  - HJCategories (1.1.3):
-    - HJCategories/CoreFoundation (= 1.1.3)
-    - HJCategories/Foundation (= 1.1.3)
-    - HJCategories/UIKit (= 1.1.3)
-  - HJCategories/CoreFoundation (1.1.3)
-  - HJCategories/Foundation (1.1.3)
-  - HJCategories/UIKit (1.1.3)
-  - HJMediator (0.2.0)
-  - HJWebView (1.1.4):
-    - HJWebView/HJCarrierWebview (= 1.1.4)
-    - HJWebView/HJJSBridge (= 1.1.4)
-    - HJWebView/HJJSPlugin (= 1.1.4)
-    - HJWebView/HJPrivacyPolicy (= 1.1.4)
-    - HJWebView/HJUniversalWebViewController (= 1.1.4)
-    - HJWebView/HJWebViewCache (= 1.1.4)
-    - HJWebView/HJWebViewController (= 1.1.4)
-  - HJWebView/HJCarrierWebview (1.1.4):
+  - HJCategories (1.2.2):
+    - HJCategories/CoreFoundation (= 1.2.2)
+    - HJCategories/Foundation (= 1.2.2)
+    - HJCategories/UIKit (= 1.2.2)
+  - HJCategories/CoreFoundation (1.2.2)
+  - HJCategories/Foundation (1.2.2)
+  - HJCategories/UIKit (1.2.2)
+  - HJMediator (1.0.0)
+  - HJWebView (3.0.0):
+    - HJWebView/HJCarrierWebview (= 3.0.0)
+    - HJWebView/HJJSBridge (= 3.0.0)
+    - HJWebView/HJJSPlugin (= 3.0.0)
+    - HJWebView/HJPrivacyPolicy (= 3.0.0)
+    - HJWebView/HJUniversalWebViewController (= 3.0.0)
+    - HJWebView/HJWebViewCache (= 3.0.0)
+    - HJWebView/HJWebViewController (= 3.0.0)
+  - HJWebView/HJCarrierWebview (3.0.0):
     - HJWebView/HJUniversalWebViewController
-  - HJWebView/HJJSBridge (1.1.4):
+  - HJWebView/HJJSBridge (3.0.0):
     - WebViewJavascriptBridge
-  - HJWebView/HJJSPlugin (1.1.4)
-  - HJWebView/HJPrivacyPolicy (1.1.4):
+  - HJWebView/HJJSPlugin (3.0.0)
+  - HJWebView/HJPrivacyPolicy (3.0.0):
     - HJWebView/HJWebViewController
-  - HJWebView/HJUniversalWebViewController (1.1.4):
+  - HJWebView/HJUniversalWebViewController (3.0.0):
     - HJWebView/HJJSBridge
     - HJWebView/HJJSPlugin
     - HJWebView/HJWebViewCache
     - HJWebView/HJWebViewController
-  - HJWebView/HJWebViewCache (1.1.4)
-  - HJWebView/HJWebViewController (1.1.4)
+  - HJWebView/HJWebViewCache (3.0.0)
+  - HJWebView/HJWebViewController (3.0.0)
   - HMSegmentedControl (1.5.5)
   - IQKeyboardManager (5.0.6)
   - Masonry (1.1.0)
   - MBProgressHUD (1.1.0)
   - pop (1.0.12)
-  - RCMobClick (2.0.9)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
   - ReactiveCocoa/Core (2.5):
@@ -76,74 +76,51 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDWebImage (4.4.5):
-    - SDWebImage/Core (= 4.4.5)
-  - SDWebImage/Core (4.4.5)
-  - TTTAttributedLabel (2.0.0)
+  - SDWebImage (4.4.7):
+    - SDWebImage/Core (= 4.4.7)
+  - SDWebImage/Core (4.4.7)
+  - SDWebImage/GIF (4.4.7):
+    - FLAnimatedImage (~> 1.0)
+    - SDWebImage/Core
   - UICKeyChainStore (2.1.1)
-  - UMengUShare/Core (6.4.8.2):
-    - UMengUShare/Network
-  - UMengUShare/Network (6.4.8.2)
-  - UMengUShare/Social/QQ (6.4.8.2):
-    - UMengUShare/Core
-    - UMengUShare/Social/ReducedQQ
-  - UMengUShare/Social/ReducedQQ (6.4.8.2):
-    - UMengUShare/Core
-  - UserCenter (1.9.13):
-    - Masonry
-    - TTTAttributedLabel
-    - UMengUShare/Social/QQ
-    - XZYNetwork
-    - zxcvbn-ios
   - WebViewJavascriptBridge (6.0.3)
-  - XZYNetwork (1.0.1)
   - YYModel (1.0.4)
   - YYText (1.0.7)
-  - zxcvbn-ios (1.0.4)
 
 DEPENDENCIES:
   - AFNetworking (= 3.1.0)
-  - AppUpdate (= 2.0.0)
-  - Bugly (= 2.5.0)
   - Charts (= 3.2.0)
   - ESTabBarController-swift
   - FMDB
   - GTMBase64 (= 1.0.1)
-  - HJ_UIKit/HJAlertView (= 2.2.8)
-  - HJ_UIKit/HJCityPickerManager (= 2.2.8)
-  - HJ_UIKit/HJGuidePage (= 2.2.8)
-  - HJ_UIKit/HJProgressHUD (= 2.2.8)
-  - HJCategories (= 1.1.3)
+  - HJ_UIKit/HJAlertView (= 2.7.3)
+  - HJ_UIKit/HJCityPickerManager (= 2.7.3)
+  - HJ_UIKit/HJGuidePage (= 2.7.3)
+  - HJ_UIKit/HJProgressHUD (= 2.7.3)
+  - HJCategories (= 1.2.2)
   - HJMediator
   - HJWebView
   - HMSegmentedControl
   - IQKeyboardManager (= 5.0.6)
   - Masonry (= 1.1.0)
   - pop
-  - RCMobClick (= 2.0.9)
   - ReactiveCocoa (= 2.5.0)
   - SDWebImage
   - UICKeyChainStore (= 2.1.1)
-  - UserCenter
   - YYModel (= 1.0.4)
   - YYText (= 1.0.7)
 
 SPEC REPOS:
-  "git@172.16.0.245:Finance_SDK/iOS_Loan_Spec.git":
+  "git@gitlab.jr.2345.net:finance_sdk/ios_loan_spec.git":
     - HJ_UIKit
     - HJCategories
     - HJMediator
     - HJWebView
-  http://172.16.0.245:2345/Apple_SDK/iOS_Specs.git:
-    - AppUpdate
-    - RCMobClick
-    - UserCenter
-    - XZYNetwork
   https://github.com/cocoapods/specs.git:
     - AFNetworking
-    - Bugly
     - Charts
     - ESTabBarController-swift
+    - FLAnimatedImage
     - FMDB
     - GTMBase64
     - HMSegmentedControl
@@ -153,44 +130,34 @@ SPEC REPOS:
     - pop
     - ReactiveCocoa
     - SDWebImage
-    - TTTAttributedLabel
     - UICKeyChainStore
-    - UMengUShare
     - WebViewJavascriptBridge
     - YYModel
     - YYText
-    - zxcvbn-ios
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  AppUpdate: 24943e29e8042d23207bd42c61a2f9c67dc35ad1
-  Bugly: 3ca9f255c01025582df26f9222893b383c7e4b4e
   Charts: 680c8328bd5e90cb14f67e00d2176f3113d19141
-  ESTabBarController-swift: 58cca4ab7de980657d99a02181c1ff310983e975
+  ESTabBarController-swift: 4fb52ad03d94d0717ef97bc9eb09a5abfdded0a2
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
   GTMBase64: f0f91be06a7a20b84c8e4fee30c0430395091d82
-  HJ_UIKit: 068f688a539653c151312a000d85d4113e4d1965
-  HJCategories: eb50c3d9495bbe0bb0c7f67012d8c9e1e07ae37b
-  HJMediator: 381890d07324a962f6c84c782d98c3be8d3d931a
-  HJWebView: 55d5f3a8f4483be69b37d18a7a0ee74038f1bbb9
+  HJ_UIKit: 65d770f9bf8ee967d137adc9c162656770468c69
+  HJCategories: 824f738b5ed3d882c82f280a443dfd203a8e4766
+  HJMediator: 17862b72dd881cce37f5c63b7ff637493c5f934d
+  HJWebView: 7aa09038cdfcecb853a831f4863cd8f41ef77705
   HMSegmentedControl: f514c6dad47aa3065e0ed2e8046b73efc71221b9
   IQKeyboardManager: 077b7f691dfa9d69db9cff66f2bed68ebfc02d9b
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
-  RCMobClick: 05cdb2fc6ebf656ee690eddece9dce3ec75f3c02
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDWebImage: ecc03494e973b93b80213649d32175f8d2d17d4d
-  TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
+  SDWebImage: c10d14a8883ebd89664f02a422006f66a85c0c5d
   UICKeyChainStore: 239558492fa260531a0774cfc611ea83a6eaff3a
-  UMengUShare: 370d180101e13ee0227ae657ab119ba97243d2b3
-  UserCenter: 60a03b7fa664fbcd02ee4c33fe12d71ddcb2d0bf
   WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
-  XZYNetwork: eaffc9ed91f7458cfa6f951b59685298373d8c4a
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
   YYText: 5c461d709e24d55a182d1441c41dc639a18a4849
-  zxcvbn-ios: fef98b7c80f1512ff0eec47ac1fa399fc00f7e3c
 
-PODFILE CHECKSUM: eabbd56ad8e182f145772c2f0127db02a82cff01
+PODFILE CHECKSUM: 47e9f41ba18ddc0c9c035098fb3541b1296c8b36
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0

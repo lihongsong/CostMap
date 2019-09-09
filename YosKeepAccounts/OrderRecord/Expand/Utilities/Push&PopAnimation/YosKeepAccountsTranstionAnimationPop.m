@@ -4,7 +4,7 @@
 @property (nonatomic, strong)id<UIViewControllerContextTransitioning> transitionContext;
 @end
 @implementation YosKeepAccountsTranstionAnimationPop
-#pragma mark -- UIViewControllerAnimatedTransitioning --
+
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
     return 0.4;
 }
@@ -46,7 +46,7 @@
     animation.delegate = self;
     [maskLayer addAnimation:animation forKey:nil];
 }
-#pragma mark -- CYosnimationDelegate --
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     [self.transitionContext completeTransition:YES];
     [self.transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view.layer.mask = nil;

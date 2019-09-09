@@ -81,7 +81,6 @@
 + (BOOL)hasCamera {
     return [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
 }
-#pragma mark - sysctl utils
 + (unsigned long)getSysInfo:(uint)typeSpecifier {
     size_t size = sizeof(int);
     unsigned long result;
@@ -89,7 +88,6 @@
     sysctl(mib, 2, &result, &size, NULL, 0);
     return (unsigned long)result;
 }
-#pragma mark - memory information
 + (NSUInteger)cpuFrequency {
     return [self getSysInfo:HW_CPU_FREQ];
 }
@@ -117,7 +115,6 @@
     unsigned long mem_free = vm_stat.free_count * pagesize;
     return mem_free;
 }
-#pragma mark - disk information
 + (long long)freeDiskSpaceBytes {
     struct statfs buf;
     long long freespace;

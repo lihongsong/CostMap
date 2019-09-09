@@ -6,7 +6,6 @@
 @implementation YosKeepAccountsChartPieScene {
     NSArray *parties;
 }
-#pragma mark - Life Cycle
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -19,7 +18,7 @@
     [super awakeFromNib];
     [self setUp];
 }
-#pragma mark - Getter & Setter Methods
+
 - (void)setHoleRadiusPercent:(CGFloat)holeRadiusPercent {
     _holeRadiusPercent = holeRadiusPercent;
     self.chartScene.holeRadiusPercent = holeRadiusPercent;
@@ -66,7 +65,7 @@
     [data setValueFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:11.f]];
     [data setValueTextColor:UIColor.whiteColor];
     NSString *specialWealth = [NSString stringWithFormat:@"¥%.2f", fabs(sum)];
-    NSString *enterString = [NSString stringWithFormat:@"支出\n%@", specialWealth];
+    NSString *enterString = [NSString stringWithFormat:@"spending \n%@", specialWealth];
     NSMutableAttributedString *centerText = [[NSMutableAttributedString alloc] initWithString:enterString];
     [centerText addAttributes:@{
                                 NSFontAttributeName: [UIFont systemFontOfSize:15],
@@ -86,11 +85,9 @@
     [_chartScene highlightValues:nil];
     [_chartScene animateWithXAxisDuration:1.4 easingOption:ChartEasingOptionEaseOutBack];
 }
-#pragma mark - Public Method
 - (void)animate {
     [_chartScene animateWithXAxisDuration:1.0 easingOption:ChartEasingOptionEaseInOutSine];
 }
-#pragma mark - Private Method
 - (void)setUp {
     _holeRadiusPercent = 0.58;
     parties = [YosKeepAccountsOrderTool allOrderTypesName];
@@ -142,9 +139,7 @@
     l.yOffset = 0.0;
     l.maxSizePercent = 0.2;
 }
-#pragma mark - Notification Method
-#pragma mark - Event & Target Methods
-#pragma mark - Super Method
+
 - (void)layoutSubviews {
     [super layoutSubviews];
     CGFloat totalHeight = self.hj_height;

@@ -1,7 +1,6 @@
 #import "UIColor+YKAAddColor.h"
 #import "YosKeepAccountsPlistManager.h"
 @implementation UIColor (YKAAddColor)
-#pragma mark 将NSString 转为UIColor
 + (UIColor *) colorFromHexCode:(NSString *)hexString {
     NSString *cleanString = [hexString stringByReplacingOccurrencesOfString:@"#" withString:@""];
     if([cleanString length] == 3) {
@@ -55,15 +54,12 @@
 + (UIColor *) backgroundGrayColor{
     return [UIColor colorFromHexCode:[YosKeepAccountsPlistManager getColor:10]];
 }
-#pragma mark 333333
 + (UIColor *) grayColor{
     return [UIColor colorFromHexCode:[YosKeepAccountsPlistManager getColor:11]];
 }
-#pragma mark BBBBBB
 + (UIColor *) loginGrayColor{
     return [UIColor colorFromHexCode:[YosKeepAccountsPlistManager getColor:12]];
 }
-#pragma mark D6D6D6
 + (UIColor *) buttonGrayColor{
     return [UIColor colorFromHexCode:[YosKeepAccountsPlistManager getColor:13]];
 }

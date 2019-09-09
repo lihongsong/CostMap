@@ -181,7 +181,7 @@
         [_UIWebView  stringByEvaluatingJavaScriptFromString:funcitonNameStr];
     }
 }
-#pragma mark -- setter method
+
 - (void)setScrollEnabled:(BOOL)scrollEnabled {
     _scrollEnabled = scrollEnabled;
     if (YosSYSTEM_VERSION >= 9.0) {

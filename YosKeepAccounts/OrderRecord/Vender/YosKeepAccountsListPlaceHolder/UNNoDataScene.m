@@ -24,7 +24,7 @@
     [noDataScene addSubview:noDataScene.noDataLabel];
     return noDataScene;
 }
-#pragma mark - Getter & Setter
+
 - (UIImageView *)noDataImageScene {
     if (!_noDataImageScene) {
         UIImage *image = nil;
@@ -43,7 +43,7 @@
         _noDataLabel = [[UILabel alloc] init];
         _noDataLabel.font = [UIFont systemFontOfSize:15];
         _noDataLabel.textColor = HJHexColor(k0x999999);
-        _noDataLabel.text = _title ? _title : @"暂时无数据...";
+        _noDataLabel.text = _title ? _title : @"Temporary no data...";
         [_noDataLabel sizeToFit];
     }
     return _noDataLabel;

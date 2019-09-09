@@ -31,14 +31,13 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
 @property(nonatomic, copy) YosKeepAccountsCustomDateCancelBlock cancelBlock;
 @end
 @implementation YosKeepAccountsCustomDatePickerScene
-#pragma mark - 1.显示时间选择器
+
 + (YosKeepAccountsCustomDatePickerScene *)showDatePickerWithTitle:(NSString *)title
                                            dateType:(YosKeepAccountsCustomDatePickerMode)type
                                     defaultSelValue:(NSString *)defaultSelValue
                                         resultBlock:(YosKeepAccountsCustomDateResultBlock)resultBlock {
     return [self showDatePickerWithTitle:title dateType:type defaultSelValue:defaultSelValue minDate:nil maxDate:nil isAutoSelect:NO themeColor:nil resultBlock:resultBlock cancelBlock:nil];
 }
-#pragma mark - 2.显示时间选择器（支持 设置自动选择 和 自定义主题颜色）
 + (YosKeepAccountsCustomDatePickerScene *)showDatePickerWithTitle:(NSString *)title
                                            dateType:(YosKeepAccountsCustomDatePickerMode)type
                                     defaultSelValue:(NSString *)defaultSelValue
@@ -49,7 +48,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
                                         resultBlock:(YosKeepAccountsCustomDateResultBlock)resultBlock {
     return [self showDatePickerWithTitle:title dateType:type defaultSelValue:defaultSelValue minDate:minDate maxDate:maxDate isAutoSelect:isAutoSelect themeColor:themeColor resultBlock:resultBlock cancelBlock:nil];
 }
-#pragma mark - 3.显示时间选择器（支持 设置自动选择、自定义主题颜色、取消选择的回调）
 + (YosKeepAccountsCustomDatePickerScene *)showDatePickerWithTitle:(NSString *)title
                                            dateType:(YosKeepAccountsCustomDatePickerMode)type
                                     defaultSelValue:(NSString *)defaultSelValue
@@ -63,7 +61,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     [datePickerScene showWithAnimation:YES];
     return datePickerScene;
 }
-#pragma mark - 初始化时间选择器
 - (instancetype)initWithTitle:(NSString *)title
                      dateType:(YosKeepAccountsCustomDatePickerMode)type
               defaultSelValue:(NSString *)defaultSelValue
@@ -84,8 +81,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
         if (defaultSelValue && defaultSelValue.length > 0) {
             NSDate *defaultSelDate = [NSDate getDate:defaultSelValue format:self.selectDateFormatter];
             if (!defaultSelDate) {
-                YosKeepAccountsCustomErrorLog(@"参数格式错误！参数 defaultSelValue 的正确格式是：%@", self.selectDateFormatter);
-                NSAssert(defaultSelDate, @"参数格式错误！请检查形参 defaultSelValue 的格式");
                 defaultSelDate = [NSDate date]; 
             }
             self.selectDate = defaultSelDate;
@@ -183,7 +178,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
             break;
     }
 }
-#pragma mark - 初始化子视图
 - (void)initUI {
     [super initUI];
     self.titleLabel.text = _title;
@@ -205,7 +199,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     _minuteIndex = self.selectDate.minute - ((_yearIndex == 0 && _monthIndex == 0 && _dayIndex == 0 && _hourIndex == 0) ? self.minLimitDate.minute : 0);
     [self setupDateArray];
 }
-#pragma mark - 设置数据源数组
 - (void)setupDateArray {
     NSInteger year = [self.yearArr[_yearIndex] integerValue];
     [self setupMonthArr:year];
@@ -287,7 +280,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     }
     self.minuteArr = [tempArr copy];
 }
-#pragma mark - 滚动到指定的时间位置
 - (void)scrollToSelectDate {
     NSArray *indexArr = [NSArray array];
     if (self.showType == YosKeepAccountsCustomDatePickerModeYMDHM) {
@@ -309,7 +301,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
         [self.pickerScene selectRow:[indexArr[i] integerValue] inComponent:i animated:YES];
     }
 }
-#pragma mark - 时间选择器1
 - (UIDatePicker *)datePicker {
     if (!_datePicker) {
         _datePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, kTopSceneHeight + 0.5, self.alertScene.frame.size.width, kPickerHeight)];
@@ -326,7 +317,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     }
     return _datePicker;
 }
-#pragma mark - 时间选择器2
 - (UIPickerView *)pickerScene {
     if (!_pickerScene) {
         _pickerScene = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kTopSceneHeight + 0.5, self.alertScene.frame.size.width, kPickerHeight)];
@@ -337,7 +327,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     }
     return _pickerScene;
 }
-#pragma mark - UIPickerViewDataSource
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerScene {
     if (self.showType == YosKeepAccountsCustomDatePickerModeYMDHM) {
         return 5;
@@ -375,7 +364,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     }
     return [rowsArr[component] integerValue];
 }
-#pragma mark - UIPickerViewDelegate
 - (UIView *)pickerView:(UIPickerView *)pickerScene viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(nullable UIView *)view {
     ((UIView *) [pickerScene.subviews objectAtIndex:1]).backgroundColor = [UIColor colorWithRed:195 / 255.0 green:195 / 255.0 blue:195 / 255.0 alpha:1.0f];
     ((UIView *) [pickerScene.subviews objectAtIndex:2]).backgroundColor = [UIColor colorWithRed:195 / 255.0 green:195 / 255.0 blue:195 / 255.0 alpha:1.0f];
@@ -406,55 +394,55 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
 - (void)setDateLabelText:(UILabel *)label component:(NSInteger)component row:(NSInteger)row {
     if (self.showType == YosKeepAccountsCustomDatePickerModeYMDHM) {
         if (component == 0) {
-            label.text = [NSString stringWithFormat:@"%@年", self.yearArr[row]];
+            label.text = [NSString stringWithFormat:@"%@year", self.yearArr[row]];
         } else if (component == 1) {
-            label.text = [NSString stringWithFormat:@"%@月", self.monthArr[row]];
+            label.text = [NSString stringWithFormat:@"%@month", self.monthArr[row]];
         } else if (component == 2) {
-            label.text = [NSString stringWithFormat:@"%@日", self.dayArr[row]];
+            label.text = [NSString stringWithFormat:@"%@day", self.dayArr[row]];
         } else if (component == 3) {
-            label.text = [NSString stringWithFormat:@"%@时", self.hourArr[row]];
+            label.text = [NSString stringWithFormat:@"%@hour", self.hourArr[row]];
         } else if (component == 4) {
-            label.text = [NSString stringWithFormat:@"%@分", self.minuteArr[row]];
+            label.text = [NSString stringWithFormat:@"%@minute", self.minuteArr[row]];
         }
     } else if (self.showType == YosKeepAccountsCustomDatePickerModeMDHM) {
         if (component == 0) {
-            label.text = [NSString stringWithFormat:@"%@月", self.monthArr[row]];
+            label.text = [NSString stringWithFormat:@"%@month", self.monthArr[row]];
         } else if (component == 1) {
-            label.text = [NSString stringWithFormat:@"%@日", self.dayArr[row]];
+            label.text = [NSString stringWithFormat:@"%@day", self.dayArr[row]];
         } else if (component == 2) {
-            label.text = [NSString stringWithFormat:@"%@时", self.hourArr[row]];
+            label.text = [NSString stringWithFormat:@"%@hour", self.hourArr[row]];
         } else if (component == 3) {
-            label.text = [NSString stringWithFormat:@"%@分", self.minuteArr[row]];
+            label.text = [NSString stringWithFormat:@"%@minute", self.minuteArr[row]];
         }
     } else if (self.showType == YosKeepAccountsCustomDatePickerModeYMD) {
         if (component == 0) {
-            label.text = [NSString stringWithFormat:@"%@年", self.yearArr[row]];
+            label.text = [NSString stringWithFormat:@"%@year", self.yearArr[row]];
         } else if (component == 1) {
-            label.text = [NSString stringWithFormat:@"%@月", self.monthArr[row]];
+            label.text = [NSString stringWithFormat:@"%@month", self.monthArr[row]];
         } else if (component == 2) {
-            label.text = [NSString stringWithFormat:@"%@日", self.dayArr[row]];
+            label.text = [NSString stringWithFormat:@"%@day", self.dayArr[row]];
         }
     } else if (self.showType == YosKeepAccountsCustomDatePickerModeYM) {
         if (component == 0) {
-            label.text = [NSString stringWithFormat:@"%@年", self.yearArr[row]];
+            label.text = [NSString stringWithFormat:@"%@year", self.yearArr[row]];
         } else if (component == 1) {
-            label.text = [NSString stringWithFormat:@"%@月", self.monthArr[row]];
+            label.text = [NSString stringWithFormat:@"%@month", self.monthArr[row]];
         }
     } else if (self.showType == YosKeepAccountsCustomDatePickerModeY) {
         if (component == 0) {
-            label.text = [NSString stringWithFormat:@"%@年", self.yearArr[row]];
+            label.text = [NSString stringWithFormat:@"%@year", self.yearArr[row]];
         }
     } else if (self.showType == YosKeepAccountsCustomDatePickerModeMD) {
         if (component == 0) {
-            label.text = [NSString stringWithFormat:@"%@月", self.monthArr[row]];
+            label.text = [NSString stringWithFormat:@"%@month", self.monthArr[row]];
         } else if (component == 1) {
-            label.text = [NSString stringWithFormat:@"%@日", self.dayArr[row]];
+            label.text = [NSString stringWithFormat:@"%@day", self.dayArr[row]];
         }
     } else if (self.showType == YosKeepAccountsCustomDatePickerModeHM) {
         if (component == 0) {
-            label.text = [NSString stringWithFormat:@"%@时", self.hourArr[row]];
+            label.text = [NSString stringWithFormat:@"%@hour", self.hourArr[row]];
         } else if (component == 1) {
-            label.text = [NSString stringWithFormat:@"%@分", self.minuteArr[row]];
+            label.text = [NSString stringWithFormat:@"%@minute", self.minuteArr[row]];
         }
     }
 }
@@ -556,14 +544,12 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
     }
     self.selectDate = [NSDate getDate:selectDateValue format:self.selectDateFormatter];
 }
-#pragma mark - 背景视图的点击事件
 - (void)didTapBackgroundScene:(UITapGestureRecognizer *)sender {
     [self dismissWithAnimation:NO];
     if (self.cancelBlock) {
         self.cancelBlock();
     }
 }
-#pragma mark - 时间选择器的滚动响应事件
 - (void)didSelectValueChanged:(UIDatePicker *)sender {
     self.selectDate = sender.date;
     if (_isAutoSelect) {
@@ -573,14 +559,12 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
         }
     }
 }
-#pragma mark - 取消按钮的点击事件
 - (void)clickLeftBtn {
     [self dismissWithAnimation:YES];
     if (self.cancelBlock) {
         self.cancelBlock();
     }
 }
-#pragma mark - 确定按钮的点击事件
 - (void)clickRightBtn {
     [self dismissWithAnimation:YES];
     if (self.resultBlock) {
@@ -588,7 +572,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
         self.resultBlock(selectDateValue);
     }
 }
-#pragma mark - 弹出视图方法
 - (void)showWithAnimation:(BOOL)animation {
     [KeyWindow addSubview:self];
     if (animation) {
@@ -602,7 +585,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
         }];
     }
 }
-#pragma mark - 关闭视图方法
 - (void)dismissWithAnimation:(BOOL)animation {
     [UIView animateWithDuration:0.2 animations:^{
         CGRect rect = self.alertScene.frame;
@@ -631,7 +613,6 @@ typedef NS_ENUM(NSInteger, BRDatePickerStyle) {
         self.backgroundScene = nil;
     }];
 }
-#pragma mark - getter 方法
 - (NSArray *)yearArr {
     if (!_yearArr) {
         _yearArr = [NSArray array];

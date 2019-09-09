@@ -34,7 +34,7 @@ static PermissionManager *sharedInstance;
 - (BOOL)checkCameraAuthorization {
     
     if(![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]){
-        HJAlertView *alert = [[HJAlertView alloc] initWithTitle:nil message:@"当前设备不支持相机，请更换设备后再试" cancelButtonTitle:@"确定" confirmButtonTitle:nil];
+        HJAlertView *alert = [[HJAlertView alloc] initWithTitle:nil message:@"The current device does not support camera, please try again after changing the device" cancelButtonTitle:@"confirm" confirmButtonTitle:nil];
         alert.cancelColor = HJHexColor(0xff6a45);
         [alert show];
         return NO;
@@ -42,15 +42,6 @@ static PermissionManager *sharedInstance;
     
     if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo] == AVAuthorizationStatusDenied) {
         [self showPermissionAlertWithType:LNPermissionTypeCamera];
-        return NO;
-    }
-    
-    return YES;
-}
-
-- (BOOL)checkMicrophoneAuthorization {
-    if ([AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeAudio] == AVAuthorizationStatusDenied) {
-        [self showPermissionAlertWithType:LNPermissionTypeMicrophone];
         return NO;
     }
     
@@ -91,49 +82,24 @@ static PermissionManager *sharedInstance;
     return YES;
 }
 
-- (BOOL)checkAddressBookAuthorization {
-    ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-    __block BOOL accessGranted = NO;
-    
-    dispatch_semaphore_t sema = dispatch_semaphore_create(0);
-    ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
-        accessGranted = granted;
-        dispatch_semaphore_signal(sema);
-    });
-    dispatch_semaphore_wait(sema, DISPATCH_TIME_FOREVER);
-    
-    if (accessGranted == NO) {
-        [self showPermissionAlertWithType:LNPermissionTypeAddressBook];
-        return NO;
-    }
-    
-    return YES;
-}
-
 - (void)showPermissionAlertWithType:(LNPermissionType)type {
     NSString *message;
     
     switch (type) {
         case LNPermissionTypeCamera:
-            message = [NSString stringWithFormat:@"请允许%@使用相机，否则会影响您的后续操作",[UIDevice hj_bundleName]];
-            break;
-        case LNPermissionTypeMicrophone:
-            message = [NSString stringWithFormat:@"请允许%@使用麦克风，否则会影响您的后续操作",[UIDevice hj_bundleName]];
+            message = [NSString stringWithFormat:@"Please allow %@ use the camera, otherwise it will affect your subsequent operations",[UIDevice hj_bundleName]];
             break;
         case LNPermissionTypeNotification:
-            message = [NSString stringWithFormat:@"请允许%@接收通知并重启应用，否则会影响您的后续操作",[UIDevice hj_bundleName]];
+            message = [NSString stringWithFormat:@"Please allow %@ receive the notification and restart the application, otherwise it will affect your subsequent actions",[UIDevice hj_bundleName]];
             break;
         case LNPermissionTypeLocation:
-            message = [NSString stringWithFormat:@"请允许%@访问您的位置并重启应用，否则会影响您的后续操作",[UIDevice hj_bundleName]];
-            break;
-        case LNPermissionTypeAddressBook:
-            message = [NSString stringWithFormat:@"获取通讯录权限失败，请允许%@获取您的通讯录信息",[UIDevice hj_bundleName]];
+            message = [NSString stringWithFormat:@"Please allow %@ access your location and restart the application, otherwise it will affect your subsequent actions",[UIDevice hj_bundleName]];
             break;
         default:
             break;
     }
     
-    HJAlertView *alertView = [[HJAlertView alloc] initWithTitle:nil message:message cancelButtonTitle:@"取消" confirmButtonTitle:@"设置" cancelBlock:^{
+    HJAlertView *alertView = [[HJAlertView alloc] initWithTitle:nil message:message cancelButtonTitle:@"cancel" confirmButtonTitle:@"setting" cancelBlock:^{
         
     } confirmBlock:^{
         if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_8_0) {
@@ -143,102 +109,6 @@ static PermissionManager *sharedInstance;
     alertView.confirmColor = HJHexColor(0xff6a45);
     [alertView show];
     
-}
-
-
-
-+ (void)checkContactPermissionWithResult:(void (^) (BOOL allow))result showAlert:(BOOL)showAlert {
-    
-    if (@available(iOS 9.0, *)) {
-        //ios9 及以上
-        CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
-        if (status == CNAuthorizationStatusNotDetermined) {
-            CNContactStore *contactStore = [[CNContactStore alloc] init];
-            [contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
-                [self showContactGuideAlert:result showAlert:showAlert granted:granted];
-            }];
-        } else if (status == CNAuthorizationStatusDenied) {
-            [self showContactGuideAlert:result showAlert:showAlert];
-        } else {
-            // 用户同意
-            !result?:result(YES);
-        }
-    } else {
-        //ios 8
-        ABAuthorizationStatus status = ABAddressBookGetAuthorizationStatus();
-        if (status == kABAuthorizationStatusNotDetermined) {
-            ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL, NULL);
-            ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
-                [self showContactGuideAlert:result showAlert:showAlert granted:granted];
-            });
-        } else if (status == kABAuthorizationStatusDenied) {
-            [self showContactGuideAlert:result showAlert:showAlert];
-        } else {
-            // 用户同意
-            !result?:result(YES);
-        }
-    }
-}
-
-+ (void)showContactGuideAlert:(void (^) (BOOL allow))result showAlert:(BOOL)showAlert granted:(BOOL)granted {
-    if (!granted) {
-        [self showContactGuideAlert:result showAlert:showAlert];
-    } else {
-        // 获取到权限结果 同意
-        !result?:result(YES);
-    }
-}
-
-+ (void)showContactGuideAlert:(void (^) (BOOL allow))result showAlert:(BOOL)showAlert {
-    if (showAlert) {
-        // 获取到权限结果 被拒绝
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // 获取到权限结果 被拒绝
-            [self showContactGuideAlertConfirmClick:nil cancelClick:nil];
-        });
-    } else {
-        !result?:result(NO);
-    }
-}
-
-//获取通讯录权限
-+ (void)showContactGuideAlertConfirmClick:(void (^) (void))confirmClick
-                              cancelClick:(void (^) (void))cancelClick {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self showGuideAlertWithTitle:@"请允许获取通讯录权限"
-                           topContent:@"当前操作需要通讯录权限，请打开权限"
-                        bottomContent:@"\n \n设置路径：设置->隐私->通讯录"
-                              confirm:@"去设置"
-                         confirmClick:^{
-                             // 跳转去设置
-                             [self skipToSetting];
-                             !confirmClick?:confirmClick();
-                         }
-                          cancelClick:^{
-                              !cancelClick?:cancelClick();
-                          }];
-    });
-}
-
-//获取录音权限
-+ (void)showVoiceGuideAlertConfirmClick:(void (^) (void))confirmClick
-                              cancelClick:(void (^) (void))cancelClick {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self showGuideAlertWithTitle:@"请允许获取录音权限"
-                           topContent:@"当前操作需要录音权限，请打开权限"
-                        bottomContent:@"\n \n设置路径：设置->隐私->录音"
-                              confirm:@"去设置"
-                         confirmClick:^{
-                             // 跳转去设置
-                             [self skipToSetting];
-                             !confirmClick?:confirmClick();
-                         }
-                          cancelClick:^{
-                              !cancelClick?:cancelClick();
-                          }];
-    });
 }
 
 + (void)skipToSetting {

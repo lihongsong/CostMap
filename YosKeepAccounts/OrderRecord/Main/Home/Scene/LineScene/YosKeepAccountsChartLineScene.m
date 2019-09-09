@@ -7,7 +7,6 @@
 @implementation YosKeepAccountsChartLineScene {
     NSArray *parties;
 }
-#pragma mark - Life Cycle
 - (instancetype)init
 {
     self = [super init];
@@ -20,18 +19,16 @@
     [super awakeFromNib];
     [self setUp];
 }
-#pragma mark - Getter & Setter Methods
+
 - (void)setEntitys:(NSArray<YosKeepAccountsOrderEntity *> *)entitys {
     _entitys = entitys;
     [self updateChartData];
 }
-#pragma mark - Public Method
 - (void)animate {
     [_chartScene animateWithYAxisDuration:1.0 easingOption:ChartEasingOptionEaseInOutSine];
 }
-#pragma mark - Private Method
 - (void)setUp {
-    parties = [YosKeepAccountsOrderTool allOrderTypesName];
+    parties = [YosKeepAccountsOrderTool allOrderShortTypesName];
     _chartScene = [BarChartView new];
     [self addSubview:_chartScene];
     [_chartScene mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -87,6 +84,5 @@
     [_chartScene setNeedsDisplay];
     [_chartScene animateWithYAxisDuration:0.5];
 }
-#pragma mark - Notification Method
-#pragma mark - Event & Target Methods
+
 @end

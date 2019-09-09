@@ -4,7 +4,7 @@
 @property (nonatomic, strong) id<UIViewControllerContextTransitioning> transitionContext;
 @end
 @implementation YosKeepAccountsTranstionAnimationPush
-#pragma mark -- UIViewControllerAnimatedTransitioning --
+
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{
     return 0.4;
 }
@@ -46,7 +46,7 @@
     maskAnimation.delegate = self;
     [maskLayer addAnimation:maskAnimation forKey:@"path"];
 }
-#pragma mark -- CAAnimationDelegate --
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag{
     [self.transitionContext completeTransition:YES];
     [self.transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey].view.layer.mask = nil;

@@ -11,7 +11,6 @@
 + (instancetype)instance {
     return StoryBoardLoaderRoot(@"OrderMonthList");
 }
-#pragma mark - Life Cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = HJHexColor(k0xf5f5f5);
@@ -22,10 +21,7 @@
     [self.navigationController setNavigationBarHidden:NO animated:animated];
     [self requestData];
 }
-#pragma mark - Getter & Setter Methods
-#pragma mark - Network Method
-#pragma mark - Public Method
-#pragma mark - Private Method
+
 - (void)setUpUI {
     self.navigationItem.rightBarButtonItem =
     [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_add"]
@@ -67,10 +63,8 @@
     self.tableScene.entitys = result;
     [self.tableScene cyl_reloadData];
 }
-#pragma mark - Notification Method
-#pragma mark - Event & Target Methods
+
 - (void)addOrderBtnClick {
     [[HJMediator shared] routeToURL:HJAPPURL(@"EditOrder") withParameters:@{@"orderTypeStr": _order_type_id}, nil];
 }
-#pragma mark - YosKeepAccountsDaySelectedSceneDelegate
 @end

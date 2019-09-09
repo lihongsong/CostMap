@@ -12,24 +12,21 @@ import ESTabBarController_swift;
     
     @objc public static func createRootViewController() -> YosKeepAccountsTabBarPresenter {
         
-        //  首页
-        let homeImg = UIImage(named: "账单_tab")
-        let homeSelectedImg = UIImage(named: "账单_tab")
+        let homeImg = UIImage(named: "main_tab")
+        let homeSelectedImg = UIImage(named: "main_tab")
         let homeVC = childViewController(viewController: YosKeepAccountsHomePresenter.instance(),
-                                         title: "首页",
+                                         title: "Main",
                                          image: homeImg,
                                          selectedImage: homeSelectedImg,
                                          tag: 0)
         
-        //  中间按钮
         let midVC = YosKeepAccountsBasePresenter()
         midVC.tabBarItem = ESTabBarItem.init(YosKeepAccountsIrregularityContentView(), title: nil, image: UIImage(named: "yka_orderAdd"), selectedImage: UIImage(named: "yka_orderAdd"))
-        
-        //  我的
-        let meImg = UIImage(named: "我的_tab")
-        let meSelectedImg = UIImage(named: "我的_tab")
-        let meVC = childViewController(viewController: YosKeepAccountsMePresenter(),
-                                       title: "我的",
+
+        let meImg = UIImage(named: "chart_tab")
+        let meSelectedImg = UIImage(named: "chart_tab")
+        let meVC = childViewController(viewController: YosKeepAccountsChartPresenter.instance(),
+                                       title: "Chart",
                                        image: meImg,
                                        selectedImage: meSelectedImg,
                                        tag: 2)
@@ -43,14 +40,6 @@ import ESTabBarController_swift;
             return false
         }
         tabBarVC.didHijackHandler = { tabBarViewController, viewController, index in
-            
-            if (YosKeepAccountsUserManager.shareInstance()!.logined == false) {
-                // 跳转登录
-                let controller = XZYLoginViewController()
-                controller.delegate = tabBarViewController as! YosKeepAccountsTabBarPresenter
-                curNav(tabBarViewController)?.pushViewController(controller, animated: true)
-                return
-            }
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 let editOrderVC = YosKeepAccountsEditOrderPresenter.instance()
@@ -107,37 +96,5 @@ import ESTabBarController_swift;
     override func viewDidLoad() {
         super.viewDidLoad()
         
-    }
-    
-}
-
-//MARK: XZYUserCenterProtocol
-extension YosKeepAccountsTabBarPresenter: XZYUserCenterProtocol {
-    
-    /// 登录成功回调
-    func loginFinished(_ statusDict: [AnyHashable : Any]!) {
-        
-        guard let status = statusDict!["code"] else {
-            return
-        }
-        let statusValue = (status as! NSNumber).intValue
-        switch LoginStatus(rawValue: statusValue)! {
-        case LoginStatus.failed:
-            return
-        case LoginStatus.success:
-            YosKeepAccountsTabBarPresenter.curNav(self)?.popToRootViewController(animated: true)
-            let userInfo = [
-                "passid": XZYUserInfo.sharedInstance()?.passid,
-                "username": XZYUserInfo.sharedInstance()?.username,
-                "phone": XZYUserInfo.sharedInstance()?.phone,
-                "email": XZYUserInfo.sharedInstance()?.email,
-                "cookie": XZYUserInfo.sharedInstance()?.cookie
-            ]
-            UserDefaults.standard.set(userInfo, forKey: "userInfo")
-            UserDefaults.standard.synchronize()
-            YosKeepAccountsUserManager.shareInstance()?.refresh()
-        default:
-            return
-        }
     }
 }

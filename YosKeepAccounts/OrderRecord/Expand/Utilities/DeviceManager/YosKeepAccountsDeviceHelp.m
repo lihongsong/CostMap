@@ -1,7 +1,6 @@
 #import "YosKeepAccountsDeviceHelp.h"
 #import "YosKeepAccountsDeviceTypes.h"
 #import "UIDevice+YKAHardware.h"
-#import <RCMobClick/RCBaseCommon.h>
 
 #import "YosKeepAccountsNetReachability.h"
 #import <ifaddrs.h>
@@ -25,7 +24,6 @@
 #define IP_ADDR_IPv6 @"ipv6"
 
 @implementation YosKeepAccountsDeviceHelp
-#pragma mark - 获取app是否第一次安装或者更新
 + (BOOL)yka_isAppFirstInstall {
     static NSInteger isUpdate = -1; 
     if (isUpdate == -1) {
@@ -58,15 +56,15 @@
     NSString *originEntity = [[UIDevice currentDevice] hardwareString];
     NSString *memory = [NSString stringWithFormat:@"%luByte", (unsigned long)[UIDevice totalMemoryBytes]]; 
     NSString *ip = [YosKeepAccountsDeviceHelp yka_getIPAddress:YES];
-    NSString *deviceNo = [RCBaseCommon getUIDString];   
-    NSString *deviceToken = [RCBaseCommon getUIDString]; 
+    NSString *deviceNo = [UIDevice hj_devicePersistenceUUID];
+    NSString *deviceToken = [UIDevice hj_devicePersistenceUUID];
     NSString *availableCapacity = [NSString stringWithFormat:@"%lldByte", [UIDevice freeDiskSpaceBytes]]; 
     NSString *capacity = [NSString stringWithFormat:@"%lldByte", [UIDevice totalDiskSpaceBytes]]; 
     UIWebView *webScene = [[UIWebView alloc] initWithFrame:CGRectZero];
     NSString *userAgent = [webScene stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"]; 
     NSString *sdk = [NSString stringWithFormat:@"%@ %@", [UIDevice currentDevice].systemName, [UIDevice currentDevice].systemVersion]; 
     NSString *macAddress = [UIDevice hj_macAddress];
-    NSString *idfa = [RCBaseCommon getIdfaString]; 
+    NSString *idfa = [UIDevice hj_deviceIDFA]; 
     NSString *platform = [UIDevice getDeviceType]; 
     NSString *networkenv = UserDefaultGetObj(@"networkEnvironment"); 
     NSString *jailbreak = [NSString stringWithFormat:@"%d", [YosKeepAccountsDeviceHelp yka_isJailBreak]];
@@ -216,7 +214,7 @@ char *LNRiskPrintEnv(void) {
     CTCarrier *carrier = [info subscriberCellularProvider];
     NSString *mobile;
     if (!carrier.isoCountryCode) {
-        mobile = @"无运营商";
+        mobile = @"no operator";
     } else {
         mobile = [carrier carrierName];
     }

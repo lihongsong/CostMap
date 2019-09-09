@@ -1,1 +1,3 @@
-
+"NSCameraUsageDescription" = "我们需要打开你的相机拍照，方便你修改您的个人头像.";
+"NSLocationWhenInUseUsageDescription" = "打开位置权限后，就可以方便您记录账单所产生的地点.";
+"NSPhotoLibraryUsageDescription" = "我们需要打开您的相册选取照片，然后自定义您的个人头像.";

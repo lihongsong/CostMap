@@ -49,7 +49,6 @@
 }
 - (void)creatNewDataBase:(NSString *)name{
     if(![self.fmdb open]) {
-        NSLog(@"打开数据库失败!!!");
         return;
     }
     if (![self isTableExist:name]) {
@@ -58,7 +57,6 @@
 }
 - (void)updateData:(YosKeepAccountsOrderEntity *)model tableName:(NSString *)tableName  {
     if(![self.fmdb open]) {
-        NSLog(@"打开数据库失败!!!");
         return;
     }
     if (![self isTableExist:tableName]) {
@@ -85,9 +83,9 @@
 }
 - (void)insertData:(YosKeepAccountsOrderEntity *)model tableName:(NSString *)tableName {
     
-    if (StrIsEmpty(model.yka_username)) {
-        return ;
-    }
+//    if (StrIsEmpty(model.yka_username)) {
+//        return ;
+//    }
     
     if([self.fmdb open]){
         if (![self isTableExist:tableName]) {
@@ -115,12 +113,11 @@
                day:(NSString *)day
             result:(DBResultBlock)resultAction {
     if(![self.fmdb open]) {
-        NSLog(@"打开数据库失败!!!");
         return;
     }
     NSMutableString *sqlString = [NSMutableString stringWithFormat:@"SELECT * FROM %@ WHERE ", [self setTableName:tableName]];
     if (!year && !month && !day) {
-        !resultAction?:resultAction( nil, [NSError errorWithDomain:@"错误" code:0 userInfo:nil]);
+        !resultAction?:resultAction( nil, [NSError errorWithDomain:@"error" code:0 userInfo:nil]);
         return ;
     }
     if (year) {
@@ -191,12 +188,11 @@
 }
 - (NSMutableArray<YosKeepAccountsOrderEntity *> *)searchData:(YosKeepAccountsOrderEntity *)model tableName:(NSString *)tableName {
     
-    if (StrIsEmpty(model.yka_username)) {
-        return [NSMutableArray array];
-    }
+//    if (StrIsEmpty(model.yka_username)) {
+//        return [NSMutableArray array];
+//    }
     
     if(![self.fmdb open]) {
-        NSLog(@"打开数据库失败!!!");
         return [NSMutableArray array];
     }
     NSString *sql;

@@ -2,7 +2,6 @@
 @interface YosKeepAccountsBasePresenter ()
 @end
 @implementation YosKeepAccountsBasePresenter
-#pragma mark - life circle
 - (id)init {
     self = [super init];
     if (self) {
@@ -50,7 +49,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-#pragma mark - iOS11-ScrollScene内边距设置兼容
 - (void)adjustsScrollSceneInsets {
     adjustsScrollSceneInsets_NO([self getFirstScrollSceneFromVC], self);
 }
@@ -64,11 +62,9 @@
     }
     return scrollScene;
 }
-#pragma mark - 设置视图控制器的BackBarButtonItem
 - (void)setupBackBarButtonItem {
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 }
-#pragma mark - 设置视图控制器的leftBarButtonItemWithImage
 - (void)setupCustomLeftWithImage:(UIImage *)image target:(id)tar action:(SEL)act {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 44, 44);
@@ -78,7 +74,6 @@
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.leftBarButtonItem = leftItem;
 }
-#pragma mark - 设置视图控制器的rightBarButtonItemWithImage
 - (void)setupCustomRightWithImage:(UIImage *)image target:(id)tar action:(SEL)act {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 44, 44);
@@ -88,7 +83,6 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     self.navigationItem.rightBarButtonItem = rightItem;
 }
-#pragma mark - 设置视图控制器的rightBarButtonItemWithTitle
 - (void)setupCustomRightWithtitle:(NSString *)title attributes:(NSDictionary<NSAttributedStringKey, id> *)attrs target:(id)tar action:(SEL)act {
     UILabel *rightTitle = [[UILabel alloc]init];
     rightTitle.frame = CGRectMake(0, 0, 55, 44);

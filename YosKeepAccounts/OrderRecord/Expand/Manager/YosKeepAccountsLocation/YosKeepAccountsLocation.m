@@ -14,7 +14,6 @@
     });
     return location;
 }
-#pragma mark - Getter
 - (CLLocationManager *)manager {
     if (!_manager) {
         _manager = [[CLLocationManager alloc] init];
@@ -22,7 +21,6 @@
     }
     return _manager;
 }
-#pragma mark - Action
 - (void)locate {
     if ([CLLocationManager locationServicesEnabled]) {
         [self.manager startUpdatingLocation];
@@ -36,7 +34,6 @@
     [self.results addObject:result];
     [self locate];
 }
-#pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 

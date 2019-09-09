@@ -40,6 +40,7 @@
         default: return YosKeepAccountsOrderTypeOtherName;
     }
 }
+
 + (NSArray *)allOrderTypesName {
     return @[YosKeepAccountsOrderTypeFoodName,
              YosKeepAccountsOrderTypeBuyName,
@@ -51,6 +52,19 @@
              YosKeepAccountsOrderTypeOtherName
              ];
 }
+
++ (NSArray *)allOrderShortTypesName {
+    return @[@"repa",
+             @"shop",
+             @"rela",
+             @"play",
+             @"fami",
+             @"educ",
+             @"medi",
+             @"othe"
+             ];
+}
+
 + (NSArray *)allOrderTypesColor {
     return @[[self colorWithType:YosKeepAccountsOrderTypeFood],
              [self colorWithType:YosKeepAccountsOrderTypeBuy],
@@ -94,14 +108,14 @@
 }
 + (NSString *)typeImage:(YosKeepAccountsOrderType)type {
     switch (type) {
-        case YosKeepAccountsOrderTypeFood: return @"餐饮_ic";
-        case YosKeepAccountsOrderTypeBuy: return @"购物_ic";
-        case YosKeepAccountsOrderTypePlay: return @"游玩_ic";
-        case YosKeepAccountsOrderTypeHome: return @"居家_ic";
-        case YosKeepAccountsOrderTypeEduca: return @"教育_ic";
-        case YosKeepAccountsOrderTypeMedic: return @"医疗_ic";
-        case YosKeepAccountsOrderTypeFriend: return @"社交_ic";
-        default: return @"其他_ic";
+        case YosKeepAccountsOrderTypeFood: return @"repast_ic";
+        case YosKeepAccountsOrderTypeBuy: return @"shopping_ic";
+        case YosKeepAccountsOrderTypePlay: return @"play_ic";
+        case YosKeepAccountsOrderTypeHome: return @"family_ic";
+        case YosKeepAccountsOrderTypeEduca: return @"education_ic";
+        case YosKeepAccountsOrderTypeMedic: return @"medical_ic";
+        case YosKeepAccountsOrderTypeFriend: return @"friendship_ic";
+        default: return @"other_ic";
     }
 }
 + (NSString *)typePressedImage:(YosKeepAccountsOrderType)type {
