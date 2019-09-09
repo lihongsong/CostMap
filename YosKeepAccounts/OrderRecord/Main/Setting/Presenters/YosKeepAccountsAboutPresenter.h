@@ -1,5 +1,0 @@
-#import "YosKeepAccountsBasePresenter.h"
-NS_ASSUME_NONNULL_BEGIN
-@interface YosKeepAccountsAboutPresenter : YosKeepAccountsBasePresenter
-@end
-NS_ASSUME_NONNULL_END
