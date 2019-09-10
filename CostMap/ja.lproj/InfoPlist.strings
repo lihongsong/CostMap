@@ -1,0 +1,4 @@
+"NSCameraUsageDescription" = "私たちはあなたのカメラを開いて写真を撮る必要があります。あなたの個人の画像を修正するのに便利です.";
+"NSLocationWhenInUseUsageDescription" = "位置権限を開いてから、請求書が作成された場所を記載しやすくなります.";
+"NSPhotoLibraryUsageDescription" = "私たちはあなたのアルバムを開いて写真を選び、個人の顔をカスタマイズする必要があります.";
+"CFBundleDisplayName" = "米記帳がある";

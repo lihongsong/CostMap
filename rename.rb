@@ -3,8 +3,8 @@
 require 'fileutils'
 require 'active_support/all'
 
-OLD_PREFIX = "Yoser"
-NEW_PREFIX = "Yos"
+OLD_PREFIX = "YosKeepAccounts"
+NEW_PREFIX = "CostMap"
 
 FOLDER_EXCLUDE = ["Pods", ".framework"]
 CONTENT_EXCLUDE = [".xcuserstate", ".a", ".mp3", ".avi", ".mp4", ".wmv", ".webp", ".png", ".jpg", ".rb"]
