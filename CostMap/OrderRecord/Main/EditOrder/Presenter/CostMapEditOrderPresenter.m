@@ -243,13 +243,17 @@
     if (self.orderEntity) {
         [self.view endEditing:YES];
         WEAK_SELF
-        HJAlertView *alertScene = [[HJAlertView alloc] initWithTitle:@"Warm Prompt" message:@"Are you sure you want to delete the bill?" cancelBlock:^{
-        } confirmBlock:^{
+        HJAlertView *alertScene = [[HJAlertView alloc] initWithTitle:@"Warm Prompt"
+                                                             message:@"Are you sure you want to delete the bill?"
+                                                   cancelButtonTitle:@"cancel"
+                                                  confirmButtonTitle:@"confirm"];
+        
+        alertScene.confirmBlock = ^{
             STRONG_SELF
             [[CostMapSQLManager share] deleteData:kSQLTableName yka_id:self.orderEntity.yka_id];
             [KeyWindow hj_showToastHUD:@"The bill has been deleted."];
             [self.navigationController popViewControllerAnimated:YES];
-        }];
+        };
         alertScene.confirmColor = CostMapThemeColor;
         [alertScene show];
     }

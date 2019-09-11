@@ -211,6 +211,8 @@ HJMediatorTargetInstance
     NSArray *allOrderArray = result;
     if (allOrderArray.count == 0) {
         self.tableScene.entitys = @[];
+        self.pieScene.entitys = @[];
+        self.lineScene.entitys = @[];
         [self.tableScene cyl_reloadData];
         return ;
     }

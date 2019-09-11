@@ -1,6 +1,6 @@
 #ifndef UtilitiesDefine_h
 #define UtilitiesDefine_h
-#define CostMapThemeColor HJHexColor(0x56CF9A)
+#define CostMapThemeColor HJHexColor(0xFF6A45)
 #define CostMapThemeTitleColor HJHexColor(0xFFFFFF)
 #define SafeStr(_str) StrIsEmpty(_str) ? @"" : _str
 #define LNAOPSAFESTRING(str) ((((str) != nil) && ![(str) isKindOfClass:[NSNull class]]) ? [NSString stringWithFormat:@"%@", (str)] : @"")
