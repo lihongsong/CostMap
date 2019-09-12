@@ -139,7 +139,7 @@
         self.deleteButton.hidden = YES;
     }
     [self.timeButton setTitle:[CostMapOrderTool orderTimeStringWithOrderTime:self.orderTime] forState:UIControlStateNormal];
-    UIColor *color = [CostMapOrderTool colorWithType:self.orderType];
+    UIColor *color = HJHexColor(0xff6a45);// [CostMapOrderTool colorWithType:self.orderType];
     [self setContentColor:color];
     if ([self.cityButton.currentTitle isEqualToString:@"choose city"]) {
         [self.cityButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
@@ -177,7 +177,7 @@
         STRONG_SELF
         self.orderType = orderType;
         [UIView animateWithDuration:0.5 animations:^{
-            UIColor *color = [CostMapOrderTool colorWithType:orderType];
+            UIColor *color = HJHexColor(0xff6a45);//[CostMapOrderTool colorWithType:orderType];
             [self setContentColor:color];
         }];
     }];
@@ -273,7 +273,7 @@
                                             minDate:nil
                                             maxDate:nil
                                        isAutoSelect:NO
-                                         themeColor:[CostMapOrderTool colorWithType:self.orderType]
+                                         themeColor:HJHexColor(0xff6a45) //[CostMapOrderTool colorWithType:self.orderType]
                                         resultBlock:^(NSString *selectValue) {
                                             STRONG_SELF
                                             self.orderTime = [CostMapOrderTool orderTimeWithOrderTimeString:selectValue];
@@ -295,15 +295,15 @@
     } else {
         self.curruntInputScene = nil;
     }
-    HJCityPickerManager *cityPicker = [HJCityPickerManager cityPickerManagerWithTitle:@"choose city" type:HJCityPickerTypeAll regionList:[HJCPMLocalData provinceArray] cityPickSelected:^(HJCPMProvinceModel * _Nullable selectedProvinceEntity, HJCPMCityModel * _Nullable selectedCityEntity, HJCPMDistrictModel * _Nullable selectedDistrictEntity) {
-        self.orderCity = selectedDistrictEntity.name;
+    HJCityPickerManager *cityPicker = [HJCityPickerManager cityPickerManagerWithTitle:@"choose city" type:HJCityPickerTypeProvince regionList:[HJCPMLocalData provinceArray] cityPickSelected:^(HJCPMProvinceModel * _Nullable selectedProvinceEntity, HJCPMCityModel * _Nullable selectedCityEntity, HJCPMDistrictModel * _Nullable selectedDistrictEntity) {
+        self.orderCity = selectedProvinceEntity.name;
         [self.cityButton setTitle:self.orderCity forState:UIControlStateNormal];
         [self.cityButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.pIndex = selectedProvinceEntity.index;
         self.cIndex = selectedCityEntity.index;
         self.dIndex = selectedDistrictEntity.index;
     }];
-    UIColor *color = [CostMapOrderTool colorWithType:self.orderType];
+    UIColor *color = HJHexColor(0xff6a45);//[CostMapOrderTool colorWithType:self.orderType];
     [cityPicker.commitBtn setTitleColor:color forState:UIControlStateNormal];
     cityPicker.titleLabel.textColor = color;
     cityPicker.pickerViewRowSelectedTextColor = color;
@@ -322,7 +322,7 @@
     [self.contentScrollScene setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
 }
 - (void)saveOrderDone {
-    UIColor *color = [CostMapOrderTool colorWithType:self.orderType];
+    UIColor *color = HJHexColor(0xff6a45); //[CostMapOrderTool colorWithType:self.orderType];
     UIImage *image = [UIImage imageNamed:[CostMapOrderTool typePressedImage:self.orderType]];
     [self.saveOrderButton setTitle:@"" forState:UIControlStateNormal];
     [UIView animateWithDuration:0.3 animations:^{
