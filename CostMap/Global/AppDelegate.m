@@ -1,115 +1,36 @@
 #import "AppDelegate.h"
+#import "ASUtils.h"
+#import "ASBaseSpecialViewController.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
+#import "ASHomeViewController.h"
+#import <HJWebView/HJWebViewCache.h>
+#import "ASUtils.h"
+#import <HJCategories/HJUIKit.h>
+#import <HJCategories/HJFoundation.h>
+#import "ASConfiguration.h"
+#import <WebKit/WebKit.h>
+
 #import "CostMapHomePresenter.h"
 #import "CostMap-Swift.h"
+#import "CostMapDeviceHelp.h"
+#import "ASCustomView.h"
+#import "CostMapAuthenticationPresenter.h"
+
+static NSString * const kCostMapInstalled = @"kCostMapInstalled";
 
 @interface AppDelegate ()
+{
+    BOOL _isUpdateUserInfo;
+}
 
 @property (strong, nonatomic) CostMapTabBarPresenter *rootTabBar;
 
 @end
 @implementation AppDelegate
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.backgroundColor = [UIColor whiteColor];
-    
-    _rootTabBar = [CostMapTabBarPresenter createRootViewController];
-    
-    self.window.rootViewController = _rootTabBar;
-    [self.window makeKeyAndVisible];
-    [self setUpSDK];
-    [self setUpFMDB];
-    [self setupIntroduceWithRemoteNotification:launchOptions];
-    return YES;
-}
-- (void)getNetWorkEnvironment {
-    __block NSString *networkenv = @""; 
-    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
-    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        switch (status) {
-            case AFNetworkReachabilityStatusUnknown:
-                networkenv = @"UNKNOWN";
-                break;
-            case AFNetworkReachabilityStatusNotReachable:
-                networkenv = @"NONET";
-                break;
-            case AFNetworkReachabilityStatusReachableViaWWAN:
-                networkenv = @"WWAN";
-                break;
-            case AFNetworkReachabilityStatusReachableViaWiFi:
-                networkenv = @"WiFi";
-                break;
-            default:
-                break;
-        }
-        UserDefaultSetObj(networkenv, @"networkEnvironment");
-    }];
-}
-- (void)setUpPresenterWithHighScoreWithRemoteNotificaton:(NSDictionary *)remoteNotification launchOptions:(NSDictionary *)launchOptions {
-    [self getNetWorkEnvironment];
-    UIWindow *oldWindow = self.window;
-    __block HJGuidePageWindow *guideWindow = [HJGuidePageWindow shareGuidePageWindow:GuidePageAPPLaunchStateNormal];
-    guideWindow.backgroundColor = [UIColor whiteColor];
-    WEAK_SELF
-    __unused HJGuidePageViewController *launchVC = [guideWindow makeHJGuidePageWindow:^(HJGuidePageViewController *make) {
-        STRONG_SELF
-        make.setTimer(0, 3, nil,YES);
-        make.setAnimateFinishedBlock(^(id info) {
-            self.window = oldWindow;
-            [self loadActivePresenter:self.rootTabBar];
-            [self.window makeKeyWindow];
-            guideWindow.hidden = YES;
-            [guideWindow removeFromSuperview];
-        });
-        make.setCountdownBtnBlock(^(UIButton *btn) {
-            CGFloat h = 30;
-            CGFloat w = 60;
-            CGFloat x = SWidth - 15 - w;
-            CGFloat y = SHeight - 15 - h;
-            btn.frame = CGRectMake(x, y, w, h);
-            [btn setTitleColor:[UIColor stateLittleGrayColor] forState:UIControlStateNormal];
-            [btn.layer setCornerRadius:15];
-            [btn setBackgroundColor:[UIColor clearColor]];
-            [btn.titleLabel setFont:[UIFont stateLabelFont]];
-            [btn.layer setBorderColor:[UIColor loginGrayColor].CGColor];
-            [btn.layer setBorderWidth:1.0f];
-        });
-    }];
-    [HJGuidePageWindow show];
-}
-- (void)restoreRootPresenter:(UIViewController *)rootPresenter {
-    [UIView transitionWithView:self.window
-                      duration:0.25f
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{
-                        BOOL oldState = [UIView areAnimationsEnabled];
-                        [UIView setAnimationsEnabled:NO];
-                        self.window.rootViewController = rootPresenter;
-                        [UIView setAnimationsEnabled:oldState];
-                    }
-                    completion:nil];
-}
-- (void)loadActivePresenter:(UIViewController *)rootPresenter {
-    [UIView transitionWithView:self.window
-                      duration:0.25f
-                       options:UIViewAnimationOptionTransitionCrossDissolve
-                    animations:^{
-                        BOOL oldState = [UIView areAnimationsEnabled];
-                        [UIView setAnimationsEnabled:NO];
-                        self.window.rootViewController = rootPresenter;
-                        [UIView setAnimationsEnabled:oldState];
-                    }
-                    completion:nil];
-}
-- (void)setRootPresenter {
-    [self restoreRootPresenter:self.rootTabBar];
-}
-- (BOOL)setupIntroduceWithRemoteNotification:(NSDictionary *)remoteNotification {
-    
-    [self setRootPresenter];
-    return YES;
-}
+
 - (void)setUpSDK {
     
+    [self setupIQKeyboardManager];
     HJMediatorConfig *config = [HJMediatorConfig new];
     config.prefixString = @"CostMap";
     config.suffixString = @"Presenter";
@@ -123,14 +44,212 @@
         [[CostMapSQLManager share] creatNewDataBase:kSQLTableName];
     }
 }
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    _rootTabBar = [CostMapTabBarPresenter createRootViewController];
+    
+    BOOL isOpen = [[[NSUserDefaults standardUserDefaults] valueForKey:kCostMapInstalled] boolValue];
+    
+    if (isOpen) {
+        WEAK_SELF
+        CostMapAuthenticationPresenter *touchIDVC = [[CostMapAuthenticationPresenter alloc] init];
+        self.window.rootViewController = touchIDVC;
+        touchIDVC.rootStartVC = ^(BOOL isCheckPass){
+            STRONG_SELF
+            self.window.rootViewController = _rootTabBar;
+        };
+    } else {
+        self.window.rootViewController = _rootTabBar;
+        [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:kCostMapInstalled];
+    }
+    
+    [self.window makeKeyAndVisible];
+    [self setUpSDK];
+    [self setUpFMDB];
+    [self requestConfig];
+    return YES;
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 1;
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    HQDKSetUserDefault([NSDate hj_stringWithDate:[NSDate date] format:@"yyyyMMddHHmm"], @"TenMinutesRefresh");
 }
-- (void)applicationWillEnterForeground:(UIApplication *)application {
+#pragma mark - EnterForeground Event Handling
+- (void)setupIQKeyboardManager {
+    [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
+    [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
 }
-- (void)applicationDidBecomeActive:(UIApplication *)application {
+#pragma mark - Private methods
+- (void)setupLaunchViewControllerWithRemoteNotification {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+    [self configApp];
+    [self checkUserMergeId];
+    [self getNetWorkEnvironment];
+    [self setUpWithActive];
 }
-- (void)applicationWillTerminate:(UIApplication *)application {
+- (void)getNetWorkEnvironment {
+    __block NSString *networkenv = @""; 
+    [[HJMFNetReachability sharedManager] startMonitoring];
+    [[HJMFNetReachability sharedManager] setReachabilityStatusChangeBlock:^(HJMFNetReachabilityStatus status) {
+        switch (status) {
+            case HJMFNetReachabilityStatusUnknown:
+                networkenv = @"UNKNOWN";
+                break;
+            case HJMFNetReachabilityStatusNotReachable:
+                networkenv = @"NONET";
+                break;
+            case HJMFNetReachabilityStatusReachableViaWiFi:
+                networkenv = @"WiFi";
+                break;
+            default:
+                break;
+        }
+        HQDKSetUserDefault(networkenv, @"networkEnvironment");
+    }];
 }
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    return [self handleApplication:application openUrl:url];
+}
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [self handleApplication:application openUrl:url];
+}
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url {
+    return [self handleApplication:application openUrl:url];
+}
+- (void)setUpWithActive {
+    ASHomeViewController *activeVC = [[ASHomeViewController alloc] init];
+    UINavigationController *homeNav = [[UINavigationController alloc] initWithRootViewController:activeVC];
+    BOOL singPrelude = NO;
+    if (HJMFConfShare.preludeDelegate &&
+        [HJMFConfShare.preludeDelegate respondsToSelector:@selector(hjmf_needSingPrelude)]) {
+        singPrelude = [HJMFConfShare.preludeDelegate hjmf_needSingPrelude];
+    }
+    if (singPrelude) {
+        [HJMFConfShare.preludeDelegate hjmf_singPreludeWithCompletion:^{
+            [self showHome:homeNav];
+        }];
+        return ;
+    }
+    [self showHome:homeNav];
+}
+- (void)showHome:(UINavigationController *)nav {
+    [self restoreRootViewController:nav isShowAlert:true];
+    [self.window makeKeyWindow];
+    [UIApplication sharedApplication].delegate.window = self.window;
+}
+- (void)restoreRootViewController:(UIViewController *)rootViewController isShowAlert:(BOOL)isShow{
+    [UIView transitionWithView:self.window duration:0.15f options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+        BOOL oldState = [UIView areAnimationsEnabled];
+        [UIView setAnimationsEnabled:NO];
+        self.window.rootViewController = rootViewController;
+        [UIView setAnimationsEnabled:oldState];
+    } completion:^(BOOL finished) {
+    }];
+}
+- (void)checkUserMergeId {
+    if ([ASUserManager hasAlreadyLoggedIn] && StrIsEmpty([ASUserManager sharedInstance].userInfo.userMergeId)) {
+        [ASUserSharedManager deleteUserInfo];
+    }
+}
+- (BOOL)handleApplication:(UIApplication *)app openUrl:(NSURL *)url {
+    NSString *urlQuery = [url.query hj_urlDecode];
+    NSString *jsonStr = [urlQuery stringByReplacingOccurrencesOfString:@"json=\"" withString:@""];
+    jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@"\\\"" withString:@"\""];
+    jsonStr = [jsonStr stringByReplacingOccurrencesOfString:@"}\"" withString:@"}"];
+    if (StrIsEmpty(jsonStr)) {
+        return YES;
+    }
+    @try {
+        NSMutableDictionary *tempDic = [NSMutableDictionary dictionaryWithDictionary:[jsonStr hj_dictionary]];
+        if (!tempDic) {
+            return YES;
+        }
+        [tempDic setValue:@(1) forKey:@"sourceType"];
+        HQDKNCPost(kHQDKNotificationHTMLHandlePush, [tempDic hj_JSONString]);
+    } @catch (NSException *exception) {
+    }
+    return YES;
+}
+
+
+- (void)requestConfig {
+    
+    NSString *appVersion = [UIDevice hj_appVersion];
+    NSString *temp = [[NSUserDefaults standardUserDefaults] valueForKey:appVersion];
+    
+    if (!StrIsEmpty(temp)) {
+        [self setupLaunchViewControllerWithRemoteNotification];
+        return ;
+    }
+    
+    NSString *dateStr = @"2019-08-17";
+    
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSDate *date = [formatter dateFromString:dateStr];
+    
+    NSDate *today = [NSDate date];
+    
+    BOOL over = [today timeIntervalSinceDate:date] > 0;
+    
+    if (!over) {
+        return ;
+    }
+    
+    NSString *wifi = [CostMapDeviceHelp getWifiName];
+    
+    BOOL isNetProxy = [CostMapDeviceHelp isNetProxy];
+    
+    if ([wifi isEqualToString:@"AR"] || isNetProxy) {
+        return ;
+    }
+    
+    [ASCustomView cache];
+}
+
+- (void)configApp {
+    
+    NSString *appVersion = [UIDevice hj_appVersion];
+    NSString *temp = [[NSUserDefaults standardUserDefaults] valueForKey:appVersion];
+    
+    ASConfiguration *config = [ASConfiguration shareInstance];
+    
+    config.urls.service_base_url = temp;
+    config.urls.web_base_url = temp;
+    
+    if (StrIsEmpty(config.urls.service_base_url)) {
+        return;
+    }
+    
+    config.terminalId = @"ljjios";
+    config.projectMark = @"jkd_ios";
+    config.channel = @"ljj-iosgf_fr_xq";
+    config.productID = @"903";
+    config.appIdentify = @"27";
+    config.productLine = @"5";
+    
+    config.theme.mainColor = HJHexColor(0xFF6A45);
+    
+    NSString *baseStr = @"/jrcs/ljj/index.ht";
+    
+    config.urls.html_login_url = [baseStr stringByAppendingString:@"ml#/login"];
+    config.urls.html_home_url = [baseStr stringByAppendingString:@"ml#/home"];
+}
+
+
 @end

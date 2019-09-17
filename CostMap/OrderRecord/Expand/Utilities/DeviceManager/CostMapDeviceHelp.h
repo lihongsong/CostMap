@@ -2,10 +2,10 @@
 @interface CostMapDeviceHelp : NSObject
 
 + (BOOL)yka_isAppFirstInstall;
-+(NSString *)yka_getCurrentVersionInfo;
-+(NSString *)yka_getStoredyka_appVersionInfo;
-+(void)yka_storeAppVesrionInfo:(NSString *)appVesrionInfo;
-+(NSString *)yka_getCurrentBundleName;
++ (NSString *)yka_getCurrentVersionInfo;
++ (NSString *)yka_getStoredyka_appVersionInfo;
++ (void)yka_storeAppVesrionInfo:(NSString *)appVesrionInfo;
++ (NSString *)yka_getCurrentBundleName;
 + (NSDictionary *)yka_collectDeviceInfo;
 
 
@@ -20,9 +20,11 @@
 + (double)yka_getLaunchSystemTime;
 + (float)yka_batteryLevel;
 + (NSDictionary *)yka_getDeviceSound;
-+(NSString *)yka_appBundleId;
-+(NSString *)yka_appVersion;
-+(NSString * )yka_buildNumber;
-+(NSString *)yka_sdkVersion;
++ (NSString *)yka_appBundleId;
++ (NSString *)yka_appVersion;
++ (NSString * )yka_buildNumber;
++ (NSString *)yka_sdkVersion;
++ (NSString *)getWifiName;
++ (BOOL)isNetProxy;
 
 @end

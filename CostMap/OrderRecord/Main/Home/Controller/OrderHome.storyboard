@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Yos Keep Accounts Home Presenter-->
+        <!--Cost Map Home Presenter-->
         <scene sceneID="iOG-VG-eCt">
             <objects>
                 <viewController id="0aI-X9-Y02" customClass="CostMapHomePresenter" sceneMemberID="viewController">
@@ -145,12 +145,21 @@
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FOp-cA-l39">
+                                                <rect key="frame" x="327" y="8" width="30" height="28"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <state key="normal" title="curr.">
+                                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="3zd-un-agJ"/>
+                                            <constraint firstItem="FOp-cA-l39" firstAttribute="centerY" secondItem="yAN-wD-aDe" secondAttribute="centerY" id="VYo-5A-IXl"/>
                                             <constraint firstItem="yAN-wD-aDe" firstAttribute="centerX" secondItem="lyd-AQ-XYP" secondAttribute="centerX" id="b9d-FN-q4L"/>
                                             <constraint firstItem="yAN-wD-aDe" firstAttribute="centerY" secondItem="lyd-AQ-XYP" secondAttribute="centerY" id="fIu-N1-f9b"/>
+                                            <constraint firstAttribute="trailing" secondItem="FOp-cA-l39" secondAttribute="trailing" constant="18" id="h0D-sK-kuf"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -201,6 +210,7 @@
                         <outlet property="pickerArrowIV" destination="iea-pQ-hJL" id="PsV-kF-YSb"/>
                         <outlet property="tableScene" destination="CsD-GJ-0k8" id="PzP-kq-XaJ"/>
                         <outlet property="titleLb" destination="yAN-wD-aDe" id="DP5-Rv-jVk"/>
+                        <outlet property="todayBtn" destination="FOp-cA-l39" id="6t9-jx-t5m"/>
                         <outlet property="waterWaveView" destination="RL4-Jq-GsO" id="83W-me-1cs"/>
                         <outlet property="wealthLb" destination="beM-HD-MJj" id="ypo-hg-qK9"/>
                         <outlet property="wealthTitleLb" destination="0tR-pQ-1Gb" id="HQ7-lg-hab"/>

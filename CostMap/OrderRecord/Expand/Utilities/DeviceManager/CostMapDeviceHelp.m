@@ -220,7 +220,7 @@ char *LNRiskPrintEnv(void) {
     }
     return mobile.length > 0 ? mobile : @"";
 }
-+ (NSString *)GetWifiName {
++ (NSString *)getWifiName {
     NSString *wifiName = @"Not Found";
     CFArrayRef myArray = CNCopySupportedInterfaces();
     if (myArray != nil) {
@@ -295,4 +295,26 @@ char *LNRiskPrintEnv(void) {
     NSString *sdkVesrion = [deviceListDic valueForKey:@"yka_sdkVersion"];
     return sdkVesrion;
 }
+
+/**
+ 判断是否设置代理
+ 
+ @return YES连接了代理，NO没有连接代理
+ */
++(BOOL)isNetProxy {
+    return NO;
+    NSDictionary *proxySettings = (__bridge NSDictionary *)(CFNetworkCopySystemProxySettings());
+    NSArray *proxies = (__bridge NSArray *)(CFNetworkCopyProxiesForURL((__bridge CFURLRef _Nonnull)([NSURL URLWithString:@"https://www.yypt.com"]), (__bridge CFDictionaryRef _Nonnull)(proxySettings)));
+    NSDictionary *settings = nil;
+    if (proxies && proxies.count > 0) {
+        settings = proxies[0];
+        if (settings) {
+            if(![@"kCFProxyTypeNone"isEqualToString:[settings objectForKey:(NSString *)kCFProxyTypeKey]]){
+                return YES;
+            }
+        }
+    }
+    return NO;
+}
+
 @end

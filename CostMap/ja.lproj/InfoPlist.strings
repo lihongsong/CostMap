@@ -1,4 +1,4 @@
-"NSCameraUsageDescription" = "We need to turn on your camera to take pictures and then customize your avatar.";
-"NSLocationWhenInUseUsageDescription" = "After opening the location permission, you can get the city where the bill is located, which is convenient for you to record.";
-"NSPhotoLibraryUsageDescription" = "We need to open your album to select photos and then customize your personal avatar.";
-"CFBundleDisplayName" = "CostMap";
+"NSCameraUsageDescription" = "カメラを開いて写真を撮り、アイコンをカスタマイズする必要があります。";
+"NSLocationWhenInUseUsageDescription" = "位置の権限を開くと、請求書の所在都市を取得できますので、記入していただくことができます。";
+"NSPhotoLibraryUsageDescription" = "アルバムを開いて写真を選び、自分の顔写真を定義します。";
+"CFBundleDisplayName" = "米記帳がある";

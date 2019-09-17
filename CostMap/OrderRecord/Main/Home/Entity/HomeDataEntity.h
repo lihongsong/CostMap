@@ -25,6 +25,4 @@
 @property (nonatomic,copy) NSString *management;
 @end
 @interface CredictLendRecord : NSObject
-@property(nonatomic,copy) NSString *lendCount;
-@property (nonatomic,copy) NSString *repayCount;
 @end

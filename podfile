@@ -30,6 +30,5 @@ target 'CostMap' do
     pod 'ESTabBarController-swift'
     pod 'HMSegmentedControl'
     pod 'pop'
-    pod 'Texture', '2.5.1'
 
 end

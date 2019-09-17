@@ -3,8 +3,8 @@
 require 'fileutils'
 require 'active_support/all'
 
-OLD_PREFIX = "YosKeepAccounts"
-NEW_PREFIX = "CostMap"
+OLD_PREFIX = "HJMarketFleet"
+NEW_PREFIX = "AS"
 
 FOLDER_EXCLUDE = ["Pods", ".framework"]
 CONTENT_EXCLUDE = [".xcuserstate", ".a", ".mp3", ".avi", ".mp4", ".wmv", ".webp", ".png", ".jpg", ".rb"]

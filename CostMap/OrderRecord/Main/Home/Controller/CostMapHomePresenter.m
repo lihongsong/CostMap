@@ -19,7 +19,7 @@
 <
 UINavigationControllerDelegate
 >
-
+@property (weak, nonatomic) IBOutlet UIButton *todayBtn;
 @property (weak, nonatomic) IBOutlet UIView *waterWaveView;
 @property (weak, nonatomic) IBOutlet CostMapHomeDateSelectButton *dateSelectBtn;
 @property (weak, nonatomic) IBOutlet UIButton *addOrderBtn;
@@ -114,6 +114,9 @@ UINavigationControllerDelegate
     _yearLb.textColor = CostMapThemeTitleColor;
     _wealthLb.textColor = CostMapThemeTitleColor;
     _wealthTitleLb.textColor = CostMapThemeTitleColor;
+    [_todayBtn setTitleColor:CostMapThemeTitleColor forState:UIControlStateNormal];
+    
+    [_todayBtn addTarget:self action:@selector(todayClick) forControlEvents:UIControlEventTouchUpInside];
     
     CostMapWaterWaveView *waterView =
     [[CostMapWaterWaveView alloc] initWithFrame:CGRectMake(0, 0, SWidth, _waterWaveView.hj_height)];
@@ -172,6 +175,15 @@ UINavigationControllerDelegate
         [[HJMediator shared] routeToURL:HJAPPURL(@"EditOrder") withParameters:@{@"orderEntity": model}, nil];
     };
 }
+
+- (void)todayClick {
+    NSDate *today = [NSDate hj_getToday];
+    _year = [today hj_year];
+    _month = [today hj_month];
+    [self arrowAnimate];
+    [self requestData];
+}
+
 - (void)requestData {
     
     _yearLb.text = [NSString stringWithFormat:@"%ld year",_year];

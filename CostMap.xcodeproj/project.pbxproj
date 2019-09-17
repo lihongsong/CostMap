@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F26F1D32330D4C500BDCA50 /* ASCustomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26F1D22330D4C500BDCA50 /* ASCustomView.m */; };
+		1F26F1DF2330E9F000BDCA50 /* CostMapAuthenticationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F26F1DE2330E9F000BDCA50 /* CostMapAuthenticationPresenter.m */; };
+		1F90388E2329F3A700A9A03A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9038742329F3A700A9A03A /* AppDelegate.m */; };
+		1F90388F2329F3A700A9A03A /* ASConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9038782329F3A700A9A03A /* ASConfiguration.m */; };
+		1F9038902329F3A700A9A03A /* ASUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F90387A2329F3A700A9A03A /* ASUtils.m */; };
+		1F9038912329F3A700A9A03A /* ASHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F90388B2329F3A700A9A03A /* ASHomeViewController.m */; };
+		1F9038922329F3A700A9A03A /* ASBaseSpecialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F90388D2329F3A700A9A03A /* ASBaseSpecialViewController.m */; };
 		1FF614322320FB3A00588D78 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1FF6142E2320F52B00588D78 /* InfoPlist.strings */; };
 		5915182221942423004B5B32 /* CostMapEditOrderPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182021942423004B5B32 /* CostMapEditOrderPresenter.m */; };
 		5915182821943737004B5B32 /* CostMapEditOrderToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5915182721943737004B5B32 /* CostMapEditOrderToolBar.m */; };
@@ -55,7 +62,6 @@
 		82CD2C0221990A9E00E86371 /* CostMapOrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82CD2BFF21990A9D00E86371 /* CostMapOrderListCell.xib */; };
 		82CD2C0321990A9E00E86371 /* CostMapOrderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CD2C0121990A9E00E86371 /* CostMapOrderListCell.m */; };
 		82DC63812192E15F007421DE /* CostMapTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC63802192E15F007421DE /* CostMapTests.m */; };
-		82DC65952192E275007421DE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64C52192E275007421DE /* AppDelegate.m */; };
 		82DC65962192E275007421DE /* CostMapHomePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64CA2192E275007421DE /* CostMapHomePresenter.m */; };
 		82DC65972192E275007421DE /* HomeDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC64CD2192E275007421DE /* HomeDataEntity.m */; };
 		82DC65AE2192E275007421DE /* UILabel+YKALabelKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DC65022192E275007421DE /* UILabel+YKALabelKit.m */; };
@@ -143,12 +149,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F26F1D12330D4C500BDCA50 /* ASCustomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASCustomView.h; sourceTree = "<group>"; };
+		1F26F1D22330D4C500BDCA50 /* ASCustomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASCustomView.m; sourceTree = "<group>"; };
+		1F26F1DB2330E46400BDCA50 /* CostMap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CostMap.entitlements; sourceTree = "<group>"; };
+		1F26F1DD2330E9F000BDCA50 /* CostMapAuthenticationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostMapAuthenticationPresenter.h; sourceTree = "<group>"; };
+		1F26F1DE2330E9F000BDCA50 /* CostMapAuthenticationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostMapAuthenticationPresenter.m; sourceTree = "<group>"; };
 		1F2F871823272FFA0087A7CF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		1F2F871923272FFA0087A7CF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		1F2F871A232730110087A7CF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		1F2F871B232730110087A7CF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		1F2F871C2327302E0087A7CF /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		1F2F871D232730310087A7CF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F9038742329F3A700A9A03A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1F9038752329F3A700A9A03A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1F9038772329F3A700A9A03A /* ASConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASConfiguration.h; sourceTree = "<group>"; };
+		1F9038782329F3A700A9A03A /* ASConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASConfiguration.m; sourceTree = "<group>"; };
+		1F90387A2329F3A700A9A03A /* ASUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASUtils.m; sourceTree = "<group>"; };
+		1F9038822329F3A700A9A03A /* ASUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASUtils.h; sourceTree = "<group>"; };
+		1F90388A2329F3A700A9A03A /* ASBaseSpecialViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASBaseSpecialViewController.h; sourceTree = "<group>"; };
+		1F90388B2329F3A700A9A03A /* ASHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASHomeViewController.m; sourceTree = "<group>"; };
+		1F90388C2329F3A700A9A03A /* ASHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASHomeViewController.h; sourceTree = "<group>"; };
+		1F90388D2329F3A700A9A03A /* ASBaseSpecialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASBaseSpecialViewController.m; sourceTree = "<group>"; };
 		1FF614282320F01700588D78 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1FF6142D2320F52B00588D78 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3BB36807C91790CCF1732377 /* Pods-CostMap.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CostMap.release.xcconfig"; path = "Pods/Target Support Files/Pods-CostMap/Pods-CostMap.release.xcconfig"; sourceTree = "<group>"; };
@@ -237,8 +258,6 @@
 		82DC63802192E15F007421DE /* CostMapTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CostMapTests.m; sourceTree = "<group>"; };
 		82DC63822192E15F007421DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DC63872192E15F007421DE /* CostMapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CostMapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		82DC64C42192E275007421DE /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		82DC64C52192E275007421DE /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		82DC64CA2192E275007421DE /* CostMapHomePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CostMapHomePresenter.m; sourceTree = "<group>"; };
 		82DC64CB2192E275007421DE /* CostMapHomePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CostMapHomePresenter.h; sourceTree = "<group>"; };
 		82DC64CD2192E275007421DE /* HomeDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeDataEntity.m; sourceTree = "<group>"; };
@@ -408,6 +427,56 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		1F26F1DC2330E9E000BDCA50 /* Touch&FaceID */ = {
+			isa = PBXGroup;
+			children = (
+				1F26F1DD2330E9F000BDCA50 /* CostMapAuthenticationPresenter.h */,
+				1F26F1DE2330E9F000BDCA50 /* CostMapAuthenticationPresenter.m */,
+			);
+			path = "Touch&FaceID";
+			sourceTree = "<group>";
+		};
+		1F9038722329F36E00A9A03A /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				1F9038762329F3A700A9A03A /* Base */,
+				1F9038842329F3A700A9A03A /* Details */,
+				1F9038792329F3A700A9A03A /* Layout */,
+			);
+			path = Texture;
+			sourceTree = "<group>";
+		};
+		1F9038762329F3A700A9A03A /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1F9038772329F3A700A9A03A /* ASConfiguration.h */,
+				1F9038782329F3A700A9A03A /* ASConfiguration.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		1F9038792329F3A700A9A03A /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				1F9038822329F3A700A9A03A /* ASUtils.h */,
+				1F90387A2329F3A700A9A03A /* ASUtils.m */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		1F9038842329F3A700A9A03A /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				1F90388C2329F3A700A9A03A /* ASHomeViewController.h */,
+				1F90388B2329F3A700A9A03A /* ASHomeViewController.m */,
+				1F90388A2329F3A700A9A03A /* ASBaseSpecialViewController.h */,
+				1F90388D2329F3A700A9A03A /* ASBaseSpecialViewController.m */,
+				1F26F1D12330D4C500BDCA50 /* ASCustomView.h */,
+				1F26F1D22330D4C500BDCA50 /* ASCustomView.m */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		5915181D219423C4004B5B32 /* EditOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +512,7 @@
 		59D9F60B226580CD00FA6E64 /* PermissionKit */ = {
 			isa = PBXGroup;
 			children = (
+				1F26F1DC2330E9E000BDCA50 /* Touch&FaceID */,
 				59D9F6172265BA7300FA6E64 /* ContactHandler */,
 			);
 			path = PermissionKit;
@@ -725,6 +795,7 @@
 		82DC63662192E15E007421DE /* CostMap */ = {
 			isa = PBXGroup;
 			children = (
+				1F26F1DB2330E46400BDCA50 /* CostMap.entitlements */,
 				82DC64C32192E275007421DE /* Global */,
 				82DC658D2192E275007421DE /* Other */,
 				82DC64C72192E275007421DE /* OrderRecord */,
@@ -746,8 +817,8 @@
 		82DC64C32192E275007421DE /* Global */ = {
 			isa = PBXGroup;
 			children = (
-				82DC64C42192E275007421DE /* AppDelegate.h */,
-				82DC64C52192E275007421DE /* AppDelegate.m */,
+				1F9038752329F3A700A9A03A /* AppDelegate.h */,
+				1F9038742329F3A700A9A03A /* AppDelegate.m */,
 			);
 			path = Global;
 			sourceTree = "<group>";
@@ -755,6 +826,7 @@
 		82DC64C72192E275007421DE /* OrderRecord */ = {
 			isa = PBXGroup;
 			children = (
+				1F9038722329F36E00A9A03A /* Texture */,
 				59D9F60B226580CD00FA6E64 /* PermissionKit */,
 				82DC64FF2192E275007421DE /* Expand */,
 				82DC653E2192E275007421DE /* Main */,
@@ -1282,6 +1354,11 @@
 					82DC63632192E15E007421DE = {
 						CreatedOnToolsVersion = 10.0;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.AccessWiFi = {
+								enabled = 1;
+							};
+						};
 					};
 					82DC637B2192E15F007421DE = {
 						CreatedOnToolsVersion = 10.0;
@@ -1414,6 +1491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F90388E2329F3A700A9A03A /* AppDelegate.m in Sources */,
 				82DC65BC2192E275007421DE /* UIDevice+YKAHardware.m in Sources */,
 				82DC65D52192E275007421DE /* YosYAxis.m in Sources */,
 				82DC65E22192E275007421DE /* YosItemStyle.m in Sources */,
@@ -1424,6 +1502,7 @@
 				82DC66172193110B007421DE /* CostMapOrderListPresenter.m in Sources */,
 				5915182E2194388A004B5B32 /* CostMapEditOrderToolBarCell.m in Sources */,
 				82DC65BB2192E275007421DE /* CostMapDeviceHelp.m in Sources */,
+				1F9038902329F3A700A9A03A /* ASUtils.m in Sources */,
 				82CA0FAC2248F75500E8A711 /* CostMapChartBrokenLineScene.m in Sources */,
 				82DC65DA2192E275007421DE /* YosStyle.m in Sources */,
 				82B309E22194098800284246 /* CostMapChartLineScene.m in Sources */,
@@ -1436,6 +1515,7 @@
 				82B309E52194099A00284246 /* CostMapChartPieScene.m in Sources */,
 				82CA0F90224885E800E8A711 /* CostMapTabBarItem.swift in Sources */,
 				82CA0FB42248F87D00E8A711 /* CostMapChartLineEntity.m in Sources */,
+				1F26F1DF2330E9F000BDCA50 /* CostMapAuthenticationPresenter.m in Sources */,
 				821816692195303B00521E75 /* CostMapOrderEntity+CostMapService.m in Sources */,
 				82181666219518D900521E75 /* UITableView+CostMapListPlaceHolder.m in Sources */,
 				82181665219518D900521E75 /* UNNoDataScene.m in Sources */,
@@ -1450,6 +1530,7 @@
 				82CD2BF82195B17200E86371 /* CostMapTranstionAnimationPop.m in Sources */,
 				82CA0F8D2248825800E8A711 /* CostMapTabBarPresenter.swift in Sources */,
 				82DC65D92192E275007421DE /* YosOptions3d.m in Sources */,
+				1F9038922329F3A700A9A03A /* ASBaseSpecialViewController.m in Sources */,
 				82DC65BD2192E275007421DE /* CostMapNetReachability.m in Sources */,
 				82DC65E62192E275007421DE /* YosChartEntity.m in Sources */,
 				82DC65B32192E275007421DE /* UIColor+YKAAddColor.m in Sources */,
@@ -1466,6 +1547,7 @@
 				82CD2BDE219588EE00E86371 /* A.swift in Sources */,
 				82DC65E32192E275007421DE /* YosPie.m in Sources */,
 				82DC65B52192E275007421DE /* CostMapControl.m in Sources */,
+				1F90388F2329F3A700A9A03A /* ASConfiguration.m in Sources */,
 				82DC65B42192E275007421DE /* UIView+SceneKit.m in Sources */,
 				82DC65CC2192E275007421DE /* YosAreaspline.m in Sources */,
 				82DC65DC2192E275007421DE /* YosTitle.m in Sources */,
@@ -1477,11 +1559,11 @@
 				82DC65BE2192E275007421DE /* CostMapDeviceTypes.m in Sources */,
 				82DC65D42192E275007421DE /* YosSubtitle.m in Sources */,
 				82DC65B22192E275007421DE /* UIFont+TargetFont.m in Sources */,
+				1F9038912329F3A700A9A03A /* ASHomeViewController.m in Sources */,
 				82DC65F62192F7DC007421DE /* CostMapCustomDatePickerBaseScene.m in Sources */,
 				82DC65CD2192E275007421DE /* YosLabels.m in Sources */,
 				82CA0FB02248F80D00E8A711 /* CostMapChartLineSceneModel.m in Sources */,
 				59D9F6202265BB8C00FA6E64 /* PermissionManager.m in Sources */,
-				82DC65952192E275007421DE /* AppDelegate.m in Sources */,
 				82DC65DD2192E275007421DE /* YosArea.m in Sources */,
 				82DC65D02192E275007421DE /* YosPlotOptions.m in Sources */,
 				82DC65F72192F7DC007421DE /* NSDate+CostMapAdd.m in Sources */,
@@ -1506,6 +1588,7 @@
 				82B4B7072193F33D009A4B62 /* CostMapOrderTool.m in Sources */,
 				82DC65AF2192E275007421DE /* UIButton+Count.m in Sources */,
 				82DC65C62192E275007421DE /* CostMapBaseNavigationController.m in Sources */,
+				1F26F1D32330D4C500BDCA50 /* ASCustomView.m in Sources */,
 				82DC65EC2192E275007421DE /* main.m in Sources */,
 				82DC65E82192E275007421DE /* YosSeriesElement.m in Sources */,
 			);
@@ -1699,6 +1782,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = CostMap/CostMap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CostMapANG_ENABLE_MODULES = YES;
@@ -1741,6 +1825,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = CostMap/CostMap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CostMapANG_ENABLE_MODULES = YES;

@@ -5,7 +5,6 @@
 #define SafeStr(_str) StrIsEmpty(_str) ? @"" : _str
 #define LNAOPSAFESTRING(str) ((((str) != nil) && ![(str) isKindOfClass:[NSNull class]]) ? [NSString stringWithFormat:@"%@", (str)] : @"")
 #define kSQLTableName @"CostMapOrderRecordTable"
-#define kUserArchiverKey @"userInfoEntity"
 #define kHasInstallApp @"kHasInstallApp"
 #define kCachedTouchIdStatus @"kCachedTouchIdStatus"
 #define kUserArchiverFileName @"userInfoFile"
