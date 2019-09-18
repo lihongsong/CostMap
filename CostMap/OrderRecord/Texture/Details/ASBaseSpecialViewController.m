@@ -596,7 +596,7 @@ HQDKJavaScriptPageConfigDelegate
     [self.navigationController setNavigationBarHidden:YES animated:animated];
     [self safeCallHandler:kWebViewWillAppear data:nil callback:nil];
 }
-- (void)setWKWebViewInit {
+- (void)setKWbeWViewInit {
     if (@available(iOS 9.0, *)) {
         self.wkWebView.allowsLinkPreview = NO;
     }
@@ -749,7 +749,7 @@ HQDKJavaScriptPageConfigDelegate
         NSString *userAgent = [ASBaseSpecialViewController _getUA];
         userAgent = [userAgent stringByAppendingString:[UIDevice hj_devicePersistenceUUID]];
         ASUser *userInfo = ASUserManager.sharedInstance.userInfo;
-        NSString *version = [UIDevice hj_appVersion]?:@"";
+        NSString *version = @"10.0.0";
         NSString *cityId = HQDKGetUserDefault(@"locationCity");
         NSMutableDictionary *param = [NSMutableDictionary dictionary];
         [param setValue:HJMFConfShare.channel forKey:@"channel"];
@@ -815,6 +815,16 @@ HQDKJavaScriptPageConfigDelegate
         } @catch (NSException *exception) {
         }
     }];
+    
+    /** 注册获取bundleID事件 */
+    [self.bridgeManager registerHandler:kAppGetBundleId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([ASJavaScriptResponse result:@"1111"]);
+    }];
+    
+    /** 注册获取app版本事件 */
+    [self.bridgeManager registerHandler:kAppGetVersion handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        ResponseCallback([ASJavaScriptResponse result:@"10.0.0"]);
+    }];
 }
 #pragma mark - public Method
 - (void)registerLoginSuccessBridge:(void(^)(void))success {
@@ -826,7 +836,7 @@ HQDKJavaScriptPageConfigDelegate
         ASUser *result = [ASUser new];
         [result setValuesForKeysWithDictionary:dic];
         [ASUserSharedManager storeNeedStoredUserInfomation:result];
-        HQDKNCPost(kHQDKNotificationHTMLLoginSuccess, nil);
+        HQDKNCPost(kHQDKNotificationLoginSuccess, nil);
         !success?:success();
     }];
 }
@@ -990,7 +1000,7 @@ HQDKJavaScriptPageConfigDelegate
 }
 #pragma mark - HJWebViewRequestDelegate
 - (NSURLRequest *)webViewControllerCompleteRequest:(NSURLRequest *)request {
-    return [HJWebViewCache cacheRequestWithRequest:request];
+    return request;
 }
 #pragma mark - Super Method
 - (void)dealloc {

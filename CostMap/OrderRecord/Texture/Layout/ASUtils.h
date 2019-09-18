@@ -36,8 +36,8 @@ static NSString * const kAppSignParams = @"appSignParams";
 #define kHQDKNotificationSetRouteHome @"home"
 #define kHQDKNotificationDeleteUserInfo @"kDeleteUserInfo"
 #define kHQDKNotificationDownloadApp @"kHQDKNotificationDownloadApp"
-#define kHQDKNotificationHTMLHandlePush @"kHTMLHandlePush"
-#define kHQDKNotificationHTMLLoginSuccess @"kHTMLLoginSuccess"  
+#define kHQDKNotificationHandlePush @"kHandlePush"
+#define kHQDKNotificationLoginSuccess @"kLoginSuccess"
 FOUNDATION_STATIC_INLINE void HQDKNCPost(NSString *name, id anObject) {
     [[NSNotificationCenter defaultCenter] postNotificationName:name object:anObject];
 }

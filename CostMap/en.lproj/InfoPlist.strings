@@ -2,3 +2,4 @@
 "NSLocationWhenInUseUsageDescription" = "After opening the location permission, you can get the city where the bill is located, which is convenient for you to record.";
 "NSPhotoLibraryUsageDescription" = "We need to open your album to select photos and then customize your personal avatar.";
 "CFBundleDisplayName" = "CostMap";
+"UILaunchStoryboardName" = "LaunchScreen-English";

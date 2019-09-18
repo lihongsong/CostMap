@@ -19,7 +19,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSHasLocalizedDisplayName</key>
@@ -47,6 +47,8 @@
 	<string>After opening the location permission, you can get the city where the bill is located, which is convenient for you to record.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>We need to open your album to select photos and then customize your personal avatar.</string>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen-English</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>

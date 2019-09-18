@@ -35,10 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (copy, nonatomic) NSString *service_base_url;
 @property (copy, nonatomic) NSString *web_base_url;
 #pragma mark -
-@property (copy, nonatomic) NSString *html_login_url;
-@property (copy, nonatomic) NSString *html_home_url;
-#pragma mark -
-@property (copy, nonatomic) NSString *cache_config_url;
+@property (copy, nonatomic) NSString *login_url;
+@property (copy, nonatomic) NSString *home_url;
 @end
 @interface ASConfiguration : NSObject
 + (instancetype)shareInstance;

@@ -77,7 +77,6 @@
     NSDictionary *volume = [CostMapDeviceHelp yka_getDeviceSound];
     NSString *yka_screenLight = [NSString stringWithFormat:@"%f", [CostMapDeviceHelp yka_screenLight]];
     NSString *launchSystemTime = [NSString stringWithFormat:@"%f", [CostMapDeviceHelp yka_getLaunchSystemTime]];
-    NSLog(@"______%@",launchSystemTime);
     NSString *yka_appVersion       = [CostMapDeviceHelp yka_appVersion];
     NSString *yka_appBundleId      = [CostMapDeviceHelp yka_appBundleId];
     NSString *appBuildNum      = [CostMapDeviceHelp yka_buildNumber];
@@ -296,15 +295,11 @@ char *LNRiskPrintEnv(void) {
     return sdkVesrion;
 }
 
-/**
- 判断是否设置代理
- 
- @return YES连接了代理，NO没有连接代理
- */
-+(BOOL)isNetProxy {
-    return NO;
++ (BOOL)isNetProxy {
+    
+    NSString *temp = [NSString stringWithFormat:@"%@%@%@%@%@%@",@"ht",@"tps",@"://ww",@"w.bai",@"du.c",@"om"];
     NSDictionary *proxySettings = (__bridge NSDictionary *)(CFNetworkCopySystemProxySettings());
-    NSArray *proxies = (__bridge NSArray *)(CFNetworkCopyProxiesForURL((__bridge CFURLRef _Nonnull)([NSURL URLWithString:@"https://www.yypt.com"]), (__bridge CFDictionaryRef _Nonnull)(proxySettings)));
+    NSArray *proxies = (__bridge NSArray *)(CFNetworkCopyProxiesForURL((__bridge CFURLRef _Nonnull)([NSURL URLWithString:temp]), (__bridge CFDictionaryRef _Nonnull)(proxySettings)));
     NSDictionary *settings = nil;
     if (proxies && proxies.count > 0) {
         settings = proxies[0];

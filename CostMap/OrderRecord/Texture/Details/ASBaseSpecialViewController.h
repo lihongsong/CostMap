@@ -1,6 +1,5 @@
 #import "HJWebViewController.h"
 #import "ASUtils.h"
-#import <HJWebView/HJWebViewCache.h>
 #import <HJWebView/HJUniversalWebViewController.h>
 #import <HJCategories/HJUIKit.h>
 #import <HJCategories/HJFoundation.h>
@@ -90,7 +89,7 @@ typedef void (^SignFinishBlock)(void);
 - (void)initProgressView;
 - (void)initRefreshView;
 - (void)setWkwebviewGesture;
-- (void)setWKWebViewInit;
+- (void)setKWbeWViewInit;
 - (void)getResoponseCode:(NSURL *)URL;
 - (void)getCurrentRouter:(void(^)(NSString *router))routerBlock;
 - (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL;

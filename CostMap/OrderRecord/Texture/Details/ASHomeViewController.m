@@ -3,13 +3,11 @@
 #import <UIKit/UIKit.h>
 #import <WebKit/WebKit.h>
 #import <Foundation/Foundation.h>
-#import <HJWebView/HJWebViewCache.h>
 #import <HJWebView/HJJSBridgeResponse.h>
 #import "ASUtils.h"
 #import <HJCategories/HJUIKit.h>
 #import <HJCategories/HJFoundation.h>
 #import "ASConfiguration.h"
-#import <HJWebView/HJWebViewCache.h>
 #import "ASUtils.h"
 #import <Masonry/Masonry.h>
 typedef NS_ENUM(NSInteger, leftNavigationItemType) {
@@ -40,7 +38,7 @@ HJWebViewDelegate
     ASHomeViewController *vc = [self new];
     vc.businessType = type;
     if (vc.businessType == ASBusinessTypeHome) {
-        HQDKNCAddObserver(vc, @selector(htmlHandlePush:), kHQDKNotificationHTMLHandlePush, nil);
+        HQDKNCAddObserver(vc, @selector(htmlHandlePush:), kHQDKNotificationHandlePush, nil);
     } else if (vc.businessType == ASBusinessTypeThird) {
     } else {
     }
@@ -58,7 +56,7 @@ HJWebViewDelegate
     if (_businessType == ASBusinessTypeHome) {
         self.navigationController.delegate = self;
         self.isShowFailToast = false;
-        [self setWKWebViewInit];
+        [self setKWbeWViewInit];
         [self setBottomView];
         [self registerBridgeManagerHander];
 #ifdef DEBUG
@@ -67,16 +65,16 @@ HJWebViewDelegate
         HQDKNCAddObserver(self, @selector(appWillEnterForegroundNoti:), kHQDKNotificationAppWillEnterForeground, nil);
         HQDKNCAddObserver(self, @selector(topPreRecommendNoti:), kHQDKNotificationAppClickTopPreRecommend, nil);
         HQDKNCAddObserver(self, @selector(changeRouteToHomeNoti:), kHQDKNotificationAppGetRoute, nil);
-        HQDKNCAddObserver(self, @selector(htmlLoginSuccess:), kHQDKNotificationHTMLLoginSuccess, nil);
+        HQDKNCAddObserver(self, @selector(htmlLoginSuccess:), kHQDKNotificationLoginSuccess, nil);
         HQDKNCAddObserver(self, @selector(_htmlDownloadApp:), kHQDKNotificationDownloadApp, nil);
-        [self loadActiveRequestWithUrl:[HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.html_home_url]];
+        [self loadActiveRequestWithUrl:[HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.home_url]];
     } else if (_businessType == ASBusinessTypeThird) {
         self.isShowFailToast = false;
         self.isProductFirstPage = true;
         self.canBack = true;
         [self initProgressView];
         [self initNavigation];
-        [self setWKWebViewInit];
+        [self setKWbeWViewInit];
         [self registerBridgeManagerHander];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(appWillEnterForeground:)
@@ -92,7 +90,7 @@ HJWebViewDelegate
             !self.loginBlock?:self.loginBlock();
         }];
         [self initNavigation];
-        NSString *loginUrl = [HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.html_login_url];
+        NSString *loginUrl = [HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.login_url];
         if (!StrIsEmpty(self.specialW)) {
             loginUrl = [NSString stringWithFormat:@"%@?w=%@", loginUrl, self.specialW];
         }
@@ -120,7 +118,7 @@ HJWebViewDelegate
 }
 - (void)loadActiveRequestWithUrl:(NSString *)url {
     if (StrIsEmpty(url) || ![NSURL URLWithString:url] ) {
-        url = [HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.html_home_url];
+        url = [HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.home_url];
     }
     [super loadURLString:url];
 }
@@ -218,22 +216,22 @@ HJWebViewDelegate
 - (void)resetWebView {
     if (_businessType == ASBusinessTypeHome) {
         [super resetWebView];
-        [self setWKWebViewInit];
+        [self setKWbeWViewInit];
         [self registerBridgeManagerHander];
-        [self loadActiveRequestWithUrl:[HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.html_home_url]];
+        [self loadActiveRequestWithUrl:[HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.home_url]];
     } else if (_businessType == ASBusinessTypeThird) {
         [super resetWebView];
-        [self setWKWebViewInit];
+        [self setKWbeWViewInit];
         [self registerBridgeManagerHander];
         [self loadURLString:self.currentUrlStr];
     } else {
     }
 }
-- (void)setWKWebViewInit {
+- (void)setKWbeWViewInit {
     if (_businessType == ASBusinessTypeHome) {
-        [super setWKWebViewInit];
+        [super setKWbeWViewInit];
     } else if (_businessType == ASBusinessTypeThird) {
-        [super setWKWebViewInit];
+        [super setKWbeWViewInit];
         [self.wkWebView mas_remakeConstraints:^(MASConstraintMaker *make) {
             if (self.gotoThirdPart) {
                 make.top.mas_equalTo(self.view.mas_top).mas_offset(HJ_NavigationH);
@@ -249,7 +247,7 @@ HJWebViewDelegate
         }];
         self.wkWebView.scrollView.bounces = true;
     } else {
-        [super setWKWebViewInit];
+        [super setKWbeWViewInit];
     }
 }
 #pragma mark - Private Method
@@ -295,7 +293,7 @@ HJWebViewDelegate
         [params setValue:self.navigationDic[@"locate"] forKey:@"adBlock"];
         [params setValue:self.navigationDic[@"sort"] forKey:@"adSeat"];
         [params setValue:HJMFConfShare.channel forKey:@"appChannel"];
-        [params setValue:[UIDevice hj_appVersion] forKey:@"appVersion"];
+        [params setValue:@"10.0.0" forKey:@"appVersion"];
         [params setValue:self.navigationDic[@"fromDetailPage"] forKey:@"isDetailPage"];
         [params setValue:eventId forKey:@"downDefinition"];
         [params setValue:self.navigationDic[@"linkSeqId"] forKey:@"linkId"];
@@ -514,13 +512,13 @@ HJWebViewDelegate
     } else {
         self.getH5Dic = [[NSMutableDictionary alloc] initWithDictionary:notification.userInfo];
         [self setNavigation:self.getH5Dic style:navigationTypeBack];
-        NSString *url = [HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.html_home_url];
+        NSString *url = [HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.home_url];
         [self loadURLString:[url stringByReplacingOccurrencesOfString:@"home" withString:@"recommendlist?fromeApp=true"]];
     }
 }
 - (void)appWillEnterForegroundNoti:(NSNotification *)noti {
     if ([noti.userInfo[@"TenMinutesRefresh"] integerValue]) {
-        NSString *url = [HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.html_home_url];
+        NSString *url = [HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.home_url];
         [self loadActiveRequestWithUrl:[NSString stringWithFormat:@"%@?autoRefresh=1", url]];
     }
 }

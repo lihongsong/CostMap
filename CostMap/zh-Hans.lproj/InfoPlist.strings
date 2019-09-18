@@ -2,3 +2,4 @@
 "NSLocationWhenInUseUsageDescription" = "打开位置权限后，就可以得到账单所在城市，方便您记录。";
 "NSPhotoLibraryUsageDescription" = "我们需要打开您的相册选择照片，然后自定义您的个人头像。";
 "CFBundleDisplayName" = "有米记账";
+"UILaunchStoryboardName" = "LaunchScreen-Chinese";

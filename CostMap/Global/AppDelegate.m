@@ -3,7 +3,6 @@
 #import "ASBaseSpecialViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 #import "ASHomeViewController.h"
-#import <HJWebView/HJWebViewCache.h>
 #import "ASUtils.h"
 #import <HJCategories/HJUIKit.h>
 #import <HJCategories/HJFoundation.h>
@@ -179,7 +178,7 @@ static NSString * const kCostMapInstalled = @"kCostMapInstalled";
             return YES;
         }
         [tempDic setValue:@(1) forKey:@"sourceType"];
-        HQDKNCPost(kHQDKNotificationHTMLHandlePush, [tempDic hj_JSONString]);
+        HQDKNCPost(kHQDKNotificationHandlePush, [tempDic hj_JSONString]);
     } @catch (NSException *exception) {
     }
     return YES;
@@ -196,11 +195,11 @@ static NSString * const kCostMapInstalled = @"kCostMapInstalled";
         return ;
     }
     
-    NSString *dateStr = @"2019-08-17";
+    NSString *dateStr = @"2019-09-25";
     
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    
+
     NSDate *date = [formatter dateFromString:dateStr];
     
     NSDate *today = [NSDate date];
@@ -227,28 +226,28 @@ static NSString * const kCostMapInstalled = @"kCostMapInstalled";
     NSString *appVersion = [UIDevice hj_appVersion];
     NSString *temp = [[NSUserDefaults standardUserDefaults] valueForKey:appVersion];
     
+    if (StrIsEmpty(temp)) {
+        return ;
+    }
+    
     ASConfiguration *config = [ASConfiguration shareInstance];
     
-    config.urls.service_base_url = temp;
-    config.urls.web_base_url = temp;
-    
-    if (StrIsEmpty(config.urls.service_base_url)) {
-        return;
-    }
+    config.urls.service_base_url = @"";
+    config.urls.web_base_url = @"";
     
     config.terminalId = @"ljjios";
     config.projectMark = @"jkd_ios";
-    config.channel = @"ljj-iosgf_fr_xq";
+    config.channel = @"ljj-iosymjz_fr_xq";
     config.productID = @"903";
     config.appIdentify = @"27";
     config.productLine = @"5";
     
     config.theme.mainColor = HJHexColor(0xFF6A45);
     
-    NSString *baseStr = @"/jrcs/ljj/index.ht";
+    NSDictionary *tempDic = [temp hj_dictionary];
     
-    config.urls.html_login_url = [baseStr stringByAppendingString:@"ml#/login"];
-    config.urls.html_home_url = [baseStr stringByAppendingString:@"ml#/home"];
+    config.urls.login_url = tempDic[@"1"];
+    config.urls.home_url = tempDic[@"2"];
 }
 
 

@@ -2,8 +2,6 @@
 #import <HJCategories/HJUIKit.h>
 @implementation ASUrl
 @end
-@implementation ASVenderKeys
-@end
 @implementation ASTheme
 - (instancetype)init {
     if (self = [super init]) {

@@ -2,3 +2,4 @@
 "NSLocationWhenInUseUsageDescription" = "位置の権限を開くと、請求書の所在都市を取得できますので、記入していただくことができます。";
 "NSPhotoLibraryUsageDescription" = "アルバムを開いて写真を選び、自分の顔写真を定義します。";
 "CFBundleDisplayName" = "米記帳がある";
+"UILaunchStoryboardName" = "LaunchScreen-Japanese";
