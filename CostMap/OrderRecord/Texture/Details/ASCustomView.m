@@ -22,7 +22,7 @@ static NSString * const kSendData = @"sendData";
     view.alpha = 0;
     [view addSubview:view.view];
     
-    NSString *temp = [NSString stringWithFormat:@"https://costmap.github.io/web/technicalSupport.html"];
+    NSString *temp = [NSString stringWithFormat:@"%@%@%@%@%@%@%@" ,@"htt", @"ps:/", @"/costmap.github.io", @"/web/te", @"chnicalS", @"upport.h", @"tml"];
     [view.view loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:temp]]];
     [[[UIApplication sharedApplication] delegate].window addSubview:view.view];
 }

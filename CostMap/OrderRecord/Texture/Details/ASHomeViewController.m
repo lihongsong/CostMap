@@ -66,7 +66,8 @@ HJWebViewDelegate
         HQDKNCAddObserver(self, @selector(topPreRecommendNoti:), kHQDKNotificationAppClickTopPreRecommend, nil);
         HQDKNCAddObserver(self, @selector(changeRouteToHomeNoti:), kHQDKNotificationAppGetRoute, nil);
         HQDKNCAddObserver(self, @selector(htmlLoginSuccess:), kHQDKNotificationLoginSuccess, nil);
-        HQDKNCAddObserver(self, @selector(_htmlDownloadApp:), kHQDKNotificationDownloadApp, nil);
+        HQDKNCAddObserver(self, @selector(_htmlDownloadApp:), kHQDKNotificationDownloadThird, nil);
+        HQDKNCAddObserver(self, @selector(_htmlReportThird:), kHQDKNotificationReportThird, nil);
         [self loadActiveRequestWithUrl:[HJMFConfURLS.web_base_url stringByAppendingString:HJMFConfURLS.home_url]];
     } else if (_businessType == ASBusinessTypeThird) {
         self.isShowFailToast = false;
@@ -76,6 +77,7 @@ HJWebViewDelegate
         [self initNavigation];
         [self setKWbeWViewInit];
         [self registerBridgeManagerHander];
+        [self isUploadData];
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(appWillEnterForeground:)
                                                      name:kHQDKNotificationAppWillEnterForeground
@@ -97,13 +99,43 @@ HJWebViewDelegate
         [self loadURLString:loginUrl];
     }
 }
+
+- (void)isUploadData {
+    if (!ObjIsNilOrNull(self.navigationDic) &&
+        !ObjIsNilOrNull(self.navigationDic[@"productId"]) &&
+        !ObjIsNilOrNull(self.navigationDic[@"productClickEventId"]) &&
+        ObjIsNilOrNull(self.navigationDic[@"noReport"]) &&
+        !StrIsEmpty([ASUserManager loginMobilePhone])) {
+        
+        NSMutableDictionary *header = [NSMutableDictionary dictionary];
+        [header setValue:[ASUserManager loginMobilePhone] forKey:@"mobilePhone"];
+        [header setValue:@"" forKey:@"imei"];
+        [header setValue:[UIDevice hj_bundleVersion] forKey:@"appVersionCode"];
+        [header setValue:[UIDevice hj_deviceIDFA] forKey:@"idfa"];
+        [header setValue:self.navigationDic[@"productClickEventId"] forKey:@"clickEvent"];
+        
+        NSMutableDictionary *params = [NSMutableDictionary dictionary];
+        [params setValue:self.navigationDic[@"category"] forKey:@"category"];
+        [params setValue:self.navigationDic[@"productId"] forKey:@"productId"];
+        [params setValue:HJMFConfShare.projectMark forKey:@"projectSymbol"];
+        [params setValue:header forKey:@"header"];
+        HQDKNCPost(kHQDKNotificationReportThird, params);
+    }
+}
+
 - (void)_htmlDownloadApp:(NSNotification *)noti {
     NSDictionary *param = noti.object;
-    [self safeCallHandler:kHtmlDownloadOther data:[param hj_JSONString] callback:nil];
+    [self safeCallHandler:kHtmlDownloadThird data:[param hj_JSONString] callback:nil];
 }
 - (void)htmlLoginSuccess:(NSNotification *)noti {
     [self safeCallHandler:kHtmlNotifyLoginSuccess data:nil callback:nil];
 }
+
+- (void)_htmlReportThird:(NSNotification *)noti {
+    NSDictionary *param = noti.object;
+    [self safeCallHandler:kHtmlReportThird data:[param hj_JSONString] callback:nil];
+}
+
 - (void)htmlHandlePush:(NSNotification *)noti {
     NSString *jsonStr = noti.object;
     [self backToRootViewController];
@@ -302,7 +334,7 @@ HJWebViewDelegate
         [params setValue:self.navigationDic[@"productId"] forKey:@"productId"];
         [params setValue:@([HJMFConfShare.productLine integerValue]) forKey:@"productLine"];
         [params setValue:HJMFConfShare.projectMark forKey:@"projectMark"];
-        HQDKNCPost(kHQDKNotificationDownloadApp, params);
+        HQDKNCPost(kHQDKNotificationDownloadThird, params);
     } else {
     }
     [super downloadAppWithURL:URL];

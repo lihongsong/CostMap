@@ -7,6 +7,10 @@ static NSString * const kAppExecBack = @"appExecBack";
 static NSString * const kAppGetChannel = @"appGetChannel";
 static NSString * const kAppGetVersion = @"appGetVersion";
 static NSString * const kAppGetBundleId = @"appGetBundleId";
+static NSString * const kAppDismissLoading = @"appDismissLoadingDialog";
+static NSString * const kAppShowLoading = @"appShowLoadingDialog";
+static NSString * const kAppToastMessage = @"appToastMessage";
+static NSString * const kAppExecLogout = @"appExecLogout";
 static NSString * const kAppGetUserToken = @"appGetUserToken";
 static NSString * const kAppGetUserId = @"appGetUserId";
 static NSString * const kAppGetMobilephone = @"appGetMobilephone";
@@ -24,7 +28,8 @@ static NSString * const kAppSetNavigationBarRight = @"appSetNavigationBarRight";
 static NSString * const kAppGetLastLoginMobilePhone = @"appGetLastLoginMobilePhone";
 static NSString * const kAppLoginSuccess = @"appLoginSuccess";
 static NSString * const kHtmlNotifyLoginSuccess = @"htmlNotifyLoginSuccess";
-static NSString * const kHtmlDownloadOther = @"htmlDownloadOther";
+static NSString * const kHtmlDownloadThird = @"htmlDownloadThird";
+static NSString * const kHtmlReportThird = @"htmlReportThird";
 static NSString * const kHtmlJSBridgeIsComplete = @"htmlJSBridgeIsComplete";
 static NSString * const kHtmlInitializeJSBridge = @"htmlInitializeJSBridge";
 static NSString * const kHtmlHandlePush = @"htmlHandlePush";
@@ -35,7 +40,8 @@ static NSString * const kAppSignParams = @"appSignParams";
 #define kHQDKNotificationAppGetRoute @"kAppGetRoute"
 #define kHQDKNotificationSetRouteHome @"home"
 #define kHQDKNotificationDeleteUserInfo @"kDeleteUserInfo"
-#define kHQDKNotificationDownloadApp @"kHQDKNotificationDownloadApp"
+#define kHQDKNotificationDownloadThird @"kHQDKNotificationDownloadThird"
+#define kHQDKNotificationReportThird @"kHQDKNotificationReportThird"
 #define kHQDKNotificationHandlePush @"kHandlePush"
 #define kHQDKNotificationLoginSuccess @"kLoginSuccess"
 FOUNDATION_STATIC_INLINE void HQDKNCPost(NSString *name, id anObject) {

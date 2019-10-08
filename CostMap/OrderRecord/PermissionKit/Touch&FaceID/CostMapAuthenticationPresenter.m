@@ -200,7 +200,7 @@
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"There is something wrong with your Touch ID Settings"
                                                              message:nil
                                                             delegate:self
-                                                   cancelButtonTitle:@"知道了"
+                                                   cancelButtonTitle:@"known"
                                                    otherButtonTitles:nil, nil];
             alert.tag = 7;
             switch (error.code) {

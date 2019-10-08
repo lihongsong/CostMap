@@ -816,14 +816,31 @@ HQDKJavaScriptPageConfigDelegate
         }
     }];
     
-    /** 注册获取bundleID事件 */
     [self.bridgeManager registerHandler:kAppGetBundleId handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
-        ResponseCallback([ASJavaScriptResponse result:@"1111"]);
+        ResponseCallback([ASJavaScriptResponse result:@"-3001"]);
     }];
     
-    /** 注册获取app版本事件 */
     [self.bridgeManager registerHandler:kAppGetVersion handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
         ResponseCallback([ASJavaScriptResponse result:@"10.0.0"]);
+    }];
+    
+    [self.bridgeManager registerHandler:kAppDismissLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        STRONG_SELF
+        [self.view hj_hideProgressHUD];
+        ResponseCallback([ASJavaScriptResponse success]);
+    }];
+    [self.bridgeManager registerHandler:kAppShowLoading handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        STRONG_SELF
+        NSDictionary *dataDic = [[NSDictionary alloc] initWithDictionary:[data hj_dictionary]];
+        [self.view hj_showLoadingHUD:dataDic[@"content"]];
+        ResponseCallback([ASJavaScriptResponse success]);
+    }];
+    
+    [self.bridgeManager registerHandler:kAppToastMessage handler:^(id  _Nonnull data, HJResponseCallback  _Nullable responseCallback) {
+        NSDictionary *dataDic = [[NSDictionary alloc] initWithDictionary:[data hj_dictionary]];
+        if (dataDic[@"message"]) {
+            [KeyWindow hj_showToastHUD:[dataDic objectForKey:@"message"]];
+        }
     }];
 }
 #pragma mark - public Method
@@ -834,7 +851,16 @@ HQDKJavaScriptPageConfigDelegate
         }
         NSDictionary *dic = [(NSString *)data hj_dictionary];
         ASUser *result = [ASUser new];
-        [result setValuesForKeysWithDictionary:dic];
+        
+        result.mobilePhone = dic[@"mobilePhone"];
+        result.respDateTime = dic[@"respDateTime"];
+        result.token = dic[@"token"];
+        result.productHidden = dic[@"productHidden"];
+        result.clear = dic[@"clear"];
+        result.url = dic[@"url"];
+        result.userId = dic[@"userId"];
+        result.userMergeId = dic[@"userMergeId"];
+        
         [ASUserSharedManager storeNeedStoredUserInfomation:result];
         HQDKNCPost(kHQDKNotificationLoginSuccess, nil);
         !success?:success();
@@ -1079,4 +1105,8 @@ HQDKJavaScriptPageConfigDelegate
     }
     return userAgent;
 }
+
 @end
+
+
+

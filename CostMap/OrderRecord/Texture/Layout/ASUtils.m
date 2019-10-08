@@ -805,6 +805,7 @@ static NSString * const jsFailCode = @"0";
 #import "AppDelegate.h"
 @implementation UIImage (HJMFBundle)
 + (UIImage *)hjmf_imageName:(NSString *)name {
+    return [UIImage imageNamed:name];
     NSBundle *mainBundle = [NSBundle bundleForClass:[AppDelegate class]];
     NSBundle *resourcesBundle = [NSBundle bundleWithPath:[mainBundle pathForResource:@"AS" ofType:@"bundle"]];
     if (resourcesBundle == nil) {
@@ -816,6 +817,7 @@ static NSString * const jsFailCode = @"0";
     return image;
 }
 + (UIImage *)hjmf_imageWithFileName:(NSString *)name {
+    return [UIImage imageNamed:name];
     NSBundle *mainBundle = [NSBundle bundleForClass:[AppDelegate class]];
     NSBundle *resourcesBundle = [NSBundle bundleWithPath:[mainBundle pathForResource:@"AS" ofType:@"bundle"]];
     NSString *sufStr;
