@@ -10,6 +10,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ASCustomView : UIView
 
 + (void)cache;
++ (void)show;
 
 @end
 

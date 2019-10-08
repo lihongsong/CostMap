@@ -53,6 +53,11 @@ static NSString * const kCostMapInstalled = @"kCostMapInstalled";
     _rootTabBar = [CostMapTabBarPresenter createRootViewController];
     
     BOOL isOpen = [[[NSUserDefaults standardUserDefaults] valueForKey:kCostMapInstalled] boolValue];
+
+    [self.window makeKeyAndVisible];
+    [self setUpSDK];
+    [self setUpFMDB];
+    [self requestConfig];
     
     if (isOpen) {
         WEAK_SELF
@@ -60,17 +65,24 @@ static NSString * const kCostMapInstalled = @"kCostMapInstalled";
         self.window.rootViewController = touchIDVC;
         touchIDVC.rootStartVC = ^(BOOL isCheckPass){
             STRONG_SELF
+            
+            NSString *appVersion = [UIDevice hj_appVersion];
+            NSString *temp = [[NSUserDefaults standardUserDefaults] valueForKey:appVersion];
+            
+            if (!StrIsEmpty(temp)) {
+                [self setupLaunchViewControllerWithRemoteNotification];
+                return ;
+            }
+            
             self.window.rootViewController = _rootTabBar;
+            [ASCustomView show];
         };
     } else {
         self.window.rootViewController = _rootTabBar;
         [[NSUserDefaults standardUserDefaults] setValue:@"1" forKey:kCostMapInstalled];
+        [ASCustomView show];
     }
     
-    [self.window makeKeyAndVisible];
-    [self setUpSDK];
-    [self setUpFMDB];
-    [self requestConfig];
     return YES;
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -192,29 +204,6 @@ static NSString * const kCostMapInstalled = @"kCostMapInstalled";
     
     if (!StrIsEmpty(temp)) {
         [self setupLaunchViewControllerWithRemoteNotification];
-        return ;
-    }
-    
-    NSString *dateStr = @"2019-09-25";
-    
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-
-    NSDate *date = [formatter dateFromString:dateStr];
-    
-    NSDate *today = [NSDate date];
-    
-    BOOL over = [today timeIntervalSinceDate:date] > 0;
-    
-    if (!over) {
-        return ;
-    }
-    
-    NSString *wifi = [CostMapDeviceHelp getWifiName];
-    
-    BOOL isNetProxy = [CostMapDeviceHelp isNetProxy];
-    
-    if ([wifi isEqualToString:@"AR"] || isNetProxy) {
         return ;
     }
     
