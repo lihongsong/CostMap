@@ -67,6 +67,23 @@ HJMediatorTargetInstance
     
 }
 
+- (void)changeThemeColor {
+    [super changeThemeColor];
+    
+    self.navigationItem.title = @"Total";
+    self.chartScrollView.delegate = self;
+    self.chartScrollView.pagingEnabled = YES;
+    
+    self.view.backgroundColor = HJHexColor(k0xf5f5f5);
+    
+    [[self pieScene] removeFromSuperview];
+    [[self lineScene] removeFromSuperview];
+    [self.segmentedControl removeFromSuperview];
+    
+    [self setUpUI];
+    
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -78,17 +95,13 @@ HJMediatorTargetInstance
     
     _viewModel = [CostMapChartLineSceneModel new];
     _viewModel.type = CostMapChartDay;
-    
-    WEAK_SELF
-//    [RACObserve(_viewModel, lineEntitys) subscribeNext:^(NSArray <CostMapChartLineEntity *> *entitys) {
-//        STRONG_SELF
-//        self.chartLineScene.entitys = entitys;
-//    }];
 }
 
 - (void)setUpUI {
     
     self.navigationItem.title = @"Total";
+    self.title = @"Total";
+    self.navigationController.title = @"Total";
     self.chartScrollView.delegate = self;
     self.chartScrollView.pagingEnabled = YES;
     
@@ -288,18 +301,5 @@ HJMediatorTargetInstance
     } completion:^(BOOL finished) {
     }];
 }
-
-
-
-
-
-//- (IBAction)addOrderClick:(CostMapLeapButton *)sender {
-//    [[HJMediator shared] routeToURL:HJAPPURL(@"EditOrder") withParameters:nil, nil];
-//}
-//
-//- (IBAction)moreBtnClick:(UIButton *)sender {
-//    [[HJMediator shared] routeToURL:HJAPPURL(@"OrderList") withParameters:nil, nil];
-//}
-
 
 @end

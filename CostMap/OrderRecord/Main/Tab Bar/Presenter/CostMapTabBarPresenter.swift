@@ -72,14 +72,21 @@ import ESTabBarController_swift;
         itemContentScene.highlightIconColor = UIColor.yka_main()
         itemContentScene.iconColor = UIColor.yka_unselected()
         
-        let childItem =
-            CostMapTabBarItem(itemContentScene,
-                                      title: title,
-                                      image: image,
-                                      selectedImage: selectedImage,
-                                      tag: tag)
-        childVC.tabBarItem = childItem
+        childVC.tabBarItem = tabBarItem(itemContentScene, title: title, image: image, selectedImage: selectedImage, tag: tag)
+        
+        
         return childVC
+    }
+    
+    static func tabBarItem(_ contentView: ESTabBarItemContentView, title: String?, image: UIImage?, selectedImage: UIImage?, tag: Int) -> UITabBarItem {
+        
+        let childItem =
+            CostMapTabBarItem(contentView,
+                              title: title,
+                              image: image,
+                              selectedImage: selectedImage,
+                              tag: tag)
+        return childItem
     }
     
     @objc var yka_selectedViewController: UIViewController? {
@@ -93,6 +100,51 @@ import ESTabBarController_swift;
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let notiName = NSNotification.Name("kNotificationChangeThemeColor")
+        NotificationCenter.default.addObserver(self, selector: #selector(self.handlerNotificationChangeThemeColor), name: notiName, object: nil)
+            
+    }
+    
+    @objc func handlerNotificationChangeThemeColor() {
+        
+        for vc in self.children {
+            
+            var tabbarItem: UITabBarItem
+            
+            var rootVC: UIViewController?
+            if vc is UINavigationController {
+                rootVC = (vc as! UINavigationController).hj_rootViewController()
+            } else {
+                rootVC = vc
+            }
+            
+            guard let tempVC = rootVC else {
+                return
+            }
+            
+            if tempVC is CostMapChartPresenter {
+                let itemContentScene = CostMapTabBarItemContentScene(frame: .zero)
+                itemContentScene.highlightIconColor = UIColor.yka_main()
+                itemContentScene.iconColor = UIColor.yka_unselected()
+                let image = UIImage(named: "chart_tab")
+                let selectedImage = UIImage(named: "chart_tab")
+                let tag = 2
+                tabbarItem = CostMapTabBarPresenter.tabBarItem(itemContentScene, title: vc.tabBarItem.title, image: image, selectedImage: selectedImage, tag: tag)
+            } else if tempVC is CostMapHomePresenter {
+                let itemContentScene = CostMapTabBarItemContentScene(frame: .zero)
+                itemContentScene.highlightIconColor = UIColor.yka_main()
+                itemContentScene.iconColor = UIColor.yka_unselected()
+                let image = UIImage(named: "main_tab")
+                let selectedImage = UIImage(named: "main_tab")
+                let tag = 0
+                tabbarItem = CostMapTabBarPresenter.tabBarItem(itemContentScene, title: vc.tabBarItem.title, image: image, selectedImage: selectedImage, tag: tag)
+            } else {
+                tabbarItem = ESTabBarItem.init(CostMapIrregularityContentView(), title: nil, image: UIImage(named: "yka_orderAdd"), selectedImage: UIImage(named: "yka_orderAdd"))
+            }
+            
+            vc.tabBarItem = tabbarItem
+        }
         
     }
 }

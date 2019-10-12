@@ -18,7 +18,18 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     [self adjustsScrollSceneInsets];
     [self setNeedsStatusBarAppearanceUpdate];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handlerThemeChangeNoti) name:@"kNotificationChangeThemeColor" object:nil];
 }
+
+- (void)handlerThemeChangeNoti {
+    [self changeThemeColor];
+}
+
+- (void)changeThemeColor {
+    
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;

@@ -63,6 +63,27 @@ UINavigationControllerDelegate
     }
 }
 
+- (void)changeThemeColor {
+    [super changeThemeColor];
+    
+    self.rightBarBtn.tintColor = CostMapThemeTitleColor;
+    self.titleLb.textColor = CostMapThemeTitleColor;
+    [_pickerArrowIV setTintColor:CostMapThemeTitleColor];
+    _monthTitleLb.textColor = CostMapThemeTitleColor;
+    [_dateSelectBtn setTitleColor:CostMapThemeTitleColor forState:UIControlStateNormal];
+    _yearLb.textColor = CostMapThemeTitleColor;
+    _wealthLb.textColor = CostMapThemeTitleColor;
+    _wealthTitleLb.textColor = CostMapThemeTitleColor;
+    [_todayBtn setTitleColor:CostMapThemeTitleColor forState:UIControlStateNormal];
+    _headerScene.backgroundColor = CostMapThemeColor;
+    [_addOrderBtn setTintColor:CostMapThemeColor];
+    
+    self.navbar.backgroundColor = CostMapThemeColor;
+    self.view.backgroundColor = HJHexColor(k0xf5f5f5);
+    self.headerBackScene.backgroundColor = CostMapThemeColor;
+    [_addOrderBtn setTintColor:CostMapThemeColor];
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
