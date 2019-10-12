@@ -1760,10 +1760,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = CostMap/CostMap.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CostMapANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 4FYS54XBTW;
+				DEVELOPMENT_TEAM = 37999L3586;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CostMap/Other/CostMap-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1785,7 +1785,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.costmap.pmsqhvtech;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "f6d46689-e4bf-41ab-bb16-180997bd9fd6";
-				PROVISIONING_PROFILE_SPECIFIER = "match AppStore me.ImmediatelyLoan.app";
+				PROVISIONING_PROFILE_SPECIFIER = "Development com.costmap.pmsqhvtech";
 				SWIFT_OBJC_BRIDGING_HEADER = "CostMap/OrderRecord/Expand/Macros/CostMap-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;

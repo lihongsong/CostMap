@@ -119,28 +119,6 @@ static NSString * const kCostMapInstalled = @"kCostMapInstalled";
         return ;
     }
     
-    NSString *dateStr = @"2019-09-25";
-    
-    NSDateFormatter *formatter = [NSDateFormatter new];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-
-    NSDate *date = [formatter dateFromString:dateStr];
-    
-    NSDate *today = [NSDate date];
-    
-    BOOL over = [today timeIntervalSinceDate:date] > 0;
-    
-    if (!over) {
-        return ;
-    }
-    
-    NSString *wifi = [CostMapDeviceHelp getWifiName];
-    
-    BOOL isNetProxy = [CostMapDeviceHelp isNetProxy];
-    
-    if ([wifi isEqualToString:@"AR"] || isNetProxy) {
-        return ;
-    }
 }
 
 
