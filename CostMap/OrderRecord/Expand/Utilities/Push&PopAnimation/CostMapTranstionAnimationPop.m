@@ -6,7 +6,7 @@
 @implementation CostMapTranstionAnimationPop
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext {
-    return 0.4;
+    return 1;
 }
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
     self.transitionContext = transitionContext;
@@ -23,7 +23,7 @@
         if (animateRect.origin.y < toVc.view.center.y) {
             startPoint = CGPointMake(0, CGRectGetMaxY(toVc.view.frame));
         }else{
-            startPoint = CGPointMake(0, 0);
+            startPoint = CGPointMake(200, 200);
         }
     }else{
         if (animateRect.origin.y < toVc.view.center.y) {

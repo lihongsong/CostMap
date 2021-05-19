@@ -100,7 +100,8 @@ UINavigationControllerDelegate
 
 - (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
-    self.animateRect = self.addOrderBtn.frame;
+    self.animateRect = CGRectMake(200, 200, 20, 20);
+//    self.animateRect = self.addOrderBtn.frame;
 }
 - (void)doWealthAnimation {
     CGFloat wealth = fabs(_totalWealth);
@@ -168,7 +169,8 @@ UINavigationControllerDelegate
     self.navbar.backgroundColor = CostMapThemeColor;
     self.view.backgroundColor = HJHexColor(k0xf5f5f5);
     self.headerBackScene.backgroundColor = CostMapThemeColor;
-    self.animateRect = _addOrderBtn.frame;
+//    self.animateRect = _addOrderBtn.frame;
+    self.animateRect = CGRectMake(200, 200, 20, 20);
     UIImage *addBtnImage = [UIImage imageNamed:@"yka_orderAdd"];
     [_addOrderBtn setImage:[addBtnImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
     [_addOrderBtn setTintColor:CostMapThemeColor];

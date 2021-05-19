@@ -6,7 +6,7 @@
 @implementation CostMapTranstionAnimationPush
 
 - (NSTimeInterval)transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext{
-    return 0.4;
+    return 1;
 }
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext{
     self.transitionContext = transitionContext;
@@ -23,7 +23,7 @@
         if (animateRect.origin.y < (toVc.view.bounds.size.height / 2)) {
             finalPoint = CGPointMake(0, CGRectGetMaxY(toVc.view.frame));
         }else{
-            finalPoint = CGPointMake(0, 0);
+            finalPoint = CGPointMake(200, 200);
         }
     }else{
         if (animateRect.origin.y < (toVc.view.bounds.size.height / 2)) {
